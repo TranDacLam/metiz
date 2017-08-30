@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+{% load i18n %} 
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+
+<html lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl" {% endif %}>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{% endblock %}"> 
+    <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="icon">
+    <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <META HTTP-EQUIV="Content-language" CONTENT="vi">
+
+    <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    
+
+    <title>{% block title %}{% endblock title %}</title>
+    {% block metacontent %}{% endblock %}
+    
+    {% block extrastylesheet %}{% endblock %}
+
+    
+
+
+    <script src = "{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js"></script>
+    <script src = "{{ STATIC_URL }}assets/js/bootstrap.min.js"></script>
+    <script src = "{{ STATIC_URL }}assets/websites/js/ajaxSetup.js"></script>
+    {% block extrascript %}{% endblock %}
+
+</head>
+
+<body id="{% block body_id %}body{% endblock %}">
+<div class="layout cd-main-content">
+    <!-- Start Header -->
+    {% include 'header.html' %}
+    <!-- End Header -->
+
+    <!-- Start Body -->
+    <div class="body-wrap">
+        {% block main_content %} {% endblock %}
+
+    </div>
+    <!-- End Body -->
+
+    <!-- Start Footer -->
+    {% include 'footer.html' %}
+    <!-- End Footer -->
+</div>
+</body>
+</html>

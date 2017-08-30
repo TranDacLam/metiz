@@ -1,0 +1,7 @@
+Django==1.11
+mysql-python
+Pillow
+django-grappelli
+uwsgi
+html2text==2014.4.5
+
