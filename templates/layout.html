@@ -17,8 +17,12 @@
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <META HTTP-EQUIV="Content-language" CONTENT="vi">
 
-    <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ STATIC_URL }}assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="{{ STATIC_URL }}assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/styles.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/colorbox.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-cgv.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-cgv.css" media="all" />
     
 
     <title>{% block title %}{% endblock title %}</title>
@@ -30,28 +34,54 @@
 
 
     <script src = "{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js"></script>
-    <script src = "{{ STATIC_URL }}assets/js/bootstrap.min.js"></script>
+    <!-- <script src = "{{ STATIC_URL }}assets/js/bootstrap.min.js"></script> -->
     <script src = "{{ STATIC_URL }}assets/websites/js/ajaxSetup.js"></script>
     {% block extrascript %}{% endblock %}
 
 </head>
 
-<body id="{% block body_id %}body{% endblock %}">
-<div class="layout cd-main-content">
-    <!-- Start Header -->
-    {% include 'header.html' %}
-    <!-- End Header -->
-
-    <!-- Start Body -->
-    <div class="body-wrap">
-        {% block main_content %} {% endblock %}
-
+<body id="{% block body_id %}body{% endblock %}" class="cms-index-index cms-home">
+    <div class="mtw_banner_left" style="display: none;">
+        <div class="content-banner">
+            <a class="load-popup-banners cboxElements" href="https://www.cgv.vn/default/cgv-online" target="_blank"> 
+                <img alt="" src="https://www.cgv.vn/media/wysiwyg/banner/baner-left-vn.jpg" /> </a>
+        </div>
     </div>
-    <!-- End Body -->
+    <div class="mtw_banner_right" style="display: none;">
+        <div class="content-banner banner-verion-vn">
+            <div class="banner-culture-day"><a href="https://www.cgv.vn/default/newsoffer/cgv-culture-day/" target="_blank"> <img alt="" src="https://www.cgv.vn/media/wysiwyg/banner/en-banner-right-1.png" /> </a></div>
+            <div class="banner-happy-day"><a href="https://www.cgv.vn/default/newsoffer/happy-wednesday/" target="_blank"> <img alt="" src="https://www.cgv.vn/media/wysiwyg/banner/en-banner-right-2.png" /> </a></div>
+            <div class="banner-first-show"><a href="https://www.cgv.vn/default/newsoffer/first-show" target="_blank"> <img alt="" src="https://www.cgv.vn/media/wysiwyg/banner/vn-banner-right-3.png" /> </a></div>
+            <div class="banner-student"><a href="https://www.cgv.vn/default/newsoffer/student-price/" target="_blank"> <img alt="" src="https://www.cgv.vn/media/wysiwyg/banner/vn-banner-right-4.png" /> </a></div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <noscript>
+            <div class="global-site-notice noscript">
+                <div class="notice-inner">
+                    <p>
+                        <strong>JavaScript seems to be disabled in your browser.</strong>
+                        <br /> You must have JavaScript enabled in your browser to utilize the functionality of this website. </p>
+                </div>
+            </div>
+        </noscript>
+        <div class="page layout cd-main-content">
 
-    <!-- Start Footer -->
-    {% include 'footer.html' %}
-    <!-- End Footer -->
-</div>
+        <!-- Start Header -->
+        {% include 'header.html' %}
+        <!-- End Header -->
+
+        <!-- Start Body -->
+        <div class="main-container col1-layout">
+            {% block main_content %} {% endblock %}
+
+        </div>
+        <!-- End Body -->
+
+        <!-- Start Footer -->
+        {% include 'footer.html' %}
+        <!-- End Footer -->
+        </div>
+    </div>
 </body>
 </html>

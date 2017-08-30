@@ -1,0 +1,135 @@
+<div class="header-language-background">
+    <div class="header-container">
+        <div class="header-language-right">
+            <div class="header-career">
+            </div>
+            <div class="header-career">
+                <p><a href="#">Liên hệ CGV</a></p>
+            </div>
+            <div class="header-language-container">
+                <div class="store-language-container">
+                    <div class="form-language">
+                        <ul id="select-language" title="Ngôn ngữ">
+                            <li value=""><a href=""><span>EN</span></a></li>
+                            <li value="" class="current" selected="selected"><span>VN</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="header-top-account">
+                <div class="account-header-wrapper">
+                    <a href="#" class="topskip-link skip-account">
+                        <span class="label">Đăng nhập/ Đăng ký</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<header id="header" class="page-header">
+    <div class="page-header-container">
+        <a class="logo" href="#">
+            <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo.png" alt="CGV Cinemas" class="large" />
+            <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo-small.png" alt="CGV Cinemas" class="small" />
+        </a>
+        <!-- Skip Links -->
+        <div class="skip-links">
+            <a href="#header-nav" class="skip-link skip-nav">
+                <span class="icon"></span>
+                <span class="label">Menu</span>
+            </a>
+            <a href="#header-search" class="skip-link skip-search">
+                <span class="icon"></span>
+                <span class="label">Tìm kiếm</span>
+            </a>
+            <div class="account-cart-wrapper">
+                <a href="#" data-target-element="#header-account" class="skip-link skip-account">
+                    <span class="icon"></span>
+                    <span class="label">Đăng nhập/ Đăng ký</span>
+                </a>
+            </div>
+        </div>
+        <!-- Navigation -->
+        <div id="header-nav" class="skip-content">
+            <nav id="nav">
+                <ol class="nav-primary">
+                    <li class="level0 nav-1 first last parent"><a href="#" class="level0 has-children">Phim</a>
+                        <ul class="level0">
+                            <li class="level1 nav-1-1 first"><a href="#" class="level1 ">Phim Đang Chiếu</a></li>
+                            <li class="level1 nav-1-2"><a href="#" class="level1 ">Phim Sắp Chiếu</a></li>
+                            <li class="level1 nav-1-3 last"><a href="#" class="level1 ">Arthouse</a></li>
+                        </ul>
+                    </li>
+                    <!--li class="level0 nav-2 first last">
+                        <a class="level0" href="https://www.cgv.vn/default/cinox/reserve/">Lịch Chiếu</a>
+                    </li-->
+
+                    <li class="level0 nav-3 first last">
+                        <a class="level0" href="#">Rạp CGV</a>
+                    </li>
+                    <li class="level0 nav-4 first last">
+                        <a class="level0 has-children" href="#">Thành viên</a>
+                        <ul class="level0">
+                            <li class="level1 nav-4-1 first">
+                                <!--<a class="level0" href="https://www.cgv.vn/default/sales/order/history/">Thành viên</a>-->
+                                <a class="level0" href="#">Tài khoản CGV</a>
+                            </li>
+                            <li class="level1 nav-4-2 last">
+                                <a class="level1" href="#">Quyền lợi</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="level0 nav-5 first last">
+                        <a class="level0" href="#">Online Store (Test)</a>
+                        <ul class="level0">
+                            <li class="level1 nav-5-1">
+                                <a class="level1" href="#">Voucher Phim</a>
+                            </li>
+                            <li class="level1 nav-5-2">
+                                <a class="level1" href="#">Thẻ Quà Tặng</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </nav>
+            
+            <script type="text/javascript">
+            $j(document).ready(function() {
+                $j('li.level0.nav-1 a.has-children').attr('href', '#');
+
+            });
+            </script>
+        </div>
+        <!-- Search -->
+        <div id="header-search" class="skip-content">
+            <div class="header-search-left">
+                <p><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/tin-moi-uu-dai.gif" /></a></p>
+                <form id="search_mini_form" action="#" method="get">
+                    <div class="input-box">
+                        <label for="search">Search:</label>
+                        <input id="search" type="search" name="q" value="" class="input-text required-entry" maxlength="128" placeholder="Tìm kiếm" />
+                        <button type="submit" title="Tìm kiếm" class="button search-button"><span><span>Tìm kiếm</span></span>
+                        </button>
+                    </div>
+                    <div id="search_autocomplete" class="search-autocomplete"></div>
+                    
+                </form>
+            </div>
+            <div class="header-search-right">
+                <p><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/mua-ve_ngay.png" /></a></p>
+            </div>
+        </div>
+        <!-- Account -->
+        <div id="header-account" class="skip-content">
+            <div class="links">
+                <ul>
+                    <li class="first"><a href="#" title="Tài khoản">Tài khoản</a></li>
+                    <li><a href="#" title="Giỏ hàng" class="top-link-cart">Giỏ hàng</a></li>
+                    <li><a href="#" title="Thanh toán" class="top-link-checkout">Thanh toán</a></li>
+                    <li><a href="#/" title="Đăng ký">Đăng ký</a></li>
+                    <li class=" last"><a href="#" title="Đăng nhập">Đăng nhập</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
