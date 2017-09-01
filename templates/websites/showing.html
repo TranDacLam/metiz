@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+{% block body_class %}
+	catalog-category-view categorypath-now-showing category-now-showing
+{% endblock %}
+
+{% block main_content%}
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+	<div class="main-container col1-layout">
+		<div class="breadcrumbs" itemprop="breadcrumb">
+			<ul>
+				<li class="home">
+					<a href="#" title="Trở về trang chủ">Trang chủ</a>
+					<span>/ </span>
+				</li>
+				<li class="category3">
+					Phim
+					<span>/ </span>
+				</li>
+				<li class="category5">
+					<strong>Phim Đang Chiếu</strong>
+				</li>
+			</ul>
+		</div>
+		<div class="main">
+			<div class="col-main">
+				<div class="page-title category-title">
+					<h1>Phim Đang Chiếu</h1>
+				</div>
+				<div class="category-products cgv-movies">
+					<ul class="products-grid products-grid--max-4-col first last odd">
+						{% for value in data%}
+
+							<li class="film-lists item last">
+								<span class="nmovie-rating nmovie-rating-{{value.tc}}"></span>
+								<div class="product-images">
+									<a href="#" title="CGV_American Made" class="product-image">
+										<img id="product-collection-image-285" src="{{STATIC_URL}}{{value.img}}" alt="CGV_American Made">
+									</a>
+									
+									<div class="movie-technology">
+										<a href="javascript:void(0)" class="icon-type-film" title="IMAX2D">
+											<span class="attr-movie-imax2d">IMAX2D</span>
+										</a>
+									</div>
+								</div>
+								
+								<div class="product-info" style="height: 41px; min-height: 11px;">
+									<h2 class="product-name"><a href="#" title="Barry Seal: Lách Luật Kiểu Mỹ"> Lách Luật Kiểu Mỹ</a></h2>
+									
+									<div class="cgv-movie-info">
+										<span class="cgv-info-bold">Thể loại: </span>
+										<span class="cgv-info-normal">Hành Động, Phiêu Lưu</span>
+									</div>
+									
+									<div class="cgv-movie-info">
+										<span class="cgv-info-bold">Thời lượng: </span>
+										<span class="cgv-info-normal">115 phút</span>
+									</div>
+									
+									<div class="cgv-movie-info">
+										<span class="cgv-info-bold">Khởi chiếu: </span>
+										<span class="cgv-info-normal">25/08/2017</span>
+									</div>
+									
+								</div>
+								
+								<div class="ribon position-{{value.rating}}"></div>
+								
+								<ul class="add-to-links">
+									<li>
+										<div class="fb-like fb_iframe_widget" data-href="https://www.cgv.vn/default/lach-luat-kieu-my.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=0&amp;href=https%3A%2F%2Fwww.cgv.vn%2Fdefault%2Flach-luat-kieu-my.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=true"><span style="vertical-align: bottom; width: 74px; height: 20px;"><iframe name="f277c4cb6835198" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/v2.0/plugins/like.php?action=like&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2F0sTQzbapM8j.js%3Fversion%3D42%23cb%3Df71c28d706a3fc%26domain%3Dwww.cgv.vn%26origin%3Dhttps%253A%252F%252Fwww.cgv.vn%252Ff208f1f50ded258%26relation%3Dparent.parent&amp;container_width=0&amp;href=https%3A%2F%2Fwww.cgv.vn%2Fdefault%2Flach-luat-kieu-my.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=true" style="border: none; visibility: visible; width: 74px; height: 20px;" class=""></iframe></span></div>
+									</li>
+									
+									<li>
+										<button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span></button>
+									</li>
+								</ul>
+							</li>
+						{%endfor%}
+					</ul>
+					<script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+				</div>
+				<script type="text/javascript">
+
+				//<![CDATA[
+					
+					$j(window).bind('load', function() {
+						(function(d, s, id) {
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) return;
+						js = d.createElement(s); js.id = id;
+						js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+						fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));
+
+				});
+
+					
+					$j(document).ready(function(){
+						var highest = 0;
+						var hi = 0;
+						$j('.product-info').each(function(){
+						var h = $j(this).height();
+						if(h > hi){
+								hi = h;
+								highest = h;
+							}
+						});
+						if ($j(window).width()>320){
+							$j('.product-info').css('height',highest+10+'px');
+						}
+						else{
+							$j('.products-grid .product-info').css('padding-bottom','0');
+						}
+						$j('li.category3').find('a').contents().unwrap();
+
+					});
+					
+					$j(window).on('resize', function() {
+						var highest2 = 0;
+						var hi = 0;
+						$j('.product-info').each(function(){
+						var h = $j(this).height();
+						if(h > hi){
+								hi = h;
+								highest2 = h;
+							}
+						});
+						if ($j(window).width()>320){
+							$j('.product-info').css('height',highest2+10+'px');
+						}
+						else{
+							$j('.products-grid .product-info').css('padding-bottom','0');
+						}
+						$j('li.category3').find('a').contents().unwrap();
+					});
+					
+					function Quickbooking(obj)
+					{
+						$j.ajax({
+							type: 'post',
+							url: '',
+							data: 'id='+ obj,
+							//dataType: 'json',
+							beforeSend: function(){
+								$j.colorbox();
+							},
+						}).done(function(result) {
+							html =result;
+							$j.colorbox({html: '<div class="product-view quick-booking">'+html+'</div>', width:"88%", height:"88%",fixed:true,modal: false});
+							togglecontent('tabs-cgv-movie-type');
+							togglecontent('tabs-cgv-movie-cites');
+							togglecontent('tabs-cgv-movie-view-date');
+						});
+					};
+					
+				//]]>
+			</script>           
+		</div>
+	</div>
+{% endblock%}

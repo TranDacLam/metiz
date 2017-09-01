@@ -26,7 +26,9 @@ handler500 = 'main.views.custom_500'
 urlpatterns = [
     url(r'^grappelli', include('grappelli.urls')),
     url(r'^admin', admin.site.urls),
-    url(r'^', views.home),
+    url(r'^$', views.showing),
+    url(r'^temp/$', views.arthouse),
+
 
 ]
 
