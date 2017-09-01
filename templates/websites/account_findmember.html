@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+{% block title %}Helio{% endblock title %}
+
+
+{% block main_content %}
+<div class="main">
+	<div class="col-main">
+		<div class="page-title">
+			<h1>Tìm thông tin thành viên</h1>
+		</div>
+		<div class="box-account cgv-findmember-form">
+			<ul>
+				<li class="cgv-50">
+					<div class="box-head">
+						<h2>Tìm email và Online ID ?</h2>
+					</div>
+					<form action="#" method="post" autocomplete="off" id="form-validate" class="scaffold-form" enctype="multipart/form-data">
+						<input name="form_key" type="hidden" value="cTEN6wMzLe3dHGYp" />
+						<fieldset>
+							<p><strong>Vui lòng nhập tên, ngày sinh, số điện thoại</strong></p>
+							<ul class="form-list">
+								<li style="clear: both;">
+									<div class="input-box" style="display: inline-block;">
+										<input type="text" class="input-text f_name required-entry minimum-length-2" placeholder="Tên" id="first_name" name="first_name" />
+										<input type="text" class="input-text l_name required-entry minimum-length-2" placeholder="Họ" id="last_name" name="last_name" />
+									</div>
+								</li>
+								
+								<li style="clear: both;">
+									<div class="input-box" style="display: inline-block;">
+										<input type="text" class="input-text required-entry validate-length" placeholder="Nhập ngày sinh (định dạng: DD/MM/YYYYY)" id="birthday" name="birthday" />
+									</div>
+								</li>
+								<li style="clear: both;">
+									<div class="input-box" style="display: inline-block;">
+										<input type="text" class="input-text required-entry minimum-length-3 validate-length" placeholder="Nhập số điện thoại hoặc Online ID" id="online_id" name="online_id" />
+									</div>
+								</li>
+								<li class="control" style="clear: both;">
+									<button type="button" class="button" onclick="findaccount();">
+									<span><span>Tìm ngay</span></span>
+									</button>
+								</li>
+							</ul>
+						</fieldset>
+					</form>
+				</li>
+				<li class="cgv-50 cgv-nodisplay" id="data_return">
+					<div>Xin chào <span class="yourname">XXXXXX</span>,</div>
+					<div>Vui lòng kiểm tra email và số Online ID</div>
+					<div class="cgv-content-member">
+						<div>Email của bạn: <span class="youremail">jiki1024@hotmail.com</span></div>
+						<div>Số Online ID: <span class="yourid">jiki1024</span></div>
+					</div>
+					<div class="button-sets">
+						<button type="button" class="button btn-password" onclick="forgotpasswordf()">
+							<span><span>Tìm lại mật khẩu</span></span>
+						</button>
+						<button type="button" class="button" onclick="loginf()">
+							<span><span>Đăng nhập</span></span>
+						</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id="loading-mask" style="left: -2px; top: 0px;">
+			<p class="loader" id="loading_mask_loader">
+				<img src="{{ STATIC_URL }}assets/websites/images/ajax-loader.gif" alt="Loading...">
+			<br>Đang tải thông tin...	</p>
+		</div>
+		<script type="text/javascript">
+		//<![CDATA[
+		var theForm = new VarienForm('form-validate', true);
+			$j( document ).ready(function() {
+				$j('#birthday').bind('keyup','keydown', function(event) {
+				var inputLength = event.target.value.length;
+				if(inputLength === 2 || inputLength === 5){
+				var thisVal = event.target.value;
+				thisVal += '/';
+				$j(event.target).val(thisVal);
+				}
+			})
+			});
+		//]]>
+			function forgotpasswordf()
+			{
+				//var url = e.target.parentElement.action;
+				var url = '#';
+				window.location = url;
+			}
+			function loginf()
+			{
+				//var url = e.target.parentElement.action;
+				var url = '#';
+				window.location = url;
+			}
+			function findaccount()
+			{
+				var f_name = $j.trim($j('input[name=\'first_name\']').val());
+				var l_name = $j.trim($j('input[name=\'last_name\']').val());
+				var b_day = $j.trim($j('input[name=\'birthday\']').val());
+				var online_id = $j.trim($j('input[name=\'online_id\']').val());
+				if(f_name !='' && l_name !='' || b_day!='' || online_id!=''){
+					
+					$j.ajax({
+						type: 'POST',
+						url: '#',
+						data: {first_name : f_name, last_name :  l_name , birthday : b_day, online_id : online_id},
+						beforeSend: function(){
+							$j('#loading-mask').show();
+							$j('#data_return').addClass('cgv-nodisplay');
+						}
+					}).done(function(result) {
+						$j('#loading-mask').hide();
+						if(result.code == 200) {
+							$j('#data_return').removeClass('cgv-nodisplay');
+							$j('.yourname').html(l_name + ' ' + f_name);
+							$j('.youremail').html(result.data.EMAIL);
+							$j('.yourid').html(result.data.HP_ID);
+						}
+						else {
+							alert(result.error);
+						}
+					});
+				}else{
+					alert('Vui lòng nhập đúng thông tin');
+				}
+			}
+	</script>               
+	 </div>
+</div>
+{% endblock %}

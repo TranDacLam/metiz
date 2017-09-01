@@ -34,8 +34,11 @@ urlpatterns = [
     url(r'^movie_voucher/$', views.movie_voucher),
     url(r'^account_create/$', views.account_create),
     url(r'^account_login/$', views.account_login),
+    url(r'^account_findmember/$', views.account_findmember),
+    url(r'^account_forgot_password/$', views.account_forgot_password),
     url(r'^arthouse/$', views.arthouse),
     url(r'^showing/$', views.showing),
+    url(r'^movie_voucher/$', views.movie_voucher),
 
 ]
 

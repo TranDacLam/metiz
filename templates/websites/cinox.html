@@ -1,0 +1,370 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+
+{% block title %}Helio{% endblock title %}
+
+
+{% block main_content %}
+<div class="main">
+	<div class="col-main">
+		
+		<div class="showtimes-wrap">
+			<div class="showtimes-container">
+				<div class="theatre-wrap">
+					<div class="theatre-list product-view">
+						<div class="cgv-showtime-top"></div>
+						
+						<div class="theatre-city-tabs cgv-showtime-center">
+							<div class="content-list-cinema">
+								<div class="title-cgv-cinema"><h1>HELIO CINEMA</h1></div>
+								
+								<div class="cinemas-area">
+									<ul>
+										<li>
+											<span id="cgv_city_1" >Hồ Chí Minh</span>
+										</li>
+										<li>
+											<span id="cgv_city_3" >Hà Nội</span>
+										</li>
+										<li>
+											<span id="cgv_city_5" >Đà Nẵng</span>
+										</li>
+										<li>
+											<span id="cgv_city_7" >Cần Thơ</span>
+										</li>
+										<li>
+											<span id="cgv_city_9" >Đồng Nai</span>
+										</li>
+										<li>
+											<span id="cgv_city_11" >Hải Phòng</span>
+										</li>
+										<li>
+											<span id="cgv_city_13" >Quảng Ninh</span>
+										</li>
+										<li>
+											<span id="cgv_city_15" >Bà Rịa-Vũng Tàu</span>
+										</li>
+										<li>
+											<span id="cgv_city_17" >Bình Định</span>
+										</li>
+										<li>
+											<span id="cgv_city_19" >Bình Dương</span>
+										</li>
+										<li>
+											<span id="cgv_city_21" >Đắk Lắk</span>
+										</li>
+										<li>
+											<span id="cgv_city_23" >Trà Vinh</span>
+										</li>
+										<li>
+											<span id="cgv_city_25" >Yên Bái</span>
+										</li>
+										<li>
+											<span id="cgv_city_27" >Vĩnh Long</span>
+										</li>
+										<li>
+											<span id="cgv_city_29" >Kiên Giang</span>
+										</li>
+										<li>
+											<span id="cgv_city_31" >Hậu Giang</span>
+										</li>
+										<li>
+											<span id="cgv_city_33" >Hà Tĩnh</span>
+										</li>
+									</ul>
+								</div>
+								
+								<div class="cinemas-list">
+									<ul>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_004" onclick="site('#',this)">CGV Hùng Vương Plaza</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_007" onclick="site('#',this)">CGV Paragon</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_008" onclick="site('#',this)">CGV Cresent Mall</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_021" onclick="site('#',this)">CGV Thảo Điền Pearl</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_023" onclick="site('#',this)">CGV Vincom Thủ Đức</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_024" onclick="site('#',this)">CGV Vivo City</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_030" onclick="site('#',this)">CGV Pearl Plaza</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_040" onclick="site('#',this)">CGV Golden Plaza</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_001" onclick="site('#',this)">CGV Vincom Center Bà Triệu</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_009" onclick="site('#',this)">CGV Mipec Tower</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_018" onclick="site('#',this)">CGV Hồ Gươm Plaza</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_027" onclick="site('#',this)">CGV Aeon Long Biên</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_028" onclick="site('#',this)">CGV Vincom Nguyễn Chí Thanh</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_032" onclick="site('#',this)">CGV Indochina Plaza Hà Nội</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_037" onclick="site('#',this)">CGV Rice City</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_041" onclick="site('#',this)">CGV Artemis Hà Nội</span>
+										</li>
+										<li class="cgv_city_5" style="display: none;">
+											<span id="cgv_site_005" onclick="site('#',this)">CGV Vĩnh Trung Plaza</span>
+										</li>
+										<li class="cgv_city_5" style="display: none;">
+											<span id="cgv_site_025" onclick="site('#',this)">CGV Vincom Đà Nẵng</span>
+										</li>
+										<li class="cgv_city_11" style="display: none;">
+											<span id="cgv_site_002" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-thuy-duong-plaza',this)">CGV Thùy Dương Plaza</span>
+										</li>
+										<li class="cgv_city_13" style="display: none;">
+											<span id="cgv_site_011" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-marine-plaza',this)">CGV Marine Plaza</span>
+										</li>
+										<li class="cgv_city_13" style="display: none;">
+											<span id="cgv_site_020" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-vincom-ha-long',this)">CGV Vincom Hạ Long</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_022" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-liberty-citypoint',this)">CGV Liberty Citypoint</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_035" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-vincom-dong-khoi',this)">CGV Vincom Đồng Khởi</span>
+										</li>
+										<li class="cgv_city_15" style="display: none;">
+											<span id="cgv_site_014" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-lam-son-square',this)">CGV Lam Sơn square</span>
+										</li>
+										<li class="cgv_city_7" style="display: none;">
+											<span id="cgv_site_013" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-sense-city',this)">CGV Sense City</span>
+										</li>
+										<li class="cgv_city_7" style="display: none;">
+											<span id="cgv_site_036" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-vincom-xuan-khanh',this)">CGV Vincom Xuân Khánh</span>
+										</li>
+										<li class="cgv_city_21" style="display: none;">
+											<span id="cgv_site_026" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-buon-me-thuot',this)">CGV Buôn Ma Thuột</span>
+										</li>
+										<li class="cgv_city_19" style="display: none;">
+											<span id="cgv_site_016" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-binh-duong-square',this)">CGV Bình Dương Square</span>
+										</li>
+										<li class="cgv_city_19" style="display: none;">
+											<span id="cgv_site_017" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-aeon-canary',this)">CGV Aeon Canary</span>
+										</li>
+										<li class="cgv_city_9" style="display: none;">
+											<span id="cgv_site_003" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-coopmart-bien-hoa',this)">CGV Coopmart Biên Hòa</span>
+										</li>
+										<li class="cgv_city_9" style="display: none;">
+											<span id="cgv_site_019" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-big-c-dong-nai',this)">CGV Big C Đồng Nai</span>
+										</li>
+										<li class="cgv_city_17" style="display: none;">
+											<span id="cgv_site_015" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-kim-cuc-plaza',this)">CGV Kim Cúc Plaza</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_006" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-ct-plaza',this)">CGV CT Plaza</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_010" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-pandora-city',this)">CGV Pandora City</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_012" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-celadon-tan-phu',this)">CGV Aeon Tân Phú</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_031" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-vincom-go-vap',this)">CGV Vincom Gò Vấp</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_033" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-hoang-van-thu',this)">CGV Hoàng Văn Thụ</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_034" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-aeon-binh-tan',this)">CGV Aeon Bình Tân</span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_038" onclick="site('https://www.cgv.vn/default/cinox/site/saigonres-nguyen-xi',this)">CGV Saigonres Nguyễn Xí</span>
+										</li>
+										<li class="cgv_city_25" style="display: none;">
+											<span id="cgv_site_044" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-vincom-yen-bai',this)">CGV Vincom Yên Bái</span>
+										</li>
+										<li class="cgv_city_23" style="display: none;">
+											<span id="cgv_site_039" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-vincom-tra-vinh',this)">CGV Vincom Trà Vinh</span>
+										</li>
+										<li class="cgv_city_27" style="display: none;">
+											<span id="cgv_site_043" onclick="site('https://www.cgv.vn/default/cinox/site/cgv-vincom-vinh-long',this)">CGV Vincom Vĩnh Long</span>
+										</li>
+										<li class="cgv_city_29" style="display: none;">
+											<span id="cgv_site_042" onclick="site('#',this)">CGV Vincom Rạch Giá</span>
+										</li>
+										<li class="cgv_city_31" style="display: none;">
+											<span id="cgv_site_045" onclick="site('#',this)">CGV Vincom Vị Thanh</span>
+										</li>
+										<li class="cgv_city_7" style="display: none;">
+											<span id="cgv_site_029" onclick="site('#',this)">CGV Vincom Hùng Vương</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_046" onclick="site('#',this)">CGV Hà Nội Centerpoint</span>
+										</li>
+										<li class="cgv_city_33" style="display: none;">
+											<span id="cgv_site_047" onclick="site('#',this)">CGV Vincom Hà Tĩnh</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_054" onclick="site('#',this)">CGV Vincom Royal City</span>
+										</li>
+										<li class="cgv_city_3" style="display: none;">
+											<span id="cgv_site_055" onclick="site('#',this)">CGV Vincom Times City </span>
+										</li>
+										<li class="cgv_city_1" style="display: none;">
+											<span id="cgv_site_049" onclick="site('#',this)">CGV Parkson Đồng Khởi</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<div class="cgv-showtime-bottom"></div>
+					</div>
+					
+					<div class="theater-container product-view"></div>
+				</div>
+			</div>
+			
+			<div id="loading-mask" style="left: -2px; top: 0px; display: block;">
+				<p class="loader" id="loading_mask_loader">
+					<img src="{{ STATIC_URL }}assets/websites/images/ajax-loader.gif" alt="Loading...">
+				<br>Đang tải thông tin...</p>
+			</div>
+			
+			<script type="text/javascript">
+				$j(window).load(function(){
+					var city = $j('.cinemas-area li').first().find('span').attr('id');
+					$j('.cinemas-area li span').removeClass('siteactive');
+					$j('.cinemas-area li span#'+city).addClass('siteactive');
+					$j('.cinemas-list .'+city).show();
+					
+					$j('.cinemas-area li').click(function() {
+						$j('.cinemas-list li').hide();
+						$j('.cinemas-list li').removeClass('current');
+						
+						// Current city
+						var city = $j(this).find('span').attr('id');
+						$j('.cinemas-area li span').removeClass('siteactive');
+						$j('.cinemas-area li span#'+city).addClass('siteactive');
+						$j('.cinemas-list .'+city).show();
+					});
+					
+					$j('#loading-mask').hide();
+				});
+				
+				function site(url,obj)
+				{
+					$j('.cinemas-list li').removeClass('current');
+					$j(obj).parent('li').addClass('current');
+					history.pushState({}, '', url);
+					$j.ajax({
+						url: url,
+						beforeSend: function(){
+							$j('.theater-container').empty();
+							$j('.slideshow-container .slideshow').cycle('destroy');
+							$j('#loading-mask').show();
+						},
+					}).done(function(result) {
+						var html = $j(result).find('div.theater-container').children();
+						$j('.theater-container').html(html);
+						$j('.slideshow-container .slideshow').cycle({
+							slides: '> li',
+							pager: '.slideshow-pager',
+							pagerTemplate: '<span class="pager-box"></span>',
+							speed: 600,
+							pauseOnHover: true,
+							swipe: true,
+							prev: '.slideshow-prev',
+							next: '.slideshow-next',
+							fx: 'scrollHorz',
+							log: false
+						});
+						showtimestabs('tabs-format-cgv');
+						showtimestabs('tabs-cgv-showtimes');
+						$j('.iframe').colorbox({iframe:true, width:"80%", height:"80%"});
+						$j('#loading-mask').hide();
+					});
+				}
+				
+				function showtimestabs(clss) {
+					$j('.'+clss).each(function () {
+						var wrapper = $j(this);
+						var hasTabs = wrapper.hasClass('tabs');
+						var hasAccordion = wrapper.hasClass('accordion');
+						var startOpen = wrapper.hasClass('open');
+						var dl = wrapper.children('dl:first');
+						var dts = dl.children('dt');
+						var panes = dl.children('dd');
+						var groups = new Array(dts, panes);
+						//Create a ul for tabs if necessary.
+						// $j('.toggle-tabs').remove();//remove to stop inserting duplicatedly
+						if (hasTabs) {
+						var ul = $j('<ul class="toggle-tabs"></ul>');
+						dts.each(function () {
+							var dt = $j(this);
+							var li = $j('<li></li>');
+							li.html(dt.html());
+							ul.append(li);
+						});
+						ul.insertBefore(dl);
+						var lis = ul.children();
+						groups.push(lis);
+					}
+					//Add "last" classes.
+					var i;
+					for (i = 0; i < groups.length; i++) {
+						groups[i].filter(':last').addClass('last');
+					}
+					function toggleClasses(clickedItem, group) {
+						var index = group.index(clickedItem);
+						var i;
+						for (i = 0; i < groups.length; i++) {
+							groups[i].removeClass('current');
+							groups[i].eq(index).addClass('current');
+						}
+					}
+					//Toggle on tab (dt) click.
+					dts.on('click', function (e) {
+						//They clicked the current dt to close it. Restore the wrapper to unclicked state.
+						if ($j(this).hasClass('current') && wrapper.hasClass('accordion-open')) {
+							wrapper.removeClass('accordion-open');
+						} else {
+							//They're clicking something new. Reflect the explicit user interaction.
+							wrapper.addClass('accordion-open');
+						}
+						toggleClasses($j(this), dts);
+					});
+					//Toggle on tab (li) click.
+					if (hasTabs) {
+						lis.on('click', function (e) {
+							toggleClasses($j(this), lis);
+						});
+						//Open the first tab.
+						lis.eq(0).trigger('click');
+					}
+					//Open the first accordion if desired.
+					if (startOpen) {
+						dts.eq(0).trigger('click');
+					}
+				});
+			}
+		</script>
+	</div>                
+	</div>
+</div>
+
+{% endblock %}
