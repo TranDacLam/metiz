@@ -1,0 +1,168 @@
+{% extends "layout.html" %}
+<!-- {% block body_id %}catalog-category-view categorypath-coming-soon category-coming-soon{% endblock %} -->
+
+{% load i18n %}
+
+{% block title %}Helio{% endblock title %}
+{% block extrascript %}
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.swipe.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.carousel.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/slideshow.js"></script>
+
+
+{% endblock %}
+{% block main_content %}
+<div class="breadcrumbs" itemprop="breadcrumb">
+	<ul>
+		<li class="home">
+			<a href="#" title="Trở về trang chủ">Trang chủ</a>
+			<span>/ </span>
+		</li>
+		<li class="category3">
+			<a href="#" title="">Phim</a>
+			<span>/ </span>
+		</li>
+		<li class="category7">
+			<strong>Phim Sắp Chiếu</strong>
+		</li>
+	</ul>
+</div>
+<div class="main">
+	<div class="col-main">
+		<div class="page-title category-title">
+			<h1>Phim Sắp Chiếu</h1>
+		</div>
+		<div class="category-products cgv-movies">
+			
+			
+			<ul class="products-grid products-grid--max-4-col">
+			{% for value in data %}
+				<li class="film-lists item last">
+					<span class="nmovie-rating nmovie-rating-no">NO</span>
+					
+					<div class="product-images">
+						<a href="#" title="CGV_Detective Conan Movie 21: Crimson Love Letter " class="product-image">
+							<img id="product-collection-image-394" src="{{STATIC_URL}}{{value.img}}" alt="CGV_Detective Conan Movie 21: Crimson Love Letter " />
+						</a>
+						
+						<div class="movie-technology">
+							<a href="javascript:void(0)" class="icon-type-film" title="">
+								<span class="attr-movie-"></span>
+							</a>
+						</div>
+					</div>
+					
+					<div class="product-info">
+						<h2 class="product-name"><a href="#" title="Thám Tử Lừng Danh Conan: Bản Tình Ca Màu Đỏ Thẫm">Thám Tử Lừng Danh Conan: Bản Tình Ca Màu Đỏ Thẫm</a></h2>
+						
+						<div class="cgv-movie-info">
+							<span class="cgv-info-bold">Thể loại: </span>
+							<span class="cgv-info-normal">Hành Động, Hoạt Hình</span>
+						</div>
+						
+						<div class="cgv-movie-info">
+							<span class="cgv-info-bold">Thời lượng: </span>
+							<span class="cgv-info-normal"></span>
+						</div>
+						
+						<div class="cgv-movie-info">
+							<span class="cgv-info-bold">Khởi chiếu: </span>
+							<span class="cgv-info-normal">08/09/2017</span>
+						</div>
+						
+					</div>
+					
+					<div class="ribon position-1"></div>
+					
+					<ul class="add-to-links">
+						<li>
+							<div class="fb-like" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+						</li>
+						<li>
+							<button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008300');"><span><span>Mua vé</span></span></button>
+						</li>
+						
+					</ul>
+				</li>
+				{% endfor %}
+				
+				
+			</ul>
+			<script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+		</div>
+		<script type="text/javascript">
+		//<![CDATA[
+			$j(window).bind('load', function() {
+				(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+				fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+		});
+			
+			$j(document).ready(function(){
+				var highest = 0;
+				var hi = 0;
+				$j('.product-info').each(function(){
+				var h = $j(this).height();
+				if(h > hi){
+						hi = h;
+						highest = h;
+					}
+				});
+				if ($j(window).width()>320){
+					$j('.product-info').css('height',highest+10+'px');
+				}
+				else{
+					$j('.products-grid .product-info').css('padding-bottom','0');
+				}
+				$j('li.category3').find('a').contents().unwrap();
+				//console.log(abc);
+			});
+			
+			$j(window).on('resize', function() {
+				var highest2 = 0;
+				var hi = 0;
+				$j('.product-info').each(function(){
+				var h = $j(this).height();
+				if(h > hi){
+						hi = h;
+						highest2 = h;
+					}
+				});
+				if ($j(window).width()>320){
+					$j('.product-info').css('height',highest2+10+'px');
+				}
+				else{
+					$j('.products-grid .product-info').css('padding-bottom','0');
+				}
+				$j('li.category3').find('a').contents().unwrap();
+			});
+			
+			function Quickbooking(obj)
+			{
+				$j.ajax({
+					type: 'post',
+					url: '#',
+					data: 'id='+ obj,
+					//dataType: 'json',
+					beforeSend: function(){
+						$j.colorbox();
+					},
+				}).done(function(result) {
+					html =result;
+					$j.colorbox({html: '<div class="product-view quick-booking">'+html+'</div>', width:"88%", height:"88%",fixed:true,modal: false});
+					togglecontent('tabs-cgv-movie-type');
+					togglecontent('tabs-cgv-movie-cites');
+					togglecontent('tabs-cgv-movie-view-date');
+				});
+			}
+		//]]>
+	</script>               
+	 </div>
+</div>
+
+{% endblock %}

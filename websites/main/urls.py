@@ -26,9 +26,16 @@ handler500 = 'main.views.custom_500'
 urlpatterns = [
     url(r'^grappelli', include('grappelli.urls')),
     url(r'^admin', admin.site.urls),
-    url(r'^$', views.showing),
-    url(r'^temp/$', views.arthouse),
-
+    url(r'^$', views.home),
+    url(r'^comingsoon/$', views.comingsoon),
+    url(r'^cinox/$', views.cinox),
+    url(r'^gift_card/$', views.gift_card),
+    url(r'^membership/$', views.membership),
+    url(r'^movie_voucher/$', views.movie_voucher),
+    url(r'^account_create/$', views.account_create),
+    url(r'^account_login/$', views.account_login),
+    url(r'^arthouse/$', views.arthouse),
+    url(r'^showing/$', views.showing),
 
 ]
 

@@ -1,0 +1,477 @@
+{% extends "layout.html" %}
+{% load i18n %} 
+
+
+{% block title %}Helio{% endblock title %}
+
+{% block extrascript %}
+    <script type="text/javascript" src="https://www.cgv.vn/skin/frontend/cgv/default/js/lib/jquery.cycle2.min.js"></script>
+    <script type="text/javascript" src="https://www.cgv.vn/skin/frontend/cgv/default/js/lib/jquery.cycle2.swipe.min.js"></script>
+    <script type="text/javascript" src="https://www.cgv.vn/skin/frontend/cgv/default/js/lib/jquery.cycle2.carousel.js"></script>
+    <script type="text/javascript" src="https://www.cgv.vn/skin/frontend/cgv/default/js/slideshow.js"></script>
+{% endblock %}
+
+
+{% block main_content %}
+    <div class="main">
+        <div class="col-main">
+            <div class="std">
+                <p>
+                    <div class="widget widget-static-block">
+                        <div class="sect-person">
+                            <ul>
+                                <li><a class="theater" href="#">cgv theater</a></li>
+                                <li><a class="now-sh" href="#">now showing</a></li>
+                                <li><a class="special" href="#">cgv special</a></li>
+                                <li><a class="event" href="#">cgv art house</a></li>
+                                <li><a class="ticket required-login" href="#">my ticket info</a></li>
+                                <li><a class="dc" href="#">discount info</a></li>
+                                <li><a class="login-header" href="#">create account quick</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </p>
+            </div>
+            <div class="slideshow-container">
+                <ul id="home_big_banner" class="slideshow">
+                    <li>
+                        <a href="#">
+                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/k/v/kv-cvg_980-x-448.jpg" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/v/d/vdk-980-x-448.jpg" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/9/8/980x448_kas.jpg" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                        <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/s/n/sneakshow_nang-2_980-x-448.jpg" />
+                    </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/a/m/american-made_980-x-448_4.jpg" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                        <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/d/o/dong-gia-980-x-448.jpg" />
+                    </a>
+                    </li>
+                </ul>
+                <div class="slideshow-pager home_big_banner_pager">&nbsp;</div>
+                <span class="slideshow-prev home_big_banner_prev">&nbsp;</span>
+                <span class="slideshow-next home_big_banner_next">&nbsp;</span>
+            </div>
+            <div class="home-movie-selection">
+                <div class="home-title">
+                    <h2>movie selection</h2>
+                </div>
+                <div class="slideshow-containe-movier feature_slide_show_480_767">
+                    <ul class="feature_slide_show">
+                        <li class="poster-film film-lists item" style="">
+                            <span class="nmovie-rating nmovie-rating-c18">C18</span>
+                            <img class="product-img" src="https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/a/m/american_made_240x355.png" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
+                            <input type="hidden" value="movie-trailer-285">
+                            <div class="feature_film_content">
+                                <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
+                                <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
+                                </button>
+                            </div>
+                            <div class="play-button">
+                                <span><span>Play</span></span>
+                                <div style="display:none">
+                                    <span class='movie-trailer'>//www.youtube.com/embed/PALCTTuWkSc?rel=0&showinfo=0&autoplay=1</span>
+                                </div>
+                            </div>
+                            <!--div class="product-info">
+                                            <ul class="configurable-swatch-list configurable-swatch-color clearfix">
+                                                </ul>
+                                        </div-->
+                        </li>
+                        <li class="poster-film film-lists item" style="">
+                            <span class="nmovie-rating nmovie-rating-c16">C16</span>
+                            <img class="product-img" src="https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/y/d/ydds240x355.jpg" alt="Yêu Đi, Đừng Sợ!" />
+                            <input type="hidden" value="movie-trailer-343">
+                            <div class="feature_film_content">
+                                <h3>Yêu Đi, Đừng Sợ!</h3>
+                                <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008300');"><span><span>Mua vé</span></span>
+                                </button>
+                            </div>
+                            <div class="play-button">
+                                <span><span>Play</span></span>
+                                <div style="display:none">
+                                    <span class='movie-trailer'>//www.youtube.com/embed/hK52sNORvIk?rel=0&showinfo=0&autoplay=1</span>
+                                </div>
+                            </div>
+                            <!--div class="product-info">
+                                            <ul class="configurable-swatch-list configurable-swatch-color clearfix">
+                                                </ul>
+                                        </div-->
+                        </li>
+                        <li class="poster-film film-lists item" style="">
+                            <span class="nmovie-rating nmovie-rating-p">p</span>
+                            <img class="product-img" src="https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/t/h/thenut240x355.jpg" alt="Phi Vụ Hạt Dẻ 2: Công Viên Đại Chiến" />
+                            <input type="hidden" value="movie-trailer-328">
+                            <div class="feature_film_content">
+                                <h3>Phi Vụ Hạt Dẻ 2: Công Viên Đại Chiến</h3>
+                                <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008200');"><span><span>Mua vé</span></span>
+                                </button>
+                            </div>
+                            <div class="play-button">
+                                <span><span>Play</span></span>
+                                <div style="display:none">
+                                    <span class='movie-trailer'>//www.youtube.com/embed/wx92Ni2yo_c?rel=0&showinfo=0&autoplay=1</span>
+                                </div>
+                            </div>
+                            <!--div class="product-info">
+                                            <ul class="configurable-swatch-list configurable-swatch-color clearfix">
+                                                </ul>
+                                        </div-->
+                        </li>
+                        <li class="poster-film film-lists item" style="">
+                            <span class="nmovie-rating nmovie-rating-c16">C16</span>
+                            <img class="product-img" src="https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/g/h/gh240x355.jpg" alt="Ngôi Nhà Ma Ám" />
+                            <input type="hidden" value="movie-trailer-355">
+                            <div class="feature_film_content">
+                                <h3>Ngôi Nhà Ma Ám</h3>
+                                <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008500');"><span><span>Mua vé</span></span>
+                                </button>
+                            </div>
+                            <div class="play-button">
+                                <span><span>Play</span></span>
+                                <div style="display:none">
+                                    <span class='movie-trailer'>//www.youtube.com/embed/l19SF7zHqrQ?rel=0&showinfo=0&autoplay=1</span>
+                                </div>
+                            </div>
+                            <!--div class="product-info">
+                                            <ul class="configurable-swatch-list configurable-swatch-color clearfix">
+                                                </ul>
+                                        </div-->
+                        </li>
+                        <li class="poster-film film-lists item" style="">
+                            <span class="nmovie-rating nmovie-rating-c18">C18</span>
+                            <img class="product-img" src="https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/2/4/240x377ddn.jpg" alt="Đảo Địa Ngục" />
+                            <input type="hidden" value="movie-trailer-175">
+                            <div class="feature_film_content">
+                                <h3>Đảo Địa Ngục</h3>
+                                <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17007700');"><span><span>Mua vé</span></span>
+                                </button>
+                            </div>
+                            <div class="play-button">
+                                <span><span>Play</span></span>
+                                <div style="display:none">
+                                    <span class='movie-trailer'>//www.youtube.com/embed/P3ra7Aeibpg?rel=0&showinfo=0&autoplay=1</span>
+                                </div>
+                            </div>
+                            <!--div class="product-info">
+                                            <ul class="configurable-swatch-list configurable-swatch-color clearfix">
+                                                </ul>
+                                        </div-->
+                        </li>
+                        <li class="poster-film film-lists item" style="">
+                            <span class="nmovie-rating nmovie-rating-c18">C18</span>
+                            <img class="product-img" src="https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/h/i/hitman240x355_1.jpg" alt="Vệ Sĩ Sát Thủ" />
+                            <input type="hidden" value="movie-trailer-227">
+                            <div class="feature_film_content">
+                                <h3>Vệ Sĩ Sát Thủ</h3>
+                                <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17007800');"><span><span>Mua vé</span></span>
+                                </button>
+                            </div>
+                            <div class="play-button">
+                                <span><span>Play</span></span>
+                                <div style="display:none">
+                                    <span class='movie-trailer'>//www.youtube.com/embed/sgOnqvKxlZo?rel=0&showinfo=0&autoplay=1</span>
+                                </div>
+                            </div>
+                            <!--div class="product-info">
+                                            <ul class="configurable-swatch-list configurable-swatch-color clearfix">
+                                                </ul>
+                                        </div-->
+                        </li>
+                        <li class="poster-film film-lists item" style="">
+                            <span class="nmovie-rating nmovie-rating-c18">C18</span>
+                            <img class="product-img" src="https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/a/n/anna240x355.jpg" alt="Annabelle: Tạo Vật Quỷ Dữ" />
+                            <input type="hidden" value="movie-trailer-310">
+                            <div class="feature_film_content">
+                                <h3>Annabelle: Tạo Vật Quỷ Dữ</h3>
+                                <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17007100');"><span><span>Mua vé</span></span>
+                                </button>
+                            </div>
+                            <div class="play-button">
+                                <span><span>Play</span></span>
+                                <div style="display:none">
+                                    <span class='movie-trailer'>//www.youtube.com/embed/M3IYyfztU3E?rel=0&showinfo=0&autoplay=1</span>
+                                </div>
+                            </div>
+                            <!--div class="product-info">
+                                            <ul class="configurable-swatch-list configurable-swatch-color clearfix">
+                                                </ul>
+                                        </div-->
+                        </li>
+                        <li class="poster-film film-lists item" style="">
+                            <span class="nmovie-rating nmovie-rating-c18">C18</span>
+                            <img class="product-img" src="https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/u/b/ub240x355.jpg" alt="Điệp Vụ Phản Gián " />
+                            <input type="hidden" value="movie-trailer-361">
+                            <div class="feature_film_content">
+                                <h3>Điệp Vụ Phản Gián </h3>
+                                <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008700');"><span><span>Mua vé</span></span>
+                                </button>
+                            </div>
+                            <div class="play-button">
+                                <span><span>Play</span></span>
+                                <div style="display:none">
+                                    <span class='movie-trailer'>//www.youtube.com/embed/ElEa61xE198?rel=0&showinfo=0&autoplay=1</span>
+                                </div>
+                            </div>
+                            <!--div class="product-info">
+                                            <ul class="configurable-swatch-list configurable-swatch-color clearfix">
+                                                </ul>
+                                        </div-->
+                        </li>
+                    </ul>
+                    <span class="feature_slide_show_prev"><<</span>
+                    <span class="feature_slide_show_next">>></span>
+                </div>
+            </div>
+            
+            <script type="text/javascript">
+                $j(window).bind("load", function() {
+                    var width = $j(window).width();
+                    if (width >= 979) {
+                        reinitCycle(4);
+                    } else if (width >= 770) {
+                        reinitCycle(3);
+                    } else if (width >= 479) {
+                        reinitCycle(2);
+                    } else {
+                        reinitCycle(1);
+                    }
+
+                    $j(".play-button").click(function() {
+                        var trailer = $j(this).find('span.movie-trailer');
+                        // $j.colorbox({html:trailer.html()});
+                        $j.colorbox({ iframe: true, innerWidth: 640, innerHeight: 390, href: trailer.html() });
+                    });
+                });
+
+                $j(window).on('resize', function() {
+                    var width = $j(window).width();
+                    $j('.feature_slide_show').cycle('destroy');
+                    if (width >= 979) {
+                        reinitCycle(4);
+                    } else if (width >= 770) {
+                        reinitCycle(3);
+                    } else if (width >= 479) {
+                        reinitCycle(2);
+                    } else {
+                        reinitCycle(1);
+                    }
+                });
+
+                function reinitCycle(visibleSlides) {
+                    try {
+                        $j('.feature_slide_show').cycle({
+                            "carouselSlideDimension": "240px",
+                            "carouselVisible": visibleSlides,
+                            "fx": "carousel",
+                            "timeout": 0,
+                            "next": ".feature_slide_show_next",
+                            "prev": ".feature_slide_show_prev",
+                            "slideActiveClass": "active",
+                            "slides": "li",
+                            "allowWrap": false,
+                        });
+                    } catch (err) {
+                        console.log(err.message);
+                    }
+                }
+            </script>
+
+            <div class="product-collateral toggle-content tabs home-event">
+                <div class="home-title">
+                    <h2>event</h2>
+                </div>
+                <dl id="collateral-tabs" class="collateral-tabs">
+                    <dt class="tab"><span>Tin Mới & Ưu Đãi</span></dt>
+                    <dd class="tab-container">
+                        <div class="tab-content">
+                            <div class="home-show-event">
+                                <ul class="slide_home_event tinmiui">
+                                    <li >
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/2/4/240x201_1.jpg" />
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="#">
+                                        <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/o/combo-1---240x201.jpg" />
+                                    </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/m/u/mua-2-tang-1_tam-sinh-tam-the_240x201.jpg" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/o/combo-topper---240x201.jpg" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/r/e/remind_t8_web_240_x_201.jpg" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/d/o/dong-gia-240-x-201.jpg" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                        <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/a/cac_uu_dai_khac_2_tv_240_x_201.png" />
+                                    </a>
+                                    </li>
+                                </ul>
+                                <span class="slide_home_event_prev tinmiui_prev"><<</span>
+                                <span class="slide_home_event_next tinmiui_next">>></span>
+                            </div>
+                        </div>
+                    </dd>
+                    <dt class="tab"><span>Thành Viên CGV</span></dt>
+                    <dd class="tab-container">
+                        <div class="tab-content">
+                            <div class="home-show-event">
+                                <ul class="slide_home_event thnhvincgv">
+                                    <li>
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/d/o/dong-gia-240-x-201_2.jpg" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/d/a/dang_ky_nhan_qua_web_240_x_201_1.jpg" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/p/r/price-240-x-201_1.jpg" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/q/t/qt-240-x-201_1.jpg" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/2/4/240-vip-reg.jpg" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/d/i/diem_thuong-240x201.jpg" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                        <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/g/cgv_young_-_249x200.jpg" />
+                                    </a>
+                                    </li>
+                                </ul>
+                                <span class="slide_home_event_prev thnhvincgv_prev"><<</span>
+                                <span class="slide_home_event_next thnhvincgv_next">>></span>
+                            </div>
+                        </div>
+                    </dd>
+                    <script type="text/javascript">
+                    $j(window).bind("load", function() {
+                        var width = $j(window).width();
+                        if (width >= 979) {
+                            reinitCycle2(4);
+                        } else if (width >= 770) {
+                            reinitCycle2(3);
+                        } else if (width >= 479) {
+                            reinitCycle2(2);
+                        } else {
+                            reinitCycle2(1);
+                        }
+                    });
+
+                    $j(window).on('resize', function() {
+                        var width = $j(window).width();
+                        if (width >= 979) {
+                            reinitCycle2(4);
+                        } else if (width >= 770) {
+                            reinitCycle2(3);
+                        } else if (width >= 479) {
+                            reinitCycle2(2);
+                        } else {
+                            reinitCycle2(1);
+                        }
+                    });
+
+                    function reinitCycle2(visibleSlides) {
+                        try {
+                            $j('.tinmiui').cycle('destroy');
+                            $j('.tinmiui').cycle({
+                                "carouselSlideDimension": "240px",
+                                "carouselVisible": visibleSlides,
+                                "fx": "carousel",
+                                "timeout": 0,
+                                "next": ".tinmiui_next",
+                                "prev": ".tinmiui_prev",
+                                "slideActiveClass": "active",
+                                "slides": "li",
+                                "allowWrap": false,
+                            });
+                            $j('.thnhvincgv').cycle('destroy');
+                            $j('.thnhvincgv').cycle({
+                                "carouselSlideDimension": "240px",
+                                "carouselVisible": visibleSlides,
+                                "fx": "carousel",
+                                "timeout": 0,
+                                "next": ".thnhvincgv_next",
+                                "prev": ".thnhvincgv_prev",
+                                "slideActiveClass": "active",
+                                "slides": "li",
+                                "allowWrap": false,
+                            });
+                        } catch (err) {
+                            console.log(err.message);
+                        }
+                    }
+                    </script>
+                </dl>
+            </div>
+            <div class="home-promotion-card">
+                <ul class="promos">
+                    <li class="col-ad">
+                        <div class="format-border"><a href="#"><img alt="" src="https://www.cgv.vn/media/wysiwyg/packages/214x245.jpg" /></a></div>
+                    </li>
+                    <li class="col-hd">
+                        <div class="format-border"><a href="#"><img alt="" src="https://www.cgv.vn/media/wysiwyg/packages/phototicket---496x247_1.jpg" /></a></div>
+                    </li>
+                    <li class="col-ad">
+                        <div class="format-border"><a href="#"><img alt="" src="https://www.cgv.vn/media/wysiwyg/packages/cgv_hotnumber_w_214_x_h_245_px.png" /></a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
