@@ -1,0 +1,232 @@
+{% extends 'layout.html' %}
+{% block body_id %}
+    catalog-category-view categorypath-arthouse category-arthouse
+{% endblock %}
+{% block main_content %}
+    <div class="main-container col1-layout">
+        <div class="breadcrumbs" itemprop="breadcrumb">
+            <ul>
+                <li class="home">
+                    <a href="#" title="Trở về trang chủ">Trang chủ</a>
+                    <span>/ </span>
+                </li>
+                <li class="category3">
+                    Phim
+                    <span>/ </span>
+                </li>
+                <li class="category9">
+                    <strong>Arthouse</strong>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="col-main">
+                <div class="catalog-wrap">
+                    <div class="page-title category-title">
+                        <h1>Arthouse</h1>
+                        
+                        <div class="sub-category">
+                            <ul>
+                                <li id="arthouse-home">
+                                    <a href="javascript:void(0)">
+                                    Lịch Chiếu                  </a>
+                                </li>
+                                <li id="about-arthouse">
+                                    <a href="javascript:void(0)">
+                                    Về ArtHouse                 </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tabs-content" id="arthouse-home_contents">
+                        <div class="sect-arthouse-visual"><img alt="" src="{{STATIC_URL}}/assets/websites/images/Art_House_-_microsite-980x390.jpg"></div>
+                        <div class="home-movie-selection" style="min-height: auto;">
+                            <div class="home-title">
+                                <h2>movie selection</h2>
+                            </div>
+                        </div>          
+                        <div class="category-products cgv-movies">
+                        
+                        <ul class="products-grid products-grid--max-4-col first last odd">
+                        {% for value in data %}
+                            <li class="film-lists item last">
+                                <span class="nmovie-rating nmovie-rating-c16">C16</span>
+                                <div class="product-images">
+                                    <a href="javascript:void(0)" title="CGV_Kiss And Spell" class="product-image">
+                                        <img id="product-collection-image-343" src="{{STATIC_URL}}{{value.img}}" alt="CGV_Kiss And Spell">
+                                    </a>
+                                    
+                                    <div class="movie-technology">
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div class="product-info" style="height: 21px; min-height: 11px;">
+                                    <h2 class="product-name"><a href="javascript:void(0)" title="Yêu Đi, Đừng Sợ!">Yêu Đi, Đừng Sợ!</a></h2>
+                                    
+                                    <div class="cgv-movie-info">
+                                        <span class="cgv-info-bold">Thể loại: </span>
+                                        <span class="cgv-info-normal">
+                                        Hài, Tâm Lý</span>
+                                    </div>
+                                    
+                                    <div class="cgv-movie-info">
+                                        <span class="cgv-info-bold">Thời lượng: </span>
+                                        <span class="cgv-info-normal">112 phút</span>
+                                    </div>
+                                    
+                                    <div class="cgv-movie-info">
+                                        <span class="cgv-info-bold">Khởi chiếu: </span>
+                                        <span class="cgv-info-normal">25/08/2017</span>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="ribon position-1"></div>
+                                
+                                <ul class="add-to-links">
+                                    <li class="">
+                                        <div class="fb-like fb_iframe_widget" data-href="https://www.cgv.vn/default/yeu-di-dung-so.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=0&amp;href=https%3A%2F%2Fwww.cgv.vn%2Fdefault%2Fyeu-di-dung-so.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=true"><span style="vertical-align: bottom; width: 74px; height: 20px;"><iframe name="f2656c4731dcf44" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/v2.0/plugins/like.php?action=like&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2F0sTQzbapM8j.js%3Fversion%3D42%23cb%3Df281d8994ed9f2%26domain%3Dwww.cgv.vn%26origin%3Dhttps%253A%252F%252Fwww.cgv.vn%252Ff702aef371645c%26relation%3Dparent.parent&amp;container_width=0&amp;href=https%3A%2F%2Fwww.cgv.vn%2Fdefault%2Fyeu-di-dung-so.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=true" style="border: none; visibility: visible; width: 74px; height: 20px;" class=""></iframe></span></div>
+                                    </li>
+                                    <li>
+                                        <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008300');"><span><span>Mua vé</span></span></button>
+                                    </li>
+                                </ul>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+                    </div>
+                    <script type="text/javascript">
+                    //<![CDATA[
+                        $j(window).bind('load', function() {
+                            (function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+                            fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));
+                    });
+                        
+                        $j(document).ready(function(){
+                            var highest = 0;
+                            var hi = 0;
+                            $j('.product-info').each(function(){
+                            var h = $j(this).height();
+                            if(h > hi){
+                                    hi = h;
+                                    highest = h;
+                                }
+                            });
+                            if ($j(window).width()>320){
+                                $j('.product-info').css('height',highest+10+'px');
+                            }
+                            else{
+                                $j('.products-grid .product-info').css('padding-bottom','0');
+                            }
+                            $j('li.category3').find('a').contents().unwrap();
+                            //console.log(abc);
+                        });
+                        
+                        $j(window).on('resize', function() {
+                            var highest2 = 0;
+                            var hi = 0;
+                            $j('.product-info').each(function(){
+                            var h = $j(this).height();
+                            if(h > hi){
+                                    hi = h;
+                                    highest2 = h;
+                                }
+                            });
+                            if ($j(window).width()>320){
+                                $j('.product-info').css('height',highest2+10+'px');
+                            }
+                            else{
+                                $j('.products-grid .product-info').css('padding-bottom','0');
+                            }
+                            $j('li.category3').find('a').contents().unwrap();
+                        });
+                        
+                        function Quickbooking(obj)
+                        {
+                            $j.ajax({
+                                type: 'post',
+                                url: '',
+                                data: 'id='+ obj,
+                                //dataType: 'json',
+                                beforeSend: function(){
+                                    $j.colorbox();
+                                },
+                            }).done(function(result) {
+                                html =result;
+                                $j.colorbox({html: '<div class="product-view quick-booking">'+html+'</div>', width:"88%", height:"88%",fixed:true,modal: false});
+                                togglecontent('tabs-cgv-movie-type');
+                                togglecontent('tabs-cgv-movie-cites');
+                                togglecontent('tabs-cgv-movie-view-date');
+                            });
+                        }
+                    //]]>
+                    </script>
+                    
+                    
+                    <div class="category-description std">
+                        <div class="sect_art_hd_trailer cf">
+                            <div class="thumb" style="float: left;">
+                                <h3>
+                                <a href="javascript:void(0)">
+                                    <img src="{{STATIC_URL}}/assets/websites/images/arthouse-thumb.jpg" "="">
+                                </a>
+                                </h3>
+                            </div>
+                            <div class="player_area" style="float: right;">
+                                <div class="arthouse-poster">
+                                    <iframe width="666" height="375" src="https://www.youtube.com/embed/hK52sNORvIk" frameborder="0" allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="about-arthouse_contents" class="tabs-content" style="display: none;">
+                    <div class="about-cgv-art-house">
+                        <div class="tittle-art-house">
+                            <h3>CGV ART HOUSE PHÒNG CHIẾU DÀNH RIÊNG CHO PHIM VIỆT NAM VÀ HÀN QUỐC</h3>
+                        </div>
+                        <div class="content-art-house-1">
+                            <div class="content-art-house-left"><img alt="" src="{{STATIC_URL}}/assets/websites/images/bg_about_article1.png"></div>
+                            <div class="content-art-house-right">
+                                <p>Bên cạnh việc liên tục đưa vào hoạt động các cụm rạp chiếu phim với tiêu chuẩn quốc tế trên cả nước và là nhà phát hành hàng đầu, CGV vẫn không ngừng nỗ lực góp phần vào sự phát triển của điện ảnh Việt Nam. Dựa trên mục tiêu hoạt động này, CGV Art House đã được triển khai và chính thức ra đời từ ngày 31.12.2014.</p>
+                                <p>CGV Art House là phòng chiếu phim dành riêng để trình chiếu các tác phẩm của điện ảnh Việt Nam và Hàn Quốc. Tại CGV Parkson Paragon Hồ Chí Minh, phòng chiếu số 2 sẽ được dùng để trình chiếu các bộ phim Hàn Quốc và đặc biệt phòng chiếu sang trọng M-Cinema sẽ là nơi chỉ trình chiếu các bộ phim Việt Nam. Tại Hồ Gươm Plaza Hà Nội, phòng chiếu số 5 sẽ trình chiếu xen kẽ các bộ phim của điện ảnh Việt Nam và Hàn Quốc.</p>
+                            </div>
+                        </div>
+                        <div class="location-art-house">
+                            <div class="location-hcm">
+                                <h2><img alt="" src="{{STATIC_URL}}/assets/websites/images/mipec-1.PNG"></h2>
+                            </div>
+                            <div class="location-hn">
+                                <h2><img alt="" src="{{STATIC_URL}}/assets/websites/images/para-1.PNG"></h2>
+                            </div>
+                        </div>
+                        <div class="content-art-house-2">
+                            <p>Ngoài ra, CGV Art House cũng chính là sân chơi dành cho các nhà làm phim trẻ nhằm khuyến khích các bộ phim ngắn ra đời và trình chiếu như một sự động viên, khích lệ cho tình yêu và sự sáng tạo trong điện ảnh. CGV Art House sẽ đón nhận các bộ phim ngắn, phim dài từ các nhà làm phim trẻ để chọn lọc và trình chiếu cho khán giả. Qua đó, họ có thể nhìn thấy sự đón nhận nghiêm túc của khán giả dành cho tác phẩm của mình và có định hướng rõ ràng cho sự phát triển của bản thân.</p>
+                            <p>Như một sân chơi dành cho người yêu phim và những người làm chuyên môn, CGV Art House sẽ tổ chức những buổi trao đổi định kỳ Sunday Talk về các đề tài của điện ảnh Việt Nam và điện ảnh thế giới. Bên cạnh đó, CGV cũng chào đón những hội thảo, những chuyên mục điện ảnh được các nhà làm phim chủ động kết hợp tổ chức tại CGV Art House.</p>
+                            <p>Đối với phim của những nhà làm phim độc lập, bên cạnh việc hỗ trợ trình chiếu tại CGV Art House, CGV cũng hỗ trợ tổ chức các sự kiện ra mắt phim hay những vấn đề kiện liên quan khác như duyệt phim nhằm phổ biến phim rộng rãi đến với công chúng.</p>
+                            <p>CGV hy vọng sẽ mang các bộ phim Việt đặc biệt là dòng phim nghệ thuật, phim độc lập và phim ngắn đến gần khán giả hơn và CGV Art House sẽ là sân chơi ý nghĩa và là nơi gặp gỡ của các nhà làm phim, những người yêu phim ảnh Việt Nam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+            //<![CDATA[
+                new Varien.Tabs('.catalog-wrap');
+                $j('#about-arthouse_contents').css('display','none');
+                // $j( ".play-button" ).click(function() {
+                    // $j(this).colorbox({iframe:true, innerWidth:640, innerHeight:390});
+                // });
+            //]]>
+        </script>                </div>
+    </div>
+</div>
+{% endblock%}

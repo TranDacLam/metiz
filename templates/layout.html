@@ -16,13 +16,20 @@
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="icon">
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <META HTTP-EQUIV="Content-language" CONTENT="vi">
-
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/prototype/prototype.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/noconflict.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/varien/js.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/modernizr.custom.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/enquire.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/app.js"></script>
     <!-- <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
     <!-- <link href="{{ STATIC_URL }}assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/styles.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/colorbox.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-cgv.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-cgv.css" media="all" />
+    <!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/enterprise.css" media="all" /> -->
     
 
     <title>{% block title %}{% endblock title %}</title>
@@ -30,17 +37,11 @@
     
     {% block extrastylesheet %}{% endblock %}
 
-    
-
-
-    <script src = "{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js"></script>
-    <!-- <script src = "{{ STATIC_URL }}assets/js/bootstrap.min.js"></script> -->
-    <script src = "{{ STATIC_URL }}assets/websites/js/ajaxSetup.js"></script>
     {% block extrascript %}{% endblock %}
 
 </head>
 
-<body id="{% block body_id %}body{% endblock %}" class="cms-index-index cms-home">
+<body id="{% block body_id %}body{% endblock %}" class="{% block body_class %}{%endblock%}cms-index-index cms-home">
     <div class="mtw_banner_left" style="display: none;">
         <div class="content-banner">
             <a class="load-popup-banners cboxElements" href="https://www.cgv.vn/default/cgv-online" target="_blank"> 
