@@ -1,0 +1,92 @@
+
+{% load i18n %}
+
+{% block extrascript %}
+	<link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="icon">    
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/styles.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-cgv.css" media="all" />
+    
+    </style>
+{% endblock %}
+{% block main_content %}
+
+	<div>
+		<div class="mtw_banner_left">
+			<div class="content-banner">
+				<a class="load-popup-banners cboxElements" href="#" target="_blank">
+					<img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/baner-left-vn.jpg" /> 
+				</a>
+			</div>
+		</div>
+		<div class="mtw_banner_right">
+				<div class="content-banner banner-verion-vn">
+					<div class="banner-culture-day">
+						<a href="#" target="_blank"> 
+						<img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/en-banner-right-1.png" /> 
+						</a>
+					</div>
+					<div class="banner-happy-day">
+						<a href="#" target="_blank"> <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/en-banner-right-2.png" /> </a>
+					</div>
+					<div class="banner-first-show">
+						<a href="#" target="_blank"> 
+						<img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/vn-banner-right-3.png" /> </a>
+					</div>
+					<div class="banner-student">
+						<a href="#" target="_blank"> 
+							<img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/vn-banner-right-4.png" /> 
+						</a>
+					</div>
+				</div>
+		</div>        <!-- BEGIN GOOGLE ANALYTICS CODE -->
+			<script type="text/javascript">
+			//<![CDATA[
+			var _gaq = _gaq || [];
+			
+			_gaq.push(['_setAccount', '55803327']);
+			_gaq.push(['_trackPageview']);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+			//]]>
+			</script>
+			<!-- END GOOGLE ANALYTICS CODE -->
+			
+			<div class="std">
+			<div class="microsite-cgv-online">
+				<div class="cgv-online cgv-online-app cgv-online-app-vn">
+					<div class="conten-cgv-online">
+						<div class="app-link-top">
+							<ul>
+								<li class="app-link-android"><a href="#" target="_blank"><img alt="" src="{{ STATIC_URL }}assets/websites/images/app-android-play.png" /></a></li>
+								<li class="app-link-ios"><a href="#" target="_blank"><img alt="" src="{{ STATIC_URL }}assets/websites/images/app-ios-store.png" /></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="cgv-online cgv-online-app cgv-online-photo-vn">
+					<div class="conten-cgv-online format-content-cgv-online"><a href="#" target="_blank"> <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/vn-microsite-photo.png"" /> </a></div>
+				</div>
+				<div class="cgv-online cgv-online-app cgv-online-kiosk-vn">
+					<div class="conten-cgv-online format-content-cgv-online"><a href="#" target="_blank"> <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/vn-microsite-kiosk.png"/> </a></div>
+				</div>
+				<div class="cgv-online cgv-online-app cgv-online-payment-vn">
+					<div class="conten-cgv-online format-content-cgv-online">
+						<div class="cgv-payment-online">
+							<ul>
+								<li class="cgv-payment-credit"><img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/cgv-visa-online.png" /></li>
+								<li class="cgv-payment-membership"><a href="#" target="_blank"> <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/cgv-member-online.png" /> </a></li>
+								<li class="cgv-payment-giftcard"><a href="#" target="_blank"> <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/cgv-giftcard-online.png" /> </a></li>
+								<li class="cgv-payment-voucher"><a href="#" target="_blank"> <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/cgv-vourche-online.png"" /> </a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+		</div>
+{% endblock %}

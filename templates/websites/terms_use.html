@@ -1,0 +1,167 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block container_class %}col2-left-layout{% endblock %} 
+
+{% block main_content %}
+					<div class="breadcrumbs" itemprop="breadcrumb">
+						<ul>
+							<li class="home">
+								<a href="#" title="Trở về trang chủ">Trang chủ</a>
+								<span>/ </span>
+							</li>
+							<li class="cms_page">
+								<strong>Điều khoan giao dich</strong>
+							</li>
+						</ul>
+					</div>
+					<div class="main">
+						<div class="col-left sidebar col-left-first"><div class="block block-cms-menu">
+							<div class="block-content">
+								<ul>
+									<li><a href="#"><span>Giới thiệu</span></a></li>
+									<li><a href="#"><span>Li&ecirc;n Hệ CGV</span></a></li>
+									<li><a href="#"><span>Điều khoản chung</span></a></li>
+									<li class="active"><a href="#"><span>Điều khoản giao dich</span></a></li>
+									<li><a href="#"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a></li>
+									<li><a href="#"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a></li>
+									<li><span><a href="#"><span>C&acirc;u hỏi thường gặp</span></a></span></li>
+								</ul>
+							</div>
+						</div>
+						<script type="text/javascript">// <![CDATA[
+						$j(".block-cms-menu li").each(function(){
+									var self = this;
+										href = $j(this).find('a');
+									for(var i = 0 ; i < href.length ; i++){
+										var harray = $j(href[i]).attr('href').split("/");
+										var charray = window.location.href.split("/");
+										if(harray[harray.length-2] == charray[charray.length-2]){
+											$j(self).addClass('active');
+											break;
+										}
+									}
+								});
+					// ]]></script></div>
+					<div class="col-main">
+						<div class="std"><div class="cms-page-title"><span style="color: #ff0000;"> <strong>ĐIỀU KHOẢN GIAO DỊCH</strong> </span></div>
+						<div class="cms-page-content privacy-policy-cms">
+							<p>Ch&agrave;o mừng qu&yacute; kh&aacute;ch đến với CGV</p>
+							<p>Ch&uacute;ng t&ocirc;i l&agrave; C&ocirc;ng ty TNHH CJ CGV Vietnam, địa chỉ trụ sở ch&iacute;nh tại T&ograve;a nh&agrave; CJ, Tầng 10-11, 2Bis-4-6 đường L&ecirc; Th&aacute;nh T&ocirc;n, Quận 1, Th&agrave;nh phố Hồ Ch&iacute; Minh.</p>
+							<p>Khi qu&yacute; kh&aacute;ch truy cập v&agrave;o trang web của CGV c&oacute; nghĩa l&agrave; qu&yacute; kh&aacute;ch đồng &yacute; với c&aacute;c điều khoản n&agrave;y. Trang web c&oacute; quyền thay đổi, chỉnh sửa, th&ecirc;m hoặc lược bỏ bất kỳ phần n&agrave;o trong Quy định v&agrave; Điều kiện sử dụng, v&agrave;o bất cứ l&uacute;c n&agrave;o. C&aacute;c thay đổi c&oacute; hiệu lực ngay khi được đăng tr&ecirc;n trang web m&agrave; kh&ocirc;ng cần th&ocirc;ng b&aacute;o trước. V&agrave; khi qu&yacute; kh&aacute;ch tiếp tục sử dụng trang web, sau khi c&aacute;c thay đổi về Quy định v&agrave; Điều kiện được đăng tải, c&oacute; nghĩa l&agrave; qu&yacute; kh&aacute;ch chấp nhận với những thay đổi đ&oacute;. Qu&yacute; kh&aacute;ch vui l&ograve;ng kiểm tra thường xuy&ecirc;n để cập nhật những thay đổi của CGV.</p>
+							<p>Xin vui l&ograve;ng đọc kỹ trước khi quyết định Đặt V&eacute; trực tuyến.</p>
+							<div class="cms-tap">
+								<h3>1. Phạm Vi &Aacute;p Dụng</h3>
+								<p>Điều kiện dưới đ&acirc;y &aacute;p dụng ri&ecirc;ng cho chức năng mua v&eacute; trực tuyến tại Website. Khi sử dụng chức năng để đặt chỗ v&agrave; mua v&eacute;, Qu&yacute; kh&aacute;ch mặc nhi&ecirc;n đ&atilde; chấp thuận v&agrave; tu&acirc;n thủ tất cả c&aacute;c chỉ dẫn, điều khoản, điều kiện v&agrave; lưu &yacute; đăng tải tr&ecirc;n Website, bao gồm nhưng kh&ocirc;ng giới hạn bởi Điều kiện Sử dụng n&ecirc;u ở đ&acirc;y. Nếu Qu&yacute; kh&aacute;ch kh&ocirc;ng c&oacute; &yacute; định mua v&eacute; trực tuyến hay kh&ocirc;ng đồng &yacute; với bất kỳ điều khoản hay điều kiện n&agrave;o n&ecirc;u trong Điều kiện Sử dụng, xin h&atilde;y DỪNG VIỆC SỬ DỤNG chức năng n&agrave;y.</p>
+							</div>
+							<div class="cms-tap">
+								<h3>2. Điều kiện sử dụng t&iacute;nh năng mua v&eacute; trực tuyến</h3>
+								<p>Qu&yacute; kh&aacute;ch phải đăng k&yacute; t&agrave;i khoản với th&ocirc;ng tin x&aacute;c thực về bản th&acirc;n v&agrave; phải cập nhật nếu c&oacute; bất kỳ thay đổi n&agrave;o. Mỗi người truy cập phải c&oacute; tr&aacute;ch nhiệm với mật khẩu, t&agrave;i khoản v&agrave; hoạt động của m&igrave;nh tr&ecirc;n web. Hơn nữa, qu&yacute; kh&aacute;ch phải th&ocirc;ng b&aacute;o cho ch&uacute;ng t&ocirc;i biết khi t&agrave;i khoản bị truy cập tr&aacute;i ph&eacute;p. Ch&uacute;ng t&ocirc;i kh&ocirc;ng chịu bất kỳ tr&aacute;ch nhiệm n&agrave;o, d&ugrave; trực tiếp hay gi&aacute;n tiếp, đối với những thiệt hại hoặc mất m&aacute;t g&acirc;y ra do qu&yacute; kh&aacute;ch kh&ocirc;ng tu&acirc;n thủ quy định.</p>
+							</div>
+							<div class="cms-tap">
+								<h3>3. Quy định về đặt v&eacute; trực tuyến</h3>
+								<ul>
+									<li>- T&iacute;nh năng đặt v&eacute; trực tuyến hiện chỉ &aacute;p dụng cho th&agrave;nh vi&ecirc;n của CGV. Vui l&ograve;ng tham khảo th&ocirc;ng tin đăng k&yacute; th&agrave;nh vi&ecirc;n tr&ecirc;n website <a href="#" target="_blank">www.cgv.vn</a>.</li>
+									<li>- Th&ocirc;ng thường, CGV mở b&aacute;n v&eacute; trực tuyến trước ng&agrave;y chiếu phim, tuy nhi&ecirc;n điều n&agrave;y phụ thuộc v&agrave;o mỗi phim, mỗi rạp. Nếu suất chiếu bạn muốn đặt chưa được hiển thị tr&ecirc;n website v&agrave;o thời điểm kh&aacute;ch đặt v&eacute;, xin vui l&ograve;ng quay lại sau, hoặc li&ecirc;n hệ tới số hot line của CGV 1900 7017 để biết th&ecirc;m th&ocirc;ng tin chi tiết.</li>
+									<li>- Thời gian đ&oacute;ng chức năng mua v&eacute; trực tuyến l&agrave; 30 ph&uacute;t trước giờ chiếu phim hoặc khi suất chiếu đ&atilde; được b&aacute;n hết v&eacute;. Sau thời gian n&agrave;y qu&yacute; kh&aacute;ch c&oacute; thể đến li&ecirc;n hệ trực tiếp tại rạp để mua v&eacute;.</li>
+									<li>- CGV kh&ocirc;ng cam kết giữ chỗ ngồi cho qu&yacute; kh&aacute;ch cho đến khi qu&yacute; kh&aacute;ch ho&agrave;n tất thanh to&aacute;n cho đơn h&agrave;ng của m&igrave;nh.</li>
+									<li>- Kh&aacute;ch h&agrave;ng c&oacute; thể đặt chỗ cho tối đa 8 kh&aacute;ch (kh&ocirc;ng bao gồm v&eacute; trẻ em) trong mỗi lần thực hiện. Nếu c&oacute; nhu cầu mua v&eacute; với số lượng lớn hơn, vui l&ograve;ng li&ecirc;n hệ với bộ phận Group Sales của CGV qua số hotline của CGV 1900 6017 hoặc gửi email về địa chỉ <a href="#">hoidap@cgv.vn</a>.</li>
+									<li>- Khi tiến h&agrave;nh c&aacute;c bước thanh to&aacute;n, cần đọc kĩ c&aacute;c th&ocirc;ng tin tr&ecirc;n m&agrave;n h&igrave;nh về rạp chiếu phim, t&ecirc;n phim, suất chiếu, v&agrave; chỗ ngồi trước khi ho&agrave;n tất việc x&aacute;c nhận tất cả c&aacute;c th&ocirc;ng tin về v&eacute;.</li>
+									<li>- Qu&yacute; kh&aacute;ch thanh to&aacute;n giao dịch đặt v&eacute; theo quy định tại Ch&iacute;nh S&aacute;ch Thanh To&aacute;n đăng tải tr&ecirc;n CGV trước khi nhận m&atilde; đặt v&eacute; của giao dịch đ&oacute;. Khi qu&yacute; kh&aacute;ch nhấn (click) vào &ocirc; &ldquo;Thanh toán&rdquo; để ti&ecirc;́n h&agrave;nh thanh to&aacute;n Đặt chỗ c&oacute; nghĩa là đ&atilde; x&aacute;c nhận rà soát th&ocirc;ng tin Đặt chỗ; v&agrave; đồng ý là Điều Khoản Và Điều Kiện sẽ được &aacute;p dụng cho giao dịch mua v&eacute; trong giao dịch đ&oacute;.</li>
+									<li>- Email v&agrave; tin nhắn x&aacute;c nhận đặt v&eacute; sau khi ho&agrave;n th&agrave;nh việc thanh to&aacute;n v&eacute; trực tuyến, qu&yacute; kh&aacute;ch sẽ nhận được thư x&aacute;c nhận th&ocirc;ng tin chi tiết v&eacute; đ&atilde; thanh to&aacute;n th&ocirc;ng qua địa chỉ thư điện tử (email) m&agrave; qu&yacute; kh&aacute;ch đ&atilde; cung cấp.. Email x&aacute;c nhận th&ocirc;ng tin đặt v&eacute; c&oacute; thể đi v&agrave;o hộp thư r&aacute;c (spam mail) của bạn, v&igrave; vậy h&atilde;y kiểm tra ch&uacute;ng trước khi li&ecirc;n lạc với CGV.</li>
+									<li>- Bằng việc thanh to&aacute;n qua website n&agrave;y, qu&yacute; kh&aacute;ch chấp nhận vị tr&iacute; ghế ngồi m&agrave; bạn đ&atilde; đặt. Qu&yacute; kh&aacute;ch đồng &yacute; rằng, trong những trường hợp c&oacute; sự thay đổi về chương tr&igrave;nh phim hoặc bất khả kh&aacute;ng, CGV c&oacute; quyền ho&agrave;n trả lại bất kỳ v&eacute; n&agrave;o từ việc mua b&aacute;n qua trang web n&agrave;y hoặc thực hiện việc chuyển v&eacute; cho bạn qua suất chiếu kh&aacute;c theo y&ecirc;u cầu của qu&yacute; kh&aacute;ch.</li>
+									<li>- Trong suốt qu&aacute; tr&igrave;nh đăng k&yacute;, qu&yacute; kh&aacute;ch đồng &yacute; nhận email quảng c&aacute;o từ website. Sau đ&oacute;, nếu kh&ocirc;ng muốn tiếp tục nhận mail, qu&yacute; kh&aacute;ch c&oacute; thể từ chối bằng c&aacute;ch nhấp v&agrave;o đường link ở dưới c&ugrave;ng trong mọi email quảng c&aacute;o.</li>
+								</ul>
+							</div>
+							<div class="cms-tap">
+								<h3>4. Gi&aacute; V&eacute;</h3>
+								<ul>
+									<li>- Gi&aacute; v&eacute; được ni&ecirc;m yết tại CGV l&agrave; gi&aacute; b&aacute;n cuối c&ugrave;ng đ&atilde; bao gồm thuế Gi&aacute; trị gia tăng (VAT). Gi&aacute; v&eacute; c&oacute; thể thay đổi t&ugrave;y thời điểm v&agrave; chương tr&igrave;nh khuyến m&atilde;i k&egrave;m theo v&agrave; sẽ được hiển thị r&otilde; tại trang Thanh to&aacute;n khi qu&yacute; kh&aacute;ch tiến h&agrave;nh đặt h&agrave;ng.</li>
+									<li>- Gi&aacute; v&eacute; khi đặt v&eacute; trực tuyến tr&ecirc;n website CGV l&agrave; gi&aacute; v&eacute; người lớn. C&aacute;c loại v&eacute; như học sinh-sinh vi&ecirc;n, v&eacute; trẻ em v&agrave; người cao tuổi vui l&ograve;ng mua trực tiếp tại quầy v&eacute; tại c&aacute;c rạp CGV Cinemas.</li>
+									<li>- Căn cứ Th&ocirc;ng tư số 12/2015/TT-BVHTTDL của Bộ trưởng Bộ Văn h&oacute;a, Thể thao v&agrave; Du lịch c&oacute; hiệu lực thi h&agrave;nh từ ng&agrave;y 01/01/2017, Ti&ecirc;u ch&iacute; ph&acirc;n loại phim theo lứa tuổi được quy định như sau:<ol>
+										<li>o P: Phim được ph&eacute;p phổ biến rộng r&atilde;i đến mọi đối tượng</li>
+										<li>o C13: Phim cấm phổ biến đến kh&aacute;n giả dưới 13 tuổi</li>
+										<li>o C16: Phim cấm phổ biến đến kh&aacute;n giả dưới 16 tuổi</li>
+										<li>o C18: Phim cấm phổ biến đến kh&aacute;n giả dưới 18 tuổi</li>
+									</ol></li>
+									<li>- Kh&aacute;n giả khi xem phim thuộc c&aacute;c ph&acirc;n loại tr&ecirc;n vui l&ograve;ng mang theo giấy tờ t&ugrave;y th&acirc;n hoặc h&igrave;nh ảnh của giấy tờ t&ugrave;y th&acirc;n c&oacute; ảnh nhận diện v&agrave; ng&agrave;y th&aacute;ng năm sinh để đảm bảo việc tu&acirc;n thủ theo quy định.<ol>
+										<li>o C13: Thẻ học sinh, thẻ bảo hiểm, thẻ thư viện, Hộ chiếu&hellip; c&ograve;n hiệu lực</li>
+										<li>o C16: CMND, Thẻ học sinh , Hộ chiếu, Thẻ thư viện,&hellip; c&ograve;n hiệu lực</li>
+										<li>o C18: CMND, Thẻ HSSV, Bằng l&aacute;i xe, Hộ chiếu,&hellip; c&ograve;n hiệu lực</li>
+									</ol></li>
+									<li>- Kh&aacute;ch h&agrave;ng vui l&ograve;ng chứng thực được độ tuổi ph&ugrave; hợp với phim được ph&acirc;n loại như tr&ecirc;n. CGV c&oacute; quyền từ chối việc b&aacute;n v&eacute; hoặc v&agrave;o ph&ograve;ng chiếu nếu kh&aacute;ch h&agrave;ng kh&ocirc;ng tu&acirc;n thủ đ&uacute;ng theo quy định.</li>
+								</ul>
+							</div>
+							<div class="cms-tap">
+								<h3>5. Gi&aacute; trị giao dịch v&agrave; h&igrave;nh thức thanh to&aacute;n</h3>
+								<ul>
+									<li>- CGV cung cấp c&aacute;c h&igrave;nh thức thanh to&aacute;n: thẻ Thanh to&aacute;n Quốc tế hoặc thẻ Thanh to&aacute;n Nội địa, thẻ qu&agrave; Tặng CGV, CGV Voucher v&agrave; bằng điểm thưởng th&agrave;nh vi&ecirc;n.</li>
+									<li>- Trừ một số trường hợp c&oacute; ghi ch&uacute; ri&ecirc;ng, th&ocirc;ng thường qu&yacute; kh&aacute;ch c&oacute; thể lựa chọn một trong c&aacute;c h&igrave;nh thức thanh to&aacute;n tr&ecirc;n khi tiến h&agrave;nh đặt v&eacute;.</li>
+									<li>- CGV c&oacute; quyền từ chối chấp nhận cho Kh&aacute;ch H&agrave;ng thanh to&aacute;n bằng thẻ t&iacute;n dụng trong một số trường hợp theo quy&ecirc;́t định của CGV.</li>
+									<li>- Để đảm bảo an to&agrave;n thanh to&aacute;n, Kh&aacute;ch H&agrave;ng lưu &yacute;:<ol>
+										<li>o Chỉ thực hiện thanh toán trực tuy&ecirc;́n tại cửa sổ li&ecirc;n k&ecirc;́t từ CGV chuyển đ&ecirc;́n;</li>
+										<li>o Sử dụng và bảo quản thẻ (thẻ t&iacute;n dụng, thẻ ATM, thẻ mua h&agrave;ng&hellip;) và th&ocirc;ng tin tài khoản/th&ocirc;ng tin thẻ cẩn thận;</li>
+										<li>o Kh&ocirc;ng cho người khác mượn hoặc sử dụng thẻ th&agrave;nh vi&ecirc;n để mua v&eacute; tại CGV. Ngay khi phát hiện giao dịch phát sinh bất thường nào tại CGV, Khách Hàng cần li&ecirc;n hệ ngay với bộ phận chăm s&oacute;c Khách Hàng của CGV để được xử l&yacute; kịp thời;</li>
+										<li>o Trong mọi trường hợp, với thẻ t&iacute;n dụng/ghi nợ quốc t&ecirc;́, Khách H&agrave;ng vui l&ograve;ng kh&ocirc;ng để lộ số CVV/CVC/CSC (là m&atilde; số bảo mật, bộ ba k&iacute; tự số được in ở mặt sau của thẻ) để bảo mật th&ocirc;ng tin thẻ;</li>
+										<li>o Kiểm tra t&agrave;i khoản ng&acirc;n h&agrave;ng của m&igrave;nh thường xuy&ecirc;n để đảm bảo tất cả giao dịch qua thẻ đều nằm trong tầm kiểm so&aacute;t.</li>
+									</ol></li>
+								</ul>
+							</div>
+							<div class="cms-tap">
+								<h3>6. Điểm thưởng v&agrave; đổi điểm</h3>
+								<ul>
+									<li>- Quy định về t&iacute;ch lũy và quy đổi điểm thưởng được thực hiện theo ch&iacute;nh s&aacute;ch cụ thể của CGV tại từng thời điểm.</li>
+									<li>- CGV khuy&ecirc;́n kh&iacute;ch Khách Hàng đăng ký tài khoản th&agrave;nh vi&ecirc;n tr&ecirc;n CGV để tiện theo d&otilde;i lịch sử giao dịch, nhận th&ocirc;ng tin cập nhật về h&agrave;ng h&oacute;a, c&aacute;c chương tr&igrave;nh khuy&ecirc;́n mại, hưởng các ưu đ&atilde;i đối với kh&aacute;ch h&agrave;ng th&acirc;n thi&ecirc;́t&hellip;</li>
+								</ul>
+							</div>
+							<div class="cms-tap">
+								<h3>7. Giao kết giao dịch tại CGV</h3>
+								<p>Kh&aacute;ch h&agrave;ng khi mua v&eacute; trực tuyến tại website CGV phải đăng nhập t&agrave;i khoản th&agrave;nh vi&ecirc;n CGV v&agrave; thực hiện c&aacute;c thao t&aacute;c theo tr&igrave;nh tự sau:</p>
+								<ol>
+									<li>o Bước 1: Kh&aacute;ch h&agrave;ng lựa chọn suất chiếu theo phim hoặc suất chiếu theo rạp.</li>
+									<li>o Bước 2: Kh&aacute;ch h&agrave;ng lựa chọn chỗ ngồi.</li>
+									<li>o Bước 3: Thanh to&aacute;n bằng c&aacute;c h&igrave;nh thức thanh to&aacute;n online qua thẻ t&iacute;n dụng (Visa, Master card..), thẻ ATM, điểm thưởng th&agrave;nh vi&ecirc;n, Thẻ qu&agrave; tặng CGV, CGV Voucher.</li>
+									<li>o Bước 4: Kh&aacute;ch h&agrave;ng nhận m&atilde; đặt chỗ qua tin nhắn SMS v&agrave; email.</li>
+									<li>o Bước 5: Kh&aacute;ch h&agrave;ng cung cấp m&atilde; đặt v&eacute; v&agrave; c&aacute;c th&ocirc;ng tin t&agrave;i khoản th&agrave;nh vi&ecirc;n CGV d&ugrave;ng để đặt v&eacute; để nhận v&eacute; tại rạp. Kh&aacute;ch h&agrave;ng chỉ c&oacute; thể nhận v&eacute; tại rạp đ&atilde; đặt v&eacute; coi phim. Nếu kh&aacute;ch h&agrave;ng kh&ocirc;ng cung cấp được th&ocirc;ng tin t&agrave;i khoản CGV v&agrave; m&atilde; đặt v&eacute;, CGV c&oacute; quyền từ chối xuất v&eacute;.</li>
+								</ol></div>
+								<div class="cms-tap">
+									<h3>8. Thay đổi, hủy bỏ giao dịch đặt v&eacute; tại CGV</h3>
+									<ul>
+										<li>- Hiện tại CGV chưa hỗ trợ dịch vụ hủy hoặc thay đổi th&ocirc;ng tin v&eacute; đ&atilde; thanh to&aacute;n th&agrave;nh c&ocirc;ng.</li>
+										<li>- Hệ thống Đặt v&eacute; Online của CGV c&oacute; li&ecirc;n kết với rất nhiều đối t&aacute;c kh&aacute;c, bao gồm Cổng thanh to&aacute;n ONEPAY, c&aacute;c ng&acirc;n h&agrave;ng nội địa v&agrave; c&aacute;c Tổ chức t&iacute;n dụng quốc tế. Việc thanh to&aacute;n th&agrave;nh c&ocirc;ng hay kh&ocirc;ng phụ thuộc rất nhiều v&agrave;o kết nối mạng của qu&yacute; kh&aacute;ch , việc truyền dẫn, nhận v&agrave; trả t&iacute;n hiệu của c&aacute;c tổ chức đối t&aacute;c tr&ecirc;n.CGV chỉ thực hiện ho&agrave;n tiền trong trường hợp khi giao dịch, t&agrave;i khoản của qu&yacute; kh&aacute;ch đ&atilde; bị trừ tiền nhưng hệ thống của ch&uacute;ng t&ocirc;i kh&ocirc;ng ghi nhận việc đặt v&eacute; đ&oacute;, v&agrave; qu&yacute; kh&aacute;ch kh&ocirc;ng nhận được x&aacute;c nhận đặt v&eacute; th&agrave;nh c&ocirc;ng. Khi đ&oacute;, qu&yacute; kh&aacute;ch vui l&ograve;ng li&ecirc;n hệ hotline 1900 6017 (từ 8:00 đến 22:00 tất cả c&aacute;c ng&agrave;y trong tuần) hoặc bạn c&oacute; thể li&ecirc;n hệ với ch&uacute;ng t&ocirc;i qua địa chỉ email hoidap@cgv.vn để được hỗ trợ.</li>
+										<li>- Sau khi đ&atilde; x&aacute;c nhận c&aacute;c th&ocirc;ng tin của kh&aacute;ch h&agrave;ng cung cấp về giao dịch kh&ocirc;ng th&agrave;nh c&ocirc;ng, t&ugrave;y theo từng loại t&agrave;i khoản kh&aacute;ch h&agrave;ng sử dụng m&agrave; việc ho&agrave;n tiền sẽ c&oacute; thời gian kh&aacute;c nhau:<ol>
+											<li>o Thẻ ATM (Nội địa): ho&agrave;n tiền trong 7 ng&agrave;y l&agrave;m việc.</li>
+											<li>o Thẻ VISA/ MasterCard (Nội địa): ho&agrave;n tiền từ 30 đến 45 ng&agrave;y l&agrave;m việc.</li>
+											<li>o Thẻ ATM của ng&acirc;n h&agrave;ng Vietcombank: ho&agrave;n tiền trong v&ograve;ng 48 giờ l&agrave;m việc.</li>
+										</ol>*Lưu &yacute;: Thời gian ho&agrave;n tiền kh&ocirc;ng t&iacute;nh c&aacute;c ng&agrave;y thứ 7, Chủ nhật v&agrave; Lễ Tết.</li>
+										<li>- Trước khi thanh to&aacute;n v&eacute; trực tuyến, ch&uacute;ng t&ocirc;i khuy&ecirc;n qu&yacute; kh&aacute;ch n&ecirc;n x&aacute;c nhận lại T&ecirc;n phim, Giờ chiếu v&agrave; Rạp chiếu của bộ phim muốn xem.</li>
+									</ul>
+								</div>
+								<div class="cms-tap">
+									<h3>9. Thương hiệu v&agrave; bản quyền</h3>
+									<p>Mọi quyền sở hữu tr&iacute; tuệ (đ&atilde; đăng k&yacute; hoặc chưa đăng k&yacute;), nội dung th&ocirc;ng tin v&agrave; tất cả c&aacute;c thiết kế, văn bản, đồ họa, phần mềm, h&igrave;nh ảnh, video, &acirc;m nhạc, &acirc;m thanh, bi&ecirc;n dịch phần mềm, m&atilde; nguồn v&agrave; phần mềm cơ bản đều l&agrave; t&agrave;i sản của CGV. To&agrave;n bộ nội dung của trang web được bảo vệ theo ph&aacute;p luật sở hữu tr&iacute; tuệ của Việt Nam v&agrave; c&aacute;c c&ocirc;ng ước, điều ước quốc tế m&agrave; Việt Nam tham gia hoặc l&agrave; th&agrave;nh vi&ecirc;n.</p>
+								</div>
+								<div class="cms-tap">
+									<h3>10. Luật &aacute;p dụng v&agrave; giải quyết tranh chấp</h3>
+									<p>C&aacute;c điều kiện, điều khoản v&agrave; nội dung của trang web n&agrave;y được điều chỉnh v&agrave; giải th&iacute;ch theo luật ph&aacute;p Việt Nam. C&aacute;c tranh chấp ph&aacute;t sinh từ hoặc li&ecirc;n quan đến (c&aacute;c) giao dịch thực hiện tại trang web n&agrave;y sẽ được ưu ti&ecirc;n giải quyết th&ocirc;ng qua thương lượng, h&ograve;a giải. Trường hợp c&aacute;c b&ecirc;n kh&ocirc;ng tự giải quyết, tranh chấp sẽ được đưa ra x&eacute;t xử tại T&ograve;a &aacute;n cấp c&oacute; thẩm quyền của Việt Nam.</p>
+								</div>
+								<div class="cms-tap">
+									<h3>11. Quy định về bảo mật</h3>
+									<p>Trang web của ch&uacute;ng t&ocirc;i coi trọng việc bảo mật th&ocirc;ng tin v&agrave; sử dụng c&aacute;c biện ph&aacute;p tốt nhất bảo vệ th&ocirc;ng tin v&agrave; việc thanh to&aacute;n của qu&yacute; kh&aacute;ch. Th&ocirc;ng tin của qu&yacute; kh&aacute;ch trong qu&aacute; tr&igrave;nh thanh to&aacute;n sẽ được m&atilde; h&oacute;a để đảm bảo an to&agrave;n. Sau khi qu&yacute; kh&aacute;ch ho&agrave;n th&agrave;nh qu&aacute; tr&igrave;nh đặt h&agrave;ng, qu&yacute; kh&aacute;ch sẽ tho&aacute;t khỏi chế độ an to&agrave;n.</p>
+									<p>Qu&yacute; kh&aacute;ch kh&ocirc;ng được sử dụng bất kỳ chương tr&igrave;nh, c&ocirc;ng cụ hay h&igrave;nh thức n&agrave;o kh&aacute;c để can thiệp v&agrave;o hệ thống hay l&agrave;m thay đổi cấu tr&uacute;c dữ liệu. Trang web cũng nghi&ecirc;m cấm việc ph&aacute;t t&aacute;n, truyền b&aacute; hay cổ vũ cho bất kỳ hoạt động n&agrave;o nhằm can thiệp, ph&aacute; hoại hay x&acirc;m nhập v&agrave;o dữ liệu của hệ thống. C&aacute; nh&acirc;n hay tổ chức vi phạm sẽ bị tước bỏ mọi quyền lợi cũng như sẽ bị truy tố trước ph&aacute;p luật nếu cần thiết. Mọi th&ocirc;ng tin giao dịch sẽ được bảo mật trừ trường hợp buộc phải cung cấp theo y&ecirc;u cầu của t&ograve;a &aacute;n, (c&aacute;c) cơ quan c&oacute; thẩm quyền hoặc theo quy định của ph&aacute;p luật</p>
+								</div>
+								<div class="cms-tap">
+									<h3>12. Giải quyết hậu quả do lỗi nhập sai th&ocirc;ng tin thương mại tại CGV</h3>
+									<p>Kh&aacute;ch h&agrave;ng c&oacute; tr&aacute;ch nhiệm cung cấp th&ocirc;ng tin đầy đủ v&agrave; ch&iacute;nh x&aacute;c khi tham gia giao dịch tại CGV. Trong trường hợp kh&aacute;ch h&agrave;ng nhập sai th&ocirc;ng tin tại trang th&ocirc;ng tin My CGV, CGV c&oacute; quyền từ chối thực hiện giao dịch. Ngo&agrave;i ra, trong mọi trường hợp, kh&aacute;ch h&agrave;ng đều c&oacute; quyền đơn phương chấm dứt giao dịch nếu đ&atilde; thực hiện bằng c&aacute;ch th&ocirc;ng b&aacute;o cho CGV qua đường d&acirc;y n&oacute;ng 1900 6017</p>
+								</div>
+								<div class="cms-tap">
+									<h3>13. Quy định chấm dứt thỏa thuận</h3>
+									<p>Trong trường hợp c&oacute; bất kỳ thiệt hại n&agrave;o ph&aacute;t sinh do việc vi phạm Quy Định sử dụng trang web, ch&uacute;ng t&ocirc;i c&oacute; quyền đ&igrave;nh chỉ hoặc kh&oacute;a t&agrave;i khoản của qu&yacute; kh&aacute;ch vĩnh viễn. Nếu qu&yacute; kh&aacute;ch kh&ocirc;ng h&agrave;i l&ograve;ng với trang web hoặc bất kỳ điều khoản, điều kiện, quy tắc, ch&iacute;nh s&aacute;ch, hướng dẫn, hoặc c&aacute;ch thức vận h&agrave;nh của CGV th&igrave; biện ph&aacute;p khắc phục duy nhất l&agrave; ngưng sử dụng dịch vụ của ch&uacute;ng t&ocirc;i.</p>
+									<p>Xin qu&yacute; kh&aacute;ch lưu &yacute; chỉ mua h&agrave;ng khi chấp nhận v&agrave; hiểu r&otilde; những quy định tr&ecirc;n. Nếu cần hỗ trợ th&ecirc;m th&ocirc;ng tin, qu&yacute; kh&aacute;ch vui l&ograve;ng tham khảo tại <a href="#" target="_blank">www.cgv.vn</a></p>
+								</div>
+							</div>
+						</div>               
+					</div>
+					<div class="col-left sidebar"></div>
+				</div>
+{% endblock %}

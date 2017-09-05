@@ -75,7 +75,33 @@ def about_cinema(request):
 	return render(request, 'websites/about_cinema.html',{})
 
 def gift_card_detail(request):
-	return render(request, 'websites/gift_card_detail.html',{})
+	return render(request, 'websites/gift_card_detail.html',{} )
+
+def cgv_online(request):
+	return render(request, 'websites/cgv_online.html', {} )
+
+def careers(request):
+	return render(request, 'websites/careers.html', {})
+
+def contacts(request):
+	return render(request, 'websites/contacts.html', {})
+
+def terms_conditions(request):
+	return render(request, 'websites/terms_conditions.html', {})
+
+def terms_use(request):
+	return render(request, 'websites/terms_use.html', {})
+
+def payment_policy(request):
+	return render(request, 'websites/payment_policy.html', {})
+
+def privacy_policy(request):
+	return render(request, 'websites/privacy_policy.html', {})
+
+def faq(request):
+	return render(request, 'websites/faq.html', {})
+
+
 
 def sweetbox(request):
 	data= { 'technology': 
@@ -123,6 +149,7 @@ def show_4dx(request):
 	, {'img': '/assets/websites/images/special-theater/4DX_4.png', 'content': '<h2>Những Điều Cần Biết Khi Thưởng Thức 4DX®</h2><p>- Trẻ em dưới 4 tuổi hoặc cao dưới 1 mét không được sử dụng ghế 4DX®. Trẻ em dưới 7 tuổi phải có bố mẹ hoặc người lớn đi kèm.</p><p>- Phụ nữ đang mang thai, người già, người có thể chất và thần kinh yếu không nên sử dụng ghế 4DX®.</p><p>- Không để trẻ nhỏ ngồi ghế nâng hoặc ngồi chung với bố mẹ.</p>'}],
 	}
 	return render(request, 'websites/4dx.html', {'data': data})
+	
 def dolby_atmos(request):
 	data= {'technology': 
 	[{'name': 'sweet box', 'class': 'item-sweetbox'}

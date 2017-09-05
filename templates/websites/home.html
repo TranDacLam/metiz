@@ -6,12 +6,11 @@
 
 {% block extrascript %}
 <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.swipe.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.carousel.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}assets/js/slideshow.js"></script>
 {% endblock %}
 
-
+{% block container_class %}col1-layout{% endblock %}
 {% block main_content %}
 <div class="main">
     <div class="col-main">
