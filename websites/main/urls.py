@@ -50,7 +50,9 @@ urlpatterns = [
     url(r'^privacy_policy/$', views.privacy_policy),
     url(r'^faq/$', views.faq),
 
-
+    url(r'^special/sweetbox/$', views.sweetbox),
+    url(r'^special/4dx/$', views.show_4dx),
+    url(r'^special/dolby-atmos/$', views.dolby_atmos),
 ]
 
 if settings.DEBUG:
