@@ -39,6 +39,8 @@ urlpatterns = [
     url(r'^arthouse/$', views.arthouse),
     url(r'^showing/$', views.showing),
     url(r'^movie_voucher/$', views.movie_voucher),
+    url(r'^about_cinema/$', views.about_cinema),
+    url(r'^gift_card_detail/$', views.gift_card_detail),
 
 ]
 

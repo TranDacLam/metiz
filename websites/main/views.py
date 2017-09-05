@@ -70,3 +70,9 @@ def arthouse(request):
 	,'tc': 'c16','rating':2},{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':3}
 	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':4}]
 	return render(request, 'websites/arthouse.html', {'data': data})
+
+def about_cinema(request):
+	return render(request, 'websites/about_cinema.html',{})
+
+def gift_card_detail(request):
+	return render(request, 'websites/gift_card_detail.html',{})
