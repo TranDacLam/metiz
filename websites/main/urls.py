@@ -44,7 +44,6 @@ urlpatterns = [
     url(r'^special/sweetbox/$', views.sweetbox),
     url(r'^special/4dx/$', views.show_4dx),
     url(r'^special/dolby-atmos/$', views.dolby_atmos),
-3
 ]
 
 if settings.DEBUG:
