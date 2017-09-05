@@ -41,6 +41,15 @@ urlpatterns = [
     url(r'^movie_voucher/$', views.movie_voucher),
     url(r'^about_cinema/$', views.about_cinema),
     url(r'^gift_card_detail/$', views.gift_card_detail),
+    url(r'^cgv_online/$', views.cgv_online),
+    url(r'^careers/$', views.careers),
+    url(r'^contacts/$', views.contacts),
+    url(r'^terms_conditions/$', views.terms_conditions),
+    url(r'^terms_use/$', views.terms_use),
+    url(r'^payment_policy/$', views.payment_policy),
+    url(r'^privacy_policy/$', views.privacy_policy),
+    url(r'^faq/$', views.faq),
+
 
 ]
 

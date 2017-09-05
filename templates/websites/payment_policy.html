@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block container_class %}col2-left-layout{% endblock %} 
+
+{% block main_content %}
+					<div class="breadcrumbs" itemprop="breadcrumb">
+						<ul>
+							<li class="home">
+								<a href="#" title="Trở về trang chủ">Trang chủ</a>
+								<span>/ </span>
+							</li>
+							<li class="cms_page">
+								<strong>Chính sách thanh toán</strong>
+							</li>
+						</ul>
+					</div>
+					<div class="main">
+						<div class="col-left sidebar col-left-first"><div class="block block-cms-menu">
+							<div class="block-content">
+								<ul>
+									<li><a href="#"><span>Giới thiệu</span></a></li>
+									<li><a href="#"><span>Li&ecirc;n Hệ CGV</span></a></li>
+									<li><a href="#"><span>Điều khoản chung</span></a></li>
+									<li><a href="#"><span>Điều khoản giao dich</span></a></li>
+									<li class="active"><a href="#"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a></li>
+									<li><a href="#"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a></li>
+									<li><span><a href="#"><span>C&acirc;u hỏi thường gặp</span></a></span></li>
+								</ul>
+							</div>
+						</div>
+						<script type="text/javascript">// <![CDATA[
+						$j(".block-cms-menu li").each(function(){
+									var self = this;
+										href = $j(this).find('a');
+									for(var i = 0 ; i < href.length ; i++){
+										var harray = $j(href[i]).attr('href').split("/");
+										var charray = window.location.href.split("/");
+										if(harray[harray.length-2] == charray[charray.length-2]){
+											$j(self).addClass('active');
+											break;
+										}
+												}
+								});
+					// ]]></script></div>
+					<div class="col-main">
+						<div class="std"><div class="cms-page-title"><span style="color: #ff0000;"> <strong>CH&Iacute;NH S&Aacute;CH THANH TO&Aacute;N</strong> </span></div>
+						<div class="cms-page-content privacy-policy-cms">
+							<div class="cms-tap">
+								<h3>1. Quy định về thanh to&aacute;n</h3>
+								<ul>
+									<li>Kh&aacute;ch h&agrave;ng c&oacute; thể lựa chọn c&aacute;c h&igrave;nh thức thanh to&aacute;n sau để thanh to&aacute;n cho giao dịch đặt v&eacute; tr&ecirc;n website CGV</li>
+									<li>- Điểm Thưởng th&agrave;nh vi&ecirc;n</li>
+									<li>- Thẻ qu&agrave; tặng CGV ( CGV Giftcard)</li>
+									<li>- Ticket Voucher</li>
+									<li>- Thẻ ATM (Thẻ ghi nợ/thanh to&aacute;n/trả trước nội địa);</li>
+									<li>- Thẻ t&iacute;n dụng thẻ , thẻ ghi nợ,thẻ trả trước quốc tế.</li>
+								</ul>
+							</div>
+							<div class="cms-tap">
+								<h3>2. Chi tiết c&aacute;c h&igrave;nh thức thanh to&aacute;n</h3>
+								<ul>
+									<li>- Điểm Thưởng Th&agrave;nh Vi&ecirc;n (Membership Point): Mỗi 01 điểm thưởng tương đương với 1.000 VND. Điểm thưởng n&agrave;y, bạn c&oacute; thể sử dụng để thanh to&aacute;n v&eacute; xem phim v&agrave; c&aacute;c sản phẩm đồ ăn thức uống tại hệ thống CGV to&agrave;n quốc. Khi sử dụng điểm thưởng, bạn vui l&ograve;ng xuất tr&igrave;nh thẻ th&agrave;nh vi&ecirc;n để được nh&acirc;n vi&ecirc;n hỗ trợ thanh to&aacute;n. Điểm thưởng được sử dụng phải từ 20 điểm trở l&ecirc;n.</li>
+									<li>- Để kiểm tra điểm thưởng, bạn vui l&ograve;ng truy cập v&agrave;o đ&acirc;y (https://www.cgv.vn/default/customer/account/) v&agrave; đăng nhập v&agrave;o t&agrave;i khoản của m&igrave;nh.</li>
+									<li>- Thẻ qu&agrave; tặng CGV (CGV GiftCard): Thẻ Qu&agrave; Tặng c&oacute; thể được d&ugrave;ng để mua v&eacute; xem phim, bắp nước tại c&aacute;c rạp CGV tr&ecirc;n to&agrave;n quốc v&agrave; c&oacute; thể d&ugrave;ng để thanh to&aacute;n khi mua v&eacute; trực tuyến.Bạn c&oacute; thể mua thẻ qu&agrave; tặng tại tất cả c&aacute;c cụm rạp CGV tr&ecirc;n to&agrave;n quốc với mệnh gi&aacute; thấp nhất l&agrave; 300,000 VNĐ v&agrave; c&oacute; gi&aacute; trị sử dụng trong v&ograve;ng 1 năm kể từ ng&agrave;y k&iacute;ch hoạt.Thẻ c&oacute; c&aacute;c mệnh gi&aacute; 300,000 VNĐ, 500,000 VNĐ hoặc 1,000,000 VNĐ. Thẻ c&oacute; thể nạp th&ecirc;m tiền để tiếp tục sử dụng.</li>
+									<li>- Thẻ ATM (Thẻ ghi nợ/thanh to&aacute;n /trả trước nội địa): Để thanh to&aacute;n bằng thẻ ng&acirc;n h&agrave;ng nội địa, thẻ của kh&aacute;ch h&agrave;ng phải được đăng k&yacute; sử dụng t&iacute;nh năng thanh to&aacute;n trực tuyến, hoặc ng&acirc;n h&agrave;ng điện tử của Ng&acirc;n h&agrave;ng. Giao dịch phải được ghi nhận th&agrave;nh c&ocirc;ng từ th&ocirc;ng b&aacute;o cấp ph&eacute;p th&agrave;nh c&ocirc;ng do hệ thống cổng thanh to&aacute;n trả về (đảm bảo số dư/hạn mức v&agrave; x&aacute;c thực kh&aacute;ch h&agrave;ng theo quy định sử dụng của thẻ).</li>
+									<li>- Thẻ t&iacute;n dụng, thẻ thanh to&aacute;n quốc tế: Thẻ t&iacute;n dụng/ghi nợ/trả trước VISA, MasterCard, JCB, Union Pay, Amex của c&aacute;c Ng&acirc;n h&agrave;ng trong nước v&agrave; nước ngo&agrave;i ph&aacute;t h&agrave;nh.Giao dịch phải được ghi nhận cấp ph&eacute;p th&agrave;nh c&ocirc;ng do đ&uacute;ng hệ thống cổng thanh to&aacute;n trả về (đảm bảo số dư/hạn mức v&agrave; x&aacute;c thực kh&aacute;ch h&agrave;ng theo quy định sử dụng của thẻ).</li>
+									<li>- Ticket Voucher: CGV &aacute;p dụng thanh to&aacute;n trực tuyến đối với Ticket Voucher. Mỗi loại Voucher sẽ c&oacute; gi&aacute; trị quy đổi v&agrave; thời hạn sử dụng kh&aacute;c nhau. Bạn vui l&ograve;ng đọc kỹ c&aacute;c điều khoản sử dụng ở mặt sau Voucher để biết th&ecirc;m chi tiết. Khi thanh to&aacute;n trực tuyến, bạn vui l&ograve;ng c&agrave;o lớp tr&aacute;ng bạc của m&atilde; PIN ở mặt sau voucher để ho&agrave;n tất th&ocirc;ng tin thanh to&aacute;n. Xin lưu &yacute; Ticket Voucher sau khi mất lớp tr&aacute;ng bạc sẽ kh&ocirc;ng thể đổi v&eacute; tại quầy.</li>
+								</ul>
+							</div>
+							<div class="cms-tap">
+								<h3>3. Danh s&aacute;ch thẻ được chấp nhận thanh to&aacute;n trực tiếp</h3>
+								<p style="font-style: italic;">(Cập nhật theo th&ocirc;ng b&aacute;o của nh&agrave; cung cấp dịch vụ)</p>
+								<p style="font-weight: bold;">Thẻ quốc tế:</p>
+								<ul style="margin-left: 15px;width:100%">
+									<li>- Visa</li>
+									<li>- Master</li>
+									<li>- JCB</li>
+									<li>- American Express</li>
+								</ul>
+								<p style="font-weight: bold; margin-top: 15px;">Thẻ nội địa:</p>
+								<ul style="margin-left: 15px;">
+									<li>- Ng&acirc;n h&agrave;ng N&ocirc;ng nghiệp v&agrave; ph&aacute;t triển n&ocirc;ng th&ocirc;n - Agribank.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP Ngoại thương Việt Nam - Vietcombank.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP Đ&ocirc;ng &Aacute; &ndash; Dong A bank.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP C&ocirc;ng thương Việt Nam - Vietinbank.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP Kỹ thương Việt Nam &ndash; Techcombank.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP Quốc tế Việt Nam &ndash; VIB.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP Ti&ecirc;n phong &ndash; TienphongBank.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP Ph&aacute;t triển Nh&agrave; Tp.HCM &ndash; HDBank.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP S&agrave;i g&ograve;n &ndash; H&agrave; Nội &ndash; SHB.</li>
+									<li>- Ng&acirc;n h&agrave;ng Xuất nhập khẩu Việt Nam &ndash; Eximbank.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP H&agrave;ng Hải Việt Nam &ndash; MSB.</li>
+									<li>- Ng&acirc;n h&agrave;ng Việt &Aacute; - VietA Bank.</li>
+									<li>- Ng&acirc;n h&agrave;ng Qu&acirc;n đội &ndash; MB.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP Nam &Aacute; - Nam A Bank.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP S&agrave;i G&ograve;n Thương T&iacute;n &ndash; Sacombank.</li>
+									<li>- Ng&acirc;n H&agrave;ng TMCP Đ&ocirc;ng Nam &Aacute; &ndash; SeABank.</li>
+									<li>- Ng&acirc;n H&agrave;ng TMCP Đại Dương &ndash; OceanBank.</li>
+									<li>- Ng&acirc;n H&agrave;ng Đầu Tư v&agrave; Ph&aacute;t triển Việt Nam &ndash; BIDV.</li>
+									<li>- Ng&acirc;n h&agrave;ng Việt Nam Thịnh Vượng &ndash; VPBank.</li>
+									<li>- Ng&acirc;n H&agrave;ng TMCP Bắc &Aacute; - BAC A BANK.</li>
+									<li>- Ng&acirc;n h&agrave;ng TMCP AN B&Igrave;NH &ndash; ABBANK.</li>
+								</ul>
+							</div>
+							<div class="cms-tap">
+								<h3>4. Trường hợp giao dịch thanh to&aacute;n kh&ocirc;ng th&agrave;nh c&ocirc;ng</h3>
+								<p>Giao dịch thanh to&aacute;n kh&ocirc;ng th&agrave;nh c&ocirc;ng c&oacute; thể do nhiều nguy&ecirc;n nh&acirc;n. Bạn tham khảo c&aacute;c nguy&ecirc;n nh&acirc;n sau:</p>
+								<ul>
+									<li>- Chưa đăng k&yacute; chức năng thanh to&aacute;n tr&ecirc;n Internet với Ng&acirc;n h&agrave;ng (Đối với thẻ Visa, MasterCard, Amex, JCB)</li>
+									<li>- Đối với ri&ecirc;ng thẻ Visa, MasterCard, Amex, JCB: Trong qu&aacute; tr&igrave;nh thanh to&aacute;n, c&oacute; thể bạn được y&ecirc;u cầu nhập Mật khẩu của chương tr&igrave;nh Verified by Visa hoặc MasterCard SecureCode... nhưng bạn đ&atilde; kh&ocirc;ng ho&agrave;n th&agrave;nh bước x&aacute;c thực n&agrave;y.</li>
+									<li>- Chưa đăng k&yacute; đủ điều kiện để thực hiện thanh to&aacute;n trực tuyến với Ng&acirc;n h&agrave;ng (Đối với thẻ ATM nội địa)</li>
+									<li>- Thẻ kh&ocirc;ng đủ hạn mức/ số dư để thanh to&aacute;n. Một số Ng&acirc;n h&agrave;ng c&oacute; quy định cả hạn mức chi ti&ecirc;u theo ng&agrave;y cho thẻ.</li>
+									<li>- Nhập sai th&ocirc;ng tin thẻ.</li>
+								</ul>
+								<p>Để biết nguy&ecirc;n nh&acirc;n ch&iacute;nh x&aacute;c, vui l&ograve;ng li&ecirc;n hệ với Ng&acirc;n h&agrave;ng ph&aacute;t h&agrave;nh thẻ.</p>
+							</div>
+						</div>
+					</div>                
+				</div>
+				<div class="col-left sidebar"></div>
+			</div>
+{% endblock %}

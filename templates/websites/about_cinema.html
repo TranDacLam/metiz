@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+{% block title %}Helio{% endblock title %}
+{% block container_class %}col2-left-layout{% endblock %}
+{% block main_content %}
+				
+				<div class="breadcrumbs" itemprop="breadcrumb">
+					<ul>
+						<li class="home">
+							<a href="#" title="Trở về trang chủ">Trang chủ</a>
+							<span>/ </span>
+						</li>
+						<li class="cms_page">
+							<strong>Giới thiệu CGV</strong>
+						</li>
+					</ul>
+				</div>
+				<div class="main">
+					<div class="col-left sidebar col-left-first">
+						<div class="block block-cms-menu">
+							<div class="block-content">
+								<ul>
+									<li class="active">
+										<a href="#"><span>Giới thiệu</span></a>
+									</li>
+									<li>
+										<a href="#"><span>Li&ecirc;n Hệ CGV</span></a>
+									</li>
+									<li>
+										<a href="#"><span>Điều khoản chung</span></a>
+									</li>
+									<li>
+										<a href="#"><span>Điều khoản giao dich</span></a>
+									</li>
+									<li>
+										<a href="#"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a>
+									</li>
+									<li>
+										<a href="#"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a>
+									</li>
+									<li>
+										<span><a href="#"><span>C&acirc;u hỏi thường gặp</span></a></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<script type="text/javascript">// <![CDATA[
+						$j(".block-cms-menu li").each(function(){
+									var self = this;
+										href = $j(this).find('a');
+									for(var i = 0 ; i < href.length ; i++){
+										var harray = $j(href[i]).attr('href').split("/");
+										var charray = window.location.href.split("/");
+										if(harray[harray.length-2] == charray[charray.length-2]){
+											$j(self).addClass('active');
+											break;
+										}
+									}
+								});
+					// ]]>
+						
+						</script>
+					</div>
+					<div class="col-main">
+						<div class="std">
+							<div class="title-about-cgv">
+								<h1>Giới thiệu CGV</h1>
+							</div>
+							<div class="col2-set content-seperator"><iframe height="350px" src="//www.youtube.com/embed/e1ZSLVTZ47M?rel=0&amp;wmode=transparent;" width="100%"></iframe>
+								<div class="std content-cms-about-us">
+									<p><strong>CJ CGV</strong> trực thu&ocirc;̣c <strong>CJ Group</strong>, một trong những t&acirc;̣p đoàn kinh tế đa ng&agrave;nh lớn nhất của Hàn Qu&ocirc;́c c&oacute; mặt ở 21 quốc gia tr&ecirc;n thế giới. <strong>CJ CGV</strong> l&agrave; một trong top 5 cụm rạp chiếu phim lớn nhất to&agrave;n cầu v&agrave; l&agrave; nh&agrave; ph&aacute;t h&agrave;nh, cụm rạp chiếu phim lớn nhất Việt Nam. Mục ti&ecirc;u của ch&uacute;ng t&ocirc;i l&agrave; trở th&agrave;nh h&igrave;nh mẫu c&ocirc;ng ty điển h&igrave;nh đ&oacute;ng g&oacute;p cho sự ph&aacute;t triển kh&ocirc;ng ngừng của ng&agrave;nh c&ocirc;ng nghiệp điện ảnh Việt Nam.</p>
+									<p><strong>CJ CGV</strong> đ&atilde; tạo n&ecirc;n kh&aacute;i niệm độc đ&aacute;o về việc chuyển đổi rạp chiếu phim truyền thống th&agrave;nh tổ hợp văn h&oacute;a <strong>&ldquo;Cultureplex&rdquo;</strong>, nơi kh&aacute;n giả kh&ocirc;ng chỉ đến thưởng thức điện ảnh đa dạng th&ocirc;ng qua c&aacute;c c&ocirc;ng nghệ ti&ecirc;n tiến như <strong>IMAX, STARIUM, 4DX, Dolby Atmos,</strong> cũng như thưởng thức ẩm thực ho&agrave;n to&agrave;n mới v&agrave; kh&aacute;c biệt trong khi trải nghiệm dịch vụ chất lượng nhất tại <strong>CGV</strong>.</p>
+									<p>Th&ocirc;ng qua những nỗ lực trong việc x&acirc;y dựng <strong> chương tr&igrave;nh Lớp học l&agrave;m phim TOTO, CGV ArtHouse</strong> c&ugrave;ng việc t&agrave;i trợ cho c&aacute;c hoạt động li&ecirc;n hoan phim lớn trong nước như <strong>Li&ecirc;n hoan Phim quốc tế H&agrave; Nội, Li&ecirc;n hoan Phim Việt Nam, CJ CGV Việt Nam</strong> mong muốn sẽ kh&aacute;m ph&aacute; v&agrave; hỗ trợ ph&aacute;t triển cho c&aacute;c nh&agrave; l&agrave;m phim trẻ t&agrave;i năng của Việt Nam.</p>
+									<p><strong>CJ CGV</strong> cũng tập trung quan t&acirc;m đến đối tượng kh&aacute;n giả ở c&aacute;c khu vực kh&ocirc;ng c&oacute; điều kiện tiếp cận nhiều với điện ảnh, bằng c&aacute;ch tạo cơ hội để họ c&oacute; thể thưởng thức những bộ phim chất lượng cao th&ocirc;ng qua c&aacute;c chương tr&igrave;nh v&igrave; cộng đồng như <strong>Trăng cười</strong> v&agrave; <strong>Điện ảnh cho mọi người</strong>.</p>
+									<p><strong>CJ CGV Việt Nam</strong> sẽ tiếp tục cuộc h&agrave;nh tr&igrave;nh bền bỉ trong việc g&oacute;p phần x&acirc;y dựng một nền c&ocirc;ng nghiệp điện ảnh Việt Nam ng&agrave;y c&agrave;ng vững mạnh hơn c&ugrave;ng c&aacute;c kh&aacute;ch h&agrave;ng tiềm năng, c&aacute;c nh&agrave; l&agrave;m phim, c&aacute;c đối t&aacute;c kinh doanh uy t&iacute;n, v&agrave; c&ugrave;ng to&agrave;n thể x&atilde; hội.</p>
+								</div>
+								<div class="about-image-cgv">
+									<ul>
+										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-1.jpg"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-1.jpg" /> </a></li>
+										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-2.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-2.PNG" /> </a></li>
+										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-3.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-3.PNG" /> </a></li>
+										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-4.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-4.PNG" /> </a></li>
+										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-5.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-5.PNG" /> </a></li>
+										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-6.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-6.PNG" /> </a></li>
+										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-7.JPG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-7.JPG" /> </a></li>
+										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-8.JPG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-8.JPG" /> </a></li>
+										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-9.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-9.PNG" /> </a></li>
+									</ul>
+								</div>
+								<script type="text/javascript">// <![CDATA[
+								jQuery(".large-image-about").colorbox({rel:'group2', transition:"fade", width:"80%", height:"80%"});
+								// ]]></script>
+							</div>
+						</div>                
+					</div>
+					<div class="col-left sidebar"></div>
+				</div>
+			
+
+	
+	<script>
+		!function(f,b,e,v,n,t,s){
+			if(f.fbq)
+				return;
+			n=f.fbq=function(){
+				n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+				if(!f._fbq)
+					f._fbq=n;
+				n.push=n;n.loaded=!0;
+				n.version='2.0';
+				n.queue=[];
+				t=b.createElement(e);
+				t.async=!0;
+				t.src=v;
+				s=b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t,s)
+			}
+			(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', '1644759925761845');
+			fbq('track', 'ViewContent');
+	</script>
+	<!--<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1644759925761845&ev=PageView&noscript=1"/></noscript>-->
+	
+	<div id="wishlist_edit_action_container"></div>
+
+{% endblock %}

@@ -75,4 +75,29 @@ def about_cinema(request):
 	return render(request, 'websites/about_cinema.html',{})
 
 def gift_card_detail(request):
-	return render(request, 'websites/gift_card_detail.html',{})
+	return render(request, 'websites/gift_card_detail.html',{} )
+
+def cgv_online(request):
+	return render(request, 'websites/cgv_online.html', {} )
+
+def careers(request):
+	return render(request, 'websites/careers.html', {})
+
+def contacts(request):
+	return render(request, 'websites/contacts.html', {})
+
+def terms_conditions(request):
+	return render(request, 'websites/terms_conditions.html', {})
+
+def terms_use(request):
+	return render(request, 'websites/terms_use.html', {})
+
+def payment_policy(request):
+	return render(request, 'websites/payment_policy.html', {})
+
+def privacy_policy(request):
+	return render(request, 'websites/privacy_policy.html', {})
+
+def faq(request):
+	return render(request, 'websites/faq.html', {})
+

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block container_class %}col2-left-layout{% endblock %} 
+
+{% block main_content %}
+					<div class="breadcrumbs" itemprop="breadcrumb">
+						<ul>
+							<li class="home">
+								<a href="#" title="Trở về trang chủ">Trang chủ</a>
+								<span>/ </span>
+							</li>
+							<li class="cms_page">
+								<strong>Chính sách bảo mật thông tin</strong>
+							</li>
+						</ul>
+					</div>
+					<div class="main">
+						<div class="col-left sidebar col-left-first"><div class="block block-cms-menu">
+							<div class="block-content">
+								<ul>
+									<li><a href="#"><span>Giới thiệu</span></a></li>
+									<li><a href="#"><span>Li&ecirc;n Hệ CGV</span></a></li>
+									<li><a href="#"><span>Điều khoản chung</span></a></li>
+									<li><a href="#"><span>Điều khoản giao dich</span></a></li>
+									<li><a href="#"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a></li>
+									<li class="active"><a href="#"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a></li>
+									<li><span><a href="#"><span>C&acirc;u hỏi thường gặp</span></a></span></li>
+								</ul>
+							</div>
+						</div>
+						<script type="text/javascript">// <![CDATA[
+						$j(".block-cms-menu li").each(function(){
+									var self = this;
+										href = $j(this).find('a');
+									for(var i = 0 ; i < href.length ; i++){
+										var harray = $j(href[i]).attr('href').split("/");
+										var charray = window.location.href.split("/");
+										if(harray[harray.length-2] == charray[charray.length-2]){
+											$j(self).addClass('active');
+											break;
+										}
+												}
+								});
+					// ]]></script></div>
+					<div class="col-main">
+						<div class="std"><div class="cms-page-title"><span style="color: #ff0000;"> <strong>CH&Iacute;NH S&Aacute;CH BẢO MẬT TH&Ocirc;NG TIN C&Aacute; NH&Acirc;N KH&Aacute;CH H&Agrave;NG</strong> </span></div>
+						<div class="cms-page-content privacy-policy-cms">
+							<div class="cms-tap">
+								<h3>1. Mục đ&iacute;ch v&agrave; phạm vi thu thập th&ocirc;ng tin</h3>
+								<p>1.1 Việc thu thập th&ocirc;ng tin c&aacute; nh&acirc;n được thực hiện tr&ecirc;n cơ sở kh&aacute;ch h&agrave;ng tự khai b&aacute;o để đăng k&yacute; th&agrave;nh vi&ecirc;n CGV tại website <a href="#" target="_blank">www.cgv.vn</a>, t&ugrave;y từng thời điểm, th&ocirc;ng tin thu thập sẽ bao gồm nhưng kh&ocirc;ng giới hạn ở:</p>
+								<ul>
+									<li>- Th&ocirc;ng tin c&aacute; nh&acirc;n như: họ t&ecirc;n, giới t&iacute;nh, độ tuổi, số CMND.</li>
+									<li>- Th&ocirc;ng tin li&ecirc;n lạc như: địa chỉ, số điện thoại di động, email/fax.</li>
+									<li>- C&aacute;c th&ocirc;ng tin kh&aacute;c phục vụ cho chương tr&igrave;nh kh&aacute;ch h&agrave;ng th&acirc;n thiết (nếu c&oacute;).</li>
+								</ul>
+								<p>1.2 Mục đ&iacute;ch thu thập th&ocirc;ng tin kh&aacute;ch h&agrave;ng bao gồm:</p>
+								<ul>
+									<li>(i) Cung cấp c&aacute;c dịch vụ, sản phẩm theo nhu cầu của kh&aacute;ch h&agrave;ng;</li>
+									<li>(ii) Li&ecirc;n hệ x&aacute;c nhận khi kh&aacute;ch h&agrave;ng đăng k&yacute; sử dụng dịch vụ, x&aacute;c lập giao dịch tr&ecirc;n website <a href="#" target="_blank">www.cgv.vn</a>;</li>
+									<li>(iii) Thực hiện việc quản l&yacute; website <a href="#" target="_blank">www.cgv.vn</a>, gửi th&ocirc;ng tin cập nhật về website, c&aacute;c chương tr&igrave;nh khuyến mại, ưu đ&atilde;i/tri &acirc;n tới kh&aacute;ch h&agrave;ng;</li>
+									<li>(iv) Bảo đảm quyền lợi của kh&aacute;ch h&agrave;ng khi ph&aacute;t hiện c&aacute;c h&agrave;nh động giả mạo, ph&aacute; hoại t&agrave;i khoản, lừa đảo kh&aacute;ch h&agrave;ng;</li>
+									<li>(v) Li&ecirc;n lạc, hỗ trợ, giải quyết với kh&aacute;ch h&agrave;ng trong c&aacute;c trường hợp đặc biệt.</li>
+								</ul>
+								<p>1.3 Để tr&aacute;nh nhầm lẫn, trong qu&aacute; tr&igrave;nh giao dịch thanh to&aacute;n tại website <a href="#" target="_blank">www.cgv.vn</a>, CGV chỉ lưu giữ th&ocirc;ng tin chi tiết về đơn h&agrave;ng đ&atilde; thanh to&aacute;n của kh&aacute;ch h&agrave;ng, c&aacute;c th&ocirc;ng tin về t&agrave;i khoản ng&acirc;n h&agrave;ng của kh&aacute;ch h&agrave;ng sẽ kh&ocirc;ng được lưu giữ.</p>
+							</div>
+							<div class="cms-tap">
+								<h3>2. Phạm vi sử dụng th&ocirc;ng tin</h3>
+								<p>2.1 CGV chỉ sử dụng th&ocirc;ng tin c&aacute; nh&acirc;n của kh&aacute;ch h&agrave;ng cho c&aacute;c mục đ&iacute;ch quy định tại Mục 1 hoặc mục đ&iacute;ch kh&aacute;c (nếu c&oacute;) với điều kiện đ&atilde; th&ocirc;ng b&aacute;o v&agrave; được sự đồng &yacute; của kh&aacute;ch h&agrave;ng.</p>
+								<p>2.2 CGV sẽ kh&ocirc;ng sử dụng th&ocirc;ng tin c&aacute; nh&acirc;n của kh&aacute;ch h&agrave;ng để gửi quảng c&aacute;o, giới thiệu dịch vụ v&agrave; c&aacute;c th&ocirc;ng tin c&oacute; t&iacute;nh thương mại kh&aacute;c khi chưa được kh&aacute;ch h&agrave;ng chấp thuận.</p>
+								<p>2.3 Kh&aacute;ch h&agrave;ng hiểu v&agrave; đồng &yacute; rằng CGV c&oacute; nghĩa vụ phải cung cấp th&ocirc;ng tin kh&aacute;ch h&agrave;ng theo y&ecirc;u cầu/quyết định của Cơ quan nh&agrave; nước c&oacute; thẩm quyền v&agrave;/hoặc quy định ph&aacute;p luật. CGV sẽ được miễn trừ mọi tr&aacute;ch nhiệm li&ecirc;n quan đến bảo mật th&ocirc;ng tin trong trường hợp n&agrave;y.</p>
+							</div>
+							<div class="cms-tap">
+								<h3>3. Thời gian lưu trữ th&ocirc;ng tin</h3>
+								<h5>Dữ liệu c&aacute; nh&acirc;n cơ bản của kh&aacute;ch h&agrave;ng đăng k&yacute; th&agrave;nh vi&ecirc;n CGV sẽ được lưu trữ cho đến khi c&oacute; y&ecirc;u cầu hủy bỏ hoặc tự th&agrave;nh vi&ecirc;n đăng nhập v&agrave; thực hiện đ&oacute;ng t&agrave;i khoản. Đối với c&aacute;c t&agrave;i khoản đ&atilde; đ&oacute;ng ch&uacute;ng t&ocirc;i vẫn lưu trữ th&ocirc;ng tin c&aacute; nh&acirc;n v&agrave; truy cập của kh&aacute;ch h&agrave;ng để phục vụ cho mục đ&iacute;ch ph&ograve;ng chống gian lận, điều tra, giải đ&aacute;p thắc mắc ... C&aacute;c th&ocirc;ng tin n&agrave;y sẽ được lưu trữ trong hệ thống m&aacute;y chủ tối đa mười hai (12) th&aacute;ng. Hết thời hạn n&agrave;y, CGV sẽ tiến h&agrave;nh x&oacute;a vĩnh viễn th&ocirc;ng tin c&aacute; nh&acirc;n của kh&aacute;ch h&agrave;ng.</h5>
+							</div>
+							<div class="cms-tap">
+								<h3>4. Th&ocirc;ng tin C&ocirc;ng ty</h3>
+								<div class="conpany-address-cms-tap">
+									<h2>C&Ocirc;NG TY TNHH CJ CGV VIỆT NAM (&ldquo;CGV&rdquo;)</h2>
+									<h3>MST: 0303675393</h3>
+									<h3>Địa chỉ: Lầu 10-11, 2bis-4-6 L&ecirc; Th&aacute;nh T&ocirc;n, Phường Bến Ngh&eacute;, Quận 1, TP. Hồ Ch&iacute; Minh</h3>
+									<h3>Điện thoại: 028. 3822 0333</h3>
+									<h3>Email: <a href="#">hoidap@cgv.vn</a></h3>
+								</div>
+							</div>
+							<div class="cms-tap">
+								<h3>5. C&aacute;ch thức chỉnh sửa dữ liệu c&aacute; nh&acirc;n</h3>
+								<h5>Để chỉnh sửa dữ liệu c&aacute; nh&acirc;n của m&igrave;nh tr&ecirc;n hệ thống thương mại điện tử của CGV, kh&aacute;ch h&agrave;ng c&oacute; thể tự đăng nhập v&agrave; chỉnh sửa th&ocirc;ng tin, dữ liệu c&aacute; nh&acirc;n.</h5>
+							</div>
+							<div class="cms-tap">
+								<h3>6. CGV cam kết</h3>
+								<p>6.1 Mọi th&ocirc;ng tin c&aacute; nh&acirc;n của kh&aacute;ch h&agrave;ng thu thập được từ website <a href="#" target="_blank">www.cgv.vn</a> sẽ được lưu giữ an to&agrave;n; chỉ c&oacute; kh&aacute;ch h&agrave;ng mới c&oacute; thể truy cập v&agrave;o t&agrave;i khoản c&aacute; nh&acirc;n của m&igrave;nh bằng t&ecirc;n đăng nhập v&agrave; mật khẩu do kh&aacute;ch h&agrave;ng chọn.</p>
+								<p>6.2 CGV cam kết bảo mật th&ocirc;ng tin, kh&ocirc;ng chia sẻ, tiết lộ, chuyển giao th&ocirc;ng tin c&aacute; nh&acirc;n của kh&aacute;ch h&agrave;ng, th&ocirc;ng tin giao dịch trực tuyến tr&ecirc;n website <a href="#" target="_blank">www.cgv.vn</a> cho bất kỳ b&ecirc;n thứ ba n&agrave;o khi chưa được sự đồng &yacute; của kh&aacute;ch h&agrave;ng, trừ trường hợp phải thực hiện theo y&ecirc;u cầu của c&aacute;c cơ quan Nh&agrave; nước c&oacute; thẩm quyền, hoặc theo quy định của ph&aacute;p luật hoặc việc cung cấp th&ocirc;ng tin đ&oacute; l&agrave; cần thiết để CGV cung cấp dịch vụ/ tiện &iacute;ch cho kh&aacute;ch h&agrave;ng</p>
+								<p>6.3 CGV, bằng nỗ lực tốt nhất của m&igrave;nh, sẽ &aacute;p dụng c&aacute;c giải ph&aacute;p c&ocirc;ng nghệ để ngăn chặn c&aacute;c h&agrave;nh vi đ&aacute;nh cắp hoặc tiếp cận th&ocirc;ng tin tr&aacute;i ph&eacute;p; sử dụng, thay đổi hoặc ph&aacute; hủy th&ocirc;ng tin tr&aacute;i ph&eacute;p. Tuy nhi&ecirc;n, CGV kh&ocirc;ng thể cam kết sẽ ngăn chặn được tất cả c&aacute;c h&agrave;nh vi x&acirc;m phạm, sử dụng th&ocirc;ng tin c&aacute; nh&acirc;n tr&aacute;i ph&eacute;p nằm ngo&agrave;i khả năng kiểm so&aacute;t của CGV. CGV sẽ kh&ocirc;ng chịu tr&aacute;ch nhiệm dưới bất kỳ h&igrave;nh thức n&agrave;o đối với bất kỳ khiếu nại, tranh chấp hoặc thiệt hại n&agrave;o ph&aacute;t sinh từ hoặc li&ecirc;n quan đến việc truy cập, x&acirc;m nhập, sử dụng th&ocirc;ng tin tr&aacute;i ph&eacute;p như vậy.</p>
+								<p>6.4 Trường hợp m&aacute;y chủ lưu trữ th&ocirc;ng tin bị hacker tấn c&ocirc;ng dẫn đến mất m&aacute;t dữ liệu c&aacute; nh&acirc;n, g&acirc;y ảnh hưởng xấu đến kh&aacute;ch h&agrave;ng, CGV sẽ ngay lập tức th&ocirc;ng b&aacute;o cho kh&aacute;ch h&agrave;ng v&agrave; tr&igrave;nh vụ việc cho cơ quan chức năng điều tra xử l&yacute;.</p>
+								<p>6.5 Đối với c&aacute;c giao dịch trực tuyến được thực hiện th&ocirc;ng qua website <a href="#" target="_blank">www.cgv.vn</a>, CGV kh&ocirc;ng lưu trữ th&ocirc;ng tin thẻ thanh to&aacute;n của kh&aacute;ch h&agrave;ng. Th&ocirc;ng tin t&agrave;i khoản, thẻ thanh to&aacute;n của kh&aacute;ch h&agrave;ng sẽ được c&aacute;c đối t&aacute;c cổng thanh to&aacute;n của CGV bảo vệ theo ti&ecirc;u chuẩn quốc tế.</p>
+								<p>6.6 Kh&aacute;ch h&agrave;ng c&oacute; nghĩa vụ bảo mật t&ecirc;n đăng k&yacute;, mật khẩu v&agrave; hộp thư điện tử của m&igrave;nh. CGV sẽ kh&ocirc;ng chịu tr&aacute;ch nhiệm dưới bất kỳ h&igrave;nh thức n&agrave;o đối với c&aacute;c thiệt hại, tổn thất (nếu c&oacute;) do kh&aacute;ch h&agrave;ng kh&ocirc;ng tu&acirc;n thủ quy định bảo mật n&agrave;y.</p>
+								<p>6.7 Kh&aacute;ch h&agrave;ng tuyệt đối kh&ocirc;ng được c&oacute; c&aacute;c h&agrave;nh vi sử dụng c&ocirc;ng cụ, chương tr&igrave;nh để can thiệp tr&aacute;i ph&eacute;p v&agrave;o hệ thống hay l&agrave;m thay dổi dữ liệu của CGV. Trong trường hợp CGV ph&aacute;t hiện kh&aacute;ch h&agrave;ng c&oacute; h&agrave;nh vi cố t&igrave;nh giả mạo, gian lận, ph&aacute;t t&aacute;n th&ocirc;ng tin c&aacute; nh&acirc;n tr&aacute;i ph&eacute;p &hellip; CGV c&oacute; quyền chuyển th&ocirc;ng tin c&aacute; nh&acirc;n của kh&aacute;ch h&agrave;ng cho c&aacute;c cơ quan c&oacute; thẩm quyền để xử l&yacute; theo quy định của ph&aacute;p luật.</p>
+							</div>
+						</div>
+					</div>                
+				</div>
+				<div class="col-left sidebar"></div>
+			</div>
+{% endblock %}
