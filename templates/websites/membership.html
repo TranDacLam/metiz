@@ -3,10 +3,7 @@
 {% load i18n %}
 
 {% block title %}Helio{% endblock title %}
-{% block extrascript %}
 
-
-{% endblock %}
 {% block main_content %}
 <div class="breadcrumbs" itemprop="breadcrumb">
     <ul>
@@ -31,7 +28,7 @@
                         <p><img alt="" src="{{ STATIC_URL }}assets/websites/images/thanhvien-cgv/popcorn-member.png" /></p>
                     </div>
                     <div class="col-right-content-member">
-                        <div class="cgv-membership">
+                        <div class="cgv-membership ui-tabs">
                             <ul>
                                 <li><a href="#customer-points">CHƯƠNG TR&Igrave;NH <br /> ĐIỂM THƯỞNG</a></li>
                                 <li><a href="#birthday-gift">QU&Agrave; TẶNG <br /> SINH NHẬT</a></li>
@@ -222,7 +219,7 @@
     </div>
 </div>
                                         
-                                    <script src="/js/lib/jquery/jquery-ui.js" type="text/javascript"></script>
+                                    <script src="{{ STATIC_URL }}assets/js/jquery-ui.js" type="text/javascript"></script>
                                     <script type="text/javascript">// <![CDATA[
                                     $j(document).ready(function(){
                                                         $j( ".cgv-membership" ).tabs();
