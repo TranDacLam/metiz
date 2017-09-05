@@ -34,11 +34,17 @@ urlpatterns = [
     url(r'^movie_voucher/$', views.movie_voucher),
     url(r'^account_create/$', views.account_create),
     url(r'^account_login/$', views.account_login),
+    url(r'^account_findmember/$', views.account_findmember),
+    url(r'^account_forgot_password/$', views.account_forgot_password),
     url(r'^arthouse/$', views.arthouse),
     url(r'^showing/$', views.showing),
+    url(r'^movie_voucher/$', views.movie_voucher),
+    url(r'^about_cinema/$', views.about_cinema),
+    url(r'^gift_card_detail/$', views.gift_card_detail),
     url(r'^special/sweetbox/$', views.sweetbox),
     url(r'^special/4dx/$', views.show_4dx),
     url(r'^special/dolby-atmos/$', views.dolby_atmos),
+3
 ]
 
 if settings.DEBUG:

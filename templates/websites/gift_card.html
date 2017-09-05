@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+
+{% block title %}Helio {% endblock title %}
+
+{% block main_content %}
+<div class="breadcrumbs" itemprop="breadcrumb">
+	<ul>
+		<li class="home">
+			<a href="#" title="Trở về trang chủ">Trang chủ</a>
+			<span>/ </span>
+		</li>
+		<li class="category11">
+			<a href="#" title="">Online Store (Test)</a>
+			<span>/ </span>
+		</li>
+		<li class="category17">
+			<strong>Thẻ Quà Tặng</strong>
+		</li>
+	</ul>
+</div>
+<div class="main">
+	<div class="col-main">
+		
+		<div class="category-cgv-voucher">
+			<ul>
+				<li>
+					<a href="#" class="movie-voucher">Voucher Phim</a>
+				</li>
+				
+				<li class="active">
+					<a class="gift-card">Thẻ Quà Tặng</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		<div class="page-title category-title">
+			<h1>Thẻ Quà Tặng</h1>
+		</div>
+		<div class="category-products cgv-voucher-cate">
+			<ul class="products-grid products-grid--max-3-col">
+				<li class="film-lists item last">
+					<div class="product-info">
+						<h2 class="product-name"><a href="#" title="Thẻ Quà Tặng - 300.000đ">Thẻ Quà Tặng - 300.000đ</a></h2>
+						
+						<span class="price">300.000,00 ₫</span>
+						<!--button type="button" title="Mua" class="button btn-giftcard" onclick="buy(255, 'T15GoMUUH8ENNEfK')"-->
+						<button onclick="location.href='#'" type="button" title="Mua" class="button btn-giftcard">
+						<span><span>Mua</span></span>
+						</button>
+						
+						<div class="short-descriptions">
+							<div class="std">Có giá trị như tiền mặt</div>
+						</div>
+					</div>
+					
+					<a href="#" title="GiftCard_300K" class="product-image">
+						<img id="product-collection-image-255" src="{{ STATIC_URL }}assets/websites/images/gift_card_-_cinox_1.png" alt="GiftCard_300K" />
+					</a>
+				</li>
+				<li class="film-lists item last">
+					<div class="product-info">
+						<h2 class="product-name"><a href="#" title="Thẻ Quà Tặng - 500.000đ">Thẻ Quà Tặng - 500.000đ</a></h2>
+						
+						<span class="price">500.000,00 ₫</span>
+						<!--button type="button" title="Mua" class="button btn-giftcard" onclick="buy(263, 'T15GoMUUH8ENNEfK')"-->
+						<button onclick="location.href='#'" type="button" title="Mua" class="button btn-giftcard">
+						<span><span>Mua</span></span>
+						</button>
+						
+						<div class="short-descriptions">
+							<div class="std">Có giá trị như tiền mặt</div>
+						</div>
+					</div>
+					
+					<a href="#" title="GiftCard_500K" class="product-image">
+						<img id="product-collection-image-263" src="{{ STATIC_URL }}assets/websites/images/gift_card_-_cinox_1.png" alt="GiftCard_500K" />
+					</a>
+				</li>
+			</ul>
+			<script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+		</div>
+		<style>
+			.products-grid .product-info {
+				padding-bottom: 20px !important;
+			}
+		</style>
+		<div id="loading-mask" style="left: -2px; top: 0px;">
+			<p class="loader" id="loading_mask_loader">
+				<img src="{{ STATIC_URL }}assets/websites/images/ajax-loader.gif" alt="Loading...">
+			<br>Đang tải thông tin...	</p>
+		</div>
+		<script type="text/javascript">
+		//<![CDATA[
+			function buy(id, formkey) {
+				/*
+				* Check customer availability
+				*/
+				var login = '';
+				if (login == 1) {
+					$j.ajax({
+						type: 'POST',
+						url: '#',
+						data: {id : id, form_key : formkey},
+						beforeSend: function(){
+							$j('#loading-mask').show();
+						}
+									}).done(function(response) {
+						if (response.success == 1) {
+							// var msg = response.message;
+							// if (Object.isArray(msg)) {
+								// msg = msg.join("\n").stripTags().toString();
+							// }
+							
+							// if (msg) {
+								// alert(msg);
+							// }
+							
+							location.href = encodeURI('#');
+							return;
+						} else {
+							var msg = response.error;
+							if (Object.isArray(msg)) {
+								msg = msg.join("\n").stripTags().toString();
+							}
+							
+							if (msg) {
+								alert(msg);
+							}
+						}
+						
+						$j('#loading-mask').hide();
+					})
+				} else {
+					location.href = encodeURI('#');
+					return;
+				}
+			}
+		//]]>
+		</script>
+		<style>
+		.category-movie-voucher .page-title h1{
+			margin-bottom: 0;
+		}
+		.category-movie-voucher .category-title{
+			margin-bottom: 35px;
+			clear: both;
+		}
+		.category-gift-card .category-title{
+			clear: both;
+		}
+		.category-movie-voucher .btn-giftcard{
+			/*background: url(../images/btn_buy_grey.png) no-repeat !important;*/
+		}
+		.category-movie-voucher .products-grid li .product-info{
+			text-align: left;
+		}
+		</style>
+		<script type="text/javascript">
+		var phone = '2124771050',
+		formatted = phone.substr(0, 3) + '****' + phone.substr(phone.length-3,3);
+		//console.log(formatted);
+	</script>                
+	</div>
+</div>
+
+{% endblock %}

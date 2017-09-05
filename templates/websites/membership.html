@@ -1,0 +1,249 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+
+{% block title %}Helio{% endblock title %}
+
+{% block main_content %}
+<div class="breadcrumbs" itemprop="breadcrumb">
+    <ul>
+        <li class="home">
+            <a href="#" title="Trở về trang chủ">Trang chủ</a>
+            <span>/ </span>
+        </li>
+        <li class="cms_page">
+            <strong>CGV Membership</strong>
+        </li>
+    </ul>
+</div>
+<div class="main">
+    <div class="col-main">
+        <div class="std">
+            <div class="cms-diem-thuong">
+                <div class="title-cgv-member-bg">
+                    <h1>CGV MEMBERSHIP</h1>
+                </div>
+                <div class="cms-content-diem-thuong">
+                    <div class="col-left-content-member">
+                        <p><img alt="" src="{{ STATIC_URL }}assets/websites/images/thanhvien-cgv/popcorn-member.png" /></p>
+                    </div>
+                    <div class="col-right-content-member">
+                        <div class="cgv-membership ui-tabs">
+                            <ul>
+                                <li><a href="#customer-points">CHƯƠNG TR&Igrave;NH <br /> ĐIỂM THƯỞNG</a></li>
+                                <li><a href="#birthday-gift">QU&Agrave; TẶNG <br /> SINH NHẬT</a></li>
+                                <li><a href="#cgv-vip">CẤP ĐỘ <br /> TH&Agrave;NH VI&Ecirc;N</a></li>
+                                <li class="membership-manager-account"><a href="#customer-manager">QUẢN L&Yacute; <br /> T&Agrave;I KHOẢN</a></li>
+                                <li><a href="#cgv-support">BẠN CẦN <br /> HỖ TRỢ?</a></li>
+                                
+                            </ul>
+                            <div class="lyt-history-content" id="customer-points">
+                                <div class="outer">
+                                    <div class="inner">
+                                        <div class="lyt-heading">CHƯƠNG TR&Igrave;NH ĐIỂM THƯỞNG</div>
+                                        <div class="lyt-details-content">
+                                            <p>Chương tr&igrave;nh bao gồm 4 đối tượng th&agrave;nh vi&ecirc;n: <strong>CGV Young | CGV Member | CGV VIP v&agrave; CGV VVIP</strong>, với những quyền lợi v&agrave; mức ưu đ&atilde;i kh&aacute;c nhau. Mỗi khi thực hiện giao dịch tại hệ thống rạp CGV, bạn sẽ nhận ngay một số điểm thưởng nhất định. <br /><br /> H&atilde;y t&iacute;ch luỹ thật nhiều điểm thưởng để n&acirc;ng cấp th&agrave;nh vi&ecirc;n v&agrave; đổi v&eacute; xem phim, thức uống hoặc combo tương ứng!&nbsp;Bạn sẽ c&oacute; thể n&acirc;ng hạng thẻ th&agrave;nh vi&ecirc;n của m&igrave;nh v&agrave;o cuối năm nếu t&iacute;ch lũy đủ điểm th&agrave;nh vi&ecirc;n tương ứng cho năm tiếp theo. Mức điểm t&iacute;ch lũy được n&acirc;ng hạng thẻ sẽ được th&ocirc;ng b&aacute;o v&agrave;o mỗi cuối năm.</p>
+                                            <table border="0" style="width: 100%;">
+                                                <tbody>
+                                                    <tr><th>Điểm thưởng</th><th>Young / Member / VIP</th><th>VVIP</th></tr>
+                                                    <tr class="odd">
+                                                        <td><strong>Tại Quầy V&eacute;</strong></td>
+                                                        <td><strong>5%</strong></td>
+                                                        <td><strong>10%</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>VD: 100.000 VND</td>
+                                                        <td>5 Điểm</td>
+                                                        <td>10 Điểm</td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        <td><strong>Quầy Bắp Nước</strong></td>
+                                                        <td><strong>3%</strong></td>
+                                                        <td><strong>3%</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>VD: 100.000 VND</td>
+                                                        <td>3 Điểm</td>
+                                                        <td>3 Điểm</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p>Sau khi thực hiện giao dịch, điểm thưởng sẽ được ghi nhận v&agrave;o t&agrave;i khoản của bạn v&agrave;o ng&agrave;y tiếp theo. Điểm thưởng n&agrave;y sẽ được d&ugrave;ng để thanh to&aacute;n hoặc quy đổi tại tất cả c&aacute;c rạp CGV tr&ecirc;n to&agrave;n quốc.</p>
+                                            <p>V&iacute; dụ: với giao dịch mua v&eacute; với gi&aacute; 100.000 VND bạn c&oacute; thể:<br /><span style="display: block: padding-left: 20px;"> - Thanh to&aacute;n 80.000 VND + 20 điểm thưởng<br /> - Hoặc thanh to&aacute;n với 0 VND + 100 điểm thưởng </span></p>
+                                            <p>* Bạn c&oacute; thể dễ d&agrave;ng kiểm tra số điểm của m&igrave;nh tại <a href="#" target="_blank">www.cgv.vn/customer/account/</a></p>
+                                            <p>Điểm thưởng của bạn c&oacute; thời hạn sử dụng l&agrave; 02 năm.</p>
+                                            <p>VD: Điểm của bạn được nhận v&agrave;o 0h00 ng&agrave;y 1/1/2015 sẽ kết th&uacute;c v&agrave;o l&uacute;c 0h00 ng&agrave;y 1/1/2017.</p>
+                                        </div>
+                                        <!-- .lyt-details-content -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lyt-reg-content" id="birthday-gift">
+                                <div class="outer">
+                                    <div class="inner">
+                                        <div class="lyt-heading">QU&Agrave; TẶNG SINH NHẬT</div>
+                                        <div class="lyt-details-content">
+                                            <p>C&ugrave;ng ch&agrave;o đ&oacute;n ng&agrave;y Sinh Nhật với những phần qu&agrave; đặc biệt m&agrave; CGV d&agrave;nh tặng bạn</p>
+                                            <p style="display: block: padding-left: 20px;">- CGV Young: 01 CGV Combo miễn ph&iacute;</p>
+                                            <p>* Đặc biệt sinh nhật lần thứ 19 CGV Young sẽ nhận được th&ecirc;m 01 v&eacute; xem phim 2D miễn ph&iacute;</p>
+                                            <p style="display: block: padding-left: 20px;">- CGV Member: 01 CGV Combo miễn ph&iacute;.</p>
+                                            <p style="display: block: padding-left: 20px;">- CGV VIP: 01 CGV Combo + 01 v&eacute; xem phim 2D miễn ph&iacute;.</p>
+                                            <p style="display: block: padding-left: 20px;">- CGV VVIP: 01 CGV Combo + 01 v&eacute; xem phim 2D miễn ph&iacute;</p>
+                                            <p>Bạn sẽ nhận được ưu đ&atilde;i n&agrave;y trong th&aacute;ng sinh nhật của m&igrave;nh (th&aacute;ng sinh nhật được t&iacute;nh từ ng&agrave;y sinh nhật đến hết 30 ng&agrave;y sau đ&oacute;)</p>
+                                            <p>VD: sinh nhật bạn l&agrave; ng&agrave;y 01/01/2017 vậy thời gian để bạn nhận qu&agrave; l&agrave; từ 01/01/2017 đến hết ng&agrave;y 30/01/2017</p>
+                                            <p style="display: block: font-weight: bold; text-decoration: underline;"><strong>Lưu &yacute;:</strong></p>
+                                            <p style="display: block: padding-left: 20px;">- Chỉ những th&agrave;nh vi&ecirc;n c&oacute; &iacute;t nhất 01 giao dịch trong v&ograve;ng 12 th&aacute;ng gần nhất (trước th&aacute;ng sinh nhật) mới nhận được Qu&agrave; tặng Sinh nhật từ CGV. Nếu kh&aacute;ch h&agrave;ng giao dịch bổ sung phải 02 ng&agrave;y sau mới c&oacute; thể nhận phần qu&agrave; sinh nhật. <br /> - Nếu ng&agrave;y sinh của bạn rơi v&agrave;o ng&agrave;y 29/02, c&aacute;c ưu đ&atilde;i sẽ được &aacute;p dụng theo ng&agrave;y 28/02. <br /> - Bạn cần c&oacute; ng&agrave;y sinh tr&ecirc;n CMND khớp với ng&agrave;y sinh v&agrave; số CMND đ&atilde; đăng k&yacute; t&agrave;i khoản. Vui l&ograve;ng xuất tr&igrave;nh thẻ th&agrave;nh vi&ecirc;n CGV v&agrave; CMND khi đến nhận qu&agrave; tặng. <br /> - Nếu t&agrave;i khoản được đăng k&yacute; với ng&agrave;y sinh kh&ocirc;ng ch&iacute;nh x&aacute;c, v&agrave; ng&agrave;y sinh đ&atilde; qua, chương tr&igrave;nh sẽ được &aacute;p dụng cho ng&agrave;y sinh nhật v&agrave;o năm kế tiếp. <br /> - Thành vi&ecirc;n c&acirc;̀n đăng ký tài khoản ít nh&acirc;́t 72 giờ trước ngày sinh nh&acirc;̣t của mình đ&ecirc;̉ được nh&acirc;̣n ưu đãi. <br /> - CGV Combo miễn ph&iacute; sẽ bao gồm 2 nước lớn v&agrave; 1 bắp lớn. <br /> -&nbsp;V&eacute; miễn ph&iacute; l&agrave; v&eacute; 2D h&agrave;ng ghế VIP. V&eacute; sẽ được tặng t&ugrave;y theo số lượng ghế trống tại rạp. Nếu suất chiếu đ&atilde; hết ghế VIP bạn vui l&ograve;ng đổi sang suất chiếu kh&aacute;c<br /> - C&aacute;c phần qu&agrave; tặng kh&ocirc;ng c&oacute; gi&aacute; trị quy đổi th&agrave;nh tiền mặt. <br /> - Để thay đổi th&ocirc;ng tin ng&agrave;y sinh v&agrave; giới t&iacute;nh của m&igrave;nh, bạn c&oacute; thể li&ecirc;n hệ với CGV qua email <a href="#">hoidap@cgv.vn</a>.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lyt-history-content" id="cgv-vip">
+                                <div class="outer">
+                                    <div class="inner">
+                                        <div class="lyt-heading">CẤP ĐỘ TH&Agrave;NH VI&Ecirc;N</div>
+                                        <div class="lyt-details-content accordion">
+                                            <h3 id="member">CGV MEMBER</h3>
+                                            <div class="member">
+                                                <p>Chương tr&igrave;nh th&agrave;nh vi&ecirc;n CGV l&agrave; chương tr&igrave;nh th&agrave;nh vi&ecirc;n dựa tr&ecirc;n điểm t&iacute;ch lũy d&agrave;nh cho c&aacute;c kh&aacute;ch h&agrave;ng th&acirc;n thiết từ 19 tuổi trở l&ecirc;n của CGV, kh&aacute;ch h&agrave;ng sẽ tận hưởng những ưu đ&atilde;i sau:</p>
+                                                <p style="display: block: padding-left: 20px;">- 01 CGV Combo v&agrave;o th&aacute;ng sinh nhật.</p>
+                                                <p style="display: block: padding-left: 20px;">- T&iacute;ch lũy điểm 5% gi&aacute; trị giao dịch tại quầy v&eacute; v&agrave; 3% gi&aacute; trị giao dịch tại quầy bắp nước.</p>
+                                                <p style="display: block: padding-left: 20px;">- Cơ hội tham gia những chương tr&igrave;nh đặc biệt kh&aacute;c chỉ &aacute;p dụng cho th&agrave;nh vi&ecirc;n CGV.</p>
+                                            </div>
+                                            <h3 id="member-young">CGV YOUNG</h3>
+                                            <div class="member-young">
+                                                <p>Chương tr&igrave;nh th&agrave;nh vi&ecirc;n CGV Young l&agrave; chương tr&igrave;nh th&agrave;nh vi&ecirc;n dựa tr&ecirc;n điểm t&iacute;ch lũy d&agrave;nh cho c&aacute;c kh&aacute;ch h&agrave;ng độ tuổi từ 12 -18 tuổi của CGV, kh&aacute;ch h&agrave;ng sẽ được tận hưởng những ưu đ&atilde;i sau:</p>
+                                                <p style="display: block: padding-left: 20px;">- Gi&aacute; v&eacute; ưu đ&atilde;i cho c&aacute;c phim 2D, 3D.</p>
+                                                <p style="display: block: padding-left: 20px;">- 01 CGV Combo v&agrave;o th&aacute;ng sinh nhật.</p>
+                                                <p style="display: block: padding-left: 20px;">- 01 v&eacute; 2D miễn ph&iacute; v&agrave;o th&aacute;ng sinh nhật lần thứ 19.</p>
+                                                <p style="display: block: padding-left: 20px;">- T&iacute;ch lũy điểm 5% gi&aacute; trị giao dịch tại quầy v&eacute; v&agrave; 3% gi&aacute; trị giao dịch tại quầy bắp nước.</p>
+                                            </div>
+                                            <h3 id="vip">TH&Agrave;NH VI&Ecirc;N VIP 2017</h3>
+                                            <div class="vip">
+                                                <p>C&aacute;c kh&aacute;ch h&agrave;ng c&oacute; tổng chi ti&ecirc;u trong năm <strong>2016 từ 4.500.000 VNĐ &ndash; 9.000.000 VNĐ</strong> sẽ trở th&agrave;nh th&agrave;nh vi&ecirc;n VIP của CGV trong năm 2017 v&agrave; tận hưởng những ưu đ&atilde;i sau:</p>
+                                                <ul>
+                                                    <li>- 02 v&eacute; 2D miễn ph&iacute; &aacute;p dụng cho ng&agrave;y trong tuần.</li>
+                                                    <li>- 01 v&eacute; 2D miễn ph&iacute; &aacute;p dụng cho ng&agrave;y cuối tuần.</li>
+                                                    <li>- 01 v&eacute; 3D miễn ph&iacute; &aacute;p dụng cho ng&agrave;y trong tuần.</li>
+                                                    <li>- 01 v&eacute; 3D miễn ph&iacute; &aacute;p dụng cho ng&agrave;y cuối tuần.</li>
+                                                    <li>- 01 CGV combo miễn ph&iacute;</li>
+                                                    <li>- Nhận ngay 01 CGV Combo v&agrave; 01 v&eacute; xem phim 2D trong th&aacute;ng sinh nhật.</li>
+                                                    <li>- T&iacute;ch lũy điểm 5% gi&aacute; trị giao dịch tại quầy v&eacute; v&agrave; 3% gi&aacute; trị giao dịch tại quầy bắp nước.</li>
+                                                </ul>
+                                                <p><strong>Ghi Ch&uacute;:</strong></p>
+                                                <ul>
+                                                    <li>- Kh&aacute;ch h&agrave;ng c&oacute; thể đến đổi thẻ th&agrave;nh vi&ecirc;n mới từ ng&agrave;y 1/1/2017</li>
+                                                    <li>- M&ocirc;̃i ưu đãi được sử dụng 01 l&acirc;̀n duy nh&acirc;́t</li>
+                                                    <li>- Để tận hưởng c&aacute;c quyền lợi, bạn chỉ cần xuất tr&igrave;nh thẻ VIP v&agrave; y&ecirc;u cầu &aacute;p dụng ưu đ&atilde;i tại quầy v&eacute; khi giao dịch.</li>
+                                                    <li>- C&aacute;c ưu đ&atilde;i v&eacute; xem phim 2D, 3D kh&ocirc;ng &aacute;p dụng tại c&aacute;c rạp chiếu phim đặc biệt: 4DX, IMAX, GOLD CLASS, STARIUM, PREMIUM, L&rsquo;AMOUR, ghế SWEETBOX, cũng như Suất Chiếu Sớm v&agrave; Suất Chiếu Đặc Biệt.</li>
+                                                    <li>- C&aacute;c ưu đ&atilde;i v&eacute; xem phim 2D, 3D kh&ocirc;ng được &aacute;p dụng cho c&aacute;c ng&agrave;y lễ, Tết, ngoại trừ v&eacute; 2D trong tuần sinh nhật.</li>
+                                                    <li>- C&aacute;c v&eacute; xem phim 3D c&oacute; thể chuyển sang 2D.</li>
+                                                    <li>-&nbsp;V&eacute; ưu đ&atilde;i l&agrave; h&agrave;ng ghế VIP, trong trường hợp suất chiếu hết ghế VIP bạn vui l&ograve;ng chuyển sang suất chiếu kh&aacute;c</li>
+                                                    <li>-&nbsp;Ưu đ&atilde;i v&eacute; xem phim miễn ph&iacute;: sử dụng tối đa 01 v&eacute;/01 ng&agrave;y</li>
+                                                    <li>- Th&aacute;ng sinh nhật được t&iacute;nh từ ng&agrave;y sinh nhật cho đến 30 ng&agrave;y sau đ&oacute;.</li>
+                                                    <li>- CGV Combo bao gồm: 01 bắp lớn + 02 nước ngọt lớn.</li>
+                                                    <li>- &Aacute;p dụng cho cả 2 h&igrave;nh thức mua v&eacute; trực tuyến v&agrave; trực tiếp tại rạp</li>
+                                                    <li>- Cấp độ th&agrave;nh vi&ecirc;n chỉ c&oacute; gi&aacute; trị trong v&ograve;ng 01 năm từ 01/01/2017 - 31/12/2017. Chỉ ti&ecirc;u t&iacute;ch lũy của c&aacute;c hạng thẻ sẽ được thay đổi v&agrave;o mỗi cuối năm, cũng như c&aacute;c đặc quyền k&egrave;m theo của hạng thẻ tương ứng.</li>
+                                                </ul>
+                                            </div>
+                                            <h3 id="vvip">TH&Agrave;NH VI&Ecirc;N VVIP 2017</h3>
+                                            <div class="vvip">
+                                                <p>C&aacute;c kh&aacute;ch h&agrave;ng c&oacute; tổng chi ti&ecirc;u trong năm <strong>2016 tr&ecirc;n 9.000.000 VND</strong> sẽ trở th&agrave;nh th&agrave;nh vi&ecirc;n VVIP của CGV trong năm 2017. L&agrave; th&agrave;nh vi&ecirc;n ở cấp độ cao nhất, bạn sẽ được tận hưởng những đặc quyền chỉ d&agrave;nh ri&ecirc;ng cho VVIP:</p>
+                                                <ul>
+                                                    <li>- 01 phần qu&agrave; VVIP (bao gồm 1 Movie Pass v&agrave; 1 cục sạc dự ph&ograve;ng CGV độc đ&aacute;o) .</li>
+                                                    <li>- 02 V&eacute; 2D miễn ph&iacute; &aacute;p dụng cho ng&agrave;y trong tuần.</li>
+                                                    <li>- 01 V&eacute; 2D miễn ph&iacute; &aacute;p dụng cho ng&agrave;y cuối tuần.</li>
+                                                    <li>- 01 V&eacute; 3D miễn ph&iacute; &aacute;p dụng cho ng&agrave;y trong tuần.</li>
+                                                    <li>- 01 V&eacute; 3D miễn ph&iacute; &aacute;p dụng cho ng&agrave;y cuối tuần.</li>
+                                                    <li>- 02 v&eacute; 2D miễn ph&iacute; &aacute;p dụng cho Suất Chiếu Sớm (Early Release) hoặc Suất Chiếu Đặc Biệt (Sneakshow) .</li>
+                                                    <li>- 02 CGV combo miễn ph&iacute;.</li>
+                                                    <li>- Nhận ngay 01 CGV Combo v&agrave; 01 v&eacute; xem phim 2D trong th&aacute;ng sinh nhật.</li>
+                                                    <li>- T&iacute;ch lũy điểm 10% gi&aacute; trị giao dịch tại quầy v&eacute; v&agrave; 3% gi&aacute; trị giao dịch tại quầy bắp nước.</li>
+                                                    <li>- V&agrave; cơ hội tham gia nhiều chương tr&igrave;nh đặc biệt hấp dẫn d&agrave;nh ri&ecirc;ng cho VVIP.</li>
+                                                </ul>
+                                                <p><strong>Ghi Ch&uacute;:</strong></p>
+                                                <ul>
+                                                    <li>
+                                                        <p>- Kh&aacute;ch h&agrave;ng c&oacute; thể đến đổi thẻ th&agrave;nh vi&ecirc;n mới từ ng&agrave;y 1/1/2017</p>
+                                                    </li>
+                                                    <li><span>- &nbsp;Kh&aacute;ch h&agrave;ng sẽ nhận phần qu&agrave; đặc biệt của VVIP từ ng&agrave;y 15/3/2017</span></li>
+                                                    <li>- M&ocirc;̃i ưu đãi được sử dụng 01 l&acirc;̀n duy nh&acirc;́t.</li>
+                                                    <li>- Để tận hưởng c&aacute;c quyền lợi tr&ecirc;n, bạn chỉ cần xuất tr&igrave;nh thẻ VVIP v&agrave; y&ecirc;u cầu &aacute;p dụng ưu đ&atilde;i tại quầy v&eacute; khi giao dịch.</li>
+                                                    <li>- C&aacute;c ưu đ&atilde;i v&eacute; xem phim 2D, 3D kh&ocirc;ng &aacute;p dụng tại c&aacute;c rạp chiếu phim đặc biệt: 4DX, IMAX, GOLD CLASS, STARIUM, PREMIUM, L&rsquo;AMOUR, ghế SWEETBOX, cũng như Suất Chiếu Sớm v&agrave; Suất Chiếu Đặc Biệt.</li>
+                                                    <li>- C&aacute;c ưu đ&atilde;i v&eacute; xem phim 2D, 3D kh&ocirc;ng được &aacute;p dụng cho c&aacute;c ng&agrave;y lễ, Tết, ngoại trừ v&eacute; 2D trong tuần sinh nhật.</li>
+                                                    <li>- C&aacute;c v&eacute; xem phim 3D c&oacute; thể chuyển sang 2D.</li>
+                                                    <li>-&nbsp;V&eacute; ưu đ&atilde;i l&agrave; h&agrave;ng ghế VIP, trong trường hợp suất chiếu hết ghế VIP bạn vui l&ograve;ng chuyển sang suất chiếu kh&aacute;c</li>
+                                                    <li>-&nbsp;Ưu đ&atilde;i v&eacute; miễn ph&iacute;: sử dụng tối đa 01 v&eacute;/01 ng&agrave;y</li>
+                                                    <li>- Ưu đ&atilde;i 02 CGV Combo: sử dụng tối đa 01 combo/01 ng&agrave;y.</li>
+                                                    <li>- Movie Pass trong phần qu&agrave; VVIP kh&aacute;ch h&agrave;ng c&oacute; thể lựa chọn 01 trong 02 h&igrave;nh thức ưu đ&atilde;i sau:.
+                                                        <p style="display: block: padding-left: 20px;">+ Lựa chọn 1: 01 v&eacute; xem phim &aacute;p dụng cho c&aacute;c ph&ograve;ng chiếu đặc biệt (bao gồm: 4DX, Goldclass, IMAX, Starium, Premium, Sweetbox). Trong trường hợp chọn ghế Sweetbox, bạn vui l&ograve;ng mua th&ecirc;m 1 v&eacute; để sử dụng.</p>
+                                                        <p style="display: block: padding-left: 20px;">+ Lựa chọn 2: 01 v&eacute; xem phim &aacute;p dụng cho c&aacute;c ph&ograve;ng chiếu 2D hoặc 3D đi k&egrave;m 01 CGV Combo.</p>
+                                                    </li>
+                                                    <li>- Th&aacute;ng sinh nhật được t&iacute;nh từ ng&agrave;y sinh nhật cho đến 30 ng&agrave;y sau đ&oacute;..</li>
+                                                    <li>- CGV Combo bao gồm: 01 bắp lớn + 02 nước ngọt lớn.</li>
+                                                    <li>-&nbsp;&Aacute;p dụng cho cả 2 h&igrave;nh thức mua v&eacute; trực tuyến v&agrave; trực tiếp tại rạp</li>
+                                                    <li>- Cấp độ th&agrave;nh vi&ecirc;n chỉ c&oacute; gi&aacute; trị trong v&ograve;ng 01 năm từ 01/01/2017 - 31/12/2017. Chỉ ti&ecirc;u t&iacute;ch lũy của c&aacute;c hạng thẻ sẽ được thay đổi v&agrave;o mỗi cuối năm, cũng như c&aacute;c đặc quyền k&egrave;m theo của hạng thẻ tương ứng.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lyt-history-content" id="customer-manager">
+                                <div class="outer">
+                                    <div class="inner">
+                                        <div class="lyt-heading">QUẢN L&Yacute; T&Agrave;I KHOẢN</div>
+                                        <div class="lyt-details-content">
+                                            <p>Website của CGV <a href="#" target="_blank">www.cgv.vn/member</a> gi&uacute;p bạn dễ d&agrave;ng quản l&yacute; t&agrave;i khoản th&agrave;nh vi&ecirc;n của m&igrave;nh. Sau khi đăng nhập v&agrave;o hệ thống, bạn c&oacute; thể:<br /> <span style="display: block: padding-left: 20px;"> - Kiểm tra v&agrave; chỉnh sửa th&ocirc;ng tin t&agrave;i khoản <br /> - Đặt v&eacute; xem phim v&agrave; thanh to&aacute;n trực tuyến<br /> - Kiểm tra điểm thưởng, qu&aacute; tr&igrave;nh t&iacute;ch luỹ, v&agrave; đổi điểm thưởng <br /> - Cập nhật những chương tr&igrave;nh khuyến m&atilde;i mới nhất d&agrave;nh ri&ecirc;ng cho th&agrave;nh vi&ecirc;n <br /> - Li&ecirc;n hệ với Bộ phận hỗ trợ kh&aacute;ch h&agrave;ng để được hỗ trợ tức th&igrave; <br /> - Lựa chọn c&aacute;c k&ecirc;nh nhận tin qua email v&agrave; tin nhắn </span></p>
+                                            <p>Mỗi tuần, c&aacute;c th&agrave;nh vi&ecirc;n sẽ nhận được <strong>Bản tin điện ảnh CGV</strong> qua email, cập nhật những tin tức mới nhất về phim ảnh, sự kiện v&agrave; khuyến m&atilde;i. H&atilde;y gh&eacute; thăm <a href="#" target="_blank">www.cgv.vn/member</a> v&agrave; cập nhật ngay email, điện thoại v&agrave; địa chỉ của bạn để lu&ocirc;n nhận được những th&ocirc;ng b&aacute;o mới nhất từ CGV!</p>
+                                        </div>
+                                    </div>
+                                    <!-- .lyt-details-content -->
+                                </div>
+                            </div>
+                            <div class="lyt-history-content" id="cgv-support">
+                                <div class="outer">
+                                    <div class="inner">
+                                        <div class="lyt-heading">BẠN CẦN HỖ TRỢ?</div>
+                                        <div class="lyt-details-content">
+                                            <p>Với những ưu đ&atilde;i hấp dẫn từ chương tr&igrave;nh th&agrave;nh vi&ecirc;n, CGV hy vọng sẽ n&acirc;ng trải nghiệm điện ảnh của bạn l&ecirc;n một tầm cao mới. H&atilde;y li&ecirc;n hệ ngay với Bộ phận hỗ trợ kh&aacute;ch h&agrave;ng qua email <a href="#">hoidap@cgv.vn</a> nếu bạn c&oacute; bất kỳ thắc mắc g&igrave; nh&eacute;!<br /> <br /> Để t&igrave;m hiểu kỹ hơn về Thể lệ &amp; Điều kiện của ch&uacute;ng t&ocirc;i, mời bạn gh&eacute; thăm: <a href="#" target="_blank">https://www.cgv.vn/vn/membership-terms-conditions/</a></p>
+                                        </div>
+                                    </div>
+                                    <!-- .lyt-details-content -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                                        
+                                    <script src="{{ STATIC_URL }}assets/js/jquery-ui.js" type="text/javascript"></script>
+                                    <script type="text/javascript">// <![CDATA[
+                                    $j(document).ready(function(){
+                                                        $j( ".cgv-membership" ).tabs();
+                                                        $j( ".accordion" ).accordion({
+                                                            heightStyle: "content"
+                                                        });
+                                                        
+                                                        $j('.cgv-membership > ul li').click(function(event) {
+                                                            if (!$j(event.target).is('a')) {
+                                                                $j(this).find("a").trigger('click');
+                                                            }
+                                                        });
+                                                        
+                                                        var url = window.location.href;
+                                                        var arr = url.split('?');
+                                                        
+                                                        $j('#'+arr[1]).click();
+                                                        
+                                                        $j('.cgv-membership > ul').find('a').each(function() {
+                                                            if($j(this).attr('href') == '#'+$j('#'+arr[1]).parents('.lyt-history-content').attr('id')){
+                                                                $j(this).click();
+                                                            }
+                                                        });
+                                                    });
+                                    // ]]></script>
+                                
+                    {% endblock %}
