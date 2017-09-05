@@ -5,16 +5,17 @@
 {% block body_class %}
 	theaters-special-view
 {% endblock %}
+{% block container_class%}col1-layout {% endblock%}
 {% block main_content %}
-	<div class="main-container col1-layout">
+	<div class="main-container ">
 		<div class="breadcrumbs" itemprop="breadcrumb">
 			<ul>
 				<li class="home">
 					<a href="#" title="Home Page">Home Page</a>
 					<span>/ </span>
 				</li>
-				<li class="sweetbox">
-					<strong>Sweetbox</strong>
+				<li class="dolby-atmos">
+					<strong>Dolby Atmos</strong>
 				</li>
 			</ul>
 		</div>
@@ -76,9 +77,54 @@
 								});
 								});
 							// ]]></script>
-						</div>	</div>
-					</div>
+							</div>
+							</div>	
+						</div>
+			<style>
+					.home-title{
+						display:none;
+					}
+					</style>
+					<script type="text/javascript">
+						//<![CDATA[
+						$j(document).ready(function(){
+							var highest = 0;
+							var hi = 0;
+							$j('.product-info').each(function(){
+							var h = $j(this).height();
+							if(h > hi){
+									hi = h;
+									highest = h;
+								}
+							});
+							if ($j(window).width()>320){
+								$j('.product-info').css('height',highest+10+'px');
+							}
+							else{
+								$j('.products-grid .product-info').css('padding-bottom','0');
+							}
+							$j('li.category3').find('a').contents().unwrap();
+						});
+						$j(window).on('resize', function() {
+							var highest2 = 0;
+							var hi = 0;
+							$j('.product-info').each(function(){
+							var h = $j(this).height();
+							if(h > hi){
+									hi = h;
+									highest2 = h;
+								}
+							});
+							if ($j(window).width()>320){
+								$j('.product-info').css('height',highest2+10+'px');
+							}
+							else{
+								$j('.products-grid .product-info').css('padding-bottom','0');
+							}
+							$j('li.category3').find('a').contents().unwrap();
+						});
+					//]]>
+					</script>   
 				</div>
 			</div>
-		</div>
 	{% endblock %}

@@ -7,8 +7,9 @@
 {% block body_class %}
 	theaters-special-view
 {% endblock %}
+{% block container_class%}col1-layout {% endblock%}
 {% block main_content %}
-	<div class="main-container col1-layout">
+	<div class="main-container">
 		<div class="breadcrumbs" itemprop="breadcrumb">
 			<ul>
 				<li class="home">
@@ -62,7 +63,8 @@
 										{% endfor%}
 										
 									</ul>
-									<span class="slideshow-prev">&nbsp;</span> <span class="slideshow-next">&nbsp;</span></div>
+										<span class="slideshow-prev">&nbsp;</span> <span class="slideshow-next">&nbsp;</span>
+									</div>
 								</div>
 							</div>
 							<!-- end cinema sweetbox -->
@@ -79,7 +81,9 @@
 									fx: 'scrollHorz'
 								});
 								});
-						// ]]></script>	</div>
+						// ]]></script>	
+						</div>
+					</div>
 					</div>
 					<style>
 					.home-title{
@@ -128,5 +132,4 @@
 					</script>   
 				</div>
 			</div>
-		</div>
 	{% endblock %}
