@@ -72,7 +72,11 @@ def arthouse(request):
 	return render(request, 'websites/arthouse.html', {'data': data})
 
 def about_cinema(request):
-	return render(request, 'websites/about_cinema.html',{})
+	data = [{'img':'/assets/websites/images/about-1.jpg'},{'img':'/assets/websites/images/about-2.PNG'},{'img':'/assets/websites/images/about-3.PNG'},
+	{'img':'/assets/websites/images/about-4.PNG'},{'img':'/assets/websites/images/about-5.PNG'},{'img':'/assets/websites/images/about-6.PNG'},
+	{'img':'/assets/websites/images/about-7.JPG'},{'img':'/assets/websites/images/about-8.JPG'},{'img':'/assets/websites/images/about-9.PNG'}]
+	
+	return render(request, 'websites/about_cinema.html',{'data': data})
 
 def gift_card_detail(request):
 	return render(request, 'websites/gift_card_detail.html',{} )

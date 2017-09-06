@@ -77,15 +77,13 @@
 								</div>
 								<div class="about-image-cgv">
 									<ul>
-										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-1.jpg"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-1.jpg" /> </a></li>
-										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-2.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-2.PNG" /> </a></li>
-										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-3.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-3.PNG" /> </a></li>
-										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-4.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-4.PNG" /> </a></li>
-										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-5.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-5.PNG" /> </a></li>
-										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-6.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-6.PNG" /> </a></li>
-										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-7.JPG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-7.JPG" /> </a></li>
-										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-8.JPG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-8.JPG" /> </a></li>
-										<li><a class="large-image-about" href="{{ STATIC_URL }}assets/websites/images/about-9.PNG"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}assets/websites/images/about-9.PNG" /> </a></li>
+										{% for item in data %}
+										<li>
+											<a class="large-image-about" href="{{ STATIC_URL }}{{item}}"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}{{item.img}}" /> 
+											</a>
+										</li>
+										{% endfor %}
+										
 									</ul>
 								</div>
 								<script type="text/javascript">// <![CDATA[
