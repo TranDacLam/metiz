@@ -59,6 +59,7 @@ urlpatterns = [
     url(r'^special/starium/$', views.starium),
     url(r'^special/premium/$', views.premium),
     url(r'^special/screenx/$', views.screenx),
+    url(r'^film/detail/$', views.film_detail),
 ]
 
 if settings.DEBUG:
