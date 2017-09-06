@@ -70,7 +70,7 @@ def account_create(request):
 
 	data_prefergenre = [{'value':'06','name':'ACTION'},{'value':'07','name':'ADVENTURE'},{'value':'08','name':'ANIMATION'},
 	{'value':'09','name':'COMEDY'},{'value':'14','name':'CRIME'}]
-	
+
 	return render(request, 'websites/account_create.html', {'data_country':data_country, 'data_city':data_city,'data_day':data_day,'data_month':data_month,'data_year':data_year,'data_cgv':data_cgv, 'data_prefergenre':data_prefergenre})
 
 def account_login(request):
@@ -126,6 +126,13 @@ def cgv_online(request):
 
 def careers(request):
 	return render(request, 'websites/careers.html', {})
+
+def careers_category(request):
+
+	data_careers_category = [{'name':'C&B Executive', 'location':'Working Location: HCMC'},{'name':'C&B Team Leader', 'location':'Working Location: HCMC'},{'name':'Film Marketing Analyst', 'location':'Working location: HC'},
+	{'name':'Group Sale Analyst', 'location':'Working location: Hanoi, HCMC'},{'name':'Marketing Communication', 'location':'Working locaiton: HCMC'},{'name':'PR Analyst', 'location':'Working location: HCMC'}]
+	
+	return render(request, 'websites/careers_category.html', {'data_careers_category':data_careers_category})
 
 def contacts(request):
 	return render(request, 'websites/contacts.html', {})

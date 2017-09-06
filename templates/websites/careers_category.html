@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+
+{% block title %}Helio{% endblock title %}
+
+{%block body_class %}  jobs-index-index {% endblock %}
+
+{% block container_class %}col2-left-layout{% endblock %}
+
+{% block main_content %}
+	<div class="breadcrumbs" itemprop="breadcrumb">
+		<ul>
+			<li class="home">
+				<a href="#" title="Trở về trang chủ">Trang chủ</a>
+				<span>/ </span>
+			</li>
+			<li class="job_list">
+				<a href="#" title="Tuyển dụng">Tuyển dụng</a>
+				<span>/ </span>
+			</li>
+			<li class="job_category">
+				<strong>Head Office</strong>
+			</li>
+		</ul>
+	</div>
+	<div class="main">
+		<div class="col-main">
+			<div id="messages_jobs_view"></div>
+			<div class="page-title category-title">
+				<h1>Head Office</h1>
+			</div>
+			<div class="category-description std"></div>
+				<div class="category-products">
+					<div class="toolbar">
+						<div class="sorter">
+							<div class="sort-by">
+								<label>Sắp xếp</label>
+								<select onchange="setLocation(this.value)">
+									<option value="#" selected="selected">Job Title</option>
+									<option value="#">Recent Jobs</option>
+								</select>
+								<a href="#">
+									<img src="#" alt="Sắp xếp tăng dần" class="v-middle" /></a>
+							</div>
+						</div>
+						
+						<div class="pager">
+							<p class="amount">13 Sản phẩm</p>
+							<div class="limiter">
+								<label>Hiển thị</label>
+								<select onchange="setLocation(this.value)">
+									<option value="#" selected="selected">10000</option>
+								</select> trang</div>
+								
+							</div>
+						</div>
+						<ol class="products-list" id="jobs-list">
+							{% for item in data_careers_category %}
+							<li class="item" style="margin-top:5px;">
+								<a href="#" class="jobs-shop">
+								<span class="product-name">
+									{{item.name}}
+								</span>
+								<span class="desc std">
+									<p>{{item.location}}</p></span>
+								</a>
+							</li>
+							{% endfor %}
+						</ol>
+						<script type="text/javascript">decorateList('jobs-list', 'none-recursive')</script>
+						<div class="toolbar">
+							<div class="sorter">
+								<div class="sort-by">
+									<label>Sắp xếp</label>
+									<select onchange="setLocation(this.value)">
+										<option value="#" selected="selected">Job Title</option>
+										<option value="#">Recent Jobs</option>
+									</select>
+									<a href="#">
+										<img src="#" alt="Sắp xếp tăng dần" class="v-middle" /></a>
+								</div>
+							</div>
+												
+							<div class="pager">
+								<p class="amount">13 Sản phẩm</p>
+								<div class="limiter">
+									<label>Hiển thị</label>
+									<select onchange="setLocation(this.value)">
+										<option value="#">10000
+										</option>
+									</select> trang
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-left sidebar"><div class="block block-account">
+					<div class="block-content">
+						<ul>
+							<li ><a href="#">Tuyển dụng</a></li>
+							<li class="current" >
+								<a href="#">Trụ sở chính</a>
+							</li>
+							<li >
+								<a href="#">Cụm Rạp</a>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+								
+															
+			<script>
+				!function(f,b,e,v,n,t,s){
+					if(f.fbq)
+						return;
+					n=f.fbq=function(){
+						n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)
+					};
+					if(!f._fbq)
+						f._fbq=n;
+					n.push=n;
+					n.loaded=!0;
+					n.version='2.0';
+					n.queue=[];
+					t=b.createElement(e);
+					t.async=!0;
+					t.src=v;
+					s=b.getElementsByTagName(e)[0];
+					s.parentNode.insertBefore(t,s)
+				}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+				fbq('init', '1644759925761845');fbq('track', 'ViewContent');
+			</script>
+			<!--<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1644759925761845&ev=PageView&noscript=1"/></noscript>-->
+			
+			<div id="wishlist_edit_action_container"></div>
+{% endblock %}		
+
