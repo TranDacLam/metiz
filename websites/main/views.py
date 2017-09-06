@@ -45,10 +45,33 @@ def membership(request):
 	
 	return render(request, 'websites/membership.html', {})
 
-
 def account_create(request):
+	data_country = [{'value':'','name':''},{'value':'AF','name':'Afghanistan'},
+	{'value':'EG','name':'Ai Cập'},{'value':'IE','name':'Ai-len'},
+	{'value':'AL','name':'Albani'},{'value':'DZ','name':'Algeria'}]
+
+	data_city = [{'value':'65','name':'Hồ Chí Minh'},{'value':'64','name':'Hà Nội'},
+	{'value':'60','name':'Đà Nẵng'},{'value':'48','name':'Cần Thơ'},
+	{'value':'39L','name':'Đồng Nai'},{'value':'62','name':'Hải Phòng'}]
+
+	data_day = [{'value':'01','day':'01'},{'value':'02','day':'02'},
+	{'value':'03','day':'03'},{'value':'04','day':'04'},
+	{'value':'05','day':'05'},{'value':'06','day':'06'}]
+
+	data_month = [{'value':'01','month':'01'},{'value':'02','month':'02'},{'value':'03','month':'03'},
+	{'value':'04','month':'04'},{'value':'05','month':'05'},{'value':'06','month':'06'},{'value':'07','month':'07'}]
+
+	data_year = [{'value':'1990','year':'1990'},{'value':'1991','year':'1991'},{'value':'1992','year':'1992'},
+	{'value':'1993','year':'1993'},{'value':'1994','year':'1994'},{'value':'1995','year':'1995'},{'value':'1996','year':'1996'}]
+
+	data_cgv = [{'value':'017', 'name':'CGV Aeon Canary'},{'value':'018', 'name':'CGV Aeon Long Bien'},
+	{'value':'019', 'name':'CGV Aeon Mall Binh Tan'},{'value':'020', 'name':'CGV Artemis Ha Noi'},
+	{'value':'021', 'name':'CGV Aeon Tan Phu'}]
+
+	data_prefergenre = [{'value':'06','name':'ACTION'},{'value':'07','name':'ADVENTURE'},{'value':'08','name':'ANIMATION'},
+	{'value':'09','name':'COMEDY'},{'value':'14','name':'CRIME'}]
 	
-	return render(request, 'websites/account_create.html', {})
+	return render(request, 'websites/account_create.html', {'data_country':data_country, 'data_city':data_city,'data_day':data_day,'data_month':data_month,'data_year':data_year,'data_cgv':data_cgv, 'data_prefergenre':data_prefergenre})
 
 def account_login(request):
 	

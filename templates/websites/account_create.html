@@ -4,7 +4,11 @@
 
 {% block container_class %}col1-layout{% endblock %}
 
-{% block main_content %}
+{% block body_class %}
+	customer-account-create
+{% endblock %}
+
+{% block main_content %} 
 <div class="main">
 	<div class="col-main">
 		<div class="account-wrap">
@@ -42,77 +46,27 @@
 											<div class="input-box customer-dob">
 												<div class="dob-day">
 													<select onchange="getElementById('day').value=this.value">
-														<option value="">Ngày</option>
-														<option value="01">01</option>
-														<option value="02">02</option>
-														<option value="03">03</option>
-														<option value="04">04</option>
-														<option value="05">05</option>
-														<option value="06">06</option>
-														<option value="07">07</option>
-														<option value="08">08</option>
-														<option value="09">09</option>
-														<option value="10">10</option>
-														<option value="11">11</option>
-														<option value="12">12</option>
-														<option value="13">13</option>
-														<option value="14">14</option>
-														<option value="15">15</option>
-														<option value="16">16</option>
-														<option value="17">17</option>
-														<option value="18">18</option>
-														<option value="19">19</option>
-														<option value="20">20</option>
-														<option value="21">21</option>
-														<option value="22">22</option>
-														<option value="23">23</option>
-														<option value="24">24</option>
-														<option value="25">25</option>
-														<option value="26">26</option>
-														<option value="27">27</option>
-														<option value="28">28</option>
-														<option value="29">29</option>
-														<option value="30">30</option>
-														<option value="31">31</option>
+														{% for item in data_day %}
+															<option value="{{item.value}}" >{{item.day}} </option>
+														{% endfor %}
 													</select>
 													<input type="hidden" id="day" name="day" value="" title="Ngày" class="input-text validate-custom"  />
 												</div>
 												<div class="dob-month">
 													<select onchange="getElementById('month').value=this.value">
 														<option value="">Tháng</option>
-														<option value="01">01</option>
-														<option value="02">02</option>
-														<option value="03">03</option>
-														<option value="04">04</option>
-														<option value="05">05</option>
-														<option value="06">06</option>
-														<option value="07">07</option>
-														<option value="08">08</option>
-														<option value="09">09</option>
-														<option value="10">10</option>
-														<option value="11">11</option>
-														<option value="12">12</option>
+														{% for item in data_month %}
+															<option value="{{item.value}}" >{{item.month}} </option>
+														{% endfor %}
 													</select>
 													<input type="hidden" id="month" name="month" value="" title="Tháng" class="input-text validate-custom"  />
 												</div>
 												<div class="dob-year">
 													<select onchange="getElementById('year').value=this.value">
 														<option value="">Năm</option>
-														<option value="2005">2005</option>
-														<option value="2004">2004</option>
-														<option value="2003">2003</option>
-														<option value="2002">2002</option>
-														<option value="2001">2001</option>
-														<option value="2000">2000</option>
-														<option value="1999">1999</option>
-														<option value="1998">1998</option>
-														<option value="1997">1997</option>
-														<option value="1996">1996</option>
-														<option value="1995">1995</option>
-														<option value="1994">1994</option>
-														<option value="1993">1993</option>
-														<option value="1992">1992</option>
-														<option value="1991">1991</option>
+														{% for item in data_year %}
+															<option value="{{item.value}}" >{{item.year}} </option>
+														{% endfor %}
 													</select>
 													<input type="hidden" id="year" name="year" value="" title="Năm" class="input-text validate-custom"  />
 												</div>    
@@ -147,70 +101,10 @@
 								<div class="input-box">
 									<select onchange="loadDistrict(this, 'city');" id="region_id" name="region_id" title="Tỉnh/Tp" class="validate-select">
 										<option value="">Vui lòng chọn...</option>
-										<option value="65">Hồ Chí Minh</option>
-										<option value="64">Hà Nội</option>
-										<option value="60">Đà Nẵng</option>
-										<option value="48">Cần Thơ</option>
-										<option value="39">Đồng Nai</option>
-										<option value="62">Hải Phòng</option>
-										<option value="13">Quảng Ninh</option>
-										<option value="43">Bà Rịa-Vũng Tàu</option>
-										<option value="31">Bình Định</option>
-										<option value="57">Bình Dương</option>
-										<option value="33">Đắk Lắk</option>
-										<option value="51">Trà Vinh</option>
-										<option value="06">Yên Bái</option>
-										<option value="49">Vĩnh Long</option>
-										<option value="47">Kiên Giang</option>
-										<option value="73">Hậu Giang</option>
-										<option value="23">Hà Tĩnh</option>
-										<option value="32">Phú Yên</option>
-										<option value="58">Bình Phước</option>
-										<option value="40">Bình Thuận</option>
-										<option value="59">Cà Mau</option>
-										<option value="04">Cao Bang</option>
-										<option value="72">Dak Nong</option>
-										<option value="71">Dien Bien</option>
-										<option value="45">Đồng Thap</option>
-										<option value="54">Bac Giang</option>
-										<option value="30">Gia Lai</option>
-										<option value="44">An Giang</option>
-										<option value="55">Bac Lieu</option>
-										<option value="03">Ha Giang</option>
-										<option value="63">Ha Nam</option>
-										<option value="53">Bac Cạn</option>
-										<option value="56">Bac Ninh</option>
-										<option value="50">Ben Tre</option>
-										<option value="15">Ha Tay</option>
-										<option value="61">Hai Duong</option>
-										<option value="14">Hoa Binh</option>
-										<option value="66">Hung Yen</option>
-										<option value="34">Khanh Hoa</option>
-										<option value="28">Kon Tum</option>
-										<option value="01">Lai Chau</option>
-										<option value="35">Lam Dong</option>
-										<option value="09">Lang Son</option>
-										<option value="02">Lao Cai</option>
-										<option value="41">Long An</option>
-										<option value="67">Nam Dinh</option>
-										<option value="22">Nghe An</option>
-										<option value="18">Ninh Binh</option>
-										<option value="36">Ninh Thuan</option>
-										<option value="68">Phu Tho</option>
-										<option value="24">Quảng Binh</option>
-										<option value="27">Quảng Nam</option>
-										<option value="29">Quảng Ngai</option>
-										<option value="25">Quảng Tri</option>
-										<option value="52">Soc Trang</option>
-										<option value="05">Son La</option>
-										<option value="37">Tay Ninh</option>
-										<option value="20">Thai Binh</option>
-										<option value="69">Thai Nguyen</option>
-										<option value="21">Thanh Hoa</option>
-										<option value="26">Thua Thien-Hue</option>
-										<option value="46">Tien Giang</option>
-										<option value="07">Tuyen Quang</option>
-										<option value="70">Vinh Phuc</option>
+										{% for item in data_city %}
+											<option value="{{item.value}}" >{{item.name}} </option>
+										{% endfor %}
+										
 										<option value="65" selected>Khác... </option>
 									</select>
 								</div>
@@ -287,43 +181,9 @@
 							<label for="country">Quốc gia</label>
 							<div class="input-box">
 								<select name="country_id" id="country" class="validate-select" title="Quốc gia" >
-								<option value="" > </option>
-								<option value="AF" >Afghanistan</option>
-								<option value="EG" >Ai Cập</option>
-								<option value="IE" >Ai-len</option>
-								<option value="AL" >Albani</option>
-								<option value="DZ" >Algeria</option>
-								<option value="AD" >Andorra</option>
-								<option value="AO" >Angola</option>
-								<option value="AI" >Anguilla</option>
-								<option value="AG" >Antigua và Barbuda</option>
-								<option value="AT" >Áo</option>
-								<option value="SA" >Ả Rập Xê-út</option>
-								<option value="AR" >Argentina</option>
-								<option value="AM" >Armenia</option>
-								<option value="AW" >Aruba</option>
-								<option value="AZ" >Azerbaijan</option>
-								<option value="IN" >Ấn Độ</option>
-								<option value="BS" >Bahamas</option>
-								<option value="BH" >Bahrain</option>
-								<option value="PL" >Ba Lan</option>
-								<option value="BD" >Bangladesh</option>
-								<option value="BB" >Barbados</option>
-								<option value="BY" >Belarus</option>
-								<option value="BZ" >Belize</option>
-								<option value="BJ" >Benin</option>
-								<option value="BM" >Bermuda</option>
-								<option value="BT" >Bhutan</option>
-								<option value="BE" >Bỉ</option>
-								<option value="BO" >Bolivia</option>
-								<option value="BA" >Bosnia và Herzegovina</option>
-								<option value="BW" >Botswana</option>
-								<option value="PT" >Bồ Đào Nha</option>
-								<option value="BR" >Brazil</option>
-								<option value="BN" >Brunei</option>
-								<option value="BG" >Bungari</option>
-								<option value="BF" >Burkina Faso</option>
-								<option value="BI" >Burundi</option>
+								{% for item in data_country %}
+								<option value="{{item.value}}" >{{item.name}} </option>
+								{% endfor %}
 							</div>
 						</li>
 						<li class="hidden">
@@ -367,100 +227,39 @@
 							<div class="input-box">
 								<select id="prefersite" name="prefersite" title="Vui lòng chọn..." class="prefersite genre_select">
 									<option value="">Vui lòng chọn...</option>
-									<option value="017">CGV Aeon Canary</option>
-									<option value="027">CGV Aeon Long Bien</option>
-									<option value="034">CGV Aeon Mall Binh Tan</option>
-									<option value="012">CGV Aeon Tan Phu</option>
-									<option value="041">CGV Artemis Ha Noi</option>
-									<option value="019">CGV Big C Dong Nai</option>
-									<option value="016">CGV Binh Duong Square</option>
-									<option value="026">CGV Buon Ma Thuot</option>
-									<option value="006">CGV CT Plaza</option>
-									<option value="046">CGV Center Point</option>
-									<option value="003">CGV Coopmart Bien Hoa</option>
-									<option value="008">CGV Cresent Mall</option>
-									<option value="040">CGV Golden Plaza</option>
-									<option value="018">CGV Ho Guom Plaza</option>
-									<option value="004">CGV Hung Vuong Plaza</option>
-									<option value="032">CGV Indochina Plaza Ha Noi</option>
-									<option value="015">CGV Kim Cuc Plaza</option>
-									<option value="014">CGV Lam Son square</option>
-									<option value="033">CGV Liberty Tan Binh</option>
-									<option value="022">CGV Liberty centre point</option>
-									<option value="011">CGV Marine Plaza</option>
-									<option value="009">CGV Mipec Tower</option>
-									<option value="010">CGV Pandora</option>
-									<option value="049">CGV Parkson Dong Khoi</option>
-									<option value="007">CGV Parkson Paragon</option>
-																				</select>
+									{% for item in data_cgv %}
+										<option value="{{item.value}}" >{{item.name}} </option>
+									{% endfor %}
+									
+								</select>
 									<select id="prefersite2" name="prefersite2" title="Vui lòng chọn..." class="prefersite genre_select">
 										<option value="">Vui lòng chọn...</option>
-										<option value="017">CGV Aeon Canary</option>
-										<option value="027">CGV Aeon Long Bien</option>
-										<option value="034">CGV Aeon Mall Binh Tan</option>
-										<option value="012">CGV Aeon Tan Phu</option>
-										<option value="041">CGV Artemis Ha Noi</option>
-										<option value="019">CGV Big C Dong Nai</option>
-										<option value="016">CGV Binh Duong Square</option>
-										<option value="026">CGV Buon Ma Thuot</option>
-										<option value="006">CGV CT Plaza</option>
-										<option value="046">CGV Center Point</option>
-										<option value="003">CGV Coopmart Bien Hoa</option>
-										<option value="008">CGV Cresent Mall</option>
-										<option value="040">CGV Golden Plaza</option>
-										<option value="018">CGV Ho Guom Plaza</option>								
+										{% for item in data_cgv %}
+											<option value="{{item.value}}" >{{item.name}} </option>
+										{% endfor %}
 									</select>
 									</div>
 								</li>
 							</ul>
 						</div>
 						<div class="fieldset prefer-genre">
-							<!--																																							    <li class="customer-user-attributes">
-								<ul class="form-list">
-									<li><label for="personal_id">CMND hoặc Hộ chiếu</label>
-									<div class="input-box">
-										<input type="text" id="personal_id" name="personal_id" value="" class="input-text" />
-										
-									</div>
-								</li>
-							</ul>
-						</li>
-						-->
+							
 						<ul class="form-list">
 							<li class="fields">
 								<label for="preferGenre" class="">Thể loại phim yêu thích</label>
 								<div class="input-box">
 									<select id="prefergenre" name="prefergenre" title="Vui lòng chọn..." class="prefergenre genre_select">
 										<option value="">Vui lòng chọn...</option>
-										<option value="06">ACTION</option>
-										<option value="15">ADVENTURE</option>
-										<option value="17">ANIMATION</option>
-										<option value="05">COMEDY</option>
-										<option value="03">CRIME</option>
-										<option value="07">DRAMA</option>
-										<option value="14">FAMILY</option>
-										<option value="13">FANTASY</option>
-										<option value="12">HISTORY</option>
-										<option value="16">HORROR </option>
-										<option value="09">MUSIC</option>
-										<option value="02">MYSTERY</option>
-										<option value="99">Others</option>
-										<option value="04">ROMANCE</option>
-										<option value="10">SCIFI</option>
-										<option value="01">SPORT</option>
-										<option value="11">SPY</option>
-										<option value="08">THRILLER </option>										
+										{% for item in data_prefergenre %}
+											<option value="{{item.value}}" >{{item.name}} </option>
+										{% endfor %}
+																				
 									</select>
 									<select id="prefergenre2" name="prefergenre2" title="Vui lòng chọn..." class="prefergenre genre_select">
 										<option value="">Vui lòng chọn...</option>
-										<option value="06">ACTION</option>
-										<option value="15">ADVENTURE</option>
-										<option value="17">ANIMATION</option>
-										<option value="05">COMEDY</option>
-										<option value="03">CRIME</option>
-										<option value="07">DRAMA</option>
-										<option value="14">FAMILY</option>
-										<option value="13">FANTASY</option>
+										{% for item in data_prefergenre %}
+											<option value="{{item.value}}" >{{item.name}} </option>
+										{% endfor %}
 									</select>
 										</div>
 									</li>
