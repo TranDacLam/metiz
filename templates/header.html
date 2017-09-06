@@ -53,7 +53,8 @@
         <div id="header-nav" class="skip-content">
             <nav id="nav">
                 <ol class="nav-primary">
-                    <li class="level0 nav-1 first last parent"><a href="#" class="level0 has-children">Phim</a>
+                    <li class="level0 nav-1 first last parent">
+                    <a  class="level0 has-children" href="javascript: void(0);">Phim</a>
                         <ul class="level0">
                             <li class="level1 nav-1-1 first"><a href="#" class="level1 ">Phim Đang Chiếu</a></li>
                             <li class="level1 nav-1-2"><a href="#" class="level1 ">Phim Sắp Chiếu</a></li>
@@ -77,20 +78,23 @@
                    <!--  <li class="level0 nav-3 first last">
                         <a class="level0" href="#">Rạp CGV</a>
                     </li> -->
-                    <li class="level0 nav-4 first last">
-                        <a class="level0 has-children" href="#">Thành viên</a>
-                        <ul class="level0">
-                            <li class="level1 nav-4-1 first">
-                                <!--<a class="level0" href="https://www.cgv.vn/default/sales/order/history/">Thành viên</a>-->
-                                <a class="level0" href="#">Tài khoản CGV</a>
-                            </li>
-                            <li class="level1 nav-4-2 last">
-                                <a class="level1" href="#">Quyền lợi</a>
-                            </li>
-                        </ul>
+                    <li class="level0 nav-4 parent first last">
+                <a class="level0 has-children" href="javascript: void(0);">Thành viên</a>
+                <ul class="level0">
+                    <li class="level1 nav-4-1 last">
+                        <a class="level1" href="#">Thành viên</a>
                     </li>
-                    <li class="level0 nav-5 first last">
-                        <a class="level0" href="#">Online Store (Test)</a>
+                    <li class="level1 nav-4-2 first">
+                        <!--<a class="level0" href="https://www.cgv.vn/default/sales/order/history/">Thành viên</a>-->
+                        <a class="level1" href="#">Tài khoản CGV</a>
+                    </li>
+                    <li class="level1 nav-4-3 last">
+                        <a class="level1" href="#">Quyền lợi</a>
+                    </li>
+                </ul>
+            </li>
+                    <li class="level0 nav-5 parent first last">
+                        <a class="level0 has-children" href="javascript: void(0);">Online Store (Test)</a>
                         <ul class="level0">
                             <li class="level1 nav-5-1">
                                 <a class="level1" href="#">Voucher Phim</a>
@@ -103,12 +107,12 @@
                 </ol>
             </nav>
             
-            <script type="text/javascript">
+           <!--  <script type="text/javascript">
             $j(document).ready(function() {
                 $j('li.level0.nav-1 a.has-children').attr('href', '#');
 
             });
-            </script>
+            </script> -->
         </div>
         <!-- Search -->
         <div id="header-search" class="skip-content">
@@ -121,7 +125,7 @@
                         <button type="submit" title="Tìm kiếm" class="button search-button"><span><span>Tìm kiếm</span></span>
                         </button>
                     </div>
-                    <div id="search_autocomplete" class="search-autocomplete"></div>
+                    <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
                     
                 </form>
             </div>
