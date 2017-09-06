@@ -14,8 +14,8 @@
 					<a href="#" title="Home Page">Home Page</a>
 					<span>/ </span>
 				</li>
-				<li class="4dx">
-					<strong>4DX ®</strong>
+				<li class="imax">
+					<strong>IMAX</strong>
 				</li>
 			</ul>
 		</div>
@@ -30,58 +30,59 @@
 						{% endfor %}
 					</ul>
 				</div>
-				<div class="specialtheater-content specialtheater-4dx">
+				<div class="specialtheater-content specialtheater-imax">
 					<div class="page-title special-title">
-						<h1>4DX ®</h1>
+						<h1>IMAX</h1>
 					</div>
 					<div class="std">
 						<div class="cinema-imax">
 							<div class="header-imax std">
 								<div class="about-content-imax">
-									<div class="recent-cgv-special" style="margin-top: 30px;">
-										<h3>4DX®, một định dạng điện ảnh hoàn toàn mới đánh thức mọi giác quan của khán giả mang đến những trải nghiệm điện ảnh tuyệt đỉnh bằng công nghệ hiện đại nhất trên thế giới.</h3>
-										<p>Hãy thưởng thức công nghệ 4DX® tại các rạp CGV:</p>
+									<div class="recent-imax">
+										<p><img alt="" src="{{STATIC_URL}}/assets/websites/images/special-theater/icon-01.png" "=""></p>
+										<h3>IMAX là công nghệ chiếu phim tiên tiến nhất trên thế giới hiện nay, từ thiết kế phòng chiếu vô cùng choáng ngợp đến hiệu ứng âm thanh và hình ảnh đỉnh cao.</h3>
+										<p>Hãy thưởng thức công nghệ IMAX® tại:</p>
 										<ul class="site-list">
 											{% for item in data.address%}
-												<li><a href="{{item.href}}">{{item.name}}</a></li>
-											{% endfor%}
+											<li><a href="{{item.href}}">{{item.name}}</a></li>
+										{% endfor%}	
 										</ul>
+										<p></p>
 									</div>
 									<div class="slide-imax-baner">
-										<div class="slideshow-container-dx" style="clear: both;">
-											<ul class="slideshow-dx" style="position: relative; overflow: hidden;">
-												
-												{% for item in data.slide%}
-													<li class="cycle-slide" style="position: absolute; top: 0px; left: 0px; z-index: 97; opacity: 1; display: block; visibility: hidden;">
-														<div class="image-cinema-imax"><img alt="" src="{{STATIC_URL}}{{item.img}}" "=""></div>
-														<div class="text-content-imax">
-															{{item.content| safe}}
-														</div>
-													</li>
-												{% endfor %}
+										<div class="slideshow-container-imax" style="clear: both;">
+											<ul class="slideshow-imax" style="position: relative; overflow: hidden;">
+											{% for item in data.slide %}
+											<li class="cycle-slide" style="position: absolute; top: 0px; left: 0px; z-index: 97; opacity: 1; display: block; visibility: hidden;">
+												<div class="image-cinema-imax"><img alt="" src="{{STATIC_URL}}{{item.img}}" "=""></div>
+												<div class="text-content-imax">
+													{{item.content| safe}}
+												</div>
+											</li>
+											{% endfor %}
 											</ul>
-											<span class="slideshow-prev">&nbsp;</span> <span class="slideshow-next">&nbsp;</span>
-										</div>
-									</div>
-								</div>
-								<!-- end cinema imax -->
-								<script type="text/javascript">// <![CDATA[
-								$j(document).ready(function () {
-									$j('.slideshow-container-dx .slideshow-dx')
-										.cycle({
-											slides: '> li',
-												speed: 600,
-												pauseOnHover: true,
-												swipe: true,
-											prev: '.slideshow-prev',
-											next: '.slideshow-next',
-										fx: 'scrollHorz'
-									});
-									});
-								// ]]></script>
-							</div>	
+							<span class="slideshow-prev">&nbsp;</span> <span class="slideshow-next">&nbsp;</span></div>
 						</div>
-						</div>
+					</div>
+				</div>
+				<!-- end cinema imax -->
+				<script type="text/javascript">// <![CDATA[
+				$j(document).ready(function () {
+					$j('.slideshow-container-imax .slideshow-imax')
+						.cycle({
+							slides: '> li',
+								speed: 600,
+								pauseOnHover: true,
+								swipe: true,
+							prev: '.slideshow-prev',
+							next: '.slideshow-next',
+						fx: 'scrollHorz'
+					});
+					});
+				// ]]></script>
+			</div>
+		</div>
+		</div>
 			<style>
 					.home-title{
 						display:none;
@@ -129,4 +130,4 @@
 					</script>   
 				</div>
 			</div>
-		{% endblock %}
+{% endblock %}

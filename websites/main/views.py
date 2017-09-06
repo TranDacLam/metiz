@@ -117,7 +117,6 @@ def sweetbox(request):
 	, {'name': 'sweet box', 'class': 'item-lamour'}
 	, {'name': 'sweet box', 'class': 'item-starium'}
 	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-arthouse'}
 	, {'name': 'sweet box', 'class': 'item-screenx'}],
 	'address':
 	[{'name': 'CGV Da Nang', 'href': '#'}
@@ -142,7 +141,6 @@ def show_4dx(request):
 	, {'name': 'sweet box', 'class': 'item-lamour'}
 	, {'name': 'sweet box', 'class': 'item-starium'}
 	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-arthouse'}
 	, {'name': 'sweet box', 'class': 'item-screenx'}],
 	'address':
 	[{'name': 'CGV Da Nang', 'href': '#'}
@@ -166,10 +164,144 @@ def dolby_atmos(request):
 	, {'name': 'sweet box', 'class': 'item-lamour'}
 	, {'name': 'sweet box', 'class': 'item-starium'}
 	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-arthouse'}
 	, {'name': 'sweet box', 'class': 'item-screenx'}],
 	'address': 
 	[{'name': 'CGV Da Nang', 'href': '#'}
 	, {'name': 'CGV Quang Nam', 'href': '#'}
 	, {'name': 'CGV Ha Noi', 'href': '#'}],}
 	return render(request , 'websites/dolby_atmos.html', {'data': data})
+def imax(request):
+	data= { 'technology': 
+	[{'name': 'sweet box', 'class': 'item-sweetbox'}
+	, {'name': 'sweet box', 'class': 'item-4dx'}
+	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
+	, {'name': 'sweet box', 'class': 'item-imax', 'flag': 'actived'}
+	, {'name': 'sweet box', 'class': 'item-gold-class'}
+	, {'name': 'sweet box', 'class': 'item-lamour'}
+	, {'name': 'sweet box', 'class': 'item-starium'}
+	, {'name': 'sweet box', 'class': 'item-premium'}
+	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	'address':
+	[{'name': 'CGV Da Nang', 'href': '#'}
+	, {'name': 'CGV Quang Nam', 'href': '#'}
+	, {'name': 'CGV Ha Noi', 'href': '#'}],
+	'slide':
+	[{'img': '/assets/websites/images/special-theater/big-screen-imax.png', 'content': '<h2>Trải nghiệm trọn vẹn bộ phim với màn hình cong cỡ lớn</h2><p>Màn hình của phòng chiếu <strong>IMAX®</strong> không chỉ đơn thuần là màn hình cỡ lớn, mà độ cong của màn hình cũng được thiết kế đến mức cực đại. Thiết kế cong của màn hình nhằm đưa hình ảnh lấp đầy tầm nhìn, biến mỗi thước phim trở nên ấn tượng tuyệt đối. Góc nhìn của người xem trong phòng chiếu thường là 54 độ, với <strong>IMAX®</strong> đó là 70 độ!</p><p>ặc biệt, với khoảng cách giữa màn hình, ghế ngồi và độ nghiêng của sàn, khán giả có thể thưởng thức trọn vẹn bộ phim tại bất kì vị trí nào trong phòng chiếu <strong>IMAX®</strong>.</p>'}
+	, {'img': '/assets/websites/images/special-theater/hight-light-screen-imax.jpg', 'content':'<h2>Hình ảnh sắc nét với <strong>IMAX DMR® </strong></h2><p>Với phòng chiếu <strong>IMAX®</strong>, bạn như đang bước vào thế giới của chính bộ phim. Hình ảnh không chỉ được mở rộng để phù hợp với kích thước cực đại của màn hình, mà nó còn được chuyển hóa hoàn toàn.</p><p>phối hợp chặt chẽ với các nhà làm phim trong quá trình được gọi là <strong>IMAX DMR® </strong> (Digital Re-mastering), để nâng cao chất lượng của hàng trăm chi tiết trong phần lớn các cảnh phim và mang tới hình ảnh cực kỳ sắc nét.</p>'}
+	, {'img': '/assets/websites/images/special-theater/double-screen-imax.png', 'content': '<h2>Chân thực tuyệt đối với máy chiếu đôi</h2><p>Khác với phòng chiếu thường chỉ 1 máy chiếu, phòng chiếu <strong>IMAX®</strong> sở hữu độc quyền và trang bị hệ thống máy chiếu đôi, giúp tăng cường màu ảnh lên tới 40% và độ sáng tới 60%. Đặc biệt, hệ thống còn được tích hợp cảm biến để ghi lại sự thiếu đồng nhất và tự động điều chỉnh, nhằm đảm bảo chất lượng hình ảnh đẹp tối đa trong suốt thời gian của bộ phim</p>'}
+	, {'img': '/assets/websites/images/special-theater/senior-imax.png', 'content':'<h2>Tầm cao mới cùng <strong>IMAX® 3D</strong></h2><p>Khi thưởng thức <strong>IMAX® 3D</strong>, người xem sẽ cảm nhận màu sắc và độ sáng của từng hình ảnh được tăng cường tối đa. Đây là kết quả của hiệu ứng xuất ảnh từ 2 máy chiếu vào màn hình tráng bạc đặc biệt, mang đến trải nghiệm 3D khác biệt hoàn toàn với tất cả các công nghệ 3D khác.</p>'}
+	, {'img': '/assets/websites/images/special-theater/sound-imax.png', 'content': '<h2>Âm thanh sống động với <strong>IMAX® Sound</strong></h2><p>Hệ thống loa của phòng chiếu <strong>IMAX®</strong> được xây dựng từ sàn tới trần nhà và sắp xếp cực kỳ chuẩn xác nhằm phân bổ âm thanh tới từng vị trí ghế ngồi. Khán giả sẽ có không gian tối ưu nhất để thưởng thức và cảm nhận cả những âm thanh nhỏ nhất của bộ phim. <strong>IMAX®</strong> cũng sử dụng micro để thu thập dữ liệu từ hệ thống loa và tự động điều chỉnh hàng ngày. Đặc biệt, với âm thanh đã được điều chỉnh trong quá trình <strong>IMAX DMR® </strong>, kết hợp với hệ thống âm thanh của phòng chiếu <strong>IMAX®</strong>, cả khán phòng sẽ cùng đắm chìm trong thế giới của bộ phim.</p>'}],
+	
+	}
+	return render( request, 'websites/imax.html',{'data': data})
+def gold_class(request):
+	data= { 'technology': 
+	[{'name': 'sweet box', 'class': 'item-sweetbox'}
+	, {'name': 'sweet box', 'class': 'item-4dx'}
+	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
+	, {'name': 'sweet box', 'class': 'item-imax'}
+	, {'name': 'sweet box', 'class': 'item-gold-class', 'flag': 'actived'}
+	, {'name': 'sweet box', 'class': 'item-lamour'}
+	, {'name': 'sweet box', 'class': 'item-starium'}
+	, {'name': 'sweet box', 'class': 'item-premium'}
+	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	'address':
+	[{'name': 'CGV Da Nang', 'href': '#'}
+	, {'name': 'CGV Quang Nam', 'href': '#'}
+	, {'name': 'CGV Ha Noi', 'href': '#'}],
+	'slide':
+	[{'img': '/assets/websites/images/special-theater/goldclass-2.png', 'content': '<h2>Màn Hình Tráng Bạc</h2><p>Hình ảnh trung thực và sắc nét với màn hình tráng bạc độc đáo</p>'}
+	, {'img': '/assets/websites/images/special-theater/goldclass-1.png', 'content':'<h2>Âm Thanh Hiện Đại</h2><p>Thưởng thức âm thanh sống động với hệ thống Dolby Surround</p>'}
+	, {'img': '/assets/websites/images/special-theater/goldclass-3.png', 'content': '<h2>Ghế Da Sang Trọng</h2><p>Ghế bọc da cao cấp và rộng rãi với nhiều không gian để thoái mái thư giãn</p>'}
+	, {'img': '/assets/websites/images/special-theater/goldclass-4.png', 'content': '<h2>Trà/Cà Phê Miễn Phí</h2><p>Thưởng thức trà/cà phê tại phòng chờ riêng yên tĩnh và được phục vụ chăn miễn phí trong phòng chiếu</p>'}],
+	
+	}
+	return render( request, 'websites/gold_class.html', {'data': data})
+def lamour(request):
+	data= { 'technology': 
+	[{'name': 'sweet box', 'class': 'item-sweetbox'}
+	, {'name': 'sweet box', 'class': 'item-4dx'}
+	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
+	, {'name': 'sweet box', 'class': 'item-imax'}
+	, {'name': 'sweet box', 'class': 'item-gold-class'}
+	, {'name': 'sweet box', 'class': 'item-lamour', 'flag': 'actived'}
+	, {'name': 'sweet box', 'class': 'item-starium'}
+	, {'name': 'sweet box', 'class': 'item-premium'}
+	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	'address':
+	[{'name': 'CGV Da Nang', 'href': '#'}
+	, {'name': 'CGV Quang Nam', 'href': '#'}
+	, {'name': 'CGV Ha Noi', 'href': '#'}],
+	'slide':
+	[{'img': '/assets/websites/images/special-theater/lamour-1.png', 'content': '<h2>Giường Nằm Êm Ái</h2><p>Ghế ngồi là giường nằm êm ái cùng gối và chăn mang lại cảm giác thoải mái và tinh tế</p>'}
+	, {'img': '/assets/websites/images/special-theater/lamour-2.png', 'content':'<h2>Màn Hình Rộng Cùng Âm Thanh Sống Động</h2><p>Hình ảnh trung thực và sắc nét với hệ thống âm thanh hiện đại</p>'}
+	, {'img': '/assets/websites/images/special-theater/lamour-3.png', 'content': '<h2>Dịch Vụ Cao Cấp Miễn Phí</h2><p>Thưởng thức trà/cà phê và thức ăn nhẹ được phục vụ miễn phí</p>'}],
+	
+	}
+	return render( request, 'websites/lamour.html', {'data': data})
+def starium(request):
+	data= { 'technology': 
+	[{'name': 'sweet box', 'class': 'item-sweetbox'}
+	, {'name': 'sweet box', 'class': 'item-4dx'}
+	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
+	, {'name': 'sweet box', 'class': 'item-imax'}
+	, {'name': 'sweet box', 'class': 'item-gold-class'}
+	, {'name': 'sweet box', 'class': 'item-lamour'}
+	, {'name': 'sweet box', 'class': 'item-starium', 'flag': 'actived'}
+	, {'name': 'sweet box', 'class': 'item-premium'}
+	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	'address':
+	[{'name': 'CGV Da Nang', 'href': '#'}
+	, {'name': 'CGV Quang Nam', 'href': '#'}
+	, {'name': 'CGV Ha Noi', 'href': '#'}],
+	'slide':
+	[{'img': '/assets/websites/images/special-theater/starium-1.png', 'content': '<h2>Máy Chiếu Laser Christie</h2><p>Hệ thống máy chiếu laser RGB CHRISTIE thế hệ mới nhất cung cấp độ sáng, độ tương phản, độ phân giải và mật độ điểm ảnh cực cao, khắc phục những khuyết điểm của các phim 3D như ánh sáng bị tối, nhòe làm bật lên độ sống động đầy kinh ngạc và đạt đến đẳng cấp siêu hạng của sự chân thật.</p>'}
+	, {'img': '/assets/websites/images/special-theater/starium-2.png', 'content':'<h2>Âm Thanh Dolby Atmos Hiện Đại</h2><p>Thưởng thức hệ thống âm thanh mái vòm Dolby Atmos mang đến cho khán giả cảm giác sống trong từng thước phim bởi sự thỏa mãn ở mọi giác quan.</p>'}
+	, {'img': '/assets/websites/images/special-theater/starium-3.png', 'content': '<h2>Màn Hình Cực Lớn</h2><p>Màn hình cong với kích thước khổng lồ, đem đến góc nhìn tốt nhất cho mọi vị trí trong phòng chiếu.</p>'}],
+	
+	}
+	return render( request, 'websites/starium.html', {'data': data})
+def premium(request):
+	data= { 'technology': 
+	[{'name': 'sweet box', 'class': 'item-sweetbox'}
+	, {'name': 'sweet box', 'class': 'item-4dx'}
+	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
+	, {'name': 'sweet box', 'class': 'item-imax'}
+	, {'name': 'sweet box', 'class': 'item-gold-class'}
+	, {'name': 'sweet box', 'class': 'item-lamour'}
+	, {'name': 'sweet box', 'class': 'item-starium'}
+	, {'name': 'sweet box', 'class': 'item-premium', 'flag': 'actived'}
+	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	'address':
+	[{'name': 'CGV Da Nang', 'href': '#'}
+	, {'name': 'CGV Quang Nam', 'href': '#'}
+	, {'name': 'CGV Ha Noi', 'href': '#'}],
+	'slide':
+	[{'img': '/assets/websites/images/special-theater/premium-1.png', }
+	, {'img': '/assets/websites/images/special-theater/premium-2.png', }
+	, {'img': '/assets/websites/images/special-theater/premium-3.png', }
+	, {'img': '/assets/websites/images/special-theater/premium-4.png', }],
+	
+	}
+	return render( request, 'websites/premium.html', {'data': data})
+def screenx(request):
+	data= { 'technology': 
+	[{'name': 'sweet box', 'class': 'item-sweetbox'}
+	, {'name': 'sweet box', 'class': 'item-4dx'}
+	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
+	, {'name': 'sweet box', 'class': 'item-imax'}
+	, {'name': 'sweet box', 'class': 'item-gold-class'}
+	, {'name': 'sweet box', 'class': 'item-lamour'}
+	, {'name': 'sweet box', 'class': 'item-starium'}
+	, {'name': 'sweet box', 'class': 'item-premium'}
+	, {'name': 'sweet box', 'class': 'item-screenx', 'flag': 'actived'}],
+	'address':
+	[{'name': 'CGV Da Nang', 'href': '#'}
+	, {'name': 'CGV Quang Nam', 'href': '#'}
+	, {'name': 'CGV Ha Noi', 'href': '#'}],
+	'slide':
+	[{'img': '/assets/websites/images/special-theater/screenx-1.jpg', 'content': '<h2>Trải Nghiệm Thị Giác Vượt Trội</h2><p>Với độ phủ hình ảnh gấp ba lần so với tiêu chuẩn màn chiếu thông thường, ScreenX mang lại những thước phim thật sống động.</p>'}
+	, {'img': '/assets/websites/images/special-theater/screenx-2.jpg', 'content': '<h2>Khung Cảnh 3D Thực Tế</h2><p>ScreenX là công nghệ chiếu phim với màn hình đa diện đầu tiên trên thế giới, cho người xem trải nghiệm hình ảnh 270 độ, mở rộng từ màn hình chính và trải dài sang hai bên tường.</p>'}
+	, {'img': '/assets/websites/images/special-theater/screenx-3.jpg', 'content': '<h2>Sản Xuất Kỳ Công</h2><p>Để có những cảnh phim ScreenX chỉ từ 15 đến 20 phút trong mỗi bộ phim, các nhà làm phim phải sử dụng ít nhất 3 máy quay với 3 góc quay khác nhau cho mỗi phân cảnh để tái hiện khung cảnh bộ phim một cách chân thật.</p>'}],
+	}
+	return render( request, 'websites/screenx.html', {'data': data})

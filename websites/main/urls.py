@@ -53,6 +53,12 @@ urlpatterns = [
     url(r'^special/sweetbox/$', views.sweetbox),
     url(r'^special/4dx/$', views.show_4dx),
     url(r'^special/dolby-atmos/$', views.dolby_atmos),
+    url(r'^special/imax/$', views.imax),
+    url(r'^special/gold-class/$', views.gold_class),
+    url(r'^special/lamour/$', views.lamour),
+    url(r'^special/starium/$', views.starium),
+    url(r'^special/premium/$', views.premium),
+    url(r'^special/screenx/$', views.screenx),
 ]
 
 if settings.DEBUG:

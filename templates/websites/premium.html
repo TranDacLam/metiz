@@ -1,0 +1,132 @@
+{% extends 'layout.html' %}
+{% block extrascript %}
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.min.js"></script>
+{% endblock %}
+{% block body_class %}
+	theaters-special-view
+{% endblock %}
+{% block container_class%}col1-layout {% endblock%}
+{% block main_content %}
+<div class="main-container">
+	<div class="breadcrumbs" itemprop="breadcrumb">
+		<ul>
+			<li class="home">
+				<a href="#" title="Home Page">Home Page</a>
+				<span>/ </span>
+			</li>
+			<li class="premium">
+				<strong>Premium</strong>
+			</li>
+		</ul>
+	</div>
+	<div class="main">
+		<div class="col-main">
+			<div id="specialtheater-list" class="specialtheater-list">
+				<ul class="special-items">
+					{% for item in data.technology %}
+						<li class="item-icon {{item.class}} {{item.flag}}">
+							<a title="Sweetbox" href="#">{{item.name}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="specialtheater-content specialtheater-premium">
+				<div class="page-title special-title">
+					<h1>Premium</h1>
+				</div>
+				<div class="std">
+					<div class="cinema-imax">
+						<div class="header-imax std">
+							<div class="about-content-imax">
+								<div class="recent-cgv-special">
+									<h3>Không gian đậm chất điện ảnh với ghế ngồi được di chuyển theo yêu cầu của riêng bạn</h3>
+									<p>Trải nghiệm phòng chiếu Premium duy nhất chỉ có tại:</p>
+									<ul class="site-list">
+										{% for item in data.address%}
+											<li><a href="{{item.href}}">{{item.name}}</a></li>
+										{% endfor%}	
+									</ul>
+									<p></p>
+								</div>
+								<div class="slide-imax-baner">
+									<div class="slideshow-container-dx" style="clear: both;">
+										<ul class="slideshow-dx" style="position: relative; overflow: hidden;">
+										<!-- <li class="cycle-slide cycle-sentinel" style="position: static; top: 0px; left: 0px; z-index: 100; opacity: 1; display: block; visibility: hidden;">
+											<div class="image-cinema-imax" style="visibility: hidden;"><img alt="" src="https://www.cgv.vn/media/imax/premium-1.png" "="" style="visibility: hidden;"></div>
+										</li> -->
+										{% for item in data.slide%}
+										<li class="cycle-slide" style="position: absolute; top: 0px; left: 0px; z-index: 97; opacity: 1; display: block; visibility: hidden;">
+											<div class="image-cinema-imax"><img alt="" src="{{STATIC_URL}}{{item.img}}" "=""></div>
+										</li>
+										{% endfor %}
+										</ul>
+							<span class="slideshow-prev">&nbsp;</span> <span class="slideshow-next">&nbsp;</span></div>
+						</div>
+					</div>
+				</div>
+				<!-- end cinema imax -->
+				<script type="text/javascript">// <![CDATA[
+				$j(document).ready(function () {
+					$j('.slideshow-container-dx .slideshow-dx')
+						.cycle({
+							slides: '> li',
+								speed: 600,
+								pauseOnHover: true,
+								swipe: true,
+							prev: '.slideshow-prev',
+							next: '.slideshow-next',
+						fx: 'scrollHorz'
+					});
+					});
+				// ]]></script>
+			</div>
+		</div>
+		</div>
+			<style>
+					.home-title{
+						display:none;
+					}
+					</style>
+					<script type="text/javascript">
+						//<![CDATA[
+						$j(document).ready(function(){
+							var highest = 0;
+							var hi = 0;
+							$j('.product-info').each(function(){
+							var h = $j(this).height();
+							if(h > hi){
+									hi = h;
+									highest = h;
+								}
+							});
+							if ($j(window).width()>320){
+								$j('.product-info').css('height',highest+10+'px');
+							}
+							else{
+								$j('.products-grid .product-info').css('padding-bottom','0');
+							}
+							$j('li.category3').find('a').contents().unwrap();
+						});
+						$j(window).on('resize', function() {
+							var highest2 = 0;
+							var hi = 0;
+							$j('.product-info').each(function(){
+							var h = $j(this).height();
+							if(h > hi){
+									hi = h;
+									highest2 = h;
+								}
+							});
+							if ($j(window).width()>320){
+								$j('.product-info').css('height',highest2+10+'px');
+							}
+							else{
+								$j('.products-grid .product-info').css('padding-bottom','0');
+							}
+							$j('li.category3').find('a').contents().unwrap();
+						});
+					//]]>
+					</script>   
+				</div>
+			</div>
+{% endblock %}
