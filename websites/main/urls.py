@@ -49,6 +49,8 @@ urlpatterns = [
     url(r'^payment_policy/$', views.payment_policy),
     url(r'^privacy_policy/$', views.privacy_policy),
     url(r'^faq/$', views.faq),
+    url(r'^careers_category/$', views.careers_category),
+    
 
     url(r'^special/sweetbox/$', views.sweetbox),
     url(r'^special/4dx/$', views.show_4dx),
