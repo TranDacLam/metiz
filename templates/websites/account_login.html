@@ -3,6 +3,10 @@
 {% load i18n %}
 {% block title %}Helio{% endblock title %}
 
+{% block body_class %}
+	customer-account-login
+{% endblock %}
+ 
 {% block container_class %}col1-layout{% endblock %}
 {% block body_class %}
  customer-account-login
@@ -27,24 +31,9 @@
 										<input name="form_key" type="hidden" value="T15GoMUUH8ENNEfK" />
 										<input type="hidden" name="form_key_test" value="T15GoMUUH8ENNEfK" />
 										<div style="display:none"></div>
-										<!--<div class="col-1 new-users">
-											<div class="content">
-												<h2>New Here?</h2>
-												<p class="form-instructions">Registration is free and easy!</p>
-												<ul class="benefits">
-													<li>Faster checkout</li>
-													<li>Save multiple shipping addresses</li>
-													<li>View and track orders and more</li>
-												</ul>
-											</div>
-											<div class="buttons-set">
-												<a title="Tạo tài khoản" class="button" href="https://www.cgv.vn/default/customer/account/create/"><span><span>Tạo tài khoản</span></span></a>
-											</div>
-										</div>-->
+										
 										<div class=" registered-users">
 											<div class="content fieldset format-login-page">
-												<!--<h2>Bạn đã đăng ký thành viên?</h2>
-												<p class="form-instructions">Nếu bạn đã đăng ký, bạn vui lòng đăng nhập vào hệ thống ở from sau.</p>-->
 												<p class="form-instructions">Vui lòng nhập tên người dùng (email) và mật khẩu của bạn...</p>
 												
 												<div class="from-login-account">
@@ -61,9 +50,7 @@
 																<input type="password" name="login[password]" class="input-text required-entry validate-no-html-tags validate-password" id="pass" title="Mật khẩu" />
 															</div>
 														</li>
-														<!-- <li>
-															<a href="https://www.cgv.vn/default/customer/account/forgotpassword/" class="f-left">Bạn muốn tìm lại mật khẩu?</a>
-														</li> -->
+														
 													</ul>
 													<div class="buttons-set login-button-submit">
 														<button type="submit" class="button" title="Đăng nhập" name="send" id="send2"><span><span>Đăng nhập</span></span></button>
@@ -101,10 +88,6 @@
 													});
 													//]]>
 													</script>
-													<!--div class="login-remember-pass">
-														<input type="checkbox" id="save_id">
-														<label>Remember me </label>
-												</div-->
 												
 												<a class="login-forgot-pass" href="#">Tìm lại mật khẩu</a>
 											</div>
