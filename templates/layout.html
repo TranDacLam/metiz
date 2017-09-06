@@ -16,6 +16,7 @@
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="icon">
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <META HTTP-EQUIV="Content-language" CONTENT="vi">
+    
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/prototype/prototype.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/noconflict.js"></script>
@@ -43,7 +44,7 @@
 
 </head>
 
-<body id="{% block body_id %}body{% endblock %}" class="catalog-category-view categorypath-gift-card category-gift-card">
+<body id="{% block body_id %}body{% endblock %}" class="{% block body_class %}{%endblock%}cms-index-index cms-home">
     <div class="mtw_banner_left" style="display: none;">
         <div class="content-banner">
             <a class="load-popup-banners cboxElements" href="#" target="_blank"> 
