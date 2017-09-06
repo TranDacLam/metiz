@@ -54,22 +54,12 @@
 							<div class="content-term-con-gift-term">
 								<h2><img alt="" src="{{ STATIC_URL }}assets/websites/images/giftcard/gift-card-3.png" /></h2>
 								<ul>
+									{% for item in terms_conditions %}
 									<li>
-										<p>Thẻ n&agrave;y d&ugrave;ng để đổi v&eacute; xem phim hoặc thức ăn, đồ uống tại tất cả c&aacute;c rạp CGV,&nbsp;&aacute;p dụng tại quầy &amp; trực tuyến.</p>
+										<p>{{item.description}}</p>
 									</li>
-									<li>
-										<p>Thẻ c&oacute; thẻ được nạp th&ecirc;m tiền v&agrave; gia hạn tại quầy hoặc trực tuyến bất cứ l&uacute;c n&agrave;o với số tiền tối thiểu 300,000đ.</p>
-									</li>
-									<li>Ri&ecirc;ng với thẻ qu&agrave; tặng được đăng k&yacute; trực tuyến, ng&agrave;y hết hạn của tất cả thẻ trước đ&oacute; sẽ được gia hạn theo ng&agrave;y hết hạn của thẻ mới nhất.</li>
-									<li>
-										<p>Thẻ c&oacute; gi&aacute; trị t&iacute;ch lũy điểm v&agrave; tổng chi ti&ecirc;u cho người sử dụng, kh&ocirc;ng c&oacute; gi&aacute; trị t&iacute;ch lũy điểm v&agrave; tổng chi ti&ecirc;u cho người mua.</p>
-									</li>
-									<li>
-										<p>Thẻ kh&ocirc;ng được d&ugrave;ng để đổi sang tiền mặt hoặc mua thẻ kh&aacute;c.</p>
-									</li>
-									<li>
-										<p>Nếu thẻ bị mất hoặc hư hại, gi&aacute; trị sử dụng sẽ kh&ocirc;ng c&ograve;n hiệu lực hay cấp lại nếu kh&ocirc;ng c&oacute; bằng chứng x&aacute;c thực hợp lệ n&agrave;o.</p>
-									</li>
+									{% endfor %}
+									
 								</ul>
 							</div>
 						</div>
