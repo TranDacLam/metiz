@@ -12,7 +12,7 @@
 					<div class="breadcrumbs" itemprop="breadcrumb">
 						<ul>
 							<li class="home">
-								<a href="#" title="Trở về trang chủ">Trang chủ</a>
+								<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
 								<span>/ </span>
 							</li>
 							<li class="cms_page">
@@ -24,13 +24,13 @@
 						<div class="col-left sidebar col-left-first"><div class="block block-cms-menu">
 							<div class="block-content">
 								<ul>
-									<li><a href="#"><span>Giới thiệu</span></a></li>
-									<li><a href="#"><span>Li&ecirc;n Hệ CGV</span></a></li>
-									<li><a href="#"><span>Điều khoản chung</span></a></li>
-									<li><a href="#"><span>Điều khoản giao dich</span></a></li>
-									<li><a href="#"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a></li>
-									<li><a href="#"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a></li>
-									<li class="active"><span><a href="#"><span>C&acirc;u hỏi thường gặp</span></a></span></li>
+									<li><a href="{% url 'about_cinema' %}"><span>Giới thiệu</span></a></li>
+									<li><a href="{% url 'contacts' %}"><span>Li&ecirc;n Hệ CGV</span></a></li>
+									<li><a href="{% url 'terms_conditions' %}"><span>Điều khoản chung</span></a></li>
+									<li><a href="{% url 'terms_use' %}"><span>Điều khoản giao dich</span></a></li>
+									<li><a href="{% url 'payment_policy' %}"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a></li>
+									<li><a href="{% url 'privacy_policy' %}"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a></li>
+									<li class="active"><span><a href="{% url 'faq' %}"><span>C&acirc;u hỏi thường gặp</span></a></span></li>
 								</ul>
 							</div>
 						</div>
