@@ -151,7 +151,10 @@ def careers_cluster(request):
 
 
 def careers_units_detail(request):
-	data_careers_units_detail = [{'location':'HCM','job_description':'-Prepare monthly input VAT report.<br />-Provide VAT, WHT data for Tax authority and External Audit fully, exactly and timely.<br />-Update tax regulation.<br />','requirement':'-Prefer to be graduated from Accounting and Auditing faculty.<br />-Having 03 years experience in Tax field specially in Advertising, Service industry.<br />'}]
+	data_careers_units_detail = {'location':'HCM',
+	'job_description':[{'des':'- Prepare monthly input VAT report.'},{'des':'- Plan, direct, supervise, and coordinate work activities of C&B Team.'}],
+	'requirement':[{'name':'- Prefer to be graduated from Accounting and Auditing faculty.'},{'name':'- Having 03 years experience in Tax field specially in Advertising, Service industry.'}]}
+	
 	return render(request, 'websites/careers_units_detail.html', {'data_careers_units_detail':data_careers_units_detail})
 
 def contacts(request):
