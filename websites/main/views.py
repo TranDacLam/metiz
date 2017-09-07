@@ -176,8 +176,8 @@ def terms_use(request):
 
 def payment_policy(request):
 
-	data = [{'title':'1. Quy định về thanh to&aacute;n','content':[{'name':'Kh&aacute;ch h&agrave;ng c&oacute; thể lựa chọn c&aacute;c h&igrave;nh thức thanh to&aacute;n sau để thanh to&aacute;n cho giao dịch đặt v&eacute; tr&ecirc;n website CGV'},{'name':'- Điểm Thưởng th&agrave;nh vi&ecirc;n'}]},
-	{'title':'2. Chi tiết c&aacute;c h&igrave;nh thức thanh to&aacute;n','content':[{'name':'- Điểm Thưởng Thành Viên (Membership Point): Mỗi 01 điểm thưởng tương đương với 1.000 VND. Điểm thưởng này, bạn có thể sử dụng để thanh toán vé xem phim và các sản phẩm đồ ăn thức uống tại hệ thống CGV toàn quốc'},{'name':'- Điểm Thưởng th&agrave;nh vi&ecirc;n'}]}]
+	data = [{'title':'1. Quy định về thanh toán','content':[{'name':'Khách hàng có thể lựa chọn các hình thức thanh toán sau để thanh toán cho giao dịch đặt vé trên website CGV'},{'name':'- Điểm Thưởng thành viên'},{'name':'- Thẻ quà tặng CGV ( CGV Giftcard)'}]},
+	{'title':'2. Chi tiết các hình thức thanh toán','content':[{'name':'- Điểm Thưởng Thành Viên (Membership Point): Mỗi 01 điểm thưởng tương đương với 1.000 VND. Điểm thưởng này, bạn có thể sử dụng để thanh toán vé xem phim và các sản phẩm đồ ăn thức uống tại hệ thống CGV toàn quốc. Khi sử dụng điểm thưởng, bạn vui lòng xuất trình thẻ thành viên để được nhân viên hỗ trợ thanh toán. Điểm thưởng được sử dụng phải từ 20 điểm trở lên'},{'name':'- Để kiểm tra điểm thưởng, bạn vui lòng truy cập vào đây (https://www.cgv.vn/default/customer/account/) và đăng nhập vào tài khoản của mình.'}]}]
 	return render(request, 'websites/payment_policy.html', {'data':data})
 
 def privacy_policy(request):
