@@ -87,10 +87,23 @@ def account_forgot_password(request):
 
 
 def showing(request):
-	data=[{'img':"/assets/websites/images/american_made_240x355.png",'tc':"c18", 'rating':1},{'img':"/assets/websites/images/american_made_240x355.png"
-	,'tc': 'c16','rating':2},{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':3}
-	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':4}
-	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':5}]
+	data=[
+	{'img':"/assets/websites/images/american_made_240x355.png",'tc':"c18", 'rating':1,'name': 'Lách Luật Kiểu Mỹ',
+	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
+	'time': '180 phút', 'date': '20/8/2017',},
+	{'img':"/assets/websites/images/american_made_240x355.png",'tc': 'c16','rating':2, 'name': 'Lách Luật Kiểu Mỹ',
+	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
+	'time': '180 phút', 'date': '20/8/2017',}
+	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':3, 'name': 'Lách Luật Kiểu Mỹ',
+	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
+	'time': '180 phút',  'date': '20/8/2017',}
+	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':4, 'name': 'Lách Luật Kiểu Mỹ',
+	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
+	'time': '180 phút', 'date': '20/8/2017',}
+	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':5, 'name': 'Lách Luật Kiểu Mỹ',
+	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
+	'time': '180 phút', 'date': '20/8/2017',}]
+
 	return render(request, 'websites/showing.html', {'data':data})
 
 
@@ -202,15 +215,15 @@ def faq(request):
 
 def sweetbox(request):
 	data= { 'technology': 
-	[{'name': 'sweet box', 'class': 'item-sweetbox', 'flag': 'actived'}
-	, {'name': 'sweet box', 'class': 'item-4dx'}
-	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
-	, {'name': 'sweet box', 'class': 'item-imax'}
-	, {'name': 'sweet box', 'class': 'item-gold-class'}
-	, {'name': 'sweet box', 'class': 'item-lamour'}
-	, {'name': 'sweet box', 'class': 'item-starium'}
-	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	[{'name': 'sweetbox', 'class': 'item-sweetbox', 'flag': 'actived'}
+	, {'name': '4dx', 'class': 'item-4dx'}
+	, {'name': 'dolby-atmos', 'class': 'item-dolby-atmos'}
+	, {'name': 'imax', 'class': 'item-imax'}
+	, {'name': 'gold-class', 'class': 'item-gold-class'}
+	, {'name': 'lamour', 'class': 'item-lamour'}
+	, {'name': 'starium', 'class': 'item-starium'}
+	, {'name': 'premium', 'class': 'item-premium'}
+	, {'name': 'screenx', 'class': 'item-screenx'}],
 	'address':
 	[{'name': 'CGV Da Nang', 'href': '#'}
 	, {'name': 'CGV Quang Nam', 'href': '#'}
@@ -226,15 +239,15 @@ def sweetbox(request):
 	return render(request, 'websites/sweetbox.html', {'data': data})
 def show_4dx(request):
 	data= { 'technology': 
-	[{'name': 'sweet box', 'class': 'item-sweetbox'}
-	, {'name': 'sweet box', 'class': 'item-4dx', 'flag': 'actived'}
-	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
-	, {'name': 'sweet box', 'class': 'item-imax'}
-	, {'name': 'sweet box', 'class': 'item-gold-class'}
-	, {'name': 'sweet box', 'class': 'item-lamour'}
-	, {'name': 'sweet box', 'class': 'item-starium'}
-	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	[{'name': 'sweetbox', 'class': 'item-sweetbox'}
+	, {'name': '4dx', 'class': 'item-4dx', 'flag': 'actived'}
+	, {'name': 'dolby-atmos', 'class': 'item-dolby-atmos'}
+	, {'name': 'imax', 'class': 'item-imax'}
+	, {'name': 'gold-class', 'class': 'item-gold-class'}
+	, {'name': 'lamour', 'class': 'item-lamour'}
+	, {'name': 'starium', 'class': 'item-starium'}
+	, {'name': 'premium', 'class': 'item-premium'}
+	, {'name': 'screenx', 'class': 'item-screenx'}],
 	'address':
 	[{'name': 'CGV Da Nang', 'href': '#'}
 	, {'name': 'CGV Quang Nam', 'href': '#'}
@@ -249,15 +262,15 @@ def show_4dx(request):
 	
 def dolby_atmos(request):
 	data= {'technology': 
-	[{'name': 'sweet box', 'class': 'item-sweetbox'}
-	, {'name': 'sweet box', 'class': 'item-4dx'}
-	, {'name': 'sweet box', 'class': 'item-dolby-atmos', 'flag': 'actived'}
-	, {'name': 'sweet box', 'class': 'item-imax'}
-	, {'name': 'sweet box', 'class': 'item-gold-class'}
-	, {'name': 'sweet box', 'class': 'item-lamour'}
-	, {'name': 'sweet box', 'class': 'item-starium'}
-	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	[{'name': 'sweetbox', 'class': 'item-sweetbox'}
+	, {'name': '4dx', 'class': 'item-4dx'}
+	, {'name': 'dolby-atmos', 'class': 'item-dolby-atmos', 'flag': 'actived'}
+	, {'name': 'imax', 'class': 'item-imax'}
+	, {'name': 'gold-class', 'class': 'item-gold-class'}
+	, {'name': 'lamour', 'class': 'item-lamour'}
+	, {'name': 'starium', 'class': 'item-starium'}
+	, {'name': 'premium', 'class': 'item-premium'}
+	, {'name': 'screenx', 'class': 'item-screenx'}],
 	'address': 
 	[{'name': 'CGV Da Nang', 'href': '#'}
 	, {'name': 'CGV Quang Nam', 'href': '#'}
@@ -265,15 +278,15 @@ def dolby_atmos(request):
 	return render(request , 'websites/dolby_atmos.html', {'data': data})
 def imax(request):
 	data= { 'technology': 
-	[{'name': 'sweet box', 'class': 'item-sweetbox'}
-	, {'name': 'sweet box', 'class': 'item-4dx'}
-	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
-	, {'name': 'sweet box', 'class': 'item-imax', 'flag': 'actived'}
-	, {'name': 'sweet box', 'class': 'item-gold-class'}
-	, {'name': 'sweet box', 'class': 'item-lamour'}
-	, {'name': 'sweet box', 'class': 'item-starium'}
-	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	[{'name': 'sweetbox', 'class': 'item-sweetbox'}
+	, {'name': '4dx', 'class': 'item-4dx'}
+	, {'name': 'dolby-atmos', 'class': 'item-dolby-atmos'}
+	, {'name': 'imax', 'class': 'item-imax', 'flag': 'actived'}
+	, {'name': 'gold-class', 'class': 'item-gold-class'}
+	, {'name': 'lamour', 'class': 'item-lamour'}
+	, {'name': 'starium', 'class': 'item-starium'}
+	, {'name': 'premium', 'class': 'item-premium'}
+	, {'name': 'screenx', 'class': 'item-screenx'}],
 	'address':
 	[{'name': 'CGV Da Nang', 'href': '#'}
 	, {'name': 'CGV Quang Nam', 'href': '#'}
@@ -289,15 +302,15 @@ def imax(request):
 	return render( request, 'websites/imax.html',{'data': data})
 def gold_class(request):
 	data= { 'technology': 
-	[{'name': 'sweet box', 'class': 'item-sweetbox'}
-	, {'name': 'sweet box', 'class': 'item-4dx'}
-	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
-	, {'name': 'sweet box', 'class': 'item-imax'}
-	, {'name': 'sweet box', 'class': 'item-gold-class', 'flag': 'actived'}
-	, {'name': 'sweet box', 'class': 'item-lamour'}
-	, {'name': 'sweet box', 'class': 'item-starium'}
-	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	[{'name': 'sweetbox', 'class': 'item-sweetbox'}
+	, {'name': '4dx', 'class': 'item-4dx'}
+	, {'name': 'dolby-atmos', 'class': 'item-dolby-atmos'}
+	, {'name': 'imax', 'class': 'item-imax'}
+	, {'name': 'gold-class', 'class': 'item-gold-class', 'flag': 'actived'}
+	, {'name': 'lamour', 'class': 'item-lamour'}
+	, {'name': 'starium', 'class': 'item-starium'}
+	, {'name': 'premium', 'class': 'item-premium'}
+	, {'name': 'screenx', 'class': 'item-screenx'}],
 	'address':
 	[{'name': 'CGV Da Nang', 'href': '#'}
 	, {'name': 'CGV Quang Nam', 'href': '#'}
@@ -312,15 +325,15 @@ def gold_class(request):
 	return render( request, 'websites/gold_class.html', {'data': data})
 def lamour(request):
 	data= { 'technology': 
-	[{'name': 'sweet box', 'class': 'item-sweetbox'}
-	, {'name': 'sweet box', 'class': 'item-4dx'}
-	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
-	, {'name': 'sweet box', 'class': 'item-imax'}
-	, {'name': 'sweet box', 'class': 'item-gold-class'}
-	, {'name': 'sweet box', 'class': 'item-lamour', 'flag': 'actived'}
-	, {'name': 'sweet box', 'class': 'item-starium'}
-	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	[{'name': 'sweetbox', 'class': 'item-sweetbox'}
+	, {'name': '4dx', 'class': 'item-4dx'}
+	, {'name': 'dolby-atmos', 'class': 'item-dolby-atmos'}
+	, {'name': 'imax', 'class': 'item-imax'}
+	, {'name': 'gold-class', 'class': 'item-gold-class'}
+	, {'name': 'lamour', 'class': 'item-lamour', 'flag': 'actived'}
+	, {'name': 'starium', 'class': 'item-starium'}
+	, {'name': 'premium', 'class': 'item-premium'}
+	, {'name': 'screenx', 'class': 'item-screenx'}],
 	'address':
 	[{'name': 'CGV Da Nang', 'href': '#'}
 	, {'name': 'CGV Quang Nam', 'href': '#'}
@@ -334,15 +347,15 @@ def lamour(request):
 	return render( request, 'websites/lamour.html', {'data': data})
 def starium(request):
 	data= { 'technology': 
-	[{'name': 'sweet box', 'class': 'item-sweetbox'}
-	, {'name': 'sweet box', 'class': 'item-4dx'}
-	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
-	, {'name': 'sweet box', 'class': 'item-imax'}
-	, {'name': 'sweet box', 'class': 'item-gold-class'}
-	, {'name': 'sweet box', 'class': 'item-lamour'}
-	, {'name': 'sweet box', 'class': 'item-starium', 'flag': 'actived'}
-	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	[{'name': 'sweetbox', 'class': 'item-sweetbox'}
+	, {'name': '4dx', 'class': 'item-4dx'}
+	, {'name': 'dolby-atmos', 'class': 'item-dolby-atmos'}
+	, {'name': 'imax', 'class': 'item-imax'}
+	, {'name': 'gold-class', 'class': 'item-gold-class'}
+	, {'name': 'lamour', 'class': 'item-lamour'}
+	, {'name': 'starium', 'class': 'item-starium', 'flag': 'actived'}
+	, {'name': 'premium', 'class': 'item-premium'}
+	, {'name': 'screenx', 'class': 'item-screenx'}],
 	'address':
 	[{'name': 'CGV Da Nang', 'href': '#'}
 	, {'name': 'CGV Quang Nam', 'href': '#'}
@@ -356,15 +369,15 @@ def starium(request):
 	return render( request, 'websites/starium.html', {'data': data})
 def premium(request):
 	data= { 'technology': 
-	[{'name': 'sweet box', 'class': 'item-sweetbox'}
-	, {'name': 'sweet box', 'class': 'item-4dx'}
-	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
-	, {'name': 'sweet box', 'class': 'item-imax'}
-	, {'name': 'sweet box', 'class': 'item-gold-class'}
-	, {'name': 'sweet box', 'class': 'item-lamour'}
-	, {'name': 'sweet box', 'class': 'item-starium'}
-	, {'name': 'sweet box', 'class': 'item-premium', 'flag': 'actived'}
-	, {'name': 'sweet box', 'class': 'item-screenx'}],
+	[{'name': 'sweetbox', 'class': 'item-sweetbox'}
+	, {'name': '4dx', 'class': 'item-4dx'}
+	, {'name': 'dolby-atmos', 'class': 'item-dolby-atmos'}
+	, {'name': 'imax', 'class': 'item-imax'}
+	, {'name': 'gold-class', 'class': 'item-gold-class'}
+	, {'name': 'lamour', 'class': 'item-lamour'}
+	, {'name': 'starium', 'class': 'item-starium'}
+	, {'name': 'premium', 'class': 'item-premium', 'flag': 'actived'}
+	, {'name': 'screenx', 'class': 'item-screenx'}],
 	'address':
 	[{'name': 'CGV Da Nang', 'href': '#'}
 	, {'name': 'CGV Quang Nam', 'href': '#'}
@@ -379,15 +392,15 @@ def premium(request):
 	return render( request, 'websites/premium.html', {'data': data})
 def screenx(request):
 	data= { 'technology': 
-	[{'name': 'sweet box', 'class': 'item-sweetbox'}
-	, {'name': 'sweet box', 'class': 'item-4dx'}
-	, {'name': 'sweet box', 'class': 'item-dolby-atmos'}
-	, {'name': 'sweet box', 'class': 'item-imax'}
-	, {'name': 'sweet box', 'class': 'item-gold-class'}
-	, {'name': 'sweet box', 'class': 'item-lamour'}
-	, {'name': 'sweet box', 'class': 'item-starium'}
-	, {'name': 'sweet box', 'class': 'item-premium'}
-	, {'name': 'sweet box', 'class': 'item-screenx', 'flag': 'actived'}],
+	[{'name': 'sweetbox', 'class': 'item-sweetbox'}
+	, {'name': '4dx', 'class': 'item-4dx'}
+	, {'name': 'dolby-atmos', 'class': 'item-dolby-atmos'}
+	, {'name': 'imax', 'class': 'item-imax'}
+	, {'name': 'gold-class', 'class': 'item-gold-class'}
+	, {'name': 'lamour', 'class': 'item-lamour'}
+	, {'name': 'starium', 'class': 'item-starium'}
+	, {'name': 'premium', 'class': 'item-premium'}
+	, {'name': 'screenx', 'class': 'item-screenx', 'flag': 'actived'}],
 	'address':
 	[{'name': 'CGV Da Nang', 'href': '#'}
 	, {'name': 'CGV Quang Nam', 'href': '#'}
@@ -399,7 +412,7 @@ def screenx(request):
 	}
 	return render( request, 'websites/screenx.html', {'data': data})
 def film_detail(request):
-	data= {'director': ' Doug Liman', 'actor':'Tom Cruise, Domhnall Gleeson, Sarah Wright, E. Roger Mitchell, Jesse Plemons, Lola Kirke, Alejandro Edda, Benito Martinez, Caleb Landry Jones, Jayma Mays',
+	data= {'name': 'Barry Seal: Lách Luật Kiểu Mỹ','director': ' Doug Liman', 'actor':'Tom Cruise, Domhnall Gleeson, Sarah Wright, E. Roger Mitchell, Jesse Plemons, Lola Kirke, Alejandro Edda, Benito Martinez, Caleb Landry Jones, Jayma Mays',
 	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'language': 'Tiếng Anh với phụ đề tiếng Việt và phụ đề tiếng Hàn',
 	'time': '180 phút', 'rated': 'C18 - Phim cấm khán giả dưới 18 tuổi', 'date': '20/8/2017',
 	'img': '/assets/websites/images/american_made_160x237.png', 

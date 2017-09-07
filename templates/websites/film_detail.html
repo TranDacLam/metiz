@@ -14,7 +14,7 @@
 <div class="breadcrumbs" itemprop="breadcrumb">
 <ul>
 	<li class="home">
-		<a href="#" title="Trở về trang chủ">Trang chủ</a>
+		<a href="{% url 'home'%}" title="Trở về trang chủ">Trang chủ</a>
 		<span>/ </span>
 	</li>
 	<li class="category3">
@@ -22,7 +22,7 @@
 		<span>/ </span>
 	</li>
 	<li class="category5">
-		<a href="#" >Phim Đang Chiếu</a>
+		<a href="{% url 'showing' %}" >Phim Đang Chiếu</a>
 		<span>/ </span>
 	</li>
 	<li class="product">
@@ -59,7 +59,7 @@
 			</div>
 			<div class="product-shop">
 				<div class="product-name">
-					<span class="h1">Barry Seal: Lách Luật Kiểu Mỹ</span>
+					<span class="h1">{{data.name}}</span>
 				</div>
 				
 				<!-- Build test -->
@@ -130,23 +130,23 @@
 			<div class="product-collateral toggle-content tabs tabs-format-cgv">
 				<dl id="collateral-tabs" class="collateral-tabs">
 					<dt class="tab current"><span>Chi tiết</span></dt>
-					<dd class="tab-container current">
-						<div class="tab-content"><h2>Chi tiết</h2>
-							<div class="std">
-								{{data.content}}
+						<dd class="tab-container current">
+							<div class="tab-content"><h2>Chi tiết</h2>
+								<div class="std">
+									{{data.content}}
+								</div>
 							</div>
-						</div>
-					</dd>
-				<dt class="tab last"><span>Trailer</span></dt>
-				<dd class="tab-container last">
-					<div class="tab-content"><div class="std">
-						<h2>Trailer</h2>
-						<div class="std product_view_trailer">
-						<iframe width="560" height="315" src="{{data.trailer}}" frameborder="0" allowfullscreen=""></iframe>    </div>
-					</div></div>
-				</dd>
-			</dl>
-		</div>
+						</dd>
+					<dt class="tab last"><span>Trailer</span></dt>
+						<dd class="tab-container last">
+							<div class="tab-content"><div class="std">
+								<h2>Trailer</h2>
+								<div class="std product_view_trailer">
+								<iframe width="560" height="315" src="{{data.trailer}}" frameborder="0" allowfullscreen=""></iframe>    </div>
+							</div></div>
+						</dd>
+				</dl>
+			</div>
 	</div>
 	<script type="text/javascript">
 	<!--//<![CDATA[
