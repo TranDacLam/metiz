@@ -19,7 +19,7 @@
 					<div class="product-collateral account-tabs">
 						<ul class="toggle-tabs">
 							<li class="current"><span>Đăng nhập</span></li>
-							<li class="last"><span><a href="#">Đăng ký</a></span></li>
+							<li class="last"><span><a href="{% url 'account_create' %}">Đăng ký</a></span></li>
 						</ul>
 						<dl id="collateral-tabs">
 							<dd class="tab-container current">
@@ -55,7 +55,7 @@
 													</div>
 													
 												</div>
-												<div class="find-your-account"><a class="login-forgot-pass" href="#">Tìm lại Tài khoản hoặc số Online ID</a></div>
+												<div class="find-your-account"><a class="login-forgot-pass" href="{% url 'account_findmember' %}">Tìm lại Tài khoản hoặc số Online ID</a></div>
 												<div class="login-option">
 													<div class="remember-me-popup">
 														<div class="remember-me-popup-head">
@@ -87,7 +87,7 @@
 													//]]>
 													</script>
 												
-												<a class="login-forgot-pass" href="#">Tìm lại mật khẩu</a>
+												<a class="login-forgot-pass" href="{% url 'account_forgot_password' %}">Tìm lại mật khẩu</a>
 											</div>
 											
 											<div class="remember-me-popup">
