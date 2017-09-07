@@ -50,7 +50,7 @@ urlpatterns = [
     url(r'^privacy_policy/$', views.privacy_policy),
     url(r'^faq/$', views.faq),
     url(r'^careers_units/$', views.careers_units),
-    url(r'^careers_units/detail$', views.careers_units_detail),
+    url(r'^careers_units_detail$', views.careers_units_detail),
     url(r'^careers_cluster/$', views.careers_cluster),
     
 

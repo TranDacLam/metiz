@@ -48,15 +48,18 @@
 					<div class="col-main">
 						<div class="std"><div class="cms-page-title"><span style="color: #ff0000;"> <strong>ĐIỀU KHOẢN GIAO DỊCH</strong> </span></div>
 						<div class="cms-page-content privacy-policy-cms">
-							<p>Ch&agrave;o mừng qu&yacute; kh&aacute;ch đến với CGV</p>
-							<p>Ch&uacute;ng t&ocirc;i l&agrave; C&ocirc;ng ty TNHH CJ CGV Vietnam, địa chỉ trụ sở ch&iacute;nh tại T&ograve;a nh&agrave; CJ, Tầng 10-11, 2Bis-4-6 đường L&ecirc; Th&aacute;nh T&ocirc;n, Quận 1, Th&agrave;nh phố Hồ Ch&iacute; Minh.</p>
-							<p>Khi qu&yacute; kh&aacute;ch truy cập v&agrave;o trang web của CGV c&oacute; nghĩa l&agrave; qu&yacute; kh&aacute;ch đồng &yacute; với c&aacute;c điều khoản n&agrave;y. Trang web c&oacute; quyền thay đổi, chỉnh sửa, th&ecirc;m hoặc lược bỏ bất kỳ phần n&agrave;o trong Quy định v&agrave; Điều kiện sử dụng, v&agrave;o bất cứ l&uacute;c n&agrave;o. C&aacute;c thay đổi c&oacute; hiệu lực ngay khi được đăng tr&ecirc;n trang web m&agrave; kh&ocirc;ng cần th&ocirc;ng b&aacute;o trước. V&agrave; khi qu&yacute; kh&aacute;ch tiếp tục sử dụng trang web, sau khi c&aacute;c thay đổi về Quy định v&agrave; Điều kiện được đăng tải, c&oacute; nghĩa l&agrave; qu&yacute; kh&aacute;ch chấp nhận với những thay đổi đ&oacute;. Qu&yacute; kh&aacute;ch vui l&ograve;ng kiểm tra thường xuy&ecirc;n để cập nhật những thay đổi của CGV.</p>
-							<p>Xin vui l&ograve;ng đọc kỹ trước khi quyết định Đặt V&eacute; trực tuyến.</p>
+							{% for item in data_description %}
+							<p>{{ item.description }}</p>
+							{% endfor %}
 							<div class="cms-tap">
-								<h3>1. Phạm Vi &Aacute;p Dụng</h3>
-								<p>Điều kiện dưới đ&acirc;y &aacute;p dụng ri&ecirc;ng cho chức năng mua v&eacute; trực tuyến tại Website. Khi sử dụng chức năng để đặt chỗ v&agrave; mua v&eacute;, Qu&yacute; kh&aacute;ch mặc nhi&ecirc;n đ&atilde; chấp thuận v&agrave; tu&acirc;n thủ tất cả c&aacute;c chỉ dẫn, điều khoản, điều kiện v&agrave; lưu &yacute; đăng tải tr&ecirc;n Website, bao gồm nhưng kh&ocirc;ng giới hạn bởi Điều kiện Sử dụng n&ecirc;u ở đ&acirc;y. Nếu Qu&yacute; kh&aacute;ch kh&ocirc;ng c&oacute; &yacute; định mua v&eacute; trực tuyến hay kh&ocirc;ng đồng &yacute; với bất kỳ điều khoản hay điều kiện n&agrave;o n&ecirc;u trong Điều kiện Sử dụng, xin h&atilde;y DỪNG VIỆC SỬ DỤNG chức năng n&agrave;y.</p>
+							{% for item in data %}
+								<h3>{{item.title}}</h3>
+								{% for i in item.content %}
+								<p>{{i.content1}}</p>
+								{% endfor %}
+							{% endfor %}
 							</div>
-							<div class="cms-tap">
+							<!-- <div class="cms-tap">
 								<h3>2. Điều kiện sử dụng t&iacute;nh năng mua v&eacute; trực tuyến</h3>
 								<p>Qu&yacute; kh&aacute;ch phải đăng k&yacute; t&agrave;i khoản với th&ocirc;ng tin x&aacute;c thực về bản th&acirc;n v&agrave; phải cập nhật nếu c&oacute; bất kỳ thay đổi n&agrave;o. Mỗi người truy cập phải c&oacute; tr&aacute;ch nhiệm với mật khẩu, t&agrave;i khoản v&agrave; hoạt động của m&igrave;nh tr&ecirc;n web. Hơn nữa, qu&yacute; kh&aacute;ch phải th&ocirc;ng b&aacute;o cho ch&uacute;ng t&ocirc;i biết khi t&agrave;i khoản bị truy cập tr&aacute;i ph&eacute;p. Ch&uacute;ng t&ocirc;i kh&ocirc;ng chịu bất kỳ tr&aacute;ch nhiệm n&agrave;o, d&ugrave; trực tiếp hay gi&aacute;n tiếp, đối với những thiệt hại hoặc mất m&aacute;t g&acirc;y ra do qu&yacute; kh&aacute;ch kh&ocirc;ng tu&acirc;n thủ quy định.</p>
 							</div>
@@ -161,7 +164,7 @@
 									<p>Trong trường hợp c&oacute; bất kỳ thiệt hại n&agrave;o ph&aacute;t sinh do việc vi phạm Quy Định sử dụng trang web, ch&uacute;ng t&ocirc;i c&oacute; quyền đ&igrave;nh chỉ hoặc kh&oacute;a t&agrave;i khoản của qu&yacute; kh&aacute;ch vĩnh viễn. Nếu qu&yacute; kh&aacute;ch kh&ocirc;ng h&agrave;i l&ograve;ng với trang web hoặc bất kỳ điều khoản, điều kiện, quy tắc, ch&iacute;nh s&aacute;ch, hướng dẫn, hoặc c&aacute;ch thức vận h&agrave;nh của CGV th&igrave; biện ph&aacute;p khắc phục duy nhất l&agrave; ngưng sử dụng dịch vụ của ch&uacute;ng t&ocirc;i.</p>
 									<p>Xin qu&yacute; kh&aacute;ch lưu &yacute; chỉ mua h&agrave;ng khi chấp nhận v&agrave; hiểu r&otilde; những quy định tr&ecirc;n. Nếu cần hỗ trợ th&ecirc;m th&ocirc;ng tin, qu&yacute; kh&aacute;ch vui l&ograve;ng tham khảo tại <a href="#" target="_blank">www.cgv.vn</a></p>
 								</div>
-							</div>
+							</div> -->
 						</div>               
 					</div>
 					<div class="col-left sidebar"></div>
