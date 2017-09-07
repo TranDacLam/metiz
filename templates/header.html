@@ -4,7 +4,7 @@
             <div class="header-career">
             </div>
             <div class="header-career">
-                <p><a href="#">Liên hệ CGV</a></p>
+                <p><a href="{% url 'contacts' %}">Liên hệ CGV</a></p>
             </div>
             <div class="header-language-container">
                 <div class="store-language-container">
@@ -18,7 +18,7 @@
             </div>
             <div class="header-top-account">
                 <div class="account-header-wrapper">
-                    <a href="#" class="topskip-link skip-account">
+                    <a href="{% url 'account_login'%}" class="topskip-link skip-account">
                         <span class="label">Đăng nhập/ Đăng ký</span>
                     </a>
                 </div>
@@ -43,7 +43,7 @@
                 <span class="label">Tìm kiếm</span>
             </a>
             <div class="account-cart-wrapper">
-                <a href="#" data-target-element="#header-account" class="skip-link skip-account">
+                <a href="{% url 'account_login' %}" data-target-element="#header-account" class="skip-link skip-account">
                     <span class="icon"></span>
                     <span class="label">Đăng nhập/ Đăng ký</span>
                 </a>
@@ -124,7 +124,7 @@
                 </form>
             </div>
             <div class="header-search-right">
-                <p><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/mua-ve_ngay.png" /></a></p>
+                <p><a href="{% url 'showing' %}"><img alt="" src="{{ STATIC_URL }}assets/websites/images/mua-ve_ngay.png" /></a></p>
             </div>
         </div>
         <!-- Account -->
