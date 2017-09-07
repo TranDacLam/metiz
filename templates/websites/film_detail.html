@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% block title %}Helio{% endblock title %}
+<!-- {% block extrascript%}
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/jquery.elevateZoom-3.0.8.min.js"></script>
+{% endblock%} -->
+
+{% block body_class %}
+ catalog-product-view catalog-product-view categorypath-now-showing category-now-showing
+ {% endblock %}
+
+{% block container_class%}col1-layout {% endblock%}
+{% block main_content%}
+<div class="breadcrumbs" itemprop="breadcrumb">
+<ul>
+	<li class="home">
+		<a href="#" title="Trở về trang chủ">Trang chủ</a>
+		<span>/ </span>
+	</li>
+	<li class="category3">
+		Phim
+		<span>/ </span>
+	</li>
+	<li class="category5">
+		<a href="#" >Phim Đang Chiếu</a>
+		<span>/ </span>
+	</li>
+	<li class="product">
+        <strong>Barry Seal: Lách Luật Kiểu Mỹ</strong>
+    </li>
+</ul>
+</div>
+<div class="main">
+<div class="col-main">
+	
+	<div id="messages_product_view"></div>
+	<div class="product-view">
+		<div class="product-essential">
+			<div class="page-title product-view">
+				<span class="h1">Nội Dung Phim</span>
+			</div>
+			
+			<div class="product-name-reponsive">
+				<h1>Barry Seal: Lách Luật Kiểu Mỹ</h1>
+			</div>
+			
+			<div class="product-img-box">
+				<div class="product-image product-image-zoom">
+					<div class="product-image-gallery">
+						<img id="image-main" class="gallery-image visible" src="{{STATIC_URL}}{{data.img}}" alt="CGV_American Made" title="CGV_American Made">
+
+						<!-- <img id="image-0" class="gallery-image" src="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/a/m/american_made_240x355.png" data-zoom-image="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/a/m/american_made_240x355.png">
+
+						<img id="image-1" class="gallery-image" src="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/a/m/american_made_406x600.png" data-zoom-image="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/a/m/american_made_406x600.png">
+
+						<img id="image-2" class="gallery-image" src="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/a/m/american_made_160x237.png" data-zoom-image="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/a/m/american_made_160x237.png"> -->
+					</div>
+				</div>
+			</div>
+			<div class="product-shop">
+				<div class="product-name">
+					<span class="h1">Barry Seal: Lách Luật Kiểu Mỹ</span>
+				</div>
+				
+				<!-- Build test -->
+				<div class="movie-director movie-info">
+					<label>Đạo diễn: </label>
+					<div class="std">&nbsp; {{data.director}}</div>
+				</div>
+				<div class="movie-actress movie-info">
+					<label>Diễn viên:</label>
+					<div class="std">&nbsp; {{data.actor}}
+					</div>
+				</div>
+				<div class="movie-genre movie-info">
+					<label>Thể loại: </label>
+					<div class="std">&nbsp; {{data.category}}</div>
+				</div>
+				<div class="movie-release movie-info">
+					<label>Khởi chiếu: </label>
+					<div class="std">&nbsp;  {{data.date}}</div>
+				</div>
+				<div class="movie-actress movie-info">
+					<label>Thời lượng: </label>
+					<div class="std">&nbsp;  {{data.time}}</div>
+				</div>
+				<div class="movie-language movie-info">
+					<label>Ngôn ngữ: </label>
+					<div class="std">&nbsp;  {{data.language}}</div>
+				</div>
+				<div class="movie-rating movie-rated-web">
+					<label>Rated: </label>
+					<div class="std">&nbsp;  {{data.rated}}</div>
+				</div>
+				
+				
+				<!--				<div class="short-descriptions">
+					<div class="std"></div>
+				</div>
+				-->
+				
+				
+				<div class="movie-technology-icons">
+					<span class="movie-rating-detail c18">Rated : C18</span>
+					<a href="javascript:void(0)" class="movie-detail-icon-type" title="2D">
+						<span class="movie-detail-type-2d">2D</span>
+					</a>
+				</div>
+			</div>
+
+			<div class="movie-detail-fb-booking">
+				<div class="add-to-cart-wrapper ">
+					<script>(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+					fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+					</script>
+					<div class="fb-like fb_iframe_widget" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
+                    </div>
+					<button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
+					</button>			
+				</div>
+			</div>
+				
+				<div class="clearer"></div>
+		</div>
+			<div class="product-collateral toggle-content tabs tabs-format-cgv">
+				<dl id="collateral-tabs" class="collateral-tabs">
+					<dt class="tab current"><span>Chi tiết</span></dt>
+					<dd class="tab-container current">
+						<div class="tab-content"><h2>Chi tiết</h2>
+							<div class="std">
+								{{data.content}}
+							</div>
+						</div>
+					</dd>
+				<dt class="tab last"><span>Trailer</span></dt>
+				<dd class="tab-container last">
+					<div class="tab-content"><div class="std">
+						<h2>Trailer</h2>
+						<div class="std product_view_trailer">
+						<iframe width="560" height="315" src="{{data.trailer}}" frameborder="0" allowfullscreen=""></iframe>    </div>
+					</div></div>
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<script type="text/javascript">
+	<!--//<![CDATA[
+				function Quickbooking(obj)
+				{
+					$j.ajax({
+						type: 'post',
+						url: '#',
+						data: 'id=' + obj,
+						//dataType: 'json',
+						beforeSend: function(){
+							$j.colorbox();
+						},
+					}).done(function(result) {
+						//console.log(result);
+						html =result;
+						$j.colorbox({html: '<div class="product-view quick-booking cgv-schedule-popup">'+html+'</div>', width:"88%", height:"88%",fixed:true,modal: false});
+						togglecontent('cgv-schedule-popup .tabs-cgv-movie-type');
+						togglecontent('cgv-schedule-popup .tabs-cgv-movie-cites');
+						togglecontent('cgv-schedule-popup .tabs-cgv-movie-view-date');
+					});
+				}
+	//]]>-->
+</script>                
+</div>
+</div>
+{% endblock%}

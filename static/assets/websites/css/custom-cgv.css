@@ -4447,7 +4447,7 @@ counter-reset: tamCounter;
 }
 ul.site-list li{
 list-style: none;
-width:100%;
+width:33%;
 }
 ul.site-list li:before {
 counter-increment: tamCounter;
