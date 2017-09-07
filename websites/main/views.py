@@ -20,7 +20,11 @@ def home(request):
 	return render(request, 'websites/home.html', {'data': data})
 
 def comingsoon(request):
-	data=[{'img':"/assets/websites/images/movie-selection/movie1.png"}, {'img':"/assets/websites/images/movie-selection/movie1.png"}, {'img': "/assets/websites/images/movie-selection/movie1.png"},{'img': "/assets/websites/images/movie-selection/movie1.png"}	,{'img': "/assets/websites/images/movie-selection/movie1.png"}]	
+	data=[{'img':"/assets/websites/images/movie-selection/movie1.png",'name':'Chí Phèo Ngoại Truyện','category':'Hành Động','time':'90','date':'08/09/2017'}, 
+	{'img':"/assets/websites/images/movie-selection/movie1.png",'name':' Mồi Cá Mập','category':'Hoạt Hình','time':'90','date':'08/09/2017'},
+	 {'img': "/assets/websites/images/movie-selection/movie2.jpg",'name':'Breathe','category':'Hành Động, Hoạt Hình','time':'90','date':'08/09/2017'},
+	 {'img': "/assets/websites/images/movie-selection/movie3.jpg",'name':'Kingsman : Tổ Chức Hoàng Kim','category':'Hoạt Hình','time':'90','date':'08/09/2017'},
+	 {'img': "/assets/websites/images/movie-selection/movie4.jpg",'name':'Chí Phèo Ngoại Truyện','category':'Hành Động','time':'90','date':'08/09/2017'}]	
 	return render(request, 'websites/coming_soon.html', {'data':data })
 
 def cinox(request):
