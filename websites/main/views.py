@@ -164,7 +164,10 @@ def careers_cluster(request):
 
 
 def careers_units_detail(request):
-	data_careers_units_detail = [{'location':'HCM','job_description':'-Prepare monthly input VAT report.<br />-Provide VAT, WHT data for Tax authority and External Audit fully, exactly and timely.<br />-Update tax regulation.<br />','requirement':'-Prefer to be graduated from Accounting and Auditing faculty.<br />-Having 03 years experience in Tax field specially in Advertising, Service industry.<br />'}]
+	data_careers_units_detail = {'location':'HCM',
+	'job_description':[{'des':'- Prepare monthly input VAT report.'},{'des':'- Plan, direct, supervise, and coordinate work activities of C&B Team.'}],
+	'requirement':[{'name':'- Prefer to be graduated from Accounting and Auditing faculty.'},{'name':'- Having 03 years experience in Tax field specially in Advertising, Service industry.'}]}
+	
 	return render(request, 'websites/careers_units_detail.html', {'data_careers_units_detail':data_careers_units_detail})
 
 def contacts(request):
@@ -185,12 +188,20 @@ def terms_conditions(request):
 	return render(request, 'websites/terms_conditions.html', {'data':data})
 
 def terms_use(request):
-	return render(request, 'websites/terms_use.html', {})
+	data_description = [{'description':'- Chào mừng quý khách đến với CGV'},
+		{'description':'- Chúng tôi là Công ty TNHH CJ CGV Vietnam, địa chỉ trụ sở chính tại Tòa nhà CJ, Tầng 10-11, 2Bis-4-6 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh.'},
+		{'description':'- Khi quý khách truy cập vào trang web của CGV có nghĩa là quý khách đồng ý với các điều khoản này. Trang web có quyền thay đổi, chỉnh sửa, thêm hoặc lược bỏ bất kỳ phần nào trong Quy định và Điều kiện sử dụng, vào bất cứ lúc nào. Các thay đổi có hiệu lực ngay khi được đăng trên trang web mà không cần thông báo trước. Và khi quý khách tiếp tục sử dụng trang web, sau khi các thay đổi về Quy định và Điều kiện được đăng tải, có nghĩa là quý khách chấp nhận với những thay đổi đó. Quý khách vui lòng kiểm tra thường xuyên để cập nhật những thay đổi của CGV.'}]
+
+	data = [{'title':'1. Phạm Vi Áp Dụng','content':[{'content1':'Điều kiện dưới đây áp dụng riêng cho chức năng mua vé trực tuyến tại Website. Khi sử dụng chức năng để đặt chỗ và mua vé, Quý khách mặc nhiên đã chấp thuận và tuân thủ tất cả các chỉ dẫn, điều khoản, điều kiện và lưu ý đăng tải trên Website, bao gồm nhưng không giới hạn bởi Điều kiện Sử dụng nêu ở đây. Nếu Quý khách không có ý định mua vé trực tuyến hay không đồng ý với bất kỳ điều khoản hay điều kiện nào nêu trong Điều kiện Sử dụng, xin hãy DỪNG VIỆC SỬ DỤNG chức năng này.'}]},
+	{'title':'2. Điều kiện sử dụng tính năng mua vé trực tuyến','content':[{'content1':'Quý khách phải đăng ký tài khoản với thông tin xác thực về bản thân và phải cập nhật nếu có bất kỳ thay đổi nào. Mỗi người truy cập phải có trách nhiệm với mật khẩu, tài khoản và hoạt động của mình trên web. Hơn nữa, quý khách phải thông báo cho chúng tôi biết khi tài khoản bị truy cập trái phép. Chúng tôi không chịu bất kỳ trách nhiệm nào, dù trực tiếp hay gián tiếp, đối với những thiệt hại hoặc mất mát gây ra do quý khách không tuân thủ quy định.'}]},
+	{'title':'3. Quy định về đặt vé trực tuyến','content':[{'content1':'- Tính năng đặt vé trực tuyến hiện chỉ áp dụng cho thành viên của CGV. Vui lòng tham khảo thông tin đăng ký thành viên trên website www.cgv.vn.'},{'content1':'- Trong suốt quá trình đăng ký, quý khách đồng ý nhận email quảng cáo từ website. Sau đó, nếu không muốn tiếp tục nhận mail, quý khách có thể từ chối bằng cách nhấp vào đường link ở dưới cùng trong mọi email quảng cáo.'}]},]
+	return render(request, 'websites/terms_use.html', {'data':data, 'data_description':data_description})
 
 def payment_policy(request):
-
+	
 	data = [{'title':'1. Quy định về thanh toán','content':[{'name':'Khách hàng có thể lựa chọn các hình thức thanh toán sau để thanh toán cho giao dịch đặt vé trên website CGV'},{'name':'- Điểm Thưởng thành viên'},{'name':'- Thẻ quà tặng CGV ( CGV Giftcard)'}]},
 	{'title':'2. Chi tiết các hình thức thanh toán','content':[{'name':'- Điểm Thưởng Thành Viên (Membership Point): Mỗi 01 điểm thưởng tương đương với 1.000 VND. Điểm thưởng này, bạn có thể sử dụng để thanh toán vé xem phim và các sản phẩm đồ ăn thức uống tại hệ thống CGV toàn quốc. Khi sử dụng điểm thưởng, bạn vui lòng xuất trình thẻ thành viên để được nhân viên hỗ trợ thanh toán. Điểm thưởng được sử dụng phải từ 20 điểm trở lên'},{'name':'- Để kiểm tra điểm thưởng, bạn vui lòng truy cập vào đây (https://www.cgv.vn/default/customer/account/) và đăng nhập vào tài khoản của mình.'}]}]
+	
 	return render(request, 'websites/payment_policy.html', {'data':data})
 
 def privacy_policy(request):

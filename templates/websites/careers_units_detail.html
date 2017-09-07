@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+
+{% block title %}Helio{% endblock title %}
+
+{%block body_class %}  jobs-index-view {% endblock %}
+
+{% block container_class %}col2-left-layout{% endblock %}
+
+{% block main_content %}
+		<div class="breadcrumbs" itemprop="breadcrumb">
+			<ul>
+				<li class="home">
+					<a href="#" title="Trở về trang chủ">Trang chủ</a>
+					<span>/ </span>
+				</li>
+				<li class="jobs_list">
+					<a href="#" title="Tuyển dụng">Tuyển dụng</a>
+					<span>/ </span>
+				</li>
+				<li class="jobs_view">
+					<strong>Tax Accountant</strong>
+				</li>
+			</ul>
+		</div>
+		<div class="main">
+			<div class="col-main">
+				<div id="messages_jobs_view"></div>
+				<div class="page-title">
+					<h1>Tax Accountant</h1>
+					<!--<ul class="links">
+						<li>Thứ Hai, ngày 21 tháng 8 năm 2017</li>
+					</ul>-->
+				</div>
+				<div class="jobs-description std">
+				
+					<p>Working Location: {{data_careers_units_detail.location}}</p>    
+					<p><strong>Job description</strong><br />
+					{% for item in data_careers_units_detail.job_description%}
+						{{item.des}}
+					<br />
+					{% endfor %}
+					</p>
+					<p><strong>Requirement</strong><br />
+					{% for item in data_careers_units_detail.requirement%}
+						{{item.name}}
+					<br />
+					{% endfor %}   
+				
+				</div>
+			</div>
+			<div class="col-left sidebar"><div class="block block-account">
+				<div class="block-content">
+					<ul>
+						<li class="current" >
+							<a href="#">Tuyển dụng</a></li>
+						<li >
+							<a href="#">Trụ sở chính</a>
+						</li>
+						<li >
+							<a href="#">Cụm Rạp</a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+					
+			<!-- Facebook Pixel Code -->
+			
+			<script>
+				!function(f,b,e,v,n,t,s){
+					if(f.fbq)
+						return;
+					n=f.fbq=function(){
+						n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+						if(!f._fbq)
+							f._fbq=n;
+						n.push=n;
+						n.loaded=!0;
+						n.version='2.0';
+						n.queue=[];
+						t=b.createElement(e);
+						t.async=!0;
+						t.src=v;
+						s=b.getElementsByTagName(e)[0];
+						s.parentNode.insertBefore(t,s)
+				}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+				fbq('init', '1644759925761845');
+				fbq('track', 'ViewContent');
+			</script>
+			
+			<div id="wishlist_edit_action_container"></div>
+{% endblock %}	

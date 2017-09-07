@@ -51,7 +51,6 @@ urlpatterns = [
     url(r'^careers_units/$', views.careers_units, name='careers_units'),
     url(r'^careers_units/detail$', views.careers_units_detail, name='careers_detail'),
     url(r'^careers_cluster/$', views.careers_cluster, name='careers_cluster'),
-    
 
     url(r'^special/sweetbox/$', views.sweetbox, name='special_sweetbox'),
     url(r'^special/4dx/$', views.show_4dx, name='special_4dx'),
