@@ -62,6 +62,8 @@ urlpatterns = [
     url(r'^special/premium/$', views.premium, name='special_premium'),
     url(r'^special/screenx/$', views.screenx, name='special_screenx'),
     url(r'^film/detail/$', views.film_detail, name='film_detail'),
+    url(r'^news/$', views.news, name='news'),
+    url(r'^new/detail/$', views.new_detail, name='new_detail'),
 ]
 
 if settings.DEBUG:
