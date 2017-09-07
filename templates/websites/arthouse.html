@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% load i18n %}
-{% block title %}Helio{% endblock title %}
+{% block title %}Arthouse{% endblock title %}
 {% block body_class %}
     catalog-category-view categorypath-arthouse category-arthouse
 {% endblock %}
@@ -9,7 +9,7 @@
         <div class="breadcrumbs" itemprop="breadcrumb">
             <ul>
                 <li class="home">
-                    <a href="#" title="Trở về trang chủ">Trang chủ</a>
+                    <a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
                     <span>/ </span>
                 </li>
                 <li class="category3">
