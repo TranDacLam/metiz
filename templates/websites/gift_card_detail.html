@@ -33,17 +33,16 @@
 							</div>
 							<div class="content-about-gift-card">
 								<div class="row-1-about-gift-card">
-									<p>CGV h&acirc;n hạnh ph&aacute;t h&agrave;nh Thẻ Qu&agrave; Tặng - Phương tiện thanh to&aacute;n hiện đại v&agrave; thuận tiện. Đ&acirc;y l&agrave; một m&oacute;n qu&agrave; điện ảnh tuyệt vời m&agrave; bạn c&oacute; thể chia sẻ v&agrave; gửi tặng bạn b&egrave;, gia đ&igrave;nh, đồng nghiệp v&agrave; đối t&aacute;c. Chắc chắn đ&acirc;y sẽ l&agrave; m&oacute;n qu&agrave; ngập tr&agrave;n sắc m&agrave;u điện ảnh thật &yacute; nghĩa v&agrave; tuyệt vời d&agrave;nh cho những người bạn y&ecirc;u qu&yacute;.</p>
-									<p><strong>Thẻ Qu&agrave; Tặng CGV </strong> l&agrave; loại thẻ trả trước. Với số tiền trong thẻ, bạn c&oacute; thể sử dụng Thẻ để đổi v&eacute; xem phim hoặc bất k&igrave; sản phẩm n&agrave;o tại quầy Bắp Nước của <strong>CGV Cinemas</strong>.Với vẻ ngo&agrave;i sang trọng v&agrave; sự tiện lợi, bạn c&oacute; thể lựa chọn c&aacute;c mệnh gi&aacute; cho Thẻ Qu&agrave; Tặng như 300.000đ; 500.000đ; hoặc 1.000.000đ. Thẻ c&oacute; thời hạn sử dụng trong 1 năm v&agrave; đặc biệt bạn c&oacute; thể nạp th&ecirc;m tiền để gia hạn bất cứ l&uacute;c n&agrave;o. Bạn c&oacute; thể mua thẻ thật dễ d&agrave;ng m&agrave; kh&ocirc;ng cần đăng k&yacute; th&ocirc;ng tin chủ thẻ.</p>
+								{% for item in data_description %}
+									<p>{{item.description}}</p>
+								{% endfor %}
 								</div>
 								<div class="row-2-about-gift-card">
 									<h2><img alt="" src="{{ STATIC_URL }}assets/websites/images/giftcard/gift-card-2.png"/></h2>
 									<ul>
-										<li><strong>Thẻ Qu&agrave; Tặng CGV </strong> l&agrave; loại thẻ trả trước. Với số tiền trong thẻ, bạn c&oacute; thể sử dụng Thẻ để đổi v&eacute; xem phim hoặc bất k&igrave; sản phẩm n&agrave;o tại quầy Bắp Nước của <strong>CGV Cinemas</strong>.</li>
-										<li>Với vẻ ngo&agrave;i sang trọng v&agrave; sự tiện lợi, bạn c&oacute; thể lựa chọn c&aacute;c mệnh gi&aacute; cho Thẻ Qu&agrave; Tặng như 300.000đ; 500.000đ; hoặc 1.000.000đ. Thẻ c&oacute; thời hạn sử dụng trong 1 năm v&agrave; đặc biệt bạn c&oacute; thể nạp th&ecirc;m tiền để gia hạn bất cứ l&uacute;c n&agrave;o.&nbsp;Bạn c&oacute; thể mua thẻ thật dễ d&agrave;ng m&agrave; kh&ocirc;ng cần đăng k&yacute; th&ocirc;ng tin chủ thẻ.</li>
-										<li>Thẻ qu&agrave; tặng đang được b&aacute;n tại quầy v&eacute; c&aacute;c rạp <strong>CGV Cinemas </strong>tr&ecirc;n to&agrave;n quốc, hoặc bạn c&oacute; thể mua thẻ qu&agrave; tặng điện tử tại <a href="#" target="_blank">đ&acirc;y</a>. Thẻ qu&agrave; tặng c&oacute; thể được t&iacute;ch hợp v&agrave;o t&agrave;i khoản th&agrave;nh vi&ecirc;n, v&agrave; thanh to&aacute;n tiện lợi bằng thẻ th&agrave;nh vi&ecirc;n khi kh&ocirc;ng mang theo thẻ qu&agrave; tặng.</li>
-										<li>Hiện c&oacute; loại thẻ qu&agrave; tặng cho c&ocirc;ng ty / tổ chức khi bạn mua v&eacute; với số lượng lớn. Đặc biệt bạn c&oacute; thể đưa logo v&agrave; th&ocirc;ng điệp của c&ocirc;ng ty / tổ chức v&agrave;o thẻ. Gọi bộ phận B&aacute;n V&eacute; Nh&oacute;m (Group Sales) để biết th&ecirc;m th&ocirc;ng tin: <strong> +84-8-3822-0333 </strong></li>
-										<li>C&aacute;c c&acirc;u hỏi thường gặp, vui l&ograve;ng <a href="#" target="_blank">xem ở đ&acirc;y</a>.</li>
+									{% for item in data_content %}
+										<li>{{item.content}}</li>
+									{% endfor %}
 									</ul>
 								</div>
 							</div>
