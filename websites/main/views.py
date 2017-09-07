@@ -122,7 +122,15 @@ def gift_card_detail(request):
 	{'description':'Thẻ không được dùng để đổi sang tiền mặt hoặc mua thẻ khác.'},
 	{'description':'Nếu thẻ bị mất hoặc hư hại, giá trị sử dụng sẽ không còn hiệu lực hay cấp lại nếu không có bằng chứng xác thực hợp lệ nào.'}]
 	
-	return render(request, 'websites/gift_card_detail.html',{'terms_conditions':terms_conditions} )
+	data_description = [{'description':'CGV hân hạnh phát hành Thẻ Quà Tặng - Phương tiện thanh toán hiện đại và thuận tiện. Đây là một món quà điện ảnh tuyệt vời mà bạn có thể chia sẻ và gửi tặng bạn bè, gia đình, đồng nghiệp và đối tác. Chắc chắn đây sẽ là món quà ngập tràn sắc màu điện ảnh thật ý nghĩa và tuyệt vời dành cho những người bạn yêu quý.'},
+	{'description':'Thẻ Quà Tặng CGV là loại thẻ trả trước. Với số tiền trong thẻ, bạn có thể sử dụng Thẻ để đổi vé xem phim hoặc bất kì sản phẩm nào tại quầy Bắp Nước của CGV Cinemas.Với vẻ ngoài sang trọng và sự tiện lợi, bạn có thể lựa chọn các mệnh giá cho Thẻ Quà Tặng như 300.000đ; 500.000đ; hoặc 1.000.000đ. Thẻ có thời hạn sử dụng trong 1 năm và đặc biệt bạn có thể nạp thêm tiền để gia hạn bất cứ lúc nào. Bạn có thể mua thẻ thật dễ dàng mà không cần đăng ký thông tin chủ thẻ.'}]	
+
+	data_content = [{'content':'Thẻ Quà Tặng CGV là loại thẻ trả trước. Với số tiền trong thẻ, bạn có thể sử dụng Thẻ để đổi vé xem phim hoặc bất kì sản phẩm nào tại quầy Bắp Nước của CGV Cinemas.'},
+	{'content':'Với vẻ ngoài sang trọng và sự tiện lợi, bạn có thể lựa chọn các mệnh giá cho Thẻ Quà Tặng như 300.000đ; 500.000đ; hoặc 1.000.000đ. Thẻ có thời hạn sử dụng trong 1 năm và đặc biệt bạn có thể nạp thêm tiền để gia hạn bất cứ lúc nào. Bạn có thể mua thẻ thật dễ dàng mà không cần đăng ký thông tin chủ thẻ'},
+	{'content':'Thẻ quà tặng đang được bán tại quầy vé các rạp CGV Cinemas trên toàn quốc, hoặc bạn có thể mua thẻ quà tặng điện tử tại đây. Thẻ quà tặng có thể được tích hợp vào tài khoản thành viên, và thanh toán tiện lợi bằng thẻ thành viên khi không mang theo thẻ quà tặng.'},
+	{'content':'Hiện có loại thẻ quà tặng cho công ty / tổ chức khi bạn mua vé với số lượng lớn. Đặc biệt bạn có thể đưa logo và thông điệp của công ty / tổ chức vào thẻ. Gọi bộ phận Bán Vé Nhóm (Group Sales) để biết thêm thông tin: +84-8-3822-0333 '},
+	{'content':'Các câu hỏi thường gặp, vui lòng xem ở đây.'}]
+	return render(request, 'websites/gift_card_detail.html',{'data_description':data_description,'data_content':data_content,'terms_conditions':terms_conditions} )
 
 def cgv_online(request):
 	return render(request, 'websites/cgv_online.html', {} )
