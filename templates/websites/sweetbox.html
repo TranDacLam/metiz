@@ -15,7 +15,7 @@
 		<div class="breadcrumbs" itemprop="breadcrumb">
 			<ul>
 				<li class="home">
-					<a href="#" title="Home Page">Home Page</a>
+					<a href="{% url 'home' %}" title="Home Page">Home Page</a>
 					<span>/ </span>
 				</li>
 				<li class="sweetbox">
@@ -29,7 +29,7 @@
 					<ul class="special-items">
 						{% for item in data.technology %}
 						<li class="item-icon {{item.class}} {{item.flag}}">
-							<a title="Sweetbox" href="#">{{item.name}}</a>
+							<a title="Sweetbox" href="/special/{{item.name}}">{{item.name}}</a>
 						</li>
 						{% endfor %}
 					</ul>

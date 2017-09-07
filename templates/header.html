@@ -28,7 +28,7 @@
 </div>
 <header id="header" class="page-header">
     <div class="page-header-container">
-        <a class="logo" href="#">
+        <a class="logo" href="{% url 'home'%}">
             <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo.png" alt="CGV Cinemas" class="large" />
             <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo-small.png" alt="CGV Cinemas" class="small" />
         </a>
@@ -56,51 +56,45 @@
                     <li class="level0 nav-1 first last parent">
                     <a  class="level0 has-children" href="javascript: void(0);">Phim</a>
                         <ul class="level0">
-                            <li class="level1 nav-1-1 first"><a href="#" class="level1 ">Phim Đang Chiếu</a></li>
-                            <li class="level1 nav-1-2"><a href="#" class="level1 ">Phim Sắp Chiếu</a></li>
-                            <li class="level1 nav-1-3 last"><a href="#" class="level1 ">Arthouse</a></li>
+                            <li class="level1 nav-1-1 first"><a href="{% url 'showing'%}" class="level1 ">Phim Đang Chiếu</a></li>
+                            <li class="level1 nav-1-2"><a href="{% url 'comingsoon'%}" class="level1 ">Phim Sắp Chiếu</a></li>
+                            <li class="level1 nav-1-3 last"><a href="{% url 'arthouse'%}" class="level1 ">Arthouse</a></li>
                         </ul>
                     </li>
-                    <!--li class="level0 nav-2 first last">
-                        <a class="level0" href="https://www.cgv.vn/default/cinox/reserve/">Lịch Chiếu</a>
-                    </li-->
+                   
                     <li class="level0 nav-2 parent first last">
                         <a class="level0 has-children" href="javascript: void(0);">Rạp CGV</a>
                         <ul class="level0">
                             <li class="level1 nav-3-1 last">
-                                <a class="level1" href="#">Tất Cả Các Rạp</a>
+                                <a class="level1" href="{% url 'cinox'%}">Tất Cả Các Rạp</a>
                             </li>
                             <li class="level1 nav-3-2 last">
-                                <a class="level1" href="#">Rạp Đặc Biệt</a>
+                                <a class="level1" href="{% url 'special_gold_class'%}">Rạp Đặc Biệt</a>
                             </li>                                       
                         </ul>
                     </li>
-                   <!--  <li class="level0 nav-3 first last">
-                        <a class="level0" href="#">Rạp CGV</a>
-                    </li> -->
                     <li class="level0 nav-4 parent first last">
-                <a class="level0 has-children" href="javascript: void(0);">Thành viên</a>
-                <ul class="level0">
-                    <li class="level1 nav-4-1 last">
-                        <a class="level1" href="#">Thành viên</a>
+                        <a class="level0 has-children" href="javascript: void(0);">Thành viên</a>
+                        <ul class="level0">
+                            <li class="level1 nav-4-1 last">
+                                <a class="level1" href="{% url 'account_login'%}">Thành viên</a>
+                            </li>
+                            <li class="level1 nav-4-2 first">
+                                <a class="level1" href="{% url 'account_login'%}">Tài khoản CGV</a>
+                            </li>
+                            <li class="level1 nav-4-3 last">
+                                <a class="level1" href="{% url 'membership'%}">Quyền lợi</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="level1 nav-4-2 first">
-                        <!--<a class="level0" href="https://www.cgv.vn/default/sales/order/history/">Thành viên</a>-->
-                        <a class="level1" href="#">Tài khoản CGV</a>
-                    </li>
-                    <li class="level1 nav-4-3 last">
-                        <a class="level1" href="#">Quyền lợi</a>
-                    </li>
-                </ul>
-            </li>
                     <li class="level0 nav-5 parent first last">
                         <a class="level0 has-children" href="javascript: void(0);">Online Store (Test)</a>
                         <ul class="level0">
                             <li class="level1 nav-5-1">
-                                <a class="level1" href="#">Voucher Phim</a>
+                                <a class="level1" href="{% url 'movie_voucher'%}">Voucher Phim</a>
                             </li>
                             <li class="level1 nav-5-2">
-                                <a class="level1" href="#">Thẻ Quà Tặng</a>
+                                <a class="level1" href="{% url 'gift_card'%}">Thẻ Quà Tặng</a>
                             </li>
                         </ul>
                     </li>

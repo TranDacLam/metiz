@@ -9,7 +9,7 @@
 		<div class="breadcrumbs" itemprop="breadcrumb">
 			<ul>
 				<li class="home">
-					<a href="#" title="Trở về trang chủ">Trang chủ</a>
+					<a href="{% url 'home'%}" title="Trở về trang chủ">Trang chủ</a>
 					<span>/ </span>
 				</li>
 				<li class="category3">
@@ -33,33 +33,35 @@
 							<li class="film-lists item last">
 								<span class="nmovie-rating nmovie-rating-{{value.tc}}"></span>
 								<div class="product-images">
-									<a href="#" title="CGV_American Made" class="product-image">
+									<a href="{% url 'film_detail'%}" title="CGV_American Made" class="product-image">
 										<img id="product-collection-image-285" src="{{STATIC_URL}}{{value.img}}" alt="CGV_American Made">
 									</a>
 									
 									<div class="movie-technology">
 										<a href="javascript:void(0)" class="icon-type-film" title="IMAX2D">
-											<span class="attr-movie-imax2d">IMAX2D</span>
+											<!-- <span class="attr-movie-imax2d">IMAX2D</span> -->
+											<span class="attr-movie-{{value.technology}}">{{value.technology}}</span>
 										</a>
 									</div>
 								</div>
 								
 								<div class="product-info" style="height: 41px; min-height: 11px;">
-									<h2 class="product-name"><a href="#" title="Barry Seal: Lách Luật Kiểu Mỹ"> Lách Luật Kiểu Mỹ</a></h2>
+									<h2 class="product-name">
+									<a href="#" title="Barry Seal: Lách Luật Kiểu Mỹ">{{value.name}}</a></h2>
 									
 									<div class="cgv-movie-info">
 										<span class="cgv-info-bold">Thể loại: </span>
-										<span class="cgv-info-normal">Hành Động, Phiêu Lưu</span>
+										<span class="cgv-info-normal">{{value.category}}</span>
 									</div>
 									
 									<div class="cgv-movie-info">
 										<span class="cgv-info-bold">Thời lượng: </span>
-										<span class="cgv-info-normal">115 phút</span>
+										<span class="cgv-info-normal">{{value.time}}</span>
 									</div>
 									
 									<div class="cgv-movie-info">
 										<span class="cgv-info-bold">Khởi chiếu: </span>
-										<span class="cgv-info-normal">25/08/2017</span>
+										<span class="cgv-info-normal">{{value.date}}</span>
 									</div>
 									
 								</div>
