@@ -109,7 +109,10 @@ def about_cinema(request):
 	{'img':'/assets/websites/images/about-4.PNG'},{'img':'/assets/websites/images/about-5.PNG'},{'img':'/assets/websites/images/about-6.PNG'},
 	{'img':'/assets/websites/images/about-7.JPG'},{'img':'/assets/websites/images/about-8.JPG'},{'img':'/assets/websites/images/about-9.PNG'}]
 	
-	return render(request, 'websites/about_cinema.html',{'data': data})
+	data_content = [{'content': 'CJ CGV trực thuộc CJ Group, một trong những tập đoàn kinh tế đa ngành lớn nhất của Hàn Quốc có mặt ở 21 quốc gia trên thế giới. CJ CGV là một trong top 5 cụm rạp chiếu phim lớn nhất toàn cầu và là nhà phát hành, cụm rạp chiếu phim lớn nhất Việt Nam'},
+	{'content': 'CJ CGV trực thuộc CJ Group, một trong những tập đoàn kinh tế đa ngành lớn nhất của Hàn Quốc có mặt ở 21 quốc gia trên thế giới. CJ CGV là một trong top 5 cụm rạp chiếu phim lớn nhất toàn cầu và là nhà phát hành, cụm rạp chiếu phim lớn nhất Việt Nam'},
+	{'content': 'CJ CGV đã tạo nên khái niệm độc đáo về việc chuyển đổi rạp chiếu phim truyền thống thành tổ hợp văn hóa “Cultureplex”, nơi khán giả không chỉ đến thưởng thức điện ảnh đa dạng thông qua các công nghệ tiên tiến như IMAX, STARIUM, 4DX, Dolby Atmos, cũng như thưởng thức ẩm thực hoàn toàn mới và khác biệt trong khi trải nghiệm dịch vụ chất lượng nhất tại CGV'},]
+	return render(request, 'websites/about_cinema.html',{'data': data,'data_content':data_content})
 
 def gift_card_detail(request):
 	terms_conditions = [{'description':'Thẻ này dùng để đổi vé xem phim hoặc thức ăn, đồ uống tại tất cả các rạp CGV, áp dụng tại quầy & trực tuyến.'},
@@ -127,12 +130,21 @@ def cgv_online(request):
 def careers(request):
 	return render(request, 'websites/careers.html', {})
 
-def careers_category(request):
-
-	data_careers_category = [{'name':'C&B Executive', 'location':'Working Location: HCMC'},{'name':'C&B Team Leader', 'location':'Working Location: HCMC'},{'name':'Film Marketing Analyst', 'location':'Working location: HC'},
+def careers_units(request):
+	data_careers_units = [{'name':'C&B Executive', 'location':'Working Location: HCMC'},{'name':'C&B Team Leader', 'location':'Working Location: HCMC'},{'name':'Film Marketing Analyst', 'location':'Working location: HC'},
 	{'name':'Group Sale Analyst', 'location':'Working location: Hanoi, HCMC'},{'name':'Marketing Communication', 'location':'Working locaiton: HCMC'},{'name':'PR Analyst', 'location':'Working location: HCMC'}]
 	
-	return render(request, 'websites/careers_category.html', {'data_careers_category':data_careers_category})
+	return render(request, 'websites/careers_units.html', {'data_careers_units':data_careers_units})
+
+def careers_cluster(request):
+	data_careers_cluster = [{'name':'Assistant Cinema Manager', 'location':'Working Location: Phu Yen'},{'name':'Nhân Viên Kỹ Thuật Bảo Trì	', 'location':'Working Location: HCMC'},{'name':'Nhân Viên Kỹ Thuật Phòng Chiếu', 'location':'Working location: HC'}]
+	
+	return render(request, 'websites/careers_cluster.html', {'data_careers_cluster':data_careers_cluster})
+
+
+def careers_units_detail(request):
+	data_careers_units_detail = [{'location':'HCM','job_description':'-Prepare monthly input VAT report.<br />-Provide VAT, WHT data for Tax authority and External Audit fully, exactly and timely.<br />-Update tax regulation.<br />','requirement':'-Prefer to be graduated from Accounting and Auditing faculty.<br />-Having 03 years experience in Tax field specially in Advertising, Service industry.<br />'}]
+	return render(request, 'websites/careers_units_detail.html', {'data_careers_units_detail':data_careers_units_detail})
 
 def contacts(request):
 	return render(request, 'websites/contacts.html', {})
@@ -156,13 +168,27 @@ def terms_use(request):
 
 def payment_policy(request):
 
-	return render(request, 'websites/payment_policy.html', {})
+	data = [{'title':'1. Quy định về thanh to&aacute;n','content':[{'name':'Kh&aacute;ch h&agrave;ng c&oacute; thể lựa chọn c&aacute;c h&igrave;nh thức thanh to&aacute;n sau để thanh to&aacute;n cho giao dịch đặt v&eacute; tr&ecirc;n website CGV'},{'name':'- Điểm Thưởng th&agrave;nh vi&ecirc;n'}]},
+	{'title':'2. Chi tiết c&aacute;c h&igrave;nh thức thanh to&aacute;n','content':[{'name':'- Điểm Thưởng Thành Viên (Membership Point): Mỗi 01 điểm thưởng tương đương với 1.000 VND. Điểm thưởng này, bạn có thể sử dụng để thanh toán vé xem phim và các sản phẩm đồ ăn thức uống tại hệ thống CGV toàn quốc'},{'name':'- Điểm Thưởng th&agrave;nh vi&ecirc;n'}]}]
+	return render(request, 'websites/payment_policy.html', {'data':data})
 
 def privacy_policy(request):
 	return render(request, 'websites/privacy_policy.html', {})
 
 def faq(request):
-	return render(request, 'websites/faq.html', {})
+
+	data_film = [{'ques':'Phân loại phim P, C13, C16, C18 là gì?','answer':[{'answ1':'Căn cứ Thông tư số 12/2015/TT-BVHTTDL của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch có hiệu lực thi hành từ ngày 01/01/2017, Tiêu chí phân loại phim theo lứa tuổi được quy định như sau:'},{'answ1':'P: Phim được phép phổ biến rộng rãi đến mọi đối tượng'},{'answ1':'C13: Phim cấm phổ biến đến khán giả dưới 13 tuổi'}]},
+	{'ques':'Trước khi được trình chiếu tại Việt Nam, các bộ phim phải trải qua sự kiểm duyệt và cấp phép như thế nào?','answer':[{'answ1':'Tất cả những phim được trình chiếu tại các rạp chiếu phim ở Việt Nam phải được kiểm duyệt, sau đó được cấp giấy phép phát hành và phạm vi phổ biến phim bởi Cục Điện Ảnh thuộc Bộ Văn Hóa, Thể Thao và Du Lịch Việt Nam'}]},
+	{'ques':'Suất Chiếu Đặc Biệt là gì?','answer':[{'answ1':'Suất Chiếu Đặc Biệt là những suất chiếu được ra rạp trước ngày công chiếu chính thức'}]}]
+	
+	data_food = [{'ques':'Thức ăn, đồ uống mua bên ngoài có được mang vào rạp CGV không?','answer':[{'answ1':'Để đảm bảo vệ sinh và an toàn, chỉ thức ăn và đồ uống được mua tại CGV mới được đem vào rạp chiếu phim.'}]},
+	{'ques':'Bắp bướm là gì?','answer':[{'answ1':'Bắp bướm là bắp khi nở chín có hình dạng nhiều cánh xòe ra các bên. Bắp bướm tại CGV có hai vị mặn và ngọt.'}]},
+	{'ques':'Bắp nấm là gì?','answer':[{'answ1':'Bắp nấm có hình dạng tròn, hạt bắp nổ đều và giòn. Bắp nấm tại CGV có bốn vị mặn, ngọt, phô mai và caramel.'}]}]
+
+	data_voucher = [{'ques':'CGV có các loại voucher nào?','answer':[{'answ1':'CGV phát hành nhiều loại voucher khác nhau:'},{'answ1':'- 2D Voucher'},{'answ1':'- 3D Voucher'},{'answ1':'- 4DX Voucher'}]},
+	{'ques':'Mua Vé Nhóm (Group Sales) là gì?','answer':[{'answ1':'Mua Vé Nhóm là chương trình bán vé số lượng lớn với giá vé ưu đãi so với mua vé lẻ thông thường (tối thiểu 50 vé). Vé nhóm được bán dưới dạng voucher, hoặc thẻ quà tặng,... Bạn có thể liên hệ bộ phận Bán Vé Nhóm (Group Sales) để biết thêm thông tin: +84-028-3822-0333.'}]},
+	{'ques':'Việc mua voucher hoặc sử dụng voucher để đổi vé có được tích điểm không?','answer':[{'answ1':'Rất tiếc các giao dịch liên quan đến voucher sẽ không được tích điểm.'}]}]
+	return render(request, 'websites/faq.html', {'data_film':data_film, 'data_food':data_food, 'data_voucher':data_voucher})
 
 
 
