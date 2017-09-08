@@ -5,111 +5,115 @@
 {% block title %}F.A.Q{% endblock title %}
 
 {% block container_class %}col2-left-layout{% endblock %}
+
 {% block body_class %}
- cms-page-view cms-faq
+cms-page-view cms-faq
 {% endblock %}
+
 {% block main_content %}
-					<div class="breadcrumbs" itemprop="breadcrumb">
-						<ul>
-							<li class="home">
-								<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
-								<span>/ </span>
-							</li>
-							<li class="cms_page">
-								<strong>F.A.Q</strong>
-							</li>
-						</ul>
-					</div>
-					<div class="main">
-						<div class="col-left sidebar col-left-first"><div class="block block-cms-menu">
-							<div class="block-content">
-								<ul>
-									<li><a href="{% url 'about_cinema' %}"><span>Giới thiệu</span></a></li>
-									<li><a href="{% url 'contacts' %}"><span>Li&ecirc;n Hệ CGV</span></a></li>
-									<li><a href="{% url 'terms_conditions' %}"><span>Điều khoản chung</span></a></li>
-									<li><a href="{% url 'terms_use' %}"><span>Điều khoản giao dich</span></a></li>
-									<li><a href="{% url 'payment_policy' %}"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a></li>
-									<li><a href="{% url 'privacy_policy' %}"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a></li>
-									<li class="active"><span><a href="{% url 'faq' %}"><span>C&acirc;u hỏi thường gặp</span></a></span></li>
-								</ul>
-							</div>
-						</div>
-						<script type="text/javascript">// <![CDATA[
-						$j(".block-cms-menu li").each(function(){
-									var self = this;
-										href = $j(this).find('a');
-									for(var i = 0 ; i < href.length ; i++){
-										var harray = $j(href[i]).attr('href').split("/");
-										var charray = window.location.href.split("/");
-										if(harray[harray.length-2] == charray[charray.length-2]){
-											$j(self).addClass('active');
-											break;
-										}
-									}
-								});
-					// ]]></script></div>
-					<div class="col-main">
-						<div class="std">
-						<div class="tab-content" id="tabs-1">
-							<div class="title-faq">
-								<h2>Phim</h2>
-							</div>
-							<div class="accordion">
-							{% for item in data_film %}
-								<h3>{{item.ques}}</h3>
-								<div>
-									{% for i in item.answer %}
-										<p>{{i.answ1}}</p>
-									{% endfor %}
-								</div>
-							{% endfor %}
-							</div>
-						</div>
-						<!-- end tabs-1 -->
-						<div class="tab-content" id="tabs-2">
-							<div class="title-faq">
-								<h2>Bắp Nước &amp; Thực Phẩm tại rạp</h2>
-							</div>
-							<div class="accordion">
-							{% for item in data_food %}
-								<h3>{{item.ques}}</h3>
-								<div>
-								{%for i in item.answer %}
-									<p>{{i.answ1}}</p>
-								{% endfor %}
-								</div>
-							{% endfor %}
-							</div>
-						</div>
-						<!-- end tabs-2 -->
-						<div class="tab-content" id="tabs-3">
-							<div class="title-faq">
-								<h2>Voucher Phim</h2>
-							</div>
-							<div class="accordion">
-							{% for item in data_voucher %}
-								<h3>{{item.ques}}</h3>
-								<div>
-								{% for i in item.answer %}
-									<p>{{i.answ1}}</p>
-								{% endfor %}
-								</div>
-							{% endfor %}
-							</div>
-						</div>
-												
-						<!-- end tabs-9 -->
-						<script src="{{ STATIC_URL }}assets/js/jquery-ui.js" type="text/javascript"></script>
-						<script type="text/javascript">// <![CDATA[
-						jQuery(document).ready(function(){
-								jQuery( ".col-main" ).tabs();
-								jQuery( ".accordion" ).accordion({
-									heightStyle: "content"
-								});
-							});
-					// ]]></script>
-					</div>
-				</div>
-				<div class="col-left sidebar"></div>
+<div class="breadcrumbs" itemprop="breadcrumb">
+	<ul>
+		<li class="home">
+			<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
+			<span>/ </span>
+		</li>
+		<li class="cms_page">
+			<strong>F.A.Q</strong>
+		</li>
+	</ul>
+</div>
+<div class="main">
+	<div class="col-left sidebar col-left-first">
+		<div class="block block-cms-menu">
+			<div class="block-content">
+				<ul>
+					<li><a href="{% url 'about_cinema' %}"><span>Giới thiệu</span></a></li>
+					<li><a href="{% url 'contacts' %}"><span>Li&ecirc;n Hệ CGV</span></a></li>
+					<li><a href="{% url 'terms_conditions' %}"><span>Điều khoản chung</span></a></li>
+					<li><a href="{% url 'terms_use' %}"><span>Điều khoản giao dich</span></a></li>
+					<li><a href="{% url 'payment_policy' %}"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a></li>
+					<li><a href="{% url 'privacy_policy' %}"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a></li>
+					<li class="active"><span><a href="{% url 'faq' %}"><span>C&acirc;u hỏi thường gặp</span></a></span></li>
+				</ul>
 			</div>
+		</div>
+		<script type="text/javascript">// <![CDATA[
+		$j(".block-cms-menu li").each(function(){
+					var self = this;
+						href = $j(this).find('a');
+					for(var i = 0 ; i < href.length ; i++){
+						var harray = $j(href[i]).attr('href').split("/");
+						var charray = window.location.href.split("/");
+						if(harray[harray.length-2] == charray[charray.length-2]){
+							$j(self).addClass('active');
+							break;
+						}
+					}
+				});
+		</script>
+	</div>
+	<div class="col-main">
+		<div class="std">
+			<div class="tab-content" id="tabs-1">
+				<div class="title-faq">
+					<h2>Phim</h2>
+				</div>
+				<div class="accordion">
+					{% for item in data_film %}
+						<h3>{{item.ques}}</h3>
+						<div>
+							{% for i in item.answer %}
+								<p>{{i.answ1}}</p>
+							{% endfor %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<!-- end tabs-1 -->
+			<div class="tab-content" id="tabs-2">
+				<div class="title-faq">
+					<h2>Bắp Nước &amp; Thực Phẩm tại rạp</h2>
+				</div>
+				<div class="accordion">
+					{% for item in data_food %}
+					<h3>{{item.ques}}</h3>
+					<div>
+						{%for i in item.answer %}
+						<p>{{i.answ1}}</p>
+					{% endfor %}
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		<!-- end tabs-2 -->
+			<div class="tab-content" id="tabs-3">
+				<div class="title-faq">
+					<h2>Voucher Phim</h2>
+				</div>
+				<div class="accordion">
+					{% for item in data_voucher %}
+						<h3>{{item.ques}}</h3>
+						<div>
+							{% for i in item.answer %}
+								<p>{{i.answ1}}</p>
+							{% endfor %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			
+			<!-- end tabs-9 -->
+			<script src="{{ STATIC_URL }}assets/js/jquery-ui.js" type="text/javascript"></script>
+			<script type="text/javascript">// <![CDATA[
+			jQuery(document).ready(function(){
+					jQuery( ".col-main" ).tabs();
+					jQuery( ".accordion" ).accordion({
+						heightStyle: "content"
+					});
+				});
+			</script>
+		</div>
+	</div>
+	<div class="col-left sidebar"></div>
+</div>
 {% endblock %}

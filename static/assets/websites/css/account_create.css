@@ -1,0 +1,17 @@
+
+.fieldset {
+	float: left;
+	width: 50%;
+	margin: 0 !important;
+}
+.form-list select {
+	margin-top: 0px;
+	margin-left:0;
+}
+.cgv-option-info li.customer-user-attributes{
+	float:left;
+}
+
+.validation-advice, .dob-full, .control{
+	display:none;
+}

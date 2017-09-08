@@ -209,7 +209,10 @@ def payment_policy(request):
 	return render(request, 'websites/payment_policy.html', {'data':data})
 
 def privacy_policy(request):
-	return render(request, 'websites/privacy_policy.html', {})
+
+	data = [{'title':'1. Mục đích và phạm vi thu thập thông tin1','content':[{'ct1':'.1 Việc thu thập thông tin cá nhân được thực hiện trên cơ sở khách hàng tự khai báo để đăng ký thành viên CGV tại website www.cgv.vn, tùy từng thời điểm, thông tin thu thập sẽ bao gồm nhưng không giới hạn ở:'},{'ct1':'.1 Việc thu thập thông tin cá nhân được thực hiện trên cơ sở khách hàng tự khai báo để đăng ký thành viên CGV tại website www.cgv.vn, tùy từng thời điểm, thông tin thu thập sẽ bao gồm nhưng không giới hạn ở:'}]},
+	{'title':'2. Phạm vi sử dụng thông tin','content':[{'ct1':'2.1 CGV chỉ sử dụng thông tin cá nhân của khách hàng cho các mục đích quy định tại Mục 1 hoặc mục đích khác (nếu có) với điều kiện đã thông báo và được sự đồng ý của khách hàng.'},{'ct1':'2.2 CGV sẽ không sử dụng thông tin cá nhân của khách hàng để gửi quảng cáo, giới thiệu dịch vụ và các thông tin có tính thương mại khác khi chưa được khách hàng chấp thuận.'}]}]
+	return render(request, 'websites/privacy_policy.html', {'data':data})
 
 def faq(request):
 

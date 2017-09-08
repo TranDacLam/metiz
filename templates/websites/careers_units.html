@@ -4,6 +4,10 @@
 
 {% block title %}Trụ sở chính{% endblock title %}
 
+{% block extrascript %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/careers_cluster.css" media="all" />
+{% endblock %}
+
 {%block body_class %}  jobs-index-index {% endblock %}
 
 {% block container_class %}col2-left-layout{% endblock %}
@@ -41,7 +45,8 @@
 									<option value="#">Recent Jobs</option>
 								</select>
 								<a href="#">
-									<img src="#" alt="Sắp xếp tăng dần" class="v-middle" /></a>
+									<img src="#" alt="Sắp xếp tăng dần" class="v-middle" />
+								</a>
 							</div>
 						</div>
 						
@@ -57,7 +62,7 @@
 						</div>
 						<ol class="products-list" id="jobs-list">
 							{% for item in data_careers_units %}
-							<li class="item" style="margin-top:5px;">
+							<li class="item">
 								<a href="#" class="jobs-shop">
 								<span class="product-name">
 									{{item.name}}
@@ -95,22 +100,23 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-left sidebar"><div class="block block-account">
-					<div class="block-content">
-						<ul>
-						<li >
-							<a href="{% url 'careers' %}">Tuyển dụng</a></li>
-						<li class="current" >
-							<a href="{% url 'careers_units' %}">Trụ sở chính</a>
-						</li>
-						<li >
-							<a href="{% url 'careers_cluster' %}">Cụm Rạp</a>
-						</li>
-							
-						</ul>
+				<div class="col-left sidebar">
+					<div class="block block-account">
+						<div class="block-content">
+							<ul>
+							<li >
+								<a href="{% url 'careers' %}">Tuyển dụng</a></li>
+							<li class="current" >
+								<a href="{% url 'careers_units' %}">Trụ sở chính</a>
+							</li>
+							<li >
+								<a href="{% url 'careers_cluster' %}">Cụm Rạp</a>
+							</li>
+								
+							</ul>
+						</div>
 					</div>
 				</div>
-			</div>
 		</div>
 								
 															
@@ -135,7 +141,6 @@
 				}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 				fbq('init', '1644759925761845');fbq('track', 'ViewContent');
 			</script>
-			<!--<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1644759925761845&ev=PageView&noscript=1"/></noscript>-->
 			
 			<div id="wishlist_edit_action_container"></div>
 {% endblock %}		

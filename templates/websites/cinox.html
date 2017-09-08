@@ -2,8 +2,11 @@
 
 {% load i18n %} 
 
-
 {% block title %}Helio{% endblock title %}
+
+{% block extrascript %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/cinox.css" media="all" />
+{% endblock %}
 
 {% block body_class %}
  cinox-site-list
@@ -39,7 +42,7 @@
 									<ul>
 										
 										{% for item in data_cinema_list %}
-										<li class="{{item.class}}" style="display: none;">
+										<li class="{{item.class}}">
 											<span id="{{item.id}}" onclick="site('#',this)">{{item.name}}</span>
 										</li>
 										{% endfor %}
@@ -55,7 +58,7 @@
 				</div>
 			</div>
 			
-			<div id="loading-mask" style="left: -2px; top: 0px; display: block;">
+			<div id="loading-mask">
 				<p class="loader" id="loading_mask_loader">
 					<img src="{{ STATIC_URL }}assets/websites/images/ajax-loader.gif" alt="Loading...">
 				<br>Đang tải thông tin...</p>

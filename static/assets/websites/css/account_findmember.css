@@ -1,0 +1,12 @@
+.input-box{
+	display: inline-block;
+}
+
+.form-list li{
+	clear: both;
+}
+
+#loading-mask{
+	left: -2px; 
+	top: 0px;
+}

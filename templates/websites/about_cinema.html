@@ -1,127 +1,128 @@
 {% extends "layout.html" %}
 
 {% load i18n %}
+
 {% block title %}Giới thiệu{% endblock title %}
+
 {% block container_class %}col2-left-layout{% endblock %}
+
 {% block body_class %}
- cms-page-view cms-about-cgv
+	cms-page-view cms-about-cgv
 {% endblock %}
 
 {% block main_content %}
-				
-				<div class="breadcrumbs" itemprop="breadcrumb">
+
+<div class="breadcrumbs" itemprop="breadcrumb">
+	<ul>
+		<li class="home">
+			<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
+			<span>/ </span>
+		</li>
+		<li class="cms_page">
+			<strong>Giới thiệu CGV</strong>
+		</li>
+	</ul>
+</div>
+<div class="main">
+	<div class="col-left sidebar col-left-first">
+		<div class="block block-cms-menu">
+			<div class="block-content">
+				<ul>
+					<li class="active">
+						<a href="{% url 'about_cinema' %}"><span>Giới thiệu</span></a>
+					</li>
+					<li>
+						<a href="{% url 'contacts' %}"><span>Li&ecirc;n Hệ CGV</span></a>
+					</li>
+					<li>
+						<a href="{% url 'terms_conditions' %}"><span>Điều khoản chung</span></a>
+					</li>
+					<li>
+						<a href="{% url 'terms_use' %}"><span>Điều khoản giao dich</span></a>
+					</li>
+					<li>
+						<a href="{% url 'payment_policy' %}"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a>
+					</li>
+					<li>
+						<a href="{% url 'privacy_policy' %}"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a>
+					</li>
+					<li>
+						<span><a href="{% url 'faq' %}"><span>C&acirc;u hỏi thường gặp</span></a></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">// <![CDATA[
+		$j(".block-cms-menu li").each(function(){
+					var self = this;
+						href = $j(this).find('a');
+					for(var i = 0 ; i < href.length ; i++){
+						var harray = $j(href[i]).attr('href').split("/");
+						var charray = window.location.href.split("/");
+						if(harray[harray.length-2] == charray[charray.length-2]){
+							$j(self).addClass('active');
+							break;
+						}
+					}
+				});
+		// ]]>
+		
+		</script>
+	</div>
+	<div class="col-main">
+		<div class="std">
+			<div class="title-about-cgv">
+				<h1>Giới thiệu CGV</h1>
+			</div>
+			<div class="col2-set content-seperator">
+			<iframe height="350px" src="//www.youtube.com/embed/e1ZSLVTZ47M?rel=0&amp;wmode=transparent;" width="100%"></iframe>
+				<div class="std content-cms-about-us">
+					{% for item in data_content %}
+						<p>{{item.content}}</p>
+					{% endfor %}
+				</div>
+				<div class="about-image-cgv">
 					<ul>
-						<li class="home">
-							<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
-							<span>/ </span>
-						</li>
-						<li class="cms_page">
-							<strong>Giới thiệu CGV</strong>
-						</li>
+						{% for item in data %}
+							<li>
+								<a class="large-image-about" href="{{ STATIC_URL }}{{item}}"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}{{item.img}}" />
+								</a>
+							</li>
+						{% endfor %}
+						
 					</ul>
 				</div>
-				<div class="main">
-					<div class="col-left sidebar col-left-first">
-						<div class="block block-cms-menu">
-							<div class="block-content">
-								<ul>
-									<li class="active">
-										<a href="{% url 'about_cinema' %}"><span>Giới thiệu</span></a>
-									</li>
-									<li>
-										<a href="{% url 'contacts' %}"><span>Li&ecirc;n Hệ CGV</span></a>
-									</li>
-									<li>
-										<a href="{% url 'terms_conditions' %}"><span>Điều khoản chung</span></a>
-									</li>
-									<li>
-										<a href="{% url 'terms_use' %}"><span>Điều khoản giao dich</span></a>
-									</li>
-									<li>
-										<a href="{% url 'payment_policy' %}"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a>
-									</li>
-									<li>
-										<a href="{% url 'privacy_policy' %}"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a>
-									</li>
-									<li>
-										<span><a href="{% url 'faq' %}"><span>C&acirc;u hỏi thường gặp</span></a></span>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<script type="text/javascript">// <![CDATA[
-						$j(".block-cms-menu li").each(function(){
-									var self = this;
-										href = $j(this).find('a');
-									for(var i = 0 ; i < href.length ; i++){
-										var harray = $j(href[i]).attr('href').split("/");
-										var charray = window.location.href.split("/");
-										if(harray[harray.length-2] == charray[charray.length-2]){
-											$j(self).addClass('active');
-											break;
-										}
-									}
-								});
-					// ]]>
-						
-						</script>
-					</div>
-					<div class="col-main">
-						<div class="std">
-							<div class="title-about-cgv">
-								<h1>Giới thiệu CGV</h1>
-							</div>
-							<div class="col2-set content-seperator"><iframe height="350px" src="//www.youtube.com/embed/e1ZSLVTZ47M?rel=0&amp;wmode=transparent;" width="100%"></iframe>
-								<div class="std content-cms-about-us">
-									{% for item in data_content %}
-										<p>{{item.content}}</p>
-									{% endfor %}
-								</div>
-								<div class="about-image-cgv">
-									<ul>
-										{% for item in data %}
-										<li>
-											<a class="large-image-about" href="{{ STATIC_URL }}{{item}}"> <img alt="About us CGV,cgv" src="{{ STATIC_URL }}{{item.img}}" /> 
-											</a>
-										</li>
-										{% endfor %}
-										
-									</ul>
-								</div>
-								<!-- <script type="text/javascript">// <![CDATA[
-								jQuery(".large-image-about").colorbox({rel:'group2', transition:"fade", width:"80%", height:"80%"});
-								// ]]></script> -->
-							</div>
-						</div>                
-					</div>
-					<div class="col-left sidebar"></div>
-				</div>
-			
+				<!-- <script type="text/javascript">// <![CDATA[
+				jQuery(".large-image-about").colorbox({rel:'group2', transition:"fade", width:"80%", height:"80%"});
+				// ]]></script> -->
+			</div>
+		</div>
+	</div>
+	<div class="col-left sidebar"></div>
+</div>
 
-	
-	<script>
-		!function(f,b,e,v,n,t,s){
-			if(f.fbq)
-				return;
-			n=f.fbq=function(){
-				n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-				if(!f._fbq)
-					f._fbq=n;
-				n.push=n;n.loaded=!0;
-				n.version='2.0';
-				n.queue=[];
-				t=b.createElement(e);
-				t.async=!0;
-				t.src=v;
-				s=b.getElementsByTagName(e)[0];
-				s.parentNode.insertBefore(t,s)
-			}
-			(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-			fbq('init', '1644759925761845');
-			fbq('track', 'ViewContent');
-	</script>
-	<!--<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1644759925761845&ev=PageView&noscript=1"/></noscript>-->
-	
-	<div id="wishlist_edit_action_container"></div>
 
+<script>
+	!function(f,b,e,v,n,t,s){
+		if(f.fbq)
+			return;
+		n=f.fbq=function(){
+			n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+			if(!f._fbq)
+				f._fbq=n;
+			n.push=n;n.loaded=!0;
+			n.version='2.0';
+			n.queue=[];
+			t=b.createElement(e);
+			t.async=!0;
+			t.src=v;
+			s=b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t,s)
+		}
+		(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '1644759925761845');
+		fbq('track', 'ViewContent');
+</script>
+
+<div id="wishlist_edit_action_container"></div>
 {% endblock %}
