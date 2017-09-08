@@ -21,13 +21,13 @@
                     <div class="sect-person">
                         <ul>
                             
-                            <li><a class="theater" href="#">cgv theater</a></li>
-                            <li><a class="now-sh" href="#">now showing</a></li>
-                            <li><a class="special" href="#">cgv special</a></li>
-                            <li><a class="event" href="#">cgv art house</a></li>
-                            <li><a class="ticket required-login" href="#">my ticket info</a></li>
-                            <li><a class="dc" href="#">discount info</a></li>
-                            <li><a class="login-header" href="#">create account quick</a></li>
+                            <li><a class="theater" href="{% url 'home' %}">cgv theater</a></li>
+                            <li><a class="now-sh" href="{% url 'showing' %}">now showing</a></li>
+                            <li><a class="special" href="{% url 'special_gold_class' %}">cgv special</a></li>
+                            <li><a class="event" href="{% url 'arthouse' %}">cgv art house</a></li>
+                            <li><a class="ticket required-login" href="{% url 'contacts' %}">my ticket info</a></li>
+                            <li><a class="dc" href="{% url 'news' %}">discount info</a></li>
+                            <li><a class="login-header" href="{% url 'account_create' %}">create account quick</a></li>
                         </ul>
                     </div>
                 </div>
