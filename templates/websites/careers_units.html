@@ -98,13 +98,14 @@
 				<div class="col-left sidebar"><div class="block block-account">
 					<div class="block-content">
 						<ul>
-							<li ><a href="#">Tuyển dụng</a></li>
-							<li class="current" >
-								<a href="#">Trụ sở chính</a>
-							</li>
-							<li >
-								<a href="#">Cụm Rạp</a>
-							</li>
+						<li >
+							<a href="{% url 'careers' %}">Tuyển dụng</a></li>
+						<li class="current" >
+							<a href="{% url 'careers_units' %}">Trụ sở chính</a>
+						</li>
+						<li >
+							<a href="{% url 'careers_cluster' %}">Cụm Rạp</a>
+						</li>
 							
 						</ul>
 					</div>
