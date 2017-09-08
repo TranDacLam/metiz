@@ -21,13 +21,13 @@
                     <div class="sect-person">
                         <ul>
                             
-                            <li><a class="theater" href="#">cgv theater</a></li>
-                            <li><a class="now-sh" href="#">now showing</a></li>
-                            <li><a class="special" href="#">cgv special</a></li>
-                            <li><a class="event" href="#">cgv art house</a></li>
-                            <li><a class="ticket required-login" href="#">my ticket info</a></li>
-                            <li><a class="dc" href="#">discount info</a></li>
-                            <li><a class="login-header" href="#">create account quick</a></li>
+                            <li><a class="theater" href="{% url 'home' %}">cgv theater</a></li>
+                            <li><a class="now-sh" href="{% url 'showing' %}">now showing</a></li>
+                            <li><a class="special" href="{% url 'special_gold_class' %}">cgv special</a></li>
+                            <li><a class="event" href="{% url 'arthouse' %}">cgv art house</a></li>
+                            <li><a class="ticket required-login" href="{% url 'contacts' %}">my ticket info</a></li>
+                            <li><a class="dc" href="{% url 'news' %}">discount info</a></li>
+                            <li><a class="login-header" href="{% url 'account_create' %}">create account quick</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
             <div class="slideshow-containe-movier feature_slide_show_480_767">
                 <ul class="feature_slide_show">
                     {% for item in data.movie %}           
-                    <li class="poster-film film-lists item" style="">
+                    <li class="poster-film film-lists item">
                         <span class="nmovie-rating nmovie-rating-c18">C18</span>
                         <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
                         <input type="hidden" value="movie-trailer-285">

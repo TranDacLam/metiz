@@ -3,6 +3,10 @@
 {% load i18n %}
 {% block title %}Tìm thông tin thành viên{% endblock title %}
 
+{% block extrascript %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/account_findmember.css" media="all" />
+{% endblock %}
+
 {% block body_class %}
 	 customer-account-findmember
 {% endblock %}
@@ -26,24 +30,24 @@
 						<fieldset>
 							<p><strong>Vui lòng nhập tên, ngày sinh, số điện thoại</strong></p>
 							<ul class="form-list">
-								<li style="clear: both;">
-									<div class="input-box" style="display: inline-block;">
+								<li>
+									<div class="input-box">
 										<input type="text" class="input-text f_name required-entry minimum-length-2" placeholder="Tên" id="first_name" name="first_name" />
 										<input type="text" class="input-text l_name required-entry minimum-length-2" placeholder="Họ" id="last_name" name="last_name" />
 									</div>
 								</li>
 								
-								<li style="clear: both;">
-									<div class="input-box" style="display: inline-block;">
+								<li>
+									<div class="input-box">
 										<input type="text" class="input-text required-entry validate-length" placeholder="Nhập ngày sinh (định dạng: DD/MM/YYYYY)" id="birthday" name="birthday" />
 									</div>
 								</li>
-								<li style="clear: both;">
-									<div class="input-box" style="display: inline-block;">
+								<li>
+									<div class="input-box">
 										<input type="text" class="input-text required-entry minimum-length-3 validate-length" placeholder="Nhập số điện thoại hoặc Online ID" id="online_id" name="online_id" />
 									</div>
 								</li>
-								<li class="control" style="clear: both;">
+								<li class="control">
 									<button type="button" class="button" onclick="findaccount();">
 									<span><span>Tìm ngay</span></span>
 									</button>
@@ -70,7 +74,7 @@
 				</li>
 			</ul>
 		</div>
-		<div id="loading-mask" style="left: -2px; top: 0px;">
+		<div id="loading-mask">
 			<p class="loader" id="loading_mask_loader">
 				<img src="{{ STATIC_URL }}assets/websites/images/ajax-loader.gif" alt="Loading...">
 			<br>Đang tải thông tin...	</p>

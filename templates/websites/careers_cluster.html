@@ -4,6 +4,10 @@
 
 {% block title %}Helio{% endblock title %}
 
+{% block extrascript %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/careers_cluster.css" media="all" />
+{% endblock %}
+
 {%block body_class %}  jobs-index-index {% endblock %}
 
 {% block container_class %}col2-left-layout{% endblock %}
@@ -57,7 +61,7 @@
 						</div>
 						<ol class="products-list" id="jobs-list">
 							{% for item in data_careers_cluster %}
-							<li class="item" style="margin-top:5px;">
+							<li class="item">
 								<a href="#" class="jobs-shop">
 								<span class="product-name">
 									{{item.name}}
@@ -135,8 +139,7 @@
 				}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 				fbq('init', '1644759925761845');fbq('track', 'ViewContent');
 			</script>
-			<!--<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1644759925761845&ev=PageView&noscript=1"/></noscript>-->
-			
+						
 			<div id="wishlist_edit_action_container"></div>
 {% endblock %}		
 

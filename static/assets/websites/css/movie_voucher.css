@@ -1,0 +1,29 @@
+.products-grid .product-info {
+	padding-bottom: 20px !important;
+}
+
+.category-movie-voucher .page-title h1{
+	margin-bottom: 0;
+}
+
+.category-movie-voucher .category-title{
+	margin-bottom: 35px;
+	clear: both;
+}
+
+.category-gift-card .category-title{
+	clear: both;
+}
+
+.category-movie-voucher .btn-giftcard{
+	/*background: url(../images/btn_buy_grey.png) no-repeat !important;*/
+}
+
+.category-movie-voucher .products-grid li .product-info{
+	text-align: left;
+}
+
+#loading-mask{
+	left: -2px; 
+	top: 0px;
+}

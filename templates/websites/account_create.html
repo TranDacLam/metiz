@@ -1,9 +1,14 @@
 {% extends "layout.html" %}
+
 {% load i18n %}
+
 {% block title %}Đăng ký tài khoản{% endblock title %}
 
-{% block container_class %}col1-layout{% endblock %}
+{% block extrascript %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/account_create.css" media="all" />
+{% endblock %}
 
+{% block container_class %}col1-layout{% endblock %}
 
 {% block body_class %}
 	customer-account-create
@@ -71,10 +76,10 @@
 													</select>
 													<input type="hidden" id="year" name="year" value="" title="Năm" class="input-text validate-custom"  />
 												</div>    
-												<div class="dob-full" style="display:none;">
+												<div class="dob-full">
 													<input type="hidden" id="dob" name="dob" />
 												</div>
-												<div class="validation-advice" style="display:none;"></div>
+												<div class="validation-advice"></div>
 											</div>
 							<script type="text/javascript">
 							//<![CDATA[
@@ -117,7 +122,7 @@
 								<input type="text" name="street[]" value="N/A" title="Địa chỉ" id="street_1" class="input-text validate-no-html-tags  required-entry" />
 							</div>
 						</li>
-						<li class="control" style="display: none;">
+						<li class="control">
 							<div class="input-box">
 								<input type="checkbox" name="is_subscribed" title="Tôi muốn nhận đề nghị qua email" value="1" id="is_subscribed" checked="checked" class="checkbox" />
 							</div>
@@ -129,9 +134,7 @@
 					<ul class="form-list">
 						<li><label for="gender" class="required"><em>*</em>Giới tính</label>
 						<div class="input-box">
-							<!--<input type="radio" name="gender" value="1">Male</input>-->
 							<input type="radio" name="gender" value="1" checked="checked">Nam</input>
-							<!--<input type="radio" name="gender" value="2">Female</input>-->
 							<input type="radio" name="gender" value="2">Nữ</input>
 						</div>
 					</li>
@@ -274,7 +277,7 @@
 							</label>
 							</div>
 							<div class="buttons-set">
-								<!--<p class="back-link"><a href="https://www.cgv.vn/default/customer/account/login/" class="back-link"><small>&laquo; </small>Quay lại</a></p>-->
+								
 								<button type="submit" title="Đăng ký" class="button"><span><span>Đăng ký</span></span></button>
 							</div>
 							<p class="required account-create-required">* Phải nhập thông tin</p>
@@ -310,28 +313,14 @@
 							//]]>
 							</script>
 						</form>
-						<!--<div class="banner-create-account">
-						</div>-->
+						
 					</div>
 				</div>
 				</dd>
 			</dl>
 		</div>
 	</div>
-	<style>
-		.fieldset {
-			float: left;
-			width: 50%;
-			margin: 0 !important;
-		}
-		.form-list select {
-			margin-top: 0px;
-			margin-left:0;
-		}
-		.cgv-option-info li.customer-user-attributes{
-			float:left;
-		}
-	</style>
+	
 	<script type="text/javascript">
 	//<![CDATA[
 		var Translator = new Translate({"Use letter & number, min. 6 characters.":"Ít nhất 6 ký tự, bao gồm chữ và số.","Please enter numbers (0-9) starting from 0. For example 0123456789.":"Vui lòng nhập đúng số điện thoại.","Please enter 6 or more characters without leading or trailing spaces.":"Vui lòng nhập 6 ký tự trở lên, không khoảng trắng hoặc dấu cách dẫn","Please enter a valid email address. For example johndoe@domain.com.":"Vui lòng nhập đúng địa chỉ email. Ví dụ: johndoe@domain.com","Please make sure your passwords match.":"Vui lòng đảm bảo mật khẩu phù hợp.","This is a required field.":"Phải nhập thông tin.","This date is a required value.":"Phải nhập thông tin.","Please enter a valid full date":"Vui lòng nhập đúng định dạng ngày sinh"});

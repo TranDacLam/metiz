@@ -1,101 +1,102 @@
 {% extends "layout.html" %}
 
 {% load i18n %}
+
 {% block title %}Thẻ Quà Tặng{% endblock title %}
+
 {% block body_class %} cms-page-view cms-gift-card {% endblock %}
-{% block container_class %}col1-layout{% endblock %} 
+
+{% block container_class %}col1-layout{% endblock %}
 
 {% block main_content %}
 
-				
-		<div class="breadcrumbs" itemprop="breadcrumb">
-			<ul>
-				<li class="home">
-					<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
-					<span>/ </span>
-				</li>
-				<li class="cms_page">
-					<strong>Gift card</strong>
-				</li>
-			</ul>
+<div class="breadcrumbs" itemprop="breadcrumb">
+	<ul>
+		<li class="home">
+			<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
+			<span>/ </span>
+		</li>
+		<li class="cms_page">
+			<strong>Gift card</strong>
+		</li>
+	</ul>
+</div>
+<div class="main">
+	<div class="col-main">
+		<div class="std"><div class="page-gift-card">
+			<div class="banner-gift-card">
+				<h2>
+				<img alt="" src="{{ STATIC_URL }}assets/websites/images/giftcard/gift-card-1.png" />
+				</h2>
+			</div>
+			<div class="about-gift-card">
+				<div class="title-gift-card">
+					<h1>Thẻ qu&agrave; tặng</h1>
+				</div>
+				<div class="content-about-gift-card">
+					<div class="row-1-about-gift-card">
+						{% for item in data_description %}
+							<p>{{item.description}}</p>
+						{% endfor %}
+					</div>
+					<div class="row-2-about-gift-card">
+						<h2><img alt="" src="{{ STATIC_URL }}assets/websites/images/giftcard/gift-card-2.png"/></h2>
+						<ul>
+							{% for item in data_content %}
+								<li>{{item.content}}</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="term-and-condition">
+				<div class="term-gift-card">
+					<h2>Điều kiện &aacute;p dụng</h2>
+				</div>
+				<div class="content-term-con-gift-term">
+					<h2><img alt="" src="{{ STATIC_URL }}assets/websites/images/giftcard/gift-card-3.png" /></h2>
+					<ul>
+						{% for item in terms_conditions %}
+							<li>
+								<p>{{item.description}}</p>
+							</li>
+						{% endfor %}
+						
+					</ul>
+				</div>
+			</div>
 		</div>
-			<div class="main">
-				<div class="col-main">
-					<div class="std"><div class="page-gift-card">
-						<div class="banner-gift-card">
-							<h2>
-								<img alt="" src="{{ STATIC_URL }}assets/websites/images/giftcard/gift-card-1.png" />
-							</h2>
-						</div>
-						<div class="about-gift-card">
-							<div class="title-gift-card">
-								<h1>Thẻ qu&agrave; tặng</h1>
-							</div>
-							<div class="content-about-gift-card">
-								<div class="row-1-about-gift-card">
-								{% for item in data_description %}
-									<p>{{item.description}}</p>
-								{% endfor %}
-								</div>
-								<div class="row-2-about-gift-card">
-									<h2><img alt="" src="{{ STATIC_URL }}assets/websites/images/giftcard/gift-card-2.png"/></h2>
-									<ul>
-									{% for item in data_content %}
-										<li>{{item.content}}</li>
-									{% endfor %}
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="term-and-condition">
-							<div class="term-gift-card">
-								<h2>Điều kiện &aacute;p dụng</h2>
-							</div>
-							<div class="content-term-con-gift-term">
-								<h2><img alt="" src="{{ STATIC_URL }}assets/websites/images/giftcard/gift-card-3.png" /></h2>
-								<ul>
-									{% for item in terms_conditions %}
-									<li>
-										<p>{{item.description}}</p>
-									</li>
-									{% endfor %}
-									
-								</ul>
-							</div>
-						</div>
-					</div>
-					</div>
-				</div>
-				</div>
-			
-			
-	<!-- Facebook Pixel Code -->
-	
-	<script>
-		!function(f,b,e,v,n,t,s){
-			if(f.fbq)
-				return;
-			n=f.fbq=function(){
-				n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)
-			};
-			if(!f._fbq)
-				f._fbq=n;
-			n.push=n;
-			n.loaded=!0;
-			n.version='2.0';
-			n.queue=[];
-			t=b.createElement(e);
-			t.async=!0;
-			t.src=v;
-			s=b.getElementsByTagName(e)[0];
-			s.parentNode.insertBefore(t,s)
-		}
-		(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '1644759925761845');
-		fbq('track', 'ViewContent');
-	</script>
-	<!--<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1644759925761845&ev=PageView&noscript=1"/></noscript>-->
-	
-	<div id="wishlist_edit_action_container"></div>
+	</div>
+</div>
+</div>
+
+
+<!-- Facebook Pixel Code -->
+
+<script>
+	!function(f,b,e,v,n,t,s){
+		if(f.fbq)
+			return;
+		n=f.fbq=function(){
+			n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)
+		};
+		if(!f._fbq)
+			f._fbq=n;
+		n.push=n;
+		n.loaded=!0;
+		n.version='2.0';
+		n.queue=[];
+		t=b.createElement(e);
+		t.async=!0;
+		t.src=v;
+		s=b.getElementsByTagName(e)[0];
+		s.parentNode.insertBefore(t,s)
+	}
+	(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '1644759925761845');
+	fbq('track', 'ViewContent');
+</script>
+
+
+<div id="wishlist_edit_action_container"></div>
 {% endblock %}
-		
