@@ -1,9 +1,19 @@
 {% extends 'layout.html' %}
 {% load i18n %}
+
 {% block title %}Arthouse{% endblock title %}
+
+{% block extrastylesheet %}
+     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/arthouse.css" media="all" />
+{% endblock %}
+{% block extrascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
+{% endblock %}
+
 {% block body_class %}
     catalog-category-view categorypath-arthouse category-arthouse
 {% endblock %}
+
 {% block container_class%}col1-layout {% endblock%}
 {% block main_content %}
         <div class="breadcrumbs" itemprop="breadcrumb">
@@ -43,7 +53,7 @@
 
                     <div class="tabs-content" id="arthouse-home_contents">
                         <div class="sect-arthouse-visual"><img alt="" src="{{STATIC_URL}}/assets/websites/images/Art_House_-_microsite-980x390.jpg"></div>
-                        <div class="home-movie-selection" style="min-height: auto;">
+                        <div class="home-movie-selection">
                             <div class="home-title">
                                 <h2>movie selection</h2>
                             </div>
@@ -64,7 +74,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="product-info" style="height: 21px; min-height: 11px;">
+                                <div class="product-info">
                                     <h2 class="product-name"><a href="javascript:void(0)" title="Yêu Đi, Đừng Sợ!">Yêu Đi, Đừng Sợ!</a></h2>
                                     
                                     <div class="cgv-movie-info">
@@ -99,91 +109,21 @@
                             </li>
                             {% endfor %}
                         </ul>
-                        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+                       
                     </div>
-                    <script type="text/javascript">
-                    //<![CDATA[
-                        $j(window).bind('load', function() {
-                            (function(d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0];
-                            if (d.getElementById(id)) return;
-                            js = d.createElement(s); js.id = id;
-                            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-                            fjs.parentNode.insertBefore(js, fjs);
-                            }(document, 'script', 'facebook-jssdk'));
-                    });
-                        
-                        $j(document).ready(function(){
-                            var highest = 0;
-                            var hi = 0;
-                            $j('.product-info').each(function(){
-                            var h = $j(this).height();
-                            if(h > hi){
-                                    hi = h;
-                                    highest = h;
-                                }
-                            });
-                            if ($j(window).width()>320){
-                                $j('.product-info').css('height',highest+10+'px');
-                            }
-                            else{
-                                $j('.products-grid .product-info').css('padding-bottom','0');
-                            }
-                            $j('li.category3').find('a').contents().unwrap();
-                            //console.log(abc);
-                        });
-                        
-                        $j(window).on('resize', function() {
-                            var highest2 = 0;
-                            var hi = 0;
-                            $j('.product-info').each(function(){
-                            var h = $j(this).height();
-                            if(h > hi){
-                                    hi = h;
-                                    highest2 = h;
-                                }
-                            });
-                            if ($j(window).width()>320){
-                                $j('.product-info').css('height',highest2+10+'px');
-                            }
-                            else{
-                                $j('.products-grid .product-info').css('padding-bottom','0');
-                            }
-                            $j('li.category3').find('a').contents().unwrap();
-                        });
-                        
-                        function Quickbooking(obj)
-                        {
-                            $j.ajax({
-                                type: 'post',
-                                url: '',
-                                data: 'id='+ obj,
-                                //dataType: 'json',
-                                beforeSend: function(){
-                                    $j.colorbox();
-                                },
-                            }).done(function(result) {
-                                html =result;
-                                $j.colorbox({html: '<div class="product-view quick-booking">'+html+'</div>', width:"88%", height:"88%",fixed:true,modal: false});
-                                togglecontent('tabs-cgv-movie-type');
-                                togglecontent('tabs-cgv-movie-cites');
-                                togglecontent('tabs-cgv-movie-view-date');
-                            });
-                        }
-                    //]]>
-                    </script>
+                   
                     
                     
                     <div class="category-description std">
                         <div class="sect_art_hd_trailer cf">
-                            <div class="thumb" style="float: left;">
+                            <div class="thumb">
                                 <h3>
                                 <a href="javascript:void(0)">
                                     <img src="{{STATIC_URL}}/assets/websites/images/arthouse-thumb.jpg" "="">
                                 </a>
                                 </h3>
                             </div>
-                            <div class="player_area" style="float: right;">
+                            <div class="player_area">
                                 <div class="arthouse-poster">
                                     <iframe width="666" height="375" src="https://www.youtube.com/embed/hK52sNORvIk" frameborder="0" allowfullscreen=""></iframe>
                                 </div>
@@ -192,7 +132,7 @@
                     </div>
                 </div>
                 
-                <div id="about-arthouse_contents" class="tabs-content" style="display: none;">
+                <div id="about-arthouse_contents" class="tabs-content" style=>
                     <div class="about-cgv-art-house">
                         <div class="tittle-art-house">
                             <h3>CGV ART HOUSE PHÒNG CHIẾU DÀNH RIÊNG CHO PHIM VIỆT NAM VÀ HÀN QUỐC</h3>
@@ -221,14 +161,6 @@
                     </div>
                 </div>
             </div>
-            <script type="text/javascript">
-            //<![CDATA[
-                new Varien.Tabs('.catalog-wrap');
-                $j('#about-arthouse_contents').css('display','none');
-                // $j( ".play-button" ).click(function() {
-                    // $j(this).colorbox({iframe:true, innerWidth:640, innerHeight:390});
-                // });
-            //]]>
-        </script>                </div>
+        </div>
     </div>
 {% endblock%}

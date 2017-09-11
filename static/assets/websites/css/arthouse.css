@@ -1,0 +1,17 @@
+#arthouse-home_contents .home-movie-selection{
+	min-height: auto;
+}
+
+.film-lists.item.last .product-info{
+	height: 21px; 
+	min-height: 11px;	
+}
+.sect_art_hd_trailer.cf .thumb{
+	float: left;
+}
+.sect_art_hd_trailer.cf .player_area{
+	float: right;
+}
+#about-arthouse_contents{
+	display: none;	
+}
