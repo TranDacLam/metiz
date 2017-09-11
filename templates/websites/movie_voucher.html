@@ -6,6 +6,7 @@
 
 {% block extrascript %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/movie_voucher.css" media="all" />
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movie_voucher.js"></script>
 {% endblock %}
 
 {% block container_class %}col1-layout{% endblock %}
@@ -74,9 +75,7 @@
 			{% endfor %}
 				
 			</ul>
-			<script type="text/javascript">
-				decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
-			</script>
+			
 		</div>
 		
 		<div id="loading-mask">
@@ -84,60 +83,7 @@
 				<img src="{{ STATIC_URL }}assets/websites/images/ajax-loader.gif" alt="Loading...">
 			<br>Đang tải thông tin...	</p>
 		</div>
-		<script type="text/javascript">
-		//<![CDATA[
-			function buy(id, formkey) {
-				/*
-				* Check customer availability
-				*/
-				var login = '';
-				if (login == 1) {
-					$j.ajax({
-						type: 'POST',
-						url: '#',
-						data: {id : id, form_key : formkey},
-						beforeSend: function(){
-							$j('#loading-mask').show();
-						}
-									}).done(function(response) {
-						if (response.success == 1) {
-							// var msg = response.message;
-							// if (Object.isArray(msg)) {
-								// msg = msg.join("\n").stripTags().toString();
-							// }
-							
-							// if (msg) {
-								// alert(msg);
-							// }
-							
-							location.href = encodeURI('#');
-							return;
-						} else {
-							var msg = response.error;
-							if (Object.isArray(msg)) {
-								msg = msg.join("\n").stripTags().toString();
-							}
-							
-							if (msg) {
-								alert(msg);
-							}
-						}
-						
-						$j('#loading-mask').hide();
-					})
-				} else {
-					location.href = encodeURI('#');
-					return;
-				}
-			}
-		//]]>
-		</script>
-		
-		<script type="text/javascript">
-			var phone = '2124771050',
-			formatted = phone.substr(0, 3) + '****' + phone.substr(phone.length-3,3);
-			//console.log(formatted);
-		</script>                
+		               
 	</div>
 </div>
 

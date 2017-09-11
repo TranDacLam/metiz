@@ -5,6 +5,11 @@
 {% block title %}Membership{% endblock title %}
 
 {%block body_class %} cms-page-view cms-cgv-membership {% endblock %}
+
+{% block extrascript %}
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/membership.js"></script>
+{% endblock %}
+
 {% block container_class %}col1-layout{% endblock %}
 
 {% block main_content %}
@@ -223,30 +228,6 @@
 </div>
                                         
                                     <script src="{{ STATIC_URL }}assets/js/jquery-ui.js" type="text/javascript"></script>
-                                    <script type="text/javascript">// <![CDATA[
-                                    $j(document).ready(function(){
-                                                        $j( ".cgv-membership" ).tabs();
-                                                        $j( ".accordion" ).accordion({
-                                                            heightStyle: "content"
-                                                        });
-                                                        
-                                                        $j('.cgv-membership > ul li').click(function(event) {
-                                                            if (!$j(event.target).is('a')) {
-                                                                $j(this).find("a").trigger('click');
-                                                            }
-                                                        });
-                                                        
-                                                        var url = window.location.href;
-                                                        var arr = url.split('?');
-                                                        
-                                                        $j('#'+arr[1]).click();
-                                                        
-                                                        $j('.cgv-membership > ul').find('a').each(function() {
-                                                            if($j(this).attr('href') == '#'+$j('#'+arr[1]).parents('.lyt-history-content').attr('id')){
-                                                                $j(this).click();
-                                                            }
-                                                        });
-                                                    });
-                                    // ]]></script>
+                                    
                                 
                     {% endblock %}
