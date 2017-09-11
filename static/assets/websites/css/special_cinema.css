@@ -1,0 +1,16 @@
+/* slideshow-sweetbox style="position: relative; overflow: hidden;" */
+.slide-imax-baner .slideshow-container-dx{
+clear: both;
+}
+.home-title{
+	display:none;
+}
+.site-list{
+	width:100%;
+}
+.site-list li a{
+	color:#000;
+}
+.site-list li a  span{
+	color:#e71a0f;
+}
