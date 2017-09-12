@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block title %}Tin tức{% endblock title %}
+
+{% block body_class %}
+catalog-category-view categorypath-now-showing category-now-showing
+{% endblock %}
+
+{% block container_class%}col2-left-layout {% endblock%}
+
+{% block main_content%}
+
+<script type="text/javascript">
+	$j('.nav-4-2').remove();
+</script>
+
+<div class="main">
+	<div class="col-left sidebar col-left-first"><div class="block block-account">
+		<div class="block-title">
+			<strong><span>Tài khoản</span></strong>
+		</div>
+		<div class="block-content">
+			<ul>
+				<li class="current"><a href="https://www.cgv.vn/default/customer/account/">Thông tin chung</a></li>
+				<li><a href="https://www.cgv.vn/default/customer/account/edit/">Thông tin tài khoản</a></li>
+				<li class="last"><a href="https://www.cgv.vn/default/sales/order/history/">Đơn hàng của tôi</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="col-main">
+	<div class="my-account"><div class="dashboard">
+		<div class="page-title">
+			<h1>Trang chính</h1>
+		</div>
+		<div class="welcome-msg">
+			<p class="hello"><strong>Hi hoang nguyen</strong></p>
+			<p>Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản của mình.</p>
+		</div>    <div class="box-account cgv-info">
+		<div class="cgv-tier">
+			<!--<br>-->
+			<span class="member-icon"></span>
+		</div>
+		<div class="cgv-point">
+			<label>CGV POINT</label>
+			<div class="format-acc-point">
+				<a href="https://www.cgv.vn/default/loyalty/account/point/"><span class="icon-acc-add">+</span></a>
+				<span class="acc-show-point">
+				0 P			</span>
+			</div>
+		</div>
+		
+		<div class="cgv-point">
+			<label>GIFT CARD</label>
+			<div class="format-acc">
+				<a href="https://www.cgv.vn/default/loyalty/account/gift/"><span class="icon-acc-add">+</span></a>
+				<span class="acc-show-point">
+				0,00&nbsp;₫			</span>
+			</div>
+		</div>
+		
+		<div class="cgv-point">
+			<label>COUPON</label>
+			<div class="format-acc">
+				<a href="https://www.cgv.vn/default/loyalty/account/coupon/"><span class="icon-acc-add">+</span></a>
+				<span class="acc-show-point">
+				0			</span>
+			</div>
+		</div>
+		
+		<div class="cgv-point">
+			<label>VOUCHER</label>
+			<div class="format-acc">
+				<a href="https://www.cgv.vn/default/loyalty/account/voucher/"><span class="icon-acc-add">+</span></a>
+				<span class="acc-show-point">
+				0			</span>
+			</div>
+		</div>
+		
+		<div class="cgv-point cgv-point-last">
+			<label>MEMBER CARD</label>
+			<div class="format-acc">
+				<a href="https://www.cgv.vn/default/loyalty/account/card/"><span class="icon-acc-add">+</span></a>
+				<span class="acc-show-point">
+				1			</span>
+			</div>
+		</div>
+	</div>    <div class="box-account box-info">
+	<div class="box-head">
+		<h2>Thông tin tài khoản</h2>
+	</div>
+	<div class="box">
+		<div class="box-title">
+			<h3>Liên hệ</h3>
+			<a href="https://www.cgv.vn/default/customer/account/edit/">Thay đổi</a>
+		</div>
+		<div class="box-content">
+			<span>Email : nyckull1996@gmail.com</span>
+			<span>Online ID : nyckull1996</span>
+			<span>Phone : 0935682441</span>
+		</div>
+		
+		<div class="col2-set">
+			<div class="box">
+				<div class="cgv-50">
+					<label>Thay đổi mật khẩu đăng nhập</label>
+					<a href="https://www.cgv.vn/default/customer/account/edit/changepass/1/">Thay đổi</a>
+				</div>
+				<div class="cgv-45">
+					<label>Đăng kí thẻ thành viên</label>
+					<a href="https://www.cgv.vn/default/loyalty/account/card/">Đăng ký</a>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="cgv-50">
+					<label>Đăng kí Coupon</label>
+					<a href="https://www.cgv.vn/default/loyalty/account/coupon/">Đăng ký</a>
+				</div>
+				<!--div class="cgv-45">
+					<label>Point gifting</label>
+					<a href="https://www.cgv.vn/default/loyalty/account/point/" title="Give your points to your friend">Give</a>
+			</div-->
+		</div>
+		<div class="box">
+			<div class="cgv-50">
+				<label>Thay đổi mật khẩu thanh toán</label>
+				<a href="https://www.cgv.vn/default/loyalty/account/purchasepassword/">Thay đổi</a>
+			</div>
+			<div class="cgv-45">
+				<label>Đăng kí Gift Card</label>
+				<a href="https://www.cgv.vn/default/loyalty/account/gift/">Đăng ký</a>
+			</div>
+		</div>
+		<div class="box">
+			<div class="cgv-50">
+				<label>Đăng kí Voucher</label>
+				<a href="https://www.cgv.vn/default/loyalty/account/voucher/">Đăng ký</a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div></div>                </div>
+<div class="col-left sidebar">
+	
+</div>
+</div>
+{% endblock%}
