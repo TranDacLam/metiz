@@ -25,7 +25,7 @@ SECRET_KEY = '2+@8!9c)(s11nt^ox20nkvu7)_wqh6=g(p54jlsjytizbuz(4y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -146,6 +146,8 @@ EMAIL_USE_TLS = True
 
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:
+        from config.setting_develop import *
+    else:
         from config.setting_local import *
     
 except ImportError:
