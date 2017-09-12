@@ -1,137 +1,86 @@
 {% extends 'layout.html' %}
 {% load i18n %}
+
 {% block title %}4dx{% endblock title %}
+
+{% block extrastylesheet %}
+	 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/special_cinema.css" media="all" />
+{% endblock %}
+
 {% block extrascript %}
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/special_cinema.js"></script>
 {% endblock %}
+
 {% block body_class %}
 	theaters-special-view
 {% endblock %}
+
 {% block container_class%}col1-layout {% endblock%}
 {% block main_content %}
-	<div class="main-container">
-		<div class="breadcrumbs" itemprop="breadcrumb">
-			<ul>
-				<li class="home">
-					<a href="{% url 'home' %}" title="Home Page">Home Page</a>
-					<span>/ </span>
-				</li>
-				<li class="4dx">
-					<strong>4DX ®</strong>
-				</li>
-			</ul>
-		</div>
-		<div class="main">
-			<div class="col-main">
-				<div id="specialtheater-list" class="specialtheater-list">
-					<ul class="special-items">
-						{% for item in data.technology %}
-							<li class="item-icon {{item.class}} {{item.flag}}">
-								<a title="Sweetbox" href="/special/{{item.name}}">{{item.name}}</a>
-							</li>
-						{% endfor %}
-					</ul>
+<div class="main-container">
+	<div class="breadcrumbs" itemprop="breadcrumb">
+		<ul>
+			<li class="home">
+				<a href="{% url 'home' %}" title="Home Page">Home Page</a>
+				<span>/ </span>
+			</li>
+			<li class="4dx">
+				<strong>4DX ®</strong>
+			</li>
+		</ul>
+	</div>
+	<div class="main">
+		<div class="col-main">
+			<div id="specialtheater-list" class="specialtheater-list">
+				<ul class="special-items">
+					{% for item in data.technology %}
+						<li class="item-icon {{item.class}} {{item.flag}}">
+							<a title="Sweetbox" href="/special/{{item.name}}">{{item.name}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="specialtheater-content specialtheater-4dx">
+				<div class="page-title special-title">
+					<h1>4DX ®</h1>
 				</div>
-				<div class="specialtheater-content specialtheater-4dx">
-					<div class="page-title special-title">
-						<h1>4DX ®</h1>
-					</div>
-					<div class="std">
-						<div class="cinema-imax">
-							<div class="header-imax std">
-								<div class="about-content-imax">
-									<div class="recent-cgv-special" style="margin-top: 30px;">
-										<h3>4DX®, một định dạng điện ảnh hoàn toàn mới đánh thức mọi giác quan của khán giả mang đến những trải nghiệm điện ảnh tuyệt đỉnh bằng công nghệ hiện đại nhất trên thế giới.</h3>
-										<p>Hãy thưởng thức công nghệ 4DX® tại các rạp CGV:</p>
-										<ul class="site-list">
-											{% for item in data.address%}
-												<li><a href="{{item.href}}">{{item.name}}</a></li>
-											{% endfor%}
+				<div class="std">
+					<div class="cinema-imax">
+						<div class="header-imax std">
+							<div class="about-content-imax">
+								<div class="recent-cgv-special" style="margin-top: 30px;">
+									<h3>4DX®, một định dạng điện ảnh hoàn toàn mới đánh thức mọi giác quan của khán giả mang đến những trải nghiệm điện ảnh tuyệt đỉnh bằng công nghệ hiện đại nhất trên thế giới.</h3>
+									<p>Hãy thưởng thức công nghệ 4DX® tại các rạp CGV:</p>
+									<ul class="site-list">
+										{% for item in data.address%}
+											<li><a href="{{item.href}}">{{item.name}}</a></li>
+										{% endfor%}
+									</ul>
+								</div>
+								<div class="slide-imax-baner">
+									<div class="slideshow-container-dx">
+										<ul class="slideshow-dx">
+											
+											{% for item in data.slide%}
+												<li class="cycle-slide">
+													<div class="image-cinema-imax"><img alt="" src="{{STATIC_URL}}{{item.img}}" "=""></div>
+													<div class="text-content-imax">
+														{{item.content| safe}}
+													</div>
+												</li>
+											{% endfor %}
 										</ul>
-									</div>
-									<div class="slide-imax-baner">
-										<div class="slideshow-container-dx" style="clear: both;">
-											<ul class="slideshow-dx" style="position: relative; overflow: hidden;">
-												
-												{% for item in data.slide%}
-													<li class="cycle-slide" style="position: absolute; top: 0px; left: 0px; z-index: 97; opacity: 1; display: block; visibility: hidden;">
-														<div class="image-cinema-imax"><img alt="" src="{{STATIC_URL}}{{item.img}}" "=""></div>
-														<div class="text-content-imax">
-															{{item.content| safe}}
-														</div>
-													</li>
-												{% endfor %}
-											</ul>
-											<span class="slideshow-prev">&nbsp;</span> <span class="slideshow-next">&nbsp;</span>
-										</div>
+										<span class="slideshow-prev">&nbsp;</span> <span class="slideshow-next">&nbsp;</span>
 									</div>
 								</div>
-								<!-- end cinema imax -->
-								<script type="text/javascript">// <![CDATA[
-								$j(document).ready(function () {
-									$j('.slideshow-container-dx .slideshow-dx')
-										.cycle({
-											slides: '> li',
-												speed: 600,
-												pauseOnHover: true,
-												swipe: true,
-											prev: '.slideshow-prev',
-											next: '.slideshow-next',
-										fx: 'scrollHorz'
-									});
-									});
-								// ]]></script>
-							</div>	
-						</div>
-						</div>
-					<style>
-					.home-title{
-						display:none;
-					}
-					.site-list{width:100%;}
-					.site-list li a{color:#000}
-					.site-list li a  span{color:#e71a0f}
-					</style>
-					<script type="text/javascript">
-						//<![CDATA[
-						$j(document).ready(function(){
-							var highest = 0;
-							var hi = 0;
-							$j('.product-info').each(function(){
-							var h = $j(this).height();
-							if(h > hi){
-									hi = h;
-									highest = h;
-								}
-							});
-							if ($j(window).width()>320){
-								$j('.product-info').css('height',highest+10+'px');
-							}
-							else{
-								$j('.products-grid .product-info').css('padding-bottom','0');
-							}
-							$j('li.category3').find('a').contents().unwrap();
-						});
-						$j(window).on('resize', function() {
-							var highest2 = 0;
-							var hi = 0;
-							$j('.product-info').each(function(){
-							var h = $j(this).height();
-							if(h > hi){
-									hi = h;
-									highest2 = h;
-								}
-							});
-							if ($j(window).width()>320){
-								$j('.product-info').css('height',highest2+10+'px');
-							}
-							else{
-								$j('.products-grid .product-info').css('padding-bottom','0');
-							}
-							$j('li.category3').find('a').contents().unwrap();
-						});
-					//]]>
-					</script>   
+							</div>
+						<!-- end cinema imax -->
+						</div>	
+					</div>
 				</div>
 			</div>
-		{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock %}

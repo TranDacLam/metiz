@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+
+{% block title %}Tìm lại mật khẩu{% endblock title %}
+
+{% block container_class %}col1-layout {% endblock %}
+
+{% block extrascript %}
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/gift_card_online_detail.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/gift_card_online_detail.css" media="all" />
+
+{% endblock %}
+
+{% block body_class %}
+customer-account-forgotpassword
+{% endblock %}
+
+{% block main_content %}
+<div class="breadcrumbs" itemprop="breadcrumb">
+	<ul>
+		<li class="home">
+			<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
+			<span>/ </span>
+		</li>
+		<li class="category11">
+			<a href="#" title="">Online Store</a>
+			<span>/ </span>
+		</li>
+		<li class="category17">
+			<a href="{% url 'gift_card' %}" title="">Thẻ Quà Tặng</a>
+			<span>/ </span>
+		</li>
+		<li class="product">
+			<strong>Thẻ Quà Tặng - 300.000đ</strong>
+		</li>
+	</ul>
+</div>
+<div class="main">
+	<div class="col-main">
+		<div id="messages_product_view"></div>
+		<div class="cgv-voucher-detail">
+			<div class="cgv-voucher-view">
+				<div style="display:none"></div>
+				<div class="page-title product-view">
+					<span class="h1">Thẻ Quà Tặng</span>
+				</div>
+				<div class="col2-set">
+					<div class="col-1 width-50">
+						<img id="product-collection-image-255" src="{{ STATIC_URL }}assets/websites/images/gift_card_-_cinox_1.png" alt="GiftCard_300K" />
+					</div>
+					
+					<div class="col-2 width-50">
+						<div class="product-shop-voucher">
+							<div class="product-name-voucher">
+								<h1>Thẻ Quà Tặng - 300.000đ</h1>
+								
+								<div class="short-description">
+									<div class="std">Có giá trị như tiền mặt</div>
+								</div>
+							</div>
+							
+							
+							<div class="table-cgv-voucher">
+								<div class="cards-price table-row">
+									<label class="table-cell">Giá</label>
+									<div class="price-box table-cell" id="product_price">
+										<span class="price">300.000,00 ₫</span>				
+									</div>
+								</div>
+									
+								<div class="cards-validity table-row">
+									<label class="table-cell">Hạn sử dụng</label>
+									<div class="std table-cell">1 năm</div>
+								</div>
+								
+								<div class="cards-location table-row">
+									<label class="table-cell">Nơi sử dụng</label>
+									<div class="std table-cell">Tất cả các rạp CGV</div>
+								</div>
+								
+								<div class="cards-description table-row">
+									<label class="table-cell">Chi tiết</label>
+									<div class="std table-cell"><p>T&iacute;ch hợp c&ugrave;ng thẻ th&agrave;nh vi&ecirc;n CGV, kh&ocirc;ng cần thẻ cứng.</p>
+									<p>Để mua thẻ cứng, t&igrave;m hiểu th&ecirc;m tại <a href="#" target="_blank">đ&acirc;y</a>.</p></div>
+								</div>
+								
+								<div class="add-to-box table-row-voucher">
+									<div class="table-cell">
+										<button type="button" title="Quay lại" class="button btn-back" onclick="javascript:history.go(-1)">
+										<span><span>Quay lại</span></span>
+										</button>
+									</div>
+									
+									<div class="table-cell">
+										<button type="button" title="Mua hoặc Tặng quà" class="button btn-buy" onclick="buy()">
+										<span><span>Mua hoặc Tặng quà</span></span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+					<div class="cards-giftcard-conditions">
+						<h2>Điều kiện và Điều khoản</h2>
+						<div class="std">
+							<ul>
+								<li><strong>C&aacute;ch thức sử dụng:</strong> Nhận m&atilde; thẻ qu&agrave; tặng v&agrave; PIN code từ tin nhắn v&agrave; email &gt; Đăng nhập t&agrave;i khoản th&agrave;nh vi&ecirc;n CGV &gt; Đăng k&yacute; thẻ qu&agrave; tặng tại trang Th&agrave;nh Vi&ecirc;n &gt; Chọn h&igrave;nh thức thanh to&aacute;n bằng Thẻ Qu&agrave; Tặng khi đặt v&eacute; trực tuyến hoặc tại quầy.</li>
+								<li>
+									<div>Thẻ qu&agrave; tặng mua tại Quầy Online chỉ c&oacute; thể đăng k&yacute; trực tuyến.&nbsp;Thời hạn sử dụng của thẻ qu&agrave; tặng sẽ được gia hạn đến thời hạn xa nhất của thẻ cuối c&ugrave;ng đăng k&yacute;.</div>
+								</li>
+								<li>
+									<div>Kh&aacute;ch h&agrave;ng chỉ c&oacute; thể t&iacute;ch điểm v&agrave; tổng chi ti&ecirc;u khi sử dụng thẻ qu&agrave; tặng.</div>
+								</li>
+								<li>
+									<div>Kh&aacute;ch h&agrave;ng/Người được tặng sẽ nhận tin nhắn v&agrave; email chứa m&atilde; thẻ qu&agrave; tặng v&agrave; số PIN.</div>
+								</li>
+								<li>
+									<div>Vui l&ograve;ng bảo mật m&atilde; thẻ qu&agrave; tặng v&agrave; số PIN v&agrave; kh&ocirc;ng chia sẻ với bất kỳ ai. Sau khi m&atilde; thẻ qu&agrave; tặng &amp; số PIN được gửi đến người nhận, CGV sẽ kh&ocirc;ng chịu tr&aacute;ch nhiệm nếu th&ocirc;ng tin n&agrave;y bị đ&aacute;nh cắp hoặc sử dụng sai mục đ&iacute;ch.</div>
+								</li>
+								<li>
+									<div>Giao dịch đ&atilde; ho&agrave;n tất kh&ocirc;ng thể đổi hoặc trả lại.</div>
+								</li>
+							</ul>			
+						</div>
+						</div>
+					</div>
+				</div>
+				<div id="loading-mask" >
+					<p class="loader" id="loading_mask_loader">
+						<img src="{{ STATIC_URL }}assets/websites/images/ajax-loader.gif" alt="Loading...">
+					<br>Đang tải thông tin...	</p>
+				</div>
+				             
+			</div>
+		</div>
+			
+	{% endblock %}

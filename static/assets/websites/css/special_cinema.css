@@ -1,0 +1,26 @@
+.slide-imax-baner .slideshow-container-dx{
+clear: both;
+}
+.home-title{
+	display:none;
+}
+.site-list{
+	width:100%;
+}
+.site-list li a{
+	color:#000;
+}
+.site-list li a  span{
+	color:#e71a0f;
+}
+.about-content-imax .slide-imax-baner{
+	margin-top: 20px;
+}
+.specialtheater-screenx .a-center iframe{
+	height: 540px;
+	width: 980px;
+}
+.specialtheater-dolby-atmos .a-center iframe{
+	height: 540px;
+	width: 960px;
+}
