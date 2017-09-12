@@ -56,7 +56,7 @@
 				{% for item in data %}
 				<li class="film-lists item last">
 					<div class="product-info">
-						<h2 class="product-name"><a href="#" title="{{data.title}}">{{item.title}}</a></h2>
+						<h2 class="product-name"><a href="{% url 'gift_card_online_detail' %}" title="{{data.title}}">{{item.title}}</a></h2>
 						
 						<span class="price">{{item.price}}</span>
 						<!--button type="button" title="Mua" class="button btn-giftcard" onclick="buy(255, 'T15GoMUUH8ENNEfK')"-->
@@ -69,7 +69,7 @@
 						</div>
 					</div>
 					
-					<a href="#" title="GiftCard_300K" class="product-image">
+					<a href="{% url 'gift_card_online_detail' %}" title="GiftCard_300K" class="product-image">
 						<img id="product-collection-image-255" src="{{ STATIC_URL }}{{item.img}}" alt="GiftCard_300K" />
 					</a>
 				</li>

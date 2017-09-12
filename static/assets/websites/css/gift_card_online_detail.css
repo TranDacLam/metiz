@@ -1,0 +1,33 @@
+	.width-50 {
+		width : 49%;
+	}
+	.table {
+		display: table;
+	}
+	.table-row {
+		display: table-row;
+	}
+	.table-cell {
+		display: table-cell;
+	}
+	.cgv-voucher-detail label.table-cell{
+		float:left;
+	}
+	.cards-validity .std,.cgv-voucher-detail .price-box,.cgv-voucher-detail .cards-description .std,.cgv-voucher-detail .cards-location .std{
+		float:right;
+		width: 67%;
+		text-align: right;
+	}
+	.cards-description .table-cell p{
+		margin-top:0;
+	}
+	.cgv-voucher-view .col-1 img{
+		width:90%;
+		margin:0;
+	}
+
+	.loading-mask{
+		left: -2px; 
+		top: 0px;
+	}
+				

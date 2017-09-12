@@ -39,11 +39,24 @@ def cinox(request):
 	{'id':'cgv_site_040','class':'cgv_city_1','name':'CGV Golden Plaza'},{'id':'cgv_site_001','class':'cgv_city_3','name':'CGV Vincom Center Bà Triệu'},{'id':'cgv_site_009','class':'cgv_city_3','name':'CGV Mipec Tower'}]
 	return render(request, 'websites/cinox.html', {'data_cinema_area':data_cinema_area,'data_cinema_list':data_cinema_list})
 
+def cinox_detail(request):
+	data_cinema_area = [{'id':'cgv_city_1', 'name':'Hồ Chí Minh'},{'id':'cgv_city_3', 'name':'Hà Nội'},
+	{'id':'cgv_city_5', 'name':'Đà Nẵng'},{'id':'cgv_city_7', 'name':'Cần Thơ'},{'id':'cgv_city_9', 'name':'Đồng Nai'},
+	{'id':'cgv_city_11', 'name':'Hải Phòng'},{'id':'cgv_city_13', 'name':'Quảng Ninh'},{'id':'cgv_city_15', 'name':'Bà Rịa-Vũng Tàu'},
+	{'id':'cgv_city_17', 'name':'Bình Định'},{'id':'cgv_city_19', 'name':'Bình Dương'}]
+
+	data_cinema_list = [{'id':'cgv_site_004','class':'cgv_city_1','name':'CGV Hùng Vương Plaza'},{'id':'cgv_site_007','class':'cgv_city_1','name':'CGV Paragon'},
+	{'id':'cgv_site_008','class':'cgv_city_1','name':'CGV Cresent Mall'},{'id':'cgv_site_021','class':'cgv_city_1','name':'CGV Thảo Điền Pearl'},{'id':'cgv_site_023','class':'cgv_city_1','name':'CGV Vincom Thủ Đức'},
+	{'id':'cgv_site_024','class':'cgv_city_1','name':'CGV Vivo City'},{'id':'cgv_site_021','class':'cgv_city_1','name':'CGV Thảo Điền Pearl'},{'id':'cgv_site_030','class':'cgv_city_1','name':'CGV Pearl Plaza'},
+	{'id':'cgv_site_040','class':'cgv_city_1','name':'CGV Golden Plaza'},{'id':'cgv_site_001','class':'cgv_city_3','name':'CGV Vincom Center Bà Triệu'},{'id':'cgv_site_009','class':'cgv_city_3','name':'CGV Mipec Tower'}]
+	return render(request, 'websites/cinox_detail.html',{'data_cinema_area':data_cinema_area, 'data_cinema_list':data_cinema_list})
+
 def gift_card(request):
 	data=[{'img':'/assets/websites/images/gift_card_-_cinox_1.png','title':'Thẻ Quà Tặng - 300.000đ','price':'300.000,00 ₫','description':'Có giá trị như tiền mặt'},
 	{'img':'/assets/websites/images/gift_card_-_cinox_1.png','title':'Thẻ Quà Tặng - 500.000đ','price':'500.000,00 ₫','description':'Có giá trị như tiền mặt'}]
 
 	return render(request, 'websites/gift_card.html', {'data':data})
+
 
 def membership(request):
 	
@@ -149,6 +162,9 @@ def gift_card_detail(request):
 	{'content':'Các câu hỏi thường gặp, vui lòng xem ở đây.'}]
 	return render(request, 'websites/gift_card_detail.html',{'data_description':data_description,'data_content':data_content,'terms_conditions':terms_conditions} )
 
+def gift_card_online_detail(request):
+	return render(request, 'websites/gift_card_online_detail.html', {})
+	
 def cgv_online(request):
 	return render(request, 'websites/cgv_online.html', {} )
 
