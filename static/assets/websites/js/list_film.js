@@ -2,8 +2,13 @@
 // js for showing, arthouse
 // include js for button facebook like, resize for class product-info and function Quickbooking 
 
-decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
-					
+// set class 'odd','even','first','last' vao cac phan tu con cua 'ul.products-grid' 
+// funtion trong varien/js.js
+decorateGeneric($$('ul.products-grid'), ['odd','even','first','last']);
+
+// noconflict.js khai bao $j= $
+
+// plugin cho nut like facebook
 $j(window).bind('load', function() {
 	(function(d, s, id) {
 	var js, fjs = d.getElementsByTagName(s)[0];
@@ -14,45 +19,47 @@ $j(window).bind('load', function() {
 	}(document, 'script', 'facebook-jssdk'));
 });
 
-$j(document).ready(function(){
-	var highest = 0;
-	var hi = 0;
-	$j('.product-info').each(function(){
-	var h = $j(this).height();
-	if(h > hi){
-			hi = h;
-			highest = h;
-		}
+
+// lay gia tri lon nhat cua height, roi set cho tat ca phan tu
+function equalizeHeights(selector) {
+		var heights = new Array();
+		$j(selector).each(function() {
+
+			$j(this).css('min-height', '0');
+			$j(this).css('max-height', 'none');
+			$j(this).css('height', 'auto');
+
+	 		heights.push($j(this).height());
+		});
+
+		var max = Math.max.apply( Math, heights );
+
+		$j(selector).each(function() {
+			$j(this).css('height', max + 'px');
+		});	
+	}
+
+// CGV Mới update function resize
+// set lai height sau khi resize
+	$j(window).load(function() {
+		equalizeHeights('.product-info');
+		$j('li.category3').find('a').contents().unwrap();
+		var iv = null;
+		$j(window).resize(function() {
+			if(iv !== null) {
+				window.clearTimeout(iv);
+				console.log('stop');
+			}
+
+			iv = setTimeout(function() {
+	      			equalizeHeights('.product-info');
+	      			console.log('start');
+			}, 120);
+			$j('li.category3').find('a').contents().unwrap();
+		});
 	});
-	if ($j(window).width()>320){
-		$j('.product-info').css('height',highest+10+'px');
-	}
-	else{
-		$j('.products-grid .product-info').css('padding-bottom','0');
-	}
-	$j('li.category3').find('a').contents().unwrap();
 
-});
-
-$j(window).on('resize', function() {
-	var highest2 = 0;
-	var hi = 0;
-	$j('.product-info').each(function(){
-	var h = $j(this).height();
-	if(h > hi){
-			hi = h;
-			highest2 = h;
-		}
-	});
-	if ($j(window).width()>320){
-		$j('.product-info').css('height',highest2+10+'px');
-	}
-	else{
-		$j('.products-grid .product-info').css('padding-bottom','0');
-	}
-	$j('li.category3').find('a').contents().unwrap();
-});
-
+// function mua ve' roi tra ve hong bao	
 function Quickbooking(obj)
 {
 	$j.ajax({

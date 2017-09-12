@@ -114,10 +114,10 @@ def showing(request):
 	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':3, 'name': 'Lách Luật Kiểu Mỹ',
 	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
 	'time': '180 phút',  'date': '20/8/2017',}
-	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':4, 'name': 'Lách Luật Kiểu Mỹ',
+	,{'img': "/assets/websites/images/movie-selection/movie2.jpg",'tc': "p", 'rating':4, 'name': 'Câu Chuyện Lý Tiểu Long: Sự Ra Đời Của Rồng',
 	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
 	'time': '180 phút', 'date': '20/8/2017',}
-	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':5, 'name': 'Lách Luật Kiểu Mỹ',
+	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':5, 'name': 'Lách Luật Kiểu Mỹ ',
 	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
 	'time': '180 phút', 'date': '20/8/2017',}]
 
@@ -449,7 +449,7 @@ def film_detail(request):
 	data= {'name': 'Barry Seal: Lách Luật Kiểu Mỹ','director': ' Doug Liman', 'actor':'Tom Cruise, Domhnall Gleeson, Sarah Wright, E. Roger Mitchell, Jesse Plemons, Lola Kirke, Alejandro Edda, Benito Martinez, Caleb Landry Jones, Jayma Mays',
 	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'language': 'Tiếng Anh với phụ đề tiếng Việt và phụ đề tiếng Hàn',
 	'time': '180 phút', 'rated': 'C18 - Phim cấm khán giả dưới 18 tuổi', 'date': '20/8/2017',
-	'img': '/assets/websites/images/american_made_160x237.png', 
+	'img': '/assets/websites/images/american_made_406x600.png', 
 	'content': 'Dựa trên một câu chuyện có thật, BARRY SEAL: LÁCH LUẬT KIỂU MỸ là cuộc phiêu lưu xuyên quốc gia của Barry Seal, tên lừa đảo và cũng là một phi công bất ngờ được chiêu mộ vào tổ chức CIA để thực hiện một trong những điệp vụ ngầm lớn nhất trong lịch sử Mỹ.',
 	'trailer': '//www.youtube.com/embed/PALCTTuWkSc?rel=0&amp;showinfo=0'}
 	return render(request, 'websites/film_detail.html', {'data': data})
