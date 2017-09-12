@@ -1,4 +1,3 @@
-/* slideshow-sweetbox style="position: relative; overflow: hidden;" */
 .slide-imax-baner .slideshow-container-dx{
 clear: both;
 }
@@ -13,4 +12,15 @@ clear: both;
 }
 .site-list li a  span{
 	color:#e71a0f;
+}
+.about-content-imax .slide-imax-baner{
+	margin-top: 20px;
+}
+.specialtheater-screenx .a-center iframe{
+	height: 540px;
+	width: 980px;
+}
+.specialtheater-dolby-atmos .a-center iframe{
+	height: 540px;
+	width: 960px;
 }

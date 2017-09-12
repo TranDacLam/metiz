@@ -1,136 +1,86 @@
 {% extends 'layout.html' %}
 {% load i18n %}
+
 {% block title %}Dolby atmos{% endblock title %}
+
+{% block extrastylesheet %}
+	 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/special_cinema.css" media="all" />
+{% endblock %}
+
 {% block extrascript %}
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.min.js"></script>
-{% endblock %}
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/special_cinema.js"></script>
+{% endblock %}}
+
 {% block body_class %}
 	theaters-special-view
 {% endblock %}
+
 {% block container_class%}col1-layout {% endblock%}
+
 {% block main_content %}
-	<div class="main-container ">
-		<div class="breadcrumbs" itemprop="breadcrumb">
-			<ul>
-				<li class="home">
-					<a href="{% url 'home' %}" title="Home Page">Home Page</a>
-					<span>/ </span>
-				</li>
-				<li class="dolby-atmos">
-					<strong>Dolby Atmos</strong>
-				</li>
-			</ul>
-		</div>
-		<div class="main">
-			<div class="col-main">
-				<div id="specialtheater-list" class="specialtheater-list">
-					<ul class="special-items">
-						{% for item in data.technology %}
-							<li class="item-icon {{item.class}} {{item.flag}}">
-								<a title="Sweetbox" href="/special/{{item.name}}">{{item.name}}</a>
-							</li>
-						{% endfor %}
-					</ul>
+<div class="main-container ">
+	<div class="breadcrumbs" itemprop="breadcrumb">
+		<ul>
+			<li class="home">
+				<a href="{% url 'home' %}" title="Home Page">Home Page</a>
+				<span>/ </span>
+			</li>
+			<li class="dolby-atmos">
+				<strong>Dolby Atmos</strong>
+			</li>
+		</ul>
+	</div>
+	<div class="main">
+		<div class="col-main">
+			<div id="specialtheater-list" class="specialtheater-list">
+				<ul class="special-items">
+					{% for item in data.technology %}
+						<li class="item-icon {{item.class}} {{item.flag}}">
+							<a title="Sweetbox" href="/special/{{item.name}}">{{item.name}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="specialtheater-content specialtheater-dolby-atmos">
+				<div class="page-title special-title">
+					<h1>Dolby Atmos</h1>
 				</div>
-				<div class="specialtheater-content specialtheater-dolby-atmos">
-					<div class="page-title special-title">
-						<h1>Dolby Atmos</h1>
-					</div>
-					<div class="std">
-						<div class="cinema-imax">
-							<div class="header-imax std">
-								<div class="about-content-imax">
-									<div class="recent-cgv-special">
-										<h3>Dolby Atmos sử dụng thiết kế phân lớp tân tiến để tạo nên các rãnh âm thanh. Lớp nền bao gồm các dải âm thanh môi trường tĩnh được phối theo phương pháp âm thanh phân luồng quen thuộc. Các lớp trên trần bao gồm các yếu tố âm thanh động được định hướng và thay đổi một cách chính xác theo hình ảnh hiển thị trên màn hình trong rạp. Bằng cách lắp đặt hệ thống loa ở trên đầu và xung quanh, Dolby Atmos có thể khiến khán giả trải nghiệm những âm thanh trung thực và tự nhiên như thật của bộ phim.</h3>
-										<p>Làm thế nào Atmos có thể tạo nên trải nghiệm điện ảnh khác biệt:</p>
-										<ul>
-											<li>- Âm thanh rõ ràng và được định hướng một cách chính xác hơn; Sự trộn âm có định hướng đối tượng từ các yếu tố âm thanh theo lớp độc lập đến âm thanh phân luồng.</li>
-											<li>- Kết nối ý đồ của đạo diễn từ dữ liệu mô tả và phát lại theo công nghệ âm thanh được trang bị cho từng phòng chiếu.</li>
-											<li>- Tự động tạo ra các rãnh âm thanh tối ưu cho các phòng chiếu 5.1 và 7.1</li>
-											<li>- Tạo ra trải nghiệm âm thanh sống động, trung thực thông qua 128 yếu tố âm thanh đồng thời và không bị mất đi khi phối âm.</li>
-											<li>- Quy mô được điều chỉnh theo kích cỡ của từng phòng chiếu với hệ thống lên đến 64 loa độc lập với nhau.</li>
-										</ul>
-										<p>Tận hưởng công nghệ âm thanh đột phá Dolby Atmos tại:</p>
-										<ul class="site-list">
-											{% for item in data.address%}
-												<li><a href="{{item.href}}">{{item.name}}</a></li>
-											{% endfor%}	
-										</ul>
-										<p></p>
-										<p></p>
-									</div>
-									<div class="slide-imax-baner">
-									</div>
-									<div class="a-center"><iframe height="540" src="https://player.vimeo.com/video/69918255" width="960"></iframe></div>
+				<div class="std">
+					<div class="cinema-imax">
+						<div class="header-imax std">
+							<div class="about-content-imax">
+								<div class="recent-cgv-special">
+									<h3>Dolby Atmos sử dụng thiết kế phân lớp tân tiến để tạo nên các rãnh âm thanh. Lớp nền bao gồm các dải âm thanh môi trường tĩnh được phối theo phương pháp âm thanh phân luồng quen thuộc. Các lớp trên trần bao gồm các yếu tố âm thanh động được định hướng và thay đổi một cách chính xác theo hình ảnh hiển thị trên màn hình trong rạp. Bằng cách lắp đặt hệ thống loa ở trên đầu và xung quanh, Dolby Atmos có thể khiến khán giả trải nghiệm những âm thanh trung thực và tự nhiên như thật của bộ phim.</h3>
+									<p>Làm thế nào Atmos có thể tạo nên trải nghiệm điện ảnh khác biệt:</p>
+									<ul>
+										<li>- Âm thanh rõ ràng và được định hướng một cách chính xác hơn; Sự trộn âm có định hướng đối tượng từ các yếu tố âm thanh theo lớp độc lập đến âm thanh phân luồng.</li>
+										<li>- Kết nối ý đồ của đạo diễn từ dữ liệu mô tả và phát lại theo công nghệ âm thanh được trang bị cho từng phòng chiếu.</li>
+										<li>- Tự động tạo ra các rãnh âm thanh tối ưu cho các phòng chiếu 5.1 và 7.1</li>
+										<li>- Tạo ra trải nghiệm âm thanh sống động, trung thực thông qua 128 yếu tố âm thanh đồng thời và không bị mất đi khi phối âm.</li>
+										<li>- Quy mô được điều chỉnh theo kích cỡ của từng phòng chiếu với hệ thống lên đến 64 loa độc lập với nhau.</li>
+									</ul>
+									<p>Tận hưởng công nghệ âm thanh đột phá Dolby Atmos tại:</p>
+									<ul class="site-list">
+										{% for item in data.address%}
+											<li><a href="{{item.href}}">{{item.name}}</a></li>
+										{% endfor%}	
+									</ul>
+									<p></p>
+									<p></p>
+								</div>
+								<div class="slide-imax-baner">
+								</div>
+								<div class="a-center">
+									<iframe  src="https://player.vimeo.com/video/69918255" ></iframe>
 								</div>
 							</div>
-							<!-- end cinema imax -->
-							<script type="text/javascript">// <![CDATA[
-							$j(document).ready(function () {
-								$j('.slideshow-container-dx .slideshow-dx')
-									.cycle({
-										slides: '> li',
-											speed: 600,
-											pauseOnHover: true,
-											swipe: true,
-										prev: '.slideshow-prev',
-										next: '.slideshow-next',
-									fx: 'scrollHorz'
-								});
-								});
-							// ]]></script>
-							</div>
-							</div>	
 						</div>
-					<style>
-					.home-title{
-						display:none;
-					}
-					.site-list{width:100%;}
-					.site-list li a{color:#000}
-					.site-list li a  span{color:#e71a0f}
-					</style>
-
-					<script type="text/javascript">
-						//<![CDATA[
-						$j(document).ready(function(){
-							var highest = 0;
-							var hi = 0;
-							$j('.product-info').each(function(){
-							var h = $j(this).height();
-							if(h > hi){
-									hi = h;
-									highest = h;
-								}
-							});
-							if ($j(window).width()>320){
-								$j('.product-info').css('height',highest+10+'px');
-							}
-							else{
-								$j('.products-grid .product-info').css('padding-bottom','0');
-							}
-							$j('li.category3').find('a').contents().unwrap();
-						});
-						$j(window).on('resize', function() {
-							var highest2 = 0;
-							var hi = 0;
-							$j('.product-info').each(function(){
-							var h = $j(this).height();
-							if(h > hi){
-									hi = h;
-									highest2 = h;
-								}
-							});
-							if ($j(window).width()>320){
-								$j('.product-info').css('height',highest2+10+'px');
-							}
-							else{
-								$j('.products-grid .product-info').css('padding-bottom','0');
-							}
-							$j('li.category3').find('a').contents().unwrap();
-						});
-					//]]>
-					</script>   
+						<!-- end cinema imax -->
+					</div>
 				</div>
 			</div>
-	{% endblock %}
+		</div>
+	</div>	
+</div>
+{% endblock %}
