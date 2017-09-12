@@ -55,7 +55,7 @@
 			{% for item in data %}
 				<li class="film-lists item last">
 					<div class="product-info">
-						<h2 class="product-name"><a href="#" title="Voucher 2D">{{item.product_name}}</a></h2>
+						<h2 class="product-name"><a href="{% url 'gift_card_online_detail' %}" title="Voucher 2D">{{item.product_name}}</a></h2>
 						
 						<span class="price">{{item.price}}</span>
 						
@@ -68,7 +68,7 @@
 						</div>
 					</div>
 					
-					<a href="#" title="2D_Voucher" class="product-image">
+					<a href="{% url 'gift_card_online_detail' %}" title="2D_Voucher" class="product-image">
 						<img id="product-collection-image-257" src="{{ STATIC_URL }}{{item.img}}" alt="2D_Voucher" />
 					</a>
 				</li>
