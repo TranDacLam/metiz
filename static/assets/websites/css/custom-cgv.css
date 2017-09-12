@@ -712,7 +712,7 @@ span#kv_form_close:hover {
     margin: 0px auto 0px;
 }
 #loading-mask {
-    background: transparent url(https://www.cgv.vn/skin/adminhtml/default/enterprise/images/blank.gif) repeat scroll 0% 0%;
+    background: transparent url(../images/blank.gif) repeat scroll 0% 0%;
     position: fixed;
     color: #D85909;
     font-size: 1.1em;
