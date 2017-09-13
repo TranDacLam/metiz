@@ -41,20 +41,6 @@ cms-page-view cms-terms-conditions
 				</ul>
 			</div>
 		</div>
-		<script type="text/javascript">
-			$j(".block-cms-menu li").each(function(){
-				var self = this;
-				href = $j(this).find('a');
-				for(var i = 0 ; i < href.length ; i++){
-					var harray = $j(href[i]).attr('href').split("/");
-					var charray = window.location.href.split("/");
-					if(harray[harray.length-2] == charray[charray.length-2]){
-						$j(self).addClass('active');
-						break;
-					}
-				}
-			});
-		</script>
 	</div>
 	<div class="col-main">
 		<div class="std">
@@ -82,4 +68,5 @@ cms-page-view cms-terms-conditions
 	</div>
 	<div class="col-left sidebar"></div>
 </div>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/policy.js"></script>
 {% endblock %}

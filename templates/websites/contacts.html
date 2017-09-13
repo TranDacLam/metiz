@@ -8,10 +8,6 @@
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/contacts.css" media="all" />
 {% endblock %}
 
-{% block extrascript %}
-<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/contacts.js"></script>
-{% endblock %}
-
 {% block container_class %}col2-left-layout{% endblock %}
 
 {% block body_class %}
@@ -25,7 +21,7 @@ contacts-index-index
 			<div class="block-content">
 				<ul>
 					<li><a href="{% url 'about_cinema' %}"><span>Giới thiệu</span></a></li>
-					<li class="active"><a href="{% url 'contacts' %}"><span>Li&ecirc;n Hệ CGV</span></a></li>
+					<li><a href="{% url 'contacts' %}"><span>Li&ecirc;n Hệ CGV</span></a></li>
 					<li><a href="{% url 'terms_conditions' %}"><span>Điều khoản chung</span></a></li>
 					<li><a href="{% url 'terms_use' %}"><span>Điều khoản giao dich</span></a></li>
 					<li><a href="{% url 'payment_policy' %}"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a></li>
@@ -124,9 +120,9 @@ contacts-index-index
 			</form>
 		</div>
 	</div>
-	
-	
+
 </div>
 <div class="col-left sidebar"></div>
 </div>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/contacts.js"></script>
 {% endblock %}

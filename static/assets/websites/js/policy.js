@@ -1,8 +1,7 @@
-
-	// ham active menu (dong 3-14)
+	//active menu
 	$j(".block-cms-menu li").each(function(){
 		var self = this;
-			href = $j(this).find('a');
+		href = $j(this).find('a');
 		for(var i = 0 ; i < href.length ; i++){
 			var harray = $j(href[i]).attr('href').split("/");
 			var charray = window.location.href.split("/");
@@ -12,5 +11,3 @@
 			}
 		}
 	});
-		
-				

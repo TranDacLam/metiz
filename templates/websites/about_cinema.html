@@ -10,10 +10,6 @@
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-cgv.css" media="all" /> 
 {% endblock %}
 
-{% block extrascript %}
-<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/about_cinema.js"></script>
-{% endblock %}
-
 {% block body_class %}
 	cms-page-view cms-about-cgv
 {% endblock %}
@@ -36,7 +32,7 @@
 		<div class="block block-cms-menu">
 			<div class="block-content">
 				<ul>
-					<li class="active">
+					<li>
 						<a href="{% url 'about_cinema' %}"><span>Giới thiệu</span></a>
 					</li>
 					<li>
@@ -91,6 +87,6 @@
 	</div>
 	<div class="col-left sidebar"></div>
 </div>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/about_cinema.js"></script>
 
-<div id="wishlist_edit_action_container"></div>
 {% endblock %}
