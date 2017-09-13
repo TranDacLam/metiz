@@ -19,9 +19,11 @@ $j(document).ready(function(){
     
     $j('#'+arr[1]).click();// nối kí từ # với phần tử vị trí thứ 1 rồi thực hiện click
     
-    $j('.cgv-membership > ul').find('a').each(function() { //lặp qua mỗi phần tử a của class cgv-membership
-        // kiểm tra nếu giá trị thuộc tính href của thẻ a = chuỗi '#'+id tại vị trí class lyt-history-content
-        // thực hiện click
+    // (dòng 26-30)
+    // lặp qua mỗi phần tử a của class cgv-membership
+    // kiểm tra nếu giá trị thuộc tính href của thẻ a = chuỗi '#'+id tại vị trí class lyt-history-content
+    // thực hiện click
+    $j('.cgv-membership > ul').find('a').each(function() { 
         if($j(this).attr('href') == '#'+$j('#'+arr[1]).parents('.lyt-history-content').attr('id')){
             $j(this).click(); 
         }
