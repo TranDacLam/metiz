@@ -1,11 +1,7 @@
 
-// js for showing, arthouse
+// js for showing.html, arthouse.html
 // include js for button facebook like, resize for class product-info and function Quickbooking 
-
-// set class 'odd','even','first','last' vao cac phan tu con cua 'ul.products-grid' 
-// funtion trong varien/js.js
-decorateGeneric($$('ul.products-grid'), ['odd','even','first','last']);
-
+ 
 // noconflict.js khai bao $j= $
 
 // plugin cho nut like facebook
@@ -20,7 +16,7 @@ $j(window).bind('load', function() {
 });
 
 
-// lay gia tri lon nhat cua height, roi set cho tat ca phan tu
+// lay gia tri lon nhat cua height, roi dat cho tat ca phan tu
 function equalizeHeights(selector) {
 		var heights = new Array();
 		$j(selector).each(function() {

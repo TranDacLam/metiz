@@ -4,9 +4,8 @@
 {% block title %}Phim Đang Chiếu{% endblock title %}
 
 {% block extrascript %}
-<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
 {% endblock %}
-
 {% block body_class %}
 	catalog-category-view categorypath-now-showing category-now-showing
 {% endblock %}
@@ -14,84 +13,89 @@
 {% block container_class%}col1-layout {% endblock%}
 
 {% block main_content%}
-		<div class="breadcrumbs" itemprop="breadcrumb">
-			<ul>
-				<li class="home">
-					<a href="{% url 'home'%}" title="Trở về trang chủ">Trang chủ</a>
-					<span>/ </span>
-				</li>
-				<li class="category3">
-					Phim
-					<span>/ </span>
-				</li>
-				<li class="category5">
-					<strong>Phim Đang Chiếu</strong>
-				</li>
-			</ul>
+<div class="breadcrumbs" itemprop="breadcrumb">
+	<ul>
+		<li class="home">
+			<a href="{% url 'home'%}" title="Trở về trang chủ">Trang chủ</a>
+			<span>/ </span>
+		</li>
+		<li class="category3">
+			Phim
+			<span>/ </span>
+		</li>
+		<li class="category5">
+			<strong>Phim Đang Chiếu</strong>
+		</li>
+	</ul>
+</div>
+<div class="main">
+	<div class="col-main">
+		<div class="page-title category-title">
+			<h1>Phim Đang Chiếu</h1>
 		</div>
-		<div class="main">
-			<div class="col-main">
-				<div class="page-title category-title">
-					<h1>Phim Đang Chiếu</h1>
-				</div>
-				<div class="category-products cgv-movies">
-					<ul class="products-grid products-grid--max-4-col">
-						{% for value in data%}
+		<div class="category-products cgv-movies">
+			<ul class="products-grid products-grid--max-4-col">
+				{% for value in data%}
 
-							<li class="film-lists">
-								<span class="nmovie-rating nmovie-rating-{{value.tc}}"></span>
-								<div class="product-images">
-									<a href="{% url 'film_detail'%}" title="CGV_American Made" class="product-image">
-										<img id="product-collection-image-285" src="{{STATIC_URL}}{{value.img}}" alt="CGV_American Made">
-									</a>
-									
-									<div class="movie-technology">
-										<a href="javascript:void(0)" class="icon-type-film" title="IMAX2D">
-											<!-- <span class="attr-movie-imax2d">IMAX2D</span> -->
-											<span class="attr-movie-{{value.technology}}">{{value.technology}}</span>
-										</a>
-									</div>
-								</div>
-								
-								<div class="product-info">
-									<h2 class="product-name">
-									<a href="#" title="Barry Seal: Lách Luật Kiểu Mỹ">{{value.name}}</a></h2>
-									
-									<div class="cgv-movie-info">
-										<span class="cgv-info-bold">Thể loại: </span>
-										<span class="cgv-info-normal">{{value.category}}</span>
-									</div>
-									
-									<div class="cgv-movie-info">
-										<span class="cgv-info-bold">Thời lượng: </span>
-										<span class="cgv-info-normal">{{value.time}}</span>
-									</div>
-									
-									<div class="cgv-movie-info">
-										<span class="cgv-info-bold">Khởi chiếu: </span>
-										<span class="cgv-info-normal">{{value.date}}</span>
-									</div>
-								</div>
-								
-								<div class="ribon position-{{value.rating}}"></div>
-								
-								<ul class="add-to-links">
-									<li>
-										<div class="fb-like fb_iframe_widget" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
-                                        </div>
-									</li>
-									
-									<li>
-										<button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span></button>
-									</li>
-								</ul>
+					<li class="film-lists">
+						<span class="nmovie-rating nmovie-rating-{{value.tc}}"></span>
+						<div class="product-images">
+							<a href="{% url 'film_detail'%}" title="CGV_American Made" class="product-image">
+								<img id="product-collection-image-285" src="{{STATIC_URL}}{{value.img}}" alt="CGV_American Made">
+							</a>
+							
+							<div class="movie-technology">
+								<a href="javascript:void(0)" class="icon-type-film" title="IMAX2D">
+									<!-- <span class="attr-movie-imax2d">IMAX2D</span> -->
+									<span class="attr-movie-{{value.technology}}">{{value.technology}}</span>
+								</a>
+							</div>
+						</div>
+						
+						<div class="product-info">
+							<h2 class="product-name">
+							<a href="#" title="Barry Seal: Lách Luật Kiểu Mỹ">{{value.name}}</a></h2>
+							
+							<div class="cgv-movie-info">
+								<span class="cgv-info-bold">Thể loại: </span>
+								<span class="cgv-info-normal">{{value.category}}</span>
+							</div>
+							
+							<div class="cgv-movie-info">
+								<span class="cgv-info-bold">Thời lượng: </span>
+								<span class="cgv-info-normal">{{value.time}}</span>
+							</div>
+							
+							<div class="cgv-movie-info">
+								<span class="cgv-info-bold">Khởi chiếu: </span>
+								<span class="cgv-info-normal">{{value.date}}</span>
+							</div>
+						</div>
+						<!-- <div class="ribon position-1"></div> -->
+						<div class="ribon position-{{value.rating}}"></div>
+						
+						<ul class="add-to-links">
+							<li>
+								<div class="fb-like fb_iframe_widget" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
+                                </div>
 							</li>
-						{%endfor%}
-					</ul>
-					<script type="text/javascript"></script>
-				</div>
-				<script type="text/javascript">
-
-			</script>           
+							
+							<li>
+								<button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span></button>
+							</li>
+						</ul>
+					</li>
+				{%endfor%}
+			</ul>
+			<script type="text/javascript">
+			// đặt class 'odd','even','first','last' vao phan tu 'ul.products-grid' 
+			// funtion trong varien/js.js
+			// Nhưng em nghĩ như thế này mới đúng: decorateGeneric($$('ul.products-grid li'), ['odd','even','first','last']); 
+			// em thêm thẻ li vào thì nó add các class 'odd','even','first','last' vào thẻ li nhưng nhìn khá xấu
+				decorateGeneric($$('ul.products-grid'), ['odd','even','first','last']);
+			</script>
 		</div>
+	</div>           
+</div>
+
 {% endblock%}

@@ -6,7 +6,7 @@
 	 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film_detail.css" media="all" />
 {% endblock %}
 {% block extrascript %}
-	<!-- thu vien dung de zoom image banner film -->
+	<!-- thu vien dung de zoom  banner film image-->
 	<!-- function active elevateZoom trong app.js -->
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.elevateZoom-3.0.8.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/film_detail.js"></script>
@@ -116,31 +116,30 @@
 				<div class="clearer"></div>
 			</div>
 
-				<div class="product-collateral toggle-content tabs tabs-format-cgv">
-					<dl id="collateral-tabs" class="collateral-tabs">
-						<dt class="tab current"><span>Chi tiết</span></dt>
-							<dd class="tab-container current">
-								<div class="tab-content"><h2>Chi tiết</h2>
-									<div class="std">
-										{{data.content}}
-									</div>
-								</div>
-							</dd>
-						<dt class="tab last">
-							<span>Trailer</span>
-						</dt>
-						<dd class="tab-container last">
-							<div class="tab-content">
-								<div class="std">
-									<h2>Trailer</h2>
-									<div class="std product_view_trailer">
-										<iframe src="{{data.trailer}}" frameborder="0" allowfullscreen=""></iframe>    
-									</div>
+			<div class="product-collateral toggle-content tabs tabs-format-cgv">
+				<dl id="collateral-tabs" class="collateral-tabs">
+					<dt class="tab current"><span>Chi tiết</span></dt>
+					<dd class="tab-container">
+						<div class="tab-content"><h2>Chi tiết</h2>
+							<div class="std">
+								{{data.content}}
+							</div>
+						</div>
+					</dd>
+
+					<dt class="tab last"><span>Trailer</span></dt>
+					<dd class="tab-container last">
+						<div class="tab-content">
+							<div class="std">
+								<h2>Trailer</h2>
+								<div class="std product_view_trailer">
+									<iframe src="{{data.trailer}}" frameborder="0" allowfullscreen=""></iframe>    
 								</div>
 							</div>
-						</dd>
-					</dl>
-				</div>
+						</div>
+					</dd>
+				</dl>
+			</div>
 		</div>
 	</div>
 </div>
