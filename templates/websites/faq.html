@@ -6,10 +6,6 @@
 
 {% block container_class %}col2-left-layout{% endblock %}
 
-{% block extrascript %}
-<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/faq.js"></script>
-{% endblock %}
-
 {% block body_class %}
 cms-page-view cms-faq
 {% endblock %}
@@ -37,7 +33,7 @@ cms-page-view cms-faq
 					<li><a href="{% url 'terms_use' %}"><span>Điều khoản giao dich</span></a></li>
 					<li><a href="{% url 'payment_policy' %}"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a></li>
 					<li><a href="{% url 'privacy_policy' %}"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a></li>
-					<li class="active"><span><a href="{% url 'faq' %}"><span>C&acirc;u hỏi thường gặp</span></a></span></li>
+					<li><span><a href="{% url 'faq' %}"><span>C&acirc;u hỏi thường gặp</span></a></span></li>
 				</ul>
 			</div>
 		</div>
@@ -101,4 +97,5 @@ cms-page-view cms-faq
 	</div>
 	<div class="col-left sidebar"></div>
 </div>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/faq.js"></script>
 {% endblock %}

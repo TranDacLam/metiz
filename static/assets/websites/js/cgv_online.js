@@ -1,4 +1,5 @@
-
+	
+	// Google Analytic (phân tích website)
 	var _gaq = _gaq || [];
 	
 	_gaq.push(['_setAccount', '55803327']);

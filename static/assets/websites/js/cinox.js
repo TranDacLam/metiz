@@ -1,9 +1,10 @@
 
+	// active khi click vào vị trí Tỉnh/TP (dòng 3-6)
 	$j(window).load(function(){
 		var city = $j('.cinemas-area li').first().find('span').attr('id');
 		$j('.cinemas-area li span').removeClass('siteactive');
 		$j('.cinemas-area li span#'+city).addClass('siteactive');
-		$j('.cinemas-list .'+city).show();
+		$j('.cinemas-list .'+city).show(); // show tất cả rạp phim có trong Tỉnh/TP đó
 		
 		$j('.cinemas-area li').click(function() {
 			$j('.cinemas-list li').hide();
@@ -19,19 +20,21 @@
 		$j('#loading-mask').hide();
 	});
 	
+	// (dòng 24-57) hiển thị slide và lịch chiếu chi tiết của rạp đó
 	function site(url,obj)
 	{
 		$j('.cinemas-list li').removeClass('current');
 		$j(obj).parent('li').addClass('current');
-		history.pushState({}, '', url);
+		history.pushState({}, '', url); //thay đổi đường dẫn url mà ko load lại trang
 		$j.ajax({
 			url: url,
 			beforeSend: function(){
-				$j('.theater-container').empty();
-				$j('.slideshow-container .slideshow').cycle('destroy');
-				$j('#loading-mask').show();
+				$j('.theater-container').empty(); // remove class .theater-container
+				$j('.slideshow-container .slideshow').cycle('destroy'); // dừng trình chiếu slide và hủy liên kết tất cả sự kiện
+				$j('#loading-mask').show(); // hiển thị ảnh gif đang loading
 			},
 		}).done(function(result) {
+			// (dong 38-51: load slide )
 			var html = $j(result).find('div.theater-container').children();
 			$j('.theater-container').html(html);
 			$j('.slideshow-container .slideshow').cycle({
@@ -52,7 +55,7 @@
 			$j('#loading-mask').hide();
 		});
 	}
-	
+	// (dòng 59-119) show các phim được chiếu theo lịch cụ thể
 	function showtimestabs(clss) {
 		$j('.'+clss).each(function () {
 			var wrapper = $j(this);

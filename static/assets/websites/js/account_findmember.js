@@ -1,28 +1,33 @@
-
-	var theForm = new VarienForm('form-validate', true);
+	
+		var theForm = new VarienForm('form-validate', true);
+		// xử lý sự kiện khi nhập ngày tháng năm sinh (dòng 4-13)
 		$j( document ).ready(function() {
 			$j('#birthday').bind('keyup','keydown', function(event) {
 			var inputLength = event.target.value.length;
 			if(inputLength === 2 || inputLength === 5){
-			var thisVal = event.target.value;
-			thisVal += '/';
-			$j(event.target).val(thisVal);
+				var thisVal = event.target.value;
+				thisVal += '/';
+				$j(event.target).val(thisVal);
 			}
 		})
 		});
-	
+		
+		//trỏ đến trang account_forgot_password (từ dòng 16-21)
 		function forgotpasswordf()
 		{
 			//var url = e.target.parentElement.action;
 			var url = '#';
 			window.location = url;
 		}
+		//trỏ đến trang account_login (từ dòng 23-28)
 		function loginf()
 		{
 			//var url = e.target.parentElement.action;
 			var url = '#';
 			window.location = url;
 		}
+
+		// Hàm tìm account(từ dòng 31-62)
 		function findaccount()
 		{
 			var f_name = $j.trim($j('input[name=\'first_name\']').val());

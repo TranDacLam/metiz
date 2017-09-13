@@ -1,14 +1,17 @@
-
+	// plugin nút like facebook (dòng 2-12)
 	$j(window).bind('load', function() {
-		(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-		fjs.parentNode.insertBefore(js, fjs);
+		(function(d, s, id) 
+		{
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) 
+				return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
-});
+	});
 	
+	//co giãn độ cao height tại vị trí class product-info (dòng 15-34) 
 	$j(document).ready(function(){
 		var highest = 0;
 		var hi = 0;
@@ -25,10 +28,12 @@
 		else{
 			$j('.products-grid .product-info').css('padding-bottom','0');
 		}
+		// (dòng 32) remove các phần tử bọc bên ngoài nội dung của thẻ a tính từ class li .category3
 		$j('li.category3').find('a').contents().unwrap();
 		//console.log(abc);
 	});
 	
+	// co giãn độ cao height tại vị trí class product-info khi resize màn hình (dòng 37-54)
 	$j(window).on('resize', function() {
 		var highest2 = 0;
 		var hi = 0;
@@ -66,4 +71,5 @@
 			togglecontent('tabs-cgv-movie-view-date');
 		});
 	}
-		
+	//	
+	decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])

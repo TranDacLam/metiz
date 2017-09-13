@@ -1,3 +1,4 @@
+	// mua ve
 	function buy() {
 		/*
 		* Check customer availability

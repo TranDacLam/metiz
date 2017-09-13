@@ -1,5 +1,5 @@
 
-		
+	// mua ve
 	function buy(id, formkey) {
 		/*
 		* Check customer availability
@@ -13,7 +13,7 @@
 				beforeSend: function(){
 					$j('#loading-mask').show();
 				}
-							}).done(function(response) {
+				}).done(function(response) {
 				if (response.success == 1) {
 					// var msg = response.message;
 					// if (Object.isArray(msg)) {
@@ -44,8 +44,9 @@
 			return;
 		}
 	}
+
+	decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])
 		
 		
-	var phone = '2124771050',
-	formatted = phone.substr(0, 3) + '****' + phone.substr(phone.length-3,3);
+	
 		  

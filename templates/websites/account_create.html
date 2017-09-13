@@ -7,10 +7,6 @@
 {% block extrastylesheet %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/account_create.css" media="all" /> 
 {% endblock %}
-{% block extrascript %}
-
-<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/account_create.js"></script>
-{% endblock %}
 
 {% block container_class %}col1-layout{% endblock %}
 
@@ -29,311 +25,286 @@
 				</ul>
 				<dl id="collateral-tabs">
 					<dd class="tab-container current">
-					<div class="tab-content">
-						<div class="account-create">
-							<form action="#" method="post" id="form-validate" class="scaffold-form create-account-from" enctype="multipart/form-data">
-								<div class="fieldset">
-									<input type="hidden" name="success_url" value="" />
-									<input type="hidden" name="error_url" value="" />
-									<input name="form_key" type="hidden" value="T15GoMUUH8ENNEfK" />
-									<ul class="form-list">
-										<li class="fields">
-											<div class="customer-name">
-												<div class="field name-firstname">
-													<label for="firstname" class="required"><em>*</em>Tên</label>
-													<div class="input-box">
-														<input type="text" id="firstname" name="firstname" value="" title="Tên" placeholder="Tên" maxlength="255" class="input-text validate-alpha-spac required-entry"  />
+						<div class="tab-content">
+							<div class="account-create">
+								<form action="#" method="post" id="form-validate" class="scaffold-form create-account-from" enctype="multipart/form-data">
+									<div class="fieldset">
+										<input type="hidden" name="success_url" value="" />
+										<input type="hidden" name="error_url" value="" />
+										<input name="form_key" type="hidden" value="T15GoMUUH8ENNEfK" />
+										<ul class="form-list">
+											<li class="fields">
+												<div class="customer-name">
+													<div class="field name-firstname">
+														<label for="firstname" class="required"><em>*</em>Tên</label>
+														<div class="input-box">
+															<input type="text" id="firstname" name="firstname" value="" title="Tên" placeholder="Tên" maxlength="255" class="input-text validate-alpha-spac required-entry"  />
+														</div>
+													</div>
+													<div class="field name-lastname">
+														<div class="input-box">
+															<input type="text" id="lastname" name="lastname" value="" title="Họ" placeholder="Họ" maxlength="255" class="input-text validate-alpha-spac required-entry"  />
+														</div>
 													</div>
 												</div>
-												<div class="field name-lastname">
-													<div class="input-box">
-														<input type="text" id="lastname" name="lastname" value="" title="Họ" placeholder="Họ" maxlength="255" class="input-text validate-alpha-spac required-entry"  />
+											</li>
+											<li class="fields"><label for="month" class="required"><em>*</em>Ngày sinh</label>
+												<div class="input-box customer-dob">
+													<div class="dob-day">
+														<select onchange="getElementById('day').value=this.value">
+															{% for item in data_day %}
+																<option value="{{item.value}}" >{{item.day}} </option>
+															{% endfor %}
+														</select>
+														<input type="hidden" id="day" name="day" value="" title="Ngày" class="input-text validate-custom"  />
 													</div>
+													<div class="dob-month">
+														<select onchange="getElementById('month').value=this.value">
+															<option value="">Tháng</option>
+															{% for item in data_month %}
+																<option value="{{item.value}}" >{{item.month}} </option>
+															{% endfor %}
+														</select>
+														<input type="hidden" id="month" name="month" value="" title="Tháng" class="input-text validate-custom"  />
+													</div>
+													<div class="dob-year">
+														<select onchange="getElementById('year').value=this.value">
+															<option value="">Năm</option>
+															{% for item in data_year %}
+																<option value="{{item.value}}" >{{item.year}} </option>
+															{% endfor %}
+														</select>
+														<input type="hidden" id="year" name="year" value="" title="Năm" class="input-text validate-custom"  />
+													</div>    
+													<div class="dob-full">
+														<input type="hidden" id="dob" name="dob" />
+													</div>
+													<div class="validation-advice"></div>
 												</div>
-											</div>
-										</li>
-										<li class="fields"><label for="month" class="required"><em>*</em>Ngày sinh</label>
-											<div class="input-box customer-dob">
-												<div class="dob-day">
-													<select onchange="getElementById('day').value=this.value">
-														{% for item in data_day %}
-															<option value="{{item.value}}" >{{item.day}} </option>
-														{% endfor %}
-													</select>
-													<input type="hidden" id="day" name="day" value="" title="Ngày" class="input-text validate-custom"  />
-												</div>
-												<div class="dob-month">
-													<select onchange="getElementById('month').value=this.value">
-														<option value="">Tháng</option>
-														{% for item in data_month %}
-															<option value="{{item.value}}" >{{item.month}} </option>
-														{% endfor %}
-													</select>
-													<input type="hidden" id="month" name="month" value="" title="Tháng" class="input-text validate-custom"  />
-												</div>
-												<div class="dob-year">
-													<select onchange="getElementById('year').value=this.value">
-														<option value="">Năm</option>
-														{% for item in data_year %}
-															<option value="{{item.value}}" >{{item.year}} </option>
-														{% endfor %}
-													</select>
-													<input type="hidden" id="year" name="year" value="" title="Năm" class="input-text validate-custom"  />
-												</div>    
-												<div class="dob-full">
-													<input type="hidden" id="dob" name="dob" />
-												</div>
-												<div class="validation-advice"></div>
-											</div>
-							<script type="text/javascript">
-							//<![CDATA[
-								var customer_dob = new Varien.DOB('.customer-dob', true, '%d/%m/%Y');
-							//]]>
-							</script>
-						</li>
-						<li>
-							<label for="email_address" class="required"><em>*</em>Địa chỉ email (Tên đăng nhập)</label>
-							<div class="input-box">
-								<input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="email_address" value="" title="Địa chỉ email" class="input-text validate-email required-entry validate-no-html-tags" />
-							</div>
-						</li>
-						<li class="fields">
-							<div class="field">
-								<label for="password" class="required"><em>*</em>Mật khẩu</label>
-								<div class="input-box">
-									<input type="password" name="password" id="password" title="Mật khẩu" class="input-text required-entry validate-password" />
-								</div>
-							</div>
-						</li>
-						<li class="fields">
-							<div class="field field-country-first">
-								<label for="region_id" class="required "><em>*</em>Tỉnh/Tp</label>
-								<div class="input-box">
-									<select onchange="loadDistrict(this, 'city');" id="region_id" name="region_id" title="Tỉnh/Tp" class="validate-select">
-										<option value="">Vui lòng chọn...</option>
-										{% for item in data_city %}
-											<option value="{{item.value}}" >{{item.name}} </option>
-										{% endfor %}
-										
-										<option value="65" selected>Khác... </option>
-									</select>
-								</div>
-							</div>
-						</li>
-						<li class="fields">
-							<label for="street_1" class="required"><em>*</em>Địa chỉ</label>
-							<div class="input-box">
-								<input type="text" name="street[]" value="N/A" title="Địa chỉ" id="street_1" class="input-text validate-no-html-tags  required-entry" />
-							</div>
-						</li>
-						<li class="control">
-							<div class="input-box">
-								<input type="checkbox" name="is_subscribed" title="Tôi muốn nhận đề nghị qua email" value="1" id="is_subscribed" checked="checked" class="checkbox" />
-							</div>
-							<label for="is_subscribed">Tôi muốn nhận đề nghị qua email</label>
-						</li>
-					</ul>
-				</div>
-				<div class="fieldset">
-					<ul class="form-list">
-						<li><label for="gender" class="required"><em>*</em>Giới tính</label>
-						<div class="input-box">
-							<input type="radio" name="gender" value="1" checked="checked">Nam</input>
-							<input type="radio" name="gender" value="2">Nữ</input>
-						</div>
-					</li>
-					<li class="hidden">
-						<input type="hidden" name="create_address" value="1" />
-					</li>
-					<li class="fields">
-						<div class="field">
-							<label for="telephone" class="required"><em>*</em>Số điện thoại di động</label>
-							<div class="input-box">
-								<input type="tel" name="telephone" id="telephone" value="" title="Điện thoại" class="input-text required-entry validate-mobile  required-entry" />
-							</div>
-						</div>
-					</li>
-					<li class="fields">
-						<div class="field">
-							<label for="username" class="required"><em>*</em>Tên Đăng Nhập (Bạn có thể đăng nhập bằng tên này)</label>
-							<div class="input-box">
-								<input type="text" name="username" id="username" value="" title="Tên Đăng Nhập (Bạn có thể đăng nhập bằng tên này)" placeholder ="Use letter & number, min. 6 characters" class="input-text required-entry validate-alpha-digit " />
-							</div>
-						</div>
-					</li>
-					<li class="fields">
-						<div class="field">
-							<label for="confirmation" class="required"><em>*</em>Nhập lại mật khẩu</label>
-							<div class="input-box">
-								<input type="password" name="confirmation" title="Nhập lại mật khẩu" id="confirmation" class="input-text required-entry validate-cpassword" />
-							</div>
-						</div>
-					</li>
-					<li class="fields field-country">
-						<label for="city" class="required "><em>*</em>Quận/Huyện</label>
-						<div class="input-box">
-							<select class="input-box input-box-city validate-select" id="city" name="city" title="Quận/Huyện" >
-								<option value="">Vui lòng chọn...</option>
-								<option value="Other" selected>Khác... </option>
-							</select>
-						</div>
-					</li>
-					<li class="fields" style="display: none;">
-						<div class="field">
-							<label for="zip">Mã quốc gia</label>
-							<div class="input-box">
-								<input type="hidden" name="postcode" value="80000" title="Mã quốc gia" id="zip" class="input-text validate-zip-international  required-entry" />
-							</div>
-						</div>
-						<div class="field">
-							<label for="country">Quốc gia</label>
-							<div class="input-box">
-								<select name="country_id" id="country" class="validate-select" title="Quốc gia" >
-								{% for item in data_country %}
-								<option value="{{item.value}}" >{{item.name}} </option>
-								{% endfor %}
-							</div>
-						</li>
-						<li class="hidden">
-							<input type="hidden" name="default_billing" value="1" />
-							<input type="hidden" name="default_shipping" value="1" />
-						</li>
-						
-						<li class="captcha-input-container" id="captcha-input-box-user_create">
-							<label for="captcha_user_create" class="required"><em>*</em>Vui lòng nhập ký tự bên dưới</label>
-							<div class="input-box captcha">
-								<input name="captcha[user_create]" type="text" class="input-text required-entry" id="captcha_user_create" />
-							</div>
-						</li>
-						<li class="captcha-img-container">
-							<div class="captcha-image" id="captcha-image-box-user_create">
-								<img id="captcha-reload" class="captcha-reload" src="#" alt="Reload captcha" onclick="$('user_create').captcha.refresh(this)">
-								<img id="user_create" class="captcha-img" height="50" src="#"/>
-							</div>
-							<script type="text/javascript">//<![CDATA[
-							$('user_create').captcha = new Captcha('#', 'user_create');
-							//]]></script>
-						</li>
-					</ul>
-				</div>
-				<div class="cgv-option-info">
-					<h3>Thông tin tùy chọn</h3>
-					<div class="fieldset cgv-media">
-						<ul class="form-list">
-							<li class="customer-user-attributes">
-								<ul class="form-list">
-									<li><label for="personal_id">CMND hoặc Hộ chiếu</label>
-										<div class="input-box">
-											<input type="text" id="personal_id" name="personal_id" value="" class="input-text" />
-											
-										</div>
-									</li>
-								</ul>
-							</li>
-							<li class="fields">
-								<label for="preferSite" class="">Rạp yêu thích</label>
-								<div class="input-box">
-									<select id="prefersite" name="prefersite" title="Vui lòng chọn..." class="prefersite genre_select" >
-										<option value="">Vui lòng chọn...</option>
-										{% for item in data_cgv %}
-											<option value="{{item.value}}" >{{item.name}} </option>
-										{% endfor %}
-										
-									</select>
-									<select id="prefersite2"  name="prefersite2" title="Vui lòng chọn..." class="prefersite genre_select">
-										<option value="">Vui lòng chọn...</option>
-										{% for item in data_cgv %}
-											<option value="{{item.value}}" >{{item.name}} </option>
-										{% endfor %}
-									</select>
-								</div>
-							</li>
-							
-						</ul>
-					</div>
-						<div class="fieldset prefer-genre">
-							
-						<ul class="form-list">
-							<li class="fields">
-								<label for="preferGenre" class="">Thể loại phim yêu thích</label>
-								<div class="input-box">
-									<select id="prefergenre" name="prefergenre" title="Vui lòng chọn..." class="prefergenre genre_select">
-										<option value="">Vui lòng chọn...</option>
-										{% for item in data_prefergenre %}
-											<option value="{{item.value}}" >{{item.name}} </option>
-										{% endfor %}
-																				
-									</select>
-									<select id="prefergenre2" name="prefergenre2" title="Vui lòng chọn..." class="prefergenre genre_select">
-										<option value="">Vui lòng chọn...</option>
-										{% for item in data_prefergenre %}
-											<option value="{{item.value}}" >{{item.name}} </option>
-										{% endfor %}
-									</select>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="input-box-is_agree">
-							<input type="checkbox" name="is_agree" value="1" id="is_agree" checked="checked" required="requierd" class="checkbox">
-							<label class="is_agree" for="is_agree">
-								Tôi đã đọc, hiểu và đồng ý với các <a href='#'>điều khoản</a>.			
-							</label>
-							</div>
-							<div class="buttons-set">
 								
-								<button type="submit" title="Đăng ký" class="button"><span><span>Đăng ký</span></span></button>
-							</div>
-							<p class="required account-create-required">* Phải nhập thông tin</p>
-							<div class="remember-me-popup">
-								<div class="remember-me-popup-head">
-									<h3>Xem chi tiết?</h3>
-									<a href="#" class="remember-me-popup-close" title="Đóng">Đóng</a>
-								</div>
-								<div class="remember-me-popup-body">
-									<p>Checking &quot;Remember Me&quot; will let you access your shopping cart on this computer when you are logged out</p>
-									<div class="remember-me-popup-close-button a-right">
-										<a href="#" class="remember-me-popup-close button" title="Đóng">
-											<span>Đóng</span>
-										</a>
+											</li>
+											<li>
+												<label for="email_address" class="required"><em>*</em>Địa chỉ email (Tên đăng nhập)</label>
+												<div class="input-box">
+													<input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="email_address" value="" title="Địa chỉ email" class="input-text validate-email required-entry validate-no-html-tags" />
+												</div>
+											</li>
+											<li class="fields">
+												<div class="field">
+													<label for="password" class="required"><em>*</em>Mật khẩu</label>
+													<div class="input-box">
+														<input type="password" name="password" id="password" title="Mật khẩu" class="input-text required-entry validate-password" />
+													</div>
+												</div>
+											</li>
+											<li class="fields">
+												<div class="field field-country-first">
+													<label for="region_id" class="required "><em>*</em>Tỉnh/Tp</label>
+													<div class="input-box">
+														<select onchange="loadDistrict(this, 'city');" id="region_id" name="region_id" title="Tỉnh/Tp" class="validate-select">
+															<option value="">Vui lòng chọn...</option>
+															{% for item in data_city %}
+																<option value="{{item.value}}" >{{item.name}} </option>
+															{% endfor %}
+															
+															<option value="65" selected>Khác... </option>
+														</select>
+													</div>
+												</div>
+											</li>
+											<li class="fields">
+												<label for="street_1" class="required"><em>*</em>Địa chỉ</label>
+												<div class="input-box">
+													<input type="text" name="street[]" value="N/A" title="Địa chỉ" id="street_1" class="input-text validate-no-html-tags  required-entry" />
+												</div>
+											</li>
+											<li class="control">
+												<div class="input-box">
+													<input type="checkbox" name="is_subscribed" title="Tôi muốn nhận đề nghị qua email" value="1" id="is_subscribed" checked="checked" class="checkbox" />
+												</div>
+												<label for="is_subscribed">Tôi muốn nhận đề nghị qua email</label>
+											</li>
+										</ul>
 									</div>
-								</div>
+									<div class="fieldset">
+										<ul class="form-list">
+											<li>
+												<label for="gender" class="required"><em>*</em>Giới tính</label>
+												<div class="input-box">
+													<input type="radio" name="gender" value="1" checked="checked"/>Nam
+													<input type="radio" name="gender" value="2"/>Nữ
+												</div>
+											</li>
+											<li class="hidden">
+												<input type="hidden" name="create_address" value="1" />
+											</li>
+											<li class="fields">
+												<div class="field">
+													<label for="telephone" class="required"><em>*</em>Số điện thoại di động</label>
+													<div class="input-box">
+														<input type="tel" name="telephone" id="telephone" value="" title="Điện thoại" class="input-text required-entry validate-mobile  required-entry" />
+													</div>
+												</div>
+											</li>
+											<li class="fields">
+												<div class="field">
+													<label for="username" class="required"><em>*</em>Tên Đăng Nhập (Bạn có thể đăng nhập bằng tên này)</label>
+													<div class="input-box">
+														<input type="text" name="username" id="username" value="" title="Tên Đăng Nhập (Bạn có thể đăng nhập bằng tên này)" placeholder ="Use letter & number, min. 6 characters" class="input-text required-entry validate-alpha-digit " />
+													</div>
+												</div>
+											</li>
+											<li class="fields">
+												<div class="field">
+													<label for="confirmation" class="required"><em>*</em>Nhập lại mật khẩu</label>
+													<div class="input-box">
+														<input type="password" name="confirmation" title="Nhập lại mật khẩu" id="confirmation" class="input-text required-entry validate-cpassword" />
+													</div>
+												</div>
+											</li>
+											<li class="fields field-country">
+												<label for="city" class="required "><em>*</em>Quận/Huyện</label>
+												<div class="input-box">
+													<select class="input-box input-box-city validate-select" id="city" name="city" title="Quận/Huyện" >
+														<option value="">Vui lòng chọn...</option>
+														<option value="Other" selected>Khác... </option>
+													</select>
+												</div>
+											</li>
+											<li class="fields" style="display: none;">
+												<div class="field">
+													<label for="zip">Mã quốc gia</label>
+													<div class="input-box">
+														<input type="hidden" name="postcode" value="80000" title="Mã quốc gia" id="zip" class="input-text validate-zip-international  required-entry" />
+													</div>
+												</div>
+												<div class="field">
+													<label for="country">Quốc gia</label>
+													<div class="input-box">
+														<select name="country_id" id="country" class="validate-select" title="Quốc gia" >
+														{% for item in data_country %}
+														<option value="{{item.value}}" >{{item.name}} </option>
+														{% endfor %}
+													</div>
+											</li>
+											<li class="hidden">
+												<input type="hidden" name="default_billing" value="1" />
+												<input type="hidden" name="default_shipping" value="1" />
+											</li>
+											
+											<li class="captcha-input-container" id="captcha-input-box-user_create">
+												<label for="captcha_user_create" class="required"><em>*</em>Vui lòng nhập ký tự bên dưới</label>
+												<div class="input-box captcha">
+													<input name="captcha[user_create]" type="text" class="input-text required-entry" id="captcha_user_create" />
+												</div>
+											</li>
+											<li class="captcha-img-container">
+												<div class="captcha-image" id="captcha-image-box-user_create">
+													<img id="captcha-reload" class="captcha-reload" src="#" alt="Reload captcha" onclick="$('user_create').captcha.refresh(this)">
+													<img id="user_create" class="captcha-img" height="50" src="#"/>
+												</div>
+												<script type="text/javascript">//<![CDATA[
+												$('user_create').captcha = new Captcha('#', 'user_create');
+												//]]></script>
+											</li>
+										</ul>
+									</div>
+									<div class="cgv-option-info">
+										<h3>Thông tin tùy chọn</h3>
+										<div class="fieldset cgv-media">
+											<ul class="form-list">
+												<li class="customer-user-attributes">
+													<ul class="form-list">
+														<li><label for="personal_id">CMND hoặc Hộ chiếu</label>
+															<div class="input-box">
+																<input type="text" id="personal_id" name="personal_id" value="" class="input-text" />
+																
+															</div>
+														</li>
+													</ul>
+												</li>
+												<li class="fields">
+													<label for="preferSite" class="">Rạp yêu thích</label>
+													<div class="input-box">
+														<select id="prefersite" name="prefersite" title="Vui lòng chọn..." class="prefersite genre_select" >
+															<option value="">Vui lòng chọn...</option>
+															{% for item in data_cgv %}
+																<option value="{{item.value}}" >{{item.name}} </option>
+															{% endfor %}
+															
+														</select>
+														<select id="prefersite2"  name="prefersite2" title="Vui lòng chọn..." class="prefersite genre_select">
+															<option value="">Vui lòng chọn...</option>
+															{% for item in data_cgv %}
+																<option value="{{item.value}}" >{{item.name}} </option>
+															{% endfor %}
+														</select>
+													</div>
+												</li>
+												
+											</ul>
+										</div>
+										<div class="fieldset prefer-genre">
+											
+											<ul class="form-list">
+												<li class="fields">
+													<label for="preferGenre" class="">Thể loại phim yêu thích</label>
+													<div class="input-box">
+														<select id="prefergenre" name="prefergenre" title="Vui lòng chọn..." class="prefergenre genre_select">
+															<option value="">Vui lòng chọn...</option>
+															{% for item in data_prefergenre %}
+																<option value="{{item.value}}" >{{item.name}} </option>
+															{% endfor %}
+																									
+														</select>
+														<select id="prefergenre2" name="prefergenre2" title="Vui lòng chọn..." class="prefergenre genre_select">
+															<option value="">Vui lòng chọn...</option>
+															{% for item in data_prefergenre %}
+																<option value="{{item.value}}" >{{item.name}} </option>
+															{% endfor %}
+														</select>
+													</div>
+
+												</li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="input-box-is_agree">
+										<input type="checkbox" name="is_agree" value="1" id="is_agree" checked="checked" required="requierd" class="checkbox">
+										<label class="is_agree" for="is_agree">
+											Tôi đã đọc, hiểu và đồng ý với các <a href='#'>điều khoản</a>.			
+										</label>
+									</div>
+									<div class="buttons-set">
+										<button type="submit" title="Đăng ký" class="button"><span><span>Đăng ký</span></span>
+										</button>
+									</div>
+									<p class="required account-create-required">* Phải nhập thông tin</p>
+									<div class="remember-me-popup">
+										<div class="remember-me-popup-head">
+											<h3>Xem chi tiết?</h3>
+											<a href="#" class="remember-me-popup-close" title="Đóng">Đóng</a>
+										</div>
+										<div class="remember-me-popup-body">
+											<p>Checking &quot;Remember Me&quot; will let you access your shopping cart on this computer when you are logged out</p>
+											<div class="remember-me-popup-close-button a-right">
+												<a href="#" class="remember-me-popup-close button" title="Đóng">
+													<span>Đóng</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								
+								</form>						
 							</div>
-							
-						</form>
-						
-					</div>
-				</div>
-				</dd>
-			</dl>
-		</div>
+						</div>
+					</dd>
+				</dl>
+			</div>
+		</div>              
 	</div>
-	
-	              
-</div>
 </div>
 
-<script type="text/javascript">
-	// Chọn rạp yêu thích
-	jQuery('.prefersite').on('change', function() {
-	var site1=jQuery('#prefersite').find(":selected").val();
-	var site2=jQuery('#prefersite2').find(":selected").val();
-	if(site1 == site2){
-		alert('Prefered sites cannot be same!');
-		jQuery(this).val('');
-	}
-	})
-	// Chọn thể loại phim ưa thích
-	jQuery('.prefergenre').on('change', function() {
-		var site1=jQuery('#prefergenre').find(":selected").val();
-		var site2=jQuery('#prefergenre2').find(":selected").val();
-		if(site1 == site2){
-			alert('Prefered genres cannot be same!');
-			jQuery(this).val('');
-		}
-	})
-
-</script>
-
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/account_create.js"></script>
 {% endblock %}

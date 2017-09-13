@@ -1,3 +1,5 @@
+	
+	// active menu (dòng 3-14)
 	$j(".block-cms-menu li").each(function(){
 		var self = this;
 		href = $j(this).find('a');
@@ -11,11 +13,11 @@
 		}
 	});
 	
-
+	// Hiển thị nội dung khi click vào 1 tab cụ thể
 	jQuery(document).ready(function(){
 			jQuery( ".col-main" ).tabs();
 			jQuery( ".accordion" ).accordion({
-				heightStyle: "content"
+				heightStyle: "content" // chiều cao của tab phụ thuộc vào độ dài nội dung
 			});
 	});
 	
