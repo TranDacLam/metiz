@@ -3,9 +3,11 @@
 {% load i18n %}
 {% block title %}Tìm thông tin thành viên{% endblock title %}
 
-{% block extrascript %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/account_findmember.css" media="all" />
+{% block extrastylesheet %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/account_findmember.css" media="all" /> 
+{% endblock %}
 
+{% block extrascript %}
 <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/account_findmember.js"></script>
 {% endblock %}
 
@@ -44,6 +46,7 @@
 										<input type="text" class="input-text required-entry validate-length" placeholder="Nhập ngày sinh (định dạng: DD/MM/YYYYY)" id="birthday" name="birthday" />
 									</div>
 								</li>
+								
 								<li>
 									<div class="input-box">
 										<input type="text" class="input-text required-entry minimum-length-3 validate-length" placeholder="Nhập số điện thoại hoặc Online ID" id="online_id" name="online_id" />
@@ -83,5 +86,6 @@
 		</div>
 		              
 	 </div>
+
 </div>
 {% endblock %}

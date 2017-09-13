@@ -4,8 +4,11 @@
 
 {% block title %}Đăng ký tài khoản{% endblock title %}
 
+{% block extrastylesheet %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/account_create.css" media="all" /> 
+{% endblock %}
 {% block extrascript %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/account_create.css" media="all" />
+
 <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/account_create.js"></script>
 {% endblock %}
 
@@ -220,33 +223,34 @@
 							<li class="customer-user-attributes">
 								<ul class="form-list">
 									<li><label for="personal_id">CMND hoặc Hộ chiếu</label>
-									<div class="input-box">
-										<input type="text" id="personal_id" name="personal_id" value="" class="input-text" />
+										<div class="input-box">
+											<input type="text" id="personal_id" name="personal_id" value="" class="input-text" />
+											
+										</div>
+									</li>
+								</ul>
+							</li>
+							<li class="fields">
+								<label for="preferSite" class="">Rạp yêu thích</label>
+								<div class="input-box">
+									<select id="prefersite" name="prefersite" title="Vui lòng chọn..." class="prefersite genre_select" >
+										<option value="">Vui lòng chọn...</option>
+										{% for item in data_cgv %}
+											<option value="{{item.value}}" >{{item.name}} </option>
+										{% endfor %}
 										
-									</div>
-								</li>
-							</ul>
-						</li>
-						<li class="fields">
-							<label for="preferSite" class="">Rạp yêu thích</label>
-							<div class="input-box">
-								<select id="prefersite" name="prefersite" title="Vui lòng chọn..." class="prefersite genre_select">
-									<option value="">Vui lòng chọn...</option>
-									{% for item in data_cgv %}
-										<option value="{{item.value}}" >{{item.name}} </option>
-									{% endfor %}
-									
-								</select>
-									<select id="prefersite2" name="prefersite2" title="Vui lòng chọn..." class="prefersite genre_select">
+									</select>
+									<select id="prefersite2"  name="prefersite2" title="Vui lòng chọn..." class="prefersite genre_select">
 										<option value="">Vui lòng chọn...</option>
 										{% for item in data_cgv %}
 											<option value="{{item.value}}" >{{item.name}} </option>
 										{% endfor %}
 									</select>
-									</div>
-								</li>
-							</ul>
-						</div>
+								</div>
+							</li>
+							
+						</ul>
+					</div>
 						<div class="fieldset prefer-genre">
 							
 						<ul class="form-list">
@@ -309,5 +313,27 @@
 	              
 </div>
 </div>
+
+<script type="text/javascript">
+	// Chọn rạp yêu thích
+	jQuery('.prefersite').on('change', function() {
+	var site1=jQuery('#prefersite').find(":selected").val();
+	var site2=jQuery('#prefersite2').find(":selected").val();
+	if(site1 == site2){
+		alert('Prefered sites cannot be same!');
+		jQuery(this).val('');
+	}
+	})
+	// Chọn thể loại phim ưa thích
+	jQuery('.prefergenre').on('change', function() {
+		var site1=jQuery('#prefergenre').find(":selected").val();
+		var site2=jQuery('#prefergenre2').find(":selected").val();
+		if(site1 == site2){
+			alert('Prefered genres cannot be same!');
+			jQuery(this).val('');
+		}
+	})
+
+</script>
 
 {% endblock %}
