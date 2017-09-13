@@ -7,6 +7,8 @@
      <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/arthouse.css" media="all" />
 {% endblock %}
 {% block extrascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cgv.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.colorbox.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
 {% endblock %}
 
@@ -52,7 +54,9 @@
                 </div>
 
                 <div class="tabs-content" id="arthouse-home_contents">
-                    <div class="sect-arthouse-visual"><img alt="" src="{{STATIC_URL}}/assets/websites/images/Art_House_-_microsite-980x390.jpg"></div>
+                    <div class="sect-arthouse-visual">
+                        <img alt="" src="{{STATIC_URL}}/assets/websites/images/Art_House_-_microsite-980x390.jpg">
+                    </div>
                     <div class="home-movie-selection">
                         <div class="home-title">
                             <h2>movie selection</h2>
@@ -60,60 +64,63 @@
                     </div>          
                     <div class="category-products cgv-movies">
                     
-                    <ul class="products-grid products-grid--max-4-col">
-                    {% for value in data %}
-                        <li class="film-lists">
-                            <span class="nmovie-rating nmovie-rating-c16">C16</span>
-                            <div class="product-images">
-                                <a href="javascript:void(0)" title="CGV_Kiss And Spell" class="product-image">
-                                    <img id="product-collection-image-343" src="{{STATIC_URL}}{{value.img}}" alt="CGV_Kiss And Spell">
-                                </a>
+                        <ul class="products-grid products-grid--max-4-col first last odd">
+                        {% for value in data %}
+
+                            <li class="film-lists item last">
+                                <span class="nmovie-rating nmovie-rating-c16">C16</span>
                                 
-                                <div class="movie-technology">
+                                <div class="product-images">
+                                    <a href="javascript:void(0)" title="CGV_Kiss And Spell" class="product-image">
+                                        <img id="product-collection-image-343" src="{{STATIC_URL}}{{value.img}}" alt="CGV_Kiss And Spell">
+                                    </a>
+                                    <div class="movie-technology">
+                                    </div>
+                                </div>
+                                
+                                <div class="product-info" >
+                                    <h2 class="product-name"><a href="javascript:void(0)" title="Yêu Đi, Đừng Sợ!">{{value.name}}</a></h2>
+                                    
+                                    <div class="cgv-movie-info">
+                                        <span class="cgv-info-bold">Thể loại: </span>
+                                        <span class="cgv-info-normal">{{value.category}}</span>
+                                    </div>
+                                    
+                                    <div class="cgv-movie-info">
+                                        <span class="cgv-info-bold">Thời lượng: </span>
+                                        <span class="cgv-info-normal">{{value.time}}</span>
+                                    </div>
+                                    
+                                    <div class="cgv-movie-info">
+                                        <span class="cgv-info-bold">Khởi chiếu: </span>
+                                        <span class="cgv-info-normal">{{value.date}} </span>
+                                    </div>
                                     
                                 </div>
-                            </div>
-                            
-                            <div class="product-info">
-                                <h2 class="product-name"><a href="javascript:void(0)" title="Yêu Đi, Đừng Sợ!">Yêu Đi, Đừng Sợ!</a></h2>
                                 
-                                <div class="cgv-movie-info">
-                                    <span class="cgv-info-bold">Thể loại: </span>
-                                    <span class="cgv-info-normal">
-                                    Hài, Tâm Lý</span>
-                                </div>
+                                <div class="ribon position-1"></div>
                                 
-                                <div class="cgv-movie-info">
-                                    <span class="cgv-info-bold">Thời lượng: </span>
-                                    <span class="cgv-info-normal">112 phút</span>
-                                </div>
-                                
-                                <div class="cgv-movie-info">
-                                    <span class="cgv-info-bold">Khởi chiếu: </span>
-                                    <span class="cgv-info-normal">25/08/2017</span>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="ribon position-1"></div>
-                            
-                            <ul class="add-to-links">
-                                <li class="">
-                                    <div class="fb-like fb_iframe_widget" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
-                                    </div>
-                                </li>
-                                <li>
-                                    <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008300');"><span><span>Mua vé</span></span></button>
-                                </li>
-                            </ul>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                   
+                                <ul class="add-to-links">
+                                    <li>
+                                        <div class="fb-like fb_iframe_widget" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008300');"><span><span>Mua vé</span></span></button>
+                                    </li>
+                                </ul>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    <script type="text/javascript">
+                    // đặt class 'odd','even','first','last' vao phan tu 'ul.products-grid' 
+                    // funtion trong varien/js.js
+                    // Nhưng em nghĩ như thế này mới đúng: decorateGeneric($$('ul.products-grid li'), ['odd','even','first','last']); 
+                    // em thêm thẻ li vào thì nó add các class 'odd','even','first','last' vào thẻ li nhưng nhìn khá xấu
+                        decorateGeneric($$('ul.products-grid'), ['odd','even','first','last']);
+                    </script>
                 </div>
-               
-                
-                
                 <div class="category-description std">
                     <div class="sect_art_hd_trailer cf">
                         <div class="thumb">
@@ -132,7 +139,7 @@
                 </div>
             </div>
             
-            <div id="about-arthouse_contents" class="tabs-content" style=>
+            <div id="about-arthouse_contents" class="tabs-content">
                 <div class="about-cgv-art-house">
                     <div class="tittle-art-house">
                         <h3>CGV ART HOUSE PHÒNG CHIẾU DÀNH RIÊNG CHO PHIM VIỆT NAM VÀ HÀN QUỐC</h3>

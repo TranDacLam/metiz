@@ -129,9 +129,19 @@ def movie_voucher(request):
 	return render(request, 'websites/movie_voucher.html', {'data':data})
 
 def arthouse(request):
-	data=[{'img':"/assets/websites/images/american_made_240x355.png",'tc':"c18", 'rating':1},{'img':"/assets/websites/images/american_made_240x355.png"
-	,'tc': 'c16','rating':2},{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':3}
-	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':4}]
+	data=[
+	{'img':"/assets/websites/images/ydds240x355.jpg",'tc':"c18", 'rating':1,'name': 'Yêu Đi, Đừng Sợ!',
+	'category': 'Hành Động', 'technology': 'imax2d' ,
+	'time': '180 phút', 'date': '20/8/2017',},
+	{'img':"/assets/websites/images/ydds240x355.jpg",'tc': 'c16','rating':2, 'name': 'Yêu Đi, Đừng Sợ!',
+	'category': 'Hành Động', 'technology': 'imax2d' ,
+	'time': '180 phút', 'date': '20/8/2017',}
+	,{'img': "/assets/websites/images/ydds240x355.jpg",'tc': "p", 'rating':3, 'name': 'Lách Luật Kiểu Mỹ',
+	'category': 'Hành Động', 'technology': 'imax2d' ,
+	'time': '180 phút',  'date': '20/8/2017',}
+	,{'img': "/assets/websites/images/240x377ddn.jpg",'tc': "p", 'rating':4, 'name': 'Lách Luật Kiểu Mỹ',
+	'category': 'Hành Động', 'technology': 'imax2d' ,
+	'time': '180 phút', 'date': '20/8/2017',}]
 	return render(request, 'websites/arthouse.html', {'data': data})
 
 def about_cinema(request):
