@@ -89,12 +89,7 @@
 					</li>
 				{%endfor%}
 			</ul>
-			<script type="text/javascript">
-			// đặt class 'odd','even','first','last' vao phan tu 'ul.products-grid' 
-			// funtion trong varien/js.js
-			// Nhưng em nghĩ như thế này mới đúng: decorateGeneric($$('ul.products-grid li'), ['odd','even','first','last']); 
-			// em thêm thẻ li vào thì nó add các class 'odd','even','first','last' vào thẻ lis
-				decorateGeneric($$('ul.products-grid'), ['odd','even','first','last']);
+			<script type="text/javascript" src='{{ STATIC_URL }}assets/websites/js/products-grid.js'>
 			</script>
 		</div>
 	</div>           
