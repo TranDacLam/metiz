@@ -19,93 +19,84 @@
             <div class="header-top-account">
                 <div class="account-header-wrapper">
                     <a href="{% url 'account_login'%}" class="topskip-link skip-account">
-                        <span class="label">Đăng nhập/ Đăng ký</span>
+                        <span>Đăng nhập/ Đăng ký</span>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <header id="header" class="page-header">
     <div class="page-header-container">
         <a class="logo" href="{% url 'home'%}">
             <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo.png" alt="CGV Cinemas" class="large" />
-            <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo-small.png" alt="CGV Cinemas" class="small" />
+           
         </a>
-        <!-- Skip Links -->
-        <div class="skip-links">
-            <a href="#header-nav" class="skip-link skip-nav">
-                <span class="icon"></span>
-                <span class="label">Menu</span>
-            </a>
-            <a href="#header-search" class="skip-link skip-search">
-                <span class="icon"></span>
-                <span class="label">Tìm kiếm</span>
-            </a>
-            <div class="account-cart-wrapper">
-                <a href="{% url 'account_login' %}" data-target-element="#header-account" class="skip-link skip-account">
-                    <span class="icon"></span>
-                    <span class="label">Đăng nhập/ Đăng ký</span>
-                </a>
-            </div>
-        </div>
-        <!-- Navigation -->
-       <div id="header-nav" class="skip-content">
-            <div id="menu">
-                <nav id="nav">
-                <ol class="nav-primary">
-                    <li class="level0 nav-1 first last parent">
-                    <a  class="level0 has-children" href="javascript: void(0);">Phim</a>
-                        <ul class="level0 sub-menu">
-                            <li class="level1"><a href="{% url 'showing'%}" class="level1 ">Phim Đang Chiếu</a></li>
-                            <li class="level1"><a href="{% url 'comingsoon'%}" class="level1 ">Phim Sắp Chiếu</a></li>
-                            <li class="level1   "><a href="{% url 'arthouse'%}" class="level1 ">Arthouse</a></li>
-                        </ul>
-                    </li>
-                   
-                    <li class="level0 nav-2 parent first last">
-                        <a class="level0 has-children" href="javascript: void(0);">Rạp CGV</a>
-                        <ul class="level0 sub-menu">
-                            <li class="level1 nav-3-1 last">
-                                <a class="level1" href="{% url 'cinox'%}">Tất Cả Các Rạp</a>
-                            </li>
-                            <li class="level1 nav-3-2 last">
-                                <a class="level1" href="{% url 'special_gold_class'%}">Rạp Đặc Biệt</a>
-                            </li>                                       
-                        </ul>
-                    </li>
-                    <li class="level0 nav-4 parent first last">
-                        <a class="level0 has-children" href="javascript: void(0);">Thành viên</a>
-                        <ul class="level0 sub-menu">
-                            <li class="level1 nav-4-1 last">
-                                <a class="level1" href="{% url 'account_login'%}">Thành viên</a>
-                            </li>
-                            <li class="level1 nav-4-2 first">
-                                <a class="level1" href="{% url 'account_login'%}">Tài khoản CGV</a>
-                            </li>
-                            <li class="level1 nav-4-3 last">
-                                <a class="level1" href="{% url 'membership'%}">Quyền lợi</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="level0 nav-5 parent first last">
-                        <a class="level0 has-children" href="javascript: void(0);">Online Store (Test)</a>
-                        <ul class="level0 sub-menu">
-                            <li class="level1 nav-5-1">
-                                <a class="level1" href="{% url 'movie_voucher'%}">Voucher Phim</a>
-                            </li>
-                            <li class="level1 nav-5-2">
-                                <a class="level1" href="{% url 'gift_card'%}">Thẻ Quà Tặng</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ol>
-            </nav>
-            </div>
-        </div>
+         <!-- Skip Links -->
        
-        <!-- Search -->
-        <div id="header-search" class="skip-content">
+        <!-- Navigation -->
+        <div id="header-nav">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                         <a class="logo logo-small" href="{% url 'home'%}">
+                                <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo-small.png" alt="CGV Cinemas" class="small" />
+                            </a>
+                         <div class="skip-links">
+                            <button class=" skip-link skip-nav navbar-toggle " data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+                                <span class="icon"></span>
+                                <span class="label">Menu</span>
+                            </button>
+                            <button class=" skip-link skip-search navbar-toggle "
+                            data-toggle="collapse" data-target="#header-search" aria-expanded="false" >
+                                <span class="icon"></span>
+                                <span class="label">Tìm kiếm</span>
+                            </button>
+                            <a href="{% url 'account_login'%}"><button class=" skip-link skip-account navbar-toggle ">
+                                    <span class="icon"></span>
+                                    <span class="label">Đăng nhập/ Đăng ký</span>
+                            </button></a>
+                        </div>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Phim </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li ><a href="{% url 'showing'%}">Phim Đang Chiếu</a></li>
+                                    <li ><a href="{% url 'comingsoon'%}">Phim Sắp Chiếu</a></li>
+                                    <li><a href="{% url 'arthouse'%}">Arthouse</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rạp CGV</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'cinox'%}">Tất Cả Các Rạp</a></li>
+                                    <li><a href="{% url 'special_gold_class'%}">Rạp Đặc Biệt</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Thành viên</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'account_login'%}">Thành viên</a></li>
+                                    <li><a href="{% url 'account_login'%}">Tài khoản CGV</a></li>
+                                    <li><a href="{% url 'membership'%}">Quyền lợi</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle"  data-toggle="dropdown" href="#">Online Store (Test)</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'movie_voucher'%}">Voucher Phim</a></li>
+                                    <li><a href="{% url 'gift_card'%}">Thẻ Quà Tặng</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+         <div id="header-search" class="skip-content">
             <div class="header-search-left">
                 <p><a href="{% url 'news'%}"><img alt="" src="{{ STATIC_URL }}assets/websites/images/tin-moi-uu-dai.gif" /></a></p>
                 <form id="search_mini_form" action="#" method="get">
