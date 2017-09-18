@@ -50,6 +50,12 @@ ul.dropdown-menu>li>a:hover{
 	.header-search-left>p>a{
 		margin-top:0px;
 	}
+	.logo img{
+		height: 126px;
+	}
+	.logo{
+		margin-top:13px;
+	}
 	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
 	    background: none;
 	}
@@ -82,15 +88,25 @@ ul.dropdown-menu>li>a:hover{
 
 	}
 	.logo {
+		margin-top:13px;
 		left: 0px;
 	}
 	#header-search{
 		display: none;
 	}
+	.logo img{
+		height: 126px;
+	}
+	
 }
 
 @media only screen and (max-width: 767px) {
-	
+	.logo img{
+		height: 126px;
+	}
+	.logo{
+		margin-top:2px;
+	}
 	.page-header{
 		border-bottom:none;
 	}
@@ -98,7 +114,7 @@ ul.dropdown-menu>li>a:hover{
     background-color: #fcffef;
 	}
 	.main-container {
-    	margin-top: 61px;
+    	margin-top: 40px;
 	}
 	.skip-links .navbar-toggle{
 		margin: 0px;
@@ -143,6 +159,9 @@ ul.dropdown-menu>li>a:hover{
 	.navbar-nav li.dropdown{
 		border-bottom: 1px solid #EDEDED;
 	}
+	.skip-links {
+	    margin-top: 10px;
+	}
 
 }
 @media only screen and (max-width: 480px){
@@ -152,5 +171,17 @@ ul.dropdown-menu>li>a:hover{
 	.header-language-background{
 		display: block;
 	}
-	
+	.main-container {
+    	margin-top: 61px;
+	}
+	.logo img{
+		height: 77px;
+	}
+	.logo-small {
+	    left: 13%;
+	    margin-top:-12px;
+	}
+	.skip-links {
+	    margin-top: -10px;
+	}
 }
