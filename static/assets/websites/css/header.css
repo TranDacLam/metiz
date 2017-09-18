@@ -36,8 +36,14 @@ ul.dropdown-menu>li>a:hover{
 .dropdown-menu>li>a:focus{
 	background: transparent;
 }
+.header-language-background{
+	display: none;
+}
+
 @media only screen and (min-width: 768px){
-	
+	#header-search{
+		display: none;
+	}
 	.header-search-left {
 	    top: -11px;
 	}
@@ -78,9 +84,13 @@ ul.dropdown-menu>li>a:hover{
 	.logo {
 		left: 0px;
 	}
+	#header-search{
+		display: none;
+	}
 }
 
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 767px) {
+	
 	.page-header{
 		border-bottom:none;
 	}
@@ -139,4 +149,8 @@ ul.dropdown-menu>li>a:hover{
 	#select-language li a span{
 		padding-top: 8px;
 	}
+	.header-language-background{
+		display: block;
+	}
+	
 }
