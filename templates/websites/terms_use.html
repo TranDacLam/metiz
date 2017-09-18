@@ -27,22 +27,7 @@ cms-page-view cms-terms-use
 	</ul>
 </div>
 <div class="main">
-	<div class="col-left sidebar col-left-first">
-		<div class="block block-cms-menu">
-			<div class="block-content">
-				<ul>
-					<li><a href="{% url 'about_cinema' %}"><span>Giới thiệu</span></a></li>
-					<li><a href="{% url 'contacts' %}"><span>Li&ecirc;n Hệ CGV</span></a></li>
-					<li><a href="{% url 'terms_conditions' %}"><span>Điều khoản chung</span></a></li>
-					<li><a href="{% url 'terms_use' %}"><span>Điều khoản giao dich</span></a></li>
-					<li ><a href="{% url 'payment_policy' %}"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a></li>
-					<li><a href="{% url 'privacy_policy' %}"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a></li>
-					<li><span><a href="{% url 'faq' %}"><span>C&acirc;u hỏi thường gặp</span></a></span></li>
-				</ul>
-			</div>
-		</div>
-		
-	</div>
+	{% include 'layout_menu.html' %}
 	<div class="col-main">
 		<div class="std">
 			<div class="cms-page-title">
