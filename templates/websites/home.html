@@ -4,10 +4,19 @@
 
 {% block title %}Helio{% endblock title %}
 
+{% block extrastylesheet %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" /> 
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/home.css" media="all" /> 
+{% endblock %}
+
 {% block extrascript %}
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.carousel.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/slideshow.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js"></script>
 {% endblock %}
 
 {% block container_class %}col1-layout {% endblock %}
@@ -68,75 +77,17 @@
                         <div class="play-button">
                             <span><span>Play</span></span>
                             <div style="display:none">
-                                <span class='movie-trailer'>//www.youtube.com/embed/PALCTTuWkSc?rel=0&showinfo=0&autoplay=1</span>
+                                <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
                             </div>
                         </div>
-                                <!--div class="product-info">
-                                                <ul class="configurable-swatch-list configurable-swatch-color clearfix">
-                                                    </ul>
-                                                </div-->
-                                            </li>
-                                            {% endfor %}
-                                            
-                                        </ul>
-                                        <span class="feature_slide_show_prev"><<</span>
-                                        <span class="feature_slide_show_next">>></span>
-                                    </div>
-                                </div>
-                                
-                                <script type="text/javascript">
-                                    $j(window).bind("load", function() {
-                                        var width = $j(window).width();
-                                        if (width >= 979) {
-                                            reinitCycle(4);
-                                        } else if (width >= 770) {
-                                            reinitCycle(3);
-                                        } else if (width >= 479) {
-                                            reinitCycle(2);
-                                        } else {
-                                            reinitCycle(1);
-                                        }
-
-                                        $j(".play-button").click(function() {
-                                            var trailer = $j(this).find('span.movie-trailer');
-                        // $j.colorbox({html:trailer.html()});
-                        $j.colorbox({ iframe: true, innerWidth: 640, innerHeight: 390, href: trailer.html() });
-                    });
-                                    });
-
-                                    $j(window).on('resize', function() {
-                                        var width = $j(window).width();
-                                        $j('.feature_slide_show').cycle('destroy');
-                                        if (width >= 979) {
-                                            reinitCycle(4);
-                                        } else if (width >= 770) {
-                                            reinitCycle(3);
-                                        } else if (width >= 479) {
-                                            reinitCycle(2);
-                                        } else {
-                                            reinitCycle(1);
-                                        }
-                                    });
-
-                                    function reinitCycle(visibleSlides) {
-                                        try {
-                                            $j('.feature_slide_show').cycle({
-                                                "carouselSlideDimension": "240px",
-                                                "carouselVisible": visibleSlides,
-                                                "fx": "carousel",
-                                                "timeout": 0,
-                                                "next": ".feature_slide_show_next",
-                                                "prev": ".feature_slide_show_prev",
-                                                "slideActiveClass": "active",
-                                                "slides": "li",
-                                                "allowWrap": false,
-                                            });
-                                        } catch (err) {
-                                            console.log(err.message);
-                                        }
-                                    }
-                                </script>
-
+                    </li>
+                    {% endfor %}
+                    
+                </ul>
+                <span class="feature_slide_show_prev"><<</span>
+                <span class="feature_slide_show_next">>></span>
+            </div>
+        </div>
                                 <div class="product-collateral toggle-content tabs home-event">
                                     <div class="home-title">
                                         <h2>event</h2>
