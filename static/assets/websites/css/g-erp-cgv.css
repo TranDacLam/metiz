@@ -544,7 +544,7 @@
 	.footer-cgv-policy{
 		width:100%;
 		padding:20px 0px;
-		border-bottom:2px solid #222;
+		/*border-bottom:2px solid #222;*/
 		overflow:hidden;
 		display:block;
 	}
