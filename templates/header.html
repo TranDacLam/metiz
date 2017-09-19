@@ -30,7 +30,7 @@
 <header id="header" class="page-header">
     <div class="page-header-container">
         <a class="logo logo-large" href="{% url 'home'%}">
-            <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo.png" alt="CGV Cinemas" class="large" />
+            <img src="{{ STATIC_URL }}assets/websites/images/metiz-logo.png" alt="CGV Cinemas" class="large" />
            
         </a>
        
@@ -40,7 +40,7 @@
                 <div class="container-fluid">
                     <div class="navbar-header">
                          <a class="logo logo-small" href="{% url 'home'%}">
-                                <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo-small.png" alt="CGV Cinemas" class="small" />
+                                <img src="{{ STATIC_URL }}assets/websites/images/metiz-logo.png" alt="CGV Cinemas" class="small" />
                             </a>
                          <div class="skip-links">
                             <button class=" skip-link skip-nav navbar-toggle " data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
@@ -61,34 +61,27 @@
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lịch chiếu</a>
+                            </li>
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Phim </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li ><a href="{% url 'showing'%}">Phim Đang Chiếu</a></li>
                                     <li ><a href="{% url 'comingsoon'%}">Phim Sắp Chiếu</a></li>
-                                    <li><a href="{% url 'arthouse'%}">Arthouse</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rạp CGV</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{% url 'cinox'%}">Tất Cả Các Rạp</a></li>
-                                    <li><a href="{% url 'special_gold_class'%}">Rạp Đặc Biệt</a></li>
-                                </ul>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Khuyến mãi</a>
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Thành viên</a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{% url 'account_login'%}">Thành viên</a></li>
-                                    <li><a href="{% url 'account_login'%}">Tài khoản CGV</a></li>
-                                    <li><a href="{% url 'membership'%}">Quyền lợi</a></li>
+                                    <li><a href="{% url 'account_login'%}">Đăng nhập</a></li>
+                                    <li><a href="{% url 'account_login'%}">Đăng kí</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle"  data-toggle="dropdown" href="#">Online Store (Test)</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{% url 'movie_voucher'%}">Voucher Phim</a></li>
-                                    <li><a href="{% url 'gift_card'%}">Thẻ Quà Tặng</a></li>
-                                </ul>
+                                <a class="dropdown-toggle"  data-toggle="dropdown" href="#">Đánh giá</a>
                             </li>
                         </ul>
                     </div>
