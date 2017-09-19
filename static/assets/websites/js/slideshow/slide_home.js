@@ -1,7 +1,7 @@
        
-        $j(document).ready(function() {
+        $(document).ready(function() {
         
-        $j('#image-gallery').lightSlider({
+        $('#image-gallery').lightSlider({
             gallery:true,
             item:1,
             thumbItem:9,
@@ -15,7 +15,7 @@
             }  
         });
        
-        $j(".content-slider").lightSlider({
+        $(".content-slider").lightSlider({
             item:4,
             loop:false,
             keyPress:true,
