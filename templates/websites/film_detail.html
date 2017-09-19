@@ -3,12 +3,15 @@
 {% block title %}Helio{% endblock title %}
 
 {% block extrastylesheet %}
-	 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film_detail.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film_detail.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/zoom/xzoom.css" media="all" />
+
 {% endblock %}
 {% block extrascript %}
-	<!-- thu vien dung de zoom  banner film image-->
-	<!-- function active elevateZoom trong app.js -->
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.elevateZoom-3.0.8.min.js"></script>
+	
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/jquery.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/setup.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/xzoom.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/film_detail.js"></script>
 {% endblock %}
 
@@ -54,11 +57,13 @@
 				
 				<div class="product-img-box">
 					<div class="product-image product-image-zoom">
-						<div class="product-image-gallery">
-							<img id="image-main" class="gallery-image visible" src="{{STATIC_URL}}{{data.img}}" alt="CGV_American Made" title="CGV_American Made"  data-zoom-image='{{STATIC_URL}}{{data.img}}'>
-						</div>
+						<div class="xzoom-container">
+				          <img class="xzoom" id="xzoom-default" src="{{STATIC_URL}}{{data.img}}" xoriginal="{{STATIC_URL}}{{data.img}}" />
+				          
+				        </div>    
 					</div>
 				</div>
+				
 
 				<div class="product-shop">
 					<div class="product-name">
@@ -143,4 +148,5 @@
 		</div>
 	</div>
 </div>
+
 {% endblock%}
