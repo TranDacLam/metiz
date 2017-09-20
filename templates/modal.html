@@ -1,0 +1,152 @@
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" />
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.open-popup-link').magnificPopup({
+              type: 'inline',
+              midClick: true,
+        });
+    });
+</script>
+<link href="{{ STATIC_URL }}assets/css/slick.css" rel="stylesheet" type="text/css" />
+<link href="{{ STATIC_URL }}assets/css/slick-theme.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-migrate-1.2.1.min.js"></script>
+
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/slick/slick.js"></script>
+
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/schedule.css" media="all" />
+<script type="text/javascript">
+    $(document).ready(function($) {
+        $('.open-popup-link').click(function(event) {
+            loadCalendar();
+            
+        });
+         
+        
+    });
+    
+    function loadCalendar(){
+        $(" #play-date-slider").slick({
+            slidesToShow: 10,
+            slidesToScroll: 10,
+            dots: false,
+            autoplay: false,
+            infinite: false,
+            speed: 500,
+            arrows: true,
+            responsive: [
+                {
+                  breakpoint: 1024,
+                  settings: {
+                    slidesToShow: 7,
+                    slidesToScroll: 7,
+                    infinite: true,
+                    dots: true
+                  }
+                },
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 5
+                  }
+                },
+                {
+                  breakpoint: 480,
+                  settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                  }
+                }],
+            prevArrow: "<div class='slick-prev'><img  src='{{STATIC_URL}}assets/websites/images/btn_m_prev_on.png'></div>",
+            nextArrow: "<div class='slick-next'><img  src='{{STATIC_URL}}assets/websites/images/btn_m_next_on.png'></div>"
+        });
+        
+    }
+    </script>
+
+
+<div id="test-popup" class="white-popup mfp-hide">
+    <div class="div-login">
+        <div class="top">
+            Lịch chiếu
+        </div>
+        <div class="popup-booking">
+            <section class="section-lightpink">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h3>Select date play</h3>
+                        </div>
+                        <div class="col-xs-11">
+                            <div class="calendar-popup">
+                                <div class="list-time">
+                                    <ul class="days-popup " id="play-date-slider">
+                                    <li class="active">    
+                                            <div class="month" style="visibility: visible;">
+                                                <strong>08</strong>
+                                            </div>
+                                            <div class="dayofweek">Fri</div>
+                                            <span class="badge">1</span>
+                                    </li>
+                                    <li class="available">    
+                                            <div class="month">
+                                                <strong>08</strong>
+                                            </div>
+                                            <div class="dayofweek">Fri</div>
+                                            <span class="badge">1</span>
+                                    </li>
+                                    {% for item in n%}
+                                        <li>    
+                                            <div class="month">
+                                                <strong>08</strong>
+                                            </div>
+                                            <div class="dayofweek">Fri</div>
+                                            <span class="badge">{{item}}</span>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3 class="title">Chọn lịch chiếu</h3>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="movie-slider" class="movieslide">
+                                {% for item in data_modal.film%}
+                                    <div class="movie-time-line-box clearfix" data-control="movie-code" data-age="16" value="2997">
+                                        <h3 class="movie-name">{{item.name}}</h3>
+                                        <div class="lot-table clearfix">
+                                            <ul class="list-inline list-unstyled theater_time">
+                                                {% for value in item.schedule%}
+                                                    <li class="sold-out" data-early="0">
+                                                        <a href="#">
+                                                            <span class="time">{{value.from}}</span>
+                                                            <span class="clock">{{value.from}}<span>~{{value.to}}</span></span>
+                                                            <span class="ppnum">{{value.room}}</span>
+                                                            <span class="ppnum">{{value.name_room}}</span>
+                                                            <span class="pp-early" title="Suất chiều đầu"></span>
+                                                        </a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
