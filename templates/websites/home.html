@@ -181,61 +181,45 @@
                 </div>
             </dl>
         </div>
-        <div class=" product-collateral toggle-content tabs home-event">
+        <div class="product-collateral toggle-content tabs home-event tabs-format-cgv">
             <div class="home-title">
                 <h2>event</h2>
             </div>
+            <ul class="nav nav-tabs toggle-tabs">
+                    <li class="active">
+                        <a href="#event-tab" data-toggle="tab">Tin Mới & Ưu Đãi</a>
+                    </li>
+                    <li class="last">
+                        <a href="#tv-tab" data-toggle="tab">Thành Viên CGV</a>
+                    </li>
+                </ul>
             <dl id="collateral-tabs" class="collateral-tabs" style="height: 201px; overflow: hidden">
-
-                <dt class="tab tablinks1" >
-                    <span onclick="openCategory(event, 'news')">
-                        Tin Mới & Ưu Đãi
-                    </span>
-                </dt>
-                <dt class="tab tablinks1">
-                    <span onclick="openCategory(event, 'members')">
-                        Thành Viên CGV
-                    </span>
-                </dt>
-                <div class="tab-container tabcontent1" id='news'>
-                    <div class="tab-content">
-                        <div class="home-show-event">
-                            <ul class="content-slider">
-                                {% for item in data.event %}
-                                <li>
-                                    <a href="#">
-                                        <img src="{{ STATIC_URL }}{{item}}" />
-                                    </a>
-                                </li>
-                                {% endfor %} 
-                                    
-                            </ul>
-                            
-                        </div>
+                <div class="tab-content">
+                    <div id="event-tab" class="tab-pane fade in active">
+                        <ul class="content-slider">
+                            {% for item in data.event %}
+                            <li>
+                                <a href="#">
+                                    <img src="{{ STATIC_URL }}{{item}}" />
+                                </a>
+                            </li>
+                            {% endfor %} 
+                        </ul>
                     </div>
-                
-                </div>
-                
-                <div class="tab-container tabcontent1" id='members' >
-                    <div class="tab-content" >
-                        <div class="home-show-event">
-                            <ul class="content-slider">
-                                    
-                                {% for item in data.tv_cgv %}
-                                <li>
-                                    <a href="#">
-                                        <img src="{{ STATIC_URL }}{{item}} " />
-                                    </a>
-                                </li>
-                                {% endfor%}
-                            </ul>
-                        </div>
+                    <div id="tv-tab" class="tab-pane fade ">
+                        <ul class="content-slider">
+                            {% for item in data.tv_cgv %}
+                            <li>
+                                <a href="#">
+                                    <img src="{{ STATIC_URL }}{{item}} " />
+                                </a>
+                            </li>
+                            {% endfor%}
+                        </ul>
                     </div>
                 </div>
-            </dl>
+            </dl> 
         </div>
-
-        
         <div class="home-promotion-card">
             <ul class="promos">
                 <li class="col-ad">

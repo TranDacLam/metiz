@@ -1,3 +1,30 @@
 .mfp-bg{
 	opacity: 1;
 }
+.col-main .nav-tabs>li.active>a, .product-view .nav-tabs>li.active>a:focus, .product-view .nav-tabs>li.active>a:hover{
+	border: 0px;
+	background-color: red;
+}
+.col-main .nav-tabs>li>a {
+	border: 0px;
+	border-radius: 0px;
+	background-color: red;
+	color: white;
+	font-size: 12px;
+	margin-right: -3px;
+}
+.col-main .nav-tabs>li>a:hover {
+	border: 0px;
+	border-radius: 0px;
+	background-color: red;
+	color: black;
+}
+.col-main .tab-content .tab-pane {
+	display: block;
+	height: 0;
+	opacity: 0;
+}
+.col-main .tab-content .tab-pane.active {
+	height: auto;
+	opacity: 1;
+}
