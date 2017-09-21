@@ -1,7 +1,20 @@
        
-        /* slide for movie selection and event*/
+        
         $(document).ready(function() {
-               
+        /* slide for category movie*/
+        $('#image-gallery').lightSlider({
+                gallery:true,
+                item:1,
+                thumbItem:9,
+                slideMargin: 0,
+                speed:500,
+                auto:true,
+                loop:true,
+                onSliderLoad: function() {
+                    $('#image-gallery').removeClass('cS-hidden');
+                }  
+            });
+        /* slide for movie selection and event*/
         $(".content-slider").lightSlider({
             item:4,
             loop:false,

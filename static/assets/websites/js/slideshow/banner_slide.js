@@ -1,5 +1,5 @@
-
-        jQuery(document).ready(function ($) {
+        /* banner slide home page*/
+        jssor_1_slider_init = function() {
 
             var jssor_1_SlideshowTransitions = [
               {$Duration:1200,x:0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
@@ -68,9 +68,9 @@
 
             ScaleSlider();
 
-            $(window).bind("load", ScaleSlider);
-            $(window).bind("resize", ScaleSlider);
-            $(window).bind("orientationchange", ScaleSlider);
+            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
             /*#endregion responsive code end*/
-        });
+        };
     
