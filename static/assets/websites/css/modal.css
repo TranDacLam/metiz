@@ -1,9 +1,9 @@
 .white-popup {
   position: relative;
   background: #FFF;
-  padding: 20px;
+  padding: 20px 0px;
   width: auto;
-  max-width: 1170px;
+  max-width: 92%;
   margin: 50px auto;
 }
 .slick-prev:before {
@@ -196,4 +196,16 @@
     cursor: pointer;
     border-radius: 50%;
     padding: 10px 12px;
+}
+.movieslide{
+    display: none;
+}
+.slick-slide, .slick-slide *{ 
+    outline: none !important;
+}
+
+@media only screen and (min-width: 1024px){
+    .slick-next img {
+        padding-left: 26px;
+    }
 }
