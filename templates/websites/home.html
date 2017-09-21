@@ -101,28 +101,48 @@
         </div>
             
         </div>
-                
-        <div class="home-movie-selection product-collateral toggle-content tabs home-event">
+        
+        <div class="home-movie-selection product-collateral toggle-content tabs home-event tabs-format-cgv">
             <div class="home-title">
                 <h2>movie selection</h2>
             </div>
-            <dl id="collateral-tabs" class="collateral-tabs" style="height: 370px; overflow: hidden">
-
-                <dt class="tab tablinks">
-                    <span onclick="openMovie(event, 'pdc')">
-                        Phim Đang Chiếu
-                    </span>
-                </dt>
-                <dt class="tab tablinks">
-                    <span onclick="openMovie(event, 'psc')">
-                        Phim Sắp Chiếu
-                    </span>
-                </dt>
-                <div class="tab-container tabcontent" id="pdc">
-                    <div class="tab-content">
-                        <div class="slideshow-containe-movier feature_slide_show_480_767" >
-                            <ul class="feature_slide_show content-slider">
-                                {% for item in data.movie %}           
+            <ul class="nav nav-tabs toggle-tabs">
+                    <li class="active">
+                        <a href="#movie-tab-1" data-toggle="tab">Phim Đang Chiếu</a>
+                    </li>
+                    <li class="last">
+                        <a href="#movie-tab-2" data-toggle="tab">Phim Sắp Chiếu</a>
+                    </li>
+                </ul>
+            <dl id="collateral-tabs" class="collateral-tabs" style="height: 201px; overflow: hidden">
+                <div class="tab-content">
+                    <div id="movie-tab-1" class="tab-pane fade in active">
+                        <ul class="content-slider">
+                            {% for item in data.movie %}           
+                            <li class="poster-film film-lists item">
+                                <span class="nmovie-rating nmovie-rating-c18">C18</span>
+                                <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
+                                <input type="hidden" value="movie-trailer-285">
+                                <div class="feature_film_content">
+                                    <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
+                                    <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                    <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
+                                    </button>
+                                </div>
+                                <div class="play-button">
+                                    <span><span>Play</span></span>
+                                    <div style="display:none">
+                                        <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
+                                    </div>
+                                </div>
+                                        
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div id="movie-tab-2" class="tab-pane fade ">
+                        <ul class="content-slider">
+                            {% for item in data.movie_soon %}           
                                 <li class="poster-film film-lists item">
                                     <span class="nmovie-rating nmovie-rating-c18">C18</span>
                                     <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
@@ -139,47 +159,12 @@
                                             <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
                                         </div>
                                     </div>
-                                            
                                 </li>
-                                {% endfor %}
-                            </ul>
-                            
-                        </div>
+                            {% endfor %}
+                        </ul>
                     </div>
-                
                 </div>
-                
-                <div class="tab-container tabcontent" id="psc">
-                    <div class="tab-content">
-                        <div class="slideshow-containe-movier feature_slide_show_480_767">
-                            <ul class="feature_slide_show content-slider">
-                                {% for item in data.movie_soon %}           
-                                <li class="poster-film film-lists item">
-                                    <span class="nmovie-rating nmovie-rating-c18">C18</span>
-                                    <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
-                                    <input type="hidden" value="movie-trailer-285">
-                                    <div class="feature_film_content">
-                                        <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
-                                        <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
-                                        <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
-                                        </button>
-                                    </div>
-                                    <div class="play-button">
-                                        <span><span>Play</span></span>
-                                        <div style="display:none">
-                                            <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
-                                        </div>
-                                    </div>
-                                            
-                                </li>
-                                {% endfor %}
-                            </ul>
-                            
-                        </div>
-                    </div>
-                
-                </div>
-            </dl>
+            </dl> 
         </div>
         <div class="product-collateral toggle-content tabs home-event tabs-format-cgv">
             <div class="home-title">
