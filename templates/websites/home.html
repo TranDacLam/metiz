@@ -114,10 +114,10 @@
                         <a href="#movie-tab-2" data-toggle="tab">Phim Sắp Chiếu</a>
                     </li>
                 </ul>
-            <dl id="collateral-tabs" class="collateral-tabs" style="height: 201px; overflow: hidden">
-                <div class="tab-content">
-                    <div id="movie-tab-1" class="tab-pane fade in active">
-                        <ul class="content-slider">
+            <dl id="collateral-tabs" class="collateral-tabs" style="height: 401px; overflow: hidden">
+                <div class="tab-content tabcontent id="pdc"">
+                    <div id="movie-tab-1" class="tab-pane fade in active slideshow-containe-movier feature_slide_show_480_767">
+                        <ul class="feature_slide_show content-slider">
                             {% for item in data.movie %}           
                             <li class="poster-film film-lists item">
                                 <span class="nmovie-rating nmovie-rating-c18">C18</span>
@@ -140,8 +140,8 @@
                             {% endfor %}
                         </ul>
                     </div>
-                    <div id="movie-tab-2" class="tab-pane fade ">
-                        <ul class="content-slider">
+                    <div id="movie-tab-2" class="tab-pane fade slideshow-containe-movier feature_slide_show_480_767">
+                        <ul class="feature_slide_show content-slider">
                             {% for item in data.movie_soon %}           
                                 <li class="poster-film film-lists item">
                                     <span class="nmovie-rating nmovie-rating-c18">C18</span>
