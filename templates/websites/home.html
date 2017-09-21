@@ -57,10 +57,10 @@
         <div class="slideshow-container">
            
             <!-- Arrow Navigator -->
-            <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:451px;overflow:hidden;visibility:hidden;">
+            <div id="jssor_1" >
             <!-- Loading Screen -->
-            <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg" />
+            <div data-u="loading" class="jssorl-009-spin" >
+                <img src="img/spin.svg" />
             </div>
             <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
             {% for item in data.banner  %}  
@@ -71,9 +71,9 @@
             {% endfor %}
             </div>
             <!-- Thumbnail Navigator -->
-            <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;bottom:0px;width:980px;height:100px;background-color:#000;" data-autocenter="1" data-scale-bottom="0.75">
+            <div data-u="thumbnavigator" class="jssort101" data-autocenter="1" data-scale-bottom="0.75">
                 <div data-u="slides">
-                    <div data-u="prototype" class="p" style="width:190px;height:90px;">
+                    <div data-u="prototype" class="p">
                         <div data-u="thumbnailtemplate" class="t"></div>
                         <svg viewbox="0 0 16000 16000" class="cv">
                             <circle class="a" cx="8000" cy="8000" r="3238.1"></circle>
@@ -99,7 +99,7 @@
                 </svg>
             </div>
         </div>
-            
+        <script type="text/javascript">jssor_1_slider_init();</script>
         </div>
         
         <div class="home-movie-selection product-collateral toggle-content tabs home-event tabs-format-cgv">
@@ -114,7 +114,7 @@
                         <a href="#movie-tab-2" data-toggle="tab">Phim Sắp Chiếu</a>
                     </li>
                 </ul>
-            <dl id="collateral-tabs" class="collateral-tabs" style="height: 201px; overflow: hidden">
+            <dl id="collateral-tabs" class="collateral-tabs" style="height: 401px; overflow: hidden">
                 <div class="tab-content">
                     <div id="movie-tab-1" class="tab-pane fade in active">
                         <ul class="content-slider">

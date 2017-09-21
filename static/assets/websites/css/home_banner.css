@@ -40,4 +40,47 @@
         .jssort101 .pav .a, .jssort101 .p:hover .a {visibility:visible;}
         .jssort101 .t {position:absolute;top:0;left:0;width:100%;height:100%;border:none;opacity:.6;}
         .jssort101 .pav .t, .jssort101 .p:hover .t{opacity:1;}
+
+        /* css for slide banner*/
+        #jssor_1{
+            position:relative;
+            margin:0 auto;
+            top:0px;
+            left:0px;
+            width:980px;
+            height:451px;
+            overflow:hidden;
+            visibility:hidden;
+        }
+        .jssorl-009-spin{
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:100%;
+            height:100%;
+            text-align:center;
+            background-color:rgba(0,0,0,0.7);">
+                
+        }
+        .jssorl-009-spin img{
+            margin-top:-19px;
+            position:relative;
+            top:50%;
+            width:38px;
+            height:38px;
+        }
+        .jssort101{
+            position:absolute;
+            left:0px;
+            bottom:0px;
+            width:980px;
+            height:100px;
+            background-color:#000;
+        }
+        .jssort101 .p{
+            width:190px;
+            height:90px;
+        }
+        
+        
  
