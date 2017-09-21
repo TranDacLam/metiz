@@ -2,8 +2,8 @@
   position: relative;
   background: #FFF;
   padding: 20px 0px;
-  width: auto;
-  max-width: 92%;
+  width: 92%;
+  max-width: 1310px;
   margin: 50px auto;
 }
 .slick-prev:before {
@@ -204,7 +204,7 @@
     outline: none !important;
 }
 
-@media only screen and (min-width: 1024px){
+@media only screen and (min-width: 1280px){
     .slick-next img {
         padding-left: 26px;
     }
