@@ -2,3 +2,21 @@
 	width: 560px;
 	height: 315px;
 }
+.product-view .nav-tabs>li.active>a, .product-view .nav-tabs>li.active>a:focus, .product-view .nav-tabs>li.active>a:hover{
+	border: 0px;
+	background-color: red;
+}
+.product-view .nav-tabs>li>a {
+	border: 0px;
+	border-radius: 0px;
+	background-color: red;
+	color: white;
+	font-size: 12px;
+	margin-right: -3px;
+}
+.product-view .nav-tabs>li>a:hover {
+	border: 0px;
+	border-radius: 0px;
+	background-color: red;
+	color: black;
+}

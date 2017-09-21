@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cgv.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.colorbox.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/facebook.js"></script>
 {% endblock %}
 {% block body_class %}
 	catalog-category-view categorypath-now-showing category-now-showing
@@ -78,7 +79,9 @@
 						
 						<ul class="add-to-links">
 							<li>
-								<div class="fb-like fb_iframe_widget" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
+								<!-- Button like and share facebook, data-href http://domain/filmdetail/id (unique) -->
+								<!-- https://{{ request.get_host }}{% url 'film_detail' %}{{value.id}} -->
+								<div class="fb-like fb_iframe_widget" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
                                 </div>
 							</li>
 							
@@ -89,8 +92,6 @@
 					</li>
 				{%endfor%}
 			</ul>
-			<script type="text/javascript" src='{{ STATIC_URL }}assets/websites/js/products-grid.js'>
-			</script>
 		</div>
 	</div>           
 </div>
