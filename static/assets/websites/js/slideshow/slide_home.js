@@ -1,20 +1,7 @@
        
+        /* slide for movie selection and event*/
         $(document).ready(function() {
-        
-        $('#image-gallery').lightSlider({
-            gallery:true,
-            item:1,
-            thumbItem:9,
-            slideMargin: 0,
-            speed:500,
-            pause:4000,
-            auto:true,
-            loop:true,
-            onSliderLoad: function() {
-                $j('#image-gallery').removeClass('cS-hidden');
-            }  
-        });
-       
+               
         $(".content-slider").lightSlider({
             item:4,
             loop:false,
