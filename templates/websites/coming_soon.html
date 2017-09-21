@@ -8,6 +8,7 @@
 
 {% block extrascript %}
 <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/coming_soon.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/facebook.js"></script>
 {% endblock %}
 
 {% block body_class %}
@@ -79,7 +80,9 @@
 					
 					<ul class="add-to-links">
 						<li>
-							<div class="fb-like" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+							<!-- Button like and share facebook, data-href http://domain/filmdetail/id (unique) -->
+							<!-- data-href: https://{{ request.get_host }}{% url 'film_detail' %}{{value.id}} -->
+							<div class="fb-like" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 						</li>
 						
 					</ul>

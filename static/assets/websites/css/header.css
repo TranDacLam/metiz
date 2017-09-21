@@ -39,7 +39,10 @@ ul.dropdown-menu>li>a:hover{
 .header-language-background{
 	display: none;
 }
-
+#header{
+	z-index: 4;
+    position: relative;
+}
 @media only screen and (min-width: 768px){
 	#header-search{
 		display: none;

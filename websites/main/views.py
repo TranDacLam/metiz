@@ -17,16 +17,61 @@ def home(request):
 		'tv_cgv':["assets/websites/images/thanhvien-cgv/tv1.jpg","assets/websites/images/thanhvien-cgv/tv2.jpg","assets/websites/images/thanhvien-cgv/tv3.jpg","assets/websites/images/thanhvien-cgv/tv4.jpg","assets/websites/images/thanhvien-cgv/tv5.jpg"],
 		'movie_soon':["assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png"]
 	}
-	
-	return render(request, 'websites/home.html', {'data': data})
+	data_modal= {'date': [
+	{'day': 19, 'month': '09', 'DAY': 'Mon', 'flag': 'current'},
+	{'day': 20, 'month': '09', 'DAY': 'Tue'},
+	{'day': 21, 'month': '09', 'DAY': 'Wed'},
+	{'day': 22, 'month': '09', 'DAY': 'Thu'},
+	{'day': 23, 'month': '09', 'DAY': 'Fri'},
+	{'day': 24, 'month': '09', 'DAY': 'Sat'},
+	{'day': 25, 'month': '09', 'DAY': 'Sun'}],
+	'film':[
+	{'name': 'Yeu Di Dung So', 'schedule': [
+	{'from': '8:35', 'to': '10:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '21:35', 'to': '0:35', 'room': 119,'name_room': 'Scm01'},
+	] },
+	{'name': 'The gioi nay la cua bo may', 'schedule': [
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	] },
+	{'name': 'Chu he IT', 'schedule': [
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	] },
+	]}
+	return render(request, 'websites/home.html', {'data': data, 'data_modal': data_modal, 'n' : range(30)})
 
 def comingsoon(request):
+	data_modal= {'date': [
+	{'day': 19, 'month': '09', 'DAY': 'Mon', 'flag': 'current'},
+	{'day': 20, 'month': '09', 'DAY': 'Tue'},
+	{'day': 21, 'month': '09', 'DAY': 'Wed'},
+	{'day': 22, 'month': '09', 'DAY': 'Thu'},
+	{'day': 23, 'month': '09', 'DAY': 'Fri'},
+	{'day': 24, 'month': '09', 'DAY': 'Sat'},
+	{'day': 25, 'month': '09', 'DAY': 'Sun'}],
+	'film':[
+	{'name': 'Yeu Di Dung So', 'schedule': [
+	{'from': '8:35', 'to': '10:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '21:35', 'to': '0:35', 'room': 119,'name_room': 'Scm01'},
+	] },
+	{'name': 'The gioi nay la cua bo may', 'schedule': [
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	] },
+	{'name': 'Chu he IT', 'schedule': [
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	] },
+	]}
 	data=[{'img':"/assets/websites/images/movie-selection/movie1.png",'name':'Chí Phèo Ngoại Truyện','category':'Hành Động','time':'90','date':'08/09/2017'}, 
 	{'img':"/assets/websites/images/movie-selection/movie1.png",'name':' Mồi Cá Mập','category':'Hoạt Hình','time':'90','date':'08/09/2017'},
 	 {'img': "/assets/websites/images/movie-selection/movie2.jpg",'name':'Breathe','category':'Hành Động, Hoạt Hình','time':'90','date':'08/09/2017'},
 	 {'img': "/assets/websites/images/movie-selection/movie3.jpg",'name':'Kingsman : Tổ Chức Hoàng Kim','category':'Hoạt Hình','time':'90','date':'08/09/2017'},
 	 {'img': "/assets/websites/images/movie-selection/movie4.jpg",'name':'Chí Phèo Ngoại Truyện','category':'Hành Động','time':'90','date':'08/09/2017'}]	
-	return render(request, 'websites/coming_soon.html', {'data':data })
+	return render(request, 'websites/coming_soon.html', {'data':data ,'data_modal': data_modal, 'n' : range(30)})
 
 def cinox(request):
 	data_cinema_area = [{'id':'cgv_city_1', 'name':'Hồ Chí Minh'},{'id':'cgv_city_3', 'name':'Hà Nội'},
@@ -472,7 +517,30 @@ def news(request):
 	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
 	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
 	]
-	return render(request, 'websites/news.html', {'data': data})
+	data_modal= {'date': [
+	{'day': 19, 'month': '09', 'DAY': 'Mon', 'flag': 'current'},
+	{'day': 20, 'month': '09', 'DAY': 'Tue'},
+	{'day': 21, 'month': '09', 'DAY': 'Wed'},
+	{'day': 22, 'month': '09', 'DAY': 'Thu'},
+	{'day': 23, 'month': '09', 'DAY': 'Fri'},
+	{'day': 24, 'month': '09', 'DAY': 'Sat'},
+	{'day': 25, 'month': '09', 'DAY': 'Sun'}],
+	'film':[
+	{'name': 'Yeu Di Dung So', 'schedule': [
+	{'from': '8:35', 'to': '10:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '21:35', 'to': '0:35', 'room': 119,'name_room': 'Scm01'},
+	] },
+	{'name': 'The gioi nay la cua bo may', 'schedule': [
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	] },
+	{'name': 'Chu he IT', 'schedule': [
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
+	] },
+	]}
+	return render(request, 'websites/news.html', {'data': data, 'data_modal': data_modal, 'n' : range(30)})
 
 def new_detail(request):
 	data={'img': '/assets/websites/images/news/U22---350-x-495.jpg',
