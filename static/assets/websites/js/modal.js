@@ -4,9 +4,7 @@
               type: 'inline',
               midClick: true,
         });
-    });
-    $(document).ready(function($) {
-
+    
         $('.open-popup-link').click(function(event) {
             loadSlideCalendar();
             // show  present movies
