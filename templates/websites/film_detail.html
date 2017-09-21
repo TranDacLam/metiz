@@ -8,10 +8,11 @@
 
 {% endblock %}
 {% block extrascript %}
-	
+	<!-- document : https://github.com/payalord/xZoom/blob/master/doc/manual.md-->
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/jquery.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/setup.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/xzoom.min.js"></script>
+	<!-- -->
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/film_detail.js"></script>
 {% endblock %}
 
@@ -58,6 +59,7 @@
 				<div class="product-img-box">
 					<div class="product-image product-image-zoom">
 						<div class="xzoom-container">
+
 				          <img class="xzoom" id="xzoom-default" src="{{STATIC_URL}}{{data.img}}" xoriginal="{{STATIC_URL}}{{data.img}}" />
 				          
 				        </div>    
