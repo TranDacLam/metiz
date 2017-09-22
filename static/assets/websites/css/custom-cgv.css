@@ -2421,7 +2421,7 @@ li.film-lists:hover .play-button{
 }
 .home-event > .toggle-tabs > li.last {
     background: url(../images/ribon_right.gif) no-repeat scroll right 0 #e71a0f;
-    padding-right: 19px;
+    padding-right: 21px;
 }
 .home-event #collateral-tabs {
     margin-top: 15px;
