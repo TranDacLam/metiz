@@ -20,3 +20,8 @@
 	background-color: red;
 	color: black;
 }
+.sr-only { 
+	margin-left: 5px;
+	overflow: visible;
+	clip: auto; 
+}
