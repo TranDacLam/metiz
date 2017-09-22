@@ -1,5 +1,4 @@
 // js for showing.html, arthouse.html
-// include js for button facebook like, resize for class product-info and function Quickbooking 
  
 // lay gia tri lon nhat cua height, roi dat cho tat ca phan tu
 function equalizeHeights(selector) {
@@ -46,26 +45,6 @@ function equalizeHeights(selector) {
 		});
 	});
 
-// click vao button mua ve' hien len popup 
-function Quickbooking(obj)
-{
-	$.ajax({
-		type: 'post',
-		url: '#',
-		data: 'id='+ obj,
-		//dataType: 'json',
-		beforeSend: function(){
-			$.colorbox();
-		},
-	}).done(function(result) {
-		html =result;
-		// su dung library jquery.colorbox.js
-		$.colorbox({html: '<div class="product-view quick-booking">'+html+'</div>', width:"88%", height:"88%",fixed:true,modal: false});
-		// tuy chinh cac class vao trong popup
-		// funtion trong cgv.js
-		togglecontent('tabs-cgv-movie-type');
-		togglecontent('tabs-cgv-movie-cites');
-		togglecontent('tabs-cgv-movie-view-date');
-	});
+
 };
 					

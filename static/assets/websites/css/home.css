@@ -28,3 +28,11 @@
 	height: auto;
 	opacity: 1;
 }
+.tab-movie{	
+	height: 401px; 
+	overflow: hidden;
+}
+.tab-event{	
+	height: 201px; 
+	overflow: hidden;
+}

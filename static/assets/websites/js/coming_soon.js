@@ -40,21 +40,5 @@
 		$('li.category3').find('a').contents().unwrap();
 	});
 	
-	function Quickbooking(obj)
-	{
-		$.ajax({
-			type: 'post',
-			url: '#',
-			data: 'id='+ obj,
-			//dataType: 'json',
-			beforeSend: function(){
-				$.colorbox();
-			},
-		}).done(function(result) {
-			html =result;
-			$.colorbox({html: '<div class="product-view quick-booking">'+html+'</div>', width:"88%", height:"88%",fixed:true,modal: false});
-			togglecontent('tabs-cgv-movie-type');
-			togglecontent('tabs-cgv-movie-cites');
-			togglecontent('tabs-cgv-movie-view-date');
-		});
+	
 	}
