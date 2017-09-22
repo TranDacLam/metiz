@@ -4,19 +4,29 @@
 
 {% block title %}Helio{% endblock title %}
 
-{% block extrastylesheet %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" /> 
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/home.css" media="all" /> 
-{% endblock %}
-
 {% block extrascript %}
-<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.cycle2.carousel.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" ></script>
+
 <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/slideshow.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js"></script> 
+<script src="{{ STATIC_URL }}assets/websites/js/slideshow/banner_slide.js"></script> 
+<script src="{{ STATIC_URL }}assets/websites/js/slideshow/slide_home.js"></script>
+<script src="{{ STATIC_URL }}assets/js/lightslider.js"></script> 
+
+
+{% endblock %}
+
+{% block extrastylesheet %}
+
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/home.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" /> 
+<link rel="stylesheet" href="{{ STATIC_URL }}assets/websites/css/home_banner.css" media="all" />
+<link rel="stylesheet"  href="{{ STATIC_URL }}assets/css/lightslider.css"/>
+<link rel="stylesheet"  href="{{ STATIC_URL }}assets/websites/css/slide_home.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}assets/websites/css/madisonisland.css" media="all" />
+
 {% endblock %}
 
 {% block container_class %}col1-layout {% endblock %}
@@ -42,168 +52,175 @@
                 </div>
             </p>
         </div>
+        
+    
         <div class="slideshow-container">
-            <ul id="home_big_banner" class="slideshow">
-                {% for item in data.banner  %}           
-                <li>
-                    <a href="#">
-                        <img src="{{ STATIC_URL }}{{item}}" alt="">
-                    </a>
-                </li>
-                {% endfor %}
-                
-            </ul>
-            <div class="slideshow-pager home_big_banner_pager">&nbsp;</div>
-            <span class="slideshow-prev home_big_banner_prev">&nbsp;</span>
-            <span class="slideshow-next home_big_banner_next">&nbsp;</span>
+           
+            <!-- Arrow Navigator -->
+            <div id="jssor_1" >
+            <!-- Loading Screen -->
+            <div data-u="loading" class="jssorl-009-spin" >
+                <img src="img/spin.svg" />
+            </div>
+            <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
+            {% for item in data.banner  %}  
+                <div>
+                    <img data-u="image" src="{{ STATIC_URL }}{{item}}" />
+                    <img data-u="thumb" src="{{ STATIC_URL }}{{item}}" />
+                </div>
+            {% endfor %}
+            </div>
+            <!-- Thumbnail Navigator -->
+            <div data-u="thumbnavigator" class="jssort101" data-autocenter="1" data-scale-bottom="0.75">
+                <div data-u="slides">
+                    <div data-u="prototype" class="p">
+                        <div data-u="thumbnailtemplate" class="t"></div>
+                        <svg viewbox="0 0 16000 16000" class="cv">
+                            <circle class="a" cx="8000" cy="8000" r="3238.1"></circle>
+                            <line class="a" x1="6190.5" y1="8000" x2="9809.5" y2="8000"></line>
+                            <line class="a" x1="8000" y1="9809.5" x2="8000" y2="6190.5"></line>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!-- Arrow Navigator -->
+            <div data-u="arrowleft" class="jssora106" style="width:55px;height:55px;top:162px;left:30px;" data-scale="0.75">
+                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                    <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
+                    <polyline class="a" points="7930.4,5495.7 5426.1,8000 7930.4,10504.3 "></polyline>
+                    <line class="a" x1="10573.9" y1="8000" x2="5426.1" y2="8000"></line>
+                </svg>
+            </div>
+            <div data-u="arrowright" class="jssora106" style="width:55px;height:55px;top:162px;right:30px;" data-scale="0.75">
+                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                    <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
+                    <polyline class="a" points="8069.6,5495.7 10573.9,8000 8069.6,10504.3 "></polyline>
+                    <line class="a" x1="5426.1" y1="8000" x2="10573.9" y2="8000"></line>
+                </svg>
+            </div>
         </div>
-        <div class="home-movie-selection">
+        <script type="text/javascript">jssor_1_slider_init();</script>
+        </div>
+        
+        <div class="home-movie-selection product-collateral toggle-content tabs home-event tabs-format-cgv">
             <div class="home-title">
                 <h2>movie selection</h2>
             </div>
-            <div class="slideshow-containe-movier feature_slide_show_480_767">
-                <ul class="feature_slide_show">
-                    {% for item in data.movie %}           
-                    <li class="poster-film film-lists item">
-                        <span class="nmovie-rating nmovie-rating-c18">C18</span>
-                        <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
-                        <input type="hidden" value="movie-trailer-285">
-                        <div class="feature_film_content">
-                            <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
-                            <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
-                            <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
-                            </button>
-                        </div>
-                        <div class="play-button">
-                            <span><span>Play</span></span>
-                            <div style="display:none">
-                                <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
-                            </div>
-                        </div>
+            <ul class="nav nav-tabs toggle-tabs">
+                    <li class="active">
+                        <a href="#movie-tab-1" data-toggle="tab">Phim Đang Chiếu</a>
                     </li>
-                    {% endfor %}
-                    
+                    <li class="last">
+                        <a href="#movie-tab-2" data-toggle="tab">Phim Sắp Chiếu</a>
+                    </li>
                 </ul>
-                <span class="feature_slide_show_prev"><<</span>
-                <span class="feature_slide_show_next">>></span>
-            </div>
-        </div>
-                                <div class="product-collateral toggle-content tabs home-event">
-                                    <div class="home-title">
-                                        <h2>event</h2>
+            <dl id="collateral-tabs" class="collateral-tabs" style="height: 401px; overflow: hidden">
+                <div class="tab-content tabcontent" id="pdc">
+                    <div id="movie-tab-1" class="tab-pane fade in active slideshow-containe-movier feature_slide_show_480_767">
+                        <ul class="feature_slide_show content-slider">
+                            {% for item in data.movie %}           
+                            <li class="poster-film film-lists item">
+                                <span class="nmovie-rating nmovie-rating-c18">C18</span>
+                                <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
+                                <input type="hidden" value="movie-trailer-285">
+                                <div class="feature_film_content">
+                                    <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
+                                    <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                    <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
+                                    </button>
+                                </div>
+                                <div class="play-button">
+                                    <span><span>Play</span></span>
+                                    <div style="display:none">
+                                        <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
                                     </div>
-                                    <dl id="collateral-tabs" class="collateral-tabs">
-                                        <dt class="tab"><span>Tin Mới & Ưu Đãi</span></dt>
-                                        <dd class="tab-container">
-                                            <div class="tab-content">
-                                                <div class="home-show-event">
-                                                    <ul class="slide_home_event tinmiui">
-                                                        {% for item in data.event %}   
-                                                        <li >
-                                                            <a href="#">
-                                                                <img src="{{ STATIC_URL }}{{item}}" />
-                                                            </a>
-                                                        </li>
-                                                        {% endfor %}
-                                                        
-                                                    </ul>
-                                                    <span class="slide_home_event_prev tinmiui_prev"><<</span>
-                                                    <span class="slide_home_event_next tinmiui_next">>></span>
-                                                </div>
-                                            </div>
-                                        </dd>
-                                        <dt class="tab"><span>Thành Viên CGV</span></dt>
-                                        <dd class="tab-container">
-                                            <div class="tab-content">
-                                                <div class="home-show-event">
-                                                    <ul class="slide_home_event thnhvincgv">
-                                                        {% for item in data.tv_cgv %}
-                                                        <li>
-                                                            <a href="#">
-                                                                <img src="{{ STATIC_URL }}{{item}} " />
-                                                            </a>
-                                                        </li>
-                                                        {% endfor%}
-                                                    </ul>
-                                                    <span class="slide_home_event_prev thnhvincgv_prev"><<</span>
-                                                    <span class="slide_home_event_next thnhvincgv_next">>></span>
-                                                </div>
-                                            </div>
-                                        </dd>
-                                        <script type="text/javascript">
-                                            $j(window).bind("load", function() {
-                                                var width = $j(window).width();
-                                                if (width >= 979) {
-                                                    reinitCycle2(4);
-                                                } else if (width >= 770) {
-                                                    reinitCycle2(3);
-                                                } else if (width >= 479) {
-                                                    reinitCycle2(2);
-                                                } else {
-                                                    reinitCycle2(1);
-                                                }
-                                            });
-
-                                            $j(window).on('resize', function() {
-                                                var width = $j(window).width();
-                                                if (width >= 979) {
-                                                    reinitCycle2(4);
-                                                } else if (width >= 770) {
-                                                    reinitCycle2(3);
-                                                } else if (width >= 479) {
-                                                    reinitCycle2(2);
-                                                } else {
-                                                    reinitCycle2(1);
-                                                }
-                                            });
-
-                                            function reinitCycle2(visibleSlides) {
-                                                try {
-                                                    $j('.tinmiui').cycle('destroy');
-                                                    $j('.tinmiui').cycle({
-                                                        "carouselSlideDimension": "240px",
-                                                        "carouselVisible": visibleSlides,
-                                                        "fx": "carousel",
-                                                        "timeout": 0,
-                                                        "next": ".tinmiui_next",
-                                                        "prev": ".tinmiui_prev",
-                                                        "slideActiveClass": "active",
-                                                        "slides": "li",
-                                                        "allowWrap": false,
-                                                    });
-                                                    $j('.thnhvincgv').cycle('destroy');
-                                                    $j('.thnhvincgv').cycle({
-                                                        "carouselSlideDimension": "240px",
-                                                        "carouselVisible": visibleSlides,
-                                                        "fx": "carousel",
-                                                        "timeout": 0,
-                                                        "next": ".thnhvincgv_next",
-                                                        "prev": ".thnhvincgv_prev",
-                                                        "slideActiveClass": "active",
-                                                        "slides": "li",
-                                                        "allowWrap": false,
-                                                    });
-                                                } catch (err) {
-                                                    console.log(err.message);
-                                                }
-                                            }
-                                        </script>
-                                    </dl>
                                 </div>
-                                <div class="home-promotion-card">
-                                    <ul class="promos">
-                                        <li class="col-ad">
-                                            <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/214x245.jpg" /></a></div>
-                                        </li>
-                                        <li class="col-hd">
-                                            <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/phototicket---496x247_1.jpg" /></a></div>
-                                        </li>
-                                        <li class="col-ad">
-                                            <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/cgv_hotnumber_w_214_x_h_245_px.png" /></a></div>
-                                        </li>
                                         
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        {% endblock %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div id="movie-tab-2" class="tab-pane fade slideshow-containe-movier feature_slide_show_480_767">
+                        <ul class="feature_slide_show content-slider">
+                            {% for item in data.movie_soon %}           
+                                <li class="poster-film film-lists item">
+                                    <span class="nmovie-rating nmovie-rating-c18">C18</span>
+                                    <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
+                                    <input type="hidden" value="movie-trailer-285">
+                                    <div class="feature_film_content">
+                                        <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
+                                        <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
+                                        <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
+                                        </button>
+                                    </div>
+                                    <div class="play-button">
+                                        <span><span>Play</span></span>
+                                        <div style="display:none">
+                                            <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </dl> 
+        </div>
+        <div class="product-collateral toggle-content tabs home-event tabs-format-cgv">
+            <div class="home-title">
+                <h2>event</h2>
+            </div>
+            <ul class="nav nav-tabs toggle-tabs">
+                    <li class="active">
+                        <a href="#event-tab" data-toggle="tab">Tin Mới & Ưu Đãi</a>
+                    </li>
+                    <li class="last">
+                        <a href="#tv-tab" data-toggle="tab">Thành Viên CGV</a>
+                    </li>
+                </ul>
+            <dl id="collateral-tabs" class="collateral-tabs" style="height: 201px; overflow: hidden">
+                <div class="tab-content">
+                    <div id="event-tab" class="tab-pane fade in active">
+                        <ul class="content-slider">
+                            {% for item in data.event %}
+                            <li>
+                                <a href="#">
+                                    <img src="{{ STATIC_URL }}{{item}}" />
+                                </a>
+                            </li>
+                            {% endfor %} 
+                        </ul>
+                    </div>
+                    <div id="tv-tab" class="tab-pane fade ">
+                        <ul class="content-slider">
+                            {% for item in data.tv_cgv %}
+                            <li>
+                                <a href="#">
+                                    <img src="{{ STATIC_URL }}{{item}} " />
+                                </a>
+                            </li>
+                            {% endfor%}
+                        </ul>
+                    </div>
+                </div>
+            </dl> 
+        </div>
+        <div class="home-promotion-card">
+            <ul class="promos">
+                <li class="col-ad">
+                    <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/214x245.jpg" /></a></div>
+                </li>
+                <li class="col-hd">
+                    <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/phototicket---496x247_1.jpg" /></a></div>
+                </li>
+                <li class="col-ad">
+                    <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/cgv_hotnumber_w_214_x_h_245_px.png" /></a></div>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+                        
+{% endblock %}
+

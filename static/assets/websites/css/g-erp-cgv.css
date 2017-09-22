@@ -544,7 +544,7 @@
 	.footer-cgv-policy{
 		width:100%;
 		padding:20px 0px;
-		border-bottom:2px solid #222;
+		/*border-bottom:2px solid #222;*/
 		overflow:hidden;
 		display:block;
 	}
@@ -1635,7 +1635,7 @@
 	}
 	.product-view .tabs-format-cgv >.toggle-tabs> li.last{
 		background: url("../images/bg-cgv/bg-ribon-right-transparent.png") no-repeat scroll right top transparent;
-		padding-right: 19px;
+		padding-right: 20px;
 		background-color:none;
 	}
 	.product-view .tabs-format-cgv>.toggle-tabs> li  span{
@@ -1649,13 +1649,13 @@
 		background-image:none;
 		background-color:#e71a0f;
 	}
-	.tabs-format-cgv >.toggle-tabs> li.current > span::before{
+	.tabs-format-cgv >.toggle-tabs> li.active > a::before{
 		background: url("../images/bg-cgv/bg-icon-finger.png") no-repeat scroll 5px 50% #e71a0f;
 		content: "";
 		height: 40px;
 		padding-left: 40px;		
 	}
-	.tabs-format-cgv >.toggle-tabs> li.current > span{
+	.tabs-format-cgv >.toggle-tabs> li.active > a{
 		white-space: nowrap;
 		font-weight: bold;
 	}
@@ -1741,10 +1741,10 @@
 	}
 	.product-view .tabs-format-cgv > .toggle-tabs > li.last {
 		background: url("../images/bg-cgv/bg-ribon-right-transparent.png") no-repeat scroll right top transparent;
-		padding-right: 19px;
+		padding-right: 20px;
 		background-color: none;
 	}
-	.tabs-format-cgv >.toggle-tabs> li.current > span::before{
+	.tabs-format-cgv >.toggle-tabs> li.active > a::before{
 		background: url("../images/bg-cgv/bg-icon-finger.png") no-repeat scroll 5px 50% #e71a0f;
 		content: "";
 		height: 40px;
@@ -1754,7 +1754,7 @@
 		background-image:none;
 		background-color:#e71a0f;
 	}
-	.tabs-format-cgv >.toggle-tabs> li.current > span{
+	.tabs-format-cgv >.toggle-tabs> li.active > a{
 		white-space: nowrap;
 		font-weight: bold;
 	}

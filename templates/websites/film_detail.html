@@ -8,11 +8,15 @@
 
 {% endblock %}
 {% block extrascript %}
-	
+
+	<!-- document : https://github.com/payalord/xZoom/blob/master/doc/manual.md-->
+
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/jquery.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/setup.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/xzoom.min.js"></script>
+	<!-- -->
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/film_detail.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/facebook.js"></script>
 {% endblock %}
 
 {% block body_class %}
@@ -58,6 +62,7 @@
 				<div class="product-img-box">
 					<div class="product-image product-image-zoom">
 						<div class="xzoom-container">
+
 				          <img class="xzoom" id="xzoom-default" src="{{STATIC_URL}}{{data.img}}" xoriginal="{{STATIC_URL}}{{data.img}}" />
 				          
 				        </div>    
@@ -111,7 +116,9 @@
 
 				<div class="movie-detail-fb-booking">
 					<div class="add-to-cart-wrapper ">
-						<div class="fb-like fb_iframe_widget" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
+						<!-- Button like and share facebook, data-href: http://domain/film/detail/id -->
+						<!-- data-href= {{ request.build_absolute_uri }} -->
+						<div class="fb-like fb_iframe_widget" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
 	                    </div>
 						<button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
 						</button>			
@@ -120,30 +127,36 @@
 					
 				<div class="clearer"></div>
 			</div>
-
 			<div class="product-collateral toggle-content tabs tabs-format-cgv">
-				<dl id="collateral-tabs" class="collateral-tabs">
-					<dt class="tab current"><span>Chi tiết</span></dt>
-					<dd class="tab-container">
-						<div class="tab-content"><h2>Chi tiết</h2>
-							<div class="std">
-								{{data.content}}
-							</div>
-						</div>
-					</dd>
+				<ul class="nav nav-tabs toggle-tabs">
 
-					<dt class="tab last"><span>Trailer</span></dt>
-					<dd class="tab-container last">
-						<div class="tab-content">
-							<div class="std">
-								<h2>Trailer</h2>
-								<div class="std product_view_trailer">
-									<iframe src="{{data.trailer}}" frameborder="0" allowfullscreen=""></iframe>    
-								</div>
-							</div>
+					<li class="active">
+						<a href="#film-detail-tab-1" data-toggle="tab">Chi tiết</a>
+					</li>
+					<li>
+						<a href="#film-detail-tab-2" data-toggle="tab">Trailer</a>
+					</li>
+					<li class="last">
+						<a href="#film-detail-tab-3" data-toggle="tab">Đánh giá</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div id="film-detail-tab-1" class="tab-pane fade in active">
+						{{data.content}}
+					</div>
+					<div id="film-detail-tab-2" class="tab-pane fade ">
+
+						<div class="product_view_trailer">
+							<iframe src="{{data.trailer}}" frameborder="0" allowfullscreen></iframe>    
 						</div>
-					</dd>
-				</dl>
+					</div>
+
+					<div id="film-detail-tab-3" class="tab-pane fade ">
+
+						<h3>B2, Z2/Z2x Brass First Stages Affordable Performance</h3>
+						<p>We understood that not every diver could afford Titanium. </p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
