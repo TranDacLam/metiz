@@ -11,8 +11,9 @@
 {% endblock %}
 
 {% block extrastylesheet %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/home.css" media="all" />
+
     <link rel="stylesheet" href="{{ STATIC_URL }}assets/css/carousel/home_banner.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/home.css" media="all" />
     <link rel="stylesheet" href="{{ STATIC_URL }}assets/websites/css/madisonisland.css" media="all" />
 {% endblock %}
 
@@ -26,7 +27,6 @@
                 <div class="widget widget-static-block">
                     <div class="sect-person">
                         <ul>
-                            
                             <li><a class="theater" href="{% url 'home' %}">cgv theater</a></li>
                             <li><a class="now-sh" href="{% url 'showing' %}">now showing</a></li>
                             <li><a class="special" href="{% url 'special_gold_class' %}">cgv special</a></li>
@@ -45,44 +45,44 @@
            
             <!-- Arrow Navigator -->
             <div id="jssor_1" >
-            <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
-            {% for item in data.banner  %}  
-                <div>
-                    <img data-u="image" src="{{ STATIC_URL }}{{item}}" />
-                    <img data-u="thumb" src="{{ STATIC_URL }}{{item}}" />
+                <div data-u="slides" class="jssor_1_slides">
+                {% for item in data.banner  %}  
+                    <div>
+                        <img data-u="image" src="{{ STATIC_URL }}{{item}}" />
+                        <img data-u="thumb" src="{{ STATIC_URL }}{{item}}" />
+                    </div>
+                {% endfor %}
                 </div>
-            {% endfor %}
-            </div>
-            <!-- Thumbnail Navigator -->
-            <div data-u="thumbnavigator" class="jssort101" data-autocenter="1" data-scale-bottom="0.75">
-                <div data-u="slides">
-                    <div data-u="prototype" class="p">
-                        <div data-u="thumbnailtemplate" class="t"></div>
-                        <svg viewbox="0 0 16000 16000" class="cv">
-                            <circle class="a" cx="8000" cy="8000" r="3238.1"></circle>
-                            <line class="a" x1="6190.5" y1="8000" x2="9809.5" y2="8000"></line>
-                            <line class="a" x1="8000" y1="9809.5" x2="8000" y2="6190.5"></line>
-                        </svg>
+                <!-- Thumbnail Navigator -->
+                <div data-u="thumbnavigator" class="jssort101" data-autocenter="1" data-scale-bottom="0.75">
+                    <div data-u="slides">
+                        <div data-u="prototype" class="p">
+                            <div data-u="thumbnailtemplate" class="t"></div>
+                            <svg viewbox="0 0 16000 16000" class="cv">
+                                <circle class="a" cx="8000" cy="8000" r="3238.1"></circle>
+                                <line class="a" x1="6190.5" y1="8000" x2="9809.5" y2="8000"></line>
+                                <line class="a" x1="8000" y1="9809.5" x2="8000" y2="6190.5"></line>
+                            </svg>
+                        </div>
                     </div>
                 </div>
+                <!-- Arrow Navigator -->
+                <div data-u="arrowleft" class="jssora106 prev-arrow" data-scale="0.75">
+                    <svg viewbox="0 0 16000 16000">
+                        <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
+                        <polyline class="a" points="7930.4,5495.7 5426.1,8000 7930.4,10504.3 "></polyline>
+                        <line class="a" x1="10573.9" y1="8000" x2="5426.1" y2="8000"></line>
+                    </svg>
+                </div>
+                <div data-u="arrowright" class="jssora106 next-arrow" data-scale="0.75">
+                    <svg viewbox="0 0 16000 16000" >
+                        <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
+                        <polyline class="a" points="8069.6,5495.7 10573.9,8000 8069.6,10504.3 "></polyline>
+                        <line class="a" x1="5426.1" y1="8000" x2="10573.9" y2="8000"></line>
+                    </svg>
+                </div>
             </div>
-            <!-- Arrow Navigator -->
-            <div data-u="arrowleft" class="jssora106" style="width:55px;height:55px;top:162px;left:30px;" data-scale="0.75">
-                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                    <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
-                    <polyline class="a" points="7930.4,5495.7 5426.1,8000 7930.4,10504.3 "></polyline>
-                    <line class="a" x1="10573.9" y1="8000" x2="5426.1" y2="8000"></line>
-                </svg>
-            </div>
-            <div data-u="arrowright" class="jssora106" style="width:55px;height:55px;top:162px;right:30px;" data-scale="0.75">
-                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                    <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
-                    <polyline class="a" points="8069.6,5495.7 10573.9,8000 8069.6,10504.3 "></polyline>
-                    <line class="a" x1="5426.1" y1="8000" x2="10573.9" y2="8000"></line>
-                </svg>
-            </div>
-        </div>
-        <script type="text/javascript">jssor_1_slider_init();</script>
+        
         </div>
         
         <div class="home-movie-selection product-collateral toggle-content tabs home-event tabs-format-cgv">
@@ -90,17 +90,17 @@
                 <h2>movie selection</h2>
             </div>
             <ul class="nav nav-tabs toggle-tabs">
-                    <li class="active">
-                        <a href="#movie-tab-1" data-toggle="tab">Phim Đang Chiếu</a>
-                    </li>
-                    <li class="last">
-                        <a href="#movie-tab-2" data-toggle="tab">Phim Sắp Chiếu</a>
-                    </li>
-                </ul>
-            <dl id="collateral-tabs" class="collateral-tabs" style="height: 401px; overflow: hidden">
+                <li class="active">
+                    <a href="#movie-tab-1" data-toggle="tab">Phim Đang Chiếu</a>
+                </li>
+                <li class="last">
+                    <a href="#movie-tab-2" data-toggle="tab">Phim Sắp Chiếu</a>
+                </li>
+            </ul>
+            <dl id="collateral-tabs" class="collateral-tabs tab-movie">
                 <div class="tab-content tabcontent" id="pdc">
                     <div id="movie-tab-1" class="tab-pane fade in active slideshow-containe-movier feature_slide_show_480_767">
-                        <ul class="feature_slide_show content-slider">
+                        <ul class="content-slider">
                             {% for item in data.movie %}           
                             <li class="poster-film film-lists item">
                                 <span class="nmovie-rating nmovie-rating-c18">C18</span>
@@ -109,7 +109,7 @@
                                 <div class="feature_film_content">
                                     <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
                                     <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
-                                    <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
+                                    <button type="button" title="Mua vé" class="button btn-booking" ><span><span>Mua vé</span></span>
                                     </button>
                                 </div>
                                 <div class="play-button">
@@ -124,7 +124,7 @@
                         </ul>
                     </div>
                     <div id="movie-tab-2" class="tab-pane fade slideshow-containe-movier feature_slide_show_480_767">
-                        <ul class="feature_slide_show content-slider">
+                        <ul class="content-slider">
                             {% for item in data.movie_soon %}           
                                 <li class="poster-film film-lists item">
                                     <span class="nmovie-rating nmovie-rating-c18">C18</span>
@@ -133,7 +133,7 @@
                                     <div class="feature_film_content">
                                         <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
                                         <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
-                                        <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
+                                        <button type="button" title="Mua vé" class="button btn-booking"><span><span>Mua vé</span></span>
                                         </button>
                                     </div>
                                     <div class="play-button">
@@ -154,14 +154,14 @@
                 <h2>event</h2>
             </div>
             <ul class="nav nav-tabs toggle-tabs">
-                    <li class="active">
-                        <a href="#event-tab" data-toggle="tab">Tin Mới & Ưu Đãi</a>
-                    </li>
-                    <li class="last">
-                        <a href="#tv-tab" data-toggle="tab">Thành Viên CGV</a>
-                    </li>
-                </ul>
-            <dl id="collateral-tabs" class="collateral-tabs" style="height: 201px; overflow: hidden">
+                <li class="active">
+                    <a href="#event-tab" data-toggle="tab">Tin Mới & Ưu Đãi</a>
+                </li>
+                <li class="last">
+                    <a href="#tv-tab" data-toggle="tab">Thành Viên CGV</a>
+                </li>
+            </ul>
+            <dl id="collateral-tabs" class="collateral-tabs tab-event">
                 <div class="tab-content">
                     <div id="event-tab" class="tab-pane fade in active">
                         <ul class="content-slider">
