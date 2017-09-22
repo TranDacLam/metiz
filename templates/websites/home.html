@@ -27,6 +27,7 @@
                 <div class="widget widget-static-block">
                     <div class="sect-person">
                         <ul>
+                            
                             <li><a class="theater" href="{% url 'home' %}">cgv theater</a></li>
                             <li><a class="now-sh" href="{% url 'showing' %}">now showing</a></li>
                             <li><a class="special" href="{% url 'special_gold_class' %}">cgv special</a></li>
@@ -90,17 +91,17 @@
                 <h2>movie selection</h2>
             </div>
             <ul class="nav nav-tabs toggle-tabs">
-                <li class="active">
-                    <a href="#movie-tab-1" data-toggle="tab">Phim Đang Chiếu</a>
-                </li>
-                <li class="last">
-                    <a href="#movie-tab-2" data-toggle="tab">Phim Sắp Chiếu</a>
-                </li>
-            </ul>
-            <dl id="collateral-tabs" class="collateral-tabs tab-movie">
+                    <li class="active">
+                        <a href="#movie-tab-1" data-toggle="tab">Phim Đang Chiếu</a>
+                    </li>
+                    <li class="last">
+                        <a href="#movie-tab-2" data-toggle="tab">Phim Sắp Chiếu</a>
+                    </li>
+                </ul>
+            <dl id="collateral-tabs-movie" class="collateral-tabs tab-movie">
                 <div class="tab-content tabcontent" id="pdc">
                     <div id="movie-tab-1" class="tab-pane fade in active slideshow-containe-movier feature_slide_show_480_767">
-                        <ul class="content-slider">
+                        <ul class=" content-slider">
                             {% for item in data.movie %}           
                             <li class="poster-film film-lists item">
                                 <span class="nmovie-rating nmovie-rating-c18">C18</span>
@@ -154,13 +155,13 @@
                 <h2>event</h2>
             </div>
             <ul class="nav nav-tabs toggle-tabs">
-                <li class="active">
-                    <a href="#event-tab" data-toggle="tab">Tin Mới & Ưu Đãi</a>
-                </li>
-                <li class="last">
-                    <a href="#tv-tab" data-toggle="tab">Thành Viên CGV</a>
-                </li>
-            </ul>
+                    <li class="active">
+                        <a href="#event-tab" data-toggle="tab">Tin Mới & Ưu Đãi</a>
+                    </li>
+                    <li class="last">
+                        <a href="#tv-tab" data-toggle="tab">Thành Viên CGV</a>
+                    </li>
+                </ul>
             <dl id="collateral-tabs" class="collateral-tabs tab-event">
                 <div class="tab-content">
                     <div id="event-tab" class="tab-pane fade in active">
