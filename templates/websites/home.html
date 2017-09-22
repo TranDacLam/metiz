@@ -5,28 +5,15 @@
 {% block title %}Helio{% endblock title %}
 
 {% block extrascript %}
-<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-1.11.3.min.js" ></script>
-<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" ></script>
 
-<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js"></script> 
-<script src="{{ STATIC_URL }}assets/websites/js/slideshow/banner_slide.js"></script> 
-<script src="{{ STATIC_URL }}assets/websites/js/slideshow/slide_home.js"></script>
-<script src="{{ STATIC_URL }}assets/js/lightslider.js"></script> 
-
+<script src="{{ STATIC_URL }}assets/js/carousel/banner_slide.js"></script> 
 
 {% endblock %}
 
 {% block extrastylesheet %}
-
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/home.css" media="all" />
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" /> 
-<link rel="stylesheet" href="{{ STATIC_URL }}assets/websites/css/home_banner.css" media="all" />
-<link rel="stylesheet"  href="{{ STATIC_URL }}assets/css/lightslider.css"/>
-<link rel="stylesheet"  href="{{ STATIC_URL }}assets/websites/css/slide_home.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}assets/css/carousel/home_banner.css" media="all" />
 <link rel="stylesheet" href="{{ STATIC_URL }}assets/websites/css/madisonisland.css" media="all" />
-
 {% endblock %}
 
 {% block container_class %}col1-layout {% endblock %}
@@ -59,9 +46,6 @@
             <!-- Arrow Navigator -->
             <div id="jssor_1" >
             <!-- Loading Screen -->
-            <div data-u="loading" class="jssorl-009-spin" >
-                <img src="img/spin.svg" />
-            </div>
             <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
             {% for item in data.banner  %}  
                 <div>
