@@ -43,6 +43,9 @@ ul.dropdown-menu>li>a:hover{
 	z-index: 4;
     position: relative;
 }
+.logo-medium{
+		display:none;
+	}
 @media only screen and (min-width: 771px){
 	#header-search{
 		display: none;
@@ -53,10 +56,10 @@ ul.dropdown-menu>li>a:hover{
 	.header-search-left>p>a{
 		margin-top:0px;
 	}
-	.logo img{
+	.logo-large img{
 		height: 126px;
 	}
-	.logo{
+	.logo-large{
 		margin-top:13px;
 	}
 	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
@@ -87,6 +90,7 @@ ul.dropdown-menu>li>a:hover{
 	.logo-small{
 		display:none;
 	}
+	
 }
 @media only screen and (min-width: 769px) and (max-width: 770px){
 	.nav.navbar-nav{
@@ -103,12 +107,27 @@ ul.dropdown-menu>li>a:hover{
 	.logo img{
 		height: 126px;
 	}
-	
+	.logo-large{
+		display:none;
+	}
+	.logo-small{
+		display:none;
+	}
 	
 }
 
 @media only screen and (max-width: 768px) {
-	
+	.logo-small {
+		display:none;
+	}
+	.logo-large {
+		display:none;
+	}
+	.logo-medium{
+		display: block;
+		left: 38%;
+    	position: relative;
+	}
 	.logo img{
 		height: 126px;
 	}
@@ -173,7 +192,12 @@ ul.dropdown-menu>li>a:hover{
 
 }
 @media only screen and (max-width: 480px){
-	
+	.logo-small{
+		display:block;
+	}
+	.logo-medium{
+		display: none;
+	}
 	#select-language li a span{
 		padding-top: 8px;
 	}
@@ -187,7 +211,7 @@ ul.dropdown-menu>li>a:hover{
 		height: 77px;
 	}
 	.logo-small {
-	    left: 13%;
+	    left: 37%;
 	    margin-top:-12px;
 	}
 	.skip-links {
