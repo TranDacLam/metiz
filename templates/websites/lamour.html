@@ -29,16 +29,7 @@
 		</ul>
 	</div>
 	<div class="main">
-		<div class="col-main">
-			<div id="specialtheater-list" class="specialtheater-list">
-				<ul class="special-items">
-					{% for item in data.technology %}
-						<li class="item-icon {{item.class}} {{item.flag}}">
-							<a title="Sweetbox" href="/special/{{item.name}}">{{item.name}}</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
+		{% include 'technology_menu.html' %}
 			<div class="specialtheater-content specialtheater-lamour">
 				<div class="page-title special-title">
 					<h1>L'amour</h1>

@@ -3,21 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-
-def custom_404(request):
-	return render(request, 'websites/errors/404.html', {}, status=404)
-
-def custom_500(request):
-	return render(request, 'websites/errors/500.html', {}, status=500)
-
-def home(request):
-	data={'banner': ["assets/websites/images/banner-cgv/a.jpg","assets/websites/images/banner-cgv/b.jpg","assets/websites/images/banner-cgv/c.jpg","assets/websites/images/banner-cgv/d.jpg"],
-		'movie': ["assets/websites/images/movie-selection/movie1.png","assets/websites/images/movie-selection/movie2.jpg","assets/websites/images/movie-selection/movie3.jpg","assets/websites/images/movie-selection/movie4.jpg","assets/websites/images/movie-selection/movie5.jpg"],
-		'event':["assets/websites/images/events/event1.jpg","assets/websites/images/events/event2.jpg","assets/websites/images/events/event3.jpg","assets/websites/images/events/event4.jpg","assets/websites/images/events/event6.png","assets/websites/images/events/event7.jpg"],
-		'tv_cgv':["assets/websites/images/thanhvien-cgv/tv1.jpg","assets/websites/images/thanhvien-cgv/tv2.jpg","assets/websites/images/thanhvien-cgv/tv3.jpg","assets/websites/images/thanhvien-cgv/tv4.jpg","assets/websites/images/thanhvien-cgv/tv5.jpg"],
-		'movie_soon':["assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png"]
-	}
-	data_modal= [{
+data_schedule= [{
 	'date':'2017-10-1',
 	'film':[
 		{'name': 'Yeu Di Dung So',
@@ -79,40 +65,33 @@ def home(request):
 		]}
 	]}
 	]
+def custom_404(request):
+	return render(request, 'websites/errors/404.html', {}, status=404)
+
+def custom_500(request):
+	return render(request, 'websites/errors/500.html', {}, status=500)
+
+def home(request):
+	data={'banner': ["assets/websites/images/banner-cgv/a.jpg","assets/websites/images/banner-cgv/b.jpg","assets/websites/images/banner-cgv/c.jpg","assets/websites/images/banner-cgv/d.jpg"],
+		'movie': ["assets/websites/images/movie-selection/movie1.png","assets/websites/images/movie-selection/movie2.jpg","assets/websites/images/movie-selection/movie3.jpg","assets/websites/images/movie-selection/movie4.jpg","assets/websites/images/movie-selection/movie5.jpg"],
+		'event':["assets/websites/images/events/event1.jpg","assets/websites/images/events/event2.jpg","assets/websites/images/events/event3.jpg","assets/websites/images/events/event4.jpg","assets/websites/images/events/event6.png","assets/websites/images/events/event7.jpg"],
+		'tv_cgv':["assets/websites/images/thanhvien-cgv/tv1.jpg","assets/websites/images/thanhvien-cgv/tv2.jpg","assets/websites/images/thanhvien-cgv/tv3.jpg","assets/websites/images/thanhvien-cgv/tv4.jpg","assets/websites/images/thanhvien-cgv/tv5.jpg"],
+		'movie_soon':["assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png"]
+	}
+	data_modal= data_schedule
 	return render(request, 'websites/home.html', {'data': data, 'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def comingsoon(request):
-	data_modal= {'date': [
-	{'day': 19, 'month': '09', 'DAY': 'Mon', 'flag': 'current'},
-	{'day': 20, 'month': '09', 'DAY': 'Tue'},
-	{'day': 21, 'month': '09', 'DAY': 'Wed'},
-	{'day': 22, 'month': '09', 'DAY': 'Thu'},
-	{'day': 23, 'month': '09', 'DAY': 'Fri'},
-	{'day': 24, 'month': '09', 'DAY': 'Sat'},
-	{'day': 25, 'month': '09', 'DAY': 'Sun'}],
-	'film':[
-	{'name': 'Yeu Di Dung So', 'schedule': [
-	{'from': '8:35', 'to': '10:35', 'room': 119,'name_room': 'Scm01'},
-	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-	{'from': '21:35', 'to': '0:35', 'room': 119,'name_room': 'Scm01'},
-	] },
-	{'name': 'The gioi nay la cua bo may', 'schedule': [
-	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-	] },
-	{'name': 'Chu he IT', 'schedule': [
-	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-	{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-	] },
-	]}
+	data_modal= data_schedule
 	data=[{'img':"/assets/websites/images/movie-selection/movie1.png",'name':'Chí Phèo Ngoại Truyện','category':'Hành Động','time':'90','date':'08/09/2017'}, 
 	{'img':"/assets/websites/images/movie-selection/movie1.png",'name':' Mồi Cá Mập','category':'Hoạt Hình','time':'90','date':'08/09/2017'},
 	 {'img': "/assets/websites/images/movie-selection/movie2.jpg",'name':'Breathe','category':'Hành Động, Hoạt Hình','time':'90','date':'08/09/2017'},
 	 {'img': "/assets/websites/images/movie-selection/movie3.jpg",'name':'Kingsman : Tổ Chức Hoàng Kim','category':'Hoạt Hình','time':'90','date':'08/09/2017'},
 	 {'img': "/assets/websites/images/movie-selection/movie4.jpg",'name':'Chí Phèo Ngoại Truyện','category':'Hành Động','time':'90','date':'08/09/2017'}]	
-	return render(request, 'websites/coming_soon.html', {'data':data ,'data_modal': data_modal, 'n' : range(30)})
+	return render(request, 'websites/coming_soon.html', {'data':data , 'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def cinox(request):
+	data_modal= data_schedule
 	data_cinema_area = [{'id':'cgv_city_1', 'name':'Hồ Chí Minh'},{'id':'cgv_city_3', 'name':'Hà Nội'},
 	{'id':'cgv_city_5', 'name':'Đà Nẵng'},{'id':'cgv_city_7', 'name':'Cần Thơ'},{'id':'cgv_city_9', 'name':'Đồng Nai'},
 	{'id':'cgv_city_11', 'name':'Hải Phòng'},{'id':'cgv_city_13', 'name':'Quảng Ninh'},{'id':'cgv_city_15', 'name':'Bà Rịa-Vũng Tàu'},
@@ -122,9 +101,10 @@ def cinox(request):
 	{'id':'cgv_site_008','class':'cgv_city_1','name':'CGV Cresent Mall'},{'id':'cgv_site_021','class':'cgv_city_1','name':'CGV Thảo Điền Pearl'},{'id':'cgv_site_023','class':'cgv_city_1','name':'CGV Vincom Thủ Đức'},
 	{'id':'cgv_site_024','class':'cgv_city_1','name':'CGV Vivo City'},{'id':'cgv_site_021','class':'cgv_city_1','name':'CGV Thảo Điền Pearl'},{'id':'cgv_site_030','class':'cgv_city_1','name':'CGV Pearl Plaza'},
 	{'id':'cgv_site_040','class':'cgv_city_1','name':'CGV Golden Plaza'},{'id':'cgv_site_001','class':'cgv_city_3','name':'CGV Vincom Center Bà Triệu'},{'id':'cgv_site_009','class':'cgv_city_3','name':'CGV Mipec Tower'}]
-	return render(request, 'websites/cinox.html', {'data_cinema_area':data_cinema_area,'data_cinema_list':data_cinema_list})
+	return render(request, 'websites/cinox.html', {'data_cinema_area':data_cinema_area,'data_cinema_list':data_cinema_list ,'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def cinox_detail(request):
+	data_modal= data_schedule
 	data_cinema_area = [{'id':'cgv_city_1', 'name':'Hồ Chí Minh'},{'id':'cgv_city_3', 'name':'Hà Nội'},
 	{'id':'cgv_city_5', 'name':'Đà Nẵng'},{'id':'cgv_city_7', 'name':'Cần Thơ'},{'id':'cgv_city_9', 'name':'Đồng Nai'},
 	{'id':'cgv_city_11', 'name':'Hải Phòng'},{'id':'cgv_city_13', 'name':'Quảng Ninh'},{'id':'cgv_city_15', 'name':'Bà Rịa-Vũng Tàu'},
@@ -134,20 +114,22 @@ def cinox_detail(request):
 	{'id':'cgv_site_008','class':'cgv_city_1','name':'CGV Cresent Mall'},{'id':'cgv_site_021','class':'cgv_city_1','name':'CGV Thảo Điền Pearl'},{'id':'cgv_site_023','class':'cgv_city_1','name':'CGV Vincom Thủ Đức'},
 	{'id':'cgv_site_024','class':'cgv_city_1','name':'CGV Vivo City'},{'id':'cgv_site_021','class':'cgv_city_1','name':'CGV Thảo Điền Pearl'},{'id':'cgv_site_030','class':'cgv_city_1','name':'CGV Pearl Plaza'},
 	{'id':'cgv_site_040','class':'cgv_city_1','name':'CGV Golden Plaza'},{'id':'cgv_site_001','class':'cgv_city_3','name':'CGV Vincom Center Bà Triệu'},{'id':'cgv_site_009','class':'cgv_city_3','name':'CGV Mipec Tower'}]
-	return render(request, 'websites/cinox_detail.html',{'data_cinema_area':data_cinema_area, 'data_cinema_list':data_cinema_list})
+	return render(request, 'websites/cinox_detail.html',{'data_cinema_area':data_cinema_area, 'data_cinema_list':data_cinema_list,  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def gift_card(request):
+	data_modal= data_schedule
 	data=[{'img':'/assets/websites/images/gift_card_-_cinox_1.png','title':'Thẻ Quà Tặng - 300.000đ','price':'300.000,00 ₫','description':'Có giá trị như tiền mặt'},
 	{'img':'/assets/websites/images/gift_card_-_cinox_1.png','title':'Thẻ Quà Tặng - 500.000đ','price':'500.000,00 ₫','description':'Có giá trị như tiền mặt'}]
 
-	return render(request, 'websites/gift_card.html', {'data':data})
+	return render(request, 'websites/gift_card.html', {'data':data ,  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 
 def membership(request):
-	
-	return render(request, 'websites/membership.html', {})
+	data_modal= data_schedule
+	return render(request, 'websites/membership.html', {'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def account_create(request):
+	data_modal= data_schedule
 	data_country = [{'value':'','name':''},{'value':'AF','name':'Afghanistan'},
 	{'value':'EG','name':'Ai Cập'},{'value':'IE','name':'Ai-len'},
 	{'value':'AL','name':'Albani'},{'value':'DZ','name':'Algeria'}]
@@ -173,22 +155,24 @@ def account_create(request):
 	data_prefergenre = [{'value':'06','name':'ACTION'},{'value':'07','name':'ADVENTURE'},{'value':'08','name':'ANIMATION'},
 	{'value':'09','name':'COMEDY'},{'value':'14','name':'CRIME'}]
 
-	return render(request, 'websites/account_create.html', {'data_country':data_country, 'data_city':data_city,'data_day':data_day,'data_month':data_month,'data_year':data_year,'data_cgv':data_cgv, 'data_prefergenre':data_prefergenre})
+	return render(request, 'websites/account_create.html', {'data_country':data_country, 'data_city':data_city,'data_day':data_day,'data_month':data_month,'data_year':data_year,'data_cgv':data_cgv, 'data_prefergenre':data_prefergenre,  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def account_login(request):
-	
-	return render(request, 'websites/account_login.html', {})
+	data_modal= data_schedule
+	return render(request, 'websites/account_login.html', {'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 
 def account_findmember(request):
-	return render(request, 'websites/account_findmember.html', {})
+	data_modal= data_schedule
+	return render(request, 'websites/account_findmember.html', { 'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def account_forgot_password(request):
-	
-	return render(request, 'websites/account_forgot_password.html', {})
+	data_modal= data_schedule
+	return render(request, 'websites/account_forgot_password.html', {'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 
 def showing(request):
+	data_modal= data_schedule
 	data=[
 	{'img':"/assets/websites/images/american_made_240x355.png",'tc':"c18", 'rating':1,'name': 'Lách Luật Kiểu Mỹ',
 	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
@@ -206,12 +190,13 @@ def showing(request):
 	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
 	'time': '180 phút', 'date': '20/8/2017',}]
 
-	return render(request, 'websites/showing.html', {'data':data})
+	return render(request, 'websites/showing.html', {'data':data,  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 
 def movie_voucher(request):	
+	data_modal= data_schedule
 	data=[{'product_name':'2D_Voucher','price':'100.000','img':"/assets/websites/images/ticket_voucher_2_.png"}, {'product_name':'3D_Voucher','price':'200.000','img':"/assets/websites/images/ticket_voucher_2__1.png"	} ,{'product_name':'4D_Voucher','price':'300.000','img': "/assets/websites/images/special_cinema-02-cropped.jpg"} ]	
-	return render(request, 'websites/movie_voucher.html', {'data':data})
+	return render(request, 'websites/movie_voucher.html', {'data':data,  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def arthouse(request):
 	data=[
@@ -230,6 +215,7 @@ def arthouse(request):
 	return render(request, 'websites/arthouse.html', {'data': data})
 
 def about_cinema(request):
+	data_modal= data_schedule
 	data = [{'img':'/assets/websites/images/about-1.jpg'},{'img':'/assets/websites/images/about-2.PNG'},{'img':'/assets/websites/images/about-3.PNG'},
 	{'img':'/assets/websites/images/about-4.PNG'},{'img':'/assets/websites/images/about-5.PNG'},{'img':'/assets/websites/images/about-6.PNG'},
 	{'img':'/assets/websites/images/about-7.JPG'},{'img':'/assets/websites/images/about-8.JPG'},{'img':'/assets/websites/images/about-9.PNG'}]
@@ -237,9 +223,10 @@ def about_cinema(request):
 	data_content = [{'content': 'CJ CGV trực thuộc CJ Group, một trong những tập đoàn kinh tế đa ngành lớn nhất của Hàn Quốc có mặt ở 21 quốc gia trên thế giới. CJ CGV là một trong top 5 cụm rạp chiếu phim lớn nhất toàn cầu và là nhà phát hành, cụm rạp chiếu phim lớn nhất Việt Nam'},
 	{'content': 'CJ CGV trực thuộc CJ Group, một trong những tập đoàn kinh tế đa ngành lớn nhất của Hàn Quốc có mặt ở 21 quốc gia trên thế giới. CJ CGV là một trong top 5 cụm rạp chiếu phim lớn nhất toàn cầu và là nhà phát hành, cụm rạp chiếu phim lớn nhất Việt Nam'},
 	{'content': 'CJ CGV đã tạo nên khái niệm độc đáo về việc chuyển đổi rạp chiếu phim truyền thống thành tổ hợp văn hóa “Cultureplex”, nơi khán giả không chỉ đến thưởng thức điện ảnh đa dạng thông qua các công nghệ tiên tiến như IMAX, STARIUM, 4DX, Dolby Atmos, cũng như thưởng thức ẩm thực hoàn toàn mới và khác biệt trong khi trải nghiệm dịch vụ chất lượng nhất tại CGV'},]
-	return render(request, 'websites/about_cinema.html',{'data': data,'data_content':data_content})
+	return render(request, 'websites/about_cinema.html',{'data': data,'data_content':data_content,  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def gift_card_detail(request):
+	data_modal= data_schedule
 	terms_conditions = [{'description':'Thẻ này dùng để đổi vé xem phim hoặc thức ăn, đồ uống tại tất cả các rạp CGV, áp dụng tại quầy & trực tuyến.'},
 	{'description':'Thẻ có thẻ được nạp thêm tiền và gia hạn tại quầy hoặc trực tuyến bất cứ lúc nào với số tiền tối thiểu 300,000đ.'},
 	{'description':'Riêng với thẻ quà tặng được đăng ký trực tuyến, ngày hết hạn của tất cả thẻ trước đó sẽ được gia hạn theo ngày hết hạn của thẻ mới nhất.'},
@@ -255,7 +242,7 @@ def gift_card_detail(request):
 	{'content':'Thẻ quà tặng đang được bán tại quầy vé các rạp CGV Cinemas trên toàn quốc, hoặc bạn có thể mua thẻ quà tặng điện tử tại đây. Thẻ quà tặng có thể được tích hợp vào tài khoản thành viên, và thanh toán tiện lợi bằng thẻ thành viên khi không mang theo thẻ quà tặng.'},
 	{'content':'Hiện có loại thẻ quà tặng cho công ty / tổ chức khi bạn mua vé với số lượng lớn. Đặc biệt bạn có thể đưa logo và thông điệp của công ty / tổ chức vào thẻ. Gọi bộ phận Bán Vé Nhóm (Group Sales) để biết thêm thông tin: +84-8-3822-0333 '},
 	{'content':'Các câu hỏi thường gặp, vui lòng xem ở đây.'}]
-	return render(request, 'websites/gift_card_detail.html',{'data_description':data_description,'data_content':data_content,'terms_conditions':terms_conditions} )
+	return render(request, 'websites/gift_card_detail.html',{'data_description':data_description,'data_content':data_content,'terms_conditions':terms_conditions,  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)} )
 
 def gift_card_online_detail(request):
 	return render(request, 'websites/gift_card_online_detail.html', {})
@@ -286,10 +273,11 @@ def careers_units_detail(request):
 	return render(request, 'websites/careers_units_detail.html', {'data_careers_units_detail':data_careers_units_detail})
 
 def contacts(request):
-	return render(request, 'websites/contacts.html', {})
+	data_modal= data_schedule
+	return render(request, 'websites/contacts.html', {  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def terms_conditions(request):
-
+	data_modal= data_schedule
 	data = [{'title':'1. Trách nhiệm của người sử dụng:','content':'Khi truy cập vào trang web này, bạn đồng ý chấp nhận mọi rủi ro. CGV và các bên đối tác khác không chịu trách nhiệm về bất kỳ tổn thất nào do những hậu quả trực tiếp, tình cờ hay gián tiếp; những thất thoát, chi phí (bao gồm chi phí pháp lý, chi phí tư vấn hoặc các khoản chi tiêu khác) có thể phát sinh trực tiếp hoặc gián tiếp do việc truy cập trang web hoặc khi tải dữ liệu về máy; những tổn hại gặp phải do virus, hành động phá hoại trực tiếp hay gián tiếp của hệ thống máy tính khác, đường dây điện thoại, phần cứng, phần mềm, lỗi chương trình, hoặc bất kì các lỗi nào khác; đường truyền dẫn của máy tính hoặc nối kết mạng bị chậm…'},
 	{'title':'2. Về nội dung trên trang web:','content':'Tất cả những thông tin ở đây được cung cấp cho bạn một cách trung thực như bản thân sự việc. CGV và các bên liên quan không bảo đảm, hay có bất kỳ tuyên bố nào liên quan đến tính chính xác, tin cậy của việc sử dụng hay kết quả của việc sử dụng nội dung trên trang web này. Nột dung trên website được cung cấp vì lợi ích của cộng đồng và có tính phi thương mại. Các cá nhân và tổ chức không được phếp sử dụng nội dung trên website này với mục đích thương mại mà không có sự ưng thuận của CGV bằng văn bản. Mặc dù CGV luôn cố gắng cập nhật thường xuyên các nội dung tại trang web, nhưng chúng tôi không bảo đảm rằng các thông tin đó là mới nhất, chính xác hay đầy đủ. Tất cả các nội dung website có thể được thay đổi bất kỳ lúc nào.'},
 	{'title':'3. Về bản quyền:','content':'CGV là chủ bản quyền của trang web này. Việc chỉnh sửa trang, nội dung, và sắp xếp thuộc về thẩm quyền của CGV. Sự chỉnh sửa, thay đổi, phân phối hoặc tái sử dụng những nội dung trong trang này vì bất kì mục đích nào khác được xem như vi phạm quyền lợi hợp pháp của CGV.'},
@@ -300,7 +288,7 @@ def terms_conditions(request):
 	{'title':'8. Đưa thông tin lên trang web:','content':'Bạn không được đưa lên, hoặc chuyển tải lên trang web tất cả những hình ảnh, từ ngữ khiêu dâm, thô tục, xúc phạm, phỉ báng, bôi nhọ, đe dọa, những thông tin không hợp pháp hoặc những thông tin có thể đưa đến việc vi phạm pháp luật, trách nhiệm pháp lý. CGV và tất cả các bên có liên quan đến việc xây dựng và quản lý trang web không chịu trách nhiệm hoặc có nghĩa vụ pháp lý đối với những phát sinh từ nội dung do bạn tải lên trang web.'},
 	{'title':'9. Luật áp dụng:','content':'Mọi hoạt động phát sinh từ trang web có thể sẽ được phân tích và đánh giá theo luật pháp Việt Nam và toà án Tp. Hồ Chí Minh. Và bạn phải đồng ý tuân theo các điều khoản riêng của các toà án này.'}]
 	
-	return render(request, 'websites/terms_conditions.html', {'data':data})
+	return render(request, 'websites/terms_conditions.html', {'data':data,  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def terms_use(request):
 	data_description = [{'description':'- Chào mừng quý khách đến với CGV'},
@@ -541,14 +529,16 @@ def screenx(request):
 	}
 	return render( request, 'websites/screenx.html', {'data': data})
 def film_detail(request):
+	data_modal= data_schedule
 	data= {'name': 'Barry Seal: Lách Luật Kiểu Mỹ','director': ' Doug Liman', 'actor':'Tom Cruise, Domhnall Gleeson, Sarah Wright, E. Roger Mitchell, Jesse Plemons, Lola Kirke, Alejandro Edda, Benito Martinez, Caleb Landry Jones, Jayma Mays',
 	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'language': 'Tiếng Anh với phụ đề tiếng Việt và phụ đề tiếng Hàn',
 	'time': '180 phút', 'rated': 'C18 - Phim cấm khán giả dưới 18 tuổi', 'date': '20/8/2017',
 	'img': '/assets/websites/images/american_made_406x600.png', 
 	'content': 'Dựa trên một câu chuyện có thật, BARRY SEAL: LÁCH LUẬT KIỂU MỸ là cuộc phiêu lưu xuyên quốc gia của Barry Seal, tên lừa đảo và cũng là một phi công bất ngờ được chiêu mộ vào tổ chức CIA để thực hiện một trong những điệp vụ ngầm lớn nhất trong lịch sử Mỹ.',
 	'trailer': '//www.youtube.com/embed/PALCTTuWkSc?rel=0&amp;showinfo=0'}
-	return render(request, 'websites/film_detail.html', {'data': data})
+	return render(request, 'websites/film_detail.html', {'data': data,  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 def news(request):
+	data_modal= data_schedule
 	data= [
 	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
 	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
@@ -556,73 +546,13 @@ def news(request):
 	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
 	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
 	]
-	data_modal= [{
-	'date':'2017-10-1',
-	'film':[
-		{'name': 'Yeu Di Dung So',
-		'schedule': [
-		{'from': '8:35', 'to': '10:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '21:35', 'to': '0:35', 'room': 119,'name_room': 'Scm01'},
-		] },
-		{'name': 'The gioi nay la cua bo may',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		] },
-		{'name': 'Chu he IT',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		]}
-	]},
-	{
-	'date':'2017-10-2',
-	'film':[
-		{'name': 'Yeu Di Dung So',
-		'schedule': [
-		{'from': '8:35', 'to': '10:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		
-		] },
-		{'name': 'The gioi nay la cua bo may',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		] },
-		{'name': 'Chu he IT',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		]}
-	]},
-	{
-	'date':'2017-10-3',
-	'film':[
-		{'name': 'Yeu Di Dung So',
-		'schedule': [
-		{'from': '8:35', 'to': '10:35', 'room': 119,'name_room': 'Scm01'},
-		
-		] },
-		{'name': 'The gioi nay la cua bo may',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '21:35', 'to': '0:35', 'room': 119,'name_room': 'Scm01'},
-		] },
-		{'name': 'Chu he IT',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		]}
-	]}
-	]
+	
 	return render(request, 'websites/news.html', {'data': data, 'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
 
 def new_detail(request):
+	data_modal= data_schedule
 	data={'img': '/assets/websites/images/news/U22---350-x-495.jpg',
 	'title': 'Em Chưa 23? Giá Chỉ 45k!',
 	'content': '<p><strong>Áp dụng đồng giá vé 2D chỉ 45.000đ cho thành viên CGV từ 22 tuổi trở xuống. Nhanh chân đến các rạp CGV để nhận tấm thẻ U22 “quyền lực” và tận hưởng ngay giá vé hấp dẫn chưa từng có!</strong></p><p>&nbsp;</p><p><strong>Điều kiện và điều khoản: </strong></p><p>&nbsp;<p>- Áp dụng cho tất cả các rạp CGV trên toàn quốc &nbsp;</p><p>- Giá vé 45.000đ áp dụng cho vé 2D, tất cả các suất chiếu từ thứ 2 đến thứ 6</p><p>- Áp dụng cho thành viên từ 22 tuổi trở xuống và sở hữu thẻ U22 của CGV. Vui lòng xuất trình thẻ khi mua vé</p><p>- Để được cấp thẻ U22, khách hàng cần xuất trình CMND/thẻ HSSV cho nhân viên tại rạp &nbsp;</p><p>- Chỉ áp dụng cho hình thức mua vé trực tiếp tại quầy</p><p>- Không áp dụng cho hình thức mua vé nhóm (Group Sales), Suất Chiếu Sớm và Suất Chiếu Đặc Biệt</p><p>- Không áp dụng cho các phòng chiếu đặc biệt như: 4DX, IMAX, Starium, GOLD CLASS, L’amour, ScreenX</p><p>- Không áp dụng đồng thời với những chương trình khuyến mãi khác của CGV và đối tác&nbsp;</p>'}
 
-	return render(request, 'websites/new_detail.html', {'data': data})
+	return render(request, 'websites/new_detail.html', {'data': data,  'data_modal': data_modal, 'last' : range(15,31), 'future': range(2,15)})
