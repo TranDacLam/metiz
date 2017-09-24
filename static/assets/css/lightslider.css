@@ -156,8 +156,8 @@
     width: 32px;
     display: block;
     top: 50%;
-    height: 32px;
-    background-image: url('../websites/images/controls.png');
+    height: 31px;
+    background-image: url('../websites/images/control2.png');
     cursor: pointer;
     position: absolute;
     z-index: 99;
