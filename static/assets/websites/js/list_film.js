@@ -23,11 +23,8 @@ function equalizeHeights(selector) {
 			$(this).css('height', max + 'px');
 		});	
 	}
-
-// CGV Mới update function resize
-// set lai height sau khi resize
-	$(window).load(function() {
-		// Fix heights on page load
+$(window).on('load', function(event) {
+	// Fix heights on page load
 		equalizeHeights('.product-info');
 		$('li.category3').find('a').contents().unwrap();
 		// Fix heights on window resize
@@ -43,8 +40,20 @@ function equalizeHeights(selector) {
 			}, 120);
 			$('li.category3').find('a').contents().unwrap();
 		});
+});
+
+$(document).ready(function($) {
+	$('#about-arthouse_contents').css('display','none');
+	$('#about-arthouse').click(function(event) {
+		/* Act on the event */
+		$('#about-arthouse_contents').css('display','block');
+		$('#arthouse-home_contents').css('display','none');
 	});
+	$('#arthouse-home').click(function(event) {
+		/* Act on the event */
+		$('#about-arthouse_contents').css('display','none');
+		$('#arthouse-home_contents').css('display','block');
+	});
+});
 
 
-};
-					
