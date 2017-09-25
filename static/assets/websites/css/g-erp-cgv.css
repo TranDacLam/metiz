@@ -1635,11 +1635,11 @@
 	}
 	.product-view .tabs-format-cgv >.toggle-tabs> li.last{
 		background: url("../images/bg-cgv/bg-ribon-right-transparent.png") no-repeat scroll right top transparent;
-		padding-right: 20px;
+		padding-right: 23px;
 		background-color:none;
 	}
 	.product-view .tabs-format-cgv>.toggle-tabs> li  span{
-		background: url("../images/bg-cgv/bg-tebmenu-line.gif") no-repeat scroll right 16px #e71a0f;
+		background: url("../images/bg-cgv/bg-tebmenu-line.gif") no-repeat scroll right 13px #e71a0f;
 		border: medium none;
 		color: #fff;
 		display: inline-block;
@@ -1649,13 +1649,13 @@
 		background-image:none;
 		background-color:#e71a0f;
 	}
-	.tabs-format-cgv >.toggle-tabs> li.active > a::before{
+	.tabs-format-cgv >.toggle-tabs> li.active > span::before{
 		background: url("../images/bg-cgv/bg-icon-finger.png") no-repeat scroll 5px 50% #e71a0f;
 		content: "";
 		height: 40px;
 		padding-left: 40px;		
 	}
-	.tabs-format-cgv >.toggle-tabs> li.active > a{
+	.tabs-format-cgv >.toggle-tabs> li.active > span{
 		white-space: nowrap;
 		font-weight: bold;
 	}
@@ -1744,7 +1744,7 @@
 		padding-right: 20px;
 		background-color: none;
 	}
-	.tabs-format-cgv >.toggle-tabs> li.active > a::before{
+	.tabs-format-cgv >.toggle-tabs> li.active > span::before{
 		background: url("../images/bg-cgv/bg-icon-finger.png") no-repeat scroll 5px 50% #e71a0f;
 		content: "";
 		height: 40px;
@@ -1754,7 +1754,7 @@
 		background-image:none;
 		background-color:#e71a0f;
 	}
-	.tabs-format-cgv >.toggle-tabs> li.active > a{
+	.tabs-format-cgv >.toggle-tabs> li.active > span{
 		white-space: nowrap;
 		font-weight: bold;
 	}

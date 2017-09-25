@@ -2416,12 +2416,12 @@ li.film-lists:hover .play-button{
     margin: 0;
 }
 .home-event > .toggle-tabs > li:first-child {
-    background: url(../images/ribon_left_menu.gif) no-repeat scroll left 0 #e71a0f;
+    background: url("../images/bg-cgv/bg-ribon-left-transparent.png") no-repeat scroll left top transparent;
     padding-left: 19px;
 }
 .home-event > .toggle-tabs > li.last {
-    background: url(../images/ribon_right.gif) no-repeat scroll right 0 #e71a0f;
-    padding-right: 21px;
+    background: url("../images/bg-cgv/bg-ribon-right-transparent.png") no-repeat scroll right top transparent;
+    padding-right: 22px;
 }
 .home-event #collateral-tabs {
     margin-top: 15px;
@@ -2441,11 +2441,11 @@ li.film-lists:hover .play-button{
     padding-left: 40px;
 }
 .home-event > .toggle-tabs > li > span {
-    background: url(../images/bg_tebmenu-line.gif) no-repeat scroll left 15px #e71a0f;
+    background: url(../images/bg_tebmenu-line.gif) no-repeat scroll left 13px #e71a0f;
     bottom: 0;
 }
 .home-event > .toggle-tabs > li:first-child > span {
-    background:none;
+    background:#e71a0f;
 }
 .home-promotion-card {
     margin-top: 30px;

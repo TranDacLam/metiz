@@ -1,22 +1,23 @@
 .mfp-bg{
 	opacity: 1;
 }
-.col-main .nav-tabs>li.active>a, .product-view .nav-tabs>li.active>a:focus, .product-view .nav-tabs>li.active>a:hover{
+.col-main .nav-tabs>li.active>span{
+	color: white;
 	border: 0px;
-	background-color: red;
+	background-color: #e71a0f;
 }
-.col-main .nav-tabs>li>a {
+.col-main .nav-tabs>li>span {
 	border: 0px;
 	border-radius: 0px;
-	background-color: red;
+	background-color: #e71a0f;
 	color: white;
 	font-size: 12px;
-	margin-right: -3px;
+	margin-right: -4px;
 }
-.col-main .nav-tabs>li>a:hover {
+.col-main .nav-tabs>li>span:hover {
 	border: 0px;
 	border-radius: 0px;
-	background-color: red;
+	background-color: #e71a0f;
 	color: black;
 }
 .col-main .tab-content .tab-pane {
