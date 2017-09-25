@@ -3,12 +3,13 @@
 {% block title %}Helio{% endblock title %}
 
 {% block extrastylesheet %}
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/zoom/xzoom.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/zoom/xzoom.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film.css" media="all" />
 {% endblock %}
 {% block extrascript %}
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/setup.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/zoom/xzoom.min.js"></script>
+	<!--Documents: https://github.com/payalord/xZoom/blob/master/doc/manual.md-->
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/zoom/setup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/zoom/xzoom.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/film_detail.js"></script>
 {% endblock %}
 
@@ -113,7 +114,7 @@
 						<!-- data-href= {{ request.build_absolute_uri }} -->
 						<div class="fb-like fb_iframe_widget" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
 	                    </div>
-						<button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
+						<button type="button" title="Mua vé" class="button btn-booking" onclick=""><span><span>Mua vé</span></span>
 						</button>			
 					</div>
 				</div>
