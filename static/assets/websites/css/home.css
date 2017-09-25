@@ -79,3 +79,7 @@
 .content-slider li img{
 	width: 100%; 
 }
+
+.link-play{
+	display: none
+}
