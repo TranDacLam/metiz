@@ -7,9 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film.css" media="all" />
 {% endblock %}
 
-{% block extrascript %}
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/news.js"></script>
-{% endblock %}
+
 
 {% block body_class %}
 	catalog-category-view categorypath-now-showing category-now-showing
@@ -46,24 +44,25 @@
 					<ul class="cate-new-offer products-grid products-grid--max-4-col first last odd">
 						{% for item in data %}
 						<li class="item last">
-							<div class="product-poster" onclick="news(this);">
-								<div class="fun-new-offer">
-									<div class="content-new-offer">
-										<div class="colum-left-new-offer">
-											<div class="poster-small-new-offer">
-												<img alt="" src="{{STATIC_URL}}{{item.img}}">
-												<div class="colum-right-new-offer">
-													<div class="format-new-offer release-day-new-offer">
-														<h3>&nbsp;</h3>
-														<h4>{{item.time}}</h4>
+							<a href="{{item.href}}">
+								<div class="product-poster"">
+									<div class="fun-new-offer">
+										<div class="content-new-offer">
+											<div class="colum-left-new-offer">
+												<div class="poster-small-new-offer">
+													<img alt="" src="{{STATIC_URL}}{{item.img}}">
+													<div class="colum-right-new-offer">
+														<div class="format-new-offer release-day-new-offer">
+															<h3>&nbsp;</h3>
+															<h4>{{item.time}}</h4>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<a class="aw-blog-read-more" href="{{item.href}}">Read More</a>
-							</div>		
+							</a>		
 						</li>
 						{% endfor%}			
 					</ul>
