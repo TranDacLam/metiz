@@ -4,9 +4,13 @@
               type: 'inline',
               midClick: true,
         });
-    
+
+        $('.available:first').addClass('active');
+        startMonth();
+
         $('.open-popup-link').click(function(event) {
             loadSlideCalendar();
+
             // show  present movies
             var date= $('li.available.active').attr('data-play-date');
             $(".movieslide[data-play-date='" + date + "']").css('display', 'block');
@@ -14,6 +18,7 @@
             // slick slider go to today
             var number= $(".active").attr('data-slick-index');
             $("#play-date-slider").slick('slickGoTo',  number);
+
         });
 
         // funtion for choose day
@@ -26,7 +31,14 @@
             $(".movieslide[data-play-date='" + date + "']").css('display', 'block');
         });
     });
-    
+    function startMonth(){
+        // $(".badge:contains('1')").parent().addClass('start-month');
+        $('.days-popup li span').each(function() {
+            if ($(this).text() == 1) {
+                $(this).parent().addClass('start-month');
+            }
+        });
+    }
     // funcion load slider
     function loadSlideCalendar(){
         $("#play-date-slider").slick({

@@ -40,7 +40,7 @@
     
 }
 .popup-booking .toggle-tabs{
-	border-bottom: 2px solid #2b2b2b;
+    border-bottom: 2px solid #2b2b2b;
     border-top: 2px solid #2b2b2b;
     display: inline-block;
     margin-bottom: 30px;
@@ -48,8 +48,8 @@
     width: 100%;
 }
 .section-white .title{
-	font-size: 24px;
-	margin-top: 20px;
+    font-size: 24px;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
@@ -67,7 +67,7 @@
     padding: 40px 0px;
 }
 .days-popup{
-	float:none;
+    float:none;
 }
 .calendar-popup .days-popup li {
     margin: 0 10px;
@@ -75,7 +75,10 @@
     padding-top: 16px;
 }
 .month{
-	visibility: hidden;
+    visibility: hidden;
+}
+.start-month .month{
+    visibility: visible;
 }
 .dayofweek{
     margin-top: 12px;
@@ -98,12 +101,12 @@
     padding: 0px 0px 0 30px;
 }
 #play-date-slider{
-	
+    
 }
 .calendar-popup .days-popup {
     text-align: center;
     padding-left: 10px;
-	padding-top: 64px;
+    padding-top: 64px;
 }
 .lot-table {
     padding-left: 15px;
@@ -166,25 +169,25 @@
     color: #666;
 }
 .toggle-tabs li:hover .days-popup{
-	border: 2px solid #000000;
+    border: 2px solid #000000;
 }
 .current .days-popup{
-	border: 2px solid #000000;
+    border: 2px solid #000000;
 }
 .list-inline a {
     text-decoration: none;
     transition: color 600ms linear;
 }
 .list-inline li:hover a{
-	background-color: #000000;
-	color: #ffffff;
+    background-color: #000000;
+    color: #ffffff;
 }
 .list-inline li:hover .clock{
-	display: block;
-	border-bottom: 1px solid #000000 ;
+    display: block;
+    border-bottom: 1px solid #000000 ;
 }
 .list-inline li:hover .time{
-	display: none;
+    display: none;
 }
 .days-popup li.available .badge {
     color: #3e3e3e;

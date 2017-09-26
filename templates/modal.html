@@ -20,7 +20,7 @@
                         <div class="col-xs-11">
                             <div class="calendar-popup">
                                 <div class="list-time">
-                                    <ul class="days-popup " id="play-date-slider">
+                                    <ul class="days-popup" id="play-date-slider">
                                     {% for item in last%}
                                         <li>    
                                             <div class="month" >
@@ -30,20 +30,22 @@
                                             <span class="badge">{{item}}</span>
                                         </li>
                                     {% endfor %}
-                                    <li class="available active"  data-play-date="2017-10-1">
-                                            <div class="month" >
-                                                <strong>10</strong>
-                                            </div>
-                                            <div class="dayofweek">Fri</div>
-                                            <span class="badge">1</span>
-                                    </li>
+                                    {% for item in present%}
+                                        <li class="available"  data-play-date="2017-10-{{item}}">
+                                                <div class="month" >
+                                                    <strong>10</strong>
+                                                </div>
+                                                <div class="dayofweek">Fri</div>
+                                                <span class="badge">{{item}}</span>
+                                        </li>
+                                    {% endfor %}
                                     {% for item in future%}
-                                    <li class="available" data-play-date="2017-10-{{item}}">    
+                                    <li class="" data-play-date="2017-10-{{item}}">    
                                             <div class="month">
                                                 <strong>10</strong>
                                             </div>
                                             <div class="dayofweek">Fri</div>
-                                            <span class="badge">{{item}}</span>
+                                            <span class="badge" value='{{item}}'>{{item}}</span>
                                     </li>
                                     {% endfor %}
                                     </ul>
@@ -84,12 +86,13 @@
                                 </div>
                                 {% endfor %}
                             </div>
-                            {% endfor %}
-                        </div>
+                        {% endfor %}
+                         </div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
 </div>
+
 
