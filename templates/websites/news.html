@@ -30,7 +30,7 @@
  <div class="main">            
     <div class="col-main product-view">
 
-		<div class="product-collateral toggle-content tabs tabs-format-cgv">
+		<div class="product-collateral toggle-content tabs tabs-format-metiz">
 			<ul class="nav nav-tabs toggle-tabs">
 				<li class="active">
 					<span href="#new-tab-1" data-toggle="tab">Xem tất cả</span>
@@ -68,8 +68,31 @@
 					</ul>
 				</div>
 				<div id="new-tab-2" class="tab-pane fade ">
-					<h3>B2, Z2/Z2x Brass First Stages Affordable Performance</h3>
-					<p>We understood that not every diver could afford Titanium. </p>
+					<ul class="cate-new-offer products-grid products-grid--max-4-col first last odd">
+						{% for item in data %}
+						<li class="item last">
+							<a href="{{item.href}}">
+								<div class="product-poster"">
+									<div class="fun-new-offer">
+										<div class="content-new-offer">
+											<div class="colum-left-new-offer">
+												<div class="poster-small-new-offer">
+													<img alt="" src="{{STATIC_URL}}{{item.img}}">
+													<div class="colum-right-new-offer">
+														<div class="format-new-offer release-day-new-offer">
+															<h3>&nbsp;</h3>
+															<h4>{{item.time}}</h4>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>		
+						</li>
+						{% endfor%}			
+					</ul>
 				</div>
 			</div>
 		</div>

@@ -49,7 +49,7 @@
 				fx: 'scrollHorz',
 				log: false
 			});
-			showtimestabs('tabs-format-cgv');
+			showtimestabs('tabs-format-metiz');
 			showtimestabs('tabs-cgv-showtimes');
 			$j('.iframe').colorbox({iframe:true, width:"80%", height:"80%"});
 			$j('#loading-mask').hide();
