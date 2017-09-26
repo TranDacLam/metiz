@@ -108,3 +108,13 @@ admin.site.register(MovieType, MovieTypeAdmin)
 class MovieAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Movie, MovieAdmin)
+
+
+class NewOfferAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(NewOffer, NewOfferAdmin)
+
+
+class BannerAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Banner, BannerAdmin)
