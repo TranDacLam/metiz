@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'main',
     'core',
-    'star_ratings',
-    'django_comments',
 ]
 
 MIDDLEWARE = [
