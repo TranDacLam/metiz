@@ -1615,47 +1615,47 @@
 		border: medium none;
 		text-align: center;
 	}
-	.product-view .tabs-format-cgv >.toggle-tabs{
+	.product-view .tabs-format-metiz >.toggle-tabs{
 		margin-bottom:20px;
 	}
 	.movie-rated-web .std{
 		font-weight:bold;
 		text-transform:uppercase;
 	}
-	.product-view .tabs-format-cgv >.toggle-tabs> li{
+	.product-view .tabs-format-metiz >.toggle-tabs> li{
 		display:inline-block;
 		clear:left;
 		float:none;
 		background-color:#e71a0f;
 	}
-	.product-view .tabs-format-cgv >.toggle-tabs> li:first-child {
+	.product-view .tabs-format-metiz >.toggle-tabs> li:first-child {
 		background: url("../images/bg-cgv/bg-ribon-left-transparent.png") no-repeat scroll left top transparent;
 		padding-left: 19px;
 		background-color:none;
 	}
-	.product-view .tabs-format-cgv >.toggle-tabs> li.last{
+	.product-view .tabs-format-metiz >.toggle-tabs> li.last{
 		background: url("../images/bg-cgv/bg-ribon-right-transparent.png") no-repeat scroll right top transparent;
 		padding-right: 23px;
 		background-color:none;
 	}
-	.product-view .tabs-format-cgv>.toggle-tabs> li  span{
+	.product-view .tabs-format-metiz>.toggle-tabs> li  span{
 		background: url("../images/bg-cgv/bg-tebmenu-line.gif") no-repeat scroll right 13px #e71a0f;
 		border: medium none;
 		color: #fff;
 		display: inline-block;
 		padding:0px 12px;
 	}
-	.product-view .tabs-format-cgv>.toggle-tabs> li.last  span{
+	.product-view .tabs-format-metiz>.toggle-tabs> li.last  span{
 		background-image:none;
 		background-color:#e71a0f;
 	}
-	.tabs-format-cgv >.toggle-tabs> li.active > span::before{
+	.tabs-format-metiz >.toggle-tabs> li.active > span::before{
 		background: url("../images/bg-cgv/bg-icon-finger.png") no-repeat scroll 5px 50% #e71a0f;
 		content: "";
 		height: 40px;
 		padding-left: 40px;		
 	}
-	.tabs-format-cgv >.toggle-tabs> li.active > span{
+	.tabs-format-metiz >.toggle-tabs> li.active > span{
 		white-space: nowrap;
 		font-weight: bold;
 	}
@@ -1718,43 +1718,43 @@
 		float: left;
 		width: 100%;
 	}
-	.product-view .tabs-format-cgv > .toggle-tabs {
+	.product-view .tabs-format-metiz > .toggle-tabs {
 		margin-bottom: 20px;
 	}
-	.product-view .tabs-format-cgv > .toggle-tabs > li {
+	.product-view .tabs-format-metiz > .toggle-tabs > li {
 		display: inline-block;
 		clear: left;
 		float: none;
 		background-color: #e71a0f;
 	}
-	.product-view .tabs-format-cgv > .toggle-tabs > li span {
+	.product-view .tabs-format-metiz > .toggle-tabs > li span {
 		background: url("../images/bg-cgv/bg-tebmenu-line.gif") no-repeat scroll right 16px #e71a0f;
 		border: medium none;
 		color: #fff;
 		display: inline-block;
 		padding: 0px 12px;
 	}
-	.product-view .tabs-format-cgv > .toggle-tabs > li:first-child {
+	.product-view .tabs-format-metiz > .toggle-tabs > li:first-child {
 		background: url("../images/bg-cgv/bg-ribon-left-transparent.png") no-repeat scroll left top transparent;
 		padding-left: 19px;
 		background-color: none;
 	}
-	.product-view .tabs-format-cgv > .toggle-tabs > li.last {
+	.product-view .tabs-format-metiz > .toggle-tabs > li.last {
 		background: url("../images/bg-cgv/bg-ribon-right-transparent.png") no-repeat scroll right top transparent;
 		padding-right: 20px;
 		background-color: none;
 	}
-	.tabs-format-cgv >.toggle-tabs> li.active > span::before{
+	.tabs-format-metiz >.toggle-tabs> li.active > span::before{
 		background: url("../images/bg-cgv/bg-icon-finger.png") no-repeat scroll 5px 50% #e71a0f;
 		content: "";
 		height: 40px;
 		padding-left: 40px;		
 	}
-	.product-view .tabs-format-cgv>.toggle-tabs> li.last  span{
+	.product-view .tabs-format-metiz>.toggle-tabs> li.last  span{
 		background-image:none;
 		background-color:#e71a0f;
 	}
-	.tabs-format-cgv >.toggle-tabs> li.active > span{
+	.tabs-format-metiz >.toggle-tabs> li.active > span{
 		white-space: nowrap;
 		font-weight: bold;
 	}
@@ -1882,13 +1882,13 @@
 	.movie-rating-detail,.movie-detail-icon-type{
 		margin-bottom:5px;
 	}
-	.product-view .tabs-format-cgv > .toggle-tabs > li:first-child{
+	.product-view .tabs-format-metiz > .toggle-tabs > li:first-child{
 		padding-left:0px;
 	}
-	.product-view .tabs-format-cgv > .toggle-tabs > li.last{
+	.product-view .tabs-format-metiz > .toggle-tabs > li.last{
 		padding-right:0px;
 	}
-	.product-view .tabs-format-cgv > .toggle-tabs > li span{
+	.product-view .tabs-format-metiz > .toggle-tabs > li span{
 		padding:0px 8px;
 	}
 }
