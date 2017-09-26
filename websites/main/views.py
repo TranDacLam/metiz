@@ -539,22 +539,15 @@ def film_detail(request):
 	'content': 'Dựa trên một câu chuyện có thật, BARRY SEAL: LÁCH LUẬT KIỂU MỸ là cuộc phiêu lưu xuyên quốc gia của Barry Seal, tên lừa đảo và cũng là một phi công bất ngờ được chiêu mộ vào tổ chức CIA để thực hiện một trong những điệp vụ ngầm lớn nhất trong lịch sử Mỹ.',
 	'trailer': '//www.youtube.com/embed/PALCTTuWkSc?rel=0&amp;showinfo=0'}
 	return render(request, 'websites/film_detail.html', {'data': data,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+
+
 def news(request):
 	data_modal= data_schedule
-	data= [
-	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
-	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
-	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
-	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
-	{'img': '/assets/websites/images/news/U22---240-x-201.jpg', 'time': 'Từ 17/08 - 03/11/2017', 'href': '/new/detail'},
-	]
-	
-	return render(request, 'websites/news.html', {'data': data, 'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	news=NewOffer.objects.all()
+	return render(request, 'websites/news.html', {'news': news, 'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
-def new_detail(request):
+def new_detail(request, id):
 	data_modal= data_schedule
-	data={'img': '/assets/websites/images/news/U22---350-x-495.jpg',
-	'title': 'Em Chưa 23? Giá Chỉ 45k!',
-	'content': '<p><strong>Áp dụng đồng giá vé 2D chỉ 45.000đ cho thành viên CGV từ 22 tuổi trở xuống. Nhanh chân đến các rạp CGV để nhận tấm thẻ U22 “quyền lực” và tận hưởng ngay giá vé hấp dẫn chưa từng có!</strong></p><p>&nbsp;</p><p><strong>Điều kiện và điều khoản: </strong></p><p>&nbsp;<p>- Áp dụng cho tất cả các rạp CGV trên toàn quốc &nbsp;</p><p>- Giá vé 45.000đ áp dụng cho vé 2D, tất cả các suất chiếu từ thứ 2 đến thứ 6</p><p>- Áp dụng cho thành viên từ 22 tuổi trở xuống và sở hữu thẻ U22 của CGV. Vui lòng xuất trình thẻ khi mua vé</p><p>- Để được cấp thẻ U22, khách hàng cần xuất trình CMND/thẻ HSSV cho nhân viên tại rạp &nbsp;</p><p>- Chỉ áp dụng cho hình thức mua vé trực tiếp tại quầy</p><p>- Không áp dụng cho hình thức mua vé nhóm (Group Sales), Suất Chiếu Sớm và Suất Chiếu Đặc Biệt</p><p>- Không áp dụng cho các phòng chiếu đặc biệt như: 4DX, IMAX, Starium, GOLD CLASS, L’amour, ScreenX</p><p>- Không áp dụng đồng thời với những chương trình khuyến mãi khác của CGV và đối tác&nbsp;</p>'}
+	new=NewOffer.objects.get(pk=id)
+	return render(request, 'websites/new_detail.html', {'new': new,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
-	return render(request, 'websites/new_detail.html', {'data': data,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})

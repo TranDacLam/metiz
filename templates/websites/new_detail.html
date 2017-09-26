@@ -29,7 +29,7 @@
 			<span>/ </span>
 		</li>
 		<li class="blog_page">
-			<strong>{{data.title}}</strong>
+			<strong>{{new.name}}</strong>
 		</li>
 	</ul>
 </div>
@@ -39,15 +39,19 @@
 		</div>
 		<div class="postWrapper">
 			<div class="postTitle">
-				<h2>{{data.title}}</h2>
+				<h2>{{new.name}}</h2>
 			</div>
 			<div class="postContent">
 				<div class="detail-content-new-offer">
-					<div class="col-left-detail-content-new-offer"><span> <img alt="" src="{{STATIC_URL}}{{data.img}}"> </span></div>
+					<div class="col-left-detail-content-new-offer"><span> <img alt="" src="{{STATIC_URL}}{{new.image}}"> </span></div>
 					<div class="col-right-detail-content-new-offer">
 						<div class="social-detail-content-new-offer">
-							<div class="fb-like" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">&nbsp;
-								{{data.content| safe}}
+							<div class="fb-like" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
+								<p><strong>{{new.content}}</strong></p>
+								<p>&nbsp;</p>
+								<p><strong>Điều kiện và điều khoản: </strong></p>
+								<p>&nbsp;</p>
+								{{new.condition| safe}}
 							</div>
 						</div>
 					</div>

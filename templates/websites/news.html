@@ -42,19 +42,19 @@
 			<div class="tab-content">
 				<div id="new-tab-1" class="tab-pane fade in active">
 					<ul class="cate-new-offer products-grid products-grid--max-4-col first last odd">
-						{% for item in data %}
+						{% for item in news %}
 						<li class="item last">
-							<a href="{{item.href}}">
+							<a href="/new/detail/{{item.id}}">
 								<div class="product-poster"">
 									<div class="fun-new-offer">
 										<div class="content-new-offer">
 											<div class="colum-left-new-offer">
 												<div class="poster-small-new-offer">
-													<img alt="" src="{{STATIC_URL}}{{item.img}}">
+													<img alt="" src="{{STATIC_URL}}{{item.image}}">
 													<div class="colum-right-new-offer">
 														<div class="format-new-offer release-day-new-offer">
 															<h3>&nbsp;</h3>
-															<h4>{{item.time}}</h4>
+															<h4>{{item.apply_date}}</h4>
 														</div>
 													</div>
 												</div>
