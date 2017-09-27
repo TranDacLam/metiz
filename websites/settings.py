@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'main',
     'core',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -133,6 +135,30 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(BASE_DIR, "static"),
 )
+
+# Config CK_Editor
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'extraPlugins': ','.join(
+            [
+               'codesnippetgeshi',
+               'placeholder',
+               'dialog',
+               'dialogui',
+               'embed',
+            ]
+        ),
+        'font_names': "Yanone Kaffeesatz; Cabin",
+        'contentsCss': ','.join(['/static/assets/websites/css/custom_admin.css']),
+        'allowedContent': True
+    },
+}
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_IMAGE_BACKEND = "pillow"
 
 # Config outgoing email
 DEFAULT_TO_ADMIN_EMAIL = "contact@helio.vn"
