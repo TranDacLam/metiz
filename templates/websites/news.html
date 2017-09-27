@@ -38,7 +38,7 @@
 			<ul class="cate-new-offer products-grid products-grid--max-4-col first last odd">
 				{% for item in news %}
 				<li class="item last">
-					<a href="/new/detail/{{item.id}}">
+					<a href="{% url 'new_detail' item.id %}">
 						<div class="product-poster"">
 							<div class="fun-new-offer">
 								<div class="content-new-offer">
