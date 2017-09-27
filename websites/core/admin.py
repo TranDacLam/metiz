@@ -7,6 +7,7 @@ from django import forms
 import custom_models
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class UserCreationForm(forms.ModelForm):
@@ -91,30 +92,57 @@ admin.site.register(custom_models.User, UserAdmin)
 
 
 class RatedAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget()},
+    }
     pass
 admin.site.register(Rated, RatedAdmin)
 
 
 class GenreAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget()},
+    }
     pass
 admin.site.register(Genre, GenreAdmin)
 
 
 class MovieTypeAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget()},
+    }
     pass
 admin.site.register(MovieType, MovieTypeAdmin)
 
 
 class MovieAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget()},
+    }
     pass
 admin.site.register(Movie, MovieAdmin)
 
 
 class NewOfferAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget()},
+    }
     pass
 admin.site.register(NewOffer, NewOfferAdmin)
 
 
 class BannerAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget()},
+    }
     pass
 admin.site.register(Banner, BannerAdmin)
+
+
+class CenimaTechnologyAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget()},
+    }
+    pass
+admin.site.register(CenimaTechnology, CenimaTechnologyAdmin)
+

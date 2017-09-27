@@ -34,8 +34,9 @@ class Banner(DateTimeModel):
 
 @python_2_unicode_compatible
 class Rated(DateTimeModel):
+    # using name as key mapping genre 18, populate ..etc
     name = models.CharField(max_length=255)
-    icon = models.ImageField(max_length=255, upload_to="rated_icon")
+    description = models.TextField(max_length=255)
 
     def __str__(self):
         return '%s' % (self.name)
@@ -43,9 +44,7 @@ class Rated(DateTimeModel):
 
 @python_2_unicode_compatible
 class Genre(DateTimeModel):
-    # using name as key mapping genre 18, populate ..etc
     name = models.CharField(max_length=50)
-    description = models.TextField(max_length=255)
 
     def __str__(self):
         return '%s' % (self.name)

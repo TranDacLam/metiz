@@ -13,7 +13,5 @@ $(document).ready(function() {
 	        fixedContentPos: false
 		  });
     });
-    // action slide carousel home page
-    jssor_1_slider_init();
-        
+    // action slide carousel movie and event
 });
