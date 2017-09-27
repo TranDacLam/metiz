@@ -26,7 +26,7 @@ handler500 = 'main.views.custom_500'
 urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^comments/', include('django_comments.urls')),
+    # url(r'^comments/', include('django_comments.urls')),
     url(r'^$', views.home, name='home'),
     url(r'^comingsoon/$', views.comingsoon, name='comingsoon'),
     url(r'^cinox/$', views.cinox, name='cinox'),
