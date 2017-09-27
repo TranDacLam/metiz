@@ -5,6 +5,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from core.custom_models import *
 
+
 class DateTimeModel(models.Model):
     """
     Abstract model that is used for the model using created and modified fields
@@ -52,7 +53,8 @@ class Genre(DateTimeModel):
 
 @python_2_unicode_compatible
 class MovieType(DateTimeModel):
-    # using name as key mapping class css display in list film or film detail (2d, 3d)
+    # using name as key mapping class css display in list film or film detail
+    # (2d, 3d)
     name = models.CharField(max_length=50)
     description = models.TextField(max_length=255)
 
@@ -83,9 +85,29 @@ class Movie(DateTimeModel):
 
 
 @python_2_unicode_compatible
+class Comment(DateTimeModel):
+    STAR = (
+        (1, 1),
+        (2, 2),
+        (3, 3),
+        (4, 4),
+        (5, 5),
+    )
+    full_name = models.CharField(max_length=100)
+    avatar = models.ImageField(
+        max_length=500, upload_to="comment_avatar", null=True, blank=True)
+    review = models.TextField()
+    rating = models.IntegerField(default=5, choices=STAR)
+    date_post = models.DateField()
+
+    def __str__(self):
+        return '%s' % (self.full_name)
+
+
+@python_2_unicode_compatible
 class CenimaTechnology(DateTimeModel):
     # Post static pages : IMAX, GOLD_CARD, 4D ..etc..
-    TECHNOLOGY =(
+    TECHNOLOGY = (
         ('4d', '4DX'),
         ('sweetbox', 'SWEETBOX'),
         ('dolby_atmos', 'DOLBY ATMOS'),
@@ -105,7 +127,7 @@ class CenimaTechnology(DateTimeModel):
 
 @python_2_unicode_compatible
 class NewOffer(DateTimeModel):
-    GENDER =(
+    GENDER = (
         ('all', 'ALL'),
         ('member', 'Member')
     )
@@ -120,5 +142,3 @@ class NewOffer(DateTimeModel):
 
     def __str__(self):
         return '%s' % (self.name)
-
-
