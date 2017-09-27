@@ -1,6 +1,13 @@
+
 /* source : http://sachinchoolur.github.io/lightslider */
 $(document).ready(function() {
-/* slide for category movie*/
+     $(".special-items li a").each(function(){   
+        var name = $(this).attr("href");           
+        if(window.location.href.indexOf(name) > -1){
+            $(this).parent().addClass('actived');
+        }
+    });
+/* slide for special movie*/
     $('#image-gallery').lightSlider({
             gallery:true,
             item:1,
@@ -53,4 +60,4 @@ $(document).ready(function() {
         pager: false
     });
 });
-     
+

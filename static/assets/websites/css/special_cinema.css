@@ -21,6 +21,10 @@
 	height: 540px;
 	width: 960px;
 }
+
+.specialtheater-list{
+	height: auto;
+}
 @media only screen and (max-width: 600px){
 	.specialtheater-screenx .a-center iframe{
 		width:100% !important;
@@ -30,4 +34,5 @@
 		width:100% !important;
 		height:auto;
 	}
+
 }
