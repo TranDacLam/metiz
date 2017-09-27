@@ -85,7 +85,18 @@ class Movie(DateTimeModel):
 @python_2_unicode_compatible
 class CenimaTechnology(DateTimeModel):
     # Post static pages : IMAX, GOLD_CARD, 4D ..etc..
-    name = models.CharField(max_length=50)
+    TECHNOLOGY =(
+        ('4d', '4DX'),
+        ('sweetbox', 'SWEETBOX'),
+        ('dolby_atmos', 'DOLBY ATMOS'),
+        ('imax', 'IMAX'),
+        ('gold_class', 'GOLD CLASS'),
+        ('lamour', 'LAMOUR'),
+        ('starium', 'STARIUM'),
+        ('premium_cinema', 'PREMIUN CENIMA'),
+        ('screen_x', 'SCREEN X')
+    )
+    name = models.CharField(max_length=50, choices=TECHNOLOGY)
     content = models.TextField()
 
     def __str__(self):
