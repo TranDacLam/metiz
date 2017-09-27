@@ -550,4 +550,7 @@ def new_detail(request, id):
 	data_modal= data_schedule
 	new=NewOffer.objects.get(pk=id)
 	return render(request, 'websites/new_detail.html', {'new': new,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
-
+def getCinemaTechnologyById(request, id):
+	allTechnology= CenimaTechnology.objects.all()
+	technology = allTechnology.get(pk = id)
+	return render(request, 'websites/cinema_technology.html', {'technology': technology, 'allTechnology':allTechnology})
