@@ -32,7 +32,7 @@
 		{% include 'technology_menu.html' %}
 			<div class="specialtheater-content specialtheater-gold-class">
 				<div class="page-title special-title">
-					<h1>Gold Class</h1>
+					<h2 class="center-block technology-gold-class">Gold Class</h2>
 				</div>
 				<div class="std">
 					<div class="cinema-imax">
@@ -40,12 +40,7 @@
 							<div class="about-content-imax">
 								<div class="recent-cgv-special">
 									<h3>Lấy cảm hứng từ ghế ngồi hạng thương gia trên máy bay, phòng chiếu GOLD CLASS ra đời mang đến một không gian xem phim sang trọng và đẳng cấp cho các tín đồ điện ảnh. GOLD CLASS còn là lựa chọn hoàn hảo cho các sự kiện đặc biệt để tạo nên những kỷ niệm tuyệt vời, khó quên.</h3>
-									<p>Cùng trải nghiệm phòng chiếu GOLD CLASS tại các rạp:</p>
-									<ul class="site-list">
-										{% for item in data.address%}
-										<li><a href="{{item.href}}">{{item.name}}</a></li>
-									{% endfor%}	
-									</ul>
+									
 									<p></p>
 								</div>
 								<div class="slide-imax-baner">

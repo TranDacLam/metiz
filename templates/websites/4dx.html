@@ -29,22 +29,17 @@
 	</div>
 	<div class="main">
 		{% include 'technology_menu.html' %}
-			<div class="specialtheater-content specialtheater-4dx">
+			<div class="specialtheater-content ">
 				<div class="page-title special-title">
-					<h1>4DX ®</h1>
+					<h2 class="center-block technology-4dx">4DX ®</h2>
 				</div>
+
 				<div class="std">
 					<div class="cinema-imax">
 						<div class="header-imax std">
 							<div class="about-content-imax">
-								<div class="recent-cgv-special" style="margin-top: 30px;">
+								<div class="recent-cgv-special" >
 									<h3>4DX®, một định dạng điện ảnh hoàn toàn mới đánh thức mọi giác quan của khán giả mang đến những trải nghiệm điện ảnh tuyệt đỉnh bằng công nghệ hiện đại nhất trên thế giới.</h3>
-									<p>Hãy thưởng thức công nghệ 4DX® tại các rạp CGV:</p>
-									<ul class="site-list">
-										{% for item in data.address%}
-											<li><a href="{{item.href}}">{{item.name}}</a></li>
-										{% endfor%}
-									</ul>
 								</div>
 								<div class="slide-imax-baner">
 									<div class="slideshow-container">
