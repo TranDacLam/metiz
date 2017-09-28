@@ -39,13 +39,13 @@
 			
 			
 			<ul class="products-grid products-grid--max-4-col">
-			{% for value in data %}
+			{% for item in data %}
 				<li class="film-lists item last">
 					<span class="nmovie-rating nmovie-rating-no">NO</span>
 					
 					<div class="product-images">
-						<a href="{% url 'film_detail'%}" title="CGV_Detective Conan Movie 21: Crimson Love Letter " class="product-image">
-							<img id="product-collection-image-394" src="{{STATIC_URL}}{{value.img}}" alt="CGV_Detective Conan Movie 21: Crimson Love Letter " />
+						<a href="{% url 'film_detail' item.id %}" title="CGV_Detective Conan Movie 21: Crimson Love Letter " class="product-image">
+							<img id="product-collection-image-394" src="{{STATIC_URL}}{{item.poster}}" alt="CGV_Detective Conan Movie 21: Crimson Love Letter " />
 						</a>
 						
 						<div class="movie-technology">
@@ -56,21 +56,25 @@
 					</div>
 					
 					<div class="product-info">
-						<h2 class="product-name"><a href="{% url 'film_detail'%}" title="Thám Tử Lừng Danh Conan: Bản Tình Ca Màu Đỏ Thẫm">{{value.name}}</a></h2>
+						<h2 class="product-name"><a href="{% url 'film_detail' item.id %}" title="Thám Tử Lừng Danh Conan: Bản Tình Ca Màu Đỏ Thẫm">{{item.name}}</a></h2>
 						
 						<div class="cgv-movie-info">
 							<span class="cgv-info-bold">Thể loại: </span>
-							<span class="cgv-info-normal">{{value.category}}</span>
+							{% for type in movieType %}
+							{% if type.id == item.movie_type_id %}
+							<span class="cgv-info-normal">{{type.name}}</span>
+							{% endif %}
+							{% endfor %}
 						</div>
 						
 						<div class="cgv-movie-info">
 							<span class="cgv-info-bold">Thời lượng: </span>
-							<span class="cgv-info-normal">{{value.time}}</span>
+							<span class="cgv-info-normal">{{item.time_running}}</span>
 						</div>
 						
 						<div class="cgv-movie-info">
 							<span class="cgv-info-bold">Khởi chiếu: </span>
-							<span class="cgv-info-normal">{{value.date}}</span>
+							<span class="cgv-info-normal">{{item.release_date|date:"d-m-Y"}}</span>
 						</div>
 						
 					</div>
