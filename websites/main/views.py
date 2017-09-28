@@ -83,14 +83,6 @@ def home(request):
 	data_modal= data_schedule
 	return render(request, 'websites/home.html', {'data': data, 'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
-def comingsoon(request):
-	data_modal= data_schedule
-	data=[{'img':"/assets/websites/images/movie-selection/movie1.png",'name':'Chí Phèo Ngoại Truyện','category':'Hành Động','time':'90','date':'08/09/2017'}, 
-	{'img':"/assets/websites/images/movie-selection/movie1.png",'name':' Mồi Cá Mập','category':'Hoạt Hình','time':'90','date':'08/09/2017'},
-	 {'img': "/assets/websites/images/movie-selection/movie2.jpg",'name':'Breathe','category':'Hành Động, Hoạt Hình','time':'90','date':'08/09/2017'},
-	 {'img': "/assets/websites/images/movie-selection/movie3.jpg",'name':'Kingsman : Tổ Chức Hoàng Kim','category':'Hoạt Hình','time':'90','date':'08/09/2017'},
-	 {'img': "/assets/websites/images/movie-selection/movie4.jpg",'name':'Chí Phèo Ngoại Truyện','category':'Hành Động','time':'90','date':'08/09/2017'}]	
-	return render(request, 'websites/coming_soon.html', {'data':data , 'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
 def cinox(request):
 	data_modal= data_schedule
@@ -530,15 +522,18 @@ def screenx(request):
 	, {'img': '/assets/websites/images/special-theater/screenx-3.jpg', 'content': '<h2>Sản Xuất Kỳ Công</h2><p>Để có những cảnh phim ScreenX chỉ từ 15 đến 20 phút trong mỗi bộ phim, các nhà làm phim phải sử dụng ít nhất 3 máy quay với 3 góc quay khác nhau cho mỗi phân cảnh để tái hiện khung cảnh bộ phim một cách chân thật.</p>'}],
 	}
 	return render( request, 'websites/screenx.html', {'data': data})
-def film_detail(request):
+
+def comingsoon(request):
 	data_modal= data_schedule
-	data= {'name': 'Barry Seal: Lách Luật Kiểu Mỹ','director': ' Doug Liman', 'actor':'Tom Cruise, Domhnall Gleeson, Sarah Wright, E. Roger Mitchell, Jesse Plemons, Lola Kirke, Alejandro Edda, Benito Martinez, Caleb Landry Jones, Jayma Mays',
-	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'language': 'Tiếng Anh với phụ đề tiếng Việt và phụ đề tiếng Hàn',
-	'time': '180 phút', 'rated': 'C18 - Phim cấm khán giả dưới 18 tuổi', 'date': '20/8/2017',
-	'img': '/assets/websites/images/american_made_406x600.png', 
-	'content': 'Dựa trên một câu chuyện có thật, BARRY SEAL: LÁCH LUẬT KIỂU MỸ là cuộc phiêu lưu xuyên quốc gia của Barry Seal, tên lừa đảo và cũng là một phi công bất ngờ được chiêu mộ vào tổ chức CIA để thực hiện một trong những điệp vụ ngầm lớn nhất trong lịch sử Mỹ.',
-	'trailer': '//www.youtube.com/embed/PALCTTuWkSc?rel=0&amp;showinfo=0'}
-	return render(request, 'websites/film_detail.html', {'data': data,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	data = Movie.objects.all()
+	movieType = MovieType.objects.all()
+	return render(request, 'websites/coming_soon.html', {'data':data , 'movieType':movieType,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+
+
+def film_detail(request, id):
+	data_modal= data_schedule
+	film_detail = Movie.objects.get(pk=id)
+	return render(request, 'websites/film_detail.html', {'film_detail': film_detail, 'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
 
 def news(request):

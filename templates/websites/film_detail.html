@@ -57,7 +57,7 @@
 					<div class="product-image product-image-zoom">
 						<div class="xzoom-container">
 
-				          <img class="xzoom" id="xzoom-default" src="{{STATIC_URL}}{{data.img}}" xoriginal="{{STATIC_URL}}{{data.img}}" />
+				          <img class="xzoom" id="xzoom-default" src="{{STATIC_URL}}{{film_detail.poster}}" xoriginal="{{STATIC_URL}}{{film_detail.poster}}" />
 				          
 				        </div>    
 					</div>
@@ -66,38 +66,42 @@
 
 				<div class="product-shop">
 					<div class="product-name">
-						<span class="h1">{{data.name}}</span>
+						<span class="h1">{{film_detail.name}}</span>
 					</div>
 					
 					<!-- Build test -->
 					<div class="movie-director movie-info">
 						<label>Đạo diễn: </label>
-						<div class="std">&nbsp; {{data.director}}</div>
+						<div class="std">&nbsp; {{film_detail.director}}</div>
 					</div>
 					<div class="movie-actress movie-info">
 						<label>Diễn viên:</label>
-						<div class="std">&nbsp; {{data.actor}}
+						<div class="std">&nbsp; {{film_detail.cast}}
 						</div>
 					</div>
 					<div class="movie-genre movie-info">
 						<label>Thể loại: </label>
-						<div class="std">&nbsp; {{data.category}}</div>
+						{% for type in movieType %}
+							{% if type.id == film_detail.movie_type_id %}
+							<div class="std">&nbsp; {{type.name}}</div>
+							{% endif %}
+						{% endfor %}
 					</div>
 					<div class="movie-release movie-info">
 						<label>Khởi chiếu: </label>
-						<div class="std">&nbsp;  {{data.date}}</div>
+						<div class="std">&nbsp;  {{film_detail.release_date|date:"d-m-Y"}}</div>
 					</div>
 					<div class="movie-actress movie-info">
 						<label>Thời lượng: </label>
-						<div class="std">&nbsp;  {{data.time}}</div>
+						<div class="std">&nbsp;  {{film_detail.time_running}}</div>
 					</div>
 					<div class="movie-language movie-info">
 						<label>Ngôn ngữ: </label>
-						<div class="std">&nbsp;  {{data.language}}</div>
+						<div class="std">&nbsp;  {{film_detail.language}}</div>
 					</div>
 					<div class="movie-rating movie-rated-web">
 						<label>Rated: </label>
-						<div class="std">&nbsp;  {{data.rated}}</div>
+						<div class="std">&nbsp;  {{film_detail.rated}}</div>
 					</div>
 
 					<div class="movie-technology-icons">
@@ -136,12 +140,12 @@
 				</ul>
 				<div class="tab-content">
 					<div id="film-detail-tab-1" class="tab-pane fade in active">
-						{{data.content}}
+						{{film_detail.description}}
 					</div>
 					<div id="film-detail-tab-2" class="tab-pane fade ">
 
 						<div class="product_view_trailer">
-							<iframe src="{{data.trailer}}" frameborder="0" allowfullscreen></iframe>    
+							<iframe src="{{film_detail.trailer}}" frameborder="0" allowfullscreen></iframe>    
 						</div>
 					</div>
 
