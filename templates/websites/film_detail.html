@@ -34,7 +34,7 @@
 			<span>/ </span>
 		</li>
 		<li class="product">
-	        <strong>Barry Seal: Lách Luật Kiểu Mỹ</strong>
+	        <strong>{{film_detail.name}}</strong>
 	    </li>
 	</ul>
 </div>
@@ -48,7 +48,7 @@
 					<span class="h1">Nội Dung Phim</span>
 				</div>
 				<div class="product-name-reponsive">
-					<h1>Barry Seal: Lách Luật Kiểu Mỹ</h1>
+					<h1>{{film_detail.name}}</h1>
 				</div>
 				
 				<div class="product-img-box">
@@ -77,15 +77,15 @@
 					</div>
 					<div class="movie-genre movie-info">
 						<label>Thể loại: </label>
-						{% for type in movieType %}
-							{% if type.id == film_detail.movie_type_id %}
-							<div class="std">&nbsp; {{type.name}}</div>
+						{% for ge in genre %}
+							{% if ge.id == film_detail.genre_id %}
+							<div class="std">&nbsp; {{ge.name}}</div>
 							{% endif %}
 						{% endfor %}
 					</div>
 					<div class="movie-release movie-info">
 						<label>Khởi chiếu: </label>
-						<div class="std">&nbsp;  {{film_detail.release_date|date:"d-m-Y"}}</div>
+						<div class="std">&nbsp;  {{film_detail.release_date | date:"d-m-Y"}}</div>
 					</div>
 					<div class="movie-actress movie-info">
 						<label>Thời lượng: </label>
@@ -97,11 +97,20 @@
 					</div>
 					<div class="movie-rating movie-rated-web">
 						<label>Rated: </label>
-						<div class="std">&nbsp;  {{film_detail.rated}}</div>
+						{% for rt in rateds %}
+							{% if rt.id == film_detail.rated_id %}
+							<div class="std">&nbsp;  {{rt.name}}</div>
+							{% endif %}
+						{% endfor %}
 					</div>
 
 					<div class="movie-technology-icons">
-						<span class="movie-rating-detail c18">Rated : C18</span>
+						{% for rt in rateds %}
+							{% if rt.id == film_detail.rated_id %}
+						<span class="movie-rating-detail c18">Rated : {{rt.name}}</span>
+							{% endif %}
+						{% endfor %}
+
 						<a href="javascript:void(0)" class="movie-detail-icon-type" title="2D">
 							<span class="movie-detail-type-2d">2D</span>
 						</a>
@@ -139,14 +148,11 @@
 						{{film_detail.description}}
 					</div>
 					<div id="film-detail-tab-2" class="tab-pane fade ">
-						<div class="product_view_trailer">
-							<iframe src="{{film_detail.trailer}}" frameborder="0" allowfullscreen></iframe>    
-							<div class="product_view_trailer text-center">
-								<iframe src="{{data.trailer}}" frameborder="0" allowfullscreen></iframe>    
-
-							</div>
+						<div class="product_view_trailer text-center">
+							<iframe src="{{film_detail.trailer}}" frameborder="0" allowfullscreen></iframe>   
 						</div>
 					</div>
+
 					<div id="film-detail-tab-3" class="tab-pane fade ">
 						<div class="container">	
 							<div class="row">

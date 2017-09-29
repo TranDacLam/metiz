@@ -35,17 +35,16 @@
 		<div class="page-title category-title">
 			<h1>Phim Sắp Chiếu</h1>
 		</div>
+		{% if data %}
 		<div class="category-products cgv-movies">
-			
-			
 			<ul class="products-grid products-grid--max-4-col">
 			{% for item in data %}
 				<li class="film-lists item last">
 					<span class="nmovie-rating nmovie-rating-no">NO</span>
 					
 					<div class="product-images">
-						<a href="{% url 'film_detail' item.id %}" title="CGV_Detective Conan Movie 21: Crimson Love Letter " class="product-image">
-							<img id="product-collection-image-394" src="{{STATIC_URL}}{{item.poster}}" alt="CGV_Detective Conan Movie 21: Crimson Love Letter " />
+						<a href="{% url 'film_detail' item.id %}" title="{{item.name}}" class="product-image">
+							<img id="product-collection-image-394" src="{{STATIC_URL}}{{item.poster}}" alt="{{item.name}}" />
 						</a>
 						
 						<div class="movie-technology">
@@ -56,14 +55,14 @@
 					</div>
 					
 					<div class="product-info">
-						<h2 class="product-name"><a href="{% url 'film_detail' item.id %}" title="Thám Tử Lừng Danh Conan: Bản Tình Ca Màu Đỏ Thẫm">{{item.name}}</a></h2>
+						<h2 class="product-name"><a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name}}</a></h2>
 						
 						<div class="cgv-movie-info">
 							<span class="cgv-info-bold">Thể loại: </span>
-							{% for type in movieType %}
-							{% if type.id == item.movie_type_id %}
-							<span class="cgv-info-normal">{{type.name}}</span>
-							{% endif %}
+							{% for type in movieType %}								
+								{% if type.id == item.movie_type_id %}
+								<span class="cgv-info-normal">{{type.name}}</span>
+								{% endif %}
 							{% endfor %}
 						</div>
 						
@@ -74,7 +73,7 @@
 						
 						<div class="cgv-movie-info">
 							<span class="cgv-info-bold">Khởi chiếu: </span>
-							<span class="cgv-info-normal">{{item.release_date|date:"d-m-Y"}}</span>
+							<span class="cgv-info-normal">{{item.release_date | date:"d-m-Y"}}</span>
 						</div>
 						
 					</div>
@@ -84,19 +83,17 @@
 					<ul class="add-to-links">
 						<li>
 							<!-- Button like and share facebook, data-href http://domain/filmdetail/id (unique) -->
-							<!-- data-href: https://{{ request.get_host }}{% url 'film_detail' %}{{value.id}} -->
+							<!-- data-href: https://{{ request.get_host }}{% url 'film_detail' item.id %} -->
 							<div class="fb-like" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 						</li>
 						
 					</ul>
 				</li>
-				{% endfor %}
-				
-				
+			{% endfor %}
 			</ul>
-			
 		</div>
-		             
+	  	{% endif %}
+
 	 </div>
 </div>
 
