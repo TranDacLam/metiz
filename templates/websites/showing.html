@@ -61,11 +61,7 @@
 							
 							<div class="cgv-movie-info">
 								<span class="cgv-info-bold">Thể loại: </span>
-								{% for ge in genre %}
-									{% if ge.id == value.genre_id %}
-								<span class="cgv-info-normal">{{ge.name}}</span>
-									{% endif %}
-								{% endfor %}
+								<span class="cgv-info-normal">{{value.genre.name}}</span>
 							</div>
 							
 							<div class="cgv-movie-info">

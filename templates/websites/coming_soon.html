@@ -59,11 +59,7 @@
 						
 						<div class="cgv-movie-info">
 							<span class="cgv-info-bold">Thể loại: </span>
-							{% for type in movieType %}								
-								{% if type.id == item.movie_type_id %}
-								<span class="cgv-info-normal">{{type.name}}</span>
-								{% endif %}
-							{% endfor %}
+							<span class="cgv-info-normal">{{item.genre.name}}</span>
 						</div>
 						
 						<div class="cgv-movie-info">
