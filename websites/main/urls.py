@@ -68,7 +68,7 @@ urlpatterns = [
     url(r'^film/detail/(?P<id>\d+)/$', views.film_detail, name='film_detail'),
     url(r'^news/$', views.news, name='news'),
     url(r'^new/detail/(?P<id>\d+)/$', views.new_detail, name='new_detail'),
-    url(r'^cinema/technology/(?P<id>\d+)/$', views.getCinemaTechnologyById, name='getCinemaTechnologyById'),
+    url(r'^cinema/technology/(?P<name>[-\w]+)/$', views.getCinemaTechnologyByName, name='getCinemaTechnologyByName'),
 ]
 
 if settings.DEBUG:

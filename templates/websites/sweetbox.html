@@ -30,28 +30,16 @@
 	</div>
 	<div class="main">
 		<div class="col-main">
-			<div id="specialtheater-list" class="specialtheater-list">
-				<ul class="special-items">
-					{% for item in data.technology %}
-					<li class="item-icon {{item.class}} {{item.flag}}">
-						<a title="Sweetbox" href="/special/{{item.name}}">{{item.name}}</a>
-					</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="specialtheater-content specialtheater-sweetbox">
+			
+			{% include 'technology_menu.html' %}
+			<div class="specialtheater-content ">
 				<div class="page-title special-title">
-					<h1>Sweetbox</h1>
+					<h2 class="center-block technology-sweetbox">Sweetbox</h2>
 				</div>
 				<div class="std">
 					<div class="recent-imax">
 						<h4>Cho những khoảnh khắc ngọt ngào...</h4>
-						<p>Hãy cùng trải nghiệm Sweetbox với giao diện màn chiếu ấn tượng duy nhất tại:</p>
-						<ul class="site-list">
-						{% for item in data.address%}
-							<li><a href="{{item.href}}">{{item.name}}</a></li>
-						{% endfor%}							
-						</ul>
+						
 						<p></p>
 					</div>
 					<div class="content-about-sweetbox">

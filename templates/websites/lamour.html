@@ -32,7 +32,7 @@
 		{% include 'technology_menu.html' %}
 			<div class="specialtheater-content specialtheater-lamour">
 				<div class="page-title special-title">
-					<h1>L'amour</h1>
+					<h2 class="center-block technology-lamour">L'amour</h2>
 				</div>
 				<div class="std">
 					<div class="cinema-imax">
@@ -41,11 +41,7 @@
 								<div class="recent-cgv-special">
 									<h3>Với mục đích mang đến khoảnh khắc ngọt ngào và cảm giác thoải mái nhất khi xem phim, CGV mang đến phòng chiếu giường nằm L’amour với thiết kế nội thất sang trọng bậc nhất trong hệ thống rạp CGV hứa hẹn trải nghiệm tuyệt vời cho khán giả.</h3>
 									<p>Cảm nhận không gian sang trọng và ấm cúng của phòng chiếu L’amour tại:</p>
-									<ul class="site-list">
-										{% for item in data.address%}
-											<li><a href="{{item.href}}">{{item.name}}</a></li>
-										{% endfor%}	
-									</ul>
+									
 								</div>
 								<div class="slide-imax-baner">
 									<div class="slideshow-container ">
