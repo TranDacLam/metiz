@@ -1280,7 +1280,7 @@ a.button:hover {
 }
 .main{
 	margin:0 auto;
-	margin-top:30px;
+	margin-top: 20px;
 }
 
 @media only screen and (min-width: 480px) {
@@ -3101,7 +3101,7 @@ body {
   min-width: 320px;
   min-height: 100%;
   margin: 0 auto;
-  background: #fdfcf0;
+  background: #0f1d2f;
 }
 
 .wrapper:after {
@@ -3117,9 +3117,13 @@ body {
   .page-header {
     width: 100%;
     margin: 0 auto;
-    background :url("../images/bg-cgv/bg-top.png") repeat-x scroll left bottom transparent;
-	background-size: 10px 135px;
-    height: 135px;
+    /*background :url("../images/bg-cgv/bg-top.png") repeat-x scroll left bottom transparent;*/
+    background: #031327;
+	  background-size: 10px 135px;
+    height: 60px;
+    padding-bottom: 0px;
+    border-bottom: none;
+    /*margin-top: 10px;*/
   }
 
   .page-header-container {
@@ -3135,7 +3139,7 @@ body {
  * Language switcher + welcome message
  * ============================================ */
 .header-language-background {
-  height:29px;
+  height: 70px;
   text-transform: uppercase;
 }
 .header-language-background:after {
