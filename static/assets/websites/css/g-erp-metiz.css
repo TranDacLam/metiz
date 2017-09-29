@@ -39,6 +39,7 @@
 		height: 29px;
 		margin: 0 auto;
 		width: 980px;
+		padding-top: 40px;
 	}
 	.header-language-right{
 		float:right;
@@ -110,9 +111,8 @@
 	}
 	#header-nav {
 		display: block;
-		left: 140px;
+		left: 200px;
 		position: absolute;
-		top: 55px;
 	}
 	.nav-primary a {
 		color: rgb(34, 34, 34);
@@ -151,9 +151,11 @@
 	.page-header {
 		width: 100%;
 		margin: 0 auto;
-		background: url("../images/bg-cgv/bg-top.png") repeat-x scroll left bottom transparent;
+		/*background: url("../images/bg-cgv/bg-top.png") repeat-x scroll left bottom transparent;*/
+		background: #031327;
 		background-size: 10px 135px;
 		height: 135px;
+		padding-bottom: 0px;
 	}
 	.header-language-right{
 		float:right;

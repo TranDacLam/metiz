@@ -41,3 +41,10 @@
 .link-play{
 	display: none
 }
+
+.session-movie{
+	background: url('../images/bg-session-movie.png') repeat-x center;
+}
+.session-event{
+	background: #f1eee9;
+}
