@@ -24,15 +24,7 @@
 	</div>
 	<div class="main">
 		{% include 'cinema_technology_menu.html' %}
-			<div class="specialtheater-content specialtheater-{{technology.name}}">
-				<div class="page-title special-title">
-					<h1>{{technology.name}}</h1>
-				</div>
-				<div class="std">
-					<h3>{{technology.content| safe}}</h3>
-				</div>
-			</div>
-		</div>
+			{{technology.content | safe}}
 	</div>
 </div>
 {% endblock %}

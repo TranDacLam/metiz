@@ -32,7 +32,7 @@
 		{% include 'technology_menu.html' %}
 			<div class="specialtheater-content specialtheater-premium">
 				<div class="page-title special-title">
-					<h1>Premium</h1>
+					<h2 class="center-block technology-premium">Premium</h2>
 				</div>
 				<div class="std">
 					<div class="cinema-imax">
@@ -41,11 +41,7 @@
 								<div class="recent-cgv-special">
 									<h3>Không gian đậm chất điện ảnh với ghế ngồi được di chuyển theo yêu cầu của riêng bạn</h3>
 									<p>Trải nghiệm phòng chiếu Premium duy nhất chỉ có tại:</p>
-									<ul class="site-list">
-										{% for item in data.address%}
-											<li><a href="{{item.href}}">{{item.name}}</a></li>
-										{% endfor%}	
-									</ul>
+									
 									<p></p>
 								</div>
 								<div class="slide-imax-baner">

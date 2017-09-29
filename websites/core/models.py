@@ -108,15 +108,15 @@ class Comment(DateTimeModel):
 class CenimaTechnology(DateTimeModel):
     # Post static pages : IMAX, GOLD_CARD, 4D ..etc..
     TECHNOLOGY = (
-        ('4d', '4DX'),
+        ('4dx', '4DX'),
         ('sweetbox', 'SWEETBOX'),
-        ('dolby_atmos', 'DOLBY ATMOS'),
+        ('dolby-atmos', 'DOLBY ATMOS'),
         ('imax', 'IMAX'),
-        ('gold_class', 'GOLD CLASS'),
+        ('gold-class', 'GOLD CLASS'),
         ('lamour', 'LAMOUR'),
         ('starium', 'STARIUM'),
-        ('premium_cinema', 'PREMIUN CENIMA'),
-        ('screen_x', 'SCREEN X')
+        ('premium', 'PREMIUN CENIMA'),
+        ('screenx', 'SCREEN X')
     )
     name = models.CharField(max_length=50, choices=TECHNOLOGY)
     content = models.TextField()
