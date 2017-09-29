@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from core.models import *
-
+from datetime import *
 
 data_schedule= [{
 	'date':'2017-10-27',
@@ -163,29 +163,6 @@ def account_findmember(request):
 def account_forgot_password(request):
 	data_modal= data_schedule
 	return render(request, 'websites/account_forgot_password.html', {'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
-
-
-def showing(request):
-	data_modal= data_schedule
-	data=[
-	{'img':"/assets/websites/images/american_made_240x355.png",'tc':"c18", 'rating':1,'name': 'Lách Luật Kiểu Mỹ',
-	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
-	'time': '180 phút', 'date': '20/8/2017',},
-	{'img':"/assets/websites/images/american_made_240x355.png",'tc': 'c16','rating':2, 'name': 'Lách Luật Kiểu Mỹ',
-	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
-	'time': '180 phút', 'date': '20/8/2017',}
-	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':3, 'name': 'Lách Luật Kiểu Mỹ',
-	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
-	'time': '180 phút',  'date': '20/8/2017',}
-	,{'img': "/assets/websites/images/movie-selection/movie2.jpg",'tc': "p", 'rating':4, 'name': 'Câu Chuyện Lý Tiểu Long: Sự Ra Đời Của Rồng',
-	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
-	'time': '180 phút', 'date': '20/8/2017',}
-	,{'img': "/assets/websites/images/american_made_240x355.png",'tc': "p", 'rating':5, 'name': 'Lách Luật Kiểu Mỹ ',
-	'category': 'Hành Động, Hồi hộp, Phiêu Lưu', 'technology': 'imax2d' ,
-	'time': '180 phút', 'date': '20/8/2017',}]
-
-	return render(request, 'websites/showing.html', {'data':data,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
-
 
 def movie_voucher(request):	
 	data_modal= data_schedule
@@ -522,19 +499,6 @@ def screenx(request):
 	, {'img': '/assets/websites/images/special-theater/screenx-3.jpg', 'content': '<h2>Sản Xuất Kỳ Công</h2><p>Để có những cảnh phim ScreenX chỉ từ 15 đến 20 phút trong mỗi bộ phim, các nhà làm phim phải sử dụng ít nhất 3 máy quay với 3 góc quay khác nhau cho mỗi phân cảnh để tái hiện khung cảnh bộ phim một cách chân thật.</p>'}],
 	}
 	return render( request, 'websites/screenx.html', {'data': data})
-
-def comingsoon(request):
-	data_modal= data_schedule
-	data = Movie.objects.all()
-	movieType = MovieType.objects.all()
-	return render(request, 'websites/coming_soon.html', {'data':data , 'movieType':movieType,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
-
-
-def film_detail(request, id):
-	data_modal= data_schedule
-	film_detail = Movie.objects.get(pk=id)
-	return render(request, 'websites/film_detail.html', {'film_detail': film_detail, 'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
-
 
 def news(request):
 	data_modal= data_schedule
