@@ -3,21 +3,25 @@
 }
 .col-main .nav-tabs>li.active>span{
 	color: white;
-	border: 0px;
-	background-color: #e71a0f;
+	background-color: #ff5400;
+	border: 3px solid #ff5400;
+	font-weight: bold;
 }
 .col-main .nav-tabs>li>span {
-	border: 0px;
-	border-radius: 0px;
-	background-color: #e71a0f;
+	padding: 15px 30px 15px 30px;
+	border: 3px solid #ffffff;
+	border-radius: 35px;
+	background: rgba(255, 255, 255, 0);
 	color: white;
-	font-size: 12px;
 	margin-right: -4px;
+	font-size: 20px;
+	cursor: pointer;
 }
 .col-main .nav-tabs>li>span:hover {
-	border: 0px;
-	border-radius: 0px;
-	background-color: #e71a0f;
+	padding: 15px 30px 15px 30px;
+	border: 3px solid #ff5400;
+	border-radius: 35px;
+	background-color: #ff5400;
 	color: black;
 }
 .col-main .tab-content .tab-pane {
@@ -32,7 +36,8 @@
 
 .tab-movie{
 	height: 401px; 
-	overflow: hidden
+	overflow: hidden;
+	margin-top: 20px;
 }
 .tab-event{
 	height: 201px; 
@@ -40,4 +45,81 @@
 }
 .link-play{
 	display: none
+}
+.detail-pay-film{                        
+    visibility: hidden;
+}
+.feature_slide_show .poster-film:hover .detail-pay-film{
+   	visibility:visible;
+}
+.detail-pay-film button{
+	padding: 10px 26px 10px 26px;
+}
+.detail-pay-film a{
+	padding: 10px 23px 10px 23px;
+}
+.detail-pay-film .button{
+	border-radius: 25px; 
+	border: 3px solid #ffffff;
+	font-weight: bold;
+	background: rgba(3, 19, 39, 0);
+}
+.detail-pay-film a:hover{
+	background: #ff5400;
+	border: 3px solid #ff5400;
+}
+.detail-pay-film button:hover{
+	background: #ff5400;
+	border: 3px solid #ff5400;
+}
+.lSAction > a{
+	top: 35%;
+}
+.info-movie-home{
+	padding-top: 20px;
+}
+
+ul.metiz-movie-tabs li {
+    display: inline-block;
+    float: none;
+    border-radius: 20px;
+    padding-right: 20px;
+}
+ul.metiz-movie-tabs {
+    width: 100%;
+    list-style-type: none;
+    text-align: center;
+}
+.tabs-format-metiz ul.nav-tabs{
+	border: none;
+	padding: 30px 0px 40px;
+}
+.info-movie-home h1, h2, h3, h4, h5{
+	color: #fff;
+}
+
+@media screen and (max-width: 420px) {
+ 	.col-main .nav-tabs>li.active>span{
+		color: white;
+		background-color: #ff5400;
+		border: 3px solid #ff5400;
+		font-weight: bold;
+	}
+	.col-main .nav-tabs>li>span {
+		padding: 5px 10px 5px 10px;
+		border: 3px solid #ffffff;
+		border-radius: 35px;
+		background: rgba(255, 255, 255, 0);
+		color: white;
+		font-size: 12px;
+		margin-right: -4px;
+		cursor: pointer;
+	}
+	.col-main .nav-tabs>li>span:hover {
+		padding: 5px 10px 5px 10px;
+		border: 3px solid #ff5400;
+		border-radius: 35px;
+		background-color: #ff5400;
+		color: black;
+	}
 }

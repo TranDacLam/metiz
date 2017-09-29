@@ -1418,12 +1418,10 @@
 		height:30px;
 	}
 	.home-promotion-card {
-		margin-top: 10px !important;
 		border-bottom: 2px solid #241d1e !important;
 	}
 	.cms-home .home-event {
 		background: transparent;
-		border-bottom: 2px solid #241d1e !important;
 		padding-bottom: 10px !important;
 	}
 	.home-promotion-card .promos li.col-hd {

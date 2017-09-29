@@ -51,40 +51,38 @@
             </div>
         </div>
         <div class="home-movie-selection product-collateral toggle-content tabs home-event tabs-format-metiz">
-            <div class="home-title">
-                <h2>movie selection</h2>
-            </div>
-            <ul class="nav nav-tabs toggle-tabs">
-                    <li class="active">
-                        <span href="#movie-tab-1" data-toggle="tab">Phim Đang Chiếu</span>
-                    </li>
-                    <li class="last">
-                        <span href="#movie-tab-2" data-toggle="tab">Phim Sắp Chiếu</span>
-                    </li>
-                </ul>
+            <ul class="nav nav-tabs metiz-movie-tabs">
+                <li class="active">
+                    <span href="#movie-tab-1" data-toggle="tab">PHIM ĐANG CHIẾU</span>
+                </li>
+                <li class="last">
+                    <span href="#movie-tab-2" data-toggle="tab">PHIM SẮP CHIẾU</span>
+                </li>
+            </ul>
             <dl id="collateral-tabs-movie" class="collateral-tabs tab-movie">
                 <div class="tab-content tabcontent" id="pdc">
                     <div id="movie-tab-1" class="tab-pane fade in active slideshow-containe-movier feature_slide_show_480_767">
                         <ul class="feature_slide_show content-slider">
-                            {% for item in data.movie %}           
-                            <li class="poster-film film-lists item">
-                                <span class="nmovie-rating nmovie-rating-c18">C18</span>
-                                <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
-                                <input type="hidden" value="movie-trailer-285">
-                                <div class="feature_film_content">
-                                    <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
-                                    <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
-                                    <button type="button" title="Mua vé" class="button btn-booking" ><span><span>Mua vé</span></span>
-                                    </button>
-                                </div>
-                                <div class="play-button">
-                                    <span><span>Play</span></span>
-                                    <div class="link-play">
-                                        <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
+                            {% for item in data.movie %}
+                                <li class="poster-film film-lists item">
+                                    <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
+                                    <input type="hidden" value="movie-trailer-285">
+                                    <div class="info-movie-home">
+                                        <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
+                                        <h4>96 Phut | 18 +</h4>
+                                        <h4>KHỞI CHIẾU 15/10/2017</h4>
                                     </div>
-                                </div>
-                                        
-                            </li>
+                                    <div class="detail-pay-film">
+                                        <a title="Xem chi tiết" class="button" href="#">Chi tiết</a>
+                                        <button type="button" title="Mua vé" class="button">Đặt vé</button>
+                                    </div>
+                                    <div class="play-button">
+                                        <span><span>Play</span></span>
+                                        <div class="link-play">
+                                            <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
+                                        </div>
+                                    </div>   
+                                </li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -92,62 +90,25 @@
                         <ul class="feature_slide_show content-slider">
                             {% for item in data.movie_soon %}           
                                 <li class="poster-film film-lists item">
-                                    <span class="nmovie-rating nmovie-rating-c18">C18</span>
                                     <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
                                     <input type="hidden" value="movie-trailer-285">
-                                    <div class="feature_film_content">
+                                    <div class="info-movie-home">
                                         <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
-                                        <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
-                                        <button type="button" title="Mua vé" class="button btn-booking"><span><span>Mua vé</span></span>
-                                        </button>
+                                        <h4>96 Phut | 18 +</h4>
+                                        <h4>KHỞI CHIẾU 15/10/2017</h4>
+                                    </div>
+                                    <div class="detail-pay-film">
+                                        <a title="Xem chi tiết" class="button" href="#">Chi tiết</a>
+                                        <button type="button" title="Mua vé" class="button">Đặt vé</button>
                                     </div>
                                     <div class="play-button">
                                         <span><span>Play</span></span>
                                         <div class="link-play">
                                             <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
                                         </div>
-                                    </div>
+                                    </div>   
                                 </li>
                             {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </dl> 
-        </div>
-        <div class="product-collateral toggle-content tabs home-event tabs-format-metiz">
-            <div class="home-title">
-                <h2>event</h2>
-            </div>
-            <ul class="nav nav-tabs toggle-tabs">
-                    <li class="active">
-                        <span href="#event-tab" data-toggle="tab">Tin Mới & Ưu Đãi</span>
-                    </li>
-                    <li class="last">
-                        <span href="#tv-tab" data-toggle="tab">Thành Viên CGV</span>
-                    </li>
-                </ul>
-            <dl id="collateral-tabs" class="collateral-tabs tab-event">
-                <div class="tab-content">
-                    <div id="event-tab" class="tab-pane fade in active">
-                        <ul class="content-slider">
-                            {% for item in data.event %}
-                            <li>
-                                <a href="#">
-                                    <img src="{{ STATIC_URL }}{{item}}" />
-                                </a>
-                            </li>
-                            {% endfor %} 
-                        </ul>
-                    </div>
-                    <div id="tv-tab" class="tab-pane fade ">
-                        <ul class="content-slider">
-                            {% for item in data.tv_cgv %}
-                            <li>
-                                <a href="#">
-                                    <img src="{{ STATIC_URL }}{{item}} " />
-                                </a>
-                            </li>
-                            {% endfor%}
                         </ul>
                     </div>
                 </div>

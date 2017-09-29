@@ -29,6 +29,7 @@ $(document).ready(function() {
         rtl:false,
         speed:1000,
         pause:9000,
+        autoWidth: true,
         responsive : [
             {
                 breakpoint:991,

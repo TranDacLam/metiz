@@ -1,18 +1,17 @@
-    ul{
-        list-style: none outside none;
-        padding-left: 0;
-        margin: 0;
-    }
-    .demo .item{
-        margin-bottom: 60px;
-    }
-    .content-slider li{
-        background-color: #ed3020;
-        text-align: center;
-        color: #FFF;
-    }
-    
-    .demo{
-        width: 800px;
-    }
+ul{
+    list-style: none outside none;
+    padding-left: 0;
+    margin: 0;
+}
+.demo .item{
+    margin-bottom: 60px;
+}
+.content-slider li{
+    text-align: center;
+    color: #FFF;
+}
+
+.demo{
+    width: 800px;
+}
     
