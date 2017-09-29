@@ -77,11 +77,7 @@
 					</div>
 					<div class="movie-genre movie-info">
 						<label>Thể loại: </label>
-						{% for ge in genre %}
-							{% if ge.id == film_detail.genre_id %}
-							<div class="std">&nbsp; {{ge.name}}</div>
-							{% endif %}
-						{% endfor %}
+						<div class="std">&nbsp; {{film_detail.genre.name}}</div>
 					</div>
 					<div class="movie-release movie-info">
 						<label>Khởi chiếu: </label>
@@ -97,22 +93,13 @@
 					</div>
 					<div class="movie-rating movie-rated-web">
 						<label>Rated: </label>
-						{% for rt in rateds %}
-							{% if rt.id == film_detail.rated_id %}
-							<div class="std">&nbsp;  {{rt.name}}</div>
-							{% endif %}
-						{% endfor %}
+						<div class="std">&nbsp;  {{film_detail.rated.name}}</div>
 					</div>
 
 					<div class="movie-technology-icons">
-						{% for rt in rateds %}
-							{% if rt.id == film_detail.rated_id %}
-						<span class="movie-rating-detail c18">Rated : {{rt.name}}</span>
-							{% endif %}
-						{% endfor %}
-
-						<a href="javascript:void(0)" class="movie-detail-icon-type" title="2D">
-							<span class="movie-detail-type-2d">2D</span>
+						<span class="movie-rating-detail c18">Rated : {{film_detail.rated.name}}</span>
+						<a href="javascript:void(0)" class="movie-detail-icon-type" title="{{film_detail.movie_type.name}}">
+							<span class="movie-detail-type-2d">{{film_detail.movie_type.name}}</span>
 						</a>
 					</div>
 				</div>
