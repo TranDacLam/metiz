@@ -34,15 +34,17 @@
 		<div class="page-title category-title">
 			<h1>Phim Đang Chiếu</h1>
 		</div>
+		{% if data_showing %}
 		<div class="category-products cgv-movies">
 			<ul class="products-grid products-grid--max-4-col">
-				{% for value in data%}
+				{% for value in data_showing %}
 
 					<li class="film-lists">
 						<span class="nmovie-rating nmovie-rating-{{value.tc}}"></span>
+							
 						<div class="product-images">
-							<a href="{% url 'film_detail'%}" title="CGV_American Made" class="product-image">
-								<img id="product-collection-image-285" src="{{STATIC_URL}}{{value.img}}" alt="CGV_American Made">
+							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}" class="product-image">
+								<img id="product-collection-image-285" src="{{STATIC_URL}}{{value.poster}}" alt="{{value.name}}">
 							</a>
 							
 							<div class="movie-technology">
@@ -55,30 +57,34 @@
 						
 						<div class="product-info">
 							<h2 class="product-name">
-							<a href="#" title="{{value.name}}">{{value.name}}</a></h2>
+							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}">{{value.name}}</a></h2>
 							
 							<div class="cgv-movie-info">
 								<span class="cgv-info-bold">Thể loại: </span>
-								<span class="cgv-info-normal">{{value.category}}</span>
+								{% for ge in genre %}
+									{% if ge.id == value.genre_id %}
+								<span class="cgv-info-normal">{{ge.name}}</span>
+									{% endif %}
+								{% endfor %}
 							</div>
 							
 							<div class="cgv-movie-info">
 								<span class="cgv-info-bold">Thời lượng: </span>
-								<span class="cgv-info-normal">{{value.time}}</span>
+								<span class="cgv-info-normal">{{value.time_running}}</span>
 							</div>
 							
 							<div class="cgv-movie-info">
 								<span class="cgv-info-bold">Khởi chiếu: </span>
-								<span class="cgv-info-normal">{{value.date}}</span>
+								<span class="cgv-info-normal">{{value.release_date | date:"d-m-Y" }}</span>
 							</div>
 						</div>
 						<!-- <div class="ribon position-1"></div> -->
-						<div class="ribon position-{{value.rating}}"></div>
+						<div class="ribon position-{{value.rated_id}}"></div>
 						
 						<ul class="add-to-links">
 							<li>
 								<!-- Button like and share facebook, data-href http://domain/filmdetail/id (unique) -->
-								<!-- https://{{ request.get_host }}{% url 'film_detail' %}{{value.id}} -->
+								<!-- https://{{ request.get_host }}{% url 'film_detail' value.id %}-->
 								<div class="fb-like fb_iframe_widget" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
                                 </div>
 							</li>
@@ -91,6 +97,7 @@
 				{%endfor%}
 			</ul>
 		</div>
+		{% endif %}
 	</div>           
 </div>
 

@@ -1143,7 +1143,7 @@ body.customer-account .my-account .fieldset.cgv-changepass h2{
     display: inline-block;
     width: 100%;
     margin: 10px 0;
-    border: 1px solid #ededed;
+    /*border: 1px solid #ededed;*/
 }
 .slideshow-prev {
     left: 8px;
@@ -2550,7 +2550,7 @@ li.film-lists:hover .play-button{
     margin:20px 0px 0px;
 }
 .theatre-wrap .home-title h3 {
-    background: url(../images/h3_theater.gif) no-repeat scroll center center / 204px 41px transparent;
+    /*background: url(../images/h3_theater.gif) no-repeat scroll center center / 204px 41px transparent;*/
     display: inline-block;
     width: 220px;
     margin-top:5px;
@@ -2573,10 +2573,10 @@ li.film-lists:hover .play-button{
 .theater-container .heater-head {
     margin-top: 30px;
 }
-.cms-index-index .main-container {
+/*.cms-index-index .main-container {
     background: url(../images/bg_c_bricks.png) repeat-x scroll 0 124px rgba(0, 0, 0, 0);
 
-}
+}*/
 #checkout-step-1 table,#cgv-points{
     font-size:12px;
 }

@@ -54,7 +54,7 @@ $(document).ready(function() {
                 settings: {
                     item:1,
                     auto:true,
-                    slideMove:1
+                    slideMove:1,
                 }
             }
         ],

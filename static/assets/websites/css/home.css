@@ -1,13 +1,13 @@
 .mfp-bg{
 	opacity: 1;
 }
-.col-main .nav-tabs>li.active>span{
+.session-movie .nav-tabs>li.active>span{
 	color: white;
 	background-color: #ff5400;
 	border: 3px solid #ff5400;
 	font-weight: bold;
 }
-.col-main .nav-tabs>li>span {
+.session-movie .nav-tabs>li>span {
 	padding: 15px 30px 15px 30px;
 	border: 3px solid #ffffff;
 	border-radius: 35px;
@@ -17,19 +17,19 @@
 	font-size: 20px;
 	cursor: pointer;
 }
-.col-main .nav-tabs>li>span:hover {
+.session-movie .nav-tabs>li>span:hover {
 	padding: 15px 30px 15px 30px;
 	border: 3px solid #ff5400;
 	border-radius: 35px;
 	background-color: #ff5400;
 	color: black;
 }
-.col-main .tab-content .tab-pane {
+.session-movie .tab-content .tab-pane {
 	display: block;
 	height: 0;
 	opacity: 0;
 }
-.col-main .tab-content .tab-pane.active {
+.session-movie .tab-content .tab-pane.active {
 	height: auto;
 	opacity: 1;
 }
@@ -44,7 +44,7 @@
 	overflow: hidden
 }
 .link-play{
-	display: none
+	display: none;
 }
 .detail-pay-film{                        
     visibility: hidden;
@@ -99,13 +99,13 @@ ul.metiz-movie-tabs {
 }
 
 @media screen and (max-width: 420px) {
- 	.col-main .nav-tabs>li.active>span{
+ 	.session-movie .nav-tabs>li.active>span{
 		color: white;
 		background-color: #ff5400;
 		border: 3px solid #ff5400;
 		font-weight: bold;
 	}
-	.col-main .nav-tabs>li>span {
+	.session-movie .nav-tabs>li>span {
 		padding: 5px 10px 5px 10px;
 		border: 3px solid #ffffff;
 		border-radius: 35px;
@@ -115,11 +115,52 @@ ul.metiz-movie-tabs {
 		margin-right: -4px;
 		cursor: pointer;
 	}
-	.col-main .nav-tabs>li>span:hover {
+	.session-movie .nav-tabs>li>span:hover {
 		padding: 5px 10px 5px 10px;
 		border: 3px solid #ff5400;
 		border-radius: 35px;
 		background-color: #ff5400;
 		color: black;
 	}
+	.tabs-format-metiz ul.nav-tabs{
+		border: none;
+		padding: 20px 0px 20px;
+	}
+}
+
+@media screen and (max-width: 320px) {
+ 	.session-movie .nav-tabs>li.active>span{
+		color: white;
+		background-color: #ff5400;
+		border: 2px solid #ff5400;
+		font-weight: bold;
+	}
+	.session-movie .nav-tabs>li>span {
+		padding: 5px 10px 5px 10px;
+		border: 2px solid #ffffff;
+		border-radius: 35px;
+		background: rgba(255, 255, 255, 0);
+		color: white;
+		font-size: 10px;
+		margin-right: -4px;
+		cursor: pointer;
+	}
+	.session-movie .nav-tabs>li>span:hover {
+		padding: 5px 10px 5px 10px;
+		border: 2px solid #ff5400;
+		border-radius: 35px;
+		background-color: #ff5400;
+		color: black;
+	}
+	.tabs-format-metiz ul.nav-tabs{
+		border: none;
+		padding: 20px 0px 20px;
+	}
+}
+
+.session-movie{
+	background: url('../images/bg-session-movie.png') repeat-x center;
+}
+.session-event{
+	background: #f1eee9;
 }
