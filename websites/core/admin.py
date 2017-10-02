@@ -146,3 +146,8 @@ class CenimaTechnologyAdmin(admin.ModelAdmin):
     pass
 admin.site.register(CenimaTechnology, CenimaTechnologyAdmin)
 
+
+class CommentAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Comment, CommentAdmin)
+

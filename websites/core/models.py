@@ -24,10 +24,14 @@ class DateTimeModel(models.Model):
 
 @python_2_unicode_compatible
 class Banner(DateTimeModel):
+    POSITION = (
+        (1, 1),
+        (2, 2),
+    )
     image = models.ImageField(max_length=1000, upload_to="banners")
     sub_url = models.CharField(max_length=1000)
     is_show = models.BooleanField(default=False)
-    position = models.IntegerField()
+    position = models.IntegerField(choices=POSITION)
 
     def __str__(self):
         return '%s' % (self.sub_url)
@@ -99,6 +103,7 @@ class Comment(DateTimeModel):
     review = models.TextField()
     rating = models.IntegerField(default=5, choices=STAR)
     date_post = models.DateField()
+    movie = models.ForeignKey('Movie', related_name='movie_comment_rel')
 
     def __str__(self):
         return '%s' % (self.full_name)
