@@ -1099,13 +1099,12 @@
 		width: 980px;
 	}
 	.sect-person {
-		border-bottom: 1px solid #222;
 		display: block;
 		margin-bottom: 10px;
-		margin-top: 15px;
+		margin-top: 25px;
 		padding-bottom: 6px;
 		text-align: center;
-		height:108px;
+		height:86px;
 	}
 	.sect-person ul {
 		border-bottom: 1px solid #222;

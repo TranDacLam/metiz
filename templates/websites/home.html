@@ -32,7 +32,7 @@
                 {% include 'arrow_slide.html' %}
             </div>
         </div>
-        <!-- <div class="std">
+        <div class="std">
             <p>
                 <div class="widget widget-static-block">
                     <div class="sect-person">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </p>
-        </div> -->
+        </div>
 
         <!-- <div class="home-promotion-card">
             <ul class="promos">
@@ -67,7 +67,6 @@
         </div> -->
     </div>
 </div>
-
 <div class="container-fluid session-movie">
     <div class="container">
         <div class="home-movie-selection product-collateral toggle-content tabs home-event tabs-format-metiz">
@@ -94,7 +93,7 @@
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="#">Chi tiết</a>
-                                        <button type="button" title="Mua vé" class="button">Đặt vé</button>
+                                        <button type="button" title="Đặt vé" class="button">Đặt vé</button>
                                     </div>
                                     <div class="play-button">
                                         <span><span>Play</span></span>
@@ -119,59 +118,41 @@
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="#">Chi tiết</a>
-                                        <button type="button" title="Mua vé" class="button">Đặt vé</button>
+                                        <button type="button" title="Đặt vé" class="button">Đặt vé</button>
                                     </div>
                                     <div class="play-button">
                                         <span><span>Play</span></span>
                                         <div class="link-play">
-                                            <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
+                                            <a class="popup-youtube" href="https://www.youtube.com/watch?v=COz7fZB66OM">Open YouTube video</a><br>
                                         </div>
                                     </div>   
                                 </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div id="movie-tab-2" class="tab-pane fade slideshow-containe-movier feature_slide_show_480_767">
-                            <ul class="feature_slide_show content-slider">
-                                {% for item in data.movie_soon %}           
-                                    <li class="poster-film film-lists item">
-                                        <span class="nmovie-rating nmovie-rating-c18">C18</span>
-                                        <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
-                                        <input type="hidden" value="movie-trailer-285">
-                                        <div class="feature_film_content">
-                                            <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
-                                            <a title="Xem chi tiết" class="button" href="#">Xem chi tiết</a>
-                                            <button type="button" title="Mua vé" class="button btn-booking"><span><span>Mua vé</span></span>
-                                            </button>
-                                        </div>
-                                        <div class="play-button">
-                                            <span><span>Play</span></span>
-                                            <div class="link-play">
-                                                <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
-                                            </div>
-                                        </div>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                            {% endfor %}
+                        </ul>
                     </div>
-                </dl> 
-        </div>
-        <div class="home-promotion-card">
-            <ul class="promos">
-                <li class="col-ad">
-                    <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/214x245.jpg" /></a></div>
-                </li>
-                <li class="col-hd">
-                    <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/phototicket---496x247_1.jpg" /></a></div>
-                </li>
-                <li class="col-ad">
-                    <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/cgv_hotnumber_w_214_x_h_245_px.png" /></a></div>
-                </li>
-                
-            </ul>
+                </div>
+            </dl> 
         </div>
     </div>
-</div>
-                        
+</div>    
+<div class="container-fluid session-event">
+    <div class="main">
+        <div class="col-main">
+            <div class="home-promotion-card">
+                <ul class="promos">
+                    <li class="col-ad">
+                        <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/214x245.jpg" /></a></div>
+                    </li>
+                    <li class="col-hd">
+                        <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/phototicket---496x247_1.jpg" /></a></div>
+                    </li>
+                    <li class="col-ad">
+                        <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/cgv_hotnumber_w_214_x_h_245_px.png" /></a></div>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>      
 {% endblock %}
