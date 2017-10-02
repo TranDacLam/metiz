@@ -2,6 +2,9 @@ ul, ol, li {
     list-style: none;
     float: none;
 }
+footer h3,h2{
+	color: #ffffff;
+}
 footer{
 	font-family: 'SairaSemiCondensed', sans-serif;
 	background: #031327;
