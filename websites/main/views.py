@@ -73,17 +73,6 @@ def custom_404(request):
 def custom_500(request):
 	return render(request, 'websites/errors/500.html', {}, status=500)
 
-def home(request):
-	data={'banner': ["assets/websites/images/banner-cgv/a.jpg","assets/websites/images/banner-cgv/b.jpg","assets/websites/images/banner-cgv/c.jpg","assets/websites/images/banner-cgv/d.jpg"],
-		'movie': ["assets/websites/images/movie-selection/movie1.png","assets/websites/images/movie-selection/movie2.jpg","assets/websites/images/movie-selection/movie3.jpg","assets/websites/images/movie-selection/movie4.jpg","assets/websites/images/movie-selection/movie5.jpg"],
-		'event':["assets/websites/images/events/event1.jpg","assets/websites/images/events/event2.jpg","assets/websites/images/events/event3.jpg","assets/websites/images/events/event4.jpg","assets/websites/images/events/event6.png","assets/websites/images/events/event7.jpg"],
-		'tv_cgv':["assets/websites/images/thanhvien-cgv/tv1.jpg","assets/websites/images/thanhvien-cgv/tv2.jpg","assets/websites/images/thanhvien-cgv/tv3.jpg","assets/websites/images/thanhvien-cgv/tv4.jpg","assets/websites/images/thanhvien-cgv/tv5.jpg"],
-		'movie_soon':["assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png","assets/websites/images/american_made_240x355.png"]
-	}
-	data_modal= data_schedule
-	return render(request, 'websites/home.html', {'data': data, 'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
-
-
 def cinox(request):
 	data_modal= data_schedule
 	data_cinema_area = [{'id':'cgv_city_1', 'name':'Hồ Chí Minh'},{'id':'cgv_city_3', 'name':'Hà Nội'},
@@ -500,16 +489,3 @@ def screenx(request):
 	}
 	return render( request, 'websites/screenx.html', {'data': data})
 
-def news(request):
-	data_modal= data_schedule
-	news=NewOffer.objects.all()
-	return render(request, 'websites/news.html', {'news': news, 'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
-
-def new_detail(request, id):
-	data_modal= data_schedule
-	new=NewOffer.objects.get(pk=id)
-	return render(request, 'websites/new_detail.html', {'new': new,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
-def getCinemaTechnologyByName(request, name):
-	allTechnology= CenimaTechnology.objects.all()
-	technology = allTechnology.get(name = name)
-	return render(request, 'websites/cinema_technology.html', {'technology': technology, 'allTechnology':allTechnology})

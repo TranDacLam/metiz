@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     # url(r'^comments/', include('django_comments.urls')),
-    url(r'^$', views.home, name='home'),
+    
     url(r'^cinox/$', views.cinox, name='cinox'),
     url(r'^cinox_detail/$', views.cinox_detail, name='cinox_detail'),
     url(r'^gift_card/$', views.gift_card, name='gift_card'),
@@ -63,9 +63,6 @@ urlpatterns = [
     url(r'^special/starium/$', views.starium, name='special_starium'),
     url(r'^special/premium/$', views.premium, name='special_premium'),
     url(r'^special/screenx/$', views.screenx, name='special_screenx'),
-    url(r'^news/$', views.news, name='news'),
-    url(r'^new/detail/(?P<id>\d+)/$', views.new_detail, name='new_detail'),
-    url(r'^cinema/technology/(?P<name>[-\w]+)/$', views.getCinemaTechnologyByName, name='getCinemaTechnologyByName'),
     url(r'', include('core.urls')),
 ]
 
