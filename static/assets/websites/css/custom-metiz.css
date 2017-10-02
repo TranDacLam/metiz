@@ -2447,7 +2447,7 @@ li.film-lists:hover .play-button{
     margin-top: 30px;
     float: left;
     width: 100%;
-    border-bottom: 3px solid #241d1e;
+    /* border-bottom: 3px solid #241d1e; */
 }
 .promos {
     margin: 0 0 10px 0;
