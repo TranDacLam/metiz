@@ -19,7 +19,8 @@ a:hover,a:focus{
     display: inline-block;
 }
 .header-language-background, .header-language-background a {
-    color: #666;
+    color: #7e8eaa;
+    font-size: 14px;
 }
 .header-language-background a:hover{
     text-decoration:none;
