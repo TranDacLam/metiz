@@ -20,7 +20,7 @@
 
 
         .jssora106 {display:block;position:absolute;cursor:pointer;}
-        .jssora106 .c {fill:#fff;opacity:.3;}
+        .jssora106 .c {fill:#fff;opacity:.8;}
         .jssora106 .a {fill:none;stroke:#ff5400;stroke-width:350;stroke-miterlimit:10;}
         .jssora106:hover .c {opacity:.5;}
         .jssora106:hover .a {opacity:.8;}

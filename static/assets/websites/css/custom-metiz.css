@@ -19,7 +19,8 @@ a:hover,a:focus{
     display: inline-block;
 }
 .header-language-background, .header-language-background a {
-    color: #666;
+    color: #7e8eaa;
+    font-size: 14px;
 }
 .header-language-background a:hover{
     text-decoration:none;
@@ -2380,10 +2381,7 @@ li.film-lists:hover .play-button{
 .tab-showtime li{
     width:125px;
 }
-.home-event {
-    width: 100%;
-    min-height: 570px;
-}
+
 .home-show-event ul li {
     margin-right: 6.6px;
     float:none;
@@ -2426,7 +2424,7 @@ li.film-lists:hover .play-button{
     margin-top: 15px;
 }
 .cms-home .home-event .collateral-tabs {
-    overflow: unset;
+    overflow: hidden;
     float: left;
 }
 .home-title h2 {
@@ -2447,10 +2445,10 @@ li.film-lists:hover .play-button{
     background:#e71a0f;
 }
 .home-promotion-card {
-    margin-top: 100px;
+    margin-top: 30px;
     float: left;
     width: 100%;
-    border-bottom: 3px solid #241d1e;
+    /* border-bottom: 3px solid #241d1e; */
 }
 .promos {
     margin: 0 0 10px 0;
@@ -2546,8 +2544,6 @@ li.film-lists:hover .play-button{
     background: transparent;
     overflow: unset;
     float: left;
-    padding-bottom:30px;
-    margin:20px 0px 0px;
 }
 .theatre-wrap .home-title h3 {
     /*background: url(../images/h3_theater.gif) no-repeat scroll center center / 204px 41px transparent;*/

@@ -147,3 +147,19 @@ class NewOffer(DateTimeModel):
 
     def __str__(self):
         return '%s' % (self.name)
+
+
+@python_2_unicode_compatible
+class Post(DateTimeModel):
+    name = models.CharField(max_length=50)
+    content = models.TextField()
+    key_query = models.CharField(max_length=255, unique=True)
+    is_draft = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.key_query = "kq_" + self.key_query.replace(" ", "_")
+        super(Post, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return '%s' % (self.name)

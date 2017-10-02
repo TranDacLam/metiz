@@ -1,6 +1,13 @@
 .mfp-bg{
 	opacity: 1;
 }
+.session-movie .tab-content .tab-pane {
+	display: block;
+	height: 0;
+}
+.session-movie .tab-content .tab-pane.active {
+	height: auto;
+}
 .session-movie .nav-tabs>li.active>span{
 	color: white;
 	background-color: #ff5400;
@@ -9,7 +16,7 @@
 }
 .session-movie .nav-tabs>li>span {
 	padding: 15px 30px 15px 30px;
-	border: 3px solid #ffffff;
+	border: 3px solid #fff;
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0);
 	color: white;
@@ -17,25 +24,13 @@
 	font-size: 20px;
 	cursor: pointer;
 }
-.session-movie .nav-tabs>li>span:hover {
-	padding: 15px 30px 15px 30px;
+.session-movie .nav-tabs>li>span:hover {	
 	border: 3px solid #ff5400;
 	border-radius: 35px;
 	background-color: #ff5400;
 	color: black;
 }
-.session-movie .tab-content .tab-pane {
-	display: block;
-	height: 0;
-	opacity: 0;
-}
-.session-movie .tab-content .tab-pane.active {
-	height: auto;
-	opacity: 1;
-}
-
 .tab-movie{
-	height: 401px; 
 	overflow: hidden;
 	margin-top: 20px;
 }
@@ -64,7 +59,7 @@
 	font-weight: bold;
 	background: rgba(3, 19, 39, 0);
 }
-.detail-pay-film a:hover{
+.detail-pay-film a:hover, button:hover{
 	background: #ff5400;
 	border: 3px solid #ff5400;
 }
@@ -78,11 +73,12 @@
 .info-movie-home{
 	padding-top: 20px;
 }
-
 ul.metiz-movie-tabs li {
     display: inline-block;
     float: none;
     border-radius: 20px;
+}
+ul.metiz-movie-tabs li:first-child {
     padding-right: 20px;
 }
 ul.metiz-movie-tabs {
@@ -97,67 +93,32 @@ ul.metiz-movie-tabs {
 .info-movie-home h1, h2, h3, h4, h5{
 	color: #fff;
 }
-
 @media screen and (max-width: 420px) {
  	.session-movie .nav-tabs>li.active>span{
-		color: white;
-		background-color: #ff5400;
 		border: 3px solid #ff5400;
-		font-weight: bold;
 	}
 	.session-movie .nav-tabs>li>span {
 		padding: 5px 10px 5px 10px;
-		border: 3px solid #ffffff;
-		border-radius: 35px;
-		background: rgba(255, 255, 255, 0);
-		color: white;
+		border: 3px solid #fff;
 		font-size: 12px;
-		margin-right: -4px;
-		cursor: pointer;
 	}
 	.session-movie .nav-tabs>li>span:hover {
-		padding: 5px 10px 5px 10px;
 		border: 3px solid #ff5400;
-		border-radius: 35px;
-		background-color: #ff5400;
-		color: black;
 	}
 	.tabs-format-metiz ul.nav-tabs{
 		border: none;
 		padding: 20px 0px 20px;
 	}
 }
-
 @media screen and (max-width: 320px) {
  	.session-movie .nav-tabs>li.active>span{
-		color: white;
-		background-color: #ff5400;
 		border: 2px solid #ff5400;
-		font-weight: bold;
 	}
 	.session-movie .nav-tabs>li>span {
-		padding: 5px 10px 5px 10px;
 		border: 2px solid #ffffff;
-		border-radius: 35px;
-		background: rgba(255, 255, 255, 0);
-		color: white;
 		font-size: 10px;
-		margin-right: -4px;
-		cursor: pointer;
-	}
-	.session-movie .nav-tabs>li>span:hover {
-		padding: 5px 10px 5px 10px;
-		border: 2px solid #ff5400;
-		border-radius: 35px;
-		background-color: #ff5400;
-		color: black;
-	}
-	.tabs-format-metiz ul.nav-tabs{
-		border: none;
-		padding: 20px 0px 20px;
 	}
 }
-
 .session-movie{
 	background: url('../images/bg-session-movie.png') repeat-x center;
 }

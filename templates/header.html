@@ -35,11 +35,6 @@
                                 <span class="icon"></span>
                                 <span class="label">Menu</span>
                             </button>
-                            <button class=" skip-link skip-search navbar-toggle "
-                            data-toggle="collapse" data-target="#header-search" aria-expanded="false" >
-                                <span class="icon"></span>
-                                <span class="label">Tìm kiếm</span>
-                            </button>
                             <a href="{% url 'account_login'%}"><button class=" skip-link skip-account navbar-toggle ">
                                     <span class="icon"></span>
                                     <span class="label">Đăng nhập/ Đăng ký</span>
@@ -63,38 +58,21 @@
                                 <a class="dropdown-toggle" href="{% url 'news'%}">Khuyến mãi</a>
                             </li>
                             <li class="dropdown">
+                                <a class="dropdown-toggle" href="#">BLOG PHIM</a>
+                            </li>
+                            <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Thành viên</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{% url 'account_login'%}">Đăng nhập</a></li>
                                     <li><a href="{% url 'account_create'%}">Đăng kí</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" href="#">Đánh giá</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
-         <div id="header-search" class="skip-content">
-            <div class="header-search-left">
-                <p><a href="{% url 'news'%}"><img alt="" src="{{ STATIC_URL }}assets/websites/images/tin-moi-uu-dai.gif" /></a></p>
-                <form id="search_mini_form" action="#" method="get">
-                    <div class="input-box">
-                        <label for="search">Search:</label>
-                        <input id="search" type="search" name="q" value="" class="input-text required-entry" maxlength="128" placeholder="Tìm kiếm" />
-                        <button type="submit" title="Tìm kiếm" class="button search-button"><span><span>Tìm kiếm</span></span>
-                        </button>
-                    </div>
-                    <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
-                    
-                </form>
-            </div>
-            <div class="header-search-right">
-                <p><a href="{% url 'showing' %}"><img alt="" src="{{ STATIC_URL }}assets/websites/images/mua-ve_ngay.png" /></a></p>
-            </div>
-        </div>
+         
         <!-- Account -->
         <div id="header-account" class="skip-content">
             <div class="links">
