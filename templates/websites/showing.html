@@ -39,9 +39,7 @@
 			<ul class="products-grid products-grid--max-4-col">
 				{% for value in data_showing %}
 
-					<li class="film-lists">
-						<span class="nmovie-rating nmovie-rating-{{value.tc}}"></span>
-							
+					<li class="film-lists">				
 						<div class="product-images">
 							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}" class="product-image">
 								<img id="product-collection-image-285" src="{{STATIC_URL}}{{value.poster}}" alt="{{value.name}}">
@@ -75,7 +73,6 @@
 							</div>
 						</div>
 						<!-- <div class="ribon position-1"></div> -->
-						<div class="ribon position-{{value.rated_id}}"></div>
 						
 						<ul class="add-to-links">
 							<li>

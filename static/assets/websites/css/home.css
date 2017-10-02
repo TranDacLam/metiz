@@ -21,7 +21,7 @@
 	background: rgba(255, 255, 255, 0);
 	color: white;
 	margin-right: -4px;
-	font-size: 20px;
+	font-size: 26px;
 	cursor: pointer;
 }
 .session-movie .nav-tabs>li>span:hover {	
@@ -93,14 +93,28 @@ ul.metiz-movie-tabs {
 .info-movie-home h1, h2, h3, h4, h5{
 	color: #fff;
 }
+.info-movie-home h3{
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 1.5;
+}
+.info-movie-home h4{
+	text-transform: uppercase;
+}
+@media screen and (max-width: 860px) {
+ 	.session-movie .nav-tabs>li>span {
+		font-size: 28px;
+	}
+}
 @media screen and (max-width: 420px) {
  	.session-movie .nav-tabs>li.active>span{
 		border: 3px solid #ff5400;
 	}
 	.session-movie .nav-tabs>li>span {
 		padding: 5px 10px 5px 10px;
-		border: 3px solid #fff;
-		font-size: 12px;
+		border: 3px solid #ffffff;
+		font-size: 14px;
 	}
 	.session-movie .nav-tabs>li>span:hover {
 		border: 3px solid #ff5400;
@@ -124,4 +138,19 @@ ul.metiz-movie-tabs {
 }
 .session-event{
 	background: #f1eee9;
+}
+.info-movie-home span{
+	font-weight: bold;
+}
+.c16{
+	color: #ff5400;
+}
+.p{
+	color: #6be242;
+}
+.c13{
+	color: #ffd640;
+}
+.c18{
+	color: #f2275b;
 }
