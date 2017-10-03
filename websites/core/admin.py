@@ -124,6 +124,7 @@ admin.site.register(Movie, MovieAdmin)
 
 
 class NewOfferAdmin(admin.ModelAdmin):
+    exclude = ('movies',)
     formfield_overrides = {
         models.TextField: {'widget': CKEditorUploadingWidget()},
     }
