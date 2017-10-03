@@ -173,8 +173,11 @@ ul.metiz-movie-tabs {
 #more_hover{
 	display:none
 }
-#news #more{
-	
+#news #show_more:hover #more_hover{
+	display:block;
+}
+#news #show_more:hover #more{
+	display:none;
 }
 
 .list-social{
