@@ -13,5 +13,13 @@ $(document).ready(function() {
 	        fixedContentPos: false
 		  });
     });
-    // action slide carousel movie and event
+    //action for div #show_more hover 
+    $('#show_more').hover(function() {
+    	$('#more').css('display', 'none');
+    	$('#more_hover').css('display', 'block');
+    }, function() {
+    	/* Stuff to do when the mouse leaves the element */
+    	$('#more').css('display', 'block');
+    	$('#more_hover').css('display', 'none');
+    });
 });

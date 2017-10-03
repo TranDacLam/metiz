@@ -5,6 +5,9 @@ footer .container li {
 footer h3,h2{
 	color: #ffffff;
 }
+footer h2{
+	font-weight: bold;
+}
 footer{
 	font-family: 'SairaSemiCondensed', sans-serif;
 	background: #031327;
