@@ -22,4 +22,8 @@ $(document).ready(function() {
     	$('#more').css('display', 'block');
     	$('#more_hover').css('display', 'none');
     });
+    $('.map-trigger').click(function(event) {
+        event.preventDefault();
+        $('#content-map').toggle('slow/400/fast');
+    });
 });

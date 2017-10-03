@@ -194,12 +194,7 @@ ul.metiz-movie-tabs {
   	width: 100%;    
     text-align: center;
  }
-@media screen and (max-width: 1200px) {
-	#news #box{
-		height: 215px;
-	}
-}
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
 	#news #box{
 		height:auto;
 	}
