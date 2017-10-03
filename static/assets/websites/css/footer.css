@@ -1,3 +1,17 @@
+
+#list-social{
+	border-top: 1.5px solid #263547;
+	background: #0e1d2f;
+	padding: 20px 0px;
+}
+footer #list-social ul.list-inline li 
+{    
+	float: none; 
+}
+footer #list-social ul.list-inline{ 
+  	width: 100%;    
+    text-align: center;
+ }
 footer .container li {
     list-style: none;
     float: none;

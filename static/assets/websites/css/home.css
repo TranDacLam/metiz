@@ -180,23 +180,11 @@ ul.metiz-movie-tabs {
 	display:none;
 }
 
-.list-social{
-	margin-top:70px;
-}
-.list-social li{
-	padding: 0px 10px;
-}
 #ads-facebook{
-	    margin: 70px 0px 20px 0px;
+	padding: 70px 0px 70px 0px;
+	border-bottom: 2px solid #263547;
 }
-#ads-facebook ul.list-inline li 
-{    
-	float: none; 
-}
-#ads-facebook ul.list-inline { 
-  	width: 100%;    
-    text-align: center;
- }
+
 @media screen and (max-width: 768px) {
 	#news #box{
 		height:auto;
