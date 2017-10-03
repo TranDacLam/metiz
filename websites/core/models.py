@@ -64,6 +64,7 @@ class Genre(DateTimeModel):
 
     class Meta:
         verbose_name = _('Genre')
+        verbose_name_plural = _('Genres')
 
 
 @python_2_unicode_compatible
@@ -85,6 +86,7 @@ class MovieType(DateTimeModel):
 
     class Meta:
         verbose_name = _('Movie Type')
+        verbose_name_plural = _('Movie Types')
 
 
 @python_2_unicode_compatible
@@ -110,6 +112,7 @@ class Movie(DateTimeModel):
 
     class Meta:
         verbose_name = _('Movie')
+        verbose_name_plural = _('Movies')
 
 
 @python_2_unicode_compatible
@@ -134,6 +137,7 @@ class Comment(DateTimeModel):
 
     class Meta:
         verbose_name = _('Comment')
+        verbose_name_plural = _('Comments')
 
 
 @python_2_unicode_compatible
@@ -158,6 +162,7 @@ class CenimaTechnology(DateTimeModel):
 
     class Meta:
         verbose_name = _('Cenima Technology')
+        verbose_name_plural = _('Cenima Technologys')
 
 
 @python_2_unicode_compatible
@@ -174,13 +179,14 @@ class NewOffer(DateTimeModel):
     apply_for = models.CharField(_("Apply For"), max_length=50, default='all', choices=GENDER)
     priority = models.IntegerField(_("Priority"), null=True, blank=True)
     apply_date = models.DateField(_("Apply Date"), default=datetime.date.today, editable=True)
-    movies = models.ManyToManyField('Movie', null=True, blank=True)
+    movies = models.ManyToManyField('Movie', blank=True)
 
     def __str__(self):
         return '%s' % (self.name)
 
     class Meta:
         verbose_name = _('New Offer')
+        verbose_name_plural = _('New Offers')
 
 
 @python_2_unicode_compatible
@@ -200,6 +206,7 @@ class Post(DateTimeModel):
 
     class Meta:
         verbose_name = _('Post')
+        verbose_name_plural = _('Posts')
 
 
 @python_2_unicode_compatible
