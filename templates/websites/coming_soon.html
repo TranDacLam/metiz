@@ -15,21 +15,6 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="breadcrumbs" itemprop="breadcrumb">
-	<ul>
-		<li class="home">
-			<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
-			<span>/ </span>
-		</li>
-		<li class="category3">
-			<a href="#" title="">Phim</a>
-			<span>/ </span>
-		</li>
-		<li class="category7">
-			<strong>Phim Sắp Chiếu</strong>
-		</li>
-	</ul>
-</div>
 <div class="main">
 	<div class="col-main">
 		<div class="page-title category-title">
@@ -56,22 +41,17 @@
 					
 					<div class="product-info">
 						<h2 class="product-name"><a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name}}</a></h2>
-						
 						<div class="cgv-movie-info">
 							<span class="cgv-info-bold">Thể loại: </span>
 							<span class="cgv-info-normal">{{item.genre.name}}</span>
 						</div>
-						
 						<div class="cgv-movie-info">
-							<span class="cgv-info-bold">Thời lượng: </span>
-							<span class="cgv-info-normal">{{item.time_running}}</span>
+							<span class="cgv-info-bold">96 Phut | <span class="p">p</span></span>
 						</div>
-						
 						<div class="cgv-movie-info">
 							<span class="cgv-info-bold">Khởi chiếu: </span>
 							<span class="cgv-info-normal">{{item.release_date | date:"d-m-Y"}}</span>
 						</div>
-						
 					</div>
 					
 					<div class="ribon position-1"></div>

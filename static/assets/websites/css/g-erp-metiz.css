@@ -1453,12 +1453,12 @@
 /* ---------------------------------- NOW SHOWING ---------------------------------- */
 @media only screen and (min-width: 771px){
 	.catalog-category-view .category-title {
-		border-bottom: 3px solid #241d1e;
+		border-bottom: 3px solid #ff5400;
 		margin-bottom: 35px;
 		position: relative;
 	}
 	.catalog-category-view .category-title h1 {
-		color: #222;
+		color: #ffffff;
 		font-size: 38px;
 		font-weight: normal;
 		text-transform:capitalize;
@@ -1522,13 +1522,13 @@
 		width: 100% !important;
 	}
 	.catalog-category-view .category-title {
-		border-bottom: 2px solid #241d1e;
+		border-bottom: 2px solid #ff5400;
 		margin-bottom: 25px;
 		margin-top:-15px;
 		position: relative;
 	}
 	.catalog-category-view .category-title h1 {
-		color: #222;
+		color: #ffffff;
 		font-size: 32px;
 		font-weight: normal;
 		margin-bottom:5px;
@@ -1598,16 +1598,17 @@
 		float:left;
 	}
 	.product-shop .product-name {
-		border-bottom: 1px solid #d9d6c8;
+		border-bottom: 1px solid #ff5400;
 		float: left;
 		margin-bottom: 10px;
 		width: 100%;
 		padding-bottom:15px;
 	}
 	.product-name span.h1{
-		color: #1a1919;
-		font-weight: normal;
+		color: #ffffff;
+		font-weight: bold;
 		line-height:18px;
+		text-transform: uppercase;
 	}
 	.product-collateral .toggle-tabs {
 		background: transparent;
@@ -1687,16 +1688,17 @@
 		display:none;
 	}
 	.product-shop .product-name {
-		border-bottom: 1px solid #d9d6c8;
+		border-bottom: 1px solid #ff5400;
 		float: left;
 		margin-bottom: 10px;
 		width: 100%;
 		padding-bottom: 15px;
 	}
 	.product-name span.h1 {
-		color: #1a1919;
-		font-weight: normal;
+		color: #ffffff;
+		font-weight: bold;
 		line-height: 18px;
+		text-transform: uppercase;
 	}
 	.movie-detail-fb-booking {
 		float: right;
