@@ -13,5 +13,9 @@ $(document).ready(function() {
 	        fixedContentPos: false
 		  });
     });
-    // action slide carousel movie and event
+    //action for show map in footer 
+    $('.map-trigger').click(function(event) {
+        event.preventDefault();
+        $('#content-map').toggle('slow/400/fast');
+    });
 });

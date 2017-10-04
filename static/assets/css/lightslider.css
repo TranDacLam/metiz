@@ -157,7 +157,7 @@
     left: 10px;
     width: 64px;
     display: block;
-    top: 33%;
+    top: 31%;
     height: 64px;
     background-image: url('../websites/images/left-arrow.png');
     cursor: pointer;
@@ -173,7 +173,7 @@
     right: 10px;
     width: 64px;
     display: block;
-    top: 33%;
+    top: 31%;
     height: 64px;
     background-image: url('../websites/images/right-arrow.png');
     cursor: pointer;
@@ -183,6 +183,11 @@
     opacity: 0.6;
     -webkit-transition: opacity 0.35s linear 0s;
     transition: opacity 0.35s linear 0s;
+}
+@media screen and (min-width: 1200px) {
+    .lSAction > .lSNext {
+        right: 38px;
+    }
 }
 .lSAction > a:hover {
     opacity: 1;

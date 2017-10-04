@@ -5,8 +5,8 @@
 
 {% block extrascript %}
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cgv.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
 {% endblock %}
+
 {% block body_class %}
 	catalog-category-view categorypath-now-showing category-now-showing
 {% endblock %}
@@ -24,7 +24,6 @@
 		<div class="category-products cgv-movies">
 			<ul class="products-grid products-grid--max-4-col">
 				{% for value in data_showing %}
-
 					<li class="film-lists">				
 						<div class="product-images">
 							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}" class="product-image">
@@ -35,17 +34,13 @@
 						<div class="product-info">
 							<h2 class="product-name">
 							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}">{{value.name}}</a></h2>
-							
 							<div class="cgv-movie-info">
 								<span class="cgv-info-bold">Thể loại: </span>
 								<span class="cgv-info-normal">{{value.genre.name}}</span>
 							</div>
-							
 							<div class="cgv-movie-info">
-								<span class="cgv-info-bold">Thời lượng: </span>
-								<span class="cgv-info-normal">{{value.time_running}}</span>
+								<span class="cgv-info-bold">{{value.time_running}} | <span class="{{value.rated.name}}">{{value.rated.name}}</span></span>
 							</div>
-							
 							<div class="cgv-movie-info">
 								<span class="cgv-info-bold">Khởi chiếu: </span>
 								<span class="cgv-info-normal">{{value.release_date | date:"d-m-Y" }}</span>
@@ -62,7 +57,7 @@
 							</li>
 							
 							<li>
-								<button type="button" title="Mua vé" class="button btn-booking" onclick=""><span><span>Mua vé</span></span></button>
+								<button type="button" title="Đặt vé" class="button">Đặt vé</button>
 							</li>
 						</ul>
 					</li>

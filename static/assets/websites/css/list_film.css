@@ -1,0 +1,40 @@
+.film-lists .product-info{
+	color: #ffffff;
+}
+.info-movie-home span{
+	font-weight: bold;
+}
+.c16{
+	color: #ff5400;
+}
+.p{
+	color: #6be242;
+}
+.c13{
+	color: #ffd640;
+}
+.c18{
+	color: #f2275b;
+}
+.add-to-links .button{
+	padding: 5px 10px 5px 10px;
+	border-radius: 25px;
+    border: 3px solid #ffffff;
+    font-weight: bold;
+    background: rgba(3, 19, 39, 0);
+}
+.add-to-links .button:hover{
+	background: #ff5400;
+	border: 3px solid #ff5400;
+}
+@media screen and (max-width: 420px) {
+ 	.add-to-links .button{
+		padding: 2px 5px 2px 5px;
+		border-radius: 15px;
+		border: 2px solid #ffffff;
+	    font-size: 10px;
+	}
+	.add-to-links .button:hover{
+		border: 2px solid #ff5400;
+	}
+}

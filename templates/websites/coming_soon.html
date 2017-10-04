@@ -37,22 +37,17 @@
 					
 					<div class="product-info">
 						<h2 class="product-name"><a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name}}</a></h2>
-						
 						<div class="cgv-movie-info">
 							<span class="cgv-info-bold">Thể loại: </span>
 							<span class="cgv-info-normal">{{item.genre.name}}</span>
 						</div>
-						
 						<div class="cgv-movie-info">
-							<span class="cgv-info-bold">Thời lượng: </span>
-							<span class="cgv-info-normal">{{item.time_running}}</span>
+							<span class="cgv-info-bold">{{item.time_running}} | <span class="{{item.rated.name}}">{{item.rated.name}}</span></span>
 						</div>
-						
 						<div class="cgv-movie-info">
 							<span class="cgv-info-bold">Khởi chiếu: </span>
 							<span class="cgv-info-normal">{{item.release_date | date:"d-m-Y"}}</span>
 						</div>
-						
 					</div>
 					
 					<div class="ribon position-1"></div>

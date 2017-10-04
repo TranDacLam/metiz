@@ -2584,7 +2584,7 @@ li.film-lists:hover .play-button{
     display:block;
 }
 .feature_slide_show .poster-film:hover .play-button{
-    background: url(../images/icon_play.png) no-repeat 80px 130px rgba(255, 84, 0, 0.8);
+    background: url(../images/icon_play.png) no-repeat 77px 130px rgba(255, 84, 0, 0.8);
     height: 355px;
     left: 0;
     position: absolute;
@@ -3899,7 +3899,8 @@ ul,ol,li{
 }
 /* =========================================== NOW SHOWING =========================================== */
 .cgv-movies .products-grid > li{
-    text-align:left;
+    text-align:center;
+    text-transform: uppercase;
 }
 .cgv-movie-info .cgv-bold{
     font-weight:bold;
@@ -4005,7 +4006,7 @@ ul,ol,li{
     cursor: pointer;
 }
 .category-products .products-grid .product-image {
-    border: 6px solid #000000;
+    border: 1px solid #ff5400;
     display: inline-table;
 }
 .products-grid--max-4-col.products-grid .product-image {
@@ -4014,16 +4015,16 @@ ul,ol,li{
 }
 .products-grid--max-4-col.products-grid .product-image  img{
     height: 260px ;
-    width: 185px ;
+    width: 195px ;
 }
 .category-products .products-grid li .product-info {
     width: 100%;
 }
 .category-products .products-grid .product-name a {
-    color: #333 !important;
+    color: #ffffff !important;
+    text-transform: uppercase;
     font-size: 15px;
     font-weight: bold;
-    text-transform: none;
 }
 .category-products .products-grid li .product-info div label {
     white-space: nowrap;
@@ -4260,7 +4261,6 @@ ul,ol,li{
     width: 100%;
     height: 27px;
     text-align: center;
-    background: url("../images/bg-movie-technology.png")repeat-x scroll center center transparent;
 }
 .movie-technology .icon-type-film span {
     background-image: url("../images/bg-cgv/movie-type-new-1.png");
