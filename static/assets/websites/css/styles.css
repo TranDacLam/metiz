@@ -862,11 +862,11 @@ body:not(.customer-account) .block:first-child .block-title {
 .cart-table .product-cart-actions .button,
 #co-shipping-method-form .buttons-set .button,
 .footer .button {
-  background: #e71a0f;
+  background: #0e1d2f;
   display: inline-block;
   padding: 6px 2px;
   border: 0;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 13px;
   font-weight: normal;
   font-family:  "SairaSemiCondensed", sans-serif;

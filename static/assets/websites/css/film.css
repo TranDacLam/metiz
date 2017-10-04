@@ -80,7 +80,7 @@
 	}
 }
 .product-shop, .h1, #film-detail-tab-1, .product-name-reponsive h1{
-	color: #ffffff;
+	color: #0e1d2f;
 }
 ul.metiz-film-detail-tabs li {
     display: inline-block;
@@ -95,10 +95,10 @@ ul.metiz-film-detail-tabs {
 }
 .product-view .nav-tabs>li>span{
 	padding: 5px 25px 5px 25px;
-	border: 3px solid #fff;
+	border: 3px solid #0e1d2f;
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0);
-	color: rgba(255, 255, 255, 0.85);
+	color: #0e1d2f;
 	font-size: 16px;
 	font-weight: bold;
 	cursor: pointer;
@@ -126,9 +126,9 @@ ul.metiz-film-detail-tabs {
 .movie-detail-fb-booking .button{
 	padding: 5px 10px 5px 10px;
 	border-radius: 25px;
-    border: 3px solid #ffffff;
+    border: 3px solid #0e1d2f;
     font-weight: bold;
-    background: rgba(3, 19, 39, 0);
+    background: #0e1d2f;
 }
 .movie-detail-fb-booking .button:hover{
 	background: #ff5400;
@@ -141,7 +141,7 @@ ul.metiz-film-detail-tabs {
  	.movie-detail-fb-booking .button{
 		padding: 2px 5px 2px 5px;
 		border-radius: 15px;
-		border: 2px solid #ffffff;
+		border: 2px solid #0e1d2f;
 	    font-size: 10px;
 	}
 	.movie-detail-fb-booking .button:hover{
@@ -176,4 +176,7 @@ ul.metiz-film-detail-tabs {
 }
 .c18{
 	color: #f2275b;
+}
+.container-film-detail{
+	background: #f1eee9;
 }
