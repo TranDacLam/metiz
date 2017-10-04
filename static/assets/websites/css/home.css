@@ -33,7 +33,7 @@
 	overflow: hidden;
 	margin-top: 20px;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1366px) {
     .tab-movie{
 		padding-left: 40px;
 	}
@@ -154,4 +154,73 @@ ul.metiz-movie-tabs {
 }
 .c18{
 	color: #f2275b;
+}
+
+@media screen and (min-width: 1366px) {
+	#goToPrevSlide-showing, #goToPrevSlide-comming-soon {
+		background-position: 0 0;
+	    left: 4.5%;
+	    width: 64px;
+	    display: block;
+	    top: 54.5%;
+	    height: 64px;
+	    background-image: url('/static/assets/websites/images/left-arrow.png');
+	    cursor: pointer;
+	    position: absolute;
+	    z-index: 99;
+	    margin-top: -16px;
+	    opacity: 0.6;
+	    -webkit-transition: opacity 0.35s linear 0s;
+	    transition: opacity 0.35s linear 0s;
+	}
+	#goToNextSlide-showing, #goToNextSlide-comming-soon {
+	    background-position: 0 0;
+	    right: 3.5%;
+	    width: 64px;
+	    display: block;
+	    top: 54.5%;
+	    height: 64px;
+	    background-image: url('/static/assets/websites/images/right-arrow.png');
+	    cursor: pointer;
+	    position: absolute;
+	    z-index: 99;
+	    margin-top: -16px;
+	    opacity: 0.6;
+	    -webkit-transition: opacity 0.35s linear 0s;
+	    transition: opacity 0.35s linear 0s;
+	}
+}
+@media screen and (min-width: 1420px) {
+	#goToPrevSlide-showing, #goToPrevSlide-comming-soon {
+	    background-position: 0 0;
+	    left: 16%;
+	    width: 64px;
+	    display: block;
+	    top: 54.5%;
+	    height: 64px;
+	    background-image: url('/static/assets/websites/images/left-arrow.png');
+	    cursor: pointer;
+	    position: absolute;
+	    z-index: 99;
+	    margin-top: -16px;
+	    opacity: 0.6;
+	    -webkit-transition: opacity 0.35s linear 0s;
+	    transition: opacity 0.35s linear 0s;
+	}
+	#goToNextSlide-showing, #goToNextSlide-comming-soon {
+	    background-position: 0 0;
+	    right: 15.5%;
+	    width: 64px;
+	    display: block;
+	    top: 54.5%;
+	    height: 64px;
+	    background-image: url('/static/assets/websites/images/right-arrow.png');
+	    cursor: pointer;
+	    position: absolute;
+	    z-index: 99;
+	    margin-top: -16px;
+	    opacity: 0.6;
+	    -webkit-transition: opacity 0.35s linear 0s;
+	    transition: opacity 0.35s linear 0s;
+	}
 }
