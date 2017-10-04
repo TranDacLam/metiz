@@ -9,7 +9,7 @@ $(document).ready(function() {
     /* slide for movie selection and event*/
     var slider = $(".content-slider").lightSlider({
         item:4,
-        loop:false,
+        loop:true,
         keyPress:true,
         slideMove:4,
         auto:true,
