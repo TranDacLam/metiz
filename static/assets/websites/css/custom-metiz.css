@@ -4011,7 +4011,7 @@ ul,ol,li{
 }
 .products-grid--max-4-col.products-grid .product-image {
     max-width: 100%;
-    height: 260px;
+    height: auto;
 }
 .products-grid--max-4-col.products-grid .product-image  img{
     height: 260px ;

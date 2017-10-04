@@ -9,7 +9,7 @@
 	height: auto;
 }
 .session-movie .nav-tabs>li.active>span{
-	color: white;
+	color: #ffffff;
 	background-color: #ff5400;
 	border: 3px solid #ff5400;
 	font-weight: bold;
@@ -19,8 +19,9 @@
 	border: 3px solid #fff;
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0);
-	color: white;
+	color: rgba(255, 255, 255, 0.85);
 	font-size: 20px;
+	font-weight: bold;
 	cursor: pointer;
 }
 .session-movie .nav-tabs>li>span:hover {	
@@ -123,6 +124,9 @@ ul.metiz-movie-tabs {
 	.tabs-format-metiz ul.nav-tabs{
 		border: none;
 		padding: 20px 0px 20px;
+	}
+	ul.metiz-movie-tabs li:first-child {
+	    padding-right: 10px;
 	}
 }
 @media screen and (max-width: 320px) {
@@ -243,7 +247,7 @@ ul.metiz-movie-tabs {
 @media screen and (min-width: 1420px) {
 	#goToPrevSlide-showing, #goToPrevSlide-comming-soon {
 	    background-position: 0 0;
-	    left: 16%;
+	    left: 16.2%;
 	    width: 64px;
 	    display: block;
 	    top: 36.5%;

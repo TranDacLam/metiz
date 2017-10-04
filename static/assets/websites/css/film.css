@@ -6,7 +6,7 @@
 	border: 0px;
 	border-radius: 0px;
 	background-color: #e71a0f;
-	color: white;
+	color: #ffffff;
 	font-size: 12px;
 	margin-right: -4px;
 }
@@ -98,11 +98,12 @@ ul.metiz-film-detail-tabs {
 	border: 3px solid #fff;
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0);
-	color: white;
+	color: rgba(255, 255, 255, 0.85);
 	font-size: 16px;
+	font-weight: bold;
 	cursor: pointer;
 	float: left;
-	width: 129px
+	width: 135px
 }
 .product-view .nav-tabs>li>span:hover {	
 	border: 3px solid #ff5400;
@@ -111,7 +112,7 @@ ul.metiz-film-detail-tabs {
 	color: black;
 }
 .product-view .nav-tabs>li.active>span{
-	color: white;
+	color: #ffffff;
 	background-color: #ff5400;
 	border: 3px solid #ff5400;
 	font-weight: bold;
@@ -147,7 +148,7 @@ ul.metiz-film-detail-tabs {
 		border: 2px solid #ff5400;
 	}
 	.product-view .nav-tabs>li>span{
-		width: 109px;
+		width: 117px;
 		font-size: 12px;
 	}
 }
