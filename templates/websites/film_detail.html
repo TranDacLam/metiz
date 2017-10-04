@@ -75,11 +75,13 @@
 					</div>
 					<div class="movie-rating movie-rated-web">
 						<label>Rated: </label>
-						<div class="std">&nbsp;  {{film_detail.rated.name}}</div>
+						<div class="std">&nbsp;  <span class="{{film_detail.rated.name}}">{{film_detail.rated.name}}</span> - {{film_detail.rated.description}}</div>
 					</div>
 
 					<div class="movie-technology-icons">
+
 						<span class="movie-rating-detail {{film_detail.rated.name}}">Rated : {{film_detail.rated.name}}</span>
+
 						<a href="javascript:void(0)" class="movie-detail-icon-type" title="{{film_detail.movie_type.name}}">
 							<span class="movie-detail-type-{{film_detail.movie_type.name}}">{{film_detail.movie_type.name}}</span>
 						</a>
@@ -92,16 +94,14 @@
 						<!-- data-href= {{ request.build_absolute_uri }} -->
 						<div class="fb-like fb_iframe_widget" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
 	                    </div>
-						<button type="button" title="Mua vé" class="button btn-booking" onclick=""><span><span>Mua vé</span></span>
-						</button>			
+						<button type="button" title="Đặt vé" class="button">Đặt vé</button>			
 					</div>
 				</div>
 					
 				<div class="clearer"></div>
 			</div>
 			<div class="product-collateral toggle-content tabs tabs-format-metiz">
-				<ul class="nav nav-tabs toggle-tabs">
-
+				<ul class="nav nav-tabs metiz-film-detail-tabs">
 					<li class="active">
 						<span href="#film-detail-tab-1" data-toggle="tab">Chi tiết</span>
 					</li>

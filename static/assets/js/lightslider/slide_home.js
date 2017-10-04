@@ -7,21 +7,9 @@ $(document).ready(function() {
             $(this).parent().addClass('actived');
         }
     });
-/* slide for special movie*/
-    $('#image-gallery').lightSlider({
-            gallery:true,
-            item:1,
-            thumbItem:9,
-            slideMargin: 0,
-            speed:500,
-            auto:true,
-            loop:true,
-            onSliderLoad: function() {
-                $('#image-gallery').removeClass('cS-hidden');
-            }  
-        });
-    /* slide for movie selection and event*/
-    $(".content-slider").lightSlider({
+
+    /* slide for movie selection */
+    var content_slider = {
         item:4,
         loop:false,
         keyPress:true,
@@ -30,7 +18,30 @@ $(document).ready(function() {
         rtl:false,
         speed:1000,
         pause:9000,
+        controls: false,
         responsive : [
+            {
+                breakpoint:1366,
+                settings: {
+                    item:4,
+                    auto:true,
+                    slideMove:1,
+                    slideMargin:50,
+                    autoWidth: true,
+                    controls: true,
+                }
+            },
+            {
+                breakpoint:1024,
+                settings: {
+                    item:3,
+                    auto:true,
+                    slideMove:1,
+                    slideMargin:50,
+                    autoWidth: true,
+                    controls: true,
+                }
+            },
             {
                 breakpoint:991,
                 settings: {
@@ -39,6 +50,7 @@ $(document).ready(function() {
                     slideMove:1,
                     slideMargin:50,
                     autoWidth: true,
+                    controls: true,
                 }
             },
             {
@@ -49,6 +61,7 @@ $(document).ready(function() {
                     slideMove:1,
                     slideMargin:6,
                     autoWidth: true,
+                    controls: true,
                 }
             },
             {
@@ -58,10 +71,38 @@ $(document).ready(function() {
                     auto:true,
                     slideMove:1,
                     autoWidth: true,
+                    controls: true,
                 }
             }
         ],
         pager: false
+    }
+    var slider_showing = $("#content-slider-showing").lightSlider(content_slider);
+    var slider_comming_soon= $("#content-slider-comming-soon").lightSlider(content_slider);
+
+    $('#goToPrevSlide-showing').on('click', function () {
+        slider_showing.goToPrevSlide();
+    });
+    $('#goToNextSlide-showing').on('click', function () {
+        slider_showing.goToNextSlide();
+    }); 
+
+    $('#goToPrevSlide-comming-soon').on('click', function () {
+        slider_comming_soon.goToPrevSlide();
+    });
+    $('#goToNextSlide-comming-soon').on('click', function () {
+        slider_comming_soon.goToNextSlide();
+    });
+
+    $('#goToPrevSlide-comming-soon, #goToNextSlide-comming-soon').hide();
+    $('.metiz-movie-tabs li:last span').on('click', function () {
+        $('#goToPrevSlide-showing, #goToNextSlide-showing').hide();
+        $('#goToPrevSlide-comming-soon, #goToNextSlide-comming-soon').show();
+    });
+
+    $('.metiz-movie-tabs li:first span').on('click', function () {
+        $('#goToPrevSlide-showing, #goToNextSlide-showing').show();
+        $('#goToPrevSlide-comming-soon, #goToNextSlide-comming-soon').hide();
     });
 });
 

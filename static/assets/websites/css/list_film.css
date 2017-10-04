@@ -27,6 +27,9 @@
 	background: #ff5400;
 	border: 3px solid #ff5400;
 }
+.add-to-links li{
+	padding-top: 3px;
+}
 @media screen and (max-width: 420px) {
  	.add-to-links .button{
 		padding: 2px 5px 2px 5px;
@@ -37,4 +40,7 @@
 	.add-to-links .button:hover{
 		border: 2px solid #ff5400;
 	}
+}
+.category-title{
+	padding-top: 20px;
 }

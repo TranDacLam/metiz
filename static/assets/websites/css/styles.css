@@ -459,7 +459,7 @@ input,
 select,
 table,
 textarea {
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family: "SairaSemiCondensed", sans-serif;
   color: #222;
   font-size: 14px;
   line-height: 18px;;
@@ -489,7 +489,7 @@ ul {
 h1, .h1 {
   margin: 0;
   color: #222;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
   font-size: 28px;
   font-style: normal;
   line-height:1.2;
@@ -500,7 +500,7 @@ h1, .h1 {
 h2, .h2 {
   margin: 0;
   color: #222;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
   font-size: 24px;
   font-style: normal;
   line-height: 1.2;
@@ -511,7 +511,7 @@ h3, .h3 {
   margin: 0;
   margin-bottom: 10px;
   color: #222;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
   font-size: 18px;
   font-style: normal;
   text-rendering: optimizeSpeed;
@@ -521,7 +521,7 @@ h4, .h4 {
   margin: 0;
   margin-bottom: 10px;
   color: #222;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
   font-size: 14px;
   font-style: normal;
   text-rendering: optimizeSpeed;
@@ -531,7 +531,7 @@ h5, .h5 {
   margin: 0;
   margin-bottom: 10px;
   color: #222;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family: "SairaSemiCondensed", sans-serif;
   font-size: 13px;
   font-style: normal;
   text-rendering: optimizeSpeed;
@@ -541,7 +541,7 @@ h6, .h6 {
   margin: 0;
   margin-bottom: 5px;
   color: #222;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family: "SairaSemiCondensed", sans-serif;
   font-size: 12px;
   font-style: normal;
   text-rendering: optimizeSpeed;
@@ -869,7 +869,7 @@ body:not(.customer-account) .block:first-child .block-title {
   color: #FFFFFF;
   font-size: 13px;
   font-weight: normal;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
   line-height: 19px;
   text-align: center;
   text-transform: uppercase;
@@ -4147,7 +4147,7 @@ p.product-name a:hover {
   text-transform: uppercase;
   margin-bottom: 5px;
   font-size: 14px;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
 }
 .products-grid .product-name a,
 .products-list .product-name a {
