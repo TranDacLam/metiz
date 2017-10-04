@@ -14,6 +14,7 @@
 {% block container_class%}col1-layout container-showing{% endblock%}
 
 {% block main_content%}
+
 <div class="main">
 	<div class="col-main">
 		<div class="page-title category-title">
@@ -26,15 +27,8 @@
 					<li class="film-lists">				
 						<div class="product-images">
 							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}" class="product-image">
-								<img id="product-collection-image-285" src="{{STATIC_URL}}{{value.poster}}" alt="{{value.name}}">
+								<img id="product-collection-image-285" src="{{MEDIA_URL}}{{value.poster}}" alt="{{value.name}}">
 							</a>
-							
-							<div class="movie-technology">
-								<a href="javascript:void(0)" class="icon-type-film" title="IMAX2D">
-									<!-- <span class="attr-movie-imax2d">IMAX2D</span> -->
-									<span class="attr-movie-{{value.technology}}">{{value.technology}}</span>
-								</a>
-							</div>
 						</div>
 						
 						<div class="product-info">
@@ -45,7 +39,9 @@
 								<span class="cgv-info-normal">{{value.genre.name}}</span>
 							</div>
 							<div class="cgv-movie-info">
+
 								<span class="cgv-info-bold">{{value.time_running}} Phút | <span class="{{value.rated.name}}">{{value.rated.name}}</span></span>
+
 							</div>
 							<div class="cgv-movie-info">
 								<span class="cgv-info-bold">Khởi chiếu: </span>

@@ -15,6 +15,7 @@
 {% endblock %}
 
 {% block main_content %}
+
 <div class="main">
 	<div class="col-main">
 		<div class="page-title category-title">
@@ -29,14 +30,9 @@
 					
 					<div class="product-images">
 						<a href="{% url 'film_detail' item.id %}" title="{{item.name}}" class="product-image">
-							<img id="product-collection-image-394" src="{{STATIC_URL}}{{item.poster}}" alt="{{item.name}}" />
+							<img id="product-collection-image-394" src="{{MEDIA_URL}}{{item.poster}}" alt="{{item.name}}" />
 						</a>
 						
-						<div class="movie-technology">
-							<a href="javascript:void(0)" class="icon-type-film" title="">
-								<span class="attr-movie-"></span>
-							</a>
-						</div>
 					</div>
 					
 					<div class="product-info">
@@ -46,6 +42,7 @@
 							<span class="cgv-info-normal">{{item.genre.name}}</span>
 						</div>
 						<div class="cgv-movie-info">
+
 							<span class="cgv-info-bold">{{item.time_running}} Phút | <span class="{{item.rated.name}}">{{item.rated.name}}</span></span>
 						</div>
 						<div class="cgv-movie-info">
