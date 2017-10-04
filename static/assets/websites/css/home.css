@@ -140,6 +140,57 @@ ul.metiz-movie-tabs {
 .session-event{
 	background: #f1eee9;
 }
+
+#news{
+	background: #f0efe8;
+	padding: 70px 0px;
+}
+#news .new-img{
+	margin: 15px 0px;
+}
+#news .container h1{
+	font-weight: 700;
+}
+#news #title-box{
+	font-family: 'Saira SemiCondensed',sans-serif;
+	font-size:24px;
+	text-transform: uppercase;
+	color: #ff5400;
+	line-height: 2;
+	font-weight: 600;
+    margin-bottom: 20px;
+}
+#news #box{
+	height:263px;
+	padding: 40px;
+    margin: 13px 0px;
+    border: 2px solid #c8c6be;
+}
+#news #box p{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: lighter;
+}
+#more_hover{
+	display:none
+}
+#news #show_more:hover #more_hover{
+	display:block;
+}
+#news #show_more:hover #more{
+	display:none;
+}
+
+#ads-facebook{
+	padding: 70px 0px 70px 0px;
+	border-bottom: 2px solid #263547;
+}
+
+@media screen and (max-width: 768px) {
+	#news #box{
+		height:auto;
+	}
+}
+
 .info-movie-home span{
 	font-weight: bold;
 }
@@ -155,15 +206,14 @@ ul.metiz-movie-tabs {
 .c18{
 	color: #f2275b;
 }
-
 @media screen and (min-width: 1366px) {
 	#goToPrevSlide-showing, #goToPrevSlide-comming-soon {
 		background-position: 0 0;
 	    left: 4.5%;
 	    width: 64px;
 	    display: block;
-	    top: 54.5%;
-	    height: 64px;
+	    top: 36.5%;
+	    height: 64.5px;
 	    background-image: url('/static/assets/websites/images/left-arrow.png');
 	    cursor: pointer;
 	    position: absolute;
@@ -178,8 +228,8 @@ ul.metiz-movie-tabs {
 	    right: 3.5%;
 	    width: 64px;
 	    display: block;
-	    top: 54.5%;
-	    height: 64px;
+	    top: 36.5%;
+	    height: 64.5px;
 	    background-image: url('/static/assets/websites/images/right-arrow.png');
 	    cursor: pointer;
 	    position: absolute;
@@ -196,8 +246,8 @@ ul.metiz-movie-tabs {
 	    left: 16%;
 	    width: 64px;
 	    display: block;
-	    top: 54.5%;
-	    height: 64px;
+	    top: 36.5%;
+	    height: 64.5px;
 	    background-image: url('/static/assets/websites/images/left-arrow.png');
 	    cursor: pointer;
 	    position: absolute;
@@ -212,8 +262,8 @@ ul.metiz-movie-tabs {
 	    right: 15.5%;
 	    width: 64px;
 	    display: block;
-	    top: 54.5%;
-	    height: 64px;
+	    top: 36.5%;
+	    height: 64.5px;
 	    background-image: url('/static/assets/websites/images/right-arrow.png');
 	    cursor: pointer;
 	    position: absolute;

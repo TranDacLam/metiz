@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'main',
     'core',
+    # 'core.apps.CoreConfig',
     'ckeditor',
     'ckeditor_uploader',
 ]
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -70,6 +72,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.static',
                 'django.template.context_processors.media',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -108,7 +111,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# config model translation
+gettext = lambda s: s
+LANGUAGES = (
+    ('vi', gettext('Vietnamese')),
+    ('en-us', gettext('English')),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+LANGUAGE_CODE = 'vi'
 
 TIME_ZONE = 'UTC'
 
@@ -119,6 +133,7 @@ USE_L10N = True
 USE_TZ = True
 
 SITE_ID = 1
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -169,6 +184,36 @@ EMAIL_HOST_USER = 'no-reply@helio.vn'
 EMAIL_HOST_PASSWORD = 'N0reply!@#'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+# HERE FORMATING AS shown in:
+# LIST: https://docs.djangoproject.com/en/dev/ref/templates/builtins/#date
+DATE_FORMAT = 'd-m-Y'
+TIME_FORMAT = 'H:i'
+DATETIME_FORMAT = 'd-m-Y H:i'
+YEAR_MONTH_FORMAT = 'F Y'
+MONTH_DAY_FORMAT = 'F j'
+SHORT_DATE_FORMAT = 'm/d/Y'
+SHORT_DATETIME_FORMAT = 'm/d/Y P'
+FIRST_DAY_OF_WEEK = 1
+
+# BUT here use the Python strftime format syntax,
+# LIST: http://docs.python.org/library/datetime.html#strftime-strptime-behavior
+
+DATE_INPUT_FORMATS = (
+    '%d-%m-%Y',     # '21-03-2014'
+)
+TIME_INPUT_FORMATS = (
+    '%H:%M:%S',     # '17:59:59'
+    '%H:%M',        # '17:59'
+)
+DATETIME_INPUT_FORMATS = (
+    '%d-%m-%Y %H:%M',     # '21-03-2014 17:59'
+)
+
+DECIMAL_SEPARATOR = u'.'
+THOUSAND_SEPARATOR = u','
+NUMBER_GROUPING = 3
+
 
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:
