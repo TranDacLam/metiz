@@ -15,21 +15,7 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="breadcrumbs" itemprop="breadcrumb">
-	<ul>
-		<li class="home">
-			<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
-			<span>/ </span>
-		</li>
-		<li class="category3">
-			<a href="#" title="">Phim</a>
-			<span>/ </span>
-		</li>
-		<li class="category7">
-			<strong>Phim Sắp Chiếu</strong>
-		</li>
-	</ul>
-</div>
+
 <div class="main">
 	<div class="col-main">
 		<div class="page-title category-title">
@@ -44,14 +30,9 @@
 					
 					<div class="product-images">
 						<a href="{% url 'film_detail' item.id %}" title="{{item.name}}" class="product-image">
-							<img id="product-collection-image-394" src="{{STATIC_URL}}{{item.poster}}" alt="{{item.name}}" />
+							<img id="product-collection-image-394" src="{{MEDIA_URL}}{{item.poster}}" alt="{{item.name}}" />
 						</a>
 						
-						<div class="movie-technology">
-							<a href="javascript:void(0)" class="icon-type-film" title="">
-								<span class="attr-movie-"></span>
-							</a>
-						</div>
 					</div>
 					
 					<div class="product-info">

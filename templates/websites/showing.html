@@ -14,21 +14,7 @@
 {% block container_class%}col1-layout {% endblock%}
 
 {% block main_content%}
-<div class="breadcrumbs" itemprop="breadcrumb">
-	<ul>
-		<li class="home">
-			<a href="{% url 'home'%}" title="Trở về trang chủ">Trang chủ</a>
-			<span>/ </span>
-		</li>
-		<li class="category3">
-			Phim
-			<span>/ </span>
-		</li>
-		<li class="category5">
-			<strong>Phim Đang Chiếu</strong>
-		</li>
-	</ul>
-</div>
+
 <div class="main">
 	<div class="col-main">
 		<div class="page-title category-title">
@@ -42,15 +28,8 @@
 					<li class="film-lists">				
 						<div class="product-images">
 							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}" class="product-image">
-								<img id="product-collection-image-285" src="{{STATIC_URL}}{{value.poster}}" alt="{{value.name}}">
+								<img id="product-collection-image-285" src="{{MEDIA_URL}}{{value.poster}}" alt="{{value.name}}">
 							</a>
-							
-							<div class="movie-technology">
-								<a href="javascript:void(0)" class="icon-type-film" title="IMAX2D">
-									<!-- <span class="attr-movie-imax2d">IMAX2D</span> -->
-									<span class="attr-movie-{{value.technology}}">{{value.technology}}</span>
-								</a>
-							</div>
 						</div>
 						
 						<div class="product-info">
