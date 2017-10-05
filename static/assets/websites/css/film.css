@@ -24,9 +24,6 @@
 .rating-container .clear-rating {
 	display: none;
 }
-.product-collateral{
-	margin-top: 5%;
-}
 .rating-num { margin-top:0px;font-size: 54px; }	
 						.btn-grey{
     background-color:#D8D8D8;
@@ -95,7 +92,7 @@ ul.metiz-film-detail-tabs {
 }
 .product-view .nav-tabs>li>span{
 	padding: 5px 25px 5px 25px;
-	border: 3px solid #0e1d2f;
+	border: 2px solid #0e1d2f;
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0);
 	color: #0e1d2f;
@@ -106,7 +103,7 @@ ul.metiz-film-detail-tabs {
 	width: 135px
 }
 .product-view .nav-tabs>li>span:hover {	
-	border: 3px solid #ff5400;
+	border: 2px solid #ff5400;
 	border-radius: 35px;
 	background-color: #ff5400;
 	color: black;
@@ -114,7 +111,7 @@ ul.metiz-film-detail-tabs {
 .product-view .nav-tabs>li.active>span{
 	color: #ffffff;
 	background-color: #ff5400;
-	border: 3px solid #ff5400;
+	border: 2px solid #ff5400;
 	font-weight: bold;
 }
 .product-view .nav-tabs>li:first-child, .product-view .nav-tabs>li:nth-child(2){
@@ -158,25 +155,13 @@ ul.metiz-film-detail-tabs {
 		width: 87px;
 		padding: 5px 10px 5px 10px;
 	}
-}
-.col-main .product-view{
-	padding-top: 10px;
+	.cate-new-offer h1{
+		font-size: 22px;
+	}
 }
 .movie-rating .std{
 	font-weight: bold;
 }
-.c16{
-	color: #ff5400;
-}
-.p{
-	color: #6be242;
-}
-.c13{
-	color: #ffd640;
-}
-.c18{
-	color: #f2275b;
-}
-.container-film-detail{
-	background: #f1eee9;
+.cate-new-offer img{
+	display: inline-block;
 }
