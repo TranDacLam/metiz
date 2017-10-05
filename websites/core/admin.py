@@ -152,3 +152,11 @@ class CommentAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Comment, CommentAdmin)
 
+
+class PostAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget()},
+    }
+    pass
+admin.site.register(Post, PostAdmin)
+
