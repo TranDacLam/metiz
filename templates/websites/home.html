@@ -22,49 +22,28 @@
             <!-- Arrow Navigator -->
             <div id="jssor_1" >
                 <div data-u="slides" class="jssor_1_slides">
-                {% for item in data.banner  %}  
+                {% for item in data_slide  %}  
                     <div>
-                        <img data-u="image" src="{{ STATIC_URL }}{{item}}" />
-                        <img data-u="thumb" src="{{ STATIC_URL }}{{item}}" />
+                        <img data-u="image" src="{{ STATIC_URL }}{{item.image}}" />
+                        <img data-u="thumb" src="{{ STATIC_URL }}{{item.image}}" />
                     </div>
                 {% endfor %}
                 </div>
                 {% include 'arrow_slide.html' %}
             </div>
         </div>
+        {% if result.banners and result.banners.1 %}
         <div class="std">
             <p>
                 <div class="widget widget-static-block">
                     <div class="sect-person">
-                        <ul>
-                            
-                            <li><a class="theater" href="{% url 'home' %}">cgv theater</a></li>
-                            <li><a class="now-sh" href="{% url 'showing' %}">now showing</a></li>
-                            <li><a class="special" href="{% url 'getCinemaTechnologyByName' 'gold-class' %}">cgv special</a></li>
-                            <li><a class="event" href="{% url 'arthouse' %}">cgv art house</a></li>
-                            <li><a class="ticket required-login" href="{% url 'contacts' %}">my ticket info</a></li>
-                            <li><a class="dc" href="{% url 'news' %}">discount info</a></li>
-                            <li><a class="login-header" href="{% url 'account_create' %}">create account quick</a></li>
-                        </ul>
+                        <a href="{{result.banners.1.sub_url}}"><img src="{{ STATIC_URL }}{{result.banners.1.image}}"/></a>
                     </div>
                 </div>
             </p>
         </div>
 
-        <!-- <div class="home-promotion-card">
-            <ul class="promos">
-                <li class="col-ad">
-                    <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/214x245.jpg" /></a></div>
-                </li>
-                <li class="col-hd">
-                    <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/phototicket---496x247_1.jpg" /></a></div>
-                </li>
-                <li class="col-ad">
-                    <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/cgv_hotnumber_w_214_x_h_245_px.png" /></a></div>
-                </li>
-                
-            </ul>
-        </div> -->
+        {% endif %}
     </div>
 </div>
 <div class="container-fluid session-movie">
@@ -80,16 +59,17 @@
             </ul>
             <dl id="collateral-tabs-movie" class="collateral-tabs tab-movie">
                 <div class="tab-content tabcontent" id="pdc">
-                    <div id="movie-tab-1" class="tab-pane fade in active slideshow-containe-movier feature_slide_show_480_767">
+
+                    <div id="movie-tab-1" class="tab-pane fade in active slideshow-containe-movier">
                         <ul class="feature_slide_show content-slider">
-                            {% for item in data.movie %}
+                            {% for item in movie_showing %}
                                 <li class="poster-film film-lists item">
-                                    <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
+                                    <img class="product-img" src="{{ STATIC_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <input type="hidden" value="movie-trailer-285">
                                     <div class="info-movie-home">
-                                        <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
-                                        <h4>96 Phut | <span class="c16">c16</span></h4>
-                                        <h4>KHỞI CHIẾU 15/10/2017</h4>
+                                        <h3>{{item.name}}</h3>
+                                        <h4>{{item.time_running}} Phút | <span class="{{item.rated.name}}">{{item.rated.name}}</span></h4>
+                                        <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="#">Chi tiết</a>
@@ -105,16 +85,18 @@
                             {% endfor %}
                         </ul>
                     </div>
-                    <div id="movie-tab-2" class="tab-pane fade slideshow-containe-movier feature_slide_show_480_767">
+
+                    <div id="movie-tab-2" class="tab-pane fade slideshow-containe-movier ">
                         <ul class="feature_slide_show content-slider">
-                            {% for item in data.movie_soon %}           
+                            {% for item in movie_soon %}           
+
                                 <li class="poster-film film-lists item">
-                                    <img class="product-img" src="{{ STATIC_URL }}{{item}}" alt="Barry Seal: Lách Luật Kiểu Mỹ" />
+                                    <img class="product-img" src="{{ STATIC_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <input type="hidden" value="movie-trailer-285">
                                     <div class="info-movie-home">
-                                        <h3>Barry Seal: Lách Luật Kiểu Mỹ</h3>
-                                        <h4>114 Phut | <span class="c18">c18</span></h4>
-                                        <h4>KHỞI CHIẾU 15/10/2017</h4>
+                                        <h3>{{item.name}}</h3>
+                                        <h4>{{item.time_running}} Phút | <span class="{{item.rated.name}}">{{item.rated.name}}</span></h4>
+                                        <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="#">Chi tiết</a>
@@ -132,8 +114,13 @@
                     </div>
                 </div>
             </dl> 
+            
         </div>
     </div>
+    <span id="goToPrevSlide-showing"></span>
+    <span id="goToNextSlide-showing"></span>
+    <span id="goToPrevSlide-comming-soon"></span>
+    <span id="goToNextSlide-comming-soon"></span>
 </div>    
 <div id="news">
     <div class="container">
@@ -175,11 +162,13 @@
 </div>
 <div id="ads-facebook">
     <div class="container">
+    {% if result.banners and result.banners.2 %}
         <div class="col-xs-12">
             <a href="#">
-                <img class="col-xs-12" src="{{STATIC_URL}}/assets/websites/images/facebook_banner.png" alt="">
+                <img class="col-xs-12" src="{{ STATIC_URL }}{{result.banners.2.image}}" alt="{{result.banners.2.sub_url}}">
             </a>
         </div>
+    {% endif %}
     </div>
 </div>
 {% endblock %}

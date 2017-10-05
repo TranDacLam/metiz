@@ -1,4 +1,3 @@
-
 /* source : http://sachinchoolur.github.io/lightslider */
 $(document).ready(function() {
      $(".special-items li a").each(function(){   
@@ -7,20 +6,7 @@ $(document).ready(function() {
             $(this).parent().addClass('actived');
         }
     });
-/* slide for special movie*/
-    $('#image-gallery').lightSlider({
-            gallery:true,
-            item:1,
-            thumbItem:9,
-            slideMargin: 0,
-            speed:500,
-            auto:true,
-            loop:true,
-            onSliderLoad: function() {
-                $('#image-gallery').removeClass('cS-hidden');
-            }  
-        });
-    /* slide for movie selection and event*/
+    /* slide for movie selection */
     $(".content-slider").lightSlider({
         item:4,
         loop:false,
@@ -32,12 +18,20 @@ $(document).ready(function() {
         pause:9000,
         responsive : [
             {
+                breakpoint:1200,
+                settings: {
+                    item:3,
+                    slideMove:3,
+                    slideMargin:30,
+                    autoWidth: true,
+                }
+            },
+            {
                 breakpoint:991,
                 settings: {
                     item:2,
-                    auto:true,
-                    slideMove:1,
-                    slideMargin:50,
+                    slideMove:2,
+                    slideMargin:30,
                     autoWidth: true,
                 }
             },
@@ -45,7 +39,6 @@ $(document).ready(function() {
                 breakpoint:768,
                 settings: {
                     item:2,
-                    auto:true,
                     slideMove:1,
                     slideMargin:6,
                     autoWidth: true,
@@ -55,9 +48,15 @@ $(document).ready(function() {
                 breakpoint:480,
                 settings: {
                     item:1,
-                    auto:true,
                     slideMove:1,
                     autoWidth: true,
+                }
+            },
+            {
+                breakpoint:321,
+                settings: {
+                    item:1,
+                    slideMove:1,
                 }
             }
         ],

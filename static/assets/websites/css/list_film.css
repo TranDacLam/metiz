@@ -1,5 +1,5 @@
 .film-lists .product-info{
-	color: #ffffff;
+	color: #0e1d2f;
 }
 .info-movie-home span{
 	font-weight: bold;
@@ -19,13 +19,15 @@
 .add-to-links .button{
 	padding: 5px 10px 5px 10px;
 	border-radius: 25px;
-    border: 3px solid #ffffff;
+    border: 3px solid #0e1d2f;
     font-weight: bold;
-    background: rgba(3, 19, 39, 0);
 }
 .add-to-links .button:hover{
 	background: #ff5400;
 	border: 3px solid #ff5400;
+}
+.add-to-links li{
+	padding-top: 3px;
 }
 @media screen and (max-width: 420px) {
  	.add-to-links .button{
@@ -37,4 +39,10 @@
 	.add-to-links .button:hover{
 		border: 2px solid #ff5400;
 	}
+}
+.category-title{
+	padding-top: 20px;
+}
+.container-showing, .container-coming-soon{
+	background: #f1eee9;
 }

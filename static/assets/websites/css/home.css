@@ -9,7 +9,7 @@
 	height: auto;
 }
 .session-movie .nav-tabs>li.active>span{
-	color: white;
+	color: #ffffff;
 	background-color: #ff5400;
 	border: 3px solid #ff5400;
 	font-weight: bold;
@@ -19,8 +19,9 @@
 	border: 3px solid #fff;
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0);
-	color: white;
+	color: rgba(255, 255, 255, 0.85);
 	font-size: 20px;
+	font-weight: bold;
 	cursor: pointer;
 }
 .session-movie .nav-tabs>li>span:hover {	
@@ -33,7 +34,7 @@
 	overflow: hidden;
 	margin-top: 20px;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1366px) {
     .tab-movie{
 		padding-left: 40px;
 	}
@@ -108,12 +109,12 @@ ul.metiz-movie-tabs {
 .info-movie-home h4{
 	text-transform: uppercase;
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 680px) {
  	.session-movie .nav-tabs>li.active>span{
 		border: 3px solid #ff5400;
 	}
 	.session-movie .nav-tabs>li>span {
-		padding: 5px 10px 5px 10px;
+		padding: 10px 15px 10px 15px;
 		border: 3px solid #ffffff;
 		font-size: 12px;
 	}
@@ -123,6 +124,16 @@ ul.metiz-movie-tabs {
 	.tabs-format-metiz ul.nav-tabs{
 		border: none;
 		padding: 20px 0px 20px;
+	}
+	ul.metiz-movie-tabs li:first-child {
+	    padding-right: 10px;
+	}
+}
+@media screen and (max-width: 420px) {
+	.session-movie .nav-tabs>li>span {
+		padding: 5px 10px 5px 10px;
+		border: 3px solid #ffffff;
+		font-size: 12px;
 	}
 }
 @media screen and (max-width: 320px) {
@@ -176,10 +187,10 @@ ul.metiz-movie-tabs {
 
 #news .container h1{
 	font-weight: 700;
-	font-family:  'Saira Semi Condensed';
+	font-family:  'Saira Semi Condensed', sans-serif;
 }
 #news #title-box{
-	font-family: 'Saira Semi Condensed';
+	font-family: 'Saira Semi Condensed', sans-serif;
 	font-size:24px;
 	text-transform: uppercase;
 	color: #ff5400;
@@ -233,4 +244,3 @@ ul.metiz-movie-tabs {
 .c18{
 	color: #f2275b;
 }
-

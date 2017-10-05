@@ -2,16 +2,11 @@
 	width: 560px;
 	height: 315px;
 }
-.product-view .nav-tabs>li.active>span{
-	color: white;
-	border: 0px;
-	background-color: #e71a0f;
-}
 .product-view .nav-tabs>li>span {
 	border: 0px;
 	border-radius: 0px;
 	background-color: #e71a0f;
-	color: white;
+	color: #ffffff;
 	font-size: 12px;
 	margin-right: -4px;
 }
@@ -83,4 +78,105 @@
 	.rating-block{
 		height: 187px;
 	}
+}
+.product-shop, .h1, #film-detail-tab-1, .product-name-reponsive h1{
+	color: #0e1d2f;
+}
+ul.metiz-film-detail-tabs li {
+    display: inline-block;
+    float: none;
+    border-radius: 20px;
+}
+ul.metiz-film-detail-tabs {
+    width: 100%;
+    list-style-type: none;
+    text-align: center;
+    border-bottom: none;
+}
+.product-view .nav-tabs>li>span{
+	padding: 5px 25px 5px 25px;
+	border: 3px solid #0e1d2f;
+	border-radius: 35px;
+	background: rgba(255, 255, 255, 0);
+	color: #0e1d2f;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	float: left;
+	width: 135px
+}
+.product-view .nav-tabs>li>span:hover {	
+	border: 3px solid #ff5400;
+	border-radius: 35px;
+	background-color: #ff5400;
+	color: black;
+}
+.product-view .nav-tabs>li.active>span{
+	color: #ffffff;
+	background-color: #ff5400;
+	border: 3px solid #ff5400;
+	font-weight: bold;
+}
+.product-view .nav-tabs>li:first-child, .product-view .nav-tabs>li:nth-child(2){
+	padding-right: 10px;
+}
+.product-view .tabs-format-metiz .tab-content{
+	padding: 70px 0 40px;
+}
+.movie-detail-fb-booking .button{
+	padding: 5px 10px 5px 10px;
+	border-radius: 25px;
+    border: 3px solid #0e1d2f;
+    font-weight: bold;
+    background: #0e1d2f;
+}
+.movie-detail-fb-booking .button:hover{
+	background: #ff5400;
+	border: 3px solid #ff5400;
+}
+.movie-detail-fb-booking li{
+	padding-top: 3px;
+}
+@media screen and (max-width: 460px) {
+ 	.movie-detail-fb-booking .button{
+		padding: 2px 5px 2px 5px;
+		border-radius: 15px;
+		border: 2px solid #0e1d2f;
+	    font-size: 10px;
+	}
+	.movie-detail-fb-booking .button:hover{
+		border: 2px solid #ff5400;
+	}
+	.product-view .nav-tabs>li>span{
+		width: 117px;
+		font-size: 12px;
+	}
+}
+@media screen and (max-width: 400px) {
+	.product-view .nav-tabs>li>span{
+		font-size: 10px;
+		width: 87px;
+		padding: 5px 10px 5px 10px;
+	}
+}
+.col-main .product-view{
+	padding-top: 10px;
+}
+.movie-rating .std{
+	font-weight: bold;
+}
+.c16{
+	color: #ff5400;
+}
+.p{
+	color: #6be242;
+}
+.c13{
+	color: #ffd640;
+}
+.c18{
+	color: #f2275b;
+}
+.container-film-detail{
+	background: #f1eee9;
 }

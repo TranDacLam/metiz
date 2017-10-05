@@ -14,25 +14,7 @@
 {% block container_class%}col1-layout {% endblock%}
 
 {% block main_content%}
-<div class="breadcrumbs" itemprop="breadcrumb">
-	<ul>
-		<li class="home">
-			<a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
-			<span>/ </span>
-		</li>
-		<li class="blog">
-			News &amp; Offer
-			<span>/ </span>
-		</li>
-		<li class="newsoffer">
-			<a href="{% url 'news' %}" title="News &amp; Offer">News &amp; Offer</a>
-			<span>/ </span>
-		</li>
-		<li class="blog_page">
-			<strong>{{new.name}}</strong>
-		</li>
-	</ul>
-</div>
+
 <div class="main">
 	<div class="col-main">
 		<div id="messages_product_view">
@@ -43,7 +25,7 @@
 			</div>
 			<div class="postContent">
 				<div class="detail-content-new-offer">
-					<div class="col-left-detail-content-new-offer"><span> <img alt="" src="{{STATIC_URL}}{{new.image}}"> </span></div>
+					<div class="col-left-detail-content-new-offer"><span> <img alt="" src="{{MEDIA_URL}}{{new.image}}"> </span></div>
 					<div class="col-right-detail-content-new-offer">
 						<div class="social-detail-content-new-offer">
 							<div class="fb-like" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">

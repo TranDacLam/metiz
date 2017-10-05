@@ -1250,6 +1250,10 @@
 	.cms-home .film-lists .nmovie-rating{
 		display:none;
 	}
+	.slideshow-containe-movier .poster-film .product-img {
+		height: 355px;
+		width: 240px;
+	}
 	.cms-home .slideshow-container{
 		margin:0px;
 	}
@@ -1401,6 +1405,7 @@
 	.cms-home .home-event{
 		margin-top:0px !important;
 	}
+	
 }
 
 @media only screen and (max-width: 320px){
@@ -1445,6 +1450,10 @@
 	.home-movie-selection {
 		margin: 0px 0 !important;
 	}
+	.slideshow-containe-movier .poster-film .product-img {
+		height: 355px;
+		width: 260px;
+	}
 }
 
 /* ============================== End Reponsive Home Page Screen ============================== */
@@ -1453,12 +1462,12 @@
 /* ---------------------------------- NOW SHOWING ---------------------------------- */
 @media only screen and (min-width: 771px){
 	.catalog-category-view .category-title {
-		border-bottom: 3px solid #ff5400;
+		border-bottom: 3px solid #0e1d2f;
 		margin-bottom: 35px;
 		position: relative;
 	}
 	.catalog-category-view .category-title h1 {
-		color: #ffffff;
+		color: #0e1d2f;
 		font-size: 38px;
 		font-weight: normal;
 		text-transform:capitalize;
@@ -1522,13 +1531,13 @@
 		width: 100% !important;
 	}
 	.catalog-category-view .category-title {
-		border-bottom: 2px solid #ff5400;
+		border-bottom: 2px solid #0e1d2f;
 		margin-bottom: 25px;
 		margin-top:-15px;
 		position: relative;
 	}
 	.catalog-category-view .category-title h1 {
-		color: #ffffff;
+		color: #0e1d2f;
 		font-size: 32px;
 		font-weight: normal;
 		margin-bottom:5px;
@@ -1605,7 +1614,7 @@
 		padding-bottom:15px;
 	}
 	.product-name span.h1{
-		color: #ffffff;
+		color: #0e1d2f;
 		font-weight: bold;
 		line-height:18px;
 		text-transform: uppercase;
@@ -1695,7 +1704,7 @@
 		padding-bottom: 15px;
 	}
 	.product-name span.h1 {
-		color: #ffffff;
+		color: #0e1d2f;
 		font-weight: bold;
 		line-height: 18px;
 		text-transform: uppercase;
