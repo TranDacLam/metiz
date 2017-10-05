@@ -460,7 +460,7 @@ select,
 table,
 textarea {
   font-family: "SairaSemiCondensed", sans-serif;
-  color: #222;
+  color: #0e1d2f;
   font-size: 14px;
   line-height: 18px;;
 }
@@ -488,18 +488,19 @@ ul {
  * ============================================ */
 h1, .h1 {
   margin: 0;
-  color: #222;
+  color: #0e1d2f;
   font-family:  "SairaSemiCondensed", sans-serif;
-  font-size: 28px;
+  font-size: 32px;
   font-style: normal;
   line-height:1.2;
+  font-weight: bold;
   margin-bottom: 0.7em;
   text-rendering: optimizeLegibility;
 }
 
 h2, .h2 {
   margin: 0;
-  color: #222;
+  color: #0e1d2f;
   font-family:  "SairaSemiCondensed", sans-serif;
   font-size: 24px;
   font-style: normal;
@@ -510,7 +511,7 @@ h2, .h2 {
 h3, .h3 {
   margin: 0;
   margin-bottom: 10px;
-  color: #222;
+  color: #0e1d2f;
   font-family:  "SairaSemiCondensed", sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -520,7 +521,7 @@ h3, .h3 {
 h4, .h4 {
   margin: 0;
   margin-bottom: 10px;
-  color: #222;
+  color: #0e1d2f;
   font-family:  "SairaSemiCondensed", sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -530,7 +531,7 @@ h4, .h4 {
 h5, .h5 {
   margin: 0;
   margin-bottom: 10px;
-  color: #222;
+  color: #0e1d2f;
   font-family: "SairaSemiCondensed", sans-serif;
   font-size: 13px;
   font-style: normal;
@@ -540,7 +541,7 @@ h5, .h5 {
 h6, .h6 {
   margin: 0;
   margin-bottom: 5px;
-  color: #222;
+  color: #0e1d2f;
   font-family: "SairaSemiCondensed", sans-serif;
   font-size: 12px;
   font-style: normal;

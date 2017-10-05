@@ -5104,6 +5104,7 @@ span.movie-rating-detail.c18{
     width: 100%;
     z-index: 5;
     background:transparent;
+    padding-top: 40px;
 }
 .cate-new-offer.products-grid--max-4-col > li {
     margin-right: 25px;
@@ -5139,14 +5140,14 @@ span.movie-rating-detail.c18{
     margin-top: 20px;
 }
 .format-new-offer h3 {
-    background: url("../images/bg-cgv/calendar-icon-smaill.png") no-repeat scroll center center transparent;
     float: left;
-    font-size: 0;
+    font-size: 20px;
     font-weight: bold;
     height: 20px;
     margin-bottom: 0;
     text-transform: none;
     width: 20px;
+    color: #ff5400;
 }
 .format-new-offer h4 {
     float: left;
@@ -5158,7 +5159,7 @@ span.movie-rating-detail.c18{
 }
 .cate-new-offer li .product-poster .fun-new-offer img {
     box-shadow: 3px 3px 3px #666;
-    border:1px solid #aba8a8;
+    border:1px solid #ff5400;
 }
 .aw-blog-read-more {
     display: none;
@@ -5176,20 +5177,21 @@ span.movie-rating-detail.c18{
 .postTitle h2 {
     float: left;
     width: 100%;
-    color: #e71a0f;
+    color: #ff5400;
     text-transform: uppercase;
 }
 .detail-content-new-offer {
     float: left;
     width: 100%;
 }
-.col-left-detail-content-new-offer {
+.col-left-detail-content-new-offer, .col-right-detail-content-new-offer {
     float: left;
     width: 37%;
     margin-top: 20px;
 }
 .col-left-detail-content-new-offer img {
-    width: 100% !important;
+    width: 357px;
+    height: auto;
 }
 .col-right-detail-content-new-offer {
     float: right;

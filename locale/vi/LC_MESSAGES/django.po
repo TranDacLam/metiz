@@ -221,8 +221,6 @@ msgid "Post"
 msgstr "Bài Viết"
 
 #: websites/core/models.py:209
-#, fuzzy
-#| msgid "Post"
 msgid "Posts"
 msgstr "Bài Viết"
 

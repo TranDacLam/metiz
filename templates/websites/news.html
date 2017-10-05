@@ -7,22 +7,16 @@
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film.css" media="all" />
 {% endblock %}
 
-
-
 {% block body_class %}
 	catalog-category-view categorypath-now-showing category-now-showing
 {% endblock %}
 
-{% block container_class%}col1-layout {% endblock%}
+{% block container_class%}col1-layout page-detail{% endblock%}
 {% block main_content%}
-
-
  <div class="main">            
     <div class="col-main product-view">
 	    <div class="cate-new-offer">
-			<div class="home-title">
-				<h2 class="title-new-offer-vn">&gt;Tin moi va uu đãi</h2>
-			</div>
+			<h1 class="text-center">KHUYẾN MÃI & ƯU ĐÃI</h1>
 		</div>
 		<div class="product-collateral">
 			<ul class="cate-new-offer products-grid products-grid--max-4-col first last odd">
@@ -37,8 +31,8 @@
 											<img alt="" src="{{MEDIA_URL}}{{item.image}}">
 											<div class="colum-right-new-offer">
 												<div class="format-new-offer release-day-new-offer">
-													<h3>&nbsp;</h3>
-													<h4>{{item.apply_date}}</h4>
+													<h3 class="glyphicon glyphicon-calendar">
+													<h4>{{item.apply_date}}</h4></h3>
 												</div>
 											</div>
 										</div>
