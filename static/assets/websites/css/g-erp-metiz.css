@@ -205,7 +205,7 @@
 		display: block !important;
 	}
 	.logo .small {
-		display: none !important;
+		/* display: none !important; */
 	}
 	.skip-links {
 		width: 100%;
