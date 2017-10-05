@@ -22,10 +22,10 @@
             <!-- Arrow Navigator -->
             <div id="jssor_1" >
                 <div data-u="slides" class="jssor_1_slides">
-                {% for item in data_slide.image  %}  
+                {% for item in data_slide  %}  
                     <div>
-                        <img data-u="image" src="{{ STATIC_URL }}{{item}}" />
-                        <img data-u="thumb" src="{{ STATIC_URL }}{{item}}" />
+                        <img data-u="image" src="{{ STATIC_URL }}{{item.image}}" />
+                        <img data-u="thumb" src="{{ STATIC_URL }}{{item.image}}" />
                     </div>
                 {% endfor %}
                 </div>
@@ -42,6 +42,7 @@
                 </div>
             </p>
         </div>
+
         {% endif %}
     </div>
 </div>
@@ -84,9 +85,11 @@
                             {% endfor %}
                         </ul>
                     </div>
+
                     <div id="movie-tab-2" class="tab-pane fade slideshow-containe-movier ">
                         <ul class="feature_slide_show content-slider">
-                            {% for item in movie_soon %}
+                            {% for item in movie_soon %}           
+
                                 <li class="poster-film film-lists item">
                                     <img class="product-img" src="{{ STATIC_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <input type="hidden" value="movie-trailer-285">
@@ -111,25 +114,24 @@
                     </div>
                 </div>
             </dl> 
+            
         </div>
     </div>
+    <span id="goToPrevSlide-showing"></span>
+    <span id="goToNextSlide-showing"></span>
+    <span id="goToPrevSlide-comming-soon"></span>
+    <span id="goToNextSlide-comming-soon"></span>
 </div>    
-<div class="container-fluid session-event">
-    <div class="main">
-        <div class="col-main">
-            <div class="home-promotion-card">
-                <ul class="promos">
-                    <li class="col-ad">
-                        <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/214x245.jpg" /></a></div>
-                    </li>
-                    <li class="col-hd">
-                        <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/phototicket---496x247_1.jpg" /></a></div>
-                    </li>
-                    <li class="col-ad">
-                        <div class="format-border"><a href="#"><img alt="" src="{{ STATIC_URL }}assets/websites/images/cgv_hotnumber_w_214_x_h_245_px.png" /></a></div>
-                    </li>
-                    
-                </ul>
+<div id="news">
+    <div class="container">
+        <h1 class="text-center">KHUYẾN MÃI & ƯU ĐÃI</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <div id="box">
+                    <h2 id="title-box">nhiều ưu đãi liên tục nhé!</h2>
+                    <p>Nullam imperdiet, sem at fringilla lobortis, sem nibh fringilla nibh, idae gravida mi purus sit amet erat. Ut dictum nisi massa, vitae pulvinar metus scelerisque in.</p>
+                    <p>Ut dictum nisi massa, vitae pulvinar metus scelerisque in.</p>
+                </div>
             </div>
             <img class="new-img col-lg-3 col-sm-4 col-xs-6" src="{{STATIC_URL}}/assets/websites/images/news/new_01.png" alt="">
             <img class="new-img col-lg-3 col-sm-4 col-xs-6" src="{{STATIC_URL}}/assets/websites/images/news/new_02.png" alt="">
@@ -151,5 +153,5 @@
         </div>
     {% endif %}
     </div>
-</div>      
+</div>
 {% endblock %}
