@@ -109,12 +109,12 @@ ul.metiz-movie-tabs {
 .info-movie-home h4{
 	text-transform: uppercase;
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 680px) {
  	.session-movie .nav-tabs>li.active>span{
 		border: 3px solid #ff5400;
 	}
 	.session-movie .nav-tabs>li>span {
-		padding: 5px 10px 5px 10px;
+		padding: 10px 15px 10px 15px;
 		border: 3px solid #ffffff;
 		font-size: 12px;
 	}
@@ -127,6 +127,13 @@ ul.metiz-movie-tabs {
 	}
 	ul.metiz-movie-tabs li:first-child {
 	    padding-right: 10px;
+	}
+}
+@media screen and (max-width: 420px) {
+	.session-movie .nav-tabs>li>span {
+		padding: 5px 10px 5px 10px;
+		border: 3px solid #ffffff;
+		font-size: 12px;
 	}
 }
 @media screen and (max-width: 320px) {
