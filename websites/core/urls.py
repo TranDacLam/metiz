@@ -14,4 +14,6 @@ urlpatterns = [
 	url(r'^news/$', views.news, name='news'),
     url(r'^new/detail/(?P<id>\d+)/$', views.new_detail, name='new_detail'),
     url(r'^cinema/technology/(?P<name>[-\w]+)/$', views.getCinemaTechnologyByName, name='getCinemaTechnologyByName'),
+    url(r'^posts/$', views.get_post, name='get_cms'),
+    
 ]

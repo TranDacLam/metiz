@@ -157,6 +157,12 @@ class PostAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': CKEditorUploadingWidget()},
     }
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:  # editing an existing object
+            return self.readonly_fields + ('key_query',)
+        return self.readonly_fields
+        
     pass
 admin.site.register(Post, PostAdmin)
 

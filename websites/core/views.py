@@ -73,7 +73,7 @@ def new_detail(request, id):
         # get news detail by id
         new = NewOffer.objects.get(pk=id)
         return render(request, 'websites/new_detail.html', {'new': new})
-    except NewOffer.ObjectDoesNotExist, e:
+    except NewOffer.DoesNotExist, e:
         print "Error new_detail : %s"%e
         return HttpResponse(status=404)
     except Exception, e:
@@ -115,11 +115,11 @@ def home(request):
 def get_post(request):
     try:
         if 'id' in request.GET:
-            p = Post.objects.get(pk=request.GET['id'])
+            item = Post.objects.get(pk=request.GET['id'])
         elif 'key_query' in request.GET:
-            p = Post.objects.get(key_query=request.GET['key_query'])
-        return render(request, 'websites/cinema_technology.html', {'technology': technology, 'allTechnology': allTechnology})
-    except Post.ObjectDoesNotExist:
+            item = Post.objects.get(key_query=request.GET['key_query'])
+        return render(request, 'websites/cms.html', {'item': item})
+    except Post.DoesNotExist, e:
         print "Error get_post : id or key_query does not exist"
         return HttpResponse(status=404)
     except Exception, e:
