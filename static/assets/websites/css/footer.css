@@ -4,6 +4,28 @@
 	background: #0e1d2f;
 	padding: 20px 0px;
 }
+.social_hide{
+	display:none;
+}
+#list-social #fb_show:hover #fb{
+	display:none;
+}
+#list-social #fb_show:hover #fb_hover{
+	display:block;
+}
+#list-social #youtube_show:hover #youtube{
+	display:none;
+}
+#list-social #youtube_show:hover #youtube_hover{
+	display:block;
+}
+#list-social #instagram_show:hover #instagram{
+	display:none;
+}
+#list-social #instagram_show:hover #instagram_hover{
+	display:block;
+}
+
 footer #list-social ul.list-inline li 
 {    
 	float: none; 

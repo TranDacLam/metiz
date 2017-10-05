@@ -146,14 +146,29 @@
                     <p>Ut dictum nisi massa, vitae pulvinar metus scelerisque in.</p>
                 </div>
             </div>
-            <img class="new-img col-lg-3 col-sm-4 col-xs-6" src="{{STATIC_URL}}/assets/websites/images/news/new_01.png" alt="">
-            <img class="new-img col-lg-3 col-sm-4 col-xs-6" src="{{STATIC_URL}}/assets/websites/images/news/new_02.png" alt="">
-            <img class="new-img col-lg-3 col-sm-4 col-xs-6" src="{{STATIC_URL}}/assets/websites/images/news/new_03.png" alt="">
-            <img class="new-img col-lg-3 col-sm-4 col-xs-6" src="{{STATIC_URL}}/assets/websites/images/news/new_04.png" alt="">
-            <img class="new-img col-lg-3 col-sm-4 col-xs-6" src="{{STATIC_URL}}/assets/websites/images/news/new_05.png" alt="">
-            <div id="show_more">
-                <img id="more" class="new-img col-lg-3 col-sm-4 col-xs-6" src="{{STATIC_URL}}/assets/websites/images/news/more.png" alt="">
-                <img id="more_hover" class="new-img col-lg-3 col-sm-4 col-xs-6" src="{{STATIC_URL}}/assets/websites/images/news/more_hover.png" alt="">
+            <div class="new-img col-lg-3 col-sm-4 col-xs-6">
+                <img class="" src="{{STATIC_URL}}/assets/websites/images/news/new_01.png" alt="">
+                <a class="bg_hover" href="#"></a>
+            </div>
+            <div class="new-img col-lg-3 col-sm-4 col-xs-6">
+                <img class="" src="{{STATIC_URL}}/assets/websites/images/news/new_02.png" alt="">
+                <a class="bg_hover" href="#"></a>
+            </div>
+           <div class="new-img col-lg-3 col-sm-4 col-xs-6">
+                <img class="" src="{{STATIC_URL}}/assets/websites/images/news/new_03.png" alt="">
+                <a class="bg_hover" href="#"></a>
+            </div>
+            <div class="new-img col-lg-3 col-sm-4 col-xs-6">
+                <img class="" src="{{STATIC_URL}}/assets/websites/images/news/new_04.png" alt="">
+                <a class="bg_hover" href="#"></a>
+            </div>
+            <div class="new-img col-lg-3 col-sm-4 col-xs-6">
+                <img class="" src="{{STATIC_URL}}/assets/websites/images/news/new_05.png" alt="">
+                <a class="bg_hover" href="#"></a>
+            </div>
+            <div id="show_more" class="new-img col-lg-3 col-sm-4 col-xs-6">
+                <img id="more"  src="{{STATIC_URL}}/assets/websites/images/news/more.png" alt="">
+                <a href="{% url 'news'%}"><img id="more_hover" src="{{STATIC_URL}}/assets/websites/images/news/more_hover.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -161,7 +176,9 @@
 <div id="ads-facebook">
     <div class="container">
         <div class="col-xs-12">
-            <img class="col-xs-12" src="{{STATIC_URL}}/assets/websites/images/facebook_banner.png" alt="">
+            <a href="#">
+                <img class="col-xs-12" src="{{STATIC_URL}}/assets/websites/images/facebook_banner.png" alt="">
+            </a>
         </div>
     </div>
 </div>
