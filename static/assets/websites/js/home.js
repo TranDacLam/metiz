@@ -13,9 +13,12 @@ $(document).ready(function() {
 	        fixedContentPos: false
 		  });
     });
-    //action for show map in footer 
-    $('.map-trigger').click(function(event) {
-        event.preventDefault();
-        $('#content-map').toggle('slow/400/fast');
+    $('.new-img').mouseenter(function(event) {
+    	/* Act on the event */
+    	$(this).children('.bg_hover').css('display', 'block');
+    });
+    $('.new-img').mouseleave(function(event) {
+    	/* Act on the event */
+    	$(this).children('.bg_hover').css('display', 'none');
     });
 });
