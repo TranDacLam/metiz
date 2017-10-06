@@ -105,7 +105,7 @@ class Movie(DateTimeModel):
     description = models.TextField(_("Description"))
     trailer = models.CharField(_("Trailer"), max_length=500)
     priority = models.IntegerField(_("Priority"), null=True, blank=True)
-    is_draff = models.BooleanField(default=False)
+    is_draft = models.BooleanField(default=False)
 
     def __str__(self):
         return '%s' % (self.name)
