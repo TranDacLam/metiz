@@ -27,7 +27,8 @@ urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    # url(r'^comments/', include('django_comments.urls')),
+    url(r'^', include('registration.urls')),
+    
     
     url(r'^cinox/$', views.cinox, name='cinox'),
     url(r'^cinox_detail/$', views.cinox_detail, name='cinox_detail'),

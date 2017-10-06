@@ -32,12 +32,12 @@
                 {% include 'arrow_slide.html' %}
             </div>
         </div>
-        {% if banners and position_1 == 1 %}
+        {% if position_1 %}
         <div class="std">
             <p>
                 <div class="widget widget-static-block">
                     <div class="sect-person">
-                        <a href="{{sub_url_1}}"><img src="{{ MEDIA_URL }}{{image_1}}"/></a>
+                        <a href="{{ position_1.sub_url }}"><img src="{{ MEDIA_URL }}{{ position_1.image }}"/></a>
                     </div>
                 </div>
             </p>
@@ -162,10 +162,10 @@
 </div>
 <div id="ads-facebook">
     <div class="container">
-    {% if banners and position_2 == 2 %}
+    {% if position_2 %}
         <div class="col-xs-12">
-            <a href="{{sub_url_2}}">
-                <img class="col-xs-12" src="{{ MEDIA_URL }}{{image_2}}" alt="{{sub_url_2}}">
+            <a href="{{ position_2.sub_url }}">
+                <img class="col-xs-12" src="{{ MEDIA_URL }}{{ position_2.image }}" alt="{{ position_2.sub_url}}">
             </a>
         </div>
     {% endif %}

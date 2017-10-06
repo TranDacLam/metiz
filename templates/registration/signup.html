@@ -1,0 +1,146 @@
+{% extends "layout.html" %} 
+{% load i18n %} 
+{% block title %}{% trans "Signup" %}{% endblock title %} 
+
+{% block extrascript %} 
+{% endblock %} 
+
+{% block extrastylesheet %} 
+{% endblock %} 
+
+{% block main_content %}
+<div class="main">
+    <div class="col-main">
+        <div class="account-wrap">
+            <div class="product-collateral account-tabs">
+                <ul class="toggle-tabs nav nav-tabs">
+                    <li class="{% if is_login %} active {% endif %}"><span><a href="#login" data-toggle="tab">Đăng nhập</a></span></li>
+                    <li class="{% if is_signup %} active {% endif %}"><span><a href="#create" data-toggle="tab">Đăng ký</a></span></li>
+                </ul>
+                
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane in col-lg-12 well {% if is_login %} active {% endif %}" id="login">
+                        <div class="row">
+                            <form class="signin" id="signin_form" method="post" action="{% url 'login' %}">
+                                {% csrf_token %}
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "Email" %}</label>
+                                            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here..' %}" class="form-control">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "Password"%}</label>
+                                            <input type="password" name="password" id="password" class="form-control">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-lg btn-info">Login</button>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 well tab-pane {% if is_signup %} active {% endif %}" id="create">
+                        <div class="row">
+                            {% if register_form.errors %}
+                                 {% for field in register_form %}
+                                    {% for error in field.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+
+                                {% for error in form.non_field_errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <form class="signup" id="signup_form" method="post" action="{% url 'register' %}">
+                                {% csrf_token %}
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "Full Name" %}</label>
+                                            <input type="text" name="full_name" id="full_name" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "" %} {% trans "Gender" %}</label>
+                                            <div class="form-check form-check-inline">
+                                              <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked="checked"> Male
+                                                <input class="form-check-input" type="radio" name="gender" id="gender" value="female" > Female
+                                              </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "Birth Date" %}</label>
+                                            <input type="text" name="birth_date" id="birth_date" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "Phone" %}</label>
+                                            <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "Email"%}</label>
+                                            <input type="text" id="email" name="email" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "Personal ID" %}</label>
+                                            <input type="text" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "Password"%}</label>
+                                            <input type="password" id="password1" name="password1" class="form-control">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "City"%}</label>
+                                            <input type="text" id="city" name="city" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "Confirm Password" %}</label>
+                                            <input type="password" name="password2" id="password2" class="form-control">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "District"%}</label>
+                                            <input type="text" id="district" name="district" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <label>{% trans "Address" %}</label>
+                                            <textarea name="address" id="address" placeholder="{% trans 'Enter Address Here..' %}" rows="3" class="form-control"></textarea>
+                                        </div>  
+                                    </div>
+                                    
+
+                                    
+                                    
+                                    
+                                    {% if redirect_field_value %}
+                                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> 
+                                    {% endif %}
+                                    <button type="submit" class="btn btn-lg btn-info">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
