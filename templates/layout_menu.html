@@ -1,30 +1,42 @@
 <div class="col-left sidebar col-left-first">
-    <div class="block block-cms-menu">
-        <div class="block-content">
-            <ul>
-                <li>
-                    <a href="{% url 'about_cinema' %}"><span>Giới thiệu</span></a>
-                </li>
-                <li>
-                    <a href="{% url 'contacts' %}"><span>Li&ecirc;n Hệ CGV</span></a>
-                </li>
-                <li>
-                    <a href="{% url 'terms_conditions' %}"><span>Điều khoản chung</span></a>
-                </li>
-                <li>
-                    <a href="{% url 'terms_use' %}"><span>Điều khoản giao dich</span></a>
-                </li>
-                <li>
-                    <a href="{% url 'payment_policy' %}"><span>Ch&iacute;nh s&aacute;ch thanh to&aacute;n</span></a>
-                </li>
-                <li>
-                    <a href="{% url 'privacy_policy' %}"><span>Ch&iacute;nh s&aacute;ch bảo mật</span></a>
-                </li>
-                <li>
-                    <span><a href="{% url 'faq' %}"><span>C&acirc;u hỏi thường gặp</span></a></span>
-                </li>
-            </ul>
-        </div>
+    <div class=" block-cms-menu">
+        <nav class="navbar navbar-inverse sidebar" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Thông tin về Metiz</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">GIỚI THIỆU<span class="pull-right hidden-xs showopacity fa fa-th-large"></span></a>
+                    </li>
+                    <li >
+                        <a href="#">ĐIỀU KHOẢN CHUNG<span class="pull-right hidden-xs showopacity fa fa-flag"></span></a>
+                    </li>
+                    <li >
+                        <a href="#">ĐIỀU KHOẢN GIAO DICH<span class="pull-right hidden-xs showopacity fa fa-flag"></span></a>
+                    </li>
+                    <li>
+                        <a href="#">CHÍNH SÁCH THANH TOÁN<span class="pull-right hidden-xs showopacity fa fa-usd"></span></a>
+                    </li>
+                    <li>
+                        <a href="#">CHÍNH SÁCH BẢO MẬT<span class="pull-right hidden-xs showopacity fa fa-unlock-alt"></span></a>
+                    </li>
+                    <li >
+                        <a href="#">CÂU HỎI THƯỜNG GẶP<span class="pull-right hidden-xs showopacity fa fa-question-circle"></span></a>
+                    </li>
+                    <li >
+                        <a href="#">Tuyển Dụng<span class="pull-right hidden-xs showopacity fa fa-users"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
-    
 </div>
