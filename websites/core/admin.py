@@ -166,3 +166,8 @@ class PostAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Post, PostAdmin)
 
+
+class SlideShowAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(SlideShow, SlideShowAdmin)
+
