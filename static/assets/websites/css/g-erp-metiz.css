@@ -1527,8 +1527,8 @@
 		width: 30%;
 	}
 	.products-grid--max-4-col.products-grid .product-image img {
-		height: auto;
-		width: 100%;
+		height: auto !important;;
+		width: 100% !important;;
 	}
 	.catalog-category-view .category-title {
 		border-bottom: 2px solid #0e1d2f;
