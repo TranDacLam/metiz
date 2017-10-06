@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from forms import *
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout
+from django.http import HttpResponse
 
 
 def logout(request):
