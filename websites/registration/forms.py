@@ -1,9 +1,11 @@
 from django import forms
-from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from django.conf import settings
+from django.contrib.sites.models import Site
 from django.contrib.auth import login
+from django.core.urlresolvers import reverse
+from django.conf import settings
 import datetime
 import random
 import sha
@@ -71,10 +73,10 @@ class MetizSignupForm(UserCreationForm):
                    'token_last_expired', 'activation_key', 'key_expires', 'password']
 
     def save(self, commit=True):
+        # call save function of super
         user = super(MetizSignupForm, self).save(commit=False)
-        # do custom stuff
-        print 'User Register ', user
         if commit:
+            
             salt = sha.new(str(random.random())).hexdigest()[:5]
             activation_key = sha.new(salt + user.email).hexdigest()
             key_expires = datetime.datetime.today() + datetime.timedelta(30)
@@ -103,7 +105,7 @@ class MetizSignupForm(UserCreationForm):
             # http://{{ site.domain }}{% url 'confirm-activation'
             # activation_key %}
 
-            metiz_email.send_mail(subject, None, message_html, settings.EMAIL_FROM, [
-                                  email], data_binding)
+            metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
+                                  user.email], data_binding)
 
         return user
