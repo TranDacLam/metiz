@@ -2485,11 +2485,11 @@
 
 /* ------------------------------------ CMS PAGE ----------------------------------- */
 @media only screen and (min-width: 771px){
-	.title-about-cgv {
+	.title-about-metiz {
 		float: left;
 		width: 100%;
 	}
-	.title-about-cgv h1 {
+	.title-about-metiz h1 {
 		float: left;
 		font-size: 32px;
 		color: #e71a0f;
@@ -2563,15 +2563,15 @@
 		line-height:36px;
 		display: inline-block;
 	}
-	.about-image-cgv {
+	.about-image-metiz {
 		float: left;
 		width: 100%;
 	}
-	.about-image-cgv ul {
+	.about-image-metiz ul {
 		float: left;
 		width: 100%;
 	}
-	.about-image-cgv ul li {
+	.about-image-metiz ul li {
 		float: left;
 		width: 32%;
 		height: 169px;
@@ -2580,7 +2580,7 @@
 		box-shadow: 3px 3px 3px #333;
 		border-radius: 3px;
 	}
-	.about-image-cgv ul li img {
+	.about-image-metiz ul li img {
 		float: left;
 		width: 100%;
 		height: 169px;

@@ -2555,9 +2555,6 @@ li.film-lists:hover .play-button{
     height: 41px;
     text-indent: -99999px;
 }
-.page-title {
-    margin-top: 30px;
-}
 .theater-title {
     text-align: center;
     width: 100%;
@@ -3721,9 +3718,6 @@ span.icon-closew-combo {
 ul,ol,li{
     list-style:none;
     float:left;
-}
-.page-title{
-    margin-top:30px;
 }
 
 /* ==================== Breadcrums ================== */
@@ -5778,7 +5772,7 @@ span.movie-rating-detail.c18{
     }
     /* about page*/
     
-    .about-image-cgv li{
+    .about-image-metiz li{
         border: 1px solid;
         margin: 10px 4px;
         box-shadow: 3px 3px 3px #333;
@@ -5859,7 +5853,7 @@ span.movie-rating-detail.c18{
     
     /* about page*/
     
-    .about-image-cgv li{
+    .about-image-metiz li{
         border: 1px solid;
         margin: 10px 4px;
         box-shadow: 3px 3px 3px #333;
@@ -5948,7 +5942,7 @@ span.movie-rating-detail.c18{
     
     /* about page*/
     
-    .about-image-cgv li{
+    .about-image-metiz li{
         border: 1px solid;
         margin: 10px 4px;
         box-shadow: 3px 3px 3px #333;
