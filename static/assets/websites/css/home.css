@@ -1,3 +1,6 @@
+.page-detail{
+	background: #0f1d2f;
+}
 .mfp-bg{
 	opacity: 1;
 }
@@ -66,8 +69,8 @@
 	background: rgba(3, 19, 39, 0);
 }
 .detail-pay-film a:hover, button:hover{
-	background: #ff5400;
-	border: 3px solid #ff5400;
+	/* background: #ff5400; */
+	/* border: 3px solid #ff5400; */
 }
 .detail-pay-film button:hover{
 	background: #ff5400;
