@@ -41,9 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'main',
     'core',
+    'registration',
     # 'core.apps.CoreConfig',
     'ckeditor',
     'ckeditor_uploader',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                # 'allauth.account.context_processors.account',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.static',
                 'django.template.context_processors.media',
@@ -86,6 +91,7 @@ AUTH_USER_MODEL = 'core.User'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 
@@ -214,6 +220,14 @@ DECIMAL_SEPARATOR = u'.'
 THOUSAND_SEPARATOR = u','
 NUMBER_GROUPING = 3
 
+# # Config Django Allauth
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_UNIQUE_EMAIL = True
+# ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL='/'
 
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:

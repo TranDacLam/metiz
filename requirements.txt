@@ -5,3 +5,4 @@ django-grappelli
 uwsgi
 html2text==2014.4.5
 django-ckeditor
+#django-allauth

@@ -9,7 +9,7 @@ urlpatterns = [
 
 	url(r'^$', views.home, name='home'),
 	url(r'^showing/$', views.showing, name='showing'),
-	url(r'^comingsoon/$', views.comingsoon, name='comingsoon'),
+	url(r'^comingsoon/$', views.coming_soon, name='comingsoon'),
 	url(r'^film/detail/(?P<id>\d+)/$', views.film_detail, name='film_detail'),
 	url(r'^news/$', views.news, name='news'),
     url(r'^new/detail/(?P<id>\d+)/$', views.new_detail, name='new_detail'),

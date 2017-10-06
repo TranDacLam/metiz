@@ -24,20 +24,20 @@
                 <div data-u="slides" class="jssor_1_slides">
                 {% for item in data_slide  %}  
                     <div>
-                        <img data-u="image" src="{{ STATIC_URL }}{{item.image}}" />
-                        <img data-u="thumb" src="{{ STATIC_URL }}{{item.image}}" />
+                        <img data-u="image" src="{{ MEDIA_URL }}{{item.image}}" />
+                        <img data-u="thumb" src="{{ MEDIA_URL }}{{item.image}}" />
                     </div>
                 {% endfor %}
                 </div>
                 {% include 'arrow_slide.html' %}
             </div>
         </div>
-        {% if result.banners and result.banners.1 %}
+        {% if position_1 %}
         <div class="std">
             <p>
                 <div class="widget widget-static-block">
                     <div class="sect-person">
-                        <a href="{{result.banners.1.sub_url}}"><img src="{{ STATIC_URL }}{{result.banners.1.image}}"/></a>
+                        <a href="{{ position_1.sub_url }}"><img src="{{ MEDIA_URL }}{{ position_1.image }}"/></a>
                     </div>
                 </div>
             </p>
@@ -64,7 +64,7 @@
                         <ul class="feature_slide_show content-slider">
                             {% for item in movie_showing %}
                                 <li class="poster-film film-lists item">
-                                    <img class="product-img" src="{{ STATIC_URL }}{{item.poster}}" alt="{{item.name}}" />
+                                    <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <input type="hidden" value="movie-trailer-285">
                                     <div class="info-movie-home">
                                         <h3>{{item.name}}</h3>
@@ -78,7 +78,7 @@
                                     <div class="play-button">
                                         <span><span>Play</span></span>
                                         <div class="link-play">
-                                            <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube video</a><br>
+                                            <a class="popup-youtube" href="{{item.trailer}}">Open YouTube video</a><br>
                                         </div>
                                     </div>   
                                 </li>
@@ -91,7 +91,7 @@
                             {% for item in movie_soon %}           
 
                                 <li class="poster-film film-lists item">
-                                    <img class="product-img" src="{{ STATIC_URL }}{{item.poster}}" alt="{{item.name}}" />
+                                    <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <input type="hidden" value="movie-trailer-285">
                                     <div class="info-movie-home">
                                         <h3>{{item.name}}</h3>
@@ -105,7 +105,7 @@
                                     <div class="play-button">
                                         <span><span>Play</span></span>
                                         <div class="link-play">
-                                            <a class="popup-youtube" href="https://www.youtube.com/watch?v=COz7fZB66OM">Open YouTube video</a><br>
+                                            <a class="popup-youtube" href="{{item.trailer}}">Open YouTube video</a><br>
                                         </div>
                                     </div>   
                                 </li>
@@ -162,10 +162,10 @@
 </div>
 <div id="ads-facebook">
     <div class="container">
-    {% if result.banners and result.banners.2 %}
+    {% if position_2 %}
         <div class="col-xs-12">
-            <a href="#">
-                <img class="col-xs-12" src="{{ STATIC_URL }}{{result.banners.2.image}}" alt="{{result.banners.2.sub_url}}">
+            <a href="{{ position_2.sub_url }}">
+                <img class="col-xs-12" src="{{ MEDIA_URL }}{{ position_2.image }}" alt="{{ position_2.sub_url}}">
             </a>
         </div>
     {% endif %}
