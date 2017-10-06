@@ -75,8 +75,8 @@
 					</div>
 					<div class="movie-rating movie-rated-web">
 						<label>Rated: </label>
-						<div class="std">&nbsp;  <span class="{{film_detail.rated.name}}">{{film_detail.rated.name}}</span> - {{film_detail.rated.description}}</div>
-					</div>
+						<div class="std">&nbsp;  <span class="{{film_detail.rated.name}}">{{ film_detail.rated.name }}</span> - {{ film_detail.rated.description | safe }}</div>
+					</div> 
 					<div class="movie-technology-icons">
 						<a href="javascript:void(0)" class="movie-detail-icon-type" title="{{film_detail.movie_type.name}}">
 							<span class="movie-detail-type-{{film_detail.movie_type.name}}">{{film_detail.movie_type.name}}</span>
@@ -110,7 +110,7 @@
 				</ul>
 				<div class="tab-content">
 					<div id="film-detail-tab-1" class="tab-pane fade in active">
-						{{film_detail.description}}
+						{{ film_detail.description | safe}}
 					</div>
 					<div id="film-detail-tab-2" class="tab-pane fade ">
 						<div class="product_view_trailer text-center">
@@ -214,7 +214,7 @@
 													<input class="rating rating-loading" value="{{item.rating}}" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-readonly="true">
 												</div>
 												<div class="review-block-title">{{item.movie.name}}</div>
-												<div class="review-block-description">{{item.review}}</div>
+												<div class="review-block-description">{{ item.review | safe }}</div>
 											</div>
 										</div>
 										<hr/>
