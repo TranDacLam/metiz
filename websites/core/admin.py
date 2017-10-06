@@ -92,9 +92,6 @@ admin.site.register(custom_models.User, UserAdmin)
 
 
 class RatedAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.TextField: {'widget': CKEditorUploadingWidget()},
-    }
     pass
 admin.site.register(Rated, RatedAdmin)
 
@@ -165,4 +162,9 @@ class PostAdmin(admin.ModelAdmin):
         
     pass
 admin.site.register(Post, PostAdmin)
+
+
+class SlideShowAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(SlideShow, SlideShowAdmin)
 

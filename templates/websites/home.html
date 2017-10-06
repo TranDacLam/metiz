@@ -72,7 +72,7 @@
                                         <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">
-                                        <a title="Xem chi tiết" class="button" href="#">Chi tiết</a>
+                                        <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         <button type="button" title="Đặt vé" class="button">Đặt vé</button>
                                     </div>
                                     <div class="play-button">
@@ -99,7 +99,7 @@
                                         <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">
-                                        <a title="Xem chi tiết" class="button" href="#">Chi tiết</a>
+                                        <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         <button type="button" title="Đặt vé" class="button">Đặt vé</button>
                                     </div>
                                     <div class="play-button">
