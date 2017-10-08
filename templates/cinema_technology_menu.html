@@ -2,7 +2,7 @@
 	<ul class="special-items">
 		{% for item in allTechnology %}
 		<li class="item-icon item-{{item.name}}">
-			<a title="{{item.name}}" href="{% url 'getCinemaTechnologyByName' item.name %}">{{item.name}}</a>
+			<a title="{{item.name}}" href="{% url 'technology_detail' item.name %}">{{item.name}}</a>
 		</li>
 		{% endfor %}
 	</ul>

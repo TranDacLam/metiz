@@ -55,6 +55,13 @@
             centerMode: false,
             responsive: [
                 {
+                  breakpoint: 1170,
+                  settings: {
+                    slidesToShow: 8,
+                    slidesToScroll: 8
+                  }
+                },
+                {
                   breakpoint: 1024,
                   settings: {
                     slidesToShow: 8,
