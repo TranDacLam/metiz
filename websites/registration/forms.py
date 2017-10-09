@@ -12,6 +12,7 @@ import sha
 from core.custom_models import User
 import messages as msg
 import metiz_email
+from django.utils import timezone
 
 
 class LoginForm(forms.Form):
@@ -75,37 +76,41 @@ class MetizSignupForm(UserCreationForm):
     def save(self, commit=True):
         # call save function of super
         user = super(MetizSignupForm, self).save(commit=False)
-        if commit:
+        try:
+            if commit:
+
+                salt = sha.new(str(random.random())).hexdigest()[:5]
+                activation_key = sha.new(salt + user.email).hexdigest()
+                key_expires = timezone.now() + datetime.timedelta(30)
+                user.activation_key = activation_key
+                user.key_expires = key_expires
+                user.save()
+
+                message_html = "registration/email/metiz_account_created_confirm.html"
+                subject = _(
+                    "[Metiz] You've been created an account - Click to Verify!")
+
+                protocol = 'http://'
+                if self.request.is_secure():
+                    protocol = 'https://'
+                logo_url = protocol + \
+                    str(Site.objects.get_current()) + \
+                    '/static/websites/img/logo.png'
+                url_activate = self.request.build_absolute_uri(
+                    reverse('confirm-activation', kwargs={'activation_key': activation_key}))
+                data_binding = {
+                    'full_name': user.full_name,
+                    'email': user.email,
+                    'URL_LOGO': logo_url,
+                    'activate_url': url_activate
+                }
+                # Send email activation link
+                metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
+                                      user.email], data_binding)
+            return user
             
-            salt = sha.new(str(random.random())).hexdigest()[:5]
-            activation_key = sha.new(salt + user.email).hexdigest()
-            key_expires = datetime.datetime.today() + datetime.timedelta(30)
-            user.activation_key = activation_key
-            user.key_expires = key_expires
-            user.save()
+        except Exception ,e :
+            print 'Save Form Error ', e
+            raise Exception('Internal Server Error.')
 
-            message_html = "registration/email/metiz_account_created_confirm.html"
-            subject = _(
-                "[Metiz] You've been created an account - Click to Verify!")
-
-            protocol = 'http://'
-            if self.request.is_secure():
-                protocol = 'https://'
-            logo_url = protocol + \
-                str(Site.objects.get_current()) + \
-                '/static/websites/img/logo.png'
-            url_activate = self.request.build_absolute_uri(
-                reverse('confirm-activation', kwargs={'activation_key': activation_key}))
-            data_binding = {
-                'full_name': user.full_name,
-                'email': user.email,
-                'URL_LOGO': logo_url,
-                'activate_url': url_activate
-            }
-            # http://{{ site.domain }}{% url 'confirm-activation'
-            # activation_key %}
-
-            metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
-                                  user.email], data_binding)
-
-        return user
+        

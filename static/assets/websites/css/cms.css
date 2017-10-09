@@ -28,7 +28,9 @@ nav.sidebar, .main{
 .col-left .navbar-header a{
     display: none;
 }
-
+.col2-set {
+    text-align: justify;
+}
 @media only screen and (max-width: 768px){
     .col-left  .navbar-collapse, .skip-content {
         background-color: rgba(255, 255, 255, 0);
@@ -48,16 +50,11 @@ nav.sidebar, .main{
     .col2-left-layout .col-main {
         padding: 0;
     }
-}
-@media only screen and (max-width: 420px){
-    .col-left  .navbar-collapse, .skip-content {
-        background-color: rgba(255, 255, 255, 0);
-    }
-    .page-header{
-        height: 86px;
+    .col-left ul, li{
+        float: none;
     }
     .col2-left-layout .col-main .col2-set{
-        padding: 0 5px 0px 20px;
+        padding: 0 20px 0px 40px;
     }
     .col-left .navbar-toggle{
         background-color: #ff5400;
@@ -65,10 +62,14 @@ nav.sidebar, .main{
     .col-left .navbar-inverse .navbar-toggle, .col-left .navbar-inverse .navbar-collapse{
         border-color: #ff5400;
     }
-    .col-left ul, li{
-        float: none;
+}
+@media only screen and (max-width: 420px){
+    .page-header{
+        height: 86px;
     }
-
+    .col2-left-layout .col-main .col2-set{
+        padding: 0 10px 0px 15px;
+    }
 }
 /*small/medium side display*/
 @media (min-width: 768px) {
@@ -128,7 +129,7 @@ nav.sidebar, .main{
         margin-left: -197px;
         float: left;
         z-index: 8000;
-        margin-bottom: 0px;
+        margin-bottom: 10px;
     }
     /*give sidebar 100% width;*/
     nav.sidebar li {
@@ -141,6 +142,11 @@ nav.sidebar, .main{
     /*for hiden things when navbar hidden*/
     .forAnimate{
         opacity: 0;
+    }
+}
+@media (min-width: 769px) {
+    nav.sidebar{
+        margin-left: 0;
     }
 }
 @media (min-width: 1330px) {
