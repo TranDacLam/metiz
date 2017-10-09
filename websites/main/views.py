@@ -67,6 +67,7 @@ data_schedule= [{
 		]}
 	]},
 	]
+data_celendar = {'last' : range(15,27),'present':range(27,30), 'future': range(1,15) }
 def custom_404(request):
 	return render(request, 'websites/errors/404.html', {}, status=404)
 
@@ -113,6 +114,7 @@ def membership(request):
 
 def account_create(request):
 	data_modal= data_schedule
+	data_date=data_celendar
 	data_country = [{'value':'','name':''},{'value':'AF','name':'Afghanistan'},
 	{'value':'EG','name':'Ai Cập'},{'value':'IE','name':'Ai-len'},
 	{'value':'AL','name':'Albani'},{'value':'DZ','name':'Algeria'}]
@@ -138,16 +140,17 @@ def account_create(request):
 	data_prefergenre = [{'value':'06','name':'ACTION'},{'value':'07','name':'ADVENTURE'},{'value':'08','name':'ANIMATION'},
 	{'value':'09','name':'COMEDY'},{'value':'14','name':'CRIME'}]
 
-	return render(request, 'websites/account_create.html', {'data_country':data_country, 'data_city':data_city,'data_day':data_day,'data_month':data_month,'data_year':data_year,'data_cgv':data_cgv, 'data_prefergenre':data_prefergenre,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/account_create.html', {'data_modal': data_modal, 'data_date':data_date,'data_country':data_country, 'data_city':data_city,'data_day':data_day,'data_month':data_month,'data_year':data_year,'data_cgv':data_cgv, 'data_prefergenre':data_prefergenre,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
 def account_login(request):
 	data_modal= data_schedule
-	return render(request, 'websites/account_login.html', {'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	data_date=data_celendar
+	return render(request, 'websites/account_login.html', {'data_modal': data_modal, 'data_date':data_date})
 
 
 def account_findmember(request):
 	data_modal= data_schedule
-	return render(request, 'websites/account_findmember.html', { 'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/account_findmember.html', { 'data_modal': data_modal})
 
 def account_forgot_password(request):
 	data_modal= data_schedule
