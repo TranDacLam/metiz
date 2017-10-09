@@ -150,10 +150,17 @@ class CommentAdmin(admin.ModelAdmin):
 admin.site.register(Comment, CommentAdmin)
 
 
+# class PostForm(forms.ModelForm):
+#     key_query = forms.CharField(max_length=200, required=False)
+#     class Meta:
+#         model = Post
+#         fields = '__all__'
+
 class PostAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': CKEditorUploadingWidget()},
     }
+    # form = PostForm
 
     def get_readonly_fields(self, request, obj=None):
         if obj:  # editing an existing object
