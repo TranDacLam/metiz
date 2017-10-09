@@ -78,7 +78,7 @@ def deploy():
             with prefix(env.activate):
                 run('pip install -r ../requirements.txt')
                 run('python manage.py collectstatic --noinput')
-                # run('python manage.py migrate')
+                run('python manage.py migrate')
                 # sudo('systemctl restart uwsgi_helio')
                 sudo('su -s /bin/bash www-data -c "%s;%s" '%(env.activate,"uwsgi --reload %s"%PROCESS_ID[ENV]))
 
