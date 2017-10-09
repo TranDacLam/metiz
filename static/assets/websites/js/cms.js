@@ -13,11 +13,11 @@ $(document).ready(function() {
            urlParams[decode(match[1])] = decode(match[2]);
     })();
     
-    // add active for intro metiz (posts) selected
+    // add active for tab from tag footer redirect page posts 
     var kq_post = urlParams['key_query'];
     $('.post-detail-metiz li[data-post-detail="'+ kq_post +'"]').addClass('active')
 
-    // active and ajax introl metiz (posts)
+    // active and ajax in page posts
     $('.post-detail-metiz li').click(function(e){
         e.preventDefault();
         post_detail_kq = $(this).attr('data-post-detail');
