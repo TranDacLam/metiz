@@ -1,0 +1,98 @@
+
+<!-- khong chay duoc neu de phan js, css tren layout.html -->
+<link rel="stylesheet" type="text/css"  href="{{ STATIC_URL }}assets/css/slick.css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/slick-theme.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}assets/js/slick/slick.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/modal.js"></script>    
+
+<div id="test-popup" class="white-popup mfp-hide">
+    <div class="div-login">
+        <div class="top">
+            Lịch chiếu
+        </div>
+        <div class="popup-booking">
+            <section class="section-lightpink">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h3>Select date play</h3>
+                        </div>
+                        <div class="col-xs-11">
+                            <div class="calendar-popup">
+                                <div class="list-time">
+                                    <ul class="days-popup" id="play-date-slider">
+                                    {% for item in last%}
+                                        <li>    
+                                            <div class="month" >
+                                                <strong>09</strong>
+                                            </div>
+                                            <div class="dayofweek">Fri</div>
+                                            <span class="badge">{{item}}</span>
+                                        </li>
+                                    {% endfor %}
+                                    {% for item in present%}
+                                        <li class="available"  data-play-date="2017-10-{{item}}">
+                                                <div class="month" >
+                                                    <strong>10</strong>
+                                                </div>
+                                                <div class="dayofweek">Fri</div>
+                                                <span class="badge">{{item}}</span>
+                                        </li>
+                                    {% endfor %}
+                                    {% for item in future%}
+                                    <li class="" data-play-date="2017-10-{{item}}">    
+                                            <div class="month">
+                                                <strong>10</strong>
+                                            </div>
+                                            <div class="dayofweek">Fri</div>
+                                            <span class="badge" value='{{item}}'>{{item}}</span>
+                                    </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3 class="title">Chọn lịch chiếu</h3>
+                        </div>
+                        <div class="col-xs-12">
+                        {% for x in data_modal%}
+                            <!-- detail film -->
+                            <div class="movieslide" data-play-date="{{x.date}}">
+                                {% for y in x.film%}
+                                <div class="movie-time-line-box clearfix" data-control="movie-code" data-age="16" value="2997" >
+                                    <h3 class="movie-name">{{y.name}}</h3>
+                                    <div class="lot-table clearfix">
+                                        <ul class="list-inline list-unstyled theater_time">
+                                            {% for z in y.schedule%}
+                                                <li class="sold-out" data-early="0">
+                                                    <a href="#">
+                                                        <span class="time">{{z.from}}</span>
+                                                        <span class="clock">{{z.from}}<span>~{{z.to}}</span></span>
+                                                        <span class="ppnum">{{z.room}}</span>
+                                                        <span class="ppnum">{{z.name_room}}</span>
+                                                        <span class="pp-early" title="Suất chiều đầu"></span>
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                         </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+

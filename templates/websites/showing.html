@@ -5,93 +5,68 @@
 
 {% block extrascript %}
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cgv.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.colorbox.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
 {% endblock %}
+
 {% block body_class %}
 	catalog-category-view categorypath-now-showing category-now-showing
 {% endblock %}
 
-{% block container_class%}col1-layout {% endblock%}
+{% block container_class%}col1-layout{% endblock%}
 
 {% block main_content%}
-<div class="breadcrumbs" itemprop="breadcrumb">
-	<ul>
-		<li class="home">
-			<a href="{% url 'home'%}" title="Trở về trang chủ">Trang chủ</a>
-			<span>/ </span>
-		</li>
-		<li class="category3">
-			Phim
-			<span>/ </span>
-		</li>
-		<li class="category5">
-			<strong>Phim Đang Chiếu</strong>
-		</li>
-	</ul>
-</div>
+
 <div class="main">
 	<div class="col-main">
 		<div class="page-title category-title">
 			<h1>Phim Đang Chiếu</h1>
 		</div>
+		{% if data_showing %}
 		<div class="category-products cgv-movies">
 			<ul class="products-grid products-grid--max-4-col">
-				{% for value in data%}
-
-					<li class="film-lists">
-						<span class="nmovie-rating nmovie-rating-{{value.tc}}"></span>
+				{% for value in data_showing %}
+					<li class="film-lists">				
 						<div class="product-images">
-							<a href="{% url 'film_detail'%}" title="CGV_American Made" class="product-image">
-								<img id="product-collection-image-285" src="{{STATIC_URL}}{{value.img}}" alt="CGV_American Made">
+							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}" class="product-image">
+								<img id="product-collection-image-285" src="{{MEDIA_URL}}{{value.poster}}" alt="{{value.name}}">
 							</a>
-							
-							<div class="movie-technology">
-								<a href="javascript:void(0)" class="icon-type-film" title="IMAX2D">
-									<!-- <span class="attr-movie-imax2d">IMAX2D</span> -->
-									<span class="attr-movie-{{value.technology}}">{{value.technology}}</span>
-								</a>
-							</div>
 						</div>
 						
 						<div class="product-info">
 							<h2 class="product-name">
-							<a href="#" title="{{value.name}}">{{value.name}}</a></h2>
-							
+							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}">{{value.name}}</a></h2>
 							<div class="cgv-movie-info">
 								<span class="cgv-info-bold">Thể loại: </span>
-								<span class="cgv-info-normal">{{value.category}}</span>
+								<span class="cgv-info-normal">{{value.genre.name}}</span>
 							</div>
-							
 							<div class="cgv-movie-info">
-								<span class="cgv-info-bold">Thời lượng: </span>
-								<span class="cgv-info-normal">{{value.time}}</span>
+
+								<span class="cgv-info-bold">{{value.time_running}} Phút | <span class="{{value.rated.name}}">{{value.rated.name}}</span></span>
+
 							</div>
-							
 							<div class="cgv-movie-info">
 								<span class="cgv-info-bold">Khởi chiếu: </span>
-								<span class="cgv-info-normal">{{value.date}}</span>
+								<span class="cgv-info-normal">{{value.release_date | date:"d-m-Y" }}</span>
 							</div>
 						</div>
 						<!-- <div class="ribon position-1"></div> -->
-						<div class="ribon position-{{value.rating}}"></div>
 						
 						<ul class="add-to-links">
 							<li>
-								<div class="fb-like fb_iframe_widget" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
+								<!-- Button like and share facebook, data-href http://domain/filmdetail/id (unique) -->
+								<!-- https://{{ request.get_host }}{% url 'film_detail' value.id %}-->
+								<div class="fb-like fb_iframe_widget" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
                                 </div>
 							</li>
 							
 							<li>
-								<button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span></button>
+								<button type="button" title="Đặt vé" class="button">Đặt vé</button>
 							</li>
 						</ul>
 					</li>
 				{%endfor%}
 			</ul>
-			<script type="text/javascript" src='{{ STATIC_URL }}assets/websites/js/products-grid.js'>
-			</script>
 		</div>
+		{% endif %}
 	</div>           
 </div>
 

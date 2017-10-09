@@ -17,28 +17,56 @@
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <META HTTP-EQUIV="Content-language" CONTENT="vi">
     
-    <!-- <script type="text/javascript" src="{{ STATIC_URL }}assets/js/prototype/prototype.js"></script> -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js" ></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/noconflict.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/prototype/validation.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/varien/js.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/modernizr.custom.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/enquire.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/app.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- film detail -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/star-rating.min.js"></script>
+    <!-- Home -->
+    <script src="{{ STATIC_URL }}assets/js/lightslider.js"></script> 
+    <script src="{{ STATIC_URL }}assets/js/lightslider/slide_home.js"></script>
+    <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" ></script>
+    <script src="{{ STATIC_URL }}assets/js/carousel/banner_slide.js"></script> 
+    <script src="{{ STATIC_URL }}assets/websites/js/slide_carousel.js"></script>
+    <!-- film detail -->
+    <!-- showing -->
+    <!-- coming_soon-->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/facebook.js"></script>
+    <!-- showing, coming soon -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
+    <!-- js for footer -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/footer.js"></script>
     
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/header.js"></script>
+    <link href="{{ STATIC_URL }}assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- <link href="{{ STATIC_URL }}assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" />
+    <!-- film detail -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/star-rating.min.css" media="all" />
+    <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}assets/css/carousel/home_banner.css" media="all" />
+    
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/styles.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/colorbox.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-cgv.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-cgv.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-metiz.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-metiz.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/header.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/enterprise.css" media="all" /> -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/modal.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/footer.css" media="all" />
+    <!-- all file -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/layout.css" media="all" />
+    <!-- careers_cluster-->
+    <!-- careers_unit-->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/careers_cluster.css" media="all" />
+    <!-- Home -->
+    <link rel="stylesheet"  href="{{ STATIC_URL }}assets/css/lightslider.css"/>
+    <link rel="stylesheet"  href="{{ STATIC_URL }}assets/css/lightslider/slide_home.css"/>
+    <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X, Dolby atmos -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/special_cinema.css" media="all" />
+    <link rel="stylesheet"  href="{{ STATIC_URL }}assets/websites/css/slide_carousel.css"/>
+    <!-- showing, coming soon -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/list_film.css" media="all" />
     
-
-    
-
     <title>{% block title %}{% endblock title %}</title>
     {% block metacontent %}{% endblock %}
     
@@ -81,12 +109,14 @@
 
         <!-- Start Body -->
 
-        <div class="main-container {% block container_class %}{% endblock %}">
+        <div class="main-container page-detail {% block container_class %}{% endblock %}">
             {% block main_content %} {% endblock %}
 
         </div>
         <!-- End Body -->
-
+        <!-- Start Modal -->
+        {% include 'modal.html' %}
+        <!-- End Modal -->
         <!-- Start Footer -->
         {% include 'footer.html' %}
         <!-- End Footer -->

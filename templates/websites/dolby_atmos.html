@@ -4,11 +4,9 @@
 {% block title %}Dolby atmos{% endblock title %}
 
 {% block extrastylesheet %}
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/special_cinema.css" media="all" />
 {% endblock %}
 
 {% block extrascript %}
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/special_cinema.js"></script>
 {% endblock %}}
 
 {% block body_class %}
@@ -31,19 +29,10 @@
 		</ul>
 	</div>
 	<div class="main">
-		<div class="col-main">
-			<div id="specialtheater-list" class="specialtheater-list">
-				<ul class="special-items">
-					{% for item in data.technology %}
-						<li class="item-icon {{item.class}} {{item.flag}}">
-							<a title="Sweetbox" href="/special/{{item.name}}">{{item.name}}</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
+		{% include 'technology_menu.html' %}
 			<div class="specialtheater-content specialtheater-dolby-atmos">
 				<div class="page-title special-title">
-					<h1>Dolby Atmos</h1>
+					<h2 class="center-block technology-dolby-atmos">Dolby Atmos</h2>
 				</div>
 				<div class="std">
 					<div class="cinema-imax">
@@ -59,19 +48,14 @@
 										<li>- Tạo ra trải nghiệm âm thanh sống động, trung thực thông qua 128 yếu tố âm thanh đồng thời và không bị mất đi khi phối âm.</li>
 										<li>- Quy mô được điều chỉnh theo kích cỡ của từng phòng chiếu với hệ thống lên đến 64 loa độc lập với nhau.</li>
 									</ul>
-									<p>Tận hưởng công nghệ âm thanh đột phá Dolby Atmos tại:</p>
-									<ul class="site-list">
-										{% for item in data.address%}
-											<li><a href="{{item.href}}">{{item.name}}</a></li>
-										{% endfor%}	
-									</ul>
+									
 									<p></p>
 									<p></p>
 								</div>
 								<div class="slide-imax-baner">
 								</div>
 								<div class="a-center">
-									<iframe  src="https://player.vimeo.com/video/69918255" ></iframe>
+									<iframe  src="https://player.vimeo.com/video/69918255" frameborder="0" allowfullscreen></iframe>
 								</div>
 							</div>
 						</div>

@@ -1,21 +1,6 @@
 <div class="header-language-background">
     <div class="header-container">
         <div class="header-language-right">
-            <div class="header-career">
-            </div>
-            <div class="header-career">
-                <p><a href="{% url 'contacts' %}">Liên hệ CGV</a></p>
-            </div>
-            <div class="header-language-container">
-                <div class="store-language-container">
-                    <div class="form-language">
-                        <ul id="select-language" title="Ngôn ngữ">
-                            <li value=""><a href=""><span>EN</span></a></li>
-                            <li value="" class="current" selected="selected"><span>VN</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <div class="header-top-account">
                 <div class="account-header-wrapper">
                     <a href="{% url 'account_login'%}" class="topskip-link skip-account">
@@ -30,7 +15,7 @@
 <header id="header" class="page-header">
     <div class="page-header-container">
         <a class="logo logo-large" href="{% url 'home'%}">
-            <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo.png" alt="CGV Cinemas" class="large" />
+            <img src="{{ STATIC_URL }}assets/websites/images/metiz-logo.png" alt="CGV Cinemas" class="large" />
            
         </a>
        
@@ -40,54 +25,46 @@
                 <div class="container-fluid">
                     <div class="navbar-header">
                          <a class="logo logo-small" href="{% url 'home'%}">
-                                <img src="{{ STATIC_URL }}assets/websites/images/cgvlogo-small.png" alt="CGV Cinemas" class="small" />
+                                <img src="{{ STATIC_URL }}assets/websites/images/metiz-logo.png" alt="CGV Cinemas" class="small" />
+                            </a>
+                            <a class="logo logo-medium text-center" href="{% url 'home'%}">
+                                <img src="{{ STATIC_URL }}assets/websites/images/metiz-logo.png" alt="CGV Cinemas" class="medium" />
                             </a>
                          <div class="skip-links">
                             <button class=" skip-link skip-nav navbar-toggle " data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
-                                <span class="icon"></span>
+                                <span class="icon-nav glyphicon glyphicon-align-justify"></span>
                                 <span class="label">Menu</span>
                             </button>
-                            <button class=" skip-link skip-search navbar-toggle "
-                            data-toggle="collapse" data-target="#header-search" aria-expanded="false" >
-                                <span class="icon"></span>
-                                <span class="label">Tìm kiếm</span>
-                            </button>
                             <a href="{% url 'account_login'%}"><button class=" skip-link skip-account navbar-toggle ">
-                                    <span class="icon"></span>
+                                    <span class="icon-nav glyphicon glyphicon-user   "></span>
                                     <span class="label">Đăng nhập/ Đăng ký</span>
                             </button></a>
                         </div>
                     </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
+                    <div class="collapse navbar-collapse collapse-custom" id="myNavbar">
                         <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#test-popup" class="open-popup-link dropdown-toggle" >Lịch chiếu</a>
+                                
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Phim </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li ><a href="{% url 'showing'%}">Phim Đang Chiếu</a></li>
                                     <li ><a href="{% url 'comingsoon'%}">Phim Sắp Chiếu</a></li>
-                                    <li><a href="{% url 'arthouse'%}">Arthouse</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rạp CGV</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{% url 'cinox'%}">Tất Cả Các Rạp</a></li>
-                                    <li><a href="{% url 'special_gold_class'%}">Rạp Đặc Biệt</a></li>
-                                </ul>
+                                <a class="dropdown-toggle" href="{% url 'news'%}">Khuyến mãi</a>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#">BLOG PHIM</a>
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Thành viên</a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{% url 'account_login'%}">Thành viên</a></li>
-                                    <li><a href="{% url 'account_login'%}">Tài khoản CGV</a></li>
-                                    <li><a href="{% url 'membership'%}">Quyền lợi</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle"  data-toggle="dropdown" href="#">Online Store (Test)</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{% url 'movie_voucher'%}">Voucher Phim</a></li>
-                                    <li><a href="{% url 'gift_card'%}">Thẻ Quà Tặng</a></li>
+                                    <li><a href="{% url 'account_login'%}">Đăng nhập</a></li>
+                                    <li><a href="{% url 'account_create'%}">Đăng kí</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -95,24 +72,7 @@
                 </div>
             </nav>
         </div>
-         <div id="header-search" class="skip-content">
-            <div class="header-search-left">
-                <p><a href="{% url 'news'%}"><img alt="" src="{{ STATIC_URL }}assets/websites/images/tin-moi-uu-dai.gif" /></a></p>
-                <form id="search_mini_form" action="#" method="get">
-                    <div class="input-box">
-                        <label for="search">Search:</label>
-                        <input id="search" type="search" name="q" value="" class="input-text required-entry" maxlength="128" placeholder="Tìm kiếm" />
-                        <button type="submit" title="Tìm kiếm" class="button search-button"><span><span>Tìm kiếm</span></span>
-                        </button>
-                    </div>
-                    <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
-                    
-                </form>
-            </div>
-            <div class="header-search-right">
-                <p><a href="{% url 'showing' %}"><img alt="" src="{{ STATIC_URL }}assets/websites/images/mua-ve_ngay.png" /></a></p>
-            </div>
-        </div>
+         
         <!-- Account -->
         <div id="header-account" class="skip-content">
             <div class="links">

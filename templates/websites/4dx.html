@@ -4,14 +4,9 @@
 {% block title %}4dx{% endblock title %}
 
 {% block extrastylesheet %}
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/special_cinema.css" media="all" />
-	<link rel="stylesheet"  href="{{ STATIC_URL }}assets/css/lightslider.css"/>
-	<link rel="stylesheet"  href="{{ STATIC_URL }}assets/websites/css/slide_home.css"/>
 {% endblock %}
 
 {% block extrascript %}
-	<script src="{{ STATIC_URL }}assets/js/lightslider.js"></script> 
-	<script src="{{ STATIC_URL }}assets/websites/js/slideshow/slide_home.js"></script>
 {% endblock %}
 
 {% block body_class %}
@@ -33,45 +28,33 @@
 		</ul>
 	</div>
 	<div class="main">
-		<div class="col-main">
-			<div id="specialtheater-list" class="specialtheater-list">
-				<ul class="special-items">
-					{% for item in data.technology %}
-						<li class="item-icon {{item.class}} {{item.flag}}">
-							<a title="Sweetbox" href="/special/{{item.name}}">{{item.name}}</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="specialtheater-content specialtheater-4dx">
+		{% include 'technology_menu.html' %}
+			<div class="specialtheater-content ">
 				<div class="page-title special-title">
-					<h1>4DX ®</h1>
+					<h2 class="center-block technology-4dx">4DX ®</h2>
 				</div>
+
 				<div class="std">
 					<div class="cinema-imax">
 						<div class="header-imax std">
 							<div class="about-content-imax">
-								<div class="recent-cgv-special" style="margin-top: 30px;">
+								<div class="recent-cgv-special" >
 									<h3>4DX®, một định dạng điện ảnh hoàn toàn mới đánh thức mọi giác quan của khán giả mang đến những trải nghiệm điện ảnh tuyệt đỉnh bằng công nghệ hiện đại nhất trên thế giới.</h3>
-									<p>Hãy thưởng thức công nghệ 4DX® tại các rạp CGV:</p>
-									<ul class="site-list">
-										{% for item in data.address%}
-											<li><a href="{{item.href}}">{{item.name}}</a></li>
-										{% endfor%}
-									</ul>
 								</div>
 								<div class="slide-imax-baner">
-									<div class="slideshow-container ">
-										
-										<ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-								            {% for item in data.slide%}
-								                <li data-thumb="{{STATIC_URL}}{{item.img}}"> 
-								                    <img src="{{STATIC_URL}}{{item.img}}" />
-								                </li>
-								                
-								            {% endfor %}
-								        </ul>
-									</div>
+									<div class="slideshow-container">
+							            <div id="jssor_1" >
+							                <div data-u="slides" class="jssor_1_slides">
+							                {% for item in data.slide  %}  
+							                    <div>
+							                        <img data-u="image" src="{{ STATIC_URL }}{{item.img}}" />
+							                        <img data-u="thumb" src="{{ STATIC_URL }}{{item.img}}" />
+							                    </div>
+							                {% endfor %}
+							                </div>
+							                {% include 'arrow_slide.html' %}
+							            </div>
+							        </div>
 								</div>
 							</div>
 						<!-- end cinema imax -->

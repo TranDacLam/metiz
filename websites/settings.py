@@ -38,12 +38,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'main',
     'core',
+    'registration',
+    # 'core.apps.CoreConfig',
+    'ckeditor',
+    'ckeditor_uploader',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -63,9 +73,11 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                # 'allauth.account.context_processors.account',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.static',
                 'django.template.context_processors.media',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -74,15 +86,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'main.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# Custom User Model
+AUTH_USER_MODEL = 'core.User'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 
 # Password validation
@@ -107,7 +117,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# config model translation
+gettext = lambda s: s
+LANGUAGES = (
+    ('vi', gettext('Vietnamese')),
+    ('en-us', gettext('English')),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+LANGUAGE_CODE = 'vi'
 
 TIME_ZONE = 'UTC'
 
@@ -116,6 +137,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+SITE_ID = 1
 
 
 # Static files (CSS, JavaScript, Images)
@@ -134,6 +157,30 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
+# Config CK_Editor
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'extraPlugins': ','.join(
+            [
+               'codesnippetgeshi',
+               'placeholder',
+               'dialog',
+               'dialogui',
+               'embed',
+            ]
+        ),
+        'font_names': "Yanone Kaffeesatz; Cabin",
+        'contentsCss': ','.join(['/static/assets/websites/css/custom_admin.css']),
+        'allowedContent': True
+    },
+}
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
 # Config outgoing email
 DEFAULT_TO_ADMIN_EMAIL = "contact@helio.vn"
 DEFAULT_FROM_EMAIL = "no-reply@helio.vn"
@@ -143,6 +190,44 @@ EMAIL_HOST_USER = 'no-reply@helio.vn'
 EMAIL_HOST_PASSWORD = 'N0reply!@#'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+# HERE FORMATING AS shown in:
+# LIST: https://docs.djangoproject.com/en/dev/ref/templates/builtins/#date
+DATE_FORMAT = 'd-m-Y'
+TIME_FORMAT = 'H:i'
+DATETIME_FORMAT = 'd-m-Y H:i'
+YEAR_MONTH_FORMAT = 'F Y'
+MONTH_DAY_FORMAT = 'F j'
+SHORT_DATE_FORMAT = 'm/d/Y'
+SHORT_DATETIME_FORMAT = 'm/d/Y P'
+FIRST_DAY_OF_WEEK = 1
+
+# BUT here use the Python strftime format syntax,
+# LIST: http://docs.python.org/library/datetime.html#strftime-strptime-behavior
+
+DATE_INPUT_FORMATS = (
+    '%d-%m-%Y',     # '21-03-2014'
+)
+TIME_INPUT_FORMATS = (
+    '%H:%M:%S',     # '17:59:59'
+    '%H:%M',        # '17:59'
+)
+DATETIME_INPUT_FORMATS = (
+    '%d-%m-%Y %H:%M',     # '21-03-2014 17:59'
+)
+
+DECIMAL_SEPARATOR = u'.'
+THOUSAND_SEPARATOR = u','
+NUMBER_GROUPING = 3
+
+# # Config Django Allauth
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_UNIQUE_EMAIL = True
+# ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL='/'
 
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:

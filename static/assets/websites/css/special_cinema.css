@@ -1,8 +1,5 @@
 .slide-imax-baner .slideshow-container-dx{
-clear: both;
-}
-.home-title{
-	display:none;
+	clear: both;
 }
 .site-list{
 	width:100%;
@@ -23,4 +20,73 @@ clear: both;
 .specialtheater-dolby-atmos .a-center iframe{
 	height: 540px;
 	width: 960px;
+}
+
+.specialtheater-list{
+	height: auto;
+}
+
+#title-technology{
+	background-position: 0px 10px;
+}
+.specialtheater-content .page-title.special-title h2 {
+    border: medium none;
+    font-size: 55px;
+    text-align: center;
+    text-indent: -9999px;
+    position: relative;
+}
+.specialtheater-content .technology-4dx{
+	background: url(../images/icon-brand-special.png) no-repeat scroll -1400px 10px transparent;
+    width: 140px;
+}
+.specialtheater-content .technology-sweetbox{
+	background: url(../images/icon-brand-special.png) no-repeat scroll 0px 10px transparent;
+    width: 280px;
+}
+.specialtheater-content .technology-dolby-atmos{
+	background: url(../images/icon-brand-special.png) no-repeat scroll -1964px 10px transparent;
+    width: 200px;
+}
+.specialtheater-content .technology-imax{
+	background: url(../images/icon-brand-special.png) no-repeat scroll -590px 10px transparent;
+    width: 250px;
+}
+.specialtheater-content .technology-gold-class{
+	background: url(../images/icon-brand-special.png) no-repeat scroll -1046px 10px transparent;
+    width: 350px;
+}
+.specialtheater-content .technology-lamour{
+	background: url(../images/icon-brand-special.png) no-repeat scroll -296px 10px transparent;
+    width: 280px;
+}
+.specialtheater-content .technology-starium{
+	background: url(../images/icon-brand-special.png) no-repeat scroll -845px 10px transparent;
+    width: 200px;
+}
+.specialtheater-content .technology-premium{
+	background: url(../images/icon-brand-special.png) no-repeat scroll -1560px  10px transparent;
+    width: 400px;
+}
+.specialtheater-content .technology-screenx{
+	background: url(../images/icon-brand-special.png) no-repeat scroll -2174px  10px transparent;
+    width: 286px;
+    padding-bottom: 36px;
+}
+@media only screen and (max-width: 600px){
+	.specialtheater-screenx .a-center iframe{
+		width:100% !important;
+		height:auto;
+	}
+	.specialtheater-dolby-atmos .a-center iframe{
+		width:100% !important;
+		height:auto;
+	}
+
+}
+@media only screen and (max-width: 1024px){
+	.recent-cgv-special{
+    	padding: 0px 20px;
+	}
+
 }

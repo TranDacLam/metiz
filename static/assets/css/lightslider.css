@@ -152,30 +152,45 @@
 /* End of Gallery*/
 
 /* slider actions */
-.lSAction > a {
-    width: 32px;
+.lSAction > .lSPrev {
+    background-position: 0 0;
+    left: 10px;
+    width: 64px;
     display: block;
-    top: 50%;
-    height: 32px;
-    background-image: url('../websites/images/controls.png');
+    top: 31%;
+    height: 64px;
+    background-image: url('../websites/images/left-arrow.png');
     cursor: pointer;
     position: absolute;
     z-index: 99;
     margin-top: -16px;
-    opacity: 0.5;
+    opacity: 0.6;
     -webkit-transition: opacity 0.35s linear 0s;
     transition: opacity 0.35s linear 0s;
 }
+.lSAction > .lSNext {
+    background-position: 0 0;
+    right: 10px;
+    width: 64px;
+    display: block;
+    top: 31%;
+    height: 64px;
+    background-image: url('../websites/images/right-arrow.png');
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    margin-top: -16px;
+    opacity: 0.6;
+    -webkit-transition: opacity 0.35s linear 0s;
+    transition: opacity 0.35s linear 0s;
+}
+@media screen and (min-width: 1200px) {
+    .lSAction > .lSNext {
+        right: 38px;
+    }
+}
 .lSAction > a:hover {
     opacity: 1;
-}
-.lSAction > .lSPrev {
-    background-position: 0 0;
-    left: 10px;
-}
-.lSAction > .lSNext {
-    background-position: -32px 0;
-    right: 10px;
 }
 .lSAction > a.disabled {
     pointer-events: none;

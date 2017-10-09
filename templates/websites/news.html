@@ -3,76 +3,48 @@
 
 {% block title %}Tin tức{% endblock title %}
 
-{% block extrascript %}
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/news.js"></script>
+{% block extrastylesheet %}
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film.css" media="all" />
 {% endblock %}
 
 {% block body_class %}
 	catalog-category-view categorypath-now-showing category-now-showing
 {% endblock %}
 
-{% block container_class%}col1-layout {% endblock%}
+{% block container_class%}col1-layout{% endblock%}
 {% block main_content%}
-
-<div class="breadcrumbs" itemprop="breadcrumb">
-    <ul>
-	    <li class="home">
-	        <a href="{% url 'home' %}" title="Trở về trang chủ">Trang chủ</a>
-	        <span>/ </span>
-	    </li>
-	    <li class="blog">
-	        <strong>News &amp; Offer</strong>
-	    </li>
-    </ul>
-</div>
  <div class="main">            
-    <div class="col-main">
-	    <div id="messages_product_view">
-	    </div>
-		<div class="cate-new-offer">
-			<div class="home-title">
-				<h2 class="title-new-offer-vn">&gt;Tin moi va uu đãi</h2>
-			</div>
+    <div class="col-main product-view">
+	    <div class="cate-new-offer">
+			<h1 class="text-center">KHUYẾN MÃI & ƯU ĐÃI</h1>
 		</div>
-		<div class="menu-categories-blog">
-			<div class="menu-categories-blog-left active">
-				<a href="#">Xem tất cả</a>
-			</div>
-			
-			<div class="menu-categories-blog-right nav">
-				<ul class="nav-blog-cat-list">
-					<li class="level0 nav-1">
-						<span>Chọn Rạp</span>
-						<ul class="level0">
-						</ul>				
-					</li>
-				</ul>
-			</div>
-		</div>
-		<ul class="cate-new-offer products-grid products-grid--max-4-col first last odd">
-			{% for item in data %}
-			<li class="item last">
-				<div class="product-poster" onclick="news(this);">
-					<div class="fun-new-offer">
-						<div class="content-new-offer">
-							<div class="colum-left-new-offer">
-								<div class="poster-small-new-offer">
-									<img alt="" src="{{STATIC_URL}}{{item.img}}">
-									<div class="colum-right-new-offer">
-										<div class="format-new-offer release-day-new-offer">
-											<h3>&nbsp;</h3>
-											<h4>{{item.time}}</h4>
+		<div class="product-collateral">
+			<ul class="cate-new-offer products-grid products-grid--max-4-col first last odd">
+				{% for item in news %}
+				<li class="item last">
+					<a href="{% url 'new_detail' item.id %}">
+						<div class="product-poster"">
+							<div class="fun-new-offer">
+								<div class="content-new-offer">
+									<div class="colum-left-new-offer">
+										<div class="poster-small-new-offer">
+											<img alt="" src="{{MEDIA_URL}}{{item.image}}">
+											<div class="colum-right-new-offer">
+												<div class="format-new-offer release-day-new-offer">
+													<h3 class="glyphicon glyphicon-calendar">
+													<h4>{{item.apply_date}}</h4></h3>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<a class="aw-blog-read-more" href="{{item.href}}">Read More</a>
-				</div>		
-			</li>
-			{% endfor%}			
-		</ul>
+					</a>		
+				</li>
+				{% endfor%}			
+			</ul>
+		</div>
 	</div>
 </div>
 {% endblock%}

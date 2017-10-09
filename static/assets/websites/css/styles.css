@@ -1,35 +1,4 @@
-/**
- * Magento Enterprise Edition
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Magento Enterprise Edition End User License Agreement
- * that is bundled with this package in the file LICENSE_EE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://www.magento.com/license/enterprise-edition
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
- *
- * @category    design
- * @package     rwd_default
- * @copyright Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
- * @license http://www.magento.com/license/enterprise-edition
- */
-/*! normalize.css v2.0.1 | MIT License | git.io/normalize */
-/* ==========================================================================
-   HTML5 display definitions
-   ========================================================================== */
-   ========================================================================== */
-/*
- * Corrects `block` display not defined in IE 8/9.
- */
+
 article,
 aside,
 details,
@@ -490,8 +459,8 @@ input,
 select,
 table,
 textarea {
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
-  color: #222;
+  font-family: "SairaSemiCondensed", sans-serif;
+  color: #0e1d2f;
   font-size: 14px;
   line-height: 18px;;
 }
@@ -519,19 +488,20 @@ ul {
  * ============================================ */
 h1, .h1 {
   margin: 0;
-  color: #222;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-size: 28px;
+  color: #0e1d2f;
+  font-family:  "SairaSemiCondensed", sans-serif;
+  font-size: 32px;
   font-style: normal;
   line-height:1.2;
+  font-weight: bold;
   margin-bottom: 0.7em;
   text-rendering: optimizeLegibility;
 }
 
 h2, .h2 {
   margin: 0;
-  color: #222;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #0e1d2f;
+  font-family:  "SairaSemiCondensed", sans-serif;
   font-size: 24px;
   font-style: normal;
   line-height: 1.2;
@@ -541,8 +511,8 @@ h2, .h2 {
 h3, .h3 {
   margin: 0;
   margin-bottom: 10px;
-  color: #222;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #0e1d2f;
+  font-family:  "SairaSemiCondensed", sans-serif;
   font-size: 18px;
   font-style: normal;
   text-rendering: optimizeSpeed;
@@ -551,8 +521,8 @@ h3, .h3 {
 h4, .h4 {
   margin: 0;
   margin-bottom: 10px;
-  color: #222;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #0e1d2f;
+  font-family:  "SairaSemiCondensed", sans-serif;
   font-size: 14px;
   font-style: normal;
   text-rendering: optimizeSpeed;
@@ -561,8 +531,8 @@ h4, .h4 {
 h5, .h5 {
   margin: 0;
   margin-bottom: 10px;
-  color: #222;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #0e1d2f;
+  font-family: "SairaSemiCondensed", sans-serif;
   font-size: 13px;
   font-style: normal;
   text-rendering: optimizeSpeed;
@@ -571,8 +541,8 @@ h5, .h5 {
 h6, .h6 {
   margin: 0;
   margin-bottom: 5px;
-  color: #222;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #0e1d2f;
+  font-family: "SairaSemiCondensed", sans-serif;
   font-size: 12px;
   font-style: normal;
   text-rendering: optimizeSpeed;
@@ -832,7 +802,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-account li,
 .block-cms-menu li {
   text-transform: uppercase;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
   margin: 7px 0;
 }
 .block-account li strong,
@@ -893,14 +863,14 @@ body:not(.customer-account) .block:first-child .block-title {
 .cart-table .product-cart-actions .button,
 #co-shipping-method-form .buttons-set .button,
 .footer .button {
-  background: #e71a0f;
+  background: #0e1d2f;
   display: inline-block;
   padding: 6px 2px;
   border: 0;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 13px;
   font-weight: normal;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
   line-height: 19px;
   text-align: center;
   text-transform: uppercase;
@@ -1280,7 +1250,7 @@ a.button:hover {
 }
 .main{
 	margin:0 auto;
-	margin-top:30px;
+	margin-top: 20px;
 }
 
 @media only screen and (min-width: 480px) {
@@ -2011,7 +1981,6 @@ span.weee {
 
 .std ul {
   list-style: disc outside;
-  margin-bottom: 1.5em;
 }
 .std .note {
   color: #a0a0a0;
@@ -2512,7 +2481,7 @@ li.centinel-logos div.input-box img {
 label {
   display: inline-block;
   font-size: 13px;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
   font-weight: 600;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -3101,7 +3070,7 @@ body {
   min-width: 320px;
   min-height: 100%;
   margin: 0 auto;
-  background: #fdfcf0;
+  background: #0f1d2f;
 }
 
 .wrapper:after {
@@ -3117,9 +3086,13 @@ body {
   .page-header {
     width: 100%;
     margin: 0 auto;
-    background :url("../images/bg-cgv/bg-top.png") repeat-x scroll left bottom transparent;
-	background-size: 10px 135px;
-    height: 135px;
+    /*background :url("../images/bg-cgv/bg-top.png") repeat-x scroll left bottom transparent;*/
+    background: #031327;
+	  background-size: 10px 135px;
+    height: 60px;
+    padding-bottom: 0px;
+    border-bottom: none;
+    /*margin-top: 10px;*/
   }
 
   .page-header-container {
@@ -3135,7 +3108,7 @@ body {
  * Language switcher + welcome message
  * ============================================ */
 .header-language-background {
-  height:29px;
+  height: 70px;
   text-transform: uppercase;
 }
 .header-language-background:after {
@@ -3215,8 +3188,8 @@ body {
 .skip-links {
   clear: both;
   overflow: hidden;
-  border-top: 1px solid #EDEDED;
-  border-bottom: 1px solid #EDEDED;
+  border-top: 1px solid #7e8eaa;
+  border-bottom: 1px solid #7e8eaa;
 }
 
 @media only screen and (min-width: 771px) {
@@ -3245,7 +3218,7 @@ a.skip-link {
 
 @media only screen and (max-width: 770px) {
   .skip-link {
-    border-right: 1px solid #EDEDED;
+    border-right: 1px solid #7e8eaa;
   }
 
   .skip-link:last-child {
@@ -4175,7 +4148,7 @@ p.product-name a:hover {
   text-transform: uppercase;
   margin-bottom: 5px;
   font-size: 14px;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
 }
 .products-grid .product-name a,
 .products-list .product-name a {

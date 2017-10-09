@@ -3,12 +3,13 @@
 {% block title %}Helio{% endblock title %}
 
 {% block extrastylesheet %}
-	 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film_detail.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/zoom/xzoom.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film.css" media="all" />
 {% endblock %}
 {% block extrascript %}
-	<!-- thu vien dung de zoom  banner film image-->
-	<!-- function active elevateZoom trong app.js -->
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.elevateZoom-3.0.8.min.js"></script>
+	<!--Documents: https://github.com/payalord/xZoom/blob/master/doc/manual.md-->
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/zoom/setup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/zoom/xzoom.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/film_detail.js"></script>
 {% endblock %}
 
@@ -16,131 +17,219 @@
  	catalog-product-view catalog-product-view categorypath-now-showing category-now-showing
 {% endblock %}
 
-{% block container_class%}col1-layout {% endblock%}
+{% block container_class%}col1-layout{% endblock%}
 {% block main_content%}
-<div class="breadcrumbs" itemprop="breadcrumb">
-	<ul>
-		<li class="home">
-			<a href="{% url 'home'%}" title="Trở về trang chủ">Trang chủ</a>
-			<span>/ </span>
-		</li>
-		<li class="category3">
-			Phim
-			<span>/ </span>
-		</li>
-		<li class="category5">
-			<a href="{% url 'showing' %}" >Phim Đang Chiếu</a>
-			<span>/ </span>
-		</li>
-		<li class="product">
-	        <strong>Barry Seal: Lách Luật Kiểu Mỹ</strong>
-	    </li>
-	</ul>
-</div>
+
 <div class="main">
 	<div class="col-main">
 		<div id="messages_product_view">
-			
 		</div>
 		<div class="product-view">
 			<div class="product-essential">
 				<div class="page-title product-view">
 					<span class="h1">Nội Dung Phim</span>
 				</div>
-				
 				<div class="product-name-reponsive">
-					<h1>Barry Seal: Lách Luật Kiểu Mỹ</h1>
+					<h1>{{film_detail.name}}</h1>
 				</div>
 				
 				<div class="product-img-box">
 					<div class="product-image product-image-zoom">
-						<div class="product-image-gallery">
-							<img id="image-main" class="gallery-image visible" src="{{STATIC_URL}}{{data.img}}" alt="CGV_American Made" title="CGV_American Made"  data-zoom-image='{{STATIC_URL}}{{data.img}}'>
-						</div>
+						<div class="xzoom-container">
+
+				          <img class="xzoom" id="xzoom-default" src="{{MEDIA_URL}}{{film_detail.poster}}" xoriginal="{{MEDIA_URL}}{{film_detail.poster}}" />
+				          
+				        </div>    
 					</div>
 				</div>
-
 				<div class="product-shop">
 					<div class="product-name">
-						<span class="h1">{{data.name}}</span>
+						<span class="h1">{{film_detail.name}}</span>
 					</div>
 					
 					<!-- Build test -->
 					<div class="movie-director movie-info">
 						<label>Đạo diễn: </label>
-						<div class="std">&nbsp; {{data.director}}</div>
+						<div class="std">&nbsp; {{film_detail.director}}</div>
 					</div>
 					<div class="movie-actress movie-info">
 						<label>Diễn viên:</label>
-						<div class="std">&nbsp; {{data.actor}}
+						<div class="std">&nbsp; {{film_detail.cast}}
 						</div>
 					</div>
 					<div class="movie-genre movie-info">
 						<label>Thể loại: </label>
-						<div class="std">&nbsp; {{data.category}}</div>
+						<div class="std">&nbsp; {{film_detail.genre.name}}</div>
 					</div>
 					<div class="movie-release movie-info">
 						<label>Khởi chiếu: </label>
-						<div class="std">&nbsp;  {{data.date}}</div>
+						<div class="std">&nbsp;  {{film_detail.release_date | date:"d-m-Y"}}</div>
 					</div>
 					<div class="movie-actress movie-info">
 						<label>Thời lượng: </label>
-						<div class="std">&nbsp;  {{data.time}}</div>
+						<div class="std">&nbsp;  {{film_detail.time_running}}</div>
 					</div>
 					<div class="movie-language movie-info">
 						<label>Ngôn ngữ: </label>
-						<div class="std">&nbsp;  {{data.language}}</div>
+						<div class="std">&nbsp;  {{film_detail.language}}</div>
 					</div>
 					<div class="movie-rating movie-rated-web">
 						<label>Rated: </label>
-						<div class="std">&nbsp;  {{data.rated}}</div>
-					</div>
-
+						<div class="std">&nbsp;  <span class="{{film_detail.rated.name}}">{{ film_detail.rated.name }}</span> - {{ film_detail.rated.description | safe }}</div>
+					</div> 
 					<div class="movie-technology-icons">
-						<span class="movie-rating-detail c18">Rated : C18</span>
-						<a href="javascript:void(0)" class="movie-detail-icon-type" title="2D">
-							<span class="movie-detail-type-2d">2D</span>
+						<a href="javascript:void(0)" class="movie-detail-icon-type" title="{{film_detail.movie_type.name}}">
+							<span class="movie-detail-type-{{film_detail.movie_type.name}}">{{film_detail.movie_type.name}}</span>
 						</a>
 					</div>
 				</div>
 
 				<div class="movie-detail-fb-booking">
 					<div class="add-to-cart-wrapper ">
-						<div class="fb-like fb_iframe_widget" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
+						<!-- Button like and share facebook, data-href: http://domain/film/detail/id -->
+						<!-- data-href= {{ request.build_absolute_uri }} -->
+						<div class="fb-like fb_iframe_widget" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
 	                    </div>
-						<button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008100');"><span><span>Mua vé</span></span>
-						</button>			
+						<button type="button" title="Đặt vé" class="button">Đặt vé</button>			
 					</div>
 				</div>
 					
 				<div class="clearer"></div>
 			</div>
-
-			<div class="product-collateral toggle-content tabs tabs-format-cgv">
-				<dl id="collateral-tabs" class="collateral-tabs">
-					<dt class="tab current"><span>Chi tiết</span></dt>
-					<dd class="tab-container">
-						<div class="tab-content"><h2>Chi tiết</h2>
-							<div class="std">
-								{{data.content}}
-							</div>
+			<div class="product-collateral tabs-format-metiz">
+				<ul class="nav nav-tabs metiz-film-detail-tabs">
+					<li class="active">
+						<span href="#film-detail-tab-1" data-toggle="tab">Chi tiết</span>
+					</li>
+					<li>
+						<span href="#film-detail-tab-2" data-toggle="tab">Trailer</span>
+					</li>
+					<li class="last">
+						<span href="#film-detail-tab-3" data-toggle="tab">Đánh giá</span>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div id="film-detail-tab-1" class="tab-pane fade in active">
+						{{ film_detail.description | safe}}
+					</div>
+					<div id="film-detail-tab-2" class="tab-pane fade ">
+						<div class="product_view_trailer text-center">
+							<iframe src="{{film_detail.trailer}}" frameborder="0" allowfullscreen></iframe>   
 						</div>
-					</dd>
-
-					<dt class="tab last"><span>Trailer</span></dt>
-					<dd class="tab-container last">
-						<div class="tab-content">
-							<div class="std">
-								<h2>Trailer</h2>
-								<div class="std product_view_trailer">
-									<iframe src="{{data.trailer}}" frameborder="0" allowfullscreen=""></iframe>    
+					</div>
+					{% if comments %}
+					<div id="film-detail-tab-3" class="tab-pane fade ">
+						<div class="container">	
+						{% if rating__avg %}
+							<div class="row">
+								<div class="col-sm-5 rating-custom">
+									<div class="rating-block text-center">
+										<h4>Average user rating</h4>
+										
+										<h2 class="bold padding-bottom-7 rating-num">{{rating__avg.rating}}<small>/ 5</small></h2>
+										
+										<input class="rating rating-loading" value="{{rating__avg.rating}}" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-readonly="true">
+									</div>
+								</div>
+								<div class="col-md-4">
+									{% if total_percent %}
+						            <div class="row rating-desc">
+						                <div class="col-xs-3 col-md-3 text-right">
+						                    <span class="glyphicon glyphicon-star"></span>5
+						                </div>
+						                <div class="col-xs-8 col-md-9">
+						                    <div class="progress progress-striped">
+						                    	<!-- style width is data from db -->
+						                    	
+						                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+						                            aria-valuemin="0" aria-valuemax="100" style="width: {% widthratio total_percent.4 rating__sum 100 %}%"> 
+						                            <span class="sr-only">{% widthratio total_percent.4 rating__sum 100 %}%</span>
+						                        </div>
+						                        
+						                    </div>
+						                </div>
+						                <div class="col-xs-3 col-md-3 text-right">
+						                    <span class="glyphicon glyphicon-star"></span>4
+						                </div>
+						                <div class="col-xs-8 col-md-9">
+						                    <div class="progress">
+						                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+						                            aria-valuemin="0" aria-valuemax="100" style="width: {% widthratio total_percent.3 rating__sum 100 %}%">
+						                            <span class="sr-only">{% widthratio total_percent.3 rating__sum 100 %}%</span>
+						                        </div>
+						                    </div>
+						                </div>
+						                <div class="col-xs-3 col-md-3 text-right">
+						                    <span class="glyphicon glyphicon-star"></span>3
+						                </div>
+						                <div class="col-xs-8 col-md-9">
+						                    <div class="progress">
+						                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+						                            aria-valuemin="0" aria-valuemax="100" style="width: {% widthratio total_percent.2 rating__sum 100 %}%">
+						                            <span class="sr-only">{% widthratio total_percent.2 rating__sum 100 %}%</span>
+						                        </div>
+						                    </div>
+						                </div>
+						                <div class="col-xs-3 col-md-3 text-right">
+						                    <span class="glyphicon glyphicon-star"></span>2
+						                </div>
+						                <div class="col-xs-8 col-md-9">
+						                    <div class="progress">
+						                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+						                            aria-valuemin="0" aria-valuemax="100" style="width: {% widthratio total_percent.1 rating__sum 100 %}%">
+						                            <span class="sr-only">{% widthratio total_percent.1 rating__sum 100 %}%</span>
+						                        </div>
+						                    </div>
+						                </div>
+						                <div class="col-xs-3 col-md-3 text-right">
+						                    <span class="glyphicon glyphicon-star"></span>1
+						                </div>
+						                <div class="col-xs-8 col-md-9">
+						                    <div class="progress">
+						                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80"
+						                            aria-valuemin="0" aria-valuemax="100" style="width: {% widthratio total_percent.0 rating__sum 100 %}%">
+						                            <span class="sr-only">{% widthratio total_percent.0 rating__sum 100 %}%</span>
+						                        </div>
+						                    </div>
+						                </div>
+						            </div>
+						            {% endif %}
+						        </div>			
+							</div>	
+								
+							{% endif %}
+							<div class="row">
+								<div class="col-sm-9">
+									<hr/>
+									<div class="review-block">
+									{% for item in comments %}
+										<div class="row">
+											<div class="col-sm-3">
+												<img src="{{MEDIA_URL}}{{item.avatar}}" class="img-rounded">
+												<div class="review-block-name"><a href="#">{{item.full_name}}</a></div>
+												<div class="review-block-date">{{item.date_post | date:'d-m-Y'}}<br/>{{ item.date_post | timesince }} ago</div>
+											</div>
+											<div class="col-sm-9">
+												<div class="review-block-rate">
+													<input class="rating rating-loading" value="{{item.rating}}" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-readonly="true">
+												</div>
+												<div class="review-block-title">{{item.movie.name}}</div>
+												<div class="review-block-description">{{ item.review | safe }}</div>
+											</div>
+										</div>
+										<hr/>
+									{% endfor %}
+										
+									</div>
 								</div>
 							</div>
-						</div>
-					</dd>
-				</dl>
+						</div> <!-- /container -->
+					</div>
+					{% endif%}
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 {% endblock%}

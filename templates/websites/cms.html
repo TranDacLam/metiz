@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block title %}{{technology.name}}{% endblock title %}
+
+{% block extrascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cms.js"></script> 
+{% endblock %}
+
+{% block extrastylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/cms.css" media="all" />
+{% endblock %}
+
+{% block body_class %}
+    theaters-special-view
+{% endblock %}
+
+{% block container_class%}col2-left-layout{% endblock%}
+{% block main_content %}
+<div class="main">
+    {% include 'layout_menu.html' %}
+    <div class="col-main">
+        <div class="std">
+            <div class="title-about-metiz">
+                <h1>{{item.name}}</h1>
+            </div>
+            <div class="col2-set content-seperator">
+                <p>{{item.content}} | safe</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

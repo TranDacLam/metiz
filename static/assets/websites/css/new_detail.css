@@ -1,3 +1,14 @@
 .breadcrumbs ul li:nth-child(2){
 	display:none;
 }
+.postTitle{
+	padding-top: 40px;
+}
+.detail-content-new-offer{
+	padding-bottom: 30px;
+}
+@media only screen and (max-width: 767px) {
+	.postTitle{
+		text-align: center;
+	}
+}

@@ -7,8 +7,6 @@
      <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/arthouse.css" media="all" />
 {% endblock %}
 {% block extrascript %}
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cgv.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.colorbox.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
 {% endblock %}
 
@@ -107,7 +105,7 @@
                                     </li>
                                     
                                     <li>
-                                        <button type="button" title="Mua vé" class="button btn-booking" onclick="Quickbooking('17008300');"><span><span>Mua vé</span></span></button>
+                                        <button type="button" title="Mua vé" class="button btn-booking" onclick=""><span><span>Mua vé</span></span></button>
                                     </li>
                                 </ul>
                             </li>
@@ -163,13 +161,7 @@
                 </div>
             </div>
             <script type="text/javascript">
-//<![CDATA[
-    new Varien.Tabs('.catalog-wrap');
-    $j('#about-arthouse_contents').css('display','none');
-    // $j( ".play-button" ).click(function() {
-        // $j(this).colorbox({iframe:true, innerWidth:640, innerHeight:390});
-    // });
-//]]>
+
 </script> 
         </div>
     </div>

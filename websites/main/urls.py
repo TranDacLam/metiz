@@ -24,10 +24,12 @@ handler404 = 'main.views.custom_404'
 handler500 = 'main.views.custom_500'
 
 urlpatterns = [
-    url(r'^grappelli', include('grappelli.urls')),
-    url(r'^admin', admin.site.urls),
-    url(r'^$', views.home, name='home'),
-    url(r'^comingsoon/$', views.comingsoon, name='comingsoon'),
+    url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^admin/', admin.site.urls),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^', include('registration.urls')),
+    
+    
     url(r'^cinox/$', views.cinox, name='cinox'),
     url(r'^cinox_detail/$', views.cinox_detail, name='cinox_detail'),
     url(r'^gift_card/$', views.gift_card, name='gift_card'),
@@ -37,7 +39,6 @@ urlpatterns = [
     url(r'^account_findmember/$', views.account_findmember, name='account_findmember'),
     url(r'^account_forgot_password/$', views.account_forgot_password, name='account_forgot_password'),
     url(r'^arthouse/$', views.arthouse, name='arthouse'),
-    url(r'^showing/$', views.showing, name='showing'),
     url(r'^movie_voucher/$', views.movie_voucher, name='movie_voucher'),
     url(r'^about_cinema/$', views.about_cinema, name='about_cinema'),
     url(r'^gift_card_detail/$', views.gift_card_detail, name='gift_card_detail'),
@@ -63,13 +64,13 @@ urlpatterns = [
     url(r'^special/starium/$', views.starium, name='special_starium'),
     url(r'^special/premium/$', views.premium, name='special_premium'),
     url(r'^special/screenx/$', views.screenx, name='special_screenx'),
-    url(r'^film/detail/$', views.film_detail, name='film_detail'),
-    url(r'^news/$', views.news, name='news'),
-    url(r'^new/detail/$', views.new_detail, name='new_detail'),
+    url(r'', include('core.urls')),
 ]
 
 if settings.DEBUG:
     urlpatterns += urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
 
 
 

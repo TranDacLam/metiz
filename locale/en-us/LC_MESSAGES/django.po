@@ -1,0 +1,236 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-03 10:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: websites/core/custom_models.py:64
+msgid "Staff Status"
+msgstr ""
+
+#: websites/core/custom_models.py:65
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: websites/core/custom_models.py:69
+msgid "Active"
+msgstr ""
+
+#: websites/core/custom_models.py:70
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: websites/core/custom_models.py:73
+msgid "Date Joined"
+msgstr ""
+
+#: websites/core/custom_models.py:76 websites/core/models.py:18
+msgid "Modified Date"
+msgstr ""
+
+#: websites/core/models.py:15
+msgid "Created Date"
+msgstr ""
+
+#: websites/core/models.py:33 websites/core/models.py:176
+#: websites/core/models.py:214
+msgid "Image"
+msgstr ""
+
+#: websites/core/models.py:34
+msgid "Sub Url"
+msgstr ""
+
+#: websites/core/models.py:35
+msgid "Is Show"
+msgstr ""
+
+#: websites/core/models.py:36
+msgid "Position"
+msgstr ""
+
+#: websites/core/models.py:42
+msgid "Banner"
+msgstr ""
+
+#: websites/core/models.py:48 websites/core/models.py:157
+#: websites/core/models.py:175 websites/core/models.py:194
+msgid "Name"
+msgstr ""
+
+#: websites/core/models.py:49 websites/core/models.py:105
+msgid "Description"
+msgstr ""
+
+#: websites/core/models.py:55
+msgid "Rated"
+msgstr ""
+
+#: websites/core/models.py:60
+msgid "Name Genre"
+msgstr ""
+
+#: websites/core/models.py:66
+msgid "Genre"
+msgstr ""
+
+#: websites/core/models.py:67
+msgid "Genres"
+msgstr ""
+
+#: websites/core/models.py:82
+msgid "Type Name"
+msgstr ""
+
+#: websites/core/models.py:88
+msgid "Movie Type"
+msgstr ""
+
+#: websites/core/models.py:89
+msgid "Movie Types"
+msgstr ""
+
+#: websites/core/models.py:94
+msgid "Movie Name"
+msgstr ""
+
+#: websites/core/models.py:96
+msgid "Poster"
+msgstr ""
+
+#: websites/core/models.py:97
+msgid "Director"
+msgstr ""
+
+#: websites/core/models.py:98
+msgid "Cast"
+msgstr ""
+
+#: websites/core/models.py:99
+msgid "Time Running"
+msgstr ""
+
+#: websites/core/models.py:100
+msgid "Release Date"
+msgstr ""
+
+#: websites/core/models.py:104
+msgid "Language"
+msgstr ""
+
+#: websites/core/models.py:106
+msgid "Trailer"
+msgstr ""
+
+#: websites/core/models.py:107 websites/core/models.py:180
+#: websites/core/models.py:215
+msgid "Priority"
+msgstr ""
+
+#: websites/core/models.py:114
+msgid "Movie"
+msgstr ""
+
+#: websites/core/models.py:115
+msgid "Movies"
+msgstr ""
+
+#: websites/core/models.py:127
+msgid "Full Name"
+msgstr ""
+
+#: websites/core/models.py:128
+msgid "Avatar"
+msgstr ""
+
+#: websites/core/models.py:130
+msgid "Review"
+msgstr ""
+
+#: websites/core/models.py:131
+msgid "Rating"
+msgstr ""
+
+#: websites/core/models.py:132
+msgid "Date Post"
+msgstr ""
+
+#: websites/core/models.py:139
+msgid "Comment"
+msgstr ""
+
+#: websites/core/models.py:140
+msgid "Comments"
+msgstr ""
+
+#: websites/core/models.py:158 websites/core/models.py:177
+#: websites/core/models.py:195
+msgid "Content"
+msgstr ""
+
+#: websites/core/models.py:164
+msgid "Cenima Technology"
+msgstr ""
+
+#: websites/core/models.py:165
+msgid "Cenima Technologys"
+msgstr ""
+
+#: websites/core/models.py:178
+msgid "Condition"
+msgstr ""
+
+#: websites/core/models.py:179
+msgid "Apply For"
+msgstr ""
+
+#: websites/core/models.py:181
+msgid "Apply Date"
+msgstr ""
+
+#: websites/core/models.py:188
+msgid "New Offer"
+msgstr ""
+
+#: websites/core/models.py:189
+msgid "New Offers"
+msgstr ""
+
+#: websites/core/models.py:196
+msgid "Key Query"
+msgstr ""
+
+#: websites/core/models.py:208
+msgid "Post"
+msgstr ""
+
+#: websites/core/models.py:209
+msgid "Posts"
+msgstr ""
+
+#: websites/core/models.py:222
+msgid "Slide Show"
+msgstr ""
+
+#: websites/settings.py:117
+msgid "Vietnamese"
+msgstr ""
+
+#: websites/settings.py:118
+msgid "English"
+msgstr ""

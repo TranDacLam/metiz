@@ -1,0 +1,217 @@
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px 0px;
+  width: 92%;
+  max-width: 1310px;
+  margin: 50px auto;
+}
+.slick-prev:before {
+    content: '';
+    visibility: hidden;
+}
+.slick-next:before {
+     content: '';
+     visibility: hidden;
+}
+.slick-prev img{
+    padding-top: 18px;
+}
+.slick-next img{
+    padding-top: 18px;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.div-login {
+    width: 100%;
+    text-align: left;
+}
+.div-login .top {
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    border-bottom: 1px solid #c0c0c0;
+    width: 100%;
+    height: auto;
+    line-height: 20px;
+    font-size: 16px;
+    
+}
+.popup-booking .toggle-tabs{
+    border-bottom: 2px solid #2b2b2b;
+    border-top: 2px solid #2b2b2b;
+    display: inline-block;
+    margin-bottom: 30px;
+    padding: 20px;
+    width: 100%;
+}
+.section-white .title{
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.popup-booking .movie-time-line-box {
+    padding-bottom: 30px;
+}
+.popup-booking .movie-time-line-box .movie-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+/* slide */
+.section-lightpink {
+    background-color: #F9F6EC;
+    padding: 40px 0px;
+}
+.days-popup{
+    float:none;
+}
+.calendar-popup .days-popup li {
+    margin: 0 10px;
+    position: relative;
+    padding-top: 16px;
+}
+.month{
+    visibility: hidden;
+}
+.start-month .month{
+    visibility: visible;
+}
+.dayofweek{
+    margin-top: 12px;
+}
+.calendar-popup .days-popup li .month > strong {
+    font-weight: bold;
+    font-size: 30px;
+    border-bottom: 3px solid #3e3e3e;
+    padding-bottom: 0px;
+}
+.calendar-popup .days-popup li .badge {
+    background-color: transparent;
+    color: #C2BDBD;
+    font-size: 14px;
+    padding: 8px;
+}
+.calendar-popup .list-time {
+    height: 100%;
+    position: relative;
+    padding: 0px 0px 0 30px;
+}
+#play-date-slider{
+    
+}
+.calendar-popup .days-popup {
+    text-align: center;
+    padding-left: 10px;
+    padding-top: 64px;
+}
+.lot-table {
+    padding-left: 15px;
+    margin-top: 15px;
+}
+.theater_time {
+    overflow: hidden;
+    width: 100%;
+    margin-left: 0;
+}
+.theater_time > li.sold-out {
+    background-color: #ffffff;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.theater_time > li {
+    float: left;
+    width: 115px;
+    margin: 10px 0 0;
+    background: #fff;
+    border: 1px solid #ebeaea;
+    text-align: center;
+    margin-right: -1px;
+    padding-left: 0;
+    padding-right: 0;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+}
+
+.theater_time > li a {
+    display: block;
+    color: #666;
+}
+
+.theater_time > li .clock {
+    display: none;
+    height: 38px;
+    line-height: 38px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 15px;
+    font-weight: bold;
+}
+.theater_time > li .time {
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 15px;
+    font-weight: bold;
+}
+.theater_time > li .ppnum {
+    display: block;
+    height: 19px;
+    line-height: 19px;
+    font-size: 12px;
+}
+.theater_time > li a {
+    color: #666;
+}
+.toggle-tabs li:hover .days-popup{
+    border: 2px solid #000000;
+}
+.current .days-popup{
+    border: 2px solid #000000;
+}
+.list-inline a {
+    text-decoration: none;
+    transition: color 600ms linear;
+}
+.list-inline li:hover a{
+    background-color: #000000;
+    color: #ffffff;
+}
+.list-inline li:hover .clock{
+    display: block;
+    border-bottom: 1px solid #000000 ;
+}
+.list-inline li:hover .time{
+    display: none;
+}
+.days-popup li.available .badge {
+    color: #3e3e3e;
+    cursor: pointer;
+}
+.days-popup li.active .badge {
+    background-color: #3e3e3e;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 10px 12px;
+}
+.active{
+    visibility: visible;
+}
+.movieslide{
+    display: none;
+}
+.slick-slide, .slick-slide *{ 
+    outline: none !important;
+}
+
+@media only screen and (min-width: 1280px){
+    .slick-next img {
+        padding-left: 26px;
+    }
+}

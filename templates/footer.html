@@ -1,72 +1,108 @@
-<div class="footer-cgv-container">
-    <div class="footer">
-        <div class="footer-brand-slide">
-            <div class="sect-smuse">
-                <ul>
-                    <li><a class="dx" href="{% url 'special_4dx' %}">4DX</a></li>
-                    <li><a class="imax" href="{% url 'special_imax' %}">Imax</a></li>
-                    <li><a class="starium" href="{% url 'special_starium' %}">Starium</a></li>
-                    <li><a class="gold-class" href="{% url 'special_gold_class' %}">Goldclass</a></li>
-                    <li><a class="lamour" href="{% url 'special_lamour' %}">L'amour</a></li>
-                    <li><a class="lam" href="{% url 'special_sweetbox' %}">Sweetbox</a></li>
-                    <li><a class="dolby-atmos" href="{% url 'special_dolby_atmos' %}">Dolby Atmos</a></li>
-                    <li><a class="premium-cinema" href="{% url 'special_premium' %}">Premium Cinema</a></li>
-                    <li><a class="screenx" href="{% url 'special_screenx' %}">Screenx</a></li>
+<footer>
+    <div id="list-social">
+        <div class="container">
+            <div class="col-xs-12 ">
+            <ul class="list-inline">
+                <li >
+                    <a id="fb_show" href="#">
+                        <img id="fb" src="{{STATIC_URL}}/assets/websites/images/social/icon_facebook.png" alt="">
+                        <img class="social_hide" id="fb_hover" src="{{STATIC_URL}}/assets/websites/images/social/icon_facebook_hover.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a id="instagram_show" href="#">
+                        <img id="instagram" src="{{STATIC_URL}}/assets/websites/images/social/icon_instagram.png" alt="">
+                        <img class="social_hide" id="instagram_hover" src="{{STATIC_URL}}/assets/websites/images/social/icon_instagram_hover.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a id="youtube_show" href="#">
+                        <img id="youtube" src="{{STATIC_URL}}/assets/websites/images/social/icon_youtube.png" alt="">
+                        <img class="social_hide" id="youtube_hover" src="{{STATIC_URL}}/assets/websites/images/social/icon_youtube_hover.png" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    <div class="container">
+        
+        <div class="row content-1">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <img id="logo-footer" src="{{STATIC_URL}}/assets/websites/images/logo_footer.png" alt="">
+                <h3 class="info address">HELIO CENTER, Đường 2/9,
+                Phường Hòa Cường Bắc,
+                Quận Hải Châu, TP Đà Nẵng
+                </h3>
+                <div class="map clearfix">
+                    <div class="col-xs-4 pull-left">
+                        <img class="map-trigger" src="{{STATIC_URL}}/assets/websites/images/map.png" alt="">
+                    </div>
+                    <a class="col-xs-8 map-trigger" href="#">XEM BẢN ĐỒ</a>
+                </div>
+            </div> 
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h2>METIZ CINEMA</h2>
+                <ul class="list">
+                    <li><a href="{% url 'get_cms' %}?key_query=kq_gioi_thieu">Giới Thiệu VỀ METIZ</a></li>
+                    <li><a href="{% url 'get_cms' %}?key_query=kq_tuyen_dung">Tuyển Dụng</a></li>
+                    <li><a href="{% url 'contacts' %}">Liên Hệ Quảng Cáo</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h2>PHIM CỦA METIZ</h2>
+                <ul class="list">
+                    <li><a href="">PHIM</a></li>
+                    <li><a href="">RẠP PHIM</a></li>
+                    <li><a href="">PHÂN LOẠI PHIM</a></li>
+                    <li><a href="">CÔNG NGHỆ RẠP PHIM</a></li>
+                    <li><a href="">BÌNH LUẬN PHIM</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h2>THÔNG TIN CHUNG</h2>
+                <ul class="list">
+                    <li><a href="{% url 'get_cms' %}?key_query=kq_quy_dinh_tai_rap">QUY ĐỊNH TẠI RẠP</a></li>
+                    <li><a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_chung">ĐIỀU KHOẢN CHUNG</a></li>
+                    <li><a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_giao_dich">ĐIỀU KHOẢN GIAO DỊCH</a></li>
+                    <li><a href="{% url 'get_cms' %}?key_query=kq_chinh_sach_thanh_toan">CHÍNH SÁCH THANH TOÁN</a></li>
+                    <li><a href="{% url 'get_cms' %}?key_query=kq_chinh_sach_bao_mat">CHÍNH SÁCH BẢO MẬT</a></li>
+                    <li><a href="{% url 'get_cms' %}?key_query=kq_cau_hoi_thuong_gap">CÂU HỎI THƯỜNG GẶP</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-cgv-policy">
-            <div class="content-cgv-policy">
-                <div class="cgv-vietnam">
-                    <h3>CGV Việt Nam</h3>
-                    <ul>
-                        <li><a href="{% url 'about_cinema' %}">Giới Thiệu</a></li>
-                        <li><a href="{% url 'cgv_online' %}">Tiện &Iacute;ch Online</a></li>
-                        <li><a href="{% url 'gift_card_detail' %}">Thẻ qu&agrave; tặng</a></li>
-                        <li><a href="{% url 'careers' %}">Tuyển Dụng</a></li>
-                        <li><a href="{% url 'contacts' %}">Li&ecirc;n Hệ Quảng C&aacute;o CGV</a></li>
-                    </ul>
+        <div class="row content-2">
+            <div id="facebook-like" class="col-lg-3 col-md-3 col-sm-3">
+                <div class="fb-like fb_iframe_widget" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
                 </div>
-                <div class="cgv-policy">
-                    <h3>Điều Khoản Sử Dụng</h3>
-                    <ul>
-                        <li><a href="{% url 'terms_conditions' %}">Điều Khoản Chung</a></li>
-                        <li><a href="{% url 'terms_use' %}">Điều Khoản Giao Dịch</a></li>
-                        <li><a href="{% url 'payment_policy' %}">Ch&iacute;nh S&aacute;ch Thanh To&aacute;n</a></li>
-                        <li><a href="{% url 'privacy_policy' %}">Ch&iacute;nh S&aacute;ch Bảo Mật</a></li>
-                        <li><a href="{% url 'faq' %}">C&acirc;u Hỏi Thường Gặp</a></li>
-                    </ul>
-                </div>
-                <div class="cgv-follow-us">
-                    <h3>Kết nối với ch&uacute;ng t&ocirc;i</h3>
-                    <ul>
-                        <li><a class="follow-fb" href="#" target="_blank"></a></li>
-                        <li><a class="follow-yt" href="#" target="_blank"></a></li>
-                        <li><a class="follow-line" href="#" target="_blank"></a></li>
-                        <li><a class="follow-instagram" href="#" target="_blank"></a></li>
-                        <li><a class="follow-zalo" href="#" target="_blank"></a></li>
-                    </ul>
-                    <div class="cgv-permision">
-                        <h2><a href="#" target="_blank">cgv</a></h2>
-                    </div>
-                </div>
-                <div class="customer-cgv">
-                    <h3>Chăm s&oacute;c kh&aacute;ch h&agrave;ng</h3>
-                    <p style="line-height: 22px;">Hotline: 1900 6017 Giờ l&agrave;m việc: 8:00 - 22:00 Tất cả c&aacute;c ng&agrave;y bao gồm cả Lễ Tết Email hỗ trợ: <a href="">contacts@vooc.vn</a></p>
-                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <h3 class="info">Hotline: 1900 6017</h3>
+                <h3 class="info">Email: hoidap@metiz.vn</h3>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <h3 class="info">Giờ làm việc: 8:00 - 22:00</h3>
+                <h3 class="info">Tất cả các ngày bao gồm cả Lễ Tết</h3>
             </div>
         </div>
-        <div class="footer-cgv-address">
-            <div class="cgv-address-content">
-                <div class="logo-footer-cgv">&nbsp;</div>
-                <div class="text-cgv-address">
-                    <h3>CÔNG TY TNHH CJ CGV VIETNAM</h3>
-                    <p>Giấy CNĐKDN: 0303675393, đăng ký lần đầu ngày 31/7/2008, đăng ký thay đổi lần thứ 5 ngày 14/10/2015, cấp bởi Sở KHĐT thành phố Hồ Chí Minh.</p>
-                    <p>Địa Chỉ: Tòa nhà CJ, Tầng 10-11, 2Bis-4-6 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh. </p>
-                    <p>Hotline: 1900 6017</p>
-                    <p>COPYRIGHT 2017 CJ CGV. All RIGHTS RESERVED .</p>
-                </div>
+        <div class="row text-center">
+            <div id="content-map">
+                <iframe class="col-md-offset-2 col-md-8 col-xs-12 " src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15338.11417491949!2d108.22045677298586!3d16.038039543492065!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb2f5c4a784d34c60!2zVHJ1bmcgdMOibSBHaeG6o2kgdHLDrSBQaOG7qWMgaOG7o3AgSGVsaW8gQ2VudGVy!5e0!3m2!1svi!2s!4v1507024696091" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
+            
         </div>
     </div>
-</div>
+    <!-- line -->
+    <hr>
+    
+    <div class="container">
+        <div class="row content-3 clearfix">
+            <p class="col-sm-4">MỘT SẢN PHẨM ĐẾN TỪ KHỞI PHÁT, LTD.</p>
+            <div class="col-sm-4 ">
+                 <img id="logo-bottom" class="center-block" src="{{STATIC_URL}}/assets/websites/images/logo_bottom.png" alt="">
+            </div>
+            <p class="col-sm-4">BẢN QUYỀN © 2017 Metiz CINEMA</p>
+        </div>
+    </div>
+    </div>
+</footer>
