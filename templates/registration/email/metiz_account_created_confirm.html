@@ -36,6 +36,58 @@
           line-height: 18px;
           vertical-align: top; }
 
+        .padding-40{
+          padding:8px 40px 0px 40px
+        }
+        .font-20{
+          font-size: 20px;
+        }
+        .footer1{
+          color:#394f67;
+          padding:22px 40px 32px 40px
+        }
+        .padding-content{
+          padding:22px 0 0 0
+        }
+        .padding-logo{
+          padding:7px 40px 7px 40px
+        }
+        .img-logo{
+          border:0;
+          margin:0px;
+          padding:0px;
+          display:block;
+          width:121px;
+          height: 100px;
+        }
+        .header{
+          height:28px;
+          font-size:28px;
+          line-height:28px;
+          height:28px;
+          font-family:Helvetica,Arial,sans-serif;
+          color:#394f67;
+          padding:0px 40px 0px 40px;
+          font-weight:lighter
+        }
+        .activation{
+          text-decoration:none;
+          color:#1994d7
+        }
+        .sperator-header{
+          padding:0px 0px 40px 0px
+        }
+        .sperator-header>hr{
+          background-color: #b9b9b9;
+        }
+        .sperator-footer{
+          padding:32px 0px 26px 0px;
+          width: 100%;
+        }
+        .tb_welcome{
+          width: 100%;
+          border: 0;
+        }
       /* -------------------------------------
           BODY & CONTAINER
       ------------------------------------- */
@@ -49,36 +101,42 @@
     </style>
   </head>
   <body class="">
-    <table id="tb_welcome" style="" border="0" cellpadding="0" cellspacing="0" width="100%" class="tb_welcome">
+    <table id="tb_welcome" style="" cellpadding="0" cellspacing="0" class="tb_welcome">
       <tbody>
           <tr>
-              <td colspan="2" style="padding:7px 40px 7px 40px" align="left" valign="top"><img style="border:0;margin:0px;padding:0px;display:block;width:121px;" alt="Helio Center" height="100" border="0" width="121" src="{{ URL_LOGO }}" class="img-logo"></td>
+              <td colspan="2" class="padding-logo" align="left" valign="top"><img alt="Metiz Cinema" src="{{ URL_LOGO }}" class="img-logo"></td>
           </tr>
           <tr>
-              <td colspan="2" style="padding:0px 0px 40px 0px" align="center" valign="middle">
-                  <hr style="background-color: #b9b9b9;">
+              <td colspan="2" class="sperator-header" align="center" valign="middle">
+                  <hr >
               </td>
           </tr>
           <tr>
-              <td colspan="2" style="height:28px;font-size:28px;line-height:28px;height:28px;font-family:Helvetica,Arial,sans-serif;color:#394f67;padding:0px 40px 0px 40px;font-weight:lighter" align="left" valign="top">{% trans "mail.hello" %} {{user.full_name}}</td>
+              <td colspan="2" class="header" align="left" valign="top">{% trans "mail.hello" %} {{user.full_name}}</td>
           </tr>
           <tr>
-              <td colspan="2" style="padding:8px 40px 0px 40px" align="left" valign="top">Congratulations! You have successfully registered to <b>metiz.vn</b> with the email {{ email }}. Please click the button below to activate your account.</td>
-              <td colspan="2" style="padding:8px 40px 0px 40px" align="left" valign="top"><span class="site_url" id="site_url"><a href="{{ activate_url }}" style="text-decoration:none;color:#1994d7" target="_blank" >Activate Account</a></span> Thank you for registering and welcome to Metiz!</td>
+              <td colspan="2" class="padding-40" align="left" valign="top">Congratulations! You have successfully registered to <b>metiz.vn</b> with the email {{ email }}. Please click the button below to activate your account.</td>
+              
           </tr>
           <tr>
-              <td colspan="2" style="padding:32px 0px 26px 0px" align="left" valign="top" width="100%">
+            <td colspan="2" class="padding-40" align="left" valign="top"><span class="site_url font-20" id="site_url" ><a href="{{ activate_url }}" class="activation" target="_blank" >Activate Account</a></span></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="padding-40" align="left" valign="top"><span class="site_url" id="site_url"></span> Thank you for registering and welcome to Metiz!</td>
+          </tr>
+          <tr>
+              <td colspan="2" class="sperator-footer" align="left" valign="top">
                   <hr>
               </td>
           </tr>
           <tr>
-              <td colspan="2" style="color:#394f67;padding:22px 40px 32px 40px" align="left" valign="top"><span style="padding:22px 0 0 0">{% trans "mail.register.footer1" %}<span class="" id=""><a href="tel:02363630888">(0236) 3 630 888</a></span> {% trans "mail.register.footer2" %}</span></td>
+              <td colspan="2" class="footer1" align="left" valign="top"><span class="padding-content">{% trans "mail.register.footer1" %}<span class="" id=""><a href="tel:02363630888">(0236) 3 630 888</a></span> {% trans "mail.register.footer2" %}</span></td>
           </tr>
           <tr>
-              <td colspan="2" style="color:#394f67;padding:22px 40px 32px 40px" align="left" valign="top">
-              <span style="padding:22px 0 0 0">{% trans "mail.register.footer3" %}</span>
+              <td colspan="2" class="footer1" align="left" valign="top">
+              <span class="padding-content">{% trans "mail.register.footer3" %}</span>
               <br/>
-              <span style="padding:22px 0 0 0">{% trans "mail.register.footer4" %}</span></td>
+              <span class="padding-content">{% trans "mail.register.footer4" %}</span></td>
           </tr>
       </tbody>
   </table>
