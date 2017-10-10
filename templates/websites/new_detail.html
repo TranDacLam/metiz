@@ -28,9 +28,7 @@
 					<div class="col-right-detail-content-new-offer">
 						<div class="social-detail-content-new-offer">
 							<div class="fb-like" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
-								<p><strong>{{new.content}}</strong></p>
-								<p>&nbsp;</p>
-								<p><strong>Điều kiện và điều khoản: </strong></p>
+								{{new.content | safe}}
 								<p>&nbsp;</p>
 								{{new.condition| safe}}
 							</div>
