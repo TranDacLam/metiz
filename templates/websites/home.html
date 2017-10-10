@@ -33,16 +33,17 @@
             </div>
         </div>
         {% if position_1 %}
+        {% for item in position_1 %}
         <div class="std">
             <p>
                 <div class="widget widget-static-block">
                     <div class="sect-person">
-                        <a href="{{ position_1.sub_url }}"><img src="{{ MEDIA_URL }}{{ position_1.image }}"/></a>
+                        <a href="{{ item.sub_url }}"><img src="{{MEDIA_URL}}{{ item.image }}"/></a>
                     </div>
                 </div>
             </p>
         </div>
-
+        {% endfor %}
         {% endif %}
     </div>
 </div>
@@ -163,11 +164,13 @@
 <div id="ads-facebook">
     <div class="container">
     {% if position_2 %}
+    {% for item in position_2 %}
         <div class="col-xs-12">
-            <a href="{{ position_2.sub_url }}">
-                <img class="col-xs-12" src="{{ MEDIA_URL }}{{ position_2.image }}" alt="{{ position_2.sub_url}}">
+            <a href="{{ item.sub_url }}">
+                <img class="col-xs-12" src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ item.sub_url}}">
             </a>
         </div>
+    {% endfor %}
     {% endif %}
     </div>
 </div>
