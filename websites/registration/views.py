@@ -3,6 +3,7 @@ from forms import *
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout
 from django.http import HttpResponse
+from django.utils import timezone
 
 
 def logout(request):
