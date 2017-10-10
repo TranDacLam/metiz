@@ -2001,6 +2001,7 @@
 	}
 	.login-forgot-pass {
 		background: url("../images/bg_arrow03.png") no-repeat scroll right 6px rgba(0, 0, 0, 0);
+		padding-top: 10px;
 		color: #666;
 		float: left;
 		font-size: 11px;
@@ -2039,6 +2040,7 @@
 	}
 	.login-forgot-pass {
 		background: url("../images//bg-cgv/bg_arrow03.png") no-repeat scroll right 6px rgba(0, 0, 0, 0);
+		padding-top: 10px;
 		color: #666;
 		float: left;
 		font-size: 11px;
@@ -2193,6 +2195,7 @@
 	}
 	.login-forgot-pass {
 		background: url("../images/bg-cgv/bg_arrow03.png") no-repeat scroll right 6px rgba(0, 0, 0, 0);
+		padding-top: 10px;
 		color: #666;
 		float: left;
 		font-size: 11px;
