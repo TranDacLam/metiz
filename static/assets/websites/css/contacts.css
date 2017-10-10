@@ -1,12 +1,9 @@
-
 .buttons-set input{
 	display:none !important;
 }
-
-.title-contact-cgv {
+.title-contact-metiz {
 	overflow: hidden;
 }
-
 .map_container {
 	position:relative;
 	padding-bottom:56.25%; 
@@ -15,28 +12,40 @@
 	max-width:100%;
 	margin:0 auto;
 }
-
 .map_container iframe {
 	position:absolute;
 	top:0;
 	left:0;
 	width:100%;
 	height:100%;
-	border:0
+	border:0;
 }
 .col-main{
 	width: 100%;
 }
-.title-contact-cgv h1{
+.title-contact-metiz h1{
 	font-size: 24px;
 	font-weight: bold;
 }
-.content-form-contact-cgv button{
+.content-form-contact-metiz button{
 	border: 2px solid #f07469;
 }
-.content-form-contact-cgv button>span{
+.content-form-contact-metiz button>span{
 	border: none;
 }
 a{
 	color: #f07469;
+}
+.contact-customer-service{
+	color: #636363; 
+	padding-bottom: 4px; 
+	border-bottom: 1px solid #636363; 
+	float: left; 
+	font-size: 18px !important; 
+	text-transform: uppercase; 
+	width: 100%; 
+	margin: 20px 0px 10px;
+}
+.buttons-set button>span{
+	    border: 1px solid #ffffff;
 }

@@ -2001,6 +2001,7 @@
 	}
 	.login-forgot-pass {
 		background: url("../images/bg_arrow03.png") no-repeat scroll right 6px rgba(0, 0, 0, 0);
+		padding-top: 10px;
 		color: #666;
 		float: left;
 		font-size: 11px;
@@ -2039,6 +2040,7 @@
 	}
 	.login-forgot-pass {
 		background: url("../images//bg-cgv/bg_arrow03.png") no-repeat scroll right 6px rgba(0, 0, 0, 0);
+		padding-top: 10px;
 		color: #666;
 		float: left;
 		font-size: 11px;
@@ -2193,6 +2195,7 @@
 	}
 	.login-forgot-pass {
 		background: url("../images/bg-cgv/bg_arrow03.png") no-repeat scroll right 6px rgba(0, 0, 0, 0);
+		padding-top: 10px;
 		color: #666;
 		float: left;
 		font-size: 11px;
@@ -2382,12 +2385,12 @@
 	.customer-account-forgotpassword .page-title{
 		float:left;
 		width:100%;
-		border-bottom: 2px solid #898987;
+		border-bottom: 2px solid #ff5400;
 	}
 	.customer-account-forgotpassword .page-title h1{
 		color: #fff !important;
 		font-size: 14px;
-		background: none repeat scroll 0 0 #898987;
+		background: none repeat scroll 0 0 #ff5400;
 		border-radius: 5px 5px 0 0;
 		position: relative;
 		top: 2px;
@@ -2411,14 +2414,14 @@
 	.note-forgot-pass h3{
 		float:left;
 		width:100%;
-		color: #222222;
+		color: #0e1d2f;
 		font-size: 12px;
 		font-weight:bold;
 	}
 	.note-forgot-pass p{
 		float:left;
 		width:100%;
-		color: #222222;
+		color: #0e1d2f;
 		font-size:12px;
 	}
 	.form-change-pass{
@@ -2433,9 +2436,9 @@
 		width:100%;
 		height: 45px;
 		padding-left: 30px;
-		background: #e8e8dd;
+		background: rgba(255, 84, 0, 0.35);
 		font-size: 15px;
-		color: #222222;
+		color: #0e1d2f;
 		line-height: 45px;
 	}
 	.form-instructions{
@@ -2454,7 +2457,7 @@
 		margin-left:15px;
 	}
 	.form-change-pass .form-list .input-box input{
-		width: 169px;
+		width: 269px;
 		border: 1px solid #b5b5b5;
 	}
 	.form-change-pass .buttons-set{
@@ -2470,7 +2473,7 @@
 	}
 	.form-change-pass .back-link a{
 		float:left;
-		width:100%;
+		width:20%;
 		margin-left:30px;
 		color:#e71a0f;
 	}
@@ -2479,6 +2482,18 @@
 	
 	
 }
+@media only screen and (min-width: 319px){
+	.customer-account-forgotpassword .col-main{
+		padding:0px 25px;
+		width:100%;
+	}
+	input[type=email], input[type=search], 
+	input[type=number], input[type=password], 
+	input[type=tel], input[type=text] {
+		width: 265px;
+	}
+}
+
 
 /* ============================== End Reponsive Membership Card Screen ========================= */
 

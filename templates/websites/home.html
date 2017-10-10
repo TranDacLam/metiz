@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 {% load i18n %} 
 
-
-{% block title %}Metiz{% endblock title %}
+{% block title %}Metiz Cinema{% endblock title %}
 
 {% block extrascript %}
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js"></script> 
@@ -36,12 +35,11 @@
             <p>
                 <div class="widget widget-static-block">
                     <div class="sect-person">
-                        <a href="{{ position_1.sub_url }}"><img src="{{ MEDIA_URL }}{{ position_1.image }}"/></a>
+                        <a href="{{ position_1.sub_url }}"><img src="{{MEDIA_URL}}{{ position_1.image }}"/></a>
                     </div>
                 </div>
             </p>
         </div>
-
         {% endif %}
     </div>
 </div>
@@ -166,7 +164,7 @@
             <a href="{{ position_2.sub_url }}">
                 <img class="col-xs-12" src="{{ MEDIA_URL }}{{ position_2.image }}" alt="{{ position_2.sub_url}}">
             </a>
-        </div>
+        </div> 
     {% endif %}
     </div>
 </div>

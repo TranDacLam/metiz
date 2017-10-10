@@ -12,3 +12,10 @@ DATABASES = {
         'PASSWORD': 'admin@helio.vn'
     }    
 }
+
+# VNPAY CONFIG
+VNPAY_RETURN_URL = 'http://metiz.dht:8000/payment_return'  # get from config
+VNPAY_PAYMENT_URL = 'http://sandbox.vnpayment.vn/paymentv2/vpcpay.html'  # get from config
+VNPAY_API_URL = 'http://sandbox.vnpayment.vn/merchant_webapi/merchant.html'
+VNPAY_TMN_CODE = 'ZJLNTI3D'  # Website ID in VNPAY System, get from config
+VNPAY_HASH_SECRET_KEY = 'LAJRLYXKVBAOGGQIRTKTNRYCWQOVJBZR'  # Secret key for create checksum,get from config

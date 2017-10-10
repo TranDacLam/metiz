@@ -3826,44 +3826,44 @@ ul,ol,li{
 }
 
 /* =========================================== CONTACTS PAGE =========================================== */
-.location-ho-cgv {
+.location-ho-metiz {
     float: left;
     margin-bottom: 30px;
     width: 100%;
 }
-.contact-cgv {
+.contact-metiz {
     float: left;
     width: 100%;
 }
-.show-address-contact-cgv {
+.show-address-contact-metiz {
     float: left;
     width: 43%;
     padding-right: 3%;
     border-right: 2px solid #bdbab1;
 }
-.content-form-contact-cgv {
+.content-form-contact-metiz {
     float: right;
     min-height: 150px;
     width: 54%;
     margin-top: -18px;
 }
-.contact-cgv .theater-name h2 {
+.contact-metiz .theater-name h2 {
     text-transform: uppercase;
     font-size: 18px !important;
     line-height: 26px !important;
     color: #636363;
 }
-.show-address-contact-cgv {
+.show-address-contact-metiz {
     float: left;
     width: 43%;
     padding-right: 3%;
     border-right: 2px solid #bdbab1;
 }
-.add-contact-cgv {
+.add-contact-metiz {
     border-top: 1px solid #636363;
     padding-top: 10px;
 }
-.address-contact-cgv-block{
+.address-contact-metiz-block{
     float:left;
 }
 .contact-media-sale {
@@ -3871,7 +3871,7 @@ ul,ol,li{
     margin-top: 20px;
     width: 100%;
 }
-.contact-media-sale h3,.contact-page-cgv-cinemas h3 {
+.contact-media-sale h3,.contact-page-metiz-cinemas h3 {
     float: left;
     width: 100%;
     color:#636363;
@@ -3880,7 +3880,7 @@ ul,ol,li{
     border-bottom: 1px solid #636363;
     padding-bottom:4px;
 }
-.contact-page-cgv-cinemas {
+.contact-page-metiz-cinemas {
     float: left;
     width: 100%;
     margin-top: 20px;
@@ -3888,7 +3888,7 @@ ul,ol,li{
 #contactForm  textarea#comment {
     width: 365px;
 }
-.content-form-contact-cgv #contactForm{
+.content-form-contact-metiz #contactForm{
     padding-left:28px;
 }
 /* =========================================== NOW SHOWING =========================================== */

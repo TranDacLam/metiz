@@ -118,7 +118,7 @@ def home(request):
     try:
         # banner on home page
         result = {}
-        banners = Banner.objects.filter(is_show=True).order_by('position')
+        banners = Banner.objects.filter(is_show=True).order_by('position', 'modified')
 
         # check list banners and get banner position 1 and 2
         position_1, position_2 = None, None
@@ -134,7 +134,7 @@ def home(request):
             release_date__gte=datetime.now(), is_draft=False).order_by('priority', 'release_date')
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
-        return render(request, 'websites/home.html', {  'position_1': position_1, 'position_2': position_2, 'data_slide': data_slide, 'movie_soon': movie_soon, 'movie_showing': movie_showing})
+        return render(request, 'websites/home.html', {'position_1': position_1[0] if position_1 else None, 'position_2': position_2[0] if position_2 else None, 'data_slide': data_slide, 'movie_soon': movie_soon, 'movie_showing': movie_showing})
     except Movie.DoesNotExist, e:
         print "Error Movie : %s" % e
         return HttpResponse(status=404)
