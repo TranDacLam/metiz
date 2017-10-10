@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.shortcuts import render
 from models import *
 from datetime import *
 from django.db.models import Avg, Sum, Count
 from django.http import HttpResponse, JsonResponse
+from django.core import serializers
 
 def custom_404(request):
     return render(request, 'websites/errors/404.html', {}, status=404)
@@ -87,11 +87,26 @@ def new_detail(request, id):
         print "Error: ", e
         return HttpResponse(status=500)
 
+def get_technology(request):
+    try:
+        # get technology detail by name
+        technology = CenimaTechnology.objects.get(name= request.POST['name'])
+        content=technology.content
+        name= technology.name
+        data= {
+            'name': name,
+            'content': content
+        }
+        return JsonResponse(data)
+    except Exception, e:
+        print "Error: ", e
+        return HttpResponse(status=500)
 
 def technology_detail(request, name):
     try:
-        # get technology detail by name
+        # get all technology for menu
         allTechnology = CenimaTechnology.objects.all()
+        # get technology detail by name
         technology = allTechnology.get(name=name)
         return render(request, 'websites/cinema_technology.html', { 'technology': technology, 'allTechnology': allTechnology})
     except Exception, e:
