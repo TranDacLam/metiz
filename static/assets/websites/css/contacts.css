@@ -1,7 +1,7 @@
 .buttons-set input{
 	display:none !important;
 }
-.title-contact-cgv {
+.title-contact-metiz {
 	overflow: hidden;
 }
 .map_container {
@@ -23,14 +23,14 @@
 .col-main{
 	width: 100%;
 }
-.title-contact-cgv h1{
+.title-contact-metiz h1{
 	font-size: 24px;
 	font-weight: bold;
 }
-.content-form-contact-cgv button{
+.content-form-contact-metiz button{
 	border: 2px solid #f07469;
 }
-.content-form-contact-cgv button>span{
+.content-form-contact-metiz button>span{
 	border: none;
 }
 a{
