@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% load i18n %}
-{% block title %}Helio{% endblock title %}
+{% block title %}{{film_detail.name}}{% endblock title %}
 
 {% block extrastylesheet %}
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/zoom/xzoom.css" media="all" />
@@ -114,11 +114,11 @@
 					</div>
 					<div id="film-detail-tab-2" class="tab-pane fade ">
 						<div class="product_view_trailer text-center">
-							<iframe src="{{film_detail.trailer}}" frameborder="0" allowfullscreen></iframe>   
+							<iframe src="//{{film_detail.trailer}}" frameborder="0" allowfullscreen></iframe>   
 						</div>
 					</div>
-					{% if comments %}
 					<div id="film-detail-tab-3" class="tab-pane fade ">
+					{% if comments %}
 						<div class="container">	
 						{% if rating__avg %}
 							<div class="row">
@@ -224,8 +224,8 @@
 								</div>
 							</div>
 						</div> <!-- /container -->
-					</div>
 					{% endif%}
+					</div>
 				</div>
 			</div>
 		</div>
