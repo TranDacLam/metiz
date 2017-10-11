@@ -8,37 +8,7 @@
 	theaters-special-view
 {% endblock %}
 {% block extrascript %}
-	<!-- không lưu trong 1 file js duoc vì lỗi Forbidden (CSRF token missing or incorrect.): -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('.menu-technology').click(function(event) {
-				/* Act on the event */
-				event.preventDefault();
-				var name = $(this).attr('title');
-				$.ajax({
-					url: '/technology/',
-					type: 'POST',
-					data: {
-						'name': name,
-						'csrfmiddlewaretoken':'{{csrf_token}}',
-					}
-				})
-				.done(function(data) {
-					// aminate when click on menu technology
-					$(".special-items li").removeClass('actived');
-					$(".special-items li a").each(function(){   
-				        var name = $(this).attr("title");           
-				        if(name == data.name){
-				            $(this).parent().addClass('actived');
-				        }
-				    });
-				    // trigger slide
-					$('.content-technology').html(data.content);
-					jssor_1_slider_init();
-				});
-			});
-		});
-	</script>
+
 {% endblock %}
 
 {% block container_class%}col1-layout {% endblock%}

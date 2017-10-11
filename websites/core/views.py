@@ -89,15 +89,20 @@ def new_detail(request, id):
 
 def get_technology(request):
     try:
-        # get technology detail by name
-        technology = CenimaTechnology.objects.get(name= request.POST['name'])
-        content=technology.content
-        name= technology.name
-        data= {
-            'name': name,
-            'content': content
-        }
-        return JsonResponse(data)
+        req_name= request.GET['name']
+        check = CenimaTechnology.objects.filter(name = req_name)
+        if (check):
+            # get technology detail by name
+            technology = CenimaTechnology.objects.get(name = req_name)
+            content=technology.content
+            name= technology.name
+            data= {
+                'name': name,
+                'content': content
+            }
+            return JsonResponse(data)
+        print "Do not found cenima technology name ",req_name
+        return HttpResponse(status=500)
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
