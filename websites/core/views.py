@@ -81,8 +81,15 @@ def film_detail(request, id):
 def news(request):
     try:
         # get news order by priority and apply_date
-        news = NewOffer.objects.all().order_by('priority', 'apply_date')
-        return render(request, 'websites/news.html', {'news': news})
+        news = NewOffer.objects.all()
+        # get news by priority !=null
+        data_news_has = news.order_by('priority', 'apply_date').exclude(priority__isnull=True)
+        # get news by priority=null
+        data_news_null = news.order_by('apply_date').exclude(priority__isnull=False)
+        # merge 2 queryset news
+        list_news = list(chain(data_news_has, data_news_null))
+        
+        return render(request, 'websites/news.html', {'list_news': list_news})
     except Exception, e:
         print "Error: %s" % e
         return HttpResponse(status=500)
