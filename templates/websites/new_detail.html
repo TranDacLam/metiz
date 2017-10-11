@@ -30,9 +30,11 @@
 							<div class="fb-like" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
 								{{new.content| safe}}
 								<p>&nbsp;</p>
-								<p><strong>Điều kiện và điều khoản: </strong></p>
-								<p>&nbsp;</p>
-								{{new.condition| safe}}
+								{% if new.condition %}
+									<p><strong>Điều kiện & điều khoản</strong></p>
+									<p>&nbsp;</p>
+									{{new.condition| safe}}
+								{% endif %}
 							</div>
 						</div>
 					</div>
