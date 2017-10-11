@@ -4,12 +4,38 @@
 .mfp-bg{
 	opacity: 1;
 }
-.session-movie .tab-content .tab-pane {
-	display: block;
-	height: 0;
+.owl-nav .lSPrev {
+    background-position: 0 0;
+    left: 5px;
+    width: 64px;
+    display: block;
+    top: 31%;
+    height: 64px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    margin-top: -16px;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.35s linear 0s;
+    transition: opacity 0.35s linear 0s;
 }
-.session-movie .tab-content .tab-pane.active {
-	height: auto;
+.owl-nav .lSNext {
+    background-position: 0 0;
+    right: 26px;
+    width: 64px;
+    display: block;
+    top: 31%;
+    height: 64px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    margin-top: -16px;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.35s linear 0s;
+    transition: opacity 0.35s linear 0s;
+}
+.owl-nav .lSNext:hover, .owl-nav .lSPrev:hover {
+    opacity: 1;
 }
 .session-movie .nav-tabs>li.active>span{
 	color: #ffffff;
@@ -112,6 +138,33 @@ ul.metiz-movie-tabs {
 .info-movie-home h4{
 	text-transform: uppercase;
 }
+@media only screen and (max-width: 1024px){
+	.slideshow-containe-movier .poster-film .product-img {
+		height: 340px;
+		width: 222px;
+	}
+	.feature_slide_show .poster-film:hover .play-button{
+		background: url(../images/icon_play.png) no-repeat 69px 130px rgba(255, 84, 0, 0.8);
+	    height: 340px;
+		width: 222px;
+	}
+	.owl-nav .lSNext{
+		right: 2px;
+	}
+}
+@media only screen and (max-width: 960px){
+	.owl-nav .lSNext{
+		right: 18px;
+	}
+}
+@media screen and (max-width: 768px) {
+	#news #box{
+		height:auto;
+	}
+	.owl-nav .lSNext{
+		right: 5px;
+	}
+}
 @media screen and (max-width: 680px) {
  	.session-movie .nav-tabs>li.active>span{
 		border: 3px solid #ff5400;
@@ -146,6 +199,15 @@ ul.metiz-movie-tabs {
 	.session-movie .nav-tabs>li>span {
 		border: 2px solid #ffffff;
 		font-size: 10px;
+	}
+	.slideshow-containe-movier .poster-film .product-img {
+		height: 355px;
+		width: 248px;
+	}
+	.feature_slide_show .poster-film:hover .play-button{
+		background: url(../images/icon_play.png) no-repeat 81px 130px rgba(255, 84, 0, 0.8);
+	    height: 355px;
+		width: 248px;
 	}
 }
 .session-movie{
@@ -225,13 +287,6 @@ ul.metiz-movie-tabs {
 	padding: 70px 0px 70px 0px;
 	border-bottom: 2px solid #263547;
 }
-
-@media screen and (max-width: 768px) {
-	#news #box{
-		height:auto;
-	}
-}
-
 .info-movie-home span{
 	font-weight: bold;
 }
@@ -246,17 +301,4 @@ ul.metiz-movie-tabs {
 }
 .c18{
 	color: #f2275b;
-}
-.mfp-inline-holder .mfp-content{
-	line-height: 0;
-    width: 100%;
-    max-width: 900px;
-}
-.mfp-inline-holder .mfp-close{
-	top: -30px;
-	color: #FFF;
-    right: -6px;
-    text-align: right;
-    padding-right: 6px;
-    width: 100%;
 }
