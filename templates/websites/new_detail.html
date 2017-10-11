@@ -31,10 +31,10 @@
 								{{new.content | safe}}
 								<p>&nbsp;</p>
 								{% if new.condition %}
-								<p><strong>Điều kiện & điều khoản</strong></p>
+									<p><strong>Điều kiện & điều khoản</strong></p>
+									<p>&nbsp;</p>
+									{{new.condition| safe}}
 								{% endif %}
-								<p>&nbsp;</p>
-								{{new.condition| safe}}
 							</div>
 						</div>
 					</div>
