@@ -67,7 +67,7 @@
 					</div>
 					<div class="movie-actress movie-info">
 						<label>Thời lượng: </label>
-						<div class="std">&nbsp;  {{film_detail.time_running}}</div>
+						<div class="std">&nbsp;  {{film_detail.time_running}} phút</div>
 					</div>
 					<div class="movie-language movie-info">
 						<label>Ngôn ngữ: </label>
@@ -113,8 +113,7 @@
 						{{ film_detail.description | safe}}
 					</div>
 					<div id="film-detail-tab-2" class="tab-pane fade ">
-						<div class="product_view_trailer text-center">
-							<iframe src="//{{film_detail.trailer}}" frameborder="0" allowfullscreen></iframe>   
+						<div class="product_view_trailer text-center" id="trailer-film-detail" data-youtube="{{film_detail.trailer}}"> 
 						</div>
 					</div>
 					<div id="film-detail-tab-3" class="tab-pane fade ">
