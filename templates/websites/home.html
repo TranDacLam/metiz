@@ -56,10 +56,10 @@
             </ul>
             <dl id="collateral-tabs-movie" class="collateral-tabs tab-movie">
                 <div class="tab-content tabcontent" id="pdc">
-
                     <div id="movie-tab-1" class="tab-pane fade in active slideshow-containe-movier">
-                        <ul class="feature_slide_show content-slider">
-                            {% for item in movie_showing %}
+
+                        <ul class="feature_slide_show owl-carousel owl-theme">
+                            {% for item in list_showing %}
                                 <li class="poster-film film-lists item">
                                     <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <input type="hidden" value="movie-trailer-285">
@@ -75,17 +75,17 @@
                                     <div class="play-button">
                                         <span><span>Play</span></span>
                                         <div class="link-play">
-                                            <a class="popup-youtube" href="{{item.trailer}}">Open YouTube video</a><br>
+                                            <a class="popup-youtube" href="//{{item.trailer}}">Open YouTube video</a><br>
                                         </div>
                                     </div>   
                                 </li>
                             {% endfor %}
                         </ul>
                     </div>
-
                     <div id="movie-tab-2" class="tab-pane fade slideshow-containe-movier ">
-                        <ul class="feature_slide_show content-slider">
-                            {% for item in movie_soon %}           
+
+                        <ul class="feature_slide_show owl-carousel owl-theme">
+                            {% for item in list_coming_soon %}           
 
                                 <li class="poster-film film-lists item">
                                     <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />

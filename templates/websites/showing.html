@@ -20,10 +20,10 @@
 		<div class="page-title category-title">
 			<h1>Phim Đang Chiếu</h1>
 		</div>
-		{% if data_showing %}
+		{% if list_data_showing %}
 		<div class="category-products cgv-movies">
 			<ul class="products-grid products-grid--max-4-col">
-				{% for value in data_showing %}
+				{% for value in list_data_showing %}
 					<li class="film-lists">				
 						<div class="product-images">
 							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}" class="product-image">

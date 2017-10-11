@@ -5,7 +5,7 @@ from models import *
 from datetime import *
 from django.db.models import Avg, Sum, Count
 from django.http import HttpResponse, JsonResponse
-from django.core import serializers
+from itertools import chain
 
 def custom_404(request):
     return render(request, 'websites/errors/404.html', {}, status=404)
@@ -19,8 +19,15 @@ def showing(request):
     try:
         # get data movie showing
         data_showing = Movie.objects.filter(
-            release_date__lte=datetime.now(), is_draft=False).order_by('priority', 'release_date')
-        return render(request, 'websites/showing.html', {'data_showing': data_showing})
+            release_date__lte=datetime.now(), is_draft=False)
+
+        # get movie by priority !=null
+        data_showing_has = data_showing.order_by('priority', 'release_date', 'name').exclude(priority__isnull=True)
+        # get movie by priority ==null
+        data_showing_null = data_showing.order_by('release_date','name').exclude(priority__isnull=False)
+        # merge 2 queryset film_showing
+        list_data_showing = list(chain(data_showing_has, data_showing_null))
+        return render(request, 'websites/showing.html', {'list_data_showing': list_data_showing})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
@@ -29,9 +36,15 @@ def showing(request):
 def coming_soon(request):
     try:
         # get data moving comingsoon
-        data = Movie.objects.filter(release_date__gte=datetime.now(), is_draft=False).order_by(
-            'priority', 'release_date')
-        return render(request, 'websites/coming_soon.html', {'data': data})
+        data_coming_soon = Movie.objects.filter(release_date__gte=datetime.now(), is_draft=False)
+
+        # get movie by priority !=null
+        data_coming_soon_has = data_coming_soon.order_by('priority', 'release_date', 'name').exclude(priority__isnull=True)
+        # get movie by priority ==null
+        data_coming_soon_null = data_coming_soon.order_by('release_date','name').exclude(priority__isnull=False)
+        # merge 2 queryset film_showing
+        list_data_coming_soon = list(chain(data_coming_soon_has, data_coming_soon_null))
+        return render(request, 'websites/coming_soon.html', {'list_data_coming_soon': list_data_coming_soon})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
@@ -68,8 +81,15 @@ def news(request):
     try:
 
         # get news order by priority and apply_date
-        news = NewOffer.objects.all().order_by('priority', 'apply_date')
-        return render(request, 'websites/news.html', {'news': news})
+        news = NewOffer.objects.all()
+        # get news by priority !=null
+        data_news_has = news.order_by('priority', 'apply_date').exclude(priority__isnull=True)
+        # get news by priority=null
+        data_news_null = news.order_by('apply_date').exclude(priority__isnull=False)
+        # merge 2 queryset news
+        list_news = list(chain(data_news_has, data_news_null))
+        
+        return render(request, 'websites/news.html', {'list_news': list_news})
     except Exception, e:
         print "Error: %s" % e
         return HttpResponse(status=500)
@@ -133,13 +153,27 @@ def home(request):
 
         # phim dang chieu
         movie_showing = Movie.objects.filter(
-            release_date__lte=datetime.now(), is_draft=False).order_by('priority', 'release_date')
+            release_date__lte=datetime.now(), is_draft=False)
+        # get movie by priority !=null
+        film_showing_has = movie_showing.order_by('priority', 'release_date', 'name').exclude(priority__isnull=True)
+        # get movie by priority ==null
+        film_showing_null = movie_showing.order_by('release_date','name').exclude(priority__isnull=False)
+        # merge 2 queryset film_showing
+        list_showing = list(chain(film_showing_has, film_showing_null))
+        
         # phim sap chieu
         movie_soon = Movie.objects.filter(
-            release_date__gte=datetime.now(), is_draft=False).order_by('priority', 'release_date')
+            release_date__gte=datetime.now(), is_draft=False)
+        # get movie by priority !=null
+        film_coming_soon_has = movie_soon.order_by('priority', 'release_date', 'name').exclude(priority__isnull=True)
+        # get movie by priority ==null
+        film_coming_soon_null = movie_soon.order_by('release_date','name').exclude(priority__isnull=False)
+        # merge 2 queryset film_coming_soon
+        list_coming_soon = list(chain(film_coming_soon_has, film_coming_soon_null))
+
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
-        return render(request, 'websites/home.html', {'position_1': position_1[0] if position_1 else None, 'position_2': position_2[0] if position_2 else None, 'data_slide': data_slide, 'movie_soon': movie_soon, 'movie_showing': movie_showing})
+        return render(request, 'websites/home.html', {'list_showing':list_showing,'list_coming_soon':list_coming_soon,'position_1': position_1[0] if position_1 else None, 'position_2': position_2[0] if position_2 else None, 'data_slide': data_slide})
     except Movie.DoesNotExist, e:
         print "Error Movie : %s" % e
         return HttpResponse(status=404)
