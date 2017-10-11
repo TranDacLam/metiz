@@ -8,6 +8,7 @@
 	theaters-special-view
 {% endblock %}
 {% block extrascript %}
+	<!-- không lưu trong 1 file js duoc vì lỗi Forbidden (CSRF token missing or incorrect.): -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.menu-technology').click(function(event) {
@@ -19,7 +20,7 @@
 					type: 'POST',
 					data: {
 						'name': name,
-						csrfmiddlewaretoken:'{{csrf_token}}'
+						'csrfmiddlewaretoken':'{{csrf_token}}',
 					}
 				})
 				.done(function(data) {
@@ -37,10 +38,6 @@
 				});
 			});
 		});
-	</script>
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" >
-		
-
 	</script>
 {% endblock %}
 
