@@ -57,8 +57,9 @@
             <dl id="collateral-tabs-movie" class="collateral-tabs tab-movie">
                 <div class="tab-content tabcontent" id="pdc">
                     <div id="movie-tab-1" class="tab-pane fade in active slideshow-containe-movier">
+
                         <ul class="feature_slide_show owl-carousel owl-theme">
-                            {% for item in movie_showing %}
+                            {% for item in list_showing %}
                                 <li class="poster-film film-lists item">
                                     <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <input type="hidden" value="movie-trailer-285">
@@ -82,8 +83,9 @@
                         </ul>
                     </div>
                     <div id="movie-tab-2" class="tab-pane fade slideshow-containe-movier ">
+
                         <ul class="feature_slide_show owl-carousel owl-theme">
-                            {% for item in movie_soon %}           
+                            {% for item in list_coming_soon %}           
 
                                 <li class="poster-film film-lists item">
                                     <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />
