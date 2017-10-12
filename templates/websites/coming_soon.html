@@ -37,17 +37,17 @@
 					
 					<div class="product-info">
 						<h2 class="product-name"><a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name}}</a></h2>
-						<div class="cgv-movie-info">
-							<span class="cgv-info-bold">Thể loại: </span>
-							<span class="cgv-info-normal">{{item.genre.name}}</span>
+						<div class="metiz-movie-info">
+							<span class="metiz-info-bold">Thể loại: </span>
+							<span class="metiz-info-normal">{{item.genre.name}}</span>
 						</div>
-						<div class="cgv-movie-info">
+						<div class="metiz-movie-info">
 
-							<span class="cgv-info-bold">{{item.time_running}} Phút | <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></span>
+							<span class="metiz-info-bold">{{item.time_running}} Phút | <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></span>
 						</div>
-						<div class="cgv-movie-info">
-							<span class="cgv-info-bold">Khởi chiếu: </span>
-							<span class="cgv-info-normal">{{item.release_date | date:"d-m-Y"}}</span>
+						<div class="metiz-movie-info">
+							<span class="metiz-info-bold">Khởi chiếu: </span>
+							<span class="metiz-info-normal">{{item.release_date | date:"d-m-Y"}}</span>
 						</div>
 					</div>
 					

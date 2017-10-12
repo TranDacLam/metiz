@@ -3772,11 +3772,11 @@ ul,ol,li{
 
 
 /* ==================== Movie list ================== */
-.cgv-info-bold{
+.metiz-info-bold{
     font-weight:bold;
     font-size:13px;
 }
-.cgv-info-normal{
+.metiz-info-normal{
     font-size:14px;
 }
 .metiz-movies ul li .play-button {
@@ -3907,7 +3907,7 @@ ul,ol,li{
     text-align:center;
     text-transform: uppercase;
 }
-.cgv-movie-info .cgv-bold{
+.metiz-movie-info .metiz-bold{
     font-weight:bold;
 }
 .film-lists .nmovie-rating {
