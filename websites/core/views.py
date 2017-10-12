@@ -36,7 +36,7 @@ def showing(request):
 def coming_soon(request):
     try:
         # get data moving comingsoon
-        data_coming_soon = Movie.objects.filter(release_date__gte=datetime.now(), is_draft=False)
+        data_coming_soon = Movie.objects.filter(release_date__gt=datetime.now(), is_draft=False)
 
         # get movie by priority !=null
         data_coming_soon_has = data_coming_soon.order_by('priority', 'release_date', 'name').exclude(priority__isnull=True)
@@ -163,7 +163,7 @@ def home(request):
         
         # phim sap chieu
         movie_soon = Movie.objects.filter(
-            release_date__gte=datetime.now(), is_draft=False)
+            release_date__gt=datetime.now(), is_draft=False)
         # get movie by priority !=null
         film_coming_soon_has = movie_soon.order_by('priority', 'release_date', 'name').exclude(priority__isnull=True)
         # get movie by priority ==null
