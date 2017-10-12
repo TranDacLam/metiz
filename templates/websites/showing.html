@@ -33,18 +33,18 @@
 						<div class="product-info">
 							<h2 class="product-name">
 							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}">{{value.name}}</a></h2>
-							<div class="cgv-movie-info">
-								<span class="cgv-info-bold">Thể loại: </span>
-								<span class="cgv-info-normal">{{value.genre.name}}</span>
+							<div class="metiz-movie-info">
+								<span class="metiz-info-bold">Thể loại: </span>
+								<span class="metiz-info-normal">{{value.genre.name}}</span>
 							</div>
-							<div class="cgv-movie-info">
+							<div class="metiz-movie-info">
 
-								<span class="cgv-info-bold">{{value.time_running}} Phút | <span class="rated-{{value.rated.name}}">{{value.rated.name}}</span></span>
+								<span class="metiz-info-bold">{{value.time_running}} Phút | <span class="rated-{{value.rated.name}}">{{value.rated.name}}</span></span>
 
 							</div>
-							<div class="cgv-movie-info">
-								<span class="cgv-info-bold">Khởi chiếu: </span>
-								<span class="cgv-info-normal">{{value.release_date | date:"d-m-Y" }}</span>
+							<div class="metiz-movie-info">
+								<span class="metiz-info-bold">Khởi chiếu: </span>
+								<span class="metiz-info-normal">{{value.release_date | date:"d-m-Y" }}</span>
 							</div>
 						</div>
 						<!-- <div class="ribon position-1"></div> -->
