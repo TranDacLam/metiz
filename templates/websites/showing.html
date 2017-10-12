@@ -21,7 +21,7 @@
 			<h1>Phim Đang Chiếu</h1>
 		</div>
 		{% if data_showing %}
-		<div class="category-products cgv-movies">
+		<div class="category-products metiz-movies">
 			<ul class="products-grid products-grid--max-4-col">
 				{% for value in data_showing %}
 					<li class="film-lists">				
@@ -40,7 +40,7 @@
 							</div>
 							<div class="cgv-movie-info">
 
-								<span class="cgv-info-bold">{{value.time_running}} Phút | <span class="{{value.rated.name}}">{{value.rated.name}}</span></span>
+								<span class="cgv-info-bold">{{value.time_running}} Phút | <span class="rated-{{value.rated.name}}">{{value.rated.name}}</span></span>
 
 							</div>
 							<div class="cgv-movie-info">

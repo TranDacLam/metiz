@@ -148,6 +148,11 @@ ul.metiz-movie-tabs {
 	    height: 340px;
 		width: 222px;
 	}
+    .feature_slide_show .poster-film:hover .play-trailer-empty{
+        background: 69px 130px rgba(255, 84, 0, 0.8);
+        height: 340px;
+        width: 222px;
+    }
 	.owl-nav .lSNext{
 		right: 2px;
 	}
@@ -209,6 +214,11 @@ ul.metiz-movie-tabs {
 	    height: 355px;
 		width: 248px;
 	}
+    .feature_slide_show .poster-film:hover .play-trailer-empty{
+        background: 81px 130px rgba(255, 84, 0, 0.8);
+        height: 355px;
+        width: 248px;
+    }
 }
 .session-movie{
 	background: url('../images/bg-session-movie.png') repeat-x center;
@@ -289,16 +299,4 @@ ul.metiz-movie-tabs {
 }
 .info-movie-home span{
 	font-weight: bold;
-}
-.c16{
-	color: #ff5400;
-}
-.p{
-	color: #6be242;
-}
-.c13{
-	color: #ffd640;
-}
-.c18{
-	color: #f2275b;
 }

@@ -14,7 +14,34 @@ $(document).ready(function() {
 		  });
     });
 
-    $('.owl-carousel').owlCarousel({
+    // handle tooogle with Owl carousel
+    $.fn.extend({
+        toggleOwl: function(selector, options, destroy){
+            return this.each(function(){
+                $(this).find(selector).filter(function(){
+                    return $(this).parent().is(':visible');
+                }).owlCarousel(options);
+          
+                $(this).on('shown.bs.tab', function(event){
+                    var target = $(event.target.getAttribute('href')).find(selector);
+                    if(!target.data('owlCarousel')){
+                        var owl = target.owlCarousel(options).data("owlCarousel");
+                    }
+                });
+                if(destroy === true){
+                    $(this).on('hide.bs.tab', function(event){
+                        var target = $(event.target.getAttribute('href')).find(selector);
+                        if(target.data('owl.carousel')){
+                            target.data('owl.carousel').destroy();
+                        }
+                    });        
+                }
+            });
+        }
+    });
+
+    // Carousel slide movie page Home
+    var control_owl = {
         margin: 10,
         dots: false,
         nav: true,
@@ -39,8 +66,10 @@ $(document).ready(function() {
                 margin: 20,
             }
         }
-    });
-    
+    }
+    $('.tabs-format-metiz').toggleOwl(' #movie-tab-1 .owl-carousel', control_owl);
+    $('.tabs-format-metiz').toggleOwl('.owl-carousel.style2', control_owl);
+
     $('.new-img').mouseenter(function(event) {
     	/* Act on the event */
     	$(this).children('.bg_hover').css('display', 'block');
