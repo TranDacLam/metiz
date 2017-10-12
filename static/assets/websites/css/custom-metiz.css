@@ -5116,7 +5116,7 @@ span.movie-rating-detail.c18{
     display: inline-block;
     position: relative;
     width: 100%;
-    z-index: 5;
+    z-index: 0;
     background:transparent;
     padding-top: 40px;
 }
@@ -6845,7 +6845,6 @@ span.movie-rating-detail.c18{
     background-size: 100% 100%;
     margin-right: 7px;
 }
-
 
 
 

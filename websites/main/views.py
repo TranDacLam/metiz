@@ -5,68 +5,7 @@ from django.shortcuts import render
 from core.models import *
 from datetime import *
 
-data_schedule= [{
-	'date':'2017-10-27',
-	'film':[
-		{'name': 'Yeu Di Dung So',
-		'schedule': [
-		{'from': '8:35', 'to': '10:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '21:35', 'to': '0:35', 'room': 119,'name_room': 'Scm01'},
-		] },
-		{'name': 'The gioi nay la cua bo may',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		] },
-		{'name': 'Chu he IT',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		]}
-	]},
-	{
-	'date':'2017-10-28',
-	'film':[
-		{'name': 'Yeu Di Dung So',
-		'schedule': [
-		{'from': '8:35', 'to': '10:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		
-		] },
-		{'name': 'The gioi nay la cua bo may',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		] },
-		{'name': 'Chu he IT',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		]}
-	]},
-	{
-	'date':'2017-10-29',
-	'film':[
-		{'name': 'Yeu Di Dung So',
-		'schedule': [
-		{'from': '8:35', 'to': '10:35', 'room': 119,'name_room': 'Scm01'},
-		
-		] },
-		{'name': 'The gioi nay la cua bo may',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '21:35', 'to': '0:35', 'room': 119,'name_room': 'Scm01'},
-		] },
-		{'name': 'Chu he IT',
-		'schedule': [
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		{'from': '18:35', 'to': '21:35', 'room': 119,'name_room': 'Scm01'},
-		]}
-	]},
-	]
+
 def custom_404(request):
 	return render(request, 'websites/errors/404.html', {}, status=404)
 
@@ -74,7 +13,6 @@ def custom_500(request):
 	return render(request, 'websites/errors/500.html', {}, status=500)
 
 def cinox(request):
-	data_modal= data_schedule
 	data_cinema_area = [{'id':'cgv_city_1', 'name':'Hồ Chí Minh'},{'id':'cgv_city_3', 'name':'Hà Nội'},
 	{'id':'cgv_city_5', 'name':'Đà Nẵng'},{'id':'cgv_city_7', 'name':'Cần Thơ'},{'id':'cgv_city_9', 'name':'Đồng Nai'},
 	{'id':'cgv_city_11', 'name':'Hải Phòng'},{'id':'cgv_city_13', 'name':'Quảng Ninh'},{'id':'cgv_city_15', 'name':'Bà Rịa-Vũng Tàu'},
@@ -87,7 +25,6 @@ def cinox(request):
 	return render(request, 'websites/cinox.html', {'data_cinema_area':data_cinema_area,'data_cinema_list':data_cinema_list ,'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
 def cinox_detail(request):
-	data_modal= data_schedule
 	data_cinema_area = [{'id':'cgv_city_1', 'name':'Hồ Chí Minh'},{'id':'cgv_city_3', 'name':'Hà Nội'},
 	{'id':'cgv_city_5', 'name':'Đà Nẵng'},{'id':'cgv_city_7', 'name':'Cần Thơ'},{'id':'cgv_city_9', 'name':'Đồng Nai'},
 	{'id':'cgv_city_11', 'name':'Hải Phòng'},{'id':'cgv_city_13', 'name':'Quảng Ninh'},{'id':'cgv_city_15', 'name':'Bà Rịa-Vũng Tàu'},
@@ -100,19 +37,16 @@ def cinox_detail(request):
 	return render(request, 'websites/cinox_detail.html',{'data_cinema_area':data_cinema_area, 'data_cinema_list':data_cinema_list,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
 def gift_card(request):
-	data_modal= data_schedule
 	data=[{'img':'/assets/websites/images/gift_card_-_cinox_1.png','title':'Thẻ Quà Tặng - 300.000đ','price':'300.000,00 ₫','description':'Có giá trị như tiền mặt'},
 	{'img':'/assets/websites/images/gift_card_-_cinox_1.png','title':'Thẻ Quà Tặng - 500.000đ','price':'500.000,00 ₫','description':'Có giá trị như tiền mặt'}]
 
-	return render(request, 'websites/gift_card.html', {'data':data ,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/gift_card.html', { })
 
 
 def membership(request):
-	data_modal= data_schedule
-	return render(request, 'websites/membership.html', {'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/membership.html', {})
 
 def account_create(request):
-	data_modal= data_schedule
 	data_country = [{'value':'','name':''},{'value':'AF','name':'Afghanistan'},
 	{'value':'EG','name':'Ai Cập'},{'value':'IE','name':'Ai-len'},
 	{'value':'AL','name':'Albani'},{'value':'DZ','name':'Algeria'}]
@@ -141,22 +75,19 @@ def account_create(request):
 	return render(request, 'websites/account_create.html', {'data_country':data_country, 'data_city':data_city,'data_day':data_day,'data_month':data_month,'data_year':data_year,'data_cgv':data_cgv, 'data_prefergenre':data_prefergenre,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
 def account_login(request):
-	data_modal= data_schedule
-	return render(request, 'websites/account_login.html', {'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+
+	return render(request, 'websites/account_login.html', {})
 
 
 def account_findmember(request):
-	data_modal= data_schedule
-	return render(request, 'websites/account_findmember.html', { 'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/account_findmember.html', { 'data_modal': data_modal})
 
 def account_forgot_password(request):
-	data_modal= data_schedule
-	return render(request, 'websites/account_forgot_password.html', {'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/account_forgot_password.html', {})
 
 def movie_voucher(request):	
-	data_modal= data_schedule
 	data=[{'product_name':'2D_Voucher','price':'100.000','img':"/assets/websites/images/ticket_voucher_2_.png"}, {'product_name':'3D_Voucher','price':'200.000','img':"/assets/websites/images/ticket_voucher_2__1.png"	} ,{'product_name':'4D_Voucher','price':'300.000','img': "/assets/websites/images/special_cinema-02-cropped.jpg"} ]	
-	return render(request, 'websites/movie_voucher.html', {'data':data,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/movie_voucher.html', {})
 
 def arthouse(request):
 	data=[
@@ -175,7 +106,6 @@ def arthouse(request):
 	return render(request, 'websites/arthouse.html', {'data': data})
 
 def about_cinema(request):
-	data_modal= data_schedule
 	data = [{'img':'/assets/websites/images/about-1.jpg'},{'img':'/assets/websites/images/about-2.PNG'},{'img':'/assets/websites/images/about-3.PNG'},
 	{'img':'/assets/websites/images/about-4.PNG'},{'img':'/assets/websites/images/about-5.PNG'},{'img':'/assets/websites/images/about-6.PNG'},
 	{'img':'/assets/websites/images/about-7.JPG'},{'img':'/assets/websites/images/about-8.JPG'},{'img':'/assets/websites/images/about-9.PNG'}]
@@ -186,7 +116,6 @@ def about_cinema(request):
 	return render(request, 'websites/about_cinema.html',{'data': data,'data_content':data_content,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
 def gift_card_detail(request):
-	data_modal= data_schedule
 	terms_conditions = [{'description':'Thẻ này dùng để đổi vé xem phim hoặc thức ăn, đồ uống tại tất cả các rạp CGV, áp dụng tại quầy & trực tuyến.'},
 	{'description':'Thẻ có thẻ được nạp thêm tiền và gia hạn tại quầy hoặc trực tuyến bất cứ lúc nào với số tiền tối thiểu 300,000đ.'},
 	{'description':'Riêng với thẻ quà tặng được đăng ký trực tuyến, ngày hết hạn của tất cả thẻ trước đó sẽ được gia hạn theo ngày hết hạn của thẻ mới nhất.'},
@@ -233,11 +162,9 @@ def careers_units_detail(request):
 	return render(request, 'websites/careers_units_detail.html', {'data_careers_units_detail':data_careers_units_detail})
 
 def contacts(request):
-	data_modal= data_schedule
 	return render(request, 'websites/contacts.html', {  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
 
 def terms_conditions(request):
-	data_modal= data_schedule
 	data = [{'title':'1. Trách nhiệm của người sử dụng:','content':'Khi truy cập vào trang web này, bạn đồng ý chấp nhận mọi rủi ro. CGV và các bên đối tác khác không chịu trách nhiệm về bất kỳ tổn thất nào do những hậu quả trực tiếp, tình cờ hay gián tiếp; những thất thoát, chi phí (bao gồm chi phí pháp lý, chi phí tư vấn hoặc các khoản chi tiêu khác) có thể phát sinh trực tiếp hoặc gián tiếp do việc truy cập trang web hoặc khi tải dữ liệu về máy; những tổn hại gặp phải do virus, hành động phá hoại trực tiếp hay gián tiếp của hệ thống máy tính khác, đường dây điện thoại, phần cứng, phần mềm, lỗi chương trình, hoặc bất kì các lỗi nào khác; đường truyền dẫn của máy tính hoặc nối kết mạng bị chậm…'},
 	{'title':'2. Về nội dung trên trang web:','content':'Tất cả những thông tin ở đây được cung cấp cho bạn một cách trung thực như bản thân sự việc. CGV và các bên liên quan không bảo đảm, hay có bất kỳ tuyên bố nào liên quan đến tính chính xác, tin cậy của việc sử dụng hay kết quả của việc sử dụng nội dung trên trang web này. Nột dung trên website được cung cấp vì lợi ích của cộng đồng và có tính phi thương mại. Các cá nhân và tổ chức không được phếp sử dụng nội dung trên website này với mục đích thương mại mà không có sự ưng thuận của CGV bằng văn bản. Mặc dù CGV luôn cố gắng cập nhật thường xuyên các nội dung tại trang web, nhưng chúng tôi không bảo đảm rằng các thông tin đó là mới nhất, chính xác hay đầy đủ. Tất cả các nội dung website có thể được thay đổi bất kỳ lúc nào.'},
 	{'title':'3. Về bản quyền:','content':'CGV là chủ bản quyền của trang web này. Việc chỉnh sửa trang, nội dung, và sắp xếp thuộc về thẩm quyền của CGV. Sự chỉnh sửa, thay đổi, phân phối hoặc tái sử dụng những nội dung trong trang này vì bất kì mục đích nào khác được xem như vi phạm quyền lợi hợp pháp của CGV.'},
