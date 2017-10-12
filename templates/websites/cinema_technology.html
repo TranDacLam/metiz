@@ -7,6 +7,9 @@
 {% block body_class %}
 	theaters-special-view
 {% endblock %}
+{% block extrascript %}
+
+{% endblock %}
 
 {% block container_class%}col1-layout {% endblock%}
 {% block main_content %}
@@ -24,7 +27,9 @@
 	</div>
 	<div class="main">
 		{% include 'cinema_technology_menu.html' %}
-			{{technology.content | safe}}
+			<div class="content-technology">
+				{{ technology.content| safe}}
+			</div>
 	</div>
 </div>
 {% endblock %}

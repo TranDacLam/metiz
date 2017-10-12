@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.shortcuts import render
 from models import *
 from datetime import *
@@ -69,7 +68,7 @@ def film_detail(request, id):
                 Sum('rating')).get('rating__sum')
             # dua tong so sao tung loai vao mang
             total_percent.append(count)
-        return render(request, 'websites/film_detail.html', {'total_percent': total_percent, 'count': count, 'rating__sum': rating__sum, 'film_detail': film_detail, 'comments': comments, 'rating__avg': rating__avg})
+        return render(request, 'websites/film_detail.html', { 'total_percent': total_percent, 'count': count, 'rating__sum': rating__sum, 'film_detail': film_detail, 'comments': comments, 'rating__avg': rating__avg})
     except Movie.DoesNotExist, e:
         print "Error Movie : %s" % e
         return HttpResponse(status=404)
@@ -80,6 +79,7 @@ def film_detail(request, id):
 
 def news(request):
     try:
+
         # get news order by priority and apply_date
         news = NewOffer.objects.all()
         # get news by priority !=null
@@ -99,7 +99,7 @@ def new_detail(request, id):
     try:
         # get news detail by id
         new = NewOffer.objects.get(pk=id)
-        return render(request, 'websites/new_detail.html', {'new': new})
+        return render(request, 'websites/new_detail.html', { 'new': new})
     except NewOffer.DoesNotExist, e:
         print "Error new_detail : %s" % e
         return HttpResponse(status=404)
@@ -107,12 +107,33 @@ def new_detail(request, id):
         print "Error: ", e
         return HttpResponse(status=500)
 
-
-def getCinemaTechnologyByName(request, name):
+def get_technology(request):
     try:
+        req_name= request.GET['name']
+        check = CenimaTechnology.objects.filter(name = req_name)
+        if (check):
+            # get technology detail by name
+            technology = CenimaTechnology.objects.get(name = req_name)
+            content=technology.content
+            name= technology.name
+            data= {
+                'name': name,
+                'content': content
+            }
+            return JsonResponse(data)
+        print "Do not found cenima technology name ",req_name
+        return HttpResponse(status=500)
+    except Exception, e:
+        print "Error: ", e
+        return HttpResponse(status=500)
+
+def technology_detail(request, name):
+    try:
+        # get all technology for menu
         allTechnology = CenimaTechnology.objects.all()
+        # get technology detail by name
         technology = allTechnology.get(name=name)
-        return render(request, 'websites/cinema_technology.html', {'technology': technology, 'allTechnology': allTechnology})
+        return render(request, 'websites/cinema_technology.html', { 'technology': technology, 'allTechnology': allTechnology})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)

@@ -52,10 +52,17 @@ ul.dropdown-menu>li>a:hover{
 .logo-medium{
 		display:none;
 }
-.skip-link:focus .icon-nav{
+
+.navbar-nav .dropdown-menu li a{
+	color: #7e8eaa;	
+	text-transform: uppercase;
+}
+.bg-icon{
 	color: #ff5400;
 }
-
+.skip-link.skip-account{
+		display: none;
+	}
 @media only screen and (min-width: 771px){
 	#header-search{
 		display: none;
@@ -83,6 +90,7 @@ ul.dropdown-menu>li>a:hover{
 	}
 	.navbar-nav .dropdown-menu li a{
 		color: #7e8eaa;	
+		text-transform: uppercase;
 	}
 
 	.navbar-nav>li>.dropdown-menu{
@@ -150,12 +158,24 @@ ul.dropdown-menu>li>a:hover{
 		display:none;
 	}
 	.logo-small{
-		display:block;
-		width: 50px;
+		display:none;
 	}
 	.logo-medium{
-		display: none;
+		display: block;
     	position: relative;
+    	width: 100px;
+	}
+	.logo-medium img{
+		width: 100%;
+	}
+	.page-header{
+		border-bottom:none;
+	}
+	.collapse-custom{
+		border-bottom:none;
+	}
+	.skip-links{
+		border:none;
 	}
 }
 
@@ -172,8 +192,15 @@ ul.dropdown-menu>li>a:hover{
 	}
 	.logo-medium{
 		display: block;
-		left: 38%;
+		/* left: 38%; */
     	position: relative;
+    	width:100px;
+    	margin: 0 auto;
+    	padding-bottom: 12px;
+	}
+
+	.logo-medium img{
+		width:100px;
 	}
 	.logo img{
 		height: 126px;
@@ -194,6 +221,10 @@ ul.dropdown-menu>li>a:hover{
 		margin: 0px;
 		padding: 0px;
 	}
+	.skip-link.skip-account{
+		display: block;
+		width: 50%;
+	}
 	#myNavbar ul,li{
 		float: none;
 	}
@@ -207,12 +238,7 @@ ul.dropdown-menu>li>a:hover{
 	.skip-link.skip-account.navbar-toggle {
 		border-right: 1px solid #EDEDED;
 	}
-	.logo-large {
-    	left: 40%;
-	}
-	.logo-small{
-		left:17%;
-	}
+
 	ul.dropdown-menu li a{
 		color: #636363;
 	}
@@ -239,11 +265,16 @@ ul.dropdown-menu>li>a:hover{
 
 }
 @media only screen and (max-width: 480px){
+	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #10132d;
+    border-color: #337ab7;
+}
 	.icon-nav{
 		font-size: 20px;
 	}
 	.logo-small{
 		display:block;
+		margin-left: 156px;
 	}
 	.logo-large{
 		display:none;
@@ -264,8 +295,8 @@ ul.dropdown-menu>li>a:hover{
 		height: 77px;
 	}
 	.logo-small {
-	    left: 40%;
-	    margin-top:-12px;
+	    left: 0%;
+	    /* margin-top:-12px; */
 	}
 	.skip-links {
 	    margin-top: 3px;

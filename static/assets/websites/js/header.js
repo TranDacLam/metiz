@@ -1,6 +1,12 @@
-// $(document).ready(function() {
-// 	var link_account = 'account_login';          
-//         if(window.location.href.indexOf(name) > -1){
-//             $('.skip-account').css('color', '#ff5400');
-//         }
-// });
+$(document).ready(function() {
+	var link_account = 'account_login';          
+        if(window.location.href.indexOf(link_account) > -1){
+            $('.skip-account .icon-nav').addClass('bg-icon');
+        }
+ 	$('.skip-link').click(function(event) {
+ 		/* Act on the event */
+ 		$('.icon-nav').removeClass('bg-icon');
+ 		$(this).children('.icon-nav').toggleClass('bg-icon');
+ 	});
+
+});

@@ -165,3 +165,8 @@ ul.metiz-film-detail-tabs {
 .cate-new-offer img{
 	display: inline-block;
 }
+@media only screen and (max-width: 771px) {
+	.cate-new-offer {
+	    z-index: 3;
+	}
+}
