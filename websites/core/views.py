@@ -22,9 +22,9 @@ def showing(request):
             release_date__lte=datetime.now(), is_draft=False)
 
         # get movie by priority !=null
-        data_showing_has = data_showing.order_by('priority', 'release_date', 'name').exclude(priority__isnull=True)
+        data_showing_has = data_showing.order_by('priority', '-release_date', 'name').exclude(priority__isnull=True)
         # get movie by priority ==null
-        data_showing_null = data_showing.order_by('release_date','name').exclude(priority__isnull=False)
+        data_showing_null = data_showing.order_by('-release_date','name').exclude(priority__isnull=False)
         # merge 2 queryset film_showing
         list_data_showing = list(chain(data_showing_has, data_showing_null))
         return render(request, 'websites/showing.html', {'list_data_showing': list_data_showing})
@@ -155,9 +155,9 @@ def home(request):
         movie_showing = Movie.objects.filter(
             release_date__lte=datetime.now(), is_draft=False)
         # get movie by priority !=null
-        film_showing_has = movie_showing.order_by('priority', 'release_date', 'name').exclude(priority__isnull=True)
+        film_showing_has = movie_showing.order_by('priority', '-release_date', 'name').exclude(priority__isnull=True)
         # get movie by priority ==null
-        film_showing_null = movie_showing.order_by('release_date','name').exclude(priority__isnull=False)
+        film_showing_null = movie_showing.order_by('-release_date','name').exclude(priority__isnull=False)
         # merge 2 queryset film_showing
         list_showing = list(chain(film_showing_has, film_showing_null))
         
