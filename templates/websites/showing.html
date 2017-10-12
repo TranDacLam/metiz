@@ -4,7 +4,6 @@
 {% block title %}Phim Đang Chiếu{% endblock title %}
 
 {% block extrascript %}
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cgv.js"></script>
 {% endblock %}
 
 {% block body_class %}
@@ -21,13 +20,13 @@
 			<h1>Phim Đang Chiếu</h1>
 		</div>
 		{% if list_data_showing %}
-		<div class="category-products cgv-movies">
+		<div class="category-products metiz-movies">
 			<ul class="products-grid products-grid--max-4-col">
 				{% for value in list_data_showing %}
 					<li class="film-lists">				
 						<div class="product-images">
 							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}" class="product-image">
-								<img id="product-collection-image-285" src="{{MEDIA_URL}}{{value.poster}}" alt="{{value.name}}">
+								<img src="{{MEDIA_URL}}{{value.poster}}" alt="{{value.name}}">
 							</a>
 						</div>
 						
@@ -40,7 +39,7 @@
 							</div>
 							<div class="cgv-movie-info">
 
-								<span class="cgv-info-bold">{{value.time_running}} Phút | <span class="{{value.rated.name}}">{{value.rated.name}}</span></span>
+								<span class="cgv-info-bold">{{value.time_running}} Phút | <span class="rated-{{value.rated.name}}">{{value.rated.name}}</span></span>
 
 							</div>
 							<div class="cgv-movie-info">

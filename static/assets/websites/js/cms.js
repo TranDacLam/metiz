@@ -25,6 +25,7 @@ $(document).ready(function() {
             url: '?key_query=' + post_detail_kq,
             type: 'get',
             dataType: 'json',
+            crossDomain:false,
             context: this,
         })
         .done(function(response) {
