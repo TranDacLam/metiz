@@ -70,21 +70,12 @@
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         <button type="button" title="Đặt vé" class="button">Đặt vé</button>
                                     </div>
-                                    {% if item.trailer %}
-                                        <div class="play-button">
-                                            <span><span>Play</span></span>
-                                            <div class="link-play">
-                                                <a class="popup-youtube" href="//{{item.trailer}}">Open YouTube video</a><br>
-                                            </div>
+                                    <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
+                                        <span><span>Play</span></span>
+                                        <div class="link-play">
+                                            <a class="popup-youtube" href="//{{item.trailer}}">Open YouTube video</a><br>
                                         </div>
-                                    {% else %}
-                                        <div class="play-trailer-empty">
-                                            <span><span>Play</span></span>
-                                            <div class="link-play">
-                                                <a class="popup-youtube" href="//{{item.trailer}}">Open YouTube video</a><br>
-                                            </div>
-                                        </div>
-                                    {% endif %}
+                                    </div>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -103,21 +94,12 @@
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         <button type="button" title="Đặt vé" class="button">Đặt vé</button>
                                     </div>
-                                    {% if item.trailer %}
-                                        <div class="play-button">
+                                    <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                             <span><span>Play</span></span>
                                             <div class="link-play">
                                                 <a class="popup-youtube" href="//{{item.trailer}}">Open YouTube video</a><br>
                                             </div>
                                         </div>
-                                    {% else %}
-                                        <div class="play-trailer-empty">
-                                            <span><span>Play</span></span>
-                                            <div class="link-play">
-                                                <a class="popup-youtube" href="//{{item.trailer}}">Open YouTube video</a><br>
-                                            </div>
-                                        </div>
-                                    {% endif %} 
                                 </li>
                             {% endfor %}
                         </ul>
