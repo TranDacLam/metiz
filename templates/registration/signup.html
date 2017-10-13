@@ -79,11 +79,11 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
-                                            <label>{% trans "" %} {% trans "Gender" %}</label>
+                                            <label>{% trans "Gender" %}</label>
                                             <div class="form-check form-check-inline">
                                               <label class="form-check-label">
-                                                <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked="checked"> Male
-                                                <input class="form-check-input" type="radio" name="gender" id="gender" value="female" > Female
+                                                <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked="checked"> {% trans "Male" %}
+                                                <input class="form-check-input" type="radio" name="gender" id="gender" value="female" > {% trans "Female" %}
                                               </label>
                                             </div>
                                         </div>
@@ -131,7 +131,7 @@
                                             <label>{% trans "City"%}</label>
                                             <div class="inline">
                                                 <select class="form-control list-city" name="city" id="city">
-                                                    <option value="" disabled selected>Choose City</option>
+                                                    <option value="" disabled selected>{% trans "Choose City" %}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -148,7 +148,7 @@
                                             <label>{% trans "District"%}</label>
                                              <div class="inline">
                                                 <select class="form-control list-district" name="district" id="district">
-                                                    <option disabled selected>Choose District</option>
+                                                    <option disabled selected>{% trans "Choose District" %}</option>
                                                 </select>
                                             </div>
                                         </div>

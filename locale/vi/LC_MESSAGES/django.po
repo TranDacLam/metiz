@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-03 10:04+0000\n"
+"POT-Creation-Date: 2017-10-13 16:49+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,143 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: templates/registration/email/metiz_account_created_confirm.html:115
+msgid "mail.hello"
+msgstr "Xin chào"
+
+#: templates/registration/email/metiz_account_created_confirm.html:133
+msgid "mail.register.footer1"
+msgstr "Nếu tài khoản của bạn bị lỗi hoặc không thể truy cập, vui lòng gọi "
+
+#: templates/registration/email/metiz_account_created_confirm.html:133
+msgid "mail.register.footer2"
+msgstr "để được hỗ trợ."
+
+#: templates/registration/email/metiz_account_created_confirm.html:137
+msgid "mail.register.footer3"
+msgstr "Trân Trọng Cảm Ơn,"
+
+#: templates/registration/email/metiz_account_created_confirm.html:139
+msgid "mail.register.footer4"
+msgstr "Đội Ngũ Hỗ Trợ Helio Center."
+
+#: templates/registration/password_reset_subject.txt:2
+msgid "Metiz Account Password Reset."
+msgstr "Metiz Lấy lại mật khẩu"
+
+#: templates/registration/signup.html:3
+msgid "Signup"
+msgstr "Đăng Ký"
+
+#: templates/registration/signup.html:38 templates/registration/signup.html:109
+msgid "Email"
+msgstr ""
+
+#: templates/registration/signup.html:39 templates/registration/signup.html:111
+msgid "Enter Email Here.."
+msgstr "Nhập email ở đây.."
+
+#: templates/registration/signup.html:42 templates/registration/signup.html:124
+msgid "Password"
+msgstr "Mật Khẩu"
+
+#: templates/registration/signup.html:76 websites/core/models.py:127
+msgid "Full Name"
+msgstr "Họ Tên"
+
+#: templates/registration/signup.html:78
+msgid "Enter Full Name Here.."
+msgstr "Nhập Họ Tên Ở Đây"
+
+#: templates/registration/signup.html:82
+msgid "Gender"
+msgstr "Giới Tính"
+
+#: templates/registration/signup.html:85
+msgid "Male"
+msgstr "Nam"
+
+#: templates/registration/signup.html:86
+msgid "Female"
+msgstr "Nữ"
+
+#: templates/registration/signup.html:94
+msgid "Birth Date"
+msgstr "Ngày Sinh"
+
+#: templates/registration/signup.html:96
+msgid "Choose Your Birthday.."
+msgstr "Chọn Ngày Sinh Của Bạn.."
+
+#: templates/registration/signup.html:100
+msgid "Phone"
+msgstr "Số Điện Thoại"
+
+#: templates/registration/signup.html:102
+msgid "Enter Phone Here.."
+msgstr "Nhập Số Điện Thoại Ở Đây.."
+
+#: templates/registration/signup.html:115
+msgid "Personal ID"
+msgstr "Số CMND"
+
+#: templates/registration/signup.html:117
+msgid "Enter Personal ID Here.."
+msgstr "Nhập Số CMND Ở Đây.."
+
+#: templates/registration/signup.html:127
+msgid "Enter Password Here.."
+msgstr "Nhập Mật Khẩu Ở Đây.."
+
+#: templates/registration/signup.html:131
+msgid "City"
+msgstr "Thành Phố"
+
+#: templates/registration/signup.html:134
+msgid "Choose City"
+msgstr "Chọn Thành Phố"
+
+#: templates/registration/signup.html:142
+msgid "Confirm Password"
+msgstr "Xác Nhận Mật Khẩu"
+
+#: templates/registration/signup.html:144
+msgid "Enter Password Again.."
+msgstr "Nhập Lại Mật Khẩu.."
+
+#: templates/registration/signup.html:148
+msgid "District"
+msgstr "Quận"
+
+#: templates/registration/signup.html:151
+msgid "Choose District"
+msgstr "Chọn Quận"
+
+#: templates/registration/signup.html:159
+msgid "Address"
+msgstr "Địa Chỉ"
+
+#: templates/registration/signup.html:161
+msgid "Enter Address Here.."
+msgstr "Nhập Địa Chỉ Ở Đây.."
+
 #: websites/core/custom_models.py:64
 msgid "Staff Status"
-msgstr ""
+msgstr "Trạng Thái Nhân Viên"
 
 #: websites/core/custom_models.py:65
 msgid "Designates whether the user can log into this admin site."
-msgstr ""
+msgstr "Xác Định Người Dùng Nào Có Thể Đăng Nhập Vào Site Admin"
 
 #: websites/core/custom_models.py:69
 msgid "Active"
-msgstr ""
+msgstr "Hoạt Động"
 
 #: websites/core/custom_models.py:70
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
-msgstr ""
+msgstr "Xác Định Tài Khoẳn Được Kích Hoạt Hay Chưa."
 
 #: websites/core/custom_models.py:73
 msgid "Date Joined"
@@ -53,7 +173,7 @@ msgstr "Ngày Tạo"
 msgid "Image"
 msgstr "Hình Ảnh"
 
-#: websites/core/models.py:34
+#: websites/core/models.py:34 websites/core/models.py:216
 msgid "Sub Url"
 msgstr "Đường Dẫn Tương Đối"
 
@@ -102,7 +222,7 @@ msgstr "Tên Công Nghệ"
 msgid "Movie Type"
 msgstr "Công Nghệ Phim"
 
-#: websites/core/models.py:89f
+#: websites/core/models.py:89
 msgid "Movie Types"
 msgstr "Công Nghệ Phim"
 
@@ -150,10 +270,6 @@ msgstr "Phim"
 #: websites/core/models.py:115
 msgid "Movies"
 msgstr "Phim"
-
-#: websites/core/models.py:127
-msgid "Full Name"
-msgstr "Họ Tên"
 
 #: websites/core/models.py:128
 msgid "Avatar"
@@ -224,14 +340,26 @@ msgstr "Bài Viết"
 msgid "Posts"
 msgstr "Bài Viết"
 
-#: websites/core/models.py:222
+#: websites/core/models.py:223
 msgid "Slide Show"
 msgstr ""
 
-#: websites/settings.py:117
+#: websites/registration/forms.py:91
+msgid "[Metiz] You've been created an account - Click to Verify!"
+msgstr "[Metiz] Kích Hoạt Tài Khoản!"
+
+#: websites/registration/metiz_email.py:15
+msgid "Either message_plain or message_html should be not None"
+msgstr ""
+
+#: websites/registration/metiz_email.py:42
+msgid "Either message_html should be not None"
+msgstr ""
+
+#: websites/settings.py:123
 msgid "Vietnamese"
 msgstr ""
 
-#: websites/settings.py:118
+#: websites/settings.py:124
 msgid "English"
 msgstr ""
