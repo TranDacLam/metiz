@@ -3,9 +3,17 @@
 {% block title %}{% trans "Signup" %}{% endblock title %} 
 
 {% block extrascript %} 
+    <!-- <script src="{{ STATIC_URL }}assets/js/datetimepicker/jquery.js"></script> -->
+    <script src="{{ STATIC_URL }}assets/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="{{ STATIC_URL }}assets/js/validate/jquery.validate.js"></script>
+    <script src="{{ STATIC_URL }}assets/websites/js/signup.js"></script>
+   
 {% endblock %} 
 
 {% block extrastylesheet %} 
+ <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/datetimepicker/jquery.datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/signup.css">
+    
 {% endblock %} 
 
 {% block main_content %}
@@ -19,6 +27,7 @@
                 </ul>
                 
                 <div id="myTabContent" class="tab-content">
+                    <!-- ======================== SIGN IN ===================-->
                     <div class="tab-pane in col-lg-12 well {% if is_login %} active {% endif %}" id="login">
                         <div class="row">
                             <form class="signin" id="signin_form" method="post" action="{% url 'login' %}">
@@ -40,6 +49,8 @@
                         </div>
                         <a class="login-forgot-pass" href="{% url 'password_reset' %}">Tìm lại mật khẩu ></a>
                     </div>
+
+                    <!-- ======================== SIGN UP ===================-->
                     <div class="col-lg-12 well tab-pane {% if is_signup %} active {% endif %}" id="create">
                         <div class="row">
                             {% if register_form.errors %}
@@ -62,8 +73,10 @@
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
-                                            <label>{% trans "Full Name" %}</label>
-                                            <input type="text" name="full_name" id="full_name" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                            <label for="full_name">{% trans "Full Name" %}</label>
+                                            <div class="inline">
+                                                <input type="text" name="full_name" id="full_name" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                            </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "" %} {% trans "Gender" %}</label>
@@ -79,58 +92,71 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Birth Date" %}</label>
-                                            <input type="text" name="birth_date" id="birth_date" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                            <div class="inline">
+                                                <input type="text" name="birth_date" id="birth_date" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control">
+                                            </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Phone" %}</label>
-                                            <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                            <div class="inline">
+                                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Email"%}</label>
-                                            <input type="text" id="email" name="email" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                            <div class="inline">
+                                                <input type="text" id="email" name="email" placeholder="{% trans 'Enter Email Here..' %}" class="form-control">
+                                            </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Personal ID" %}</label>
-                                            <input type="text" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                            <div class="inline">
+                                                <input type="text" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Personal ID Here..' %}" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Password"%}</label>
-                                            <input type="password" id="password1" name="password1" class="form-control">
+                                            <div class="inline">
+                                                <input type="password" id="password1" name="password1" class="form-control">
+                                            </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "City"%}</label>
-                                            <input type="text" id="city" name="city" class="form-control">
+                                            <select class="form-control list-city" id="sel1">
+                                                <option value="" disabled selected>Choose City</option>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Confirm Password" %}</label>
-                                            <input type="password" name="password2" id="password2" class="form-control">
+                                            <div class="inline">
+                                                <input type="password" name="password2" id="password2" class="form-control">
+                                            </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "District"%}</label>
-                                            <input type="text" id="district" name="district" placeholder="{% trans 'Enter Full Name Here..' %}" class="form-control">
+                                            <select class="form-control list-district" id="sel1">
+                                                <option disabled selected>Choose District</option>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-sm-12 form-group">
                                             <label>{% trans "Address" %}</label>
-                                            <textarea name="address" id="address" placeholder="{% trans 'Enter Address Here..' %}" rows="3" class="form-control"></textarea>
+                                            <div class="inline">
+                                                <textarea name="address" id="address" placeholder="{% trans 'Enter Address Here..' %}" rows="3" class="form-control"></textarea>
+                                            </div>
                                         </div>  
                                     </div>
-                                    
-
-                                    
-                                    
-                                    
                                     {% if redirect_field_value %}
                                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> 
                                     {% endif %}

@@ -1,0 +1,29 @@
+label.valid {
+	width: 20px;
+	height: 20px;
+	background: url(../images/valid.png) center center no-repeat;
+	display: inline-block;
+	text-indent: -9999px;
+}
+label.error {
+	font-weight: bold;
+	color: red;
+	padding: 2px 8px;
+	margin-top: 2px;
+}
+#signup_form .form-inline {
+    display: block;
+}
+.inline .form-control{
+	display:inline-block;
+}
+.inline .error{
+	display:inline-block;
+}
+.list-city, .list-district{
+	width: 265px;
+}
+.form-control.error{
+	color: #555;
+    font-weight: normal;
+}
