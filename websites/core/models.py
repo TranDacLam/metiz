@@ -213,6 +213,7 @@ class Post(DateTimeModel):
 class SlideShow(DateTimeModel):
     image = models.ImageField(_("Image"), max_length=255, upload_to="slide_home")
     priority = models.IntegerField(_("Priority"), null=True, blank=True)
+    sub_url = models.CharField(_("Sub Url"), max_length=1000)
     is_draft = models.BooleanField(default=False)
 
     def __str__(self):
