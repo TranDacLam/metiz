@@ -38,7 +38,7 @@ a:hover,a:focus{
     float:none;
 }
 .welcome-msg{
-    color:#7f7f7f;
+    color:#0e1d2f;
 }
 .nav-primary ul li{
     width:184px;
@@ -902,26 +902,26 @@ span#kv_form_close:hover {
     width: 100%;
 }
 /*edit account info */
-.my-account .form-list li,.cgv-option-info li{
-    width:48%;
+.my-account .form-list li,.metiz-option-info li{
+    width:49%;
     margin-right: 2%;
 }
-.my-account .form-list li.right,.cgv-option-info li.right,.cgv-option-info li.customer-user-attributes,.cgv-changepass ul li div.right{
+.my-account .form-list li.right,.metiz-option-info li.right,.metiz-option-info li.customer-user-attributes,.metiz-changepass ul li div.right{
     margin-right: 0;
     float:right
 }
-.cgv-option-info .form-list li{
+.metiz-option-info .form-list li{
     width:100%;
 }
-.cgv-edit-account .form-list select,.cgv-edit-account .form-list .field-city{
+.metiz-edit-account .form-list select,.metiz-edit-account .form-list .field-city{
     width:100%;
 }
-.cgv-option-info{
+.metiz-option-info{
     float:left;
     width:100%;
     border-top:1px solid #000;
 }
-.cgv-option-info h3{
+.metiz-option-info h3{
     font-size: 14px;
     font-weight: bold;
     margin-top: 10px;
@@ -932,7 +932,7 @@ span#kv_form_close:hover {
     text-transform: uppercase;
     margin-top: 0px;
 }
-.cgv-option-info select{
+.metiz-option-info select{
     width:48%;
 }
 .customer-user-attributes ul{
@@ -947,14 +947,14 @@ span#kv_form_close:hover {
     width:100%;
     margin-top:74px;
 }
-.cgv-edit-btn.buttons-set{
+.metiz-edit-btn.buttons-set{
     text-align:center;
     border-top:0;
 }
-.cgv-edit-btn.buttons-set button.button{
+.metiz-edit-btn.buttons-set button.button{
     float:none; 
     border-radius: 5px;
-    background-color: #e71a0f;
+    background-color: #ff5400;
     margin-top:10px;
 }
 .cgv-member-card{
@@ -994,21 +994,21 @@ label[for=preferSite], label[for=preferGenre]{
 .my-account label[for=email]{
     padding-top:12px;
 }
-.my-account .cgv-changepass ul,.my-account .cgv-changepass .form-list li {
+.my-account .metiz-changepass ul,.my-account .metiz-changepass .form-list li {
     width:100%;
     float:left;
 }
-.cgv-changepass ul li div.left{ 
+.metiz-changepass ul li div.left{ 
     width:48%;
     margin-right: 2%;
 }
-.cgv-changepass ul li div.right{    
+.metiz-changepass ul li div.right{    
     width:48%;
 }
-.cgv-changepass ul li div.left{
+.metiz-changepass ul li div.left{
     float:left;
 }
-body.customer-account .my-account .fieldset.cgv-changepass h2{
+body.customer-account .my-account .fieldset.metiz-changepass h2{
     width:auto;
     display:none;
 }
@@ -1468,8 +1468,8 @@ body.customer-account .my-account .fieldset.cgv-changepass h2{
 .block-cms-menu .block-content li.active {
     background: url(../images/ribon_left.png) no-repeat scroll left center #e71a0f;
 }
-.block-content li.current a{
-    color:#fff !important;
+.block-content li.active a{
+    color:#fff;
 }
 .block-content li a {
     color: #fff;
@@ -2213,7 +2213,7 @@ li.film-lists:hover .play-button, li.film-lists:hover .play-trailer-empty{
     float:left;
     width:100%;
     margin-bottom:10px;
-    color:#7f7f7f;
+    color:#0e1d2f;
 }
 .box-account .box .box-content span{
     width: 45%;
@@ -2798,7 +2798,7 @@ a .icon-acc-add{
     padding-left:5%;
 }
 .dashboard{
-    color:#4a452a;
+    color:#0e1d2f;
 }
 .period-search{
     margin-bottom:30px;
@@ -3030,12 +3030,12 @@ input::-ms-input-placeholder {
     width:100%;
     text-align:center;
     margin-top:0px;
-    background:#222;
+    background:#7e8eaa;
     height:34px;
     margin-bottom:10px;
 }
 .my-account .page-title h1{
-    color:#fff;
+    color:#0e1d2f;
     text-transform:uppercase;
     line-height:34px;
     text-align:center !important;
@@ -5638,7 +5638,7 @@ span.movie-rating-detail.c18{
         width:100%;
     }
     .block-account ul li a{
-        color:#636363
+        color:#0e1d2f
     }
     .customer-account .wrapper{
         padding:0 15px;

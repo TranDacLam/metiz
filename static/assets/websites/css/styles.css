@@ -695,8 +695,8 @@ body:not(.customer-account) .block:first-child .block-title {
   .sidebar .block:not(.block-layered-nav) .block-title > strong {
     margin: 0;
     margin-bottom: 10px;
-    color: #636363;
-    font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+    color: #0e1d2f;
+    font-family:  "SairaSemiCondensed", sans-serif;
     font-size: 14px;
     font-weight: bold;
     font-style: normal;
@@ -3101,7 +3101,7 @@ body {
 }
 .header-language-container,
 .page-header {
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed", sans-serif;
 }
 
 /* ============================================ *

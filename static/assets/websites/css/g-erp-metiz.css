@@ -2251,11 +2251,11 @@
 		float:right;
 	}
 	.block-title span {
-		color: #222;
+		color: #0e1d2f;
 		font-size: 22px;
 	}
 	.block-account .block-content li {
-		background: url("../images/bg-cgv/ribon_left-ccc.png") no-repeat scroll left center #ccc;
+		background: #7e8eaa;
 		color: #fff;
 		height: 34px;
 		padding-left: 18px;
@@ -2263,7 +2263,7 @@
 		width:100%;
 	}
 	.block-account .block-content li a {
-		color: #666 !important;
+		color: #fff !important;
 		margin-left: 5px !important;
 		line-height: 34px !important;
 		font-weight: bold;
@@ -2271,12 +2271,12 @@
 	.block-account .block-content li a strong{
 		color:#fff;
 	}
-	.block-content li.current {
-		background: url("../images/bg-cgv/ribon_left.png") no-repeat scroll left center #e71a0f;
+	.block-content li.active {
+		background: #ff5400;
 		color: #fff;
 		padding-left: 18px;
 	}
-	.block-content li.current strong {
+	.block-content li.active strong {
 		color: #fff;
 		margin-left: 5px;
 		font-weight: bold;
@@ -2290,7 +2290,7 @@
 		float:left;
 	}
 	.box a{
-		background:#222;
+		background:#ff5400;
 		color:#fff;
 		display:inline;
 		float:right;
@@ -2491,6 +2491,11 @@
 	input[type=number], input[type=password], 
 	input[type=tel], input[type=text] {
 		width: 265px;
+	}
+	.block-content li.active {
+		background: #ff5400;
+		color: #fff;
+		padding-left: 18px;
 	}
 }
 

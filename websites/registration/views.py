@@ -90,3 +90,14 @@ def confirm_activation(request, activation_key):
     except Exception, e:
         print "Error action confirm_activation : %s" % e
         return HttpResponse(status=500)
+
+
+def profile(request):
+    try:
+        # user is active then redirect to home page
+        if request.user.is_active:
+            return render(request, 'registration/profile.html')
+            
+        return redirect(reverse('home'))
+    except Exception, e:
+        return HttpResponse(status=500)
