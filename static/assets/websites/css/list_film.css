@@ -5,6 +5,7 @@
 	font-weight: bold;
 }
 .add-to-links .button{
+	background: #0e1d2f;
 	padding: 5px 10px 5px 10px;
 	border-radius: 25px;
     border: 3px solid #0e1d2f;

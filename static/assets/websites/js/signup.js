@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+	// validate forml
 	$('#signup_form').validate({
 		rules:{
 			full_name:{
@@ -43,6 +43,7 @@ $(document).ready(function() {
 			element.text('OK!').addClass('valid');
 		}
 	});
+	// demo data 
 	var list_city = {'Da Nang': [' Hải Châu', 'Thanh Khê', ' Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu', 'Hòa Vang', ' Cẩm Lệ', ' Hoàng Sa'], 
 	'Ha Noi': [' Hoàn Kiếm', 'Ba Đình', 'Hai Bà Trưng'], 
 	'HCM': ['1','2','3', '4', '5', '6', 'Tân Bình'], 'khac': ['khac']};
@@ -58,7 +59,7 @@ $(document).ready(function() {
 
 	});
 
-	// show district for each city
+	// funtion show district for each city
 	function selectDistrict(list_city){
 		var name_city= $('.list-city').val();
 		$.each(list_city, function(index, val) {
@@ -77,8 +78,9 @@ $(document).ready(function() {
 		event.preventDefault();
 		selectDistrict(list_city);
 	});
-	$.datetimepicker.setLocale('vi');
 
+	// set datetimepicker
+	$.datetimepicker.setLocale('vi');
 	$('#birth_date').datetimepicker({
 		timepicker:false,
 		format:'d/m/Y',
