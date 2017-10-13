@@ -1,0 +1,31 @@
+.profile-custom{
+    padding: 50px 0 50px 0;
+}
+.page-detail .page-title{
+    padding-top: 0;
+}
+.box-content{
+    line-height: 22px;
+}
+.metiz-changepass{
+    display: none;
+}
+@media only screen and (min-width : 481px) and (max-width : 768px) {
+    .profile-custom{
+        padding: 0 20px 0 20px;
+    }
+    .block-content{
+        line-height: 0;
+    }
+    .block-content li.active a{
+        color: #ff5400;
+    }
+    .block-content li a{
+        color: #0e1d2f;
+    }
+}
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+    .my-account form{
+        padding-top: 110px;
+    }
+}

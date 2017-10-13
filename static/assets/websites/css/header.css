@@ -225,7 +225,7 @@ ul.dropdown-menu>li>a:hover{
 		display: block;
 		width: 50%;
 	}
-	#myNavbar ul,li{
+	#myNavbar ul, #myNavbar li{
 		float: none;
 	}
 	.dropdown .dropdown-menu{
