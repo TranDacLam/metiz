@@ -27,3 +27,21 @@ label.error {
 	color: #555;
     font-weight: normal;
 }
+.btn-login{
+	background-color: #7e8eaa;
+	color: #ffffff;
+	font-weight: bold;
+}
+.btn-login:hover{
+	background-color: #ff4900;
+	color: #ffffff;
+}
+.account-tabs{
+	padding-top: 50px;
+}
+.account-tabs a{
+    text-decoration: none;
+} 
+.login-forgot-pass{
+	font-size: 13px;
+}

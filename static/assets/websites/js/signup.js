@@ -24,14 +24,20 @@ $(document).ready(function() {
 			},
 			password1:{
 				required: true,
-				minlength: 6
+				minlength: 8
 			},
 			password2:{
 				required: true,
-				minlength: 6,
+				minlength: 8,
 				equalTo: "#password1"
 			},
 			address:{
+				required: true,
+			},
+			city:{
+				required: true,
+			},
+			district:{
 				required: true,
 			},
 		},
@@ -41,6 +47,19 @@ $(document).ready(function() {
 		},
 		success: function(element) {
 			element.text('OK!').addClass('valid');
+		}
+	});
+
+	$('#signin_form').validate({
+		rules:{
+			email:{
+				required: true,
+				email: true
+			},
+			password:{
+				required: true,
+				minlength: 8
+			},
 		}
 	});
 	// demo data 
