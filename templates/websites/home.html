@@ -22,7 +22,7 @@
                 <div data-u="slides" class="jssor_1_slides">
                 {% for item in data_slide  %}  
                     <div>
-                        <img data-u="image" src="{{ MEDIA_URL }}{{item.image}}" />
+                        <a href="{{item.sub_url}}"><img data-u="image" src="{{ MEDIA_URL }}{{item.image}}" /></a>
                         <img data-u="thumb" src="{{ MEDIA_URL }}{{item.image}}" />
                     </div>
                 {% endfor %}
