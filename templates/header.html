@@ -20,9 +20,9 @@
                             <span>Đăng xuất</span>
                         </a>
                     {% else %}
-                        <a href="{% url 'register'%}" class="topskip-link skip-account">
-                            <span>Đăng nhập/ Đăng ký</span>
-                        </a>
+                        <div class="topskip-link skip-account">
+                            <span><a href="{% url 'login'%}">Đăng nhập</a>/ <a href="{% url 'register' %}">Đăng ký</a></span>
+                        </div>
                     {% endif%}
                 </div>
             </div>
@@ -54,7 +54,7 @@
                                 <span class="label">Menu</span>
                             </button>
 
-                            <a href="{% url 'account_login'%}"><button class=" skip-link skip-account navbar-toggle ">
+                            <a href="{% url 'login'%}"><button class=" skip-link skip-account navbar-toggle ">
                                     <span class="icon-nav glyphicon glyphicon-user   "></span>
                                     <span class="label">Đăng nhập/ Đăng ký</span>
                             </button></a>

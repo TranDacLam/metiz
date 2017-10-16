@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var link_account = 'account_login';          
+	var link_account = 'login';          
         if(window.location.href.indexOf(link_account) > -1){
             $('.skip-account .icon-nav').addClass('bg-icon');
         }
