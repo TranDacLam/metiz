@@ -30,7 +30,8 @@
 					<span class="h1">Nội Dung Phim</span>
 				</div>
 				<div class="product-name-reponsive">
-					<h1>{{film_detail.name}}</h1>
+					<div class="col-left"><h1>{{film_detail.name}}</h1></div>
+					<div class="col-right"><button type="button" title="Đặt vé" class="button">Đặt vé</button></div>
 				</div>
 				
 				<div class="product-img-box">
@@ -44,7 +45,8 @@
 				</div>
 				<div class="product-shop">
 					<div class="product-name">
-						<span class="h1">{{film_detail.name}}</span>
+						<div class="col-md-10"><span class="h1">{{film_detail.name}}</span></div>
+						<div class="col-md-2"><button type="button" title="Đặt vé" class="button">Đặt vé</button></div>
 					</div>
 					
 					<!-- Build test -->
@@ -89,8 +91,7 @@
 						<!-- Button like and share facebook, data-href: http://domain/film/detail/id -->
 						<!-- data-href= {{ request.build_absolute_uri }} -->
 						<div class="fb-like fb_iframe_widget" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
-	                    </div>
-						<button type="button" title="Đặt vé" class="button">Đặt vé</button>			
+	                    </div>		
 					</div>
 				</div>
 					
@@ -226,6 +227,9 @@
 					{% endif%}
 					</div>
 				</div>
+			</div>
+			<div class="text-center booking-ticket-bot">
+				<button type="button" title="Đặt vé" class="button">Đặt vé</button>
 			</div>
 		</div>
 	</div>

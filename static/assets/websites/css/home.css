@@ -57,7 +57,7 @@
 	border: 3px solid #ff5400;
 	border-radius: 35px;
 	background-color: #ff5400;
-	color: black;
+    color: #ffffff;
 }
 .tab-movie{
 	overflow: hidden;
@@ -65,7 +65,7 @@
 }
 @media screen and (min-width: 1366px) {
     .tab-movie{
-		padding-left: 40px;
+		padding-left: 30px;
 	}
 }
 .tab-event{
@@ -299,4 +299,39 @@ ul.metiz-movie-tabs {
 }
 .info-movie-home span{
 	font-weight: bold;
+}
+.slideshow-container .prev-arrow {
+    background-position: 0 0;
+    width: 64px;
+    display: block;    
+    height: 64px;
+    background-image: url('/static/assets/websites/images/left-arrow.png');
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    margin-top: -16px;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.35s linear 0s;
+    transition: opacity 0.35s linear 0s;
+}
+.slideshow-container .next-arrow {
+    background-position: 0 0;
+    width: 64px;
+    display: block;
+    height: 64px;
+    background-image: url('/static/assets/websites/images/right-arrow.png');
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    margin-top: -16px;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.35s linear 0s;
+    transition: opacity 0.35s linear 0s;
+}
+.slideshow-container .next-arrow:hover, 
+.slideshow-container .prev-arrow:hover {
+    opacity: 1;
+}
+.slide-home-custom{
+    padding-top: 20px;
 }
