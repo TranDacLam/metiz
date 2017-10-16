@@ -29,4 +29,18 @@ $(document).ready(function() {
         });
         return false;
     });
+
+    // validate form
+    $("#create_form").validate({
+        rules: {
+            amount: { 
+                number: true,
+            }
+        },
+        messages:{
+            amount: {
+                number: 'Vui lòng chỉ nhập số',
+            }
+        }
+    });
 });
