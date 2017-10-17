@@ -32,7 +32,8 @@
             <div class="page-title">
                 <h1>Thông tin tài khoản</h1>
             </div>
-            <form action="" method="post" autocomplete="off" id="form-validate" class="scaffold-form metiz-edit-account" enctype="multipart/form-data">
+            <form action="{% url 'update_profile' %}" method="post" autocomplete="off" id="form-validate" class="scaffold-form metiz-edit-account" enctype="multipart/form-data">
+            {% csrf_token %}
                 <div class="fieldset">
                     <input name="form_key" type="hidden" value="kCJVU5MqcDKcSyGO" />
                     <ul class="form-list">
@@ -41,7 +42,7 @@
                                 <div class="field name-firstname">
                                     <label for="firstname">Tên</label>
                                     <div class="input-box">
-                                        {{ user.username }}                      
+                                        <input type="text" name="username" id="username" value="{{ user.username }}" title="User Name" class="input-text validate-mobile required-entry" />                      
                                     </div>
                                 </div>
                             </div>
@@ -49,38 +50,42 @@
                         <li class="right">
                             <label for="gender">Giới tính</label>
                             <div class="input-box">
-                                {{ user.gender }}                 
+                                <input type="text" name="gender" id="gender" value="{% if user.gender%}{{ user.gender }}{% endif %}" title="Gender" class="input-text validate-mobile required-entry" />
+                                               
                             </div>
                         </li>
                         <li>                    
                             <label for="month">Ngày sinh</label>
                             <div class="input-box customer-dob">
-                                {{ user.birth_date }}                  
+                                <input type="text" name="birth_date" id="birth_date" value="{{ user.birth_date }}" title="birth_date" class="input-text validate-mobile required-entry" />                  
                             </div>
                         </li>
                         <li class="right">
                             <label for="telephone" class="required"><em>*</em>Điện thoại</label>
                             <div class="input-box">
-                                <input type="tel" name="telephone" id="telephone" value="{{ user.phone }}" title="Phone Number" class="input-text validate-mobile required-entry" />
+                            {% if user.phone %}
+                                {{ user.phone }}
+                            {% endif %}
                             </div>
                          </li>
                         <li>
                             <label for="email" class="required"><em>*</em>Địa chỉ email</label>
                             <div class="input-box">
-                                {{ user.email }}               
+                                {{ user.email }}
+                                        
                             </div>
                         </li>
                         <li class="right">
-                            <label for="onlineID">Personal ID</label>
+                            <label for="personal_id">Personal ID</label>
                             <div class="input-box">
-                                {{ user.email }}         
+                                <input type="tel" name="personal_id" id="personal_id" value="{{ user.personal_id }}" title="personal_id" class="input-text validate-mobile required-entry" />                
                             </div>
                         </li>
                         <li class="fields field-country">
                             <div class="field field-country-first">
-                                <label for="region_id" class="required "><em>*</em>Tỉnh/Tp</label>
+                                <label for="city" class="required "><em>*</em>Tỉnh/Tp</label>
                                 <div class="input-box">
-                                    <select id="region_id" name="region_id" title="Tỉnh/Tp" class="validate-select">
+                                    <select id="city" name="city" title="Tỉnh/Tp" class="validate-select">
                                         <option value="">Vui lòng chọn...</option>
                                         <option value="65">Hồ Chí Minh</option>                          
                                         <option value="64">Hà Nội</option>                                                       
@@ -91,9 +96,9 @@
                         </li>
                         <li class="right">
                             <div class="field field-city">
-                                <label for="city" class="required "><em>*</em>Quận/Huyện</label>
+                                <label for="district" class="required "><em>*</em>Quận/Huyện</label>
                                 <div class="input-box">
-                                    <select class="input-box input-box-city validate-select" id="city" name="city" title="Quận/Huyện" >
+                                    <select class="input-box input-box-city validate-select" id="city" name="district" title="Quận/Huyện" >
                                         <option value="">Vui lòng chọn...</option>
                                         <option value="Huyện Hòa Vang">Huyện Hòa Vang</option>                                              
                                         <option value="Quận Cẩm Lệ">Quận Cẩm Lệ</option>                                                       
@@ -109,9 +114,9 @@
                         </li>
             <!-- Customer Address -->
                         <li class="wide">
-                            <label for="street_1" class="required"><em>*</em>Địa chỉ</label>
-                                            <div class="input-box">
-                                <input type="text" name="street[]" value="{{ user.address }} " title="Địa chỉ" id="street_1" class="input-text  required-entry" />
+                            <label for="address" class="required"><em>*</em>Địa chỉ</label>
+                            <div class="input-box">
+                                <input type="text" name="address" value="{% if user.address %}{{ user.address }} {% endif %} " title="Địa chỉ" id="address" class="input-text  required-entry" />
                             </div>
                         </li>           
                         <li class="right">
@@ -160,8 +165,11 @@
                                 <li>
                                     <label for="personal_id">CMND hoặc Hộ chiếu</label>
                                     <div class="input-box">
-                                        <span>chưa có</span>
-                                        <input type="hidden" id="personal_id" name="personal_id" value="205775312" class="input-text" /> 
+                                        {% if user.personal_id %}
+                                            {{user.personal_id}}
+                                        {% elif not user.personal_id %}
+                                            <span>chưa có</span>
+                                        {% endif %}
                                     </div>
                                 </li>
                             </ul>

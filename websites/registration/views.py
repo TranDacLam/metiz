@@ -5,7 +5,6 @@ from django.contrib.auth import logout as auth_logout
 from django.http import HttpResponse
 from django.utils import timezone
 
-
 def logout(request):
     """ Action Login """
     try:
@@ -95,9 +94,40 @@ def confirm_activation(request, activation_key):
 def profile(request):
     try:
         # user is active then redirect to home page
+        
         if request.user.is_active:
             return render(request, 'registration/profile.html')
-            
+        
         return redirect(reverse('home'))
     except Exception, e:
         return HttpResponse(status=500)
+
+def update_profile(request):
+    try:
+        user = request.user
+
+        data_init = {'username':user.username,'birth_date':user.birth_date,
+        'address':user.address,'personal_id':user.personal_id,'gender':user.gender,
+        'city': user.city,'district':user.district}
+
+        form = UpdateUserForm(request.POST,initial = data_init, request=request)
+
+        if request.method == 'POST':
+            if form.is_valid():
+                user.username = request.POST['username']
+                user.birth_date = request.POST.get('birth_date')
+                user.address = request.POST.get('address')
+                user.personal_id = request.POST.get('personal_id')
+                user.gender = request.POST.get('gender')
+                user.city = request.POST.get('city')
+                user.district = request.POST.get('district')
+
+                user.save()
+                return redirect(reverse('home'))
+        context = {"form": form}
+        return render(request, "registration/profile.html", context)
+    except Exception, e:
+        return HttpResponse(status=500)
+
+    
+
