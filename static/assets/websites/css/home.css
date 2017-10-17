@@ -132,7 +132,7 @@ ul.metiz-movie-tabs {
 .info-movie-home h3{
 	text-transform: uppercase;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 20px;
 	line-height: 1.5;
 }
 .info-movie-home h4{
@@ -262,10 +262,10 @@ ul.metiz-movie-tabs {
 
 #news .container h1{
 	font-weight: 700;
-	font-family:  'Saira Semi Condensed', sans-serif;
+	font-family:  'SairaSemiCondensed-Bold', sans-serif;
 }
 #news #title-box{
-	font-family: 'Saira Semi Condensed', sans-serif;
+	font-family: 'SairaSemiCondensed-SemiBold', sans-serif;
 	font-size:24px;
 	text-transform: uppercase;
 	color: #ff5400;
@@ -280,7 +280,7 @@ ul.metiz-movie-tabs {
     border: 2px solid #c8c6be;
 }
 #news #box p{
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat-Light', sans-serif;
 	font-weight: lighter;
 }
 #more_hover{

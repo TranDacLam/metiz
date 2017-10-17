@@ -46,14 +46,15 @@
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cinema_technology.js">
     </script>
     <!-- signup -->
-    <script src="{{ STATIC_URL }}assets/websites/js/signup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/signup.js"></script>
+    
 
-    <link href="{{ STATIC_URL }}assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" />
+    <!-- font -->
+    <link href="{{ STATIC_URL }}assets/websites/css/font-global.css" rel="stylesheet">
     <!-- slide movie page home -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/owl.carousel.min.css" media="all" />
-    
     <link href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" rel="stylesheet"/>
     <!-- film detail -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/star-rating.min.css" media="all" />
@@ -81,7 +82,9 @@
     <!-- signup -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/datetimepicker/jquery.datetimepicker.css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/signup.css">
-
+    <!-- query, refund -->    
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/query_refund.css" media="all" />
+    
     <title>{% block title %}{% endblock title %}</title>
     {% block metacontent %}{% endblock %}
     
@@ -92,20 +95,7 @@
 </head>
 
 <body id="{% block body_id %}body{% endblock %}" class="{% block body_class %}{%endblock%}">
-    <div class="mtw_banner_left" style="display: none;">
-        <div class="content-banner">
-            <a class="load-popup-banners cboxElements" href="#" target="_blank"> 
-                <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/baner-left-vn.jpg" /> </a>
-        </div>
-    </div>
-    <div class="mtw_banner_right" style="display: none;">
-        <div class="content-banner banner-verion-vn">
-            <div class="banner-culture-day"><a href="#" target="_blank"> <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/en-banner-right-1.png" /> </a></div>
-            <div class="banner-happy-day"><a href="#" target="_blank"> <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/en-banner-right-2.png" /> </a></div>
-            <div class="banner-first-show"><a href="#"> <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/vn-banner-right-3.png" /> </a></div>
-            <div class="banner-student"><a href="#" target="_blank"> <img alt="" src="{{ STATIC_URL }}assets/websites/images/banner/vn-banner-right-4.png" /> </a></div>
-        </div>
-    </div>
+    
     <div class="wrapper">
         <noscript>
             <div class="global-site-notice noscript">

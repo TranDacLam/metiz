@@ -1,0 +1,28 @@
+/* query template */
+#content-query{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+#content-query .btn-metiz{
+	background-color: #ff4900;
+	color: #ffffff;
+	font-weight: bold;
+}
+#content-query .table-responsive{
+	border:none;
+}
+#content-refund .table-responsive{
+	border:none;
+}
+.inline .form-control{
+	display:inline-block;
+}
+.inline .error{
+	display:inline-block;
+}
+/* refund template */
+
+#content-refund{
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
