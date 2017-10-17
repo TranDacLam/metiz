@@ -171,9 +171,14 @@ def home(request):
         # merge 2 queryset film_coming_soon
         list_coming_soon = list(chain(film_coming_soon_has, film_coming_soon_null))
 
+        # get news order by priority and apply_date
+        news = NewOffer.objects.all()
+        # get news by priority !=null
+        data_news_has = news.order_by('priority', 'apply_date').exclude(priority__isnull=True)[:5]
+        
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
-        return render(request, 'websites/home.html', {'list_showing':list_showing,'list_coming_soon':list_coming_soon,'position_1': position_1[0] if position_1 else None, 'position_2': position_2[0] if position_2 else None, 'data_slide': data_slide})
+        return render(request, 'websites/home.html', {'data_news_has':data_news_has,'list_showing':list_showing,'list_coming_soon':list_coming_soon,'position_1': position_1[0] if position_1 else None, 'position_2': position_2[0] if position_2 else None, 'data_slide': data_slide})
     except Movie.DoesNotExist, e:
         print "Error Movie : %s" % e
         return HttpResponse(status=404)
