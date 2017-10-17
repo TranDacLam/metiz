@@ -17,34 +17,6 @@
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <META HTTP-EQUIV="Content-language" CONTENT="vi">
     
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js" ></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.validate-1.17.0.min.js" ></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.min.js"></script>
-    <!-- slide movie page home -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/owl.carousel.min.js"></script>
-    <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.js"></script>
-    <!-- film detail -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/star-rating.min.js"></script>
-    <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" ></script>
-    <script src="{{ STATIC_URL }}assets/js/carousel/banner_slide.js"></script> 
-    <script src="{{ STATIC_URL }}assets/websites/js/slide_carousel.js"></script>
-    <!-- film detail -->
-    <!-- showing -->
-    <!-- coming_soon-->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/ajaxSetup.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/facebook.js"></script>
-    <!-- showing, coming soon -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
-    <!-- js for footer -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/footer.js"></script>
-    <!-- js for header -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/header.js"></script>
-    <!-- js for menu cinema technology -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cinema_technology.js">
-    </script>
     <link href="{{ STATIC_URL }}assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" />
@@ -55,11 +27,14 @@
     <!-- film detail -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/star-rating.min.css" media="all" />
     <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X -->
-    <link rel="stylesheet" href="{{ STATIC_URL }}assets/css/carousel/home_banner.css" media="all" />
     
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/styles.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-metiz.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-metiz.css" media="all" />
+    <link rel="stylesheet" type="text/css"  href="{{ STATIC_URL }}assets/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/slick-theme.css" />
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}assets/css/carousel/home_banner.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/header.css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/modal.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/footer.css" media="all" />
@@ -77,11 +52,42 @@
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/password_reset.css" media="all" />
     <!-- Pament ad payment_return -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/payment.css" media="all" />
+    {% block extrastylesheet %}{% endblock %}
 
     <title>{% block title %}{% endblock title %}</title>
     {% block metacontent %}{% endblock %}
     
-    {% block extrastylesheet %}{% endblock %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.validate-1.17.0.min.js" ></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- slide movie page home -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/owl.carousel.min.js"></script>
+    <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.js"></script>
+    <!-- film detail -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/star-rating.min.js"></script>
+    <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" ></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/slick/slick.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/modal.js"></script>  
+    <script src="{{ STATIC_URL }}assets/js/carousel/banner_slide.js"></script> 
+    <script src="{{ STATIC_URL }}assets/websites/js/slide_carousel.js"></script>
+    <!-- film detail -->
+    <!-- showing -->
+    <!-- coming_soon-->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/ajaxSetup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/facebook.js"></script>
+    <!-- showing, coming soon -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
+    <!-- js for footer -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/footer.js"></script>
+    <!-- js for header -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/header.js"></script>
+    <!-- js for menu cinema technology -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cinema_technology.js">
+    </script>
+    
 
     {% block extrascript %}{% endblock %}
 
