@@ -105,3 +105,14 @@ def profile(request):
         return redirect(reverse('home'))
     except Exception, e:
         return HttpResponse(status=500)
+
+
+def change_password(request):
+    try:
+        # user is active then redirect to home page
+        if request.user.is_active:
+            return render(request, 'registration/change_password.html')
+            
+        return redirect(reverse('home'))
+    except Exception, e:
+        return HttpResponse(status=500)

@@ -3,7 +3,6 @@
 {% block title %}Hồ sơ{% endblock title %} 
 
 {% block extrascript %}
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/profile.js"></script>
 {% endblock %}
 
 {% block extrastylesheet %}
@@ -22,7 +21,7 @@
             <div class="block-content">
                 <ul>
                     <li class="active"><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>
-                    <li class="last"><a href="">Lịch sử mua vé</a></li>
+                    <li class="last"><a href="{% url 'change_password' %}">Thay đổi mật khẩu</a></li>
                 </ul>
             </div>
         </div>
@@ -34,14 +33,13 @@
             </div>
             <form action="" method="post" autocomplete="off" id="form-validate" class="scaffold-form metiz-edit-account" enctype="multipart/form-data">
                 <div class="fieldset">
-                    <input name="form_key" type="hidden" value="kCJVU5MqcDKcSyGO" />
                     <ul class="form-list">
                         <li class="fields">
                             <div class="customer-name">
                                 <div class="field name-firstname">
                                     <label for="firstname">Tên</label>
                                     <div class="input-box">
-                                        {{ user.username }}                      
+                                        {{ user.username }}   dsd                    
                                     </div>
                                 </div>
                             </div>
@@ -71,9 +69,9 @@
                             </div>
                         </li>
                         <li class="right">
-                            <label for="onlineID">Personal ID</label>
+                            <label for="personal_id">CMND hoặc Hộ chiếu</label>
                             <div class="input-box">
-                                {{ user.email }}         
+                                <input type="text" name="cmnd" value="" title="Địa chỉ" id="street_1" class="input-text  required-entry" />
                             </div>
                         </li>
                         <li class="fields field-country">
@@ -114,60 +112,8 @@
                                 <input type="text" name="street[]" value="{{ user.address }} " title="Địa chỉ" id="street_1" class="input-text  required-entry" />
                             </div>
                         </li>           
-                        <li class="right">
-                            <label for="current_password" class="required"><em>*</em>Mật khẩu cũ</label>
-                            <div class="input-box">
-                                <!-- This is a dummy hidden field to trick firefox from auto filling the password -->
-                                <input type="text" class="input-text no-display" name="dummy" id="dummy" />
-                                <input type="password" title="Mật khẩu cũ" class="input-text required-entry" name="current_password" id="current_password" />
-                            </div>
-                        </li>
-                        <li class="control">
-                            <input type="checkbox" name="change_password" id="change_password" value="1" title="Đổi mật khẩu" class="checkbox" /><label for="change_password">Đổi mật khẩu</label>
-                        </li>
                     </ul>
                 </div>   
-                <div class="fieldset metiz-changepass">
-                    <h2 class="legend">Đổi mật khẩu</h2>
-                    <ul class="form-list">
-                        <li class="fields">
-                            <div class="field left">
-                                <label for="password" class="required"><em>*</em>Mật khẩu mới</label>
-                                <div class="input-box">
-                                    <input type="password" title="Mật khẩu mới" class="input-text required-entry validate-password" name="password" id="password" />
-                                </div>
-                            </div>
-                            <div class="field right">
-                                <label for="confirmation" class="required"><em>*</em>Nhập lại mật khẩu mới</label>
-                                <div class="input-box">
-                                    <input type="password" title="Nhập lại mật khẩu mới" class="input-text required-entry validate-cpassword" name="confirmation" id="confirmation" />
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="metiz-option-info">
-                    <h3>Thông tin Khác</h3>
-                    <div class="fieldset">
-                        <li>
-                            <label for="onlineID">Quốc tịch</label>
-                            <div class="input-box">
-                                Việt Nam                
-                            </div>
-                        </li>
-                        <li class="customer-user-attributes">
-                            <ul class="form-list">
-                                <li>
-                                    <label for="personal_id">CMND hoặc Hộ chiếu</label>
-                                    <div class="input-box">
-                                        <span>chưa có</span>
-                                        <input type="hidden" id="personal_id" name="personal_id" value="205775312" class="input-text" /> 
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </div>
-                </div>
                 <div class="buttons-set metiz-edit-btn">
                     <button type="submit" title="Lưu lại" class="button"><span><span>Lưu lại</span></span></button>
                 </div>
