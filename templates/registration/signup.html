@@ -3,13 +3,11 @@
 {% block title %}{% trans "Signup" %}{% endblock title %} 
 
 {% block extrascript %} 
-    <script src="{{ STATIC_URL }}assets/websites/js/signup.js"></script>
    
 {% endblock %} 
 
 {% block extrastylesheet %} 
- <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/datetimepicker/jquery.datetimepicker.css">
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/signup.css">
+
     
 {% endblock %} 
 
@@ -27,6 +25,13 @@
                     <!-- ======================== SIGN IN ===================-->
                     <div class="tab-pane in col-lg-12 well {% if is_login %} active {% endif %}" id="login">
                         <div class="row">
+                            {% if errors %}
+                                {% for key, error in errors.items %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
                             <form class="signin" id="signin_form" method="post" action="{% url 'login' %}">
                                 {% csrf_token %}
                                 <div class="col-sm-12">

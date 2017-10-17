@@ -17,12 +17,15 @@
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <META HTTP-EQUIV="Content-language" CONTENT="vi">
     
-    <link href="{{ STATIC_URL }}assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    
+
+
     <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" />
+    <!-- font -->
+    <link href="{{ STATIC_URL }}assets/websites/css/font-global.css" rel="stylesheet">
     <!-- slide movie page home -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/owl.carousel.min.css" media="all" />
-    
     <link href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" rel="stylesheet"/>
     <!-- film detail -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/star-rating.min.css" media="all" />
@@ -48,6 +51,12 @@
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/list_film.css" media="all" />
     <!-- password reset done, complete, comfirm -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/password_reset.css" media="all" />
+    <!-- signup -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/datetimepicker/jquery.datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/signup.css">
+    <!-- query, refund -->    
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/query_refund.css" media="all" />
+
     <!-- Pament ad payment_return -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/payment.css" media="all" />
     {% block extrastylesheet %}{% endblock %}
@@ -85,13 +94,15 @@
     <!-- js for menu cinema technology -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cinema_technology.js">
     </script>
-    
+    <!-- signup -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/signup.js"></script>
 
     {% block extrascript %}{% endblock %}
 
 </head>
 
 <body id="{% block body_id %}body{% endblock %}" class="{% block body_class %}{%endblock%}">
+
     <div class="wrapper">
         <noscript>
             <div class="global-site-notice noscript">
