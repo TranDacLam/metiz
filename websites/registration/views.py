@@ -1,15 +1,17 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 from forms import *
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout
 from django.http import HttpResponse
 from django.utils import timezone
-
+from django.contrib import messages
 
 def logout(request):
     """ Action Login """
     try:
         auth_logout(request)
+        messages.success(request, 'Bạn đã đăng xuất thành công.')
         return redirect(reverse('home'))
     except Exception, e:
         return HttpResponse(status=500)
@@ -29,6 +31,7 @@ def login(request):
         if request.method == 'POST':
             login_form = LoginForm(request.POST, request=request)
             if login_form.is_valid():
+                messages.success(request, 'Bạn đã đăng nhập thành công.')
                 return redirect(reverse('home'))
             else:
                 result['errors'] = login_form.errors
@@ -48,6 +51,7 @@ def register_user(request, **kwargs):
             # check MetizSignupForm is valid then save user to db
             if register_form.is_valid():
                 register_form.save()
+                messages.success(request, 'Bạn đã đăng ký thành công.')
                 return redirect(reverse('home'))
 
         return render(request, 'registration/signup.html',
