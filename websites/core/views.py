@@ -6,7 +6,7 @@ from datetime import *
 from django.db.models import Avg, Sum, Count
 from django.http import HttpResponse, JsonResponse
 from itertools import chain
-
+import itertools
 def custom_404(request):
     return render(request, 'websites/errors/404.html', {}, status=404)
 
@@ -80,15 +80,41 @@ def film_detail(request, id):
 def news(request):
     try:
 
-        # get news order by priority and apply_date
+        # get news all
         news = NewOffer.objects.all()
-        # get news by priority !=null
-        data_news_has = news.order_by('priority', 'apply_date').exclude(priority__isnull=True)
-        # get news by priority=null
-        data_news_null = news.order_by('apply_date').exclude(priority__isnull=False)
-        # merge 2 queryset news
-        list_news = list(chain(data_news_has, data_news_null))
+
+        # get news future
+        news_future = news.filter(apply_date__gt=datetime.now())
+        # get news future by priority!=null
+        news_future_has = news_future.order_by('priority','apply_date').exclude(priority__isnull=True)
+        # get news future by priority=null
+        news_future_null = news_future.order_by('apply_date').exclude(priority__isnull=False)
+        # merge 2 queryset news future
+        list_news_future = list(chain(news_future_has, news_future_null))
         
+
+        # get news present
+        news_present = news.filter(apply_date=datetime.now())
+        # get news present by priority!=null
+        news_present_has = news_present.order_by('priority','apply_date').exclude(priority__isnull=True)
+        # get news present by priority=null
+        news_present_null = news_present.order_by('apply_date').exclude(priority__isnull=False)
+        # merge 2 queryset news present
+        list_news_present = list(chain(news_present_has, news_present_null))
+        
+
+        # get news past
+        news_past = news.filter(apply_date__lt=datetime.now())
+        # get news present by priority!=null
+        news_past_has = news_past.order_by('priority','-apply_date').exclude(priority__isnull=True)
+        # get news present by priority=null
+        news_past_null = news_past.order_by('-apply_date').exclude(priority__isnull=False)
+        # merge 2 queryset news present
+        list_news_past = list(chain(news_past_has, news_past_null))
+        
+        # merge 3 list by order future, present and past
+        list_news = list_news_future + list_news_present + list_news_past
+
         return render(request, 'websites/news.html', {'list_news': list_news})
     except Exception, e:
         print "Error: %s" % e
@@ -178,6 +204,7 @@ def home(request):
         
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
+
         return render(request, 'websites/home.html', {'data_news_has':data_news_has,'list_showing':list_showing,'list_coming_soon':list_coming_soon,'position_1': position_1[0] if position_1 else None, 'position_2': position_2[0] if position_2 else None, 'data_slide': data_slide})
     except Movie.DoesNotExist, e:
         print "Error Movie : %s" % e
