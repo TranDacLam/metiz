@@ -151,31 +151,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="metiz-option-info">
-                    <h3>Thông tin Khác</h3>
-                    <div class="fieldset">
-                        <li>
-                            <label for="onlineID">Quốc tịch</label>
-                            <div class="input-box">
-                                Việt Nam                
-                            </div>
-                        </li>
-                        <li class="customer-user-attributes">
-                            <ul class="form-list">
-                                <li>
-                                    <label for="personal_id">CMND hoặc Hộ chiếu</label>
-                                    <div class="input-box">
-                                        {% if user.personal_id %}
-                                            {{user.personal_id}}
-                                        {% elif not user.personal_id %}
-                                            <span>chưa có</span>
-                                        {% endif %}
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </div>
-                </div>
+                
                 <div class="buttons-set metiz-edit-btn">
                     <button type="submit" title="Lưu lại" class="button"><span><span>Lưu lại</span></span></button>
                 </div>
