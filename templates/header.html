@@ -4,7 +4,12 @@
             {% if user.is_authenticated %}
                 <div class="header-career">
                     <p class="welcome-msg">
-                        <a href="{% url 'profile' %}" title="Tài khoản"> Xin chào, {{ user.username }}!</a>
+                        <a href="{% url 'profile' %}" title="Tài khoản"> Xin chào, 
+                         {% if user.username %}  
+                            {{user.username}}!
+                        {%else%}  
+                            {{user.email}}!
+                        {%endif%}</a>
                     </p>
                 </div>
             {% endif%}

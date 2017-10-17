@@ -17,6 +17,53 @@
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <META HTTP-EQUIV="Content-language" CONTENT="vi">
     
+    
+
+
+    <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" />
+    <!-- font -->
+    <link href="{{ STATIC_URL }}assets/websites/css/font-global.css" rel="stylesheet">
+    <!-- slide movie page home -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/owl.carousel.min.css" media="all" />
+    <link href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" rel="stylesheet"/>
+    <!-- film detail -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/star-rating.min.css" media="all" />
+    <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X -->
+    
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/styles.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-metiz.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-metiz.css" media="all" />
+    <link rel="stylesheet" type="text/css"  href="{{ STATIC_URL }}assets/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/slick-theme.css" />
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}assets/css/carousel/home_banner.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/modal.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/footer.css" media="all" />
+    <!-- all file -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/layout.css" media="all" />
+    
+    <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X, Dolby atmos -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/special_cinema.css" media="all" />
+    <link rel="stylesheet"  href="{{ STATIC_URL }}assets/websites/css/slide_carousel.css"/>
+    <!-- showing, coming soon -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/list_film.css" media="all" />
+    <!-- password reset done, complete, comfirm -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/password_reset.css" media="all" />
+    <!-- signup -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/datetimepicker/jquery.datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/signup.css">
+    <!-- query, refund -->    
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/query_refund.css" media="all" />
+
+    <!-- Pament ad payment_return -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/payment.css" media="all" />
+    {% block extrastylesheet %}{% endblock %}
+
+    <title>{% block title %}{% endblock title %}</title>
+    {% block metacontent %}{% endblock %}
+    
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js" ></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.validate-1.17.0.min.js" ></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
@@ -29,6 +76,8 @@
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/star-rating.min.js"></script>
     <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" ></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/slick/slick.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/modal.js"></script>  
     <script src="{{ STATIC_URL }}assets/js/carousel/banner_slide.js"></script> 
     <script src="{{ STATIC_URL }}assets/websites/js/slide_carousel.js"></script>
     <!-- film detail -->
@@ -47,55 +96,13 @@
     </script>
     <!-- signup -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/signup.js"></script>
-    
-
-    <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" />
-    <!-- font -->
-    <link href="{{ STATIC_URL }}assets/websites/css/font-global.css" rel="stylesheet">
-    <!-- slide movie page home -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/owl.carousel.min.css" media="all" />
-    <link href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" rel="stylesheet"/>
-    <!-- film detail -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/star-rating.min.css" media="all" />
-    <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X -->
-    <link rel="stylesheet" href="{{ STATIC_URL }}assets/css/carousel/home_banner.css" media="all" />
-    
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/styles.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-metiz.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-metiz.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/header.css" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/modal.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/footer.css" media="all" />
-    <!-- all file -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/layout.css" media="all" />
-    <!-- careers_cluster-->
-    <!-- careers_unit-->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/careers_cluster.css" media="all" />
-    <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X, Dolby atmos -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/special_cinema.css" media="all" />
-    <link rel="stylesheet"  href="{{ STATIC_URL }}assets/websites/css/slide_carousel.css"/>
-    <!-- showing, coming soon -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/list_film.css" media="all" />
-    <!-- password reset done, complete, comfirm -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/password_reset.css" media="all" />
-    <!-- signup -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/datetimepicker/jquery.datetimepicker.css">
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/signup.css">
-    <!-- query, refund -->    
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/query_refund.css" media="all" />
-    
-    <title>{% block title %}{% endblock title %}</title>
-    {% block metacontent %}{% endblock %}
-    
-    {% block extrastylesheet %}{% endblock %}
 
     {% block extrascript %}{% endblock %}
 
 </head>
 
 <body id="{% block body_id %}body{% endblock %}" class="{% block body_class %}{%endblock%}">
-    
+
     <div class="wrapper">
         <noscript>
             <div class="global-site-notice noscript">

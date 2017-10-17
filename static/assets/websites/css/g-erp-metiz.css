@@ -2000,9 +2000,8 @@
 		background: url("../images/bg-cgv/sprite_icon.png") no-repeat scroll 12px -261px rgba(0, 0, 0, 0);
 	}
 	.login-forgot-pass {
-		background: url("../images/bg_arrow03.png") no-repeat scroll right 6px rgba(0, 0, 0, 0);
 		padding-top: 10px;
-		color: #666;
+		color: #004bff;
 		float: left;
 		font-size: 11px;
 		padding-right: 10px;
@@ -2039,9 +2038,8 @@
 		width: 541px;
 	}
 	.login-forgot-pass {
-		background: url("../images//bg-cgv/bg_arrow03.png") no-repeat scroll right 6px rgba(0, 0, 0, 0);
 		padding-top: 10px;
-		color: #666;
+		color: #004bff;
 		float: left;
 		font-size: 11px;
 		padding-right: 10px;
@@ -2194,9 +2192,8 @@
 		border:none;
 	}
 	.login-forgot-pass {
-		background: url("../images/bg-cgv/bg_arrow03.png") no-repeat scroll right 6px rgba(0, 0, 0, 0);
 		padding-top: 10px;
-		color: #666;
+		color: #004bff;
 		float: left;
 		font-size: 11px;
 		padding-right: 10px;

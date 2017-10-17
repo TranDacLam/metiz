@@ -18,10 +18,6 @@ $(document).ready(function() {
 				required: true,
 				email: true
 			},
-			personal_id:{
-				required: true,
-				number: true
-			},
 			password1:{
 				required: true,
 				minlength: 8
@@ -30,15 +26,6 @@ $(document).ready(function() {
 				required: true,
 				minlength: 8,
 				equalTo: "#password1"
-			},
-			address:{
-				required: true,
-			},
-			city:{
-				required: true,
-			},
-			district:{
-				required: true,
 			},
 		},
 		messages:{
