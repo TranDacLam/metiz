@@ -51,8 +51,8 @@ msgid "Email"
 msgstr ""
 
 #: templates/registration/signup.html:39 templates/registration/signup.html:111
-msgid "Enter Email Here.."
-msgstr "Nhập email ở đây.."
+msgid "Enter Email Here"
+msgstr "Nhập email ở đây"
 
 #: templates/registration/signup.html:42 templates/registration/signup.html:124
 msgid "Password"
@@ -63,7 +63,7 @@ msgid "Full Name"
 msgstr "Họ Tên"
 
 #: templates/registration/signup.html:78
-msgid "Enter Full Name Here.."
+msgid "Enter Full Name Here"
 msgstr "Nhập Họ Tên Ở Đây"
 
 #: templates/registration/signup.html:82
@@ -83,28 +83,28 @@ msgid "Birth Date"
 msgstr "Ngày Sinh"
 
 #: templates/registration/signup.html:96
-msgid "Choose Your Birthday.."
-msgstr "Chọn Ngày Sinh Của Bạn.."
+msgid "Choose Your Birthday"
+msgstr "Chọn Ngày Sinh Của Bạn"
 
 #: templates/registration/signup.html:100
 msgid "Phone"
 msgstr "Số Điện Thoại"
 
 #: templates/registration/signup.html:102
-msgid "Enter Phone Here.."
-msgstr "Nhập Số Điện Thoại Ở Đây.."
+msgid "Enter Phone Here"
+msgstr "Nhập Số Điện Thoại Ở Đây"
 
 #: templates/registration/signup.html:115
 msgid "Personal ID"
 msgstr "Số CMND"
 
 #: templates/registration/signup.html:117
-msgid "Enter Personal ID Here.."
-msgstr "Nhập Số CMND Ở Đây.."
+msgid "Enter Personal ID Here"
+msgstr "Nhập Số CMND Ở Đây"
 
 #: templates/registration/signup.html:127
-msgid "Enter Password Here.."
-msgstr "Nhập Mật Khẩu Ở Đây.."
+msgid "Enter Password Here"
+msgstr "Nhập Mật Khẩu Ở Đây"
 
 #: templates/registration/signup.html:131
 msgid "City"
@@ -119,8 +119,8 @@ msgid "Confirm Password"
 msgstr "Xác Nhận Mật Khẩu"
 
 #: templates/registration/signup.html:144
-msgid "Enter Password Again.."
-msgstr "Nhập Lại Mật Khẩu.."
+msgid "Enter Password Again"
+msgstr "Nhập Lại Mật Khẩu"
 
 #: templates/registration/signup.html:148
 msgid "District"
@@ -135,8 +135,8 @@ msgid "Address"
 msgstr "Địa Chỉ"
 
 #: templates/registration/signup.html:161
-msgid "Enter Address Here.."
-msgstr "Nhập Địa Chỉ Ở Đây.."
+msgid "Enter Address Here"
+msgstr "Nhập Địa Chỉ Ở Đây"
 
 #: websites/core/custom_models.py:64
 msgid "Staff Status"
