@@ -108,10 +108,11 @@ class MetizSignupForm(UserCreationForm):
                 metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
                                       user.email], data_binding)
             return user
-            
-        except Exception ,e :
+
+        except Exception, e:
             print 'Save Form Error ', e
             raise Exception('Internal Server Error.')
+
 
 class UpdateUserForm(forms.ModelForm):
 
@@ -121,22 +122,19 @@ class UpdateUserForm(forms.ModelForm):
     personal_id = forms.CharField(required=False)
     gender = forms.CharField(required=False)
     city = forms.CharField(required=False)
-    district = forms.CharField(required=False)  
+    district = forms.CharField(required=False)
 
     def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop("request")
         super(UpdateUserForm, self).__init__(*args, **kwargs)
 
     class Meta:
         model = User
-        fields = ('username','birth_date', 'address',
-            'personal_id','gender','city','district')
+        fields = ('username', 'birth_date', 'address',
+                  'personal_id', 'gender', 'city', 'district')
+
     def save(self, commit=True):
         user = super(UpdateUserForm, self).save(commit=False)
-        
+
         if commit:
             user.save()
         return user
-
-
-        

@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 from django.contrib import messages
 
+
 def logout(request):
     """ Action Login """
     try:
@@ -96,24 +97,12 @@ def confirm_activation(request, activation_key):
         return HttpResponse(status=500)
 
 
-def profile(request):
-    try:
-        # user is active then redirect to home page
-        
-        if request.user.is_active:
-            return render(request, 'registration/profile.html')
-        
-        return redirect(reverse('home'))
-    except Exception, e:
-        return HttpResponse(status=500)
-
-
 def change_password(request):
     try:
         # user is active then redirect to home page
         if request.user.is_active:
             return render(request, 'registration/change_password.html')
-            
+
         return redirect(reverse('home'))
     except Exception, e:
         return HttpResponse(status=500)
@@ -122,27 +111,30 @@ def change_password(request):
 def update_profile(request):
     try:
         user = request.user
-
-        data_init = {'username':user.username,'birth_date':user.birth_date,
-        'address':user.address,'personal_id':user.personal_id,'gender':user.gender,
-        'city': user.city,'district':user.district}
-
-        form = UpdateUserForm(request.POST,initial = data_init, request=request)
+        # init form for case GET action
+        user_form = UpdateUserForm()
+        context = {'form': user_form, 'username': user.username, 'birth_date': user.birth_date,
+                   'address': user.address, 'personal_id': user.personal_id, 'gender': user.gender,
+                   'city': user.city, 'district': user.district, 'email': user.email}
 
         if request.method == 'POST':
-            if form.is_valid():
-                user.username = request.POST['username']
-                user.birth_date = request.POST.get('birth_date')
-                user.address = request.POST.get('address')
-                user.personal_id = request.POST.get('personal_id')
-                user.gender = request.POST.get('gender')
-                user.city = request.POST.get('city')
-                user.district = request.POST.get('district')
-
-                user.save()
+            user_form = UpdateUserForm(request.POST)
+            if user_form.is_valid():
+                user_form.save()
                 return redirect(reverse('home'))
-        context = {"form": form}
+            else:
+                # keep data of user input
+                context['username'] = request.POST['username']
+                context['birth_date'] = request.POST['birth_date']
+                context['address'] = request.POST['address']
+                context['personal_id'] = request.POST['personal_id']
+                context['gender'] = request.POST['gender']
+                context['city'] = request.POST['city']
+                context['district'] = request.POST['district']
+                context['email'] = user.email
+                context['form'] = user_form
+
         return render(request, "registration/profile.html", context)
     except Exception, e:
+        print "Error update_profile : ", e
         return HttpResponse(status=500)
-
