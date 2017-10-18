@@ -38,3 +38,8 @@
 .msg-result{
     position:relative;
 }
+ul.errorlist li, .error{
+    font-size: 13px;
+    margin-top: 5px;
+    color: #a94442;
+}
