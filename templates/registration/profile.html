@@ -41,7 +41,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label for="full_name">{% trans "Full Name" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="username" id="username" value="{{ user.username }}" title="User Name" class="input-text validate-mobile required-entry" /> 
+                                        <input type="text" name="username" id="username" value="{{ username }}" title="User Name" class="input-text validate-mobile required-entry" /> 
                                         {% if register_form.username.errors %}
                                             {{register_form.username.errors}}
                                         {% endif %}
@@ -62,7 +62,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "Birth Date" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="birth_date" id="birth_date" value="{{ user.birth_date }}" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control">                
+                                        <input type="text" name="birth_date" id="birth_date" value="{{ birth_date }}" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control">                
                                         {% if register_form.birth_date.errors %}
                                             {{register_form.birth_date.errors}}
                                         {% endif %}
@@ -71,7 +71,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "Phone" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="phone" value="{% if user.phone %} {{ user.phone }} {% endif %}" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control">
+                                        <input type="text" name="phone" value="{% if phone %} {{ phone }} {% endif %}" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control">
                                         {% if register_form.phone.errors %}
                                             {{register_form.phone.errors}}
                                         {% endif %}
@@ -83,7 +83,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "Email"%}</label>
                                     <div class="inline">
-                                        <input type="text" id="email" value="{{ user.email }}" name="email" placeholder="{% trans 'Enter Email Here..' %}" class="form-control">
+                                        <input type="text" id="email" value="{{ email }}" name="email" placeholder="{% trans 'Enter Email Here..' %}" class="form-control">
                                         {% if register_form.email.errors %}
                                             {{register_form.email.errors}}
                                         {% endif %}
@@ -92,7 +92,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "Personal ID" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="personal_id" value="{% if user.personal_id %} {{ user.personal_id }} {% endif %}" id="personal_id" placeholder="{% trans 'Enter Personal ID Here..' %}" class="form-control">
+                                        <input type="text" name="personal_id" value="{% if personal_id %} {{ personal_id }} {% endif %}" id="personal_id" placeholder="{% trans 'Enter Personal ID Here..' %}" class="form-control">
                                         {% if register_form.personal_id.errors %}
                                             {{register_form.personal_id.errors}}
                                         {% endif %}
@@ -124,12 +124,11 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-sm-12 form-group">
                                     <label>{% trans "Address" %}</label>
                                     <div class="inline">
-                                        <textarea name="address" id="address" placeholder="{% trans 'Enter Address Here..' %}" rows="3" class="form-control"></textarea>
+                                        <textarea name="address" id="address" value="{% if address %}{{ address }} {% endif %}" placeholder="{% trans 'Enter Address Here..' %}" rows="3" class="form-control"></textarea>
                                         {% if register_form.address.errors %}
                                             {{register_form.address.errors}}
                                         {% endif %}
