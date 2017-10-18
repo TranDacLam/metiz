@@ -50,11 +50,11 @@
 	margin-bottom:15px;
 }
 .review-block-name{
-	font-size:12px;
+	font-size:14px;
 	margin:10px 0;
 }
 .review-block-date{
-	font-size:12px;
+	font-size:14px;
 }
 .review-block-rate{
 	font-size:13px;
@@ -66,7 +66,7 @@
 	margin-bottom:10px;
 }
 .review-block-description{
-	font-size:13px;
+	font-size:15px;
 }
 @media only screen and (min-width: 771px) {
 	.rating-custom .rating-container{
