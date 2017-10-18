@@ -111,7 +111,7 @@ $(document).ready(function() {
 	// demo data 
 	var list_city = {'Đà Nẵng': [' Hải Châu', 'Thanh Khê', ' Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu', 'Hòa Vang', ' Cẩm Lệ', ' Hoàng Sa'], 
 	'Hà Nội': [' Hoàn Kiếm', 'Ba Đình', 'Hai Bà Trưng'], 
-	'Hồ Chí Minh': ['1','2','3', '4', '5', '6', 'Tân Bình'], 'khac': ['khac']};
+	'Hồ Chí Minh': ['1','2','3', '4', '5', '6', 'Tân Bình'], 'Khác': ['Khác']};
 	
 	// load city and district but district hide
 	$.each(list_city, function(index, val) {
