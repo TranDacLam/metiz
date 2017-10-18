@@ -4,10 +4,11 @@ $(document).ready(function() {
             new_password1: { 
                 minlength: 8,
                 maxlength: 16,
-
+                required: true,
             }, 
              new_password2: { 
-                equalTo: '[name="new_password1"]'
+                equalTo: '[name="new_password1"]',
+                required: true,
                }
         },
         messages:{
