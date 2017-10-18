@@ -106,4 +106,11 @@ $(document).ready(function() {
 		formatDate:'Y/m/d',
 	});
 	
+	$('#is_agree').on('click', function(){
+		if($('#is_agree').prop("checked")){
+			$('#signup_form button').prop('disabled', false);
+		}else{
+			$('#signup_form button').prop('disabled', true);
+		}
+	});
 });

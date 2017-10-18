@@ -110,6 +110,10 @@ footer .content-3 p{
 #logo-bottom{
 	padding-bottom: 10px;
 }
+footer #content-map iframe{
+	height: 550px;
+	border: 0;
+}
 @media only screen and (max-width: 768px) {
 	footer .content-3 p{
 		text-align:center;
@@ -117,5 +121,12 @@ footer .content-3 p{
 	#logo-footer{
 		margin: 0 auto;
 	}
+	footer #content-map iframe{
+		height: 300px;
+	}
 }
-
+@media only screen and (max-width: 320px){
+	footer #content-map iframe{
+		height: auto;
+	}
+}
