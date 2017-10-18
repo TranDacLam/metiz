@@ -335,3 +335,12 @@ ul.metiz-movie-tabs {
 .slide-home-custom{
     padding-top: 20px;
 }
+.widget-static-block img{
+    height: 129px;
+    width: auto;
+    padding-left: 36px;
+    padding-right: 36px;
+    display: block;
+    margin: 0 auto;
+    max-width: 1142px;
+}

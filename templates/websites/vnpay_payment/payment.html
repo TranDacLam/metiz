@@ -21,10 +21,7 @@
                     <div class="form-group">
                         <label for="language">Loại hàng hóa </label>
                         <select name="order_type" id="order_type" class="form-control">
-                            <option value="topup">Nạp tiền điện thoại</option>
-                            <option value="billpayment">Thanh toán hóa đơn</option>
-                            <option value="fashion">Thời trang</option>
-                            <option value="other">Khác - Xem thêm tại VNPAY</option>
+                            <option value="topup">Mua vé xem phim</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -35,7 +32,7 @@
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
                         <input class="form-control" id="amount"
-                               name="amount" type="number" value="10000"/>
+                               name="amount" type="number" value=""/>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -43,28 +40,28 @@
                         <label for="bank_code">Ngân hàng</label>
                         <select name="bank_code" id="bank_code" class="form-control">
                             <option value="">Không chọn</option>
-                            <option value="NCB"> Ngan hang NCB</option>
-                            <option value="AGRIBANK"> Ngan hang Agribank</option>
-                            <option value="SCB"> Ngan hang SCB</option>
-                            <option value="SACOMBANK">Ngan hang SacomBank</option>
-                            <option value="EXIMBANK"> Ngan hang EximBank</option>
-                            <option value="MSBANK"> Ngan hang MSBANK</option>
-                            <option value="NAMABANK"> Ngan hang NamABank</option>
-                            <option value="VNMART"> Vi dien tu VnMart</option>
-                            <option value="VIETINBANK">Ngan hang Vietinbank</option>
-                            <option value="VIETCOMBANK"> Ngan hang VCB</option>
-                            <option value="HDBANK">Ngan hang HDBank</option>
-                            <option value="DONGABANK"> Ngan hang Dong A</option>
-                            <option value="TPBANK"> Ngân hàng TPBank</option>
-                            <option value="OJB"> Ngân hàng OceanBank</option>
+                            <option value="NCB"> Ngân hàng Quốc Dân</option>
+                            <option value="AGRIBANK"> Ngân hàng Agribank</option>
+                            <option value="SCB"> Ngân hàng Thương Mại Cổ Phần Sài Gòn</option>
+                            <option value="SACOMBANK">Ngân hàng SacomBank</option>
+                            <option value="EXIMBANK"> Ngân hàng EximBank</option>
+                            <option value="MSBANK"> Ngân hàng MSBANK</option>
+                            <option value="NAMABANK"> Ngân hàng Nam Á</option>
+                            <option value="VNMART"> Vi điện tử VnMart</option>
+                            <option value="VIETINBANK">Ngân hàng Vietinbank</option>
+                            <option value="VIETCOMBANK"> Ngân hàng Vietcombank</option>
+                            <option value="HDBANK">Ngân hàng HDBank</option>
+                            <option value="DONGABANK"> Ngân hàng Đông Á</option>
+                            <option value="TPBANK"> Ngân hàng Tiên Phong</option>
+                            <option value="OJB"> Ngân hàng Đại Dương</option>
                             <option value="BIDV"> Ngân hàng BIDV</option>
                             <option value="TECHCOMBANK"> Ngân hàng Techcombank</option>
-                            <option value="VPBANK"> Ngan hang VPBank</option>
-                            <option value="MBBANK"> Ngan hang MBBank</option>
-                            <option value="ACB"> Ngan hang ACB</option>
-                            <option value="OCB"> Ngan hang OCB</option>
-                            <option value="IVB"> Ngan hang IVB</option>
-                            <option value="VISA"> Thanh toan qua VISA/MASTER</option>
+                            <option value="VPBANK"> Ngân hàng VPBank</option>
+                            <option value="MBBANK"> Ngân hàng MBBank</option>
+                            <option value="ACB"> Ngân hàng ACB</option>
+                            <option value="OCB"> Ngân Hàng TMCP Phương Đông Việt Nam</option>
+                            <option value="IVB"> Ngân Hàng INDOVINA</option>
+                            <option value="VISA"> Thanh toán qua VISA/MASTER</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -80,7 +77,6 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán Popup</button>
                     <button type="submit" class="btn btn-default">Thanh toán Redirect</button>
                 </div>
                 {% csrf_token %}

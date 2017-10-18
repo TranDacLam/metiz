@@ -29,3 +29,12 @@
         padding-top: 110px;
     }
 }
+.block-account .block-content ul{
+    width: 80%;
+}
+.my-account{
+    line-height: 25px;
+}
+.my-account .buttons-set button:hover{
+    background: #ff5400;
+}

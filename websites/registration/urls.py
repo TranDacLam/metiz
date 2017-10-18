@@ -15,6 +15,7 @@ urlpatterns = [
             auth_views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
     url(r'^profile/$', views.profile, name='profile'),
+    url(r'^profile/change_password/$', views.change_password, name='change_password'),
     url(r'^profile/update/$', views.update_profile, name='update_profile'),
     # url(r'^password_change/$', password_change,
     #     kwargs={'template_name': 'registration/password_change_form.html',

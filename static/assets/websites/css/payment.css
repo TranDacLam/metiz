@@ -1,16 +1,15 @@
-
 @media only screen and (min-width: 340px){
     .vnpayment{
         padding: 0 20px 50px 20px;
     }
-    .vnpayment .btn-primary {
+    .vnpayment .btn-default {
         margin: 0 10px 0 10px;
     }
 }
 .vnpayment .form-control{
     width: 265px;
 }
-.vnpayment .btn-primary {
+.vnpayment .btn-default {
     color: #fff;
     background-color: #ff5400;
     border-color: #ff5400;
