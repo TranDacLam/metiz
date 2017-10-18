@@ -22,7 +22,7 @@ def cinox(request):
 	{'id':'cgv_site_008','class':'cgv_city_1','name':'CGV Cresent Mall'},{'id':'cgv_site_021','class':'cgv_city_1','name':'CGV Thảo Điền Pearl'},{'id':'cgv_site_023','class':'cgv_city_1','name':'CGV Vincom Thủ Đức'},
 	{'id':'cgv_site_024','class':'cgv_city_1','name':'CGV Vivo City'},{'id':'cgv_site_021','class':'cgv_city_1','name':'CGV Thảo Điền Pearl'},{'id':'cgv_site_030','class':'cgv_city_1','name':'CGV Pearl Plaza'},
 	{'id':'cgv_site_040','class':'cgv_city_1','name':'CGV Golden Plaza'},{'id':'cgv_site_001','class':'cgv_city_3','name':'CGV Vincom Center Bà Triệu'},{'id':'cgv_site_009','class':'cgv_city_3','name':'CGV Mipec Tower'}]
-	return render(request, 'websites/cinox.html', {'data_cinema_area':data_cinema_area,'data_cinema_list':data_cinema_list ,'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/cinox.html', {'data_cinema_area':data_cinema_area,'data_cinema_list':data_cinema_list })
 
 def cinox_detail(request):
 	data_cinema_area = [{'id':'cgv_city_1', 'name':'Hồ Chí Minh'},{'id':'cgv_city_3', 'name':'Hà Nội'},
@@ -34,7 +34,7 @@ def cinox_detail(request):
 	{'id':'cgv_site_008','class':'cgv_city_1','name':'CGV Cresent Mall'},{'id':'cgv_site_021','class':'cgv_city_1','name':'CGV Thảo Điền Pearl'},{'id':'cgv_site_023','class':'cgv_city_1','name':'CGV Vincom Thủ Đức'},
 	{'id':'cgv_site_024','class':'cgv_city_1','name':'CGV Vivo City'},{'id':'cgv_site_021','class':'cgv_city_1','name':'CGV Thảo Điền Pearl'},{'id':'cgv_site_030','class':'cgv_city_1','name':'CGV Pearl Plaza'},
 	{'id':'cgv_site_040','class':'cgv_city_1','name':'CGV Golden Plaza'},{'id':'cgv_site_001','class':'cgv_city_3','name':'CGV Vincom Center Bà Triệu'},{'id':'cgv_site_009','class':'cgv_city_3','name':'CGV Mipec Tower'}]
-	return render(request, 'websites/cinox_detail.html',{'data_cinema_area':data_cinema_area, 'data_cinema_list':data_cinema_list,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/cinox_detail.html',{'data_cinema_area':data_cinema_area, 'data_cinema_list':data_cinema_list})
 
 def gift_card(request):
 	data=[{'img':'/assets/websites/images/gift_card_-_cinox_1.png','title':'Thẻ Quà Tặng - 300.000đ','price':'300.000,00 ₫','description':'Có giá trị như tiền mặt'},
@@ -72,7 +72,7 @@ def account_create(request):
 	data_prefergenre = [{'value':'06','name':'ACTION'},{'value':'07','name':'ADVENTURE'},{'value':'08','name':'ANIMATION'},
 	{'value':'09','name':'COMEDY'},{'value':'14','name':'CRIME'}]
 
-	return render(request, 'websites/account_create.html', {'data_country':data_country, 'data_city':data_city,'data_day':data_day,'data_month':data_month,'data_year':data_year,'data_cgv':data_cgv, 'data_prefergenre':data_prefergenre,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/account_create.html', {'data_country':data_country, 'data_city':data_city,'data_day':data_day,'data_month':data_month,'data_year':data_year,'data_cgv':data_cgv, 'data_prefergenre':data_prefergenre})
 
 def account_login(request):
 
@@ -80,7 +80,7 @@ def account_login(request):
 
 
 def account_findmember(request):
-	return render(request, 'websites/account_findmember.html', { 'data_modal': data_modal})
+	return render(request, 'websites/account_findmember.html', )
 
 def account_forgot_password(request):
 	return render(request, 'websites/account_forgot_password.html', {})
@@ -113,7 +113,7 @@ def about_cinema(request):
 	data_content = [{'content': 'CJ CGV trực thuộc CJ Group, một trong những tập đoàn kinh tế đa ngành lớn nhất của Hàn Quốc có mặt ở 21 quốc gia trên thế giới. CJ CGV là một trong top 5 cụm rạp chiếu phim lớn nhất toàn cầu và là nhà phát hành, cụm rạp chiếu phim lớn nhất Việt Nam'},
 	{'content': 'CJ CGV trực thuộc CJ Group, một trong những tập đoàn kinh tế đa ngành lớn nhất của Hàn Quốc có mặt ở 21 quốc gia trên thế giới. CJ CGV là một trong top 5 cụm rạp chiếu phim lớn nhất toàn cầu và là nhà phát hành, cụm rạp chiếu phim lớn nhất Việt Nam'},
 	{'content': 'CJ CGV đã tạo nên khái niệm độc đáo về việc chuyển đổi rạp chiếu phim truyền thống thành tổ hợp văn hóa “Cultureplex”, nơi khán giả không chỉ đến thưởng thức điện ảnh đa dạng thông qua các công nghệ tiên tiến như IMAX, STARIUM, 4DX, Dolby Atmos, cũng như thưởng thức ẩm thực hoàn toàn mới và khác biệt trong khi trải nghiệm dịch vụ chất lượng nhất tại CGV'},]
-	return render(request, 'websites/about_cinema.html',{'data': data,'data_content':data_content,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/about_cinema.html',{'data': data,'data_content':data_content})
 
 def gift_card_detail(request):
 	terms_conditions = [{'description':'Thẻ này dùng để đổi vé xem phim hoặc thức ăn, đồ uống tại tất cả các rạp CGV, áp dụng tại quầy & trực tuyến.'},
@@ -131,7 +131,7 @@ def gift_card_detail(request):
 	{'content':'Thẻ quà tặng đang được bán tại quầy vé các rạp CGV Cinemas trên toàn quốc, hoặc bạn có thể mua thẻ quà tặng điện tử tại đây. Thẻ quà tặng có thể được tích hợp vào tài khoản thành viên, và thanh toán tiện lợi bằng thẻ thành viên khi không mang theo thẻ quà tặng.'},
 	{'content':'Hiện có loại thẻ quà tặng cho công ty / tổ chức khi bạn mua vé với số lượng lớn. Đặc biệt bạn có thể đưa logo và thông điệp của công ty / tổ chức vào thẻ. Gọi bộ phận Bán Vé Nhóm (Group Sales) để biết thêm thông tin: +84-8-3822-0333 '},
 	{'content':'Các câu hỏi thường gặp, vui lòng xem ở đây.'}]
-	return render(request, 'websites/gift_card_detail.html',{'data_description':data_description,'data_content':data_content,'terms_conditions':terms_conditions,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)} )
+	return render(request, 'websites/gift_card_detail.html',{'data_description':data_description,'data_content':data_content,'terms_conditions':terms_conditions} )
 
 def gift_card_online_detail(request):
 	return render(request, 'websites/gift_card_online_detail.html', {})
@@ -162,7 +162,7 @@ def careers_units_detail(request):
 	return render(request, 'websites/careers_units_detail.html', {'data_careers_units_detail':data_careers_units_detail})
 
 def contacts(request):
-	return render(request, 'websites/contacts.html', {  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/contacts.html')
 
 def terms_conditions(request):
 	data = [{'title':'1. Trách nhiệm của người sử dụng:','content':'Khi truy cập vào trang web này, bạn đồng ý chấp nhận mọi rủi ro. CGV và các bên đối tác khác không chịu trách nhiệm về bất kỳ tổn thất nào do những hậu quả trực tiếp, tình cờ hay gián tiếp; những thất thoát, chi phí (bao gồm chi phí pháp lý, chi phí tư vấn hoặc các khoản chi tiêu khác) có thể phát sinh trực tiếp hoặc gián tiếp do việc truy cập trang web hoặc khi tải dữ liệu về máy; những tổn hại gặp phải do virus, hành động phá hoại trực tiếp hay gián tiếp của hệ thống máy tính khác, đường dây điện thoại, phần cứng, phần mềm, lỗi chương trình, hoặc bất kì các lỗi nào khác; đường truyền dẫn của máy tính hoặc nối kết mạng bị chậm…'},
@@ -175,7 +175,7 @@ def terms_conditions(request):
 	{'title':'8. Đưa thông tin lên trang web:','content':'Bạn không được đưa lên, hoặc chuyển tải lên trang web tất cả những hình ảnh, từ ngữ khiêu dâm, thô tục, xúc phạm, phỉ báng, bôi nhọ, đe dọa, những thông tin không hợp pháp hoặc những thông tin có thể đưa đến việc vi phạm pháp luật, trách nhiệm pháp lý. CGV và tất cả các bên có liên quan đến việc xây dựng và quản lý trang web không chịu trách nhiệm hoặc có nghĩa vụ pháp lý đối với những phát sinh từ nội dung do bạn tải lên trang web.'},
 	{'title':'9. Luật áp dụng:','content':'Mọi hoạt động phát sinh từ trang web có thể sẽ được phân tích và đánh giá theo luật pháp Việt Nam và toà án Tp. Hồ Chí Minh. Và bạn phải đồng ý tuân theo các điều khoản riêng của các toà án này.'}]
 	
-	return render(request, 'websites/terms_conditions.html', {'data':data,  'data_modal': data_modal, 'last' : range(15,27),'present': range(27,30), 'future': range(1,15)})
+	return render(request, 'websites/terms_conditions.html', {'data':data})
 
 def terms_use(request):
 	data_description = [{'description':'- Chào mừng quý khách đến với CGV'},

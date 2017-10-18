@@ -22,7 +22,7 @@
                 <div data-u="slides" class="jssor_1_slides">
                 {% for item in data_slide  %}  
                     <div>
-                        <img data-u="image" src="{{ MEDIA_URL }}{{item.image}}" />
+                        <a href="{{item.sub_url}}"><img data-u="image" src="{{ MEDIA_URL }}{{item.image}}" /></a>
                         <img data-u="thumb" src="{{ MEDIA_URL }}{{item.image}}" />
                     </div>
                 {% endfor %}
@@ -120,26 +120,12 @@
                     <p>Ut dictum nisi massa, vitae pulvinar metus scelerisque in.</p>
                 </div>
             </div>
+            {% for item in data_news_has %}
             <div class="new-img col-lg-3 col-sm-4 col-xs-6">
-                <img class="" src="{{STATIC_URL}}/assets/websites/images/news/new_01.png" alt="">
-                <a class="bg_hover" href="#"></a>
+                <img class="" src="{{MEDIA_URL}}{{item.image}}" alt="{{item.name}}">
+                <a class="bg_hover" href="{% url 'new_detail' item.id %}"></a>
             </div>
-            <div class="new-img col-lg-3 col-sm-4 col-xs-6">
-                <img class="" src="{{STATIC_URL}}/assets/websites/images/news/new_02.png" alt="">
-                <a class="bg_hover" href="#"></a>
-            </div>
-           <div class="new-img col-lg-3 col-sm-4 col-xs-6">
-                <img class="" src="{{STATIC_URL}}/assets/websites/images/news/new_03.png" alt="">
-                <a class="bg_hover" href="#"></a>
-            </div>
-            <div class="new-img col-lg-3 col-sm-4 col-xs-6">
-                <img class="" src="{{STATIC_URL}}/assets/websites/images/news/new_04.png" alt="">
-                <a class="bg_hover" href="#"></a>
-            </div>
-            <div class="new-img col-lg-3 col-sm-4 col-xs-6">
-                <img class="" src="{{STATIC_URL}}/assets/websites/images/news/new_05.png" alt="">
-                <a class="bg_hover" href="#"></a>
-            </div>
+            {% endfor %}
             <div id="show_more" class="new-img col-lg-3 col-sm-4 col-xs-6">
                 <img id="more"  src="{{STATIC_URL}}/assets/websites/images/news/more.png" alt="">
                 <a href="{% url 'news'%}"><img id="more_hover" src="{{STATIC_URL}}/assets/websites/images/news/more_hover.png" alt=""></a>
