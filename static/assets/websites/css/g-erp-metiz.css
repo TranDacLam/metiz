@@ -1468,7 +1468,7 @@
 	}
 	.catalog-category-view .category-title h1 {
 		color: #0e1d2f;
-		font-size: 35px;
+		font-size: 24px;
 		font-weight: normal;
 		text-transform:capitalize;
 	}
@@ -2249,7 +2249,7 @@
 	}
 	.block-title span {
 		color: #0e1d2f;
-		font-size: 22px;
+		font-size: 20px;
 	}
 	.block-account .block-content li {
 		background: #7e8eaa;
@@ -2508,7 +2508,7 @@
 	}
 	.title-about-metiz h1 {
 		float: left;
-		font-size: 32px;
+		font-size: 22px;
 		color: #e71a0f;
 	}
 	.content-cms-about-us {
