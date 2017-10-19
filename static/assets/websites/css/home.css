@@ -233,6 +233,8 @@ ul.metiz-movie-tabs {
 }
 #news img{
 	width: 100%;
+	height:262px;
+	width:262px;
 }
 #news a{
 	/* width: 100%; */
@@ -249,16 +251,21 @@ ul.metiz-movie-tabs {
 }
 #news .bg_hover{
 	display:none;
+}
+#news .new-img:hover .bg_hover{
+	display: block;
 	background: url('../images/news/detail_hover.png');
+	background-size: 100% auto;
     position: absolute;
     top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+    left: 15px;
+    height:262px;
+	width:262px;
     background-repeat:no-repeat;
     background-size:contain;
     background-position:center;
 }
+
 
 #news .container h1{
 	font-weight: 700;
@@ -346,4 +353,115 @@ ul.metiz-movie-tabs {
 }
 .session-movie .metiz-movie-tabs li{
     font-family: "SairaSemiCondensed-Bold", sans-serif;
+}
+@media screen and (max-width: 1200px) {
+	#news img{
+		height:212px;
+		width:212px;
+	}
+	#news .bg_hover{
+		height:212px;
+		width:212px;
+		left:15px;
+	}
+	.new-img{
+	}
+	#news #box {
+	    height: 212px;
+	    padding: 20px;
+    }
+}
+@media screen and (max-width: 991px) {
+	.new-img{
+	}
+	#news img{
+		height:170px;
+		width:170px;
+	}
+	#news .bg_hover{
+		height:170px;
+		width:170px;
+		left:15px;
+	}
+
+	#news #box {
+	    height: 170px;
+	    padding: 6px;
+	    margin-top: 20px;
+	    border: 2px solid #c8c6be;
+	}
+	#news #title-box{
+		margin-bottom:0px;
+		font-size: 22px;
+		line-height: 1.5;
+
+	}
+}
+@media screen and (max-width: 767px) {
+	#news img{
+		height:300px;
+		width:300px;
+	}
+	#news .bg_hover{
+		height:300px;
+		width:300px;
+		left:15px;
+	}
+	.new-img{
+	}
+}
+@media screen and (max-width: 667px) {
+	#news img{
+		height:250px;
+		width:250px;
+		margin: 0 auto;
+	}
+	#news .bg_hover{
+		height:250px;
+		width:250px;
+		left:15px;
+	}
+	.new-img{
+	}
+}
+@media screen and (max-width: 520px) {
+	#news img{
+		height:214px;
+		width:214px;
+	}
+	#news .bg_hover{
+		height:214px;
+		width:214px;
+		left:15px;
+	}
+	.new-img{
+	}
+}
+@media screen and (max-width: 480px) {
+	#news img{
+		height:190px;
+		width:190px;
+	}
+	#news .bg_hover{
+		height:190px;
+		width:190px;
+		left: 15px;
+	}
+	#news #box {
+		height:auto;
+	}
+}
+@media screen and (max-width: 360px) {
+	#news img{
+		height:130px;
+		width:130px;
+	}
+	#news .bg_hover{
+		left: 15px;
+		height:130px;
+		width:130px;
+
+	}
+	
+
 }

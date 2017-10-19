@@ -57,3 +57,6 @@
 #myTabContent .password-reset-confirm .error,#myTabContent .errorlist {
     margin-right: 0px;
 }
+#address::-webkit-input-placeholder {
+    font-size: 12px;
+}
