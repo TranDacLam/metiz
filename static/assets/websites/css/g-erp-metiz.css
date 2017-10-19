@@ -1104,7 +1104,7 @@
 		margin-top: 25px;
 		padding-bottom: 6px;
 		text-align: center;
-		height:86px;
+		height:136px;
 	}
 	.sect-person ul {
 		border-bottom: 1px solid #222;
@@ -1468,7 +1468,7 @@
 	}
 	.catalog-category-view .category-title h1 {
 		color: #0e1d2f;
-		font-size: 35px;
+		font-size: 24px;
 		font-weight: normal;
 		text-transform:capitalize;
 	}
@@ -2249,7 +2249,7 @@
 	}
 	.block-title span {
 		color: #0e1d2f;
-		font-size: 22px;
+		font-size: 20px;
 	}
 	.block-account .block-content li {
 		background: #7e8eaa;
@@ -2386,7 +2386,7 @@
 	}
 	.customer-account-forgotpassword .page-title h1{
 		color: #fff !important;
-		font-size: 14px;
+		font-size: 15px;
 		background: none repeat scroll 0 0 #ff5400;
 		border-radius: 5px 5px 0 0;
 		position: relative;
@@ -2412,14 +2412,14 @@
 		float:left;
 		width:100%;
 		color: #0e1d2f;
-		font-size: 12px;
+		font-size: 13px;
 		font-weight:bold;
 	}
 	.note-forgot-pass p{
 		float:left;
 		width:100%;
 		color: #0e1d2f;
-		font-size:12px;
+		font-size:13px;
 	}
 	.form-change-pass{
 		float:left;
@@ -2508,7 +2508,7 @@
 	}
 	.title-about-metiz h1 {
 		float: left;
-		font-size: 32px;
+		font-size: 22px;
 		color: #e71a0f;
 	}
 	.content-cms-about-us {

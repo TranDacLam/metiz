@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block extrastylesheet %}
-     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/profile.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/profile.css" media="all" />
 {% endblock %}
 
 {% block container_class%}col2-left-layout{% endblock%}
@@ -22,7 +22,7 @@
             <div class="block-content">
                 <ul>
                     <li class="active"><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>
-                    <li class="last"><a href="">Lịch sử mua vé</a></li>
+                    <li class="last"><a href="{% url 'change_password' %}">Thay đổi mật khẩu</a></li>
                 </ul>
             </div>
         </div>
@@ -32,147 +32,119 @@
             <div class="page-title">
                 <h1>Thông tin tài khoản</h1>
             </div>
-            <form action="" method="post" autocomplete="off" id="form-validate" class="scaffold-form metiz-edit-account" enctype="multipart/form-data">
-                <div class="fieldset">
-                    <input name="form_key" type="hidden" value="kCJVU5MqcDKcSyGO" />
-                    <ul class="form-list">
-                        <li class="fields">
-                            <div class="customer-name">
-                                <div class="field name-firstname">
-                                    <label for="firstname">Tên</label>
-                                    <div class="input-box">
-                                        {{ user.username }}                      
+            <div class="col-lg-12 >
+                <div class="row">
+                    <form action="{% url 'update_profile' %}" method="post" autocomplete="off" id="profile-validate" class="scaffold-form metiz-edit-account" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label for="full_name">{% trans "Full Name" %}</label>
+                                    <div class="inline">
+                                        <input type="text" name="username" id="username" value="{{ username }}" title="User Name" class="input-text validate-mobile required-entry" /> 
+                                        {% if register_form.username.errors %}
+                                            {{register_form.username.errors}}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>{% trans "Gender" %}</label>
+                                    <div class="form-check form-check-inline">
+                                      <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked="checked"> {% trans "Male" %}
+                                        <input class="form-check-input" type="radio" name="gender" id="gender" value="female" > {% trans "Female" %}
+                                      </label>
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="right">
-                            <label for="gender">Giới tính</label>
-                            <div class="input-box">
-                                {{ user.gender }}                 
-                            </div>
-                        </li>
-                        <li>                    
-                            <label for="month">Ngày sinh</label>
-                            <div class="input-box customer-dob">
-                                {{ user.birth_date }}                  
-                            </div>
-                        </li>
-                        <li class="right">
-                            <label for="telephone" class="required"><em>*</em>Điện thoại</label>
-                            <div class="input-box">
-                                <input type="tel" name="telephone" id="telephone" value="{{ user.phone }}" title="Phone Number" class="input-text validate-mobile required-entry" />
-                            </div>
-                         </li>
-                        <li>
-                            <label for="email" class="required"><em>*</em>Địa chỉ email</label>
-                            <div class="input-box">
-                                {{ user.email }}               
-                            </div>
-                        </li>
-                        <li class="right">
-                            <label for="onlineID">Personal ID</label>
-                            <div class="input-box">
-                                {{ user.email }}         
-                            </div>
-                        </li>
-                        <li class="fields field-country">
-                            <div class="field field-country-first">
-                                <label for="region_id" class="required "><em>*</em>Tỉnh/Tp</label>
-                                <div class="input-box">
-                                    <select id="region_id" name="region_id" title="Tỉnh/Tp" class="validate-select">
-                                        <option value="">Vui lòng chọn...</option>
-                                        <option value="65">Hồ Chí Minh</option>                          
-                                        <option value="64">Hà Nội</option>                                                       
-                                        <option value="60" selected>Đà Nẵng</option>                
-                                    </select>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="right">
-                            <div class="field field-city">
-                                <label for="city" class="required "><em>*</em>Quận/Huyện</label>
-                                <div class="input-box">
-                                    <select class="input-box input-box-city validate-select" id="city" name="city" title="Quận/Huyện" >
-                                        <option value="">Vui lòng chọn...</option>
-                                        <option value="Huyện Hòa Vang">Huyện Hòa Vang</option>                                              
-                                        <option value="Quận Cẩm Lệ">Quận Cẩm Lệ</option>                                                       
-                                        <option value="Quận Hải Châu">Quận Hải Châu</option>                                                       
-                                        <option value="Quận Liên Chiểu">Quận Liên Chiểu</option>                                                       
-                                        <option value="Quận Ngũ Hành Sơn">Quận Ngũ Hành Sơn</option>                                                       
-                                        <option value="Quận Sơn Trà">Quận Sơn Trà</option>                                                       
-                                        <option value="Quận Thanh Khê">Quận Thanh Khê</option>                                                       
-                                        <option value="Other" selected>Other</option>                                                       
-                                    </select>
-                                </div>
-                            </div>
-                        </li>
-            <!-- Customer Address -->
-                        <li class="wide">
-                            <label for="street_1" class="required"><em>*</em>Địa chỉ</label>
-                                            <div class="input-box">
-                                <input type="text" name="street[]" value="{{ user.address }} " title="Địa chỉ" id="street_1" class="input-text  required-entry" />
-                            </div>
-                        </li>           
-                        <li class="right">
-                            <label for="current_password" class="required"><em>*</em>Mật khẩu cũ</label>
-                            <div class="input-box">
-                                <!-- This is a dummy hidden field to trick firefox from auto filling the password -->
-                                <input type="text" class="input-text no-display" name="dummy" id="dummy" />
-                                <input type="password" title="Mật khẩu cũ" class="input-text required-entry" name="current_password" id="current_password" />
-                            </div>
-                        </li>
-                        <li class="control">
-                            <input type="checkbox" name="change_password" id="change_password" value="1" title="Đổi mật khẩu" class="checkbox" /><label for="change_password">Đổi mật khẩu</label>
-                        </li>
-                    </ul>
-                </div>   
-                <div class="fieldset metiz-changepass">
-                    <h2 class="legend">Đổi mật khẩu</h2>
-                    <ul class="form-list">
-                        <li class="fields">
-                            <div class="field left">
-                                <label for="password" class="required"><em>*</em>Mật khẩu mới</label>
-                                <div class="input-box">
-                                    <input type="password" title="Mật khẩu mới" class="input-text required-entry validate-password" name="password" id="password" />
-                                </div>
-                            </div>
-                            <div class="field right">
-                                <label for="confirmation" class="required"><em>*</em>Nhập lại mật khẩu mới</label>
-                                <div class="input-box">
-                                    <input type="password" title="Nhập lại mật khẩu mới" class="input-text required-entry validate-cpassword" name="confirmation" id="confirmation" />
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="metiz-option-info">
-                    <h3>Thông tin Khác</h3>
-                    <div class="fieldset">
-                        <li>
-                            <label for="onlineID">Quốc tịch</label>
-                            <div class="input-box">
-                                Việt Nam                
-                            </div>
-                        </li>
-                        <li class="customer-user-attributes">
-                            <ul class="form-list">
-                                <li>
-                                    <label for="personal_id">CMND hoặc Hộ chiếu</label>
-                                    <div class="input-box">
-                                        <span>chưa có</span>
-                                        <input type="hidden" id="personal_id" name="personal_id" value="205775312" class="input-text" /> 
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label>{% trans "Birth Date" %}</label>
+                                    <div class="inline">
+                                        <input type="text" name="birth_date" id="birth_date" value="{{ birth_date }}" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control">                
+                                        {% if register_form.birth_date.errors %}
+                                            {{register_form.birth_date.errors}}
+                                        {% endif %}
                                     </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </div>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>{% trans "Phone" %}</label>
+                                    <div class="inline">
+                                        <input type="text" name="phone" value="{% if phone %} {{ phone }} {% endif %}" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control">
+                                        {% if register_form.phone.errors %}
+                                            {{register_form.phone.errors}}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label>{% trans "Email"%}</label>
+                                    <div class="inline">
+                                        <input type="text" id="email" value="{{ email }}" name="email" placeholder="{% trans 'Enter Email Here..' %}" class="form-control">
+                                        {% if register_form.email.errors %}
+                                            {{register_form.email.errors}}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>{% trans "Personal ID" %}</label>
+                                    <div class="inline">
+                                        <input type="text" name="personal_id" value="{% if personal_id %} {{ personal_id }} {% endif %}" id="personal_id" placeholder="{% trans 'Enter Personal ID Here..' %}" class="form-control">
+                                        {% if register_form.personal_id.errors %}
+                                            {{register_form.personal_id.errors}}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label>{% trans "City"%}</label>
+                                    <div class="inline">
+                                        <select class="form-control list-city" name="city" id="city">
+                                            <option value="" disabled selected>{% trans "Choose City" %}</option>
+                                        </select>
+                                        {% if register_form.city.errors %}
+                                            {{register_form.city.errors}}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>{% trans "District"%}</label>
+                                     <div class="inline">
+                                        <select class="form-control list-district" name="district" id="district">
+                                            <option disabled selected>{% trans "Choose District" %}</option>
+                                        </select>
+                                        {% if register_form.district.errors %}
+                                            {{register_form.district.errors}}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 form-group">
+                                    <label>{% trans "Address" %}</label>
+                                    <div class="inline">
+                                        <textarea name="address" id="address" value="{% if address %}{{ address }} {% endif %}" placeholder="{% trans 'Enter Address Here..' %}" rows="3" class="form-control"></textarea>
+                                        {% if register_form.address.errors %}
+                                            {{register_form.address.errors}}
+                                        {% endif %}
+                                    </div>
+                                </div>  
+                            </div>
+                            {% if redirect_field_value %}
+                                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> 
+                            {% endif %}
+                            <div class="buttons-set metiz-edit-btn">
+                                <button type="submit" title="Lưu lại" class="button"><span><span>Lưu lại</span></span></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="buttons-set metiz-edit-btn">
-                    <button type="submit" title="Lưu lại" class="button"><span><span>Lưu lại</span></span></button>
-                </div>
-                <p class="required">* Dữ liệu cho phép cập nhật</p>
-            </form>
+            </div>
         </div>
         <div class="col-left sidebar"></div>
     </div>

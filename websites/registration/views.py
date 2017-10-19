@@ -1,15 +1,18 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 from forms import *
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout
 from django.http import HttpResponse
 from django.utils import timezone
+from django.contrib import messages
 
 
 def logout(request):
     """ Action Login """
     try:
         auth_logout(request)
+        messages.success(request, 'Bạn đã đăng xuất thành công.')
         return redirect(reverse('home'))
     except Exception, e:
         return HttpResponse(status=500)
@@ -29,6 +32,7 @@ def login(request):
         if request.method == 'POST':
             login_form = LoginForm(request.POST, request=request)
             if login_form.is_valid():
+                messages.success(request, 'Bạn đã đăng nhập thành công.')
                 return redirect(reverse('home'))
             else:
                 result['errors'] = login_form.errors
@@ -48,6 +52,7 @@ def register_user(request, **kwargs):
             # check MetizSignupForm is valid then save user to db
             if register_form.is_valid():
                 register_form.save()
+                messages.success(request, 'Bạn đã đăng ký thành công.')
                 return redirect(reverse('home'))
 
         return render(request, 'registration/signup.html',
@@ -92,12 +97,44 @@ def confirm_activation(request, activation_key):
         return HttpResponse(status=500)
 
 
-def profile(request):
+def change_password(request):
     try:
         # user is active then redirect to home page
         if request.user.is_active:
-            return render(request, 'registration/profile.html')
-            
+            return render(request, 'registration/change_password.html')
+
         return redirect(reverse('home'))
     except Exception, e:
+        return HttpResponse(status=500)
+
+
+def update_profile(request):
+    try:
+        user = request.user
+        # init form for case GET action
+        user_form = UpdateUserForm()
+        context = {'form': user_form, 'username': user.username, 'birth_date': user.birth_date,
+                   'address': user.address, 'personal_id': user.personal_id, 'gender': user.gender,
+                   'city': user.city, 'district': user.district, 'email': user.email}
+
+        if request.method == 'POST':
+            user_form = UpdateUserForm(request.POST)
+            if user_form.is_valid():
+                user_form.save()
+                return redirect(reverse('home'))
+            else:
+                # keep data of user input
+                context['username'] = request.POST['username']
+                context['birth_date'] = request.POST['birth_date']
+                context['address'] = request.POST['address']
+                context['personal_id'] = request.POST['personal_id']
+                context['gender'] = request.POST['gender']
+                context['city'] = request.POST['city']
+                context['district'] = request.POST['district']
+                context['email'] = user.email
+                context['form'] = user_form
+
+        return render(request, "registration/profile.html", context)
+    except Exception, e:
+        print "Error update_profile : ", e
         return HttpResponse(status=500)

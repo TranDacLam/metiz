@@ -23,9 +23,24 @@
     .block-content li a{
         color: #0e1d2f;
     }
+    .my-account .page-title h1 {
+        color: #0e1d2f;
+    }
 }
 @media only screen and (min-width : 320px) and (max-width : 480px) {
     .my-account form{
         padding-top: 110px;
     }
+    .my-account .page-title h1 {
+        color: #0e1d2f;
+    }
+}
+.block-account .block-content ul{
+    width: 80%;
+}
+.my-account{
+    line-height: 25px;
+}
+.my-account .buttons-set button:hover{
+    background: #ff5400;
 }

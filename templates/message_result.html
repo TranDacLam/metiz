@@ -1,0 +1,11 @@
+{% if messages %}
+    <ul class="messages msg-result">
+        {% for msg in messages %}
+            <li>
+                <button type="button" class="btn btn-{{msg.level_tag}}">
+                    <span class="badge"><i class="fa fa-check" aria-hidden="true"></i></span> {{ msg.message }}
+                </button>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

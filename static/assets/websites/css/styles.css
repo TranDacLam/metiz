@@ -461,7 +461,7 @@ table,
 textarea {
   font-family: "SairaSemiCondensed-Regular", sans-serif;
   color: #0e1d2f;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 18px;;
 }
 
@@ -489,11 +489,11 @@ ul {
 h1, .h1 {
   margin: 0;
   color: #0e1d2f;
-  font-family:  "SairaSemiCondensed-Bold", sans-serif;
-  font-size: 32px;
+  font-family:  "SairaSemiCondensed-Medium", sans-serif;
+  font-size: 22px;
   font-style: normal;
   line-height:1.2;
-  font-weight: bold;
+  font-weight: 400;
   margin-bottom: 0.7em;
   text-rendering: optimizeLegibility;
 }
@@ -502,7 +502,7 @@ h2, .h2 {
   margin: 0;
   color: #0e1d2f;
   font-family:  "SairaSemiCondensed-Bold", sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-style: normal;
   line-height: 1.2;
   text-rendering: optimizeLegibility;
@@ -512,7 +512,7 @@ h3, .h3 {
   margin: 0;
   margin-bottom: 10px;
   color: #0e1d2f;
-  font-family:  "SairaSemiCondensed-Bold", sans-serif;
+  font-family:  "SairaSemiCondensed-Medium", sans-serif;
   font-size: 18px;
   font-style: normal;
   text-rendering: optimizeSpeed;
@@ -586,8 +586,8 @@ h6, .h6 {
 .page-title h2,
 .product-name h1,
 .product-name .h1 {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 400;
   padding-bottom: 3px;
   margin-bottom: 15px;
 }
@@ -616,7 +616,7 @@ h6, .h6 {
   margin: 0;
   margin-bottom: 10px;
   color: #636363;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed-Medium", sans-serif;
   font-size: 14px;
   font-weight: bold;
   font-style: normal;
@@ -802,7 +802,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-account li,
 .block-cms-menu li {
   text-transform: uppercase;
-  font-family:  "SairaSemiCondensed", sans-serif;
+  font-family: "SairaSemiCondensed-Medium", sans-serif;
   margin: 7px 0;
 }
 .block-account li strong,
@@ -863,7 +863,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .cart-table .product-cart-actions .button,
 #co-shipping-method-form .buttons-set .button,
 .footer .button {
-  background: #ff5400;
+  background: #7e8eaa;
   display: inline-block;
   padding: 6px 2px;
   border: 0;
@@ -901,7 +901,6 @@ a.button {
   text-decoration: none;
 }
 .button > span {
-    border: 1px solid #ffffff;
     font-weight: bold;
     padding: 5px;
 }
@@ -1052,6 +1051,7 @@ a.button:hover {
 }
 .buttons-set button.button {
   float: right;
+  border-radius: 5px;
 }
 .buttons-set:after {
   content: '';
@@ -2426,7 +2426,7 @@ body.customer-account .data-table .show-details .summary-collapse:hover:before {
 .fieldset p.required {
   margin-bottom: 5px;
   float: right;
-  font-size: 12px;
+  font-size: 13px;
   margin-top: 0px;
 }
 
@@ -2480,9 +2480,9 @@ li.centinel-logos div.input-box img {
  */
 label {
   display: inline-block;
-  font-size: 13px;
-  font-family:  "SairaSemiCondensed-Regular", sans-serif;
-  font-weight: 600;
+  font-size: 15px;
+  font-family:  "SairaSemiCondensed-Medium", sans-serif;
+  font-weight: 500;
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
@@ -5714,7 +5714,7 @@ p.product-name a:hover {
   margin: 0;
   margin-bottom: 0.5em;
   color: #636363;
-  font-family:  "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:  "SairaSemiCondensed-Medium", sans-serif;
   font-size: 24px;
   font-weight: 400;
   font-style: normal;

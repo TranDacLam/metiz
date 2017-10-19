@@ -24,8 +24,11 @@
 .rating-container .clear-rating {
 	display: none;
 }
-.rating-num { margin-top:0px;font-size: 54px; }	
-						.btn-grey{
+.rating-num { 
+	margin-top:0px;
+	font-size: 37px; 
+}	
+.btn-grey{
     background-color:#D8D8D8;
 	color:#FFF;
 }
@@ -50,11 +53,11 @@
 	margin-bottom:15px;
 }
 .review-block-name{
-	font-size:12px;
+	font-size:14px;
 	margin:10px 0;
 }
 .review-block-date{
-	font-size:12px;
+	font-size:14px;
 }
 .review-block-rate{
 	font-size:13px;
@@ -66,12 +69,9 @@
 	margin-bottom:10px;
 }
 .review-block-description{
-	font-size:13px;
+	font-size:15px;
 }
 @media only screen and (min-width: 771px) {
-	.rating-custom .rating-container{
-		padding-left: 70px;
-	}
 	.rating-block{
 		height: 187px;
 	}
@@ -190,4 +190,11 @@ ul.metiz-film-detail-tabs {
 }
 .booking-ticket-bot{
 	margin-bottom: 30px;
+}
+.rating-container .caption{
+	display: none;
+}
+.img-rounded{
+	width: 60px;
+	height: 60px;
 }

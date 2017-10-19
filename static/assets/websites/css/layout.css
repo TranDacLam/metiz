@@ -23,3 +23,23 @@
 	font-size:18px;
 	color: #f2275b;
 }
+.msg-result button{
+    position:fixed;
+    top:0;
+    right:0;
+    margin: 10px 15px 0 0;
+    width: 300px;
+    min-height: 50px;
+    padding: 10px;
+    text-align: -webkit-left;
+    white-space: normal;
+    z-index: 4;
+}
+.msg-result{
+    position:relative;
+}
+ul.errorlist li, .error{
+    font-size: 13px;
+    margin-top: 5px;
+    color: #a94442;
+}

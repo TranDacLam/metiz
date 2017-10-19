@@ -31,15 +31,30 @@ $(document).ready(function() {
     });
 
     // validate form
+    var val_required = 'Trường này là bắt buộc';
     $("#create_form").validate({
         rules: {
             amount: { 
                 number: true,
+                required: true,
+            },
+            bank_code: { 
+                required: true,
+            },
+            order_id: {
+                required: true,
             }
         },
         messages:{
             amount: {
                 number: 'Vui lòng chỉ nhập số',
+                required: val_required,
+            },
+            bank_code: {
+                required: val_required,
+            },
+            order_id: {
+                required: val_required,
             }
         }
     });
