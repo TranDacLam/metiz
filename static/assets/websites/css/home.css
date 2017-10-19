@@ -132,7 +132,7 @@ ul.metiz-movie-tabs {
 .info-movie-home h3{
 	text-transform: uppercase;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 1.5;
 }
 .info-movie-home h4{
@@ -343,4 +343,7 @@ ul.metiz-movie-tabs {
     display: block;
     margin: 0 auto;
     max-width: 1142px;
+}
+.session-movie .metiz-movie-tabs li{
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
 }
