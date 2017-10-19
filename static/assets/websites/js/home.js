@@ -70,13 +70,4 @@ $(document).ready(function() {
     $('.tabs-format-metiz').toggleOwl(' #movie-tab-1 .owl-carousel', control_owl);
     $('.tabs-format-metiz').toggleOwl('.owl-carousel.style2', control_owl);
 
-    // $('.new-img').mouseenter(function(event) {
-    // 	/* Act on the event */
-    // 	$(this).children('.bg_hover').css('display', 'block');
-    // });
-    // $('.new-img').mouseleave(function(event) {
-    // 	/* Act on the event */
-    // 	$(this).children('.bg_hover').css('display', 'none');
-    // });
-
 });
