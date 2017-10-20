@@ -113,7 +113,7 @@
     <div class="container">
         <h1 class="text-center">KHUYẾN MÃI & ƯU ĐÃI</h1>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-6 col-sm-6 ">
                 <div id="box">
                     <h2 id="title-box">nhiều ưu đãi liên tục nhé!</h2>
                     <p>Nullam imperdiet, sem at fringilla lobortis, sem nibh fringilla nibh, idae gravida mi purus sit amet erat. Ut dictum nisi massa, vitae pulvinar metus scelerisque in.</p>
@@ -121,12 +121,15 @@
                 </div>
             </div>
             {% for item in data_news_has %}
-            <div class="new-img col-lg-3 col-sm-4 col-xs-6">
-                <img class="" src="{{MEDIA_URL}}{{item.image}}" alt="{{item.name}}">
-                <a class="bg_hover" href="{% url 'new_detail' item.id %}"></a>
-            </div>
+                <div class="new-img col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <img class="" src="{{MEDIA_URL}}{{item.image}}" alt="{{item.name}}">
+                    <a class="bg_hover" href="{% url 'new_detail' item.id %}"></a>
+                </div>
+                    {% if forloop.counter|add:"-2"|divisibleby:"4" %}
+                        </div><div class="row">
+                    {% endif %}
             {% endfor %}
-            <div id="show_more" class="new-img col-lg-3 col-sm-4 col-xs-6">
+            <div id="show_more" class="new-img col-lg-3 col-sm-3 col-xs-6">
                 <img id="more"  src="{{STATIC_URL}}/assets/websites/images/news/more.png" alt="">
                 <a href="{% url 'news'%}"><img id="more_hover" src="{{STATIC_URL}}/assets/websites/images/news/more_hover.png" alt=""></a>
             </div>

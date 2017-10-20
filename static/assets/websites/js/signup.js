@@ -6,7 +6,7 @@ $(document).ready(function() {
     	'minlength_8' :'Nhập ít nhất 8 kí tự',
     	'email': 'Email không hợp lệ',
     	'number': 'Nhập các chữ số',
-    	'equalTo': 'Giá trị không giống nhau',
+    	'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
     	'validatePassword': 'Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt và có cả chữ và số',
     	'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
     } else {
@@ -15,7 +15,7 @@ $(document).ready(function() {
     	'minlength_8' :'Please enter at least 8 characters',
     	'email': 'Please enter a valid email address',
     	'number': 'Please enter a valid number',
-    	'equalTo': 'Please enter the same value again',
+    	'equalTo': "Password don't same. Please enter again",
     	'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
     	'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
     }
@@ -45,6 +45,7 @@ $(document).ready(function() {
 				validatePassword: true
 			},
 			password2:{
+				required: true,
 				equalTo: "#password1"
 			},
 		},
@@ -70,6 +71,7 @@ $(document).ready(function() {
 				minlength: message.minlength_8
 			},
 			password2:{
+				required: message.required,
 				equalTo: message.equalTo
 			},
 		},
