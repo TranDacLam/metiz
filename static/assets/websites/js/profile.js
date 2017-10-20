@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var val_required = 'Trường này là bắt buộc';
+    var val_date = 'Nhập ngày theo định dạng dd-mm-yyyy';
 
     // page profile
     $("#profile-validate").validate({
@@ -9,6 +10,7 @@ $(document).ready(function() {
             },
             birth_date: { 
                 required: true,
+                validateDate: true,
             },
             phone: {
                 required: true,
@@ -23,6 +25,7 @@ $(document).ready(function() {
             },
             birth_date: {
                 required: val_required,
+                validateDate: val_date,
             },
             phone: {
                 required: val_required,
@@ -32,6 +35,15 @@ $(document).ready(function() {
             }    
         }
     });
+    // format birthday
+    $.validator.addMethod(
+      "validateDate",
+      function (value, element) {
+        // put your own logic here, this is just a (crappy) example 
+        return value.match(/^\d\d?\-\d\d?\-\d\d\d\d$/);
+      },
+      message.validateDate
+    );
 
     // page change password
     $.validator.addMethod(
