@@ -41,7 +41,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label for="full_name">{% trans "Full Name" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="username" id="username" value="{{ username }}" title="User Name" class="input-text validate-mobile required-entry" /> 
+                                        <input type="text" name="username" id="username" value="{%if username %}{{ username }}{% endif %}" title="User Name" class="input-text validate-mobile required-entry" /> 
                                         {% if register_form.username.errors %}
                                             {{register_form.username.errors}}
                                         {% endif %}
@@ -62,7 +62,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "Birth Date" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="birth_date" id="birth_date" value="{{ birth_date }}" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control">                
+                                        <input type="text" name="birth_date" id="birth_date" value="{% if birth_date %}{{ birth_date }}{% endif %}" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control">                
                                         {% if register_form.birth_date.errors %}
                                             {{register_form.birth_date.errors}}
                                         {% endif %}
