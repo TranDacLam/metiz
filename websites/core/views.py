@@ -17,10 +17,15 @@ def custom_500(request):
 
 def showing(request):
     try:
+        if request.is_ajax():
+            # convert object models to json
+            # Ajax reuqest with page, db get data other with limit and offset
+            result = {}
+            return JsonResponse(result)
+
         # get data movie showing
         data_showing = Movie.objects.filter(
-            release_date__lte=datetime.now(), is_draft=False)
-
+            release_date__lte=datetime.now(), is_draft=False)        
         # get movie by priority !=null
         data_showing_has = data_showing.order_by('priority', '-release_date', 'name').exclude(priority__isnull=True)
         # get movie by priority ==null
@@ -238,6 +243,14 @@ def get_post(request):
     except Post.DoesNotExist, e:
         print "Error get_post : id or key_query does not exist"
         return HttpResponse(status=404)
+    except Exception, e:
+        print "Error: ", e
+        return HttpResponse(status=500)
+
+
+def get_booking(request):
+    try:
+        return render(request, 'websites/booking.html')
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)

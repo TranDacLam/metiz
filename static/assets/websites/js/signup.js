@@ -52,17 +52,17 @@ $(document).ready(function() {
 	$.validator.addMethod(
       "validateDate",
       function (value, element) {
-        // put your own logic here, this is just a (crappy) example 
+        // put your own logic here, this is just a (crappy) example
         return value.match(/^\d\d?\-\d\d?\-\d\d\d\d$/);
       },
       "Please enter a date in the format dd-mm-yyyy"
     );
 
-	// demo data 
-	var list_city = {'Da Nang': [' Hải Châu', 'Thanh Khê', ' Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu', 'Hòa Vang', ' Cẩm Lệ', ' Hoàng Sa'], 
-	'Ha Noi': [' Hoàn Kiếm', 'Ba Đình', 'Hai Bà Trưng'], 
+	// demo data
+	var list_city = {'Da Nang': [' Hải Châu', 'Thanh Khê', ' Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu', 'Hòa Vang', ' Cẩm Lệ', ' Hoàng Sa'],
+	'Ha Noi': [' Hoàn Kiếm', 'Ba Đình', 'Hai Bà Trưng'],
 	'HCM': ['1','2','3', '4', '5', '6', 'Tân Bình'], 'khac': ['khac']};
-	
+
 	// load city and district but district hide
 	$.each(list_city, function(index, val) {
 		var name_city= index;
@@ -100,7 +100,7 @@ $(document).ready(function() {
 		timepicker:false,
 		format:'d-m-Y',
 	});
-	
+
 	// checkbox dieu khoan register
 	$('#is_agree').on('click', function(){
 		if($('#is_agree').prop("checked")){

@@ -166,7 +166,7 @@ class PostAdmin(admin.ModelAdmin):
         if obj:  # editing an existing object
             return self.readonly_fields + ('key_query',)
         return self.readonly_fields
-        
+
     pass
 admin.site.register(Post, PostAdmin)
 

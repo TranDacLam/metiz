@@ -72,4 +72,13 @@ $(document).ready(function() {
             }
         }
     });
+
+    // handle double click submit 
+    $('#profile-validate .buttons-set button').on('click', function() {
+        if($("#profile-validate").valid()){
+            $(this).prop('disabled', true);
+            $("#profile-validate").submit();
+            $(this).prop('disabled', false);
+        }
+    });
 });

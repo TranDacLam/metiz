@@ -1,5 +1,5 @@
-<!DOCTYPE html> 
-{% load i18n %} 
+<!DOCTYPE html>
+{% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
@@ -12,12 +12,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
-    <meta name="description" content="{% block meta_description %}{% endblock %}"> 
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="icon">
     <link href="{{ STATIC_URL }}assets/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <META HTTP-EQUIV="Content-language" CONTENT="vi">
-    
-    
+
+
 
 
     <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -32,7 +32,7 @@
     <!-- film detail -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/star-rating.min.css" media="all" />
     <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X -->
-    
+
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/styles.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-metiz.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-metiz.css" media="all" />
@@ -45,7 +45,7 @@
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/footer.css" media="all" />
     <!-- all file -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/layout.css" media="all" />
-    
+
     <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X, Dolby atmos -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/special_cinema.css" media="all" />
     <link rel="stylesheet"  href="{{ STATIC_URL }}assets/websites/css/slide_carousel.css"/>
@@ -56,7 +56,7 @@
     <!-- signup, profile only has datetimepicker -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/datetimepicker/jquery.datetimepicker.css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/signup.css">
-    <!-- query, refund -->    
+    <!-- query, refund -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/query_refund.css" media="all" />
 
     <!-- Pament ad payment_return -->
@@ -65,12 +65,13 @@
 
     <title>{% block title %}{% endblock title %}</title>
     {% block metacontent %}{% endblock %}
-    
+
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js" ></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.validate-1.17.0.min.js" ></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.seat-charts.min.js"></script>
     <!-- slide movie page home -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/owl.carousel.min.js"></script>
     <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.js"></script>
@@ -79,8 +80,8 @@
     <!-- Home, Gold class, Sweetox, 4DX, IMAX, Lamour, Starium, Premium cinema, screen X -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" ></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/slick/slick.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/modal.js"></script>  
-    <script src="{{ STATIC_URL }}assets/js/carousel/banner_slide.js"></script> 
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/modal.js"></script>
+    <script src="{{ STATIC_URL }}assets/js/carousel/banner_slide.js"></script>
     <script src="{{ STATIC_URL }}assets/websites/js/slide_carousel.js"></script>
     <!-- film detail -->
     <!-- showing -->

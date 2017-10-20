@@ -12,7 +12,7 @@ class MyUserManager(BaseUserManager):
         """
         if not email:
             raise ValueError('Users must have an email address')
-        
+
         user = self.model(
             email=self.normalize_email(email),
             **extra_fields
@@ -45,8 +45,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('male', 'Male'),
         ('female', 'Female')
     )
-    
-    full_name = models.CharField(max_length=255, null=True, blank=True) 
+
+    full_name = models.CharField(max_length=255, null=True, blank=True)
     username = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(
         verbose_name='email address',
@@ -74,12 +74,12 @@ class User(AbstractBaseUser, PermissionsMixin):
                                    editable=False)
     modified = models.DateTimeField(
         _('Modified Date'), auto_now=True, editable=False)
-    
+
     token_last_expired = models.DateTimeField(default=timezone.now)
 
     activation_key = models.CharField(max_length=40)
     key_expires = models.DateTimeField(null=True, blank=True)
-    
+
     objects = MyUserManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -98,4 +98,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         app_label = 'core'
 
-        
+
