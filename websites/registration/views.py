@@ -124,13 +124,13 @@ def update_profile(request):
                 return redirect(reverse('home'))
             else:
                 # keep data of user input
-                context['username'] = request.POST['username']
-                context['birth_date'] = request.POST['birth_date']
-                context['address'] = request.POST['address']
-                context['personal_id'] = request.POST['personal_id']
-                context['gender'] = request.POST['gender']
-                context['city'] = request.POST['city']
-                context['district'] = request.POST['district']
+                context['username'] = request.POST['username'] if request.POST['username'] else None
+                context['birth_date'] = request.POST['birth_date'] if request.POST['birth_date'] else None
+                context['address'] = request.POST['address'] if request.POST['address'] else None
+                context['personal_id'] = request.POST['personal_id'] if request.POST['personal_id'] else None
+                context['gender'] = request.POST['gender'] if request.POST['gender'] else None
+                context['city'] = request.POST['city'] if request.POST['city'] else None
+                context['district'] = request.POST['district'] if request.POST['district'] else None
                 context['email'] = user.email
                 context['form'] = user_form
 
