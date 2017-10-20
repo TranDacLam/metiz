@@ -125,9 +125,9 @@
                     <img class="" src="{{MEDIA_URL}}{{item.image}}" alt="{{item.name}}">
                     <a class="bg_hover" href="{% url 'new_detail' item.id %}"></a>
                 </div>
-                {% if forloop.counter == 2 %}
-                    </div><div class="row">
-                {% endif %}
+                    {% if forloop.counter|add:"-2"|divisibleby:"4" %}
+                        </div><div class="row">
+                    {% endif %}
             {% endfor %}
             <div id="show_more" class="new-img col-lg-3 col-sm-3 col-xs-6">
                 <img id="more"  src="{{STATIC_URL}}/assets/websites/images/news/more.png" alt="">

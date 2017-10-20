@@ -274,7 +274,7 @@ ul.dropdown-menu>li>a:hover{
 	}
 	.logo-small{
 		display:block;
-		margin-left: 156px;
+		/* margin-left: 156px; */
 	}
 	.logo-large{
 		display:none;
@@ -295,7 +295,7 @@ ul.dropdown-menu>li>a:hover{
 		height: 77px;
 	}
 	.logo-small {
-	    left: 0%;
+	    left: 40%;
 	    /* margin-top:-12px; */
 	}
 	.skip-links {
