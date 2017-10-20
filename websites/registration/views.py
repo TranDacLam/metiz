@@ -7,6 +7,9 @@ from django.http import HttpResponse
 from django.utils import timezone
 from django.contrib import messages
 
+from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
+
 
 def logout(request):
     """ Action Login """
@@ -97,17 +100,36 @@ def confirm_activation(request, activation_key):
         return HttpResponse(status=500)
 
 
+@login_required(login_url='/admin/login/')
 def change_password(request):
     try:
-        # user is active then redirect to home page
-        if request.user.is_active:
-            return render(request, 'registration/change_password.html')
+        user = request.user
+        form = ChangePasswordForm()
+        if request.method == 'POST':
+            form = ChangePasswordForm(request.POST)
 
-        return redirect(reverse('home'))
+            if form.is_valid():
+                newpassword = form.cleaned_data['new_password']
+                old_password = form.cleaned_data['old_password']
+                valid = user.check_password(old_password)
+                if not valid:
+                    return render(request, 'registration/change_password.html')
+                user.set_password(newpassword)
+                user.save()
+                return redirect(reverse('home'))
+
+            else:
+                return render(request, 'registration/change_password.html', {'error': 'You have entered wrong old password', 'form': form})
+        else:
+            form = ChangePasswordForm()
+        content = RequestContext(request, {'form': form})
+        return render(request, 'registration/change_password.html')
     except Exception, e:
+        print "error", e
         return HttpResponse(status=500)
 
 
+@login_required(login_url='/admin/login/')
 def update_profile(request):
     try:
         user = request.user
@@ -124,13 +146,13 @@ def update_profile(request):
                 return redirect(reverse('home'))
             else:
                 # keep data of user input
-                context['username'] = request.POST['username']
-                context['birth_date'] = request.POST['birth_date']
-                context['address'] = request.POST['address']
-                context['personal_id'] = request.POST['personal_id']
-                context['gender'] = request.POST['gender']
-                context['city'] = request.POST['city']
-                context['district'] = request.POST['district']
+                context['username'] = request.POST['username'] if request.POST['username'] else None
+                context['birth_date'] = request.POST['birth_date'] if request.POST['birth_date'] else None
+                context['address'] = request.POST['address'] if request.POST['address'] else None
+                context['personal_id'] = request.POST['personal_id'] if request.POST['personal_id'] else None
+                context['gender'] = request.POST['gender'] if request.POST['gender'] else None
+                context['city'] = request.POST['city'] if request.POST['city'] else None
+                context['district'] = request.POST['district'] if request.POST['district'] else None
                 context['email'] = user.email
                 context['form'] = user_form
 
