@@ -116,7 +116,7 @@ class MetizSignupForm(UserCreationForm):
 
 class UpdateUserForm(forms.ModelForm):
 
-    username = forms.CharField(required=False)
+    username = forms.CharField(required=True)
     birth_date = forms.CharField(required=False)
     address = forms.CharField(required=False)
     personal_id = forms.CharField(required=False)
@@ -138,3 +138,31 @@ class UpdateUserForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class ChangePasswordForm(forms.Form):
+    old_password = forms.CharField()
+    new_password = forms.CharField()
+    new_password2 = forms.CharField()
+
+    def __init__(self, *args, **kwargs):
+        super(ChangePasswordForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        cleaned_data = super(ChangePasswordForm, self).clean()
+        old_password = self.cleaned_data.get('old_password')
+        new_password = self.cleaned_data.get('new_password')
+        new_password2 = self.cleaned_data.get('new_password2')
+        if new_password != new_password2:
+            raise forms.ValidationError(
+                _("The two password fields did not match."))
+        return cleaned_data
+
+    def save(self, commit=True):
+        """
+        Saves the new password.
+        """
+        self.user.set_password(self.cleaned_data["new_password"])
+        if commit:
+            user.save()
+        return self.user
