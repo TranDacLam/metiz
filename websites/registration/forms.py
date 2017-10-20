@@ -78,7 +78,6 @@ class MetizSignupForm(UserCreationForm):
         user = super(MetizSignupForm, self).save(commit=False)
         try:
             if commit:
-
                 salt = sha.new(str(random.random())).hexdigest()[:5]
                 activation_key = sha.new(salt + user.email).hexdigest()
                 key_expires = timezone.now() + datetime.timedelta(30)
@@ -129,7 +128,6 @@ class UpdateUserForm(forms.Form):
         self.user = kwargs.pop("user")
         super(UpdateUserForm, self).__init__(*args, **kwargs)
 
-    
     def save(self):
         self.user.full_name = self.cleaned_data.get('full_name')
         self.user.phone = self.cleaned_data.get('phone')

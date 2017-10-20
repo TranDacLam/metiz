@@ -69,3 +69,11 @@ def get_data_modal(value):
 	]
 	data_celendar = {'last' : range(15,27),'present':range(27,30), 'future': range(1,15) }
 	return {'data_schedule': data_schedule, 'data_celendar':data_celendar}
+
+
+@register.filter
+def floatdot(value, decimal_pos=4):
+    return format(value, '.%if'%decimal_pos)
+
+
+floatdot.is_safe = True
