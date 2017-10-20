@@ -120,7 +120,7 @@
                     <p>Ut dictum nisi massa, vitae pulvinar metus scelerisque in.</p>
                 </div>
             </div>
-            {% for item in data_news_has %}
+            {% for item in top_news %}
                 <div class="new-img col-lg-3 col-md-3 col-sm-3 col-xs-6">
                     <img class="" src="{{MEDIA_URL}}{{item.image}}" alt="{{item.name}}">
                     <a class="bg_hover" href="{% url 'new_detail' item.id %}"></a>
