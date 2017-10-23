@@ -43,21 +43,21 @@ class LoginForm(forms.Form):
             user = USER_MODEL.objects.get(email=email.strip())
         except USER_MODEL.DoesNotExist:
             raise forms.ValidationError(
-                _(msg.EMAIL_NOT_EXIST), code='invalid')
+                msg.EMAIL_NOT_EXIST, code='invalid')
 
         if user:
             if not user.check_password(password):
                 raise forms.ValidationError(
-                    _(msg.PASSWORD_WRONG), code='invalid')
+                    msg.PASSWORD_WRONG, code='invalid')
 
             if user.is_active:
                 user.backend = 'django.contrib.auth.backends.ModelBackend'
                 login(self.request, user)
             else:
-                raise forms.ValidationError(_(msg.INACTIVE), code='invalid')
+                raise forms.ValidationError(msg.INACTIVE, code='invalid')
         else:
             raise forms.ValidationError(
-                _(msg.EMAIL_NOT_EXIST), code='invalid')
+                msg.EMAIL_NOT_EXIST, code='invalid')
 
         return cleaned_data
 
