@@ -17,6 +17,7 @@ $(document).ready(function() {
     var mapRow = [];
     var number;
 
+    // get Type seat
     function typeSeatBooking(choice){
         var type_seat;
         switch(choice) {
@@ -42,7 +43,8 @@ $(document).ready(function() {
             objSeat[iArr].type_seat.push(typeSeatBooking(objBooking[i].TYPE_SEAT_ID));
         }else{
             iArr++;
-            //number max of row
+            //seat max of row, get value trước row seat kế tiếp
+            // vd: A1=1, A2=2, B1=1. get value A2=2  
             if(iArr > 0 && parseInt(objBooking[i-1].NAME.substring(1,3)) > seatMax){
                 seatMax = parseInt(objBooking[i-1].NAME.substring(1,3));
             }
@@ -73,6 +75,7 @@ $(document).ready(function() {
         return new Array(end - start).fill().map((d, i) => i + start);
     }
 
+    // numberRange get value (1,3) -> [1,2] 
     var arrColumns = numberRange(1, seatMax+1);
 
     // get array map seat Charts

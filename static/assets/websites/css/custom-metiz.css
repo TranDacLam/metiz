@@ -3027,7 +3027,8 @@ input::-ms-input-placeholder {
 
 /* ================================ MY ACCOUNT ========================================= */
 .my-account .page-title{
-    width:100%;
+    width:84.5%;
+    margin-left: 30px;
     text-align:center;
     margin-top:0px;
     background:#7e8eaa;
