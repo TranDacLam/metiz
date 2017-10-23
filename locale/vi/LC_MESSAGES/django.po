@@ -411,15 +411,15 @@ msgstr "Mật Khẩu Mới Không Trùng Khớp. Vui Lòng Nhập Lại."
 
 #: websites/registration/messages.py:3
 msgid "Email does not exits in system. Please check again."
-msgstr ""
+msgstr "Email không tồn tại. Vui lòng kiểm tra lại"
 
 #: websites/registration/messages.py:4
 msgid "Your password wrong. Please enter again."
-msgstr ""
+msgstr "Mật khẩu của bạn sai. Hãy nhập lại"
 
 #: websites/registration/messages.py:5
 msgid "Your account not active. Please check email and active account."
-msgstr ""
+msgstr "Tài khoản của bạn chưa được kích hoạt. Vui lòng kiểm tra email và kích hoạt tài khoản"
 
 #: websites/registration/metiz_email.py:15
 msgid "Either message_plain or message_html should be not None"
