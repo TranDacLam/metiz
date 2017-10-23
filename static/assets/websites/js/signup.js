@@ -95,7 +95,7 @@ $(document).ready(function() {
 	$.validator.addMethod(
       "validateDate",
       function (value, element) {
-        // put your own logic here, this is just a (crappy) example 
+        // put your own logic here, this is just a (crappy) example
         return value.match(/^\d\d?\-\d\d?\-\d\d\d\d$/);
       },
       message.validateDate
@@ -153,7 +153,6 @@ $(document).ready(function() {
 		format:'d-m-Y',
 	});
 
-	
 	// checkbox dieu khoan register
 	$('#is_agree').on('click', function(){
 		if($('#is_agree').prop("checked")){
@@ -162,5 +161,4 @@ $(document).ready(function() {
 			$('#signup_form button').prop('disabled', true);
 		}
 	});
-
 });

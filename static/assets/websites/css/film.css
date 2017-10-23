@@ -198,3 +198,6 @@ ul.metiz-film-detail-tabs {
 	width: 60px;
 	height: 60px;
 }
+.rating-container .filled-stars{
+	color: #ffef00;
+}
