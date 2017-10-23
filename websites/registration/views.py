@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
+from django.utils.translation import ugettext_lazy as _
 from forms import *
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout
@@ -15,7 +16,6 @@ def logout(request):
     """ Action Login """
     try:
         auth_logout(request)
-        messages.success(request, 'Bạn đã đăng xuất thành công.')
         return redirect(reverse('home'))
     except Exception, e:
         return HttpResponse(status=500)
@@ -35,7 +35,6 @@ def login(request):
         if request.method == 'POST':
             login_form = LoginForm(request.POST, request=request)
             if login_form.is_valid():
-                messages.success(request, 'Bạn đã đăng nhập thành công.')
                 return redirect(reverse('home'))
             else:
                 result['errors'] = login_form.errors
@@ -55,7 +54,7 @@ def register_user(request, **kwargs):
             # check MetizSignupForm is valid then save user to db
             if register_form.is_valid():
                 register_form.save()
-                messages.success(request, 'Bạn đã đăng ký thành công.')
+                messages.success(request, _('Register Account Successfully.'))
                 return redirect(reverse('home'))
 
         return render(request, 'registration/signup.html',
@@ -100,59 +99,60 @@ def confirm_activation(request, activation_key):
         return HttpResponse(status=500)
 
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/login/')
 def change_password(request):
     try:
         user = request.user
-        form = ChangePasswordForm()
+        form = ChangePasswordForm(user=user)
         if request.method == 'POST':
-            form = ChangePasswordForm(request.POST)
+            form = ChangePasswordForm(request.POST, user=user)
 
             if form.is_valid():
-                newpassword = form.cleaned_data['new_password']
-                old_password = form.cleaned_data['old_password']
-                valid = user.check_password(old_password)
-                if not valid:
-                    return render(request, 'registration/change_password.html')
-                user.set_password(newpassword)
-                user.save()
-                return redirect(reverse('home'))
+                form.save()
+                messages.success(request, _('Update Password Successfully.'))
+                return redirect(reverse('change_password'))
 
-            else:
-                return render(request, 'registration/change_password.html', {'error': 'You have entered wrong old password', 'form': form})
-        else:
-            form = ChangePasswordForm()
-        content = RequestContext(request, {'form': form})
-        return render(request, 'registration/change_password.html')
+        return render(request, 'registration/change_password.html', {'form': form})
     except Exception, e:
         print "error", e
         return HttpResponse(status=500)
 
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/login/')
 def update_profile(request):
     try:
         user = request.user
         # init form for case GET action
-        user_form = UpdateUserForm()
-        context = {'form': user_form, 'username': user.username, 'birth_date': user.birth_date,
+        user_form = UpdateUserForm(user=user)
+        context = {'form': user_form, 'full_name': user.full_name, 'birth_date': user.birth_date,
                    'address': user.address, 'personal_id': user.personal_id, 'gender': user.gender,
-                   'city': user.city, 'district': user.district, 'email': user.email}
+                   'city': user.city, 'district': user.district, 'phone': user.phone, 'email': user.email}
 
         if request.method == 'POST':
-            user_form = UpdateUserForm(request.POST)
+            user_form = UpdateUserForm(request.POST, user=user)
             if user_form.is_valid():
                 user_form.save()
-                return redirect(reverse('home'))
+                messages.success(request, _('Update Profile Successfully.'))
+                return redirect(reverse('profile'))
             else:
                 # keep data of user input
-                context['username'] = request.POST['username'] if request.POST['username'] else None
-                context['birth_date'] = request.POST['birth_date'] if request.POST['birth_date'] else None
-                context['address'] = request.POST['address'] if request.POST['address'] else None
-                context['personal_id'] = request.POST['personal_id'] if request.POST['personal_id'] else None
-                context['gender'] = request.POST['gender'] if request.POST['gender'] else None
-                context['city'] = request.POST['city'] if request.POST['city'] else None
-                context['district'] = request.POST['district'] if request.POST['district'] else None
+                context['full_name'] = request.POST[
+                    'full_name'] if 'full_name' in request.POST else None
+                context['birth_date'] = request.POST[
+                    'birth_date'] if 'birth_date' in request.POST else None
+                context['address'] = request.POST[
+                    'address'] if 'address' in request.POST else None
+                context['personal_id'] = request.POST[
+                    'personal_id'] if 'personal_id' in request.POST else None
+                context['gender'] = request.POST[
+                    'gender'] if 'gender' in request.POST else None
+                context['city'] = request.POST[
+                    'city'] if 'city' in request.POST else None
+                context['district'] = request.POST[
+                    'district'] if 'district' in request.POST else None
+                context['phone'] = request.POST[
+                    'phone'] if 'phone' in request.POST else None
+
                 context['email'] = user.email
                 context['form'] = user_form
 

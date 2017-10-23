@@ -98,6 +98,7 @@ class Movie(DateTimeModel):
     cast = models.CharField(_("Cast"), max_length=255)
     time_running = models.IntegerField(_('Time Running'))
     release_date = models.DateField(_("Release Date"))
+    end_date = models.DateField(_("End Date"))
     rated = models.ForeignKey("Rated", related_name='film_rated_rel')
     genre = models.ForeignKey("Genre", related_name='film_genre_rel')
     movie_type = models.ForeignKey("MovieType", related_name='film_type_rel')

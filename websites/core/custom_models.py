@@ -18,7 +18,7 @@ class MyUserManager(BaseUserManager):
             **extra_fields
         )
         # print "email ",email
-        user.username = username
+        user.username = email
         user.set_password(password)
         user.is_active = False
         user.save(using=self._db)
@@ -33,7 +33,7 @@ class MyUserManager(BaseUserManager):
             email,
             password=password
         )
-        # user.username = email
+        user.username = email
         user.is_staff = True
         user.is_superuser = True
         user.is_active = True
@@ -66,7 +66,7 @@ class User(AbstractBaseUser, PermissionsMixin):
                     'site.')
     )
     is_active = models.BooleanField(
-        _('Active'), default=True,
+        _('Active'), default=False,
         help_text=_('Designates whether this user should be treated as '
                     'active. Unselect this instead of deleting accounts.')
     )

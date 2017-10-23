@@ -7,6 +7,8 @@ from django.db.models import Avg, Sum, Count
 from django.http import HttpResponse, JsonResponse
 from itertools import chain
 import itertools
+
+
 def custom_404(request):
     return render(request, 'websites/errors/404.html', {}, status=404)
 
@@ -18,15 +20,21 @@ def custom_500(request):
 def showing(request):
     try:
         # get data movie showing
-        data_showing = Movie.objects.filter(
-            release_date__lte=datetime.now(), is_draft=False)
+        """ 
+            Movie Showing Follow Condition:
+            - get movie with release date less than equal current day
+            - order priority first
+            - order by field release_date descending
+            - order by name
+            *Note: in alogilm query movie add extra field priority_null and append priority is null to end list
+        """
+        movie_showings = Movie.objects.filter(
+            release_date__lte=datetime.now(), end_date__gte=datetime.now(), is_draft=False).order_by('priority').extra(
+            select={'priority_null': 'priority is null'})
 
-        # get movie by priority !=null
-        data_showing_has = data_showing.order_by('priority', '-release_date', 'name').exclude(priority__isnull=True)
-        # get movie by priority ==null
-        data_showing_null = data_showing.order_by('-release_date','name').exclude(priority__isnull=False)
-        # merge 2 queryset film_showing
-        list_data_showing = list(chain(data_showing_has, data_showing_null))
+        list_data_showing = movie_showings.extra(
+            order_by=['priority_null', '-release_date', 'name'])
+        
         return render(request, 'websites/showing.html', {'list_data_showing': list_data_showing})
     except Exception, e:
         print "Error: ", e
@@ -36,14 +44,20 @@ def showing(request):
 def coming_soon(request):
     try:
         # get data moving comingsoon
-        data_coming_soon = Movie.objects.filter(release_date__gt=datetime.now(), is_draft=False)
+        """ 
+            Movie Comming Soon Follow Condition:
+            - get movie with release date greater than current day
+            - order priority first
+            - order by field release_date descending
+            - order by name
+            *Note: in alogilm query movie add extra field priority_null and append priority is null to end list
+        """
+        movie_comming = Movie.objects.filter(
+            release_date__gt=datetime.now(), is_draft=False).extra(select={'priority_null': 'priority is null'})
 
-        # get movie by priority !=null
-        data_coming_soon_has = data_coming_soon.order_by('priority', 'release_date', 'name').exclude(priority__isnull=True)
-        # get movie by priority ==null
-        data_coming_soon_null = data_coming_soon.order_by('release_date','name').exclude(priority__isnull=False)
-        # merge 2 queryset film_showing
-        list_data_coming_soon = list(chain(data_coming_soon_has, data_coming_soon_null))
+        list_data_coming_soon = movie_comming.extra(
+            order_by=['priority_null', 'release_date', 'name'])
+
         return render(request, 'websites/coming_soon.html', {'list_data_coming_soon': list_data_coming_soon})
     except Exception, e:
         print "Error: ", e
@@ -59,16 +73,15 @@ def film_detail(request, id):
         # average rating for film detail
         rating__avg = comments.aggregate(rating=(Avg('rating')))
         # count sum rating in comments
-        rating__sum = comments.aggregate(Sum('rating')).get('rating__sum')
+        # Count total user rating for film
+        total_count = comments.aggregate(Count('rating')).get('rating__count')
+        total_detail = comments.values(
+            'rating').annotate(total=Count('rating')).order_by('-rating')
+        
+        return render(request, 'websites/film_detail.html',
+                      {'total_count': total_count, 'total_detail': total_detail, 'rating__avg': rating__avg,
+                       'film_detail': film_detail, 'comments': comments})
 
-        total_percent = []
-        for i in range(1, 6):
-            # lay tong so sao cung loai (1 sao, 2 sao,...5 sao) trong danh gia
-            count = comments.filter(rating=i).aggregate(
-                Sum('rating')).get('rating__sum')
-            # dua tong so sao tung loai vao mang
-            total_percent.append(count)
-        return render(request, 'websites/film_detail.html', { 'total_percent': total_percent, 'count': count, 'rating__sum': rating__sum, 'film_detail': film_detail, 'comments': comments, 'rating__avg': rating__avg})
     except Movie.DoesNotExist, e:
         print "Error Movie : %s" % e
         return HttpResponse(status=404)
@@ -79,41 +92,30 @@ def film_detail(request, id):
 
 def news(request):
     try:
-
+        """ 
+            New and Offer for Furute then order by priority and apply_date ascending
+            New and Offer for Present then order by priority and apply_date descending
+            - If same date then order modified date
+            *Note: in alogilm query movie add extra field priority_null and append priority is null to end list
+        """
         # get news all
         news = NewOffer.objects.all()
 
-        # get news future
-        news_future = news.filter(apply_date__gt=datetime.now())
-        # get news future by priority!=null
-        news_future_has = news_future.order_by('priority','apply_date').exclude(priority__isnull=True)
-        # get news future by priority=null
-        news_future_null = news_future.order_by('apply_date').exclude(priority__isnull=False)
-        # merge 2 queryset news future
-        list_news_future = list(chain(news_future_has, news_future_null))
-        
+        news_future = news.filter(apply_date__gt=datetime.now()).order_by(
+            'priority').extra(select={'priority_null': 'priority is null'})
+
+        list_news_future = news_future.extra(
+            order_by=['priority_null', 'apply_date', 'modified'])
 
         # get news present
-        news_present = news.filter(apply_date=datetime.now())
-        # get news present by priority!=null
-        news_present_has = news_present.order_by('priority','apply_date').exclude(priority__isnull=True)
-        # get news present by priority=null
-        news_present_null = news_present.order_by('apply_date').exclude(priority__isnull=False)
-        # merge 2 queryset news present
-        list_news_present = list(chain(news_present_has, news_present_null))
-        
+        news_present = news.filter(apply_date__lte=datetime.now()).order_by(
+            'priority').extra(select={'priority_null': 'priority is null'})
 
-        # get news past
-        news_past = news.filter(apply_date__lt=datetime.now())
-        # get news present by priority!=null
-        news_past_has = news_past.order_by('priority','-apply_date').exclude(priority__isnull=True)
-        # get news present by priority=null
-        news_past_null = news_past.order_by('-apply_date').exclude(priority__isnull=False)
-        # merge 2 queryset news present
-        list_news_past = list(chain(news_past_has, news_past_null))
-        
+        list_news_present = news_present.extra(
+            order_by=['priority_null', '-apply_date', 'modified'])
+
         # merge 3 list by order future, present and past
-        list_news = list_news_future + list_news_present + list_news_past
+        list_news = list(chain(list_news_future, list_news_present))
 
         return render(request, 'websites/news.html', {'list_news': list_news})
     except Exception, e:
@@ -125,7 +127,7 @@ def new_detail(request, id):
     try:
         # get news detail by id
         new = NewOffer.objects.get(pk=id)
-        return render(request, 'websites/new_detail.html', { 'new': new})
+        return render(request, 'websites/new_detail.html', {'new': new})
     except NewOffer.DoesNotExist, e:
         print "Error new_detail : %s" % e
         return HttpResponse(status=404)
@@ -133,25 +135,27 @@ def new_detail(request, id):
         print "Error: ", e
         return HttpResponse(status=500)
 
+
 def get_technology(request):
     try:
-        req_name= request.GET['name']
-        check = CenimaTechnology.objects.filter(name = req_name)
+        req_name = request.GET['name']
+        check = CenimaTechnology.objects.filter(name=req_name)
         if (check):
             # get technology detail by name
-            technology = CenimaTechnology.objects.get(name = req_name)
-            content=technology.content
-            name= technology.name
-            data= {
+            technology = CenimaTechnology.objects.get(name=req_name)
+            content = technology.content
+            name = technology.name
+            data = {
                 'name': name,
                 'content': content
             }
             return JsonResponse(data)
-        print "Do not found cenima technology name ",req_name
+        print "Do not found cenima technology name ", req_name
         return HttpResponse(status=500)
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
+
 
 def technology_detail(request, name):
     try:
@@ -159,7 +163,7 @@ def technology_detail(request, name):
         allTechnology = CenimaTechnology.objects.all()
         # get technology detail by name
         technology = allTechnology.get(name=name)
-        return render(request, 'websites/cinema_technology.html', { 'technology': technology, 'allTechnology': allTechnology})
+        return render(request, 'websites/cinema_technology.html', {'technology': technology, 'allTechnology': allTechnology})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
@@ -169,7 +173,8 @@ def home(request):
     try:
         # banner on home page
         result = {}
-        banners = Banner.objects.filter(is_show=True).order_by('position', 'modified')
+        banners = Banner.objects.filter(
+            is_show=True).order_by('position', 'modified')
 
         # check list banners and get banner position 1 and 2
         position_1, position_2 = None, None
@@ -177,35 +182,51 @@ def home(request):
             position_1 = banners.filter(position=1)
             position_2 = banners.filter(position=2)
 
-        # phim dang chieu
-        movie_showing = Movie.objects.filter(
-            release_date__lte=datetime.now(), is_draft=False)
-        # get movie by priority !=null
-        film_showing_has = movie_showing.order_by('priority', '-release_date', 'name').exclude(priority__isnull=True)
-        # get movie by priority ==null
-        film_showing_null = movie_showing.order_by('-release_date','name').exclude(priority__isnull=False)
-        # merge 2 queryset film_showing
-        list_showing = list(chain(film_showing_has, film_showing_null))
-        
-        # phim sap chieu
-        movie_soon = Movie.objects.filter(
-            release_date__gt=datetime.now(), is_draft=False)
-        # get movie by priority !=null
-        film_coming_soon_has = movie_soon.order_by('priority', 'release_date', 'name').exclude(priority__isnull=True)
-        # get movie by priority ==null
-        film_coming_soon_null = movie_soon.order_by('release_date','name').exclude(priority__isnull=False)
-        # merge 2 queryset film_coming_soon
-        list_coming_soon = list(chain(film_coming_soon_has, film_coming_soon_null))
+        """ 
+            Movie Showing Follow Condition:
+            - get movie with release date less than equal current day
+            - order priority first
+            - order by field release_date descending
+            - order by name
+            *Note: in alogilm query movie add extra field priority_null and append priority is null to end list
+        """
+        movie_showings = Movie.objects.filter(
+            release_date__lte=datetime.now(), end_date__gte=datetime.now(), is_draft=False).order_by('priority').extra(
+            select={'priority_null': 'priority is null'})
+
+        list_showing = movie_showings.extra(
+            order_by=['priority_null', '-release_date', 'name'])
+
+
+        """ 
+            Comming Soon Follow Condition:
+            - get movie with release date greater than current day
+            - order priority first
+            - order by field release_date descending
+            - order by name
+            *Note: in alogilm query movie add extra field priority_null and append priority is null to end list
+        """
+        movie_soons = Movie.objects.filter(
+            release_date__gt=datetime.now(), is_draft=False).order_by('priority').extra(
+            select={'priority_null': 'priority is null'})
+
+        list_coming_soon = movie_soons.extra(
+            order_by=['priority_null', 'release_date', 'name'])
 
         # get news order by priority and apply_date
-        news = NewOffer.objects.all()
-        # get news by priority !=null
-        data_news_has = news.order_by('priority', 'apply_date').exclude(priority__isnull=True)[:5]
-        
+        news = NewOffer.objects.all().order_by('priority').extra(
+            select={'priority_null': 'priority is null'})
+
+        top_news = news.extra(order_by=['priority_null', 'apply_date'])[:5]
+
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
 
-        return render(request, 'websites/home.html', {'data_news_has':data_news_has,'list_showing':list_showing,'list_coming_soon':list_coming_soon,'position_1': position_1[0] if position_1 else None, 'position_2': position_2[0] if position_2 else None, 'data_slide': data_slide})
+        return render(request, 'websites/home.html', {'top_news': top_news, 'list_showing': list_showing,
+                                                      'list_coming_soon': list_coming_soon,
+                                                      'position_1': position_1[0] if position_1 else None,
+                                                      'position_2': position_2[0] if position_2 else None,
+                                                      'data_slide': data_slide})
     except Movie.DoesNotExist, e:
         print "Error Movie : %s" % e
         return HttpResponse(status=404)

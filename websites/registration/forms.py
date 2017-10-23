@@ -78,7 +78,6 @@ class MetizSignupForm(UserCreationForm):
         user = super(MetizSignupForm, self).save(commit=False)
         try:
             if commit:
-
                 salt = sha.new(str(random.random())).hexdigest()[:5]
                 activation_key = sha.new(salt + user.email).hexdigest()
                 key_expires = timezone.now() + datetime.timedelta(30)
@@ -114,10 +113,11 @@ class MetizSignupForm(UserCreationForm):
             raise Exception('Internal Server Error.')
 
 
-class UpdateUserForm(forms.ModelForm):
+class UpdateUserForm(forms.Form):
 
-    username = forms.CharField(required=True)
-    birth_date = forms.CharField(required=False)
+    full_name = forms.CharField(required=True)
+    phone = forms.CharField(required=True)
+    birth_date = forms.DateField(required=False)
     address = forms.CharField(required=False)
     personal_id = forms.CharField(required=False)
     gender = forms.CharField(required=False)
@@ -125,32 +125,40 @@ class UpdateUserForm(forms.ModelForm):
     district = forms.CharField(required=False)
 
     def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop("user")
         super(UpdateUserForm, self).__init__(*args, **kwargs)
 
-    class Meta:
-        model = User
-        fields = ('username', 'birth_date', 'address',
-                  'personal_id', 'gender', 'city', 'district')
-
-    def save(self, commit=True):
-        user = super(UpdateUserForm, self).save(commit=False)
-
-        if commit:
-            user.save()
-        return user
+    def save(self):
+        self.user.full_name = self.cleaned_data.get('full_name')
+        self.user.phone = self.cleaned_data.get('phone')
+        self.user.birth_date = self.cleaned_data.get('birth_date')
+        self.user.address = self.cleaned_data.get('address')
+        self.user.personal_id = self.cleaned_data.get('personal_id')
+        self.user.gender = self.cleaned_data.get('gender')
+        self.user.city = self.cleaned_data.get('city')
+        self.user.district = self.cleaned_data.get('district')
+        self.user.save()
+        return self.user
 
 
 class ChangePasswordForm(forms.Form):
-    old_password = forms.CharField()
-    new_password = forms.CharField()
-    new_password2 = forms.CharField()
+    old_password = forms.CharField(required=True)
+    new_password = forms.CharField(required=True)
+    new_password2 = forms.CharField(required=True)
 
     def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop("user")
         super(ChangePasswordForm, self).__init__(*args, **kwargs)
+
+    def clean_old_password(self):
+        old_password = self.cleaned_data.get('old_password')
+        valid = self.user.check_password(old_password)
+        if not valid:
+            raise forms.ValidationError(
+                _("The old password fields did not match."))
 
     def clean(self):
         cleaned_data = super(ChangePasswordForm, self).clean()
-        old_password = self.cleaned_data.get('old_password')
         new_password = self.cleaned_data.get('new_password')
         new_password2 = self.cleaned_data.get('new_password2')
         if new_password != new_password2:
@@ -162,7 +170,7 @@ class ChangePasswordForm(forms.Form):
         """
         Saves the new password.
         """
-        self.user.set_password(self.cleaned_data["new_password"])
         if commit:
-            user.save()
+            self.user.set_password(self.cleaned_data["new_password"])
+            self.user.save()
         return self.user
