@@ -44,14 +44,15 @@
 	font-weight: bold;
 }
 .session-movie .nav-tabs>li>span {
-	padding: 15px 30px 15px 30px;
+	padding: 7px 25px;;
 	border: 3px solid #fff;
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0);
 	color: rgba(255, 255, 255, 0.85);
-	font-size: 20px;
 	font-weight: bold;
 	cursor: pointer;
+	font-size:30px;
+	font-family: 'SairaSemiCondensed-Bold';
 }
 .session-movie .nav-tabs>li>span:hover {	
 	border: 3px solid #ff5400;
@@ -78,9 +79,16 @@
 .detail-pay-film{                        
     visibility: hidden;
     width: 240px;
+    
+}
+.detail-pay-film button, .detail-pay-film a{
+	font-size:18px;
 }
 .feature_slide_show .poster-film:hover .detail-pay-film{
    	visibility:visible;
+}
+.poster-film.film-lists h4{
+	font-size:18px;
 }
 .detail-pay-film button{
 	padding: 10px 26px 10px 26px;
@@ -109,6 +117,10 @@
 	padding-top: 20px;
 	width: 240px;
 }
+.info-movie-home h3{
+	font-size:20px;
+	font-family: 'SairaSemiCondensed-Bold';
+}
 ul.metiz-movie-tabs li {
     display: inline-block;
     float: none;
@@ -131,9 +143,8 @@ ul.metiz-movie-tabs {
 }
 .info-movie-home h3{
 	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 18px;
-	line-height: 1.5;
+	font-size:25px;
+	font-family: 'SairaSemiCondensed-Bold';
 }
 .info-movie-home h4{
 	text-transform: uppercase;
@@ -271,6 +282,7 @@ ul.metiz-movie-tabs {
 #news .container h1{
 	font-weight: 700;
 	font-family:  'SairaSemiCondensed-Bold', sans-serif;
+	font-size: 36px;
 }
 #news #title-box{
 	font-family: 'SairaSemiCondensed-SemiBold', sans-serif;
