@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'main',
     'core',
     'registration',
+    'booking',
     # 'core.apps.CoreConfig',
     'ckeditor',
     'ckeditor_uploader',

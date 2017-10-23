@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-20 11:43+0700\n"
+"POT-Creation-Date: 2017-10-23 11:05+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,6 +68,7 @@ msgid "Choose Your Birthday.."
 msgstr "Chọn Ngày Sinh Của Bạn"
 
 #: templates/registration/profile.html:72 templates/registration/signup.html:94
+#: websites/booking/models.py:14
 msgid "Phone"
 msgstr "Số Điện Thoại"
 
@@ -76,7 +77,7 @@ msgid "Enter Phone Here.."
 msgstr "Nhập Số Điện Thoại Ở Đây"
 
 #: templates/registration/profile.html:84 templates/registration/signup.html:40
-#: templates/registration/signup.html:107
+#: templates/registration/signup.html:107 websites/booking/models.py:15
 msgid "Email"
 msgstr ""
 
@@ -134,6 +135,10 @@ msgstr "Nhập email ở đây"
 msgid "Password"
 msgstr "Mật Khẩu"
 
+#: templates/registration/signup.html:45 templates/registration/signup.html:131
+msgid "Enter Password Here"
+msgstr "Nhập Mật Khẩu Ở Đây"
+
 #: templates/registration/signup.html:66
 msgid "Enter Full Name Here"
 msgstr "Nhập Họ Tên Ở Đây"
@@ -150,10 +155,6 @@ msgstr "Nhập Số Điện Thoại Ở Đây"
 msgid "Enter Personal ID Here"
 msgstr "Nhập Số CMND Ở Đây"
 
-#: templates/registration/signup.html:131
-msgid "Enter Password Here"
-msgstr "Nhập Mật Khẩu Ở Đây"
-
 #: templates/registration/signup.html:152
 msgid "Confirm Password"
 msgstr "Xác Nhận Mật Khẩu"
@@ -169,6 +170,22 @@ msgstr "Nhập Địa Chỉ Ở Đây"
 #: templates/registration/signup.html:194
 msgid "Register"
 msgstr ""
+
+#: websites/booking/models.py:12
+msgid "Order ID"
+msgstr ""
+
+#: websites/booking/models.py:13
+msgid "Amount"
+msgstr ""
+
+#: websites/core/admin.py:30
+msgid "Passwords don't match"
+msgstr "Mật Khẩu Cũ Không Đúng. Vui Lòng Nhập Lại."
+
+#: websites/core/admin.py:127
+msgid "End date must be greater than release date."
+msgstr "Ngày Kết Thúc Phải Lớn Hơn Ngày Khởi Chiếu Phim."
 
 #: websites/core/custom_models.py:64
 msgid "Staff Status"
@@ -192,95 +209,99 @@ msgstr "Xác Định Tài Khoẳn Được Kích Hoạt Hay Chưa."
 msgid "Date Joined"
 msgstr "Ngày Tham Gia"
 
-#: websites/core/custom_models.py:76 websites/core/models.py:18
+#: websites/core/custom_models.py:76 websites/core/models.py:17
 msgid "Modified Date"
 msgstr "Ngày Thay Đổi"
 
-#: websites/core/models.py:15
+#: websites/core/models.py:14
 msgid "Created Date"
 msgstr "Ngày Tạo"
 
-#: websites/core/models.py:33 websites/core/models.py:176
+#: websites/core/models.py:32 websites/core/models.py:176
 #: websites/core/models.py:214
 msgid "Image"
 msgstr "Hình Ảnh"
 
-#: websites/core/models.py:34 websites/core/models.py:216
+#: websites/core/models.py:33 websites/core/models.py:216
 msgid "Sub Url"
 msgstr "Đường Dẫn Tương Đối"
 
-#: websites/core/models.py:35
+#: websites/core/models.py:34
 msgid "Is Show"
 msgstr "Cho Phép Hiển Thị"
 
-#: websites/core/models.py:36
+#: websites/core/models.py:35
 msgid "Position"
 msgstr "Vị Trí"
 
-#: websites/core/models.py:42
+#: websites/core/models.py:41
 msgid "Banner"
 msgstr ""
 
-#: websites/core/models.py:48 websites/core/models.py:157
+#: websites/core/models.py:47 websites/core/models.py:157
 #: websites/core/models.py:175 websites/core/models.py:194
 msgid "Name"
 msgstr "Tên"
 
-#: websites/core/models.py:49 websites/core/models.py:105
+#: websites/core/models.py:48 websites/core/models.py:105
 msgid "Description"
 msgstr "Mô Tả"
 
-#: websites/core/models.py:55
+#: websites/core/models.py:54
 msgid "Rated"
 msgstr ""
 
-#: websites/core/models.py:60
+#: websites/core/models.py:59
 msgid "Name Genre"
 msgstr "Thể Loại Phim"
 
-#: websites/core/models.py:66
+#: websites/core/models.py:65
 msgid "Genre"
 msgstr "Thể Loại"
 
-#: websites/core/models.py:67
+#: websites/core/models.py:66
 msgid "Genres"
 msgstr "Thể Loại"
 
-#: websites/core/models.py:82
+#: websites/core/models.py:81
 msgid "Type Name"
 msgstr "Tên Công Nghệ"
 
-#: websites/core/models.py:88
+#: websites/core/models.py:87
 msgid "Movie Type"
 msgstr "Công Nghệ Phim"
 
-#: websites/core/models.py:89
+#: websites/core/models.py:88
 msgid "Movie Types"
 msgstr "Công Nghệ Phim"
 
-#: websites/core/models.py:94
+#: websites/core/models.py:93
 msgid "Movie Name"
 msgstr "Tên Phim"
 
-#: websites/core/models.py:96
+#: websites/core/models.py:95
 msgid "Poster"
 msgstr ""
 
-#: websites/core/models.py:97
+#: websites/core/models.py:96
 msgid "Director"
 msgstr "Đạo Diển"
 
-#: websites/core/models.py:98
+#: websites/core/models.py:97
 msgid "Cast"
 msgstr "Diển Viên"
 
-#: websites/core/models.py:99
+#: websites/core/models.py:98
 msgid "Time Running"
 msgstr "Thời Lượng"
 
-#: websites/core/models.py:100
+#: websites/core/models.py:99
 msgid "Release Date"
 msgstr "Khởi Chiếu"
+
+#: websites/core/models.py:100
+msgid "End Date"
+msgstr "Ngày Kết Thúc"
 
 #: websites/core/models.py:104
 msgid "Language"
@@ -376,17 +397,29 @@ msgstr "Bài Viết"
 msgid "Slide Show"
 msgstr ""
 
-#: websites/registration/forms.py:91
+#: websites/registration/forms.py:90
 msgid "[Metiz] You've been created an account - Click to Verify!"
 msgstr "[Metiz] Kích Hoạt Tài Khoản!"
 
-#: websites/registration/forms.py:160
+#: websites/registration/forms.py:158
 msgid "The old password fields did not match."
 msgstr "Mật Khẩu Cũ Không Đúng. Vui Lòng Nhập Lại."
 
-#: websites/registration/forms.py:168
+#: websites/registration/forms.py:166
 msgid "The two password fields did not match."
 msgstr "Mật Khẩu Mới Không Trùng Khớp. Vui Lòng Nhập Lại."
+
+#: websites/registration/messages.py:3
+msgid "Email does not exits in system. Please check again."
+msgstr ""
+
+#: websites/registration/messages.py:4
+msgid "Your password wrong. Please enter again."
+msgstr ""
+
+#: websites/registration/messages.py:5
+msgid "Your account not active. Please check email and active account."
+msgstr ""
 
 #: websites/registration/metiz_email.py:15
 msgid "Either message_plain or message_html should be not None"
@@ -408,10 +441,10 @@ msgstr "Thay Đổi Mật Khẩu Thành Công."
 msgid "Update Profile Successfully."
 msgstr "Cập Nhật Thông Tin Cá Nhân Thành Công."
 
-#: websites/settings.py:123
+#: websites/settings.py:124
 msgid "Vietnamese"
 msgstr ""
 
-#: websites/settings.py:124
+#: websites/settings.py:125
 msgid "English"
 msgstr ""
