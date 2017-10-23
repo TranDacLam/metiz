@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 from models import *
 from django import forms
 import custom_models
@@ -26,7 +27,7 @@ class UserCreationForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
+            raise forms.ValidationError(_("Passwords don't match"))
         return password2
 
     def save(self, commit=True):
@@ -112,7 +113,23 @@ class MovieTypeAdmin(admin.ModelAdmin):
 admin.site.register(MovieType, MovieTypeAdmin)
 
 
+class MovieForm(forms.ModelForm):
+
+    class Meta:
+        model = Movie
+        fields = '__all__'
+
+    def clean_end_date(self):
+        end_date = self.cleaned_data.get('end_date')
+        release_date = self.cleaned_data.get('release_date')
+        if release_date and end_date < release_date:
+            raise forms.ValidationError(
+                _("End date must be greater than release date."))
+        return end_date
+
+
 class MovieAdmin(admin.ModelAdmin):
+    form = MovieForm
     formfield_overrides = {
         models.TextField: {'widget': CKEditorUploadingWidget()},
     }
@@ -166,7 +183,7 @@ class PostAdmin(admin.ModelAdmin):
         if obj:  # editing an existing object
             return self.readonly_fields + ('key_query',)
         return self.readonly_fields
-        
+
     pass
 admin.site.register(Post, PostAdmin)
 
@@ -174,4 +191,3 @@ admin.site.register(Post, PostAdmin)
 class SlideShowAdmin(admin.ModelAdmin):
     pass
 admin.site.register(SlideShow, SlideShowAdmin)
-
