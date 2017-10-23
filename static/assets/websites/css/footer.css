@@ -43,6 +43,7 @@ footer h3,footer h2{
 }
 footer h2{
 	font-weight: bold;
+	font-size: 24px;
 }
 footer{
 	font-family: 'SairaSemiCondensed-Medium', sans-serif;
@@ -71,7 +72,7 @@ footer .content-1 .col-lg-3{
 }
 .info{
 	text-transform: uppercase;
-	font-size:16px;
+	font-size:18px;
 }
 .address{
 	margin-top:20px;
@@ -79,12 +80,16 @@ footer .content-1 .col-lg-3{
 }
 footer .map a{
 	margin-top:18px;
+	font-size:14px;
 }
 footer .content-1 .list{
 	padding-top: 12px;
 }
 footer .content-1 .list li{
 	padding-top: 14px;
+}
+footer .content-1 .list li a{
+	font-size:18px; 
 }
 footer .content-2{
 	margin-top:40px;

@@ -283,6 +283,7 @@ ul.metiz-movie-tabs {
 	font-weight: 700;
 	font-family:  'SairaSemiCondensed-Bold', sans-serif;
 	font-size: 36px;
+    color: #031327;
 }
 #news #title-box{
 	font-family: 'SairaSemiCondensed-SemiBold', sans-serif;
@@ -302,6 +303,8 @@ ul.metiz-movie-tabs {
 #news #box p{
 	font-family: 'Montserrat-Light', sans-serif;
 	font-weight: lighter;
+	font-size: 16px;
+    color: #606060;
 }
 #more_hover{
 	display:none
@@ -377,12 +380,13 @@ ul.metiz-movie-tabs {
 		width:212px;
 		left:15px;
 	}
-	.new-img{
-	}
 	#news #box {
 	    height: 212px;
 	    padding: 20px;
     }
+    #news #title-box {
+    	margin-bottom: 10px;
+	}
 }
 @media screen and (max-width: 991px) {
 	.new-img{
@@ -398,7 +402,7 @@ ul.metiz-movie-tabs {
 	}
 
 	#news #box {
-	    height: 170px;
+	    height: auto;
 	    padding: 6px;
 	    margin-top: 20px;
 	    border: 2px solid #c8c6be;
@@ -407,13 +411,16 @@ ul.metiz-movie-tabs {
 		margin-bottom:0px;
 		font-size: 22px;
 		line-height: 1.5;
-
+	}
+	#news #box p {
+		margin-bottom: 8px;
 	}
 }
 @media screen and (max-width: 767px) {
 	#news img{
 		height:300px;
 		width:300px;
+		margin-left: 20px;
 	}
 	#news .bg_hover{
 		height:300px;
@@ -452,12 +459,12 @@ ul.metiz-movie-tabs {
 }
 @media screen and (max-width: 480px) {
 	#news img{
-		height:190px;
-		width:190px;
+		height:154px;
+		width:154px;
 	}
 	#news .bg_hover{
-		height:190px;
-		width:190px;
+		height:154px;
+		width:154px;
 		left: 15px;
 	}
 	#news #box {
