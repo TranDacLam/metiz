@@ -90,7 +90,17 @@ $(document).ready(function() {
 				required: true,
 				minlength: 8
 			},
-		}
+		},
+		messages:{
+			email:{
+				required: message.required,
+				email: message.email
+			},
+			password:{
+				required: message.required,
+				minlength: message.minlength_8
+			}
+		},
 	});
 	$.validator.addMethod(
       "validateDate",
