@@ -1479,8 +1479,7 @@
 	.products-grid {
 		float:left;
 		width:100%;	
-		border-bottom: 3px solid #241d1e;
-		margin-bottom: 40px;
+		margin-bottom: 30px;
 	}
 	.products-grid--max-4-col > li {
 		margin-right: 64px;

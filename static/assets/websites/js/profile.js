@@ -56,32 +56,41 @@ $(document).ready(function() {
 
     $("#change-pass-validate").validate({
         rules: {
-            password1: { 
+            old_password: { 
                 minlength: 8,
                 required: true,
             }, 
-            password2: { 
+            new_password: { 
                 minlength: 8,
                 required: true,
                 regex: true,
             }, 
-             password3: { 
-                equalTo: '[name="password2"]'
+             new_password2: { 
+                equalTo: '[name="new_password"]'
                }
         },
         messages:{
-            password1: {
+            old_password: {
                 required: 'Mật khẩu không được để trống.',
                 minlength: 'Mật khẩu ít nhất 8 ký tự.',
             },
-            password2: {
+            new_password: {
                 required: 'Mật khẩu không được để trống.',
                 minlength: 'Mật khẩu ít nhất 8 ký tự.',
             },
-            password3: { 
+            new_password2: { 
                 equalTo:"Hai trường mật khẩu không giống nhau.",
                 required: 'Xác nhận mật khẩu không được để trống.',
             }
+        }
+    });
+
+    // handle double click submit 
+    $('#profile-validate .buttons-set button').on('click', function() {
+        if($("#profile-validate").valid()){
+            $(this).prop('disabled', true);
+            $("#profile-validate").submit();
+            $(this).prop('disabled', false);
         }
     });
 });

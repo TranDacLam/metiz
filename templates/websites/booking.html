@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block title %}Đặt vé{% endblock title %}
+
+{% block extrastylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/booking.css" media="all" />
+{% endblock %}
+
+{% block extrascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/booking.js"></script>
+{% endblock %}
+
+{% block container_class%}col1-layout{% endblock%}
+
+{% block main_content%}
+<div class="container-fluid">
+    <div class="container booking-custom">
+        <div>
+            <h2>Chọn ghế</h2>
+        </div>
+        <div class="row">
+            <div id="seat-map" class="col-md-8 col-md-offset-1 col-xs-12">
+                <div class="front">SCREEN</div>
+            </div>
+            <div class="booking-details col-md-3 col-xs-12">
+                <p>Phim: <span> Gingerclown</span></p>
+                <p>Thời gian: <span>November 3, 21:00</span></p>
+                <p>Ghế: </p>
+                <div class="col-xs-12"><ul id="selected-seats"></ul></div>
+                <p>Số vé: <span id="counter">0</span></p>
+                <p>Tổng tiền: <span id="total">0</span></p>
+                <div id="legend"></div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <section class="step-2-navigator">
+            <div class=" back-and-forward">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a id="btnChangeTime" class="pull-left btn-changeschedule">Đổi xuất chiếu</a>
+                        <a id="btnNext" class="pull-right btn-continue">Tiếp tục</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock%}

@@ -138,6 +138,11 @@ ul.metiz-movie-tabs {
 .info-movie-home h4{
 	text-transform: uppercase;
 }
+@media only screen and (max-width: 1365px){
+    .owl-nav .lSNext {
+        right: 36px;
+    }
+}
 @media only screen and (max-width: 1024px){
 	.slideshow-containe-movier .poster-film .product-img {
 		height: 340px;
