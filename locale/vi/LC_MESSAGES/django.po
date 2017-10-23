@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13 16:49+0700\n"
+"POT-Creation-Date: 2017-10-20 11:43+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,101 +42,133 @@ msgstr "Đội Ngũ Hỗ Trợ Helio Center."
 msgid "Metiz Account Password Reset."
 msgstr "Metiz Lấy lại mật khẩu"
 
+#: templates/registration/profile.html:42 templates/registration/signup.html:64
+#: websites/core/models.py:127
+msgid "Full Name"
+msgstr "Họ Tên"
+
+#: templates/registration/profile.html:51 templates/registration/signup.html:73
+msgid "Gender"
+msgstr "Giới Tính"
+
+#: templates/registration/profile.html:54 templates/registration/signup.html:76
+msgid "Male"
+msgstr "Nam"
+
+#: templates/registration/profile.html:55 templates/registration/signup.html:77
+msgid "Female"
+msgstr "Nữ"
+
+#: templates/registration/profile.html:63 templates/registration/signup.html:85
+msgid "Birth Date"
+msgstr "Ngày Sinh"
+
+#: templates/registration/profile.html:65
+msgid "Choose Your Birthday.."
+msgstr "Chọn Ngày Sinh Của Bạn"
+
+#: templates/registration/profile.html:72 templates/registration/signup.html:94
+msgid "Phone"
+msgstr "Số Điện Thoại"
+
+#: templates/registration/profile.html:74
+msgid "Enter Phone Here.."
+msgstr "Nhập Số Điện Thoại Ở Đây"
+
+#: templates/registration/profile.html:84 templates/registration/signup.html:40
+#: templates/registration/signup.html:107
+msgid "Email"
+msgstr ""
+
+#: templates/registration/profile.html:86
+msgid "Enter Email Here.."
+msgstr "Nhập email ở đây"
+
+#: templates/registration/profile.html:93
+#: templates/registration/signup.html:116
+msgid "Personal ID"
+msgstr "Số CMND"
+
+#: templates/registration/profile.html:95
+msgid "Enter Personal ID Here.."
+msgstr "Nhập Số CMND Ở Đây"
+
+#: templates/registration/profile.html:105
+#: templates/registration/signup.html:138
+msgid "City"
+msgstr "Thành Phố"
+
+#: templates/registration/profile.html:108
+#: templates/registration/signup.html:141
+msgid "Choose City"
+msgstr "Chọn Thành Phố"
+
+#: templates/registration/profile.html:116
+#: templates/registration/signup.html:161
+msgid "District"
+msgstr "Quận"
+
+#: templates/registration/profile.html:119
+#: templates/registration/signup.html:164
+msgid "Choose District"
+msgstr "Chọn Quận"
+
+#: templates/registration/profile.html:129
+#: templates/registration/signup.html:175
+msgid "Address"
+msgstr "Địa Chỉ"
+
+#: templates/registration/profile.html:131
+msgid "Enter Address Here.."
+msgstr "Nhập Địa Chỉ Ở Đây"
+
 #: templates/registration/signup.html:3
 msgid "Signup"
 msgstr "Đăng Ký"
 
-#: templates/registration/signup.html:38 templates/registration/signup.html:109
-msgid "Email"
-msgstr ""
+#: templates/registration/signup.html:41 templates/registration/signup.html:109
+msgid "Enter Email Here"
+msgstr "Nhập email ở đây"
 
-#: templates/registration/signup.html:39 templates/registration/signup.html:111
-msgid "Enter Email Here.."
-msgstr "Nhập email ở đây.."
-
-#: templates/registration/signup.html:42 templates/registration/signup.html:124
+#: templates/registration/signup.html:44 templates/registration/signup.html:128
 msgid "Password"
 msgstr "Mật Khẩu"
 
-#: templates/registration/signup.html:76 websites/core/models.py:127
-msgid "Full Name"
-msgstr "Họ Tên"
-
-#: templates/registration/signup.html:78
-msgid "Enter Full Name Here.."
+#: templates/registration/signup.html:66
+msgid "Enter Full Name Here"
 msgstr "Nhập Họ Tên Ở Đây"
 
-#: templates/registration/signup.html:82
-msgid "Gender"
-msgstr "Giới Tính"
-
-#: templates/registration/signup.html:85
-msgid "Male"
-msgstr "Nam"
-
-#: templates/registration/signup.html:86
-msgid "Female"
-msgstr "Nữ"
-
-#: templates/registration/signup.html:94
-msgid "Birth Date"
-msgstr "Ngày Sinh"
+#: templates/registration/signup.html:87
+msgid "Choose Your Birthday"
+msgstr "Chọn Ngày Sinh Của Bạn"
 
 #: templates/registration/signup.html:96
-msgid "Choose Your Birthday.."
-msgstr "Chọn Ngày Sinh Của Bạn.."
+msgid "Enter Phone Here"
+msgstr "Nhập Số Điện Thoại Ở Đây"
 
-#: templates/registration/signup.html:100
-msgid "Phone"
-msgstr "Số Điện Thoại"
-
-#: templates/registration/signup.html:102
-msgid "Enter Phone Here.."
-msgstr "Nhập Số Điện Thoại Ở Đây.."
-
-#: templates/registration/signup.html:115
-msgid "Personal ID"
-msgstr "Số CMND"
-
-#: templates/registration/signup.html:117
-msgid "Enter Personal ID Here.."
-msgstr "Nhập Số CMND Ở Đây.."
-
-#: templates/registration/signup.html:127
-msgid "Enter Password Here.."
-msgstr "Nhập Mật Khẩu Ở Đây.."
+#: templates/registration/signup.html:118
+msgid "Enter Personal ID Here"
+msgstr "Nhập Số CMND Ở Đây"
 
 #: templates/registration/signup.html:131
-msgid "City"
-msgstr "Thành Phố"
+msgid "Enter Password Here"
+msgstr "Nhập Mật Khẩu Ở Đây"
 
-#: templates/registration/signup.html:134
-msgid "Choose City"
-msgstr "Chọn Thành Phố"
-
-#: templates/registration/signup.html:142
+#: templates/registration/signup.html:152
 msgid "Confirm Password"
 msgstr "Xác Nhận Mật Khẩu"
 
-#: templates/registration/signup.html:144
-msgid "Enter Password Again.."
-msgstr "Nhập Lại Mật Khẩu.."
+#: templates/registration/signup.html:154
+msgid "Enter Password Again"
+msgstr "Nhập Lại Mật Khẩu"
 
-#: templates/registration/signup.html:148
-msgid "District"
-msgstr "Quận"
+#: templates/registration/signup.html:177
+msgid "Enter Address Here"
+msgstr "Nhập Địa Chỉ Ở Đây"
 
-#: templates/registration/signup.html:151
-msgid "Choose District"
-msgstr "Chọn Quận"
-
-#: templates/registration/signup.html:159
-msgid "Address"
-msgstr "Địa Chỉ"
-
-#: templates/registration/signup.html:161
-msgid "Enter Address Here.."
-msgstr "Nhập Địa Chỉ Ở Đây.."
+#: templates/registration/signup.html:194
+msgid "Register"
+msgstr ""
 
 #: websites/core/custom_models.py:64
 msgid "Staff Status"
@@ -348,6 +380,14 @@ msgstr ""
 msgid "[Metiz] You've been created an account - Click to Verify!"
 msgstr "[Metiz] Kích Hoạt Tài Khoản!"
 
+#: websites/registration/forms.py:160
+msgid "The old password fields did not match."
+msgstr "Mật Khẩu Cũ Không Đúng. Vui Lòng Nhập Lại."
+
+#: websites/registration/forms.py:168
+msgid "The two password fields did not match."
+msgstr "Mật Khẩu Mới Không Trùng Khớp. Vui Lòng Nhập Lại."
+
 #: websites/registration/metiz_email.py:15
 msgid "Either message_plain or message_html should be not None"
 msgstr ""
@@ -355,6 +395,18 @@ msgstr ""
 #: websites/registration/metiz_email.py:42
 msgid "Either message_html should be not None"
 msgstr ""
+
+#: websites/registration/views.py:57
+msgid "Register Account Successfully."
+msgstr "Tạo Tài Khoản Thành Công."
+
+#: websites/registration/views.py:112
+msgid "Update Password Successfully."
+msgstr "Thay Đổi Mật Khẩu Thành Công."
+
+#: websites/registration/views.py:135
+msgid "Update Profile Successfully."
+msgstr "Cập Nhật Thông Tin Cá Nhân Thành Công."
 
 #: websites/settings.py:123
 msgid "Vietnamese"

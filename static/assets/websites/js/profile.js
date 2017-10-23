@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var val_required = 'Trường này là bắt buộc';
+    var val_date = 'Nhập ngày theo định dạng dd-mm-yyyy';
 
     // page profile
     $("#profile-validate").validate({
@@ -9,6 +10,7 @@ $(document).ready(function() {
             },
             birth_date: { 
                 required: true,
+                validateDate: true,
             },
             phone: {
                 required: true,
@@ -23,6 +25,7 @@ $(document).ready(function() {
             },
             birth_date: {
                 required: val_required,
+                validateDate: val_date,
             },
             phone: {
                 required: val_required,
@@ -32,6 +35,15 @@ $(document).ready(function() {
             }    
         }
     });
+    // format birthday
+    $.validator.addMethod(
+      "validateDate",
+      function (value, element) {
+        // put your own logic here, this is just a (crappy) example 
+        return value.match(/^\d\d?\-\d\d?\-\d\d\d\d$/);
+      },
+      message.validateDate
+    );
 
     // page change password
     $.validator.addMethod(
@@ -44,29 +56,29 @@ $(document).ready(function() {
 
     $("#change-pass-validate").validate({
         rules: {
-            password1: { 
+            old_password: { 
                 minlength: 8,
                 required: true,
             }, 
-            password2: { 
+            new_password: { 
                 minlength: 8,
                 required: true,
                 regex: true,
             }, 
-             password3: { 
-                equalTo: '[name="password2"]'
+             new_password2: { 
+                equalTo: '[name="new_password"]'
                }
         },
         messages:{
-            password1: {
+            old_password: {
                 required: 'Mật khẩu không được để trống.',
                 minlength: 'Mật khẩu ít nhất 8 ký tự.',
             },
-            password2: {
+            new_password: {
                 required: 'Mật khẩu không được để trống.',
                 minlength: 'Mật khẩu ít nhất 8 ký tự.',
             },
-            password3: { 
+            new_password2: { 
                 equalTo:"Hai trường mật khẩu không giống nhau.",
                 required: 'Xác nhận mật khẩu không được để trống.',
             }

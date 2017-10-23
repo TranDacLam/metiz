@@ -6,10 +6,11 @@
 	text-indent: -9999px;
 }
 #myTabContent label.error {
-	font-weight: bold;
+	font-family: 'SairaSemiCondensed-Regular';
 	color: red;
 	padding: 2px 8px;
 	margin-top: 2px;
+	
 }
 #signup_form .form-inline {
     display: block;
@@ -44,4 +45,18 @@
 } 
 .login-forgot-pass{
 	font-size: 13px;
+}
+.alert-login{
+	color: #ff0000;
+}
+#myTabContent ul.errorlist li,#myTabContent .error{
+    font-size: 13px;
+    margin-top: 5px;
+    color: #a94442;
+}
+#myTabContent .password-reset-confirm .error,#myTabContent .errorlist {
+    margin-right: 0px;
+}
+#address::-webkit-input-placeholder {
+    font-size: 12px;
 }
