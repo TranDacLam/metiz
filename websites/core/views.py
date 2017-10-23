@@ -19,6 +19,12 @@ def custom_500(request):
 
 def showing(request):
     try:
+        if request.is_ajax():
+            # convert object models to json
+            # Ajax reuqest with page, db get data other with limit and offset
+            result = {}
+            return JsonResponse(result)
+
         # get data movie showing
         """ 
             Movie Showing Follow Condition:
@@ -259,6 +265,14 @@ def get_post(request):
     except Post.DoesNotExist, e:
         print "Error get_post : id or key_query does not exist"
         return HttpResponse(status=404)
+    except Exception, e:
+        print "Error: ", e
+        return HttpResponse(status=500)
+
+
+def get_booking(request):
+    try:
+        return render(request, 'websites/booking.html')
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)

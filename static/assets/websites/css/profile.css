@@ -29,10 +29,13 @@
 }
 @media only screen and (min-width : 320px) and (max-width : 480px) {
     .my-account form{
-        padding-top: 110px;
+        margin-top: 110px;
     }
     .my-account .page-title h1 {
         color: #0e1d2f;
+    }
+    .page-detail .page-title{
+        padding-top: 105px;
     }
 }
 .block-account .block-content ul{
@@ -43,4 +46,78 @@
 }
 .my-account .buttons-set button:hover{
     background: #ff5400;
+}
+.col-left .navbar-inverse{
+    background: rgba(255, 255, 255, 0);
+    border-color: #ff5400;
+}
+.col-left  .navbar-inverse .navbar-nav>.active>a,
+.col-left  .navbar-inverse .navbar-nav>.active>a:hover,
+.col-left .navbar-inverse .navbar-nav>li>a:hover {
+    color: #ffffff;
+    background-color: #ff5400;
+}
+.col-left  .navbar-inverse .navbar-nav>li>a,
+.col-left  .navbar-inverse .navbar-nav>li>a:focus{
+    color: #0e1d2f;
+    font-size: 14px;
+}
+.col-left .navbar-inverse .navbar-brand{
+    color: #0e1d2f;
+}
+@media only screen and (max-width: 768px){
+    .col-left  .navbar-collapse, .skip-content {
+        background-color: rgba(255, 255, 255, 0);
+    }
+    .col-left .navbar-inverse .navbar-brand{
+        color: #fb0000;
+    }
+    .col2-left-layout .col-main {
+        padding: 0;
+    }
+    .col-left .navbar-toggle{
+        background-color: #ff5400;
+    }
+    .col-left .navbar-inverse .navbar-toggle, .col-left .navbar-inverse .navbar-collapse{
+        border-color: #ff5400;
+    }
+    .profile-custom{
+        padding: 0 0 30px 0;
+    }
+    .col-left .navbar-inverse{
+        background: #222;
+    }
+    .my-account .page-title{
+        background: none;
+    }
+
+    .col-left  .navbar-inverse .navbar-nav>li>a,
+    .col-left  .navbar-inverse .navbar-nav>li>a:focus{
+        color: #fff;
+    }
+    .profile-custom .nav.navbar-nav{
+        padding-top: 0;
+    }
+}
+@media (min-width: 769px) {
+    nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
+        text-align: center;
+        width: 100%;
+        margin-left: 0px;
+    }
+    nav.sidebar .navbar-nav > li:first-child{
+        border-top: 1px #e5e5e5 solid;
+    }
+    nav.sidebar .navbar-nav > li{
+        border-bottom: 1px #e5e5e5 solid;
+    }
+    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
+        padding: 0 0px 0 0px;
+    }
+    nav.sidebar{
+        width: 240px;
+    }
+    nav.sidebar li {
+        width: 100%;
+    }
 }
