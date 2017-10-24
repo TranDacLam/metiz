@@ -127,11 +127,23 @@ $(document).ready(function() {
 	'Hồ Chí Minh': ['1','2','3', '4', '5', '6', 'Tân Bình'], 'Khác': ['Khác']};
 	
 	// load city and district but district hide
+    var current_city = $("#id_city").val();
+    var current_district = $("#id_district").val();
+
 	$.each(list_city, function(index, val) {
 		var name_city= index;
-		$('.list-city').append('<option value="' + name_city + '">' +name_city + '</option>');
+        if(current_city && name_city==current_city){
+            $('.list-city').append('<option value="' + name_city + '" selected>' +name_city + '</option>');
+        }else{
+            $('.list-city').append('<option value="' + name_city + '">' +name_city + '</option>');    
+        }
+		
 		$.each(val, function(index, val) {
-	 		$('.list-district').append('<option value="' + val + '" class = "' + name_city + '">' +val + '</option>');
+            if(current_district && val==current_district){
+	 		    $('.list-district').append('<option value="' + val + '" class = "' + name_city + '" selected>' +val + '</option>');
+            }else{
+                $('.list-district').append('<option value="' + val + '" class = "' + name_city + '">' +val + '</option>');     
+            }
 	 	});
 	 	$('.list-district').children().hide();
 

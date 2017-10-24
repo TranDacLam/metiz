@@ -70,7 +70,8 @@ ul.seatCharts-legendList {
 }
 .seatCharts-legendItem{
     float:left;
-    width:100%;
+    width:50%;
+    height: 60px;
     margin-top: 10px;
     line-height: 2;
 }
@@ -163,7 +164,26 @@ span.seatCharts-legendDescription {
     .main-container{
         scroll-direction: horizontal;
     }
-    .step-2-navigator{
-        margin-top: 140px;
-    }
+
+}
+div.seatCharts-seat.available.seat-vip {
+    background-color: #e96107;
+}
+div.seatCharts-seat.available.seat-couple {
+    background-color: #e40a8b;
+}
+div.seatCharts-seat.available.seat-ld {
+    background-color: #83399a;
+}
+.booking-refresh {
+    margin-top: 220px;
+    margin-left: 8px;
+}
+.booking-details .booking-refresh a{
+    color: #337ab7;
+} 
+.booking-refresh a:hover{
+    color: #B13026;
+    text-decoration: none;
+    cursor: pointer;
 }
