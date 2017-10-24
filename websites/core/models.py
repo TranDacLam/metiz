@@ -106,6 +106,7 @@ class Movie(DateTimeModel):
     trailer = models.CharField(_("Trailer"), max_length=500)
     priority = models.IntegerField(_("Priority"), null=True, blank=True)
     is_draft = models.BooleanField(default=False)
+    movie_api_id = models.CharField(_("Movie API ID"), max_length=100, default='00000000')
 
     def __str__(self):
         return '%s' % (self.name)
