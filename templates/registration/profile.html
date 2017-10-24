@@ -97,7 +97,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "Email"%}</label>
                                     <div class="inline">
-                                        <input type="text" id="email" value="{{ email }}" name="email" placeholder="{% trans 'Enter Email Here..' %}" class="form-control">
+                                        <input type="text" id="email" value="{{ email }}" name="email" placeholder="{% trans 'Enter Email Here..' %}" class="form-control" disabled>
                                         {% if form.email.errors %}
                                             {{form.email.errors}}
                                         {% endif %}
