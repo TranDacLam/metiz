@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from forms import *
 from django.core.urlresolvers import reverse
-from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import logout as auth_logout, login as auth_login, get_user_model
 from django.http import HttpResponse
 from django.utils import timezone
 from django.contrib import messages
-
 from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
 
 
 def logout(request):
@@ -68,31 +66,32 @@ def confirm_activation(request, activation_key):
     """ Action Confirm User Activation"""
     print 'Function Active User ', request.user.is_authenticated()
     try:
+        User = get_user_model()
         result = {}
         # User is exist in system then confirm has account
         if request.user.is_authenticated():
-            return render(request, 'registration/confirm.html', {'has_account': True})
+            return render(request, 'registration/activation_confirm.html', {'has_account': True})
 
         # Check activation key is valid
-        user_account = get_object_or_404(DonorHubUser,
+        user_account = get_object_or_404(User,
                                          activation_key=activation_key)
 
         # User have confirm link before then return flag active
         if user_account.is_active:
-            return render(request, 'registration/confirm.html', {'active': True})
+            return render(request, 'registration/activation_confirm.html', {'active': True})
 
         # Check key expires
         if user_account.key_expires < timezone.now():
-            return render(request, 'registration/confirm.html', {'expired': True})
+            return render(request, 'registration/activation_confirm.html', {'expired': True})
 
         # hanlder active account
         user_account.is_active = True
         user_account.save()
         user_account.backend = 'django.contrib.auth.backends.ModelBackend'
-        login_sys(request, user_account)
+        auth_login(request, user_account)
 
         result['success'] = True
-        return render(request, 'websites/registration/confirm.html', result)
+        return render(request, 'websites/registration/activation_confirm.html', result)
 
     except Exception, e:
         print "Error action confirm_activation : %s" % e

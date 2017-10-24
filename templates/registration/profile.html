@@ -118,6 +118,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "City"%}</label>
                                     <div class="inline">
+                                        <input type="hidden" id="id_city" value="{{ city }}">
                                         <select class="form-control list-city" name="city" id="city">
                                             <option value="" disabled selected>{% trans "Choose City" %}</option>
                                         </select>
@@ -129,6 +130,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "District"%}</label>
                                      <div class="inline">
+                                        <input type="hidden" id="id_district" value="{{ district }}">
                                         <select class="form-control list-district" name="district" id="district">
                                             <option disabled selected>{% trans "Choose District" %}</option>
                                         </select>
