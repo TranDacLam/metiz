@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% block title %}Kích Hoạt Tài Khoản{% endblock title %}
+
+{% block main_content %}
+<div class="content">
+    <div class="container content-confirm">
+    <!-- Active account : {{ success }} -->
+    {% if has_account %}
+        <div class="contain-confirm">
+            <div class="col-md-12">
+                <h1 >ACTIVATION FAILED!</h1>
+            </div>
+            <div class="col-md-12">
+                <p class="font-size-16">Sorry! You are logging with another account. Please log out before clicking the activation link.</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if active %}
+        <div class="contain-confirm">
+            <div class="col-md-12">
+                <h1 >YOUR ACCOUNT HAS BEEN ACTIVATED ALREADY!</h1>
+            </div>
+            <div class="col-md-12">
+                <p class="font-size-16">Sorry! The link has been used for activation before.</p>
+            </div>
+        </div>
+    {% endif %}
+    {% if expired %}
+        <div class="contain-confirm">
+            <div class="col-md-12">
+                <h1 >THE LINK HAS EXPIRED!</h1>
+            </div>
+            <div class="col-md-12">
+                <p class="font-size-16">Sorry! The activation link has expired. Please sign up again to receive a new activation link.</p>
+            </div>
+        </div>
+    {% endif %}
+    {% if success %}
+        <div class="contain-confirm">
+            <div class="col-md-12">
+                <h1 >YOU'VE BEEN CONFIRMED!</h1>
+            </div>
+            <div class="col-md-12">
+                <p class="font-size-16">Congratulations! Your account has been activated successfully.</p>
+            </div>
+            <div class="col-md-12">
+                <a href="/" type="button" class="btn btn-primary next-btn">
+                    <span class="bigger-110">GO TO HOMEPAGE</span>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+
