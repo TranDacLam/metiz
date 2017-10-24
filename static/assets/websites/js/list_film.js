@@ -100,8 +100,13 @@ $(document).ready(function($) {
 		e.preventDefault();
 		$(this).prop('disabled', true);
 		var page = parseInt($(this).attr('data-page'));
+		if($(this).attr('data-url') == "showing"){
+			url = '/showing/';
+		}else{
+			url = '/comingsoon/';
+		}
 		$.ajax({
-			url: '/showing/',
+			url: url,
 			type: 'get',
 			data: {
 				'page': page,
@@ -127,6 +132,7 @@ $(document).ready(function($) {
 		});
 	});
 });
+
 $(document).ajaxComplete(function(){
     try{
         FB.XFBML.parse(); 

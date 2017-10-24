@@ -68,3 +68,20 @@ ul.errorlist li, .error{
     padding-left: 0;
     margin-bottom: 30px;
 }
+.load-more{
+    width: 140px;
+    border-radius: 35px;
+    background: #0e1d2f;
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
+    font-size: 15px;
+}
+.load-more:hover{
+    background: #ff5400;
+    border: 1px solid #ff5400;
+}
+@media screen and (max-width: 420px) {
+    .load-more{
+        width: 150px;
+        margin-left: 40px;
+    }
+}

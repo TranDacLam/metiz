@@ -49,6 +49,12 @@ def showing(request):
 
 def coming_soon(request):
     try:
+        if request.is_ajax():
+            # convert object models to json
+            # Ajax reuqest with page, db get data other with limit and offset
+            result = {}
+            return JsonResponse(result)
+            
         # get data moving comingsoon
         """ 
             Movie Comming Soon Follow Condition:
@@ -98,6 +104,12 @@ def film_detail(request, id):
 
 def news(request):
     try:
+        if request.is_ajax():
+            # convert object models to json
+            # Ajax reuqest with page, db get data other with limit and offset
+            result = {}
+            return JsonResponse(result)
+
         """ 
             New and Offer for Furute then order by priority and apply_date ascending
             New and Offer for Present then order by priority and apply_date descending
