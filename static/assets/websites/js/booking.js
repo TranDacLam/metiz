@@ -185,6 +185,14 @@ $(document).ready(function() {
         window.location.href = "/payment/?total="+ totalPayment + "&seat=" + seatPayment;
     });
 
+    // Refresh seat selected
+    $('.booking-refresh a').on('click', function(){
+        sc.find('selected').status('available');
+        $counter.text(0);
+        $total.text(0);
+        $('#selected-seats').html('');
+    });
+
 });
 //sum total money
 function recalculateTotal(sc) {
