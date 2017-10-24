@@ -13,3 +13,18 @@ class BookingInfomation(DateTimeModel):
     amount = models.FloatField(_('Amount'))
     phone = models.IntegerField(_('Phone'), null=True, blank=True)
     email = models.CharField(_('Email'), max_length=100, null=True, blank=True)
+    seat = models.CharField(_('Seat'), max_length=10)
+    time_showing = models.TimeField(_("Time Show"))
+
+
+class MovieSync(DateTimeModel):
+    TYPE = (
+        ('movie_comming', 'Movie Comming Soon'),
+        ('movie_showing', 'Movie Showing'),
+        ('showtime_current', 'Show Times'),
+    )
+    name = models.CharField(max_length=50, choices=TYPE)
+    cinema_id = models.IntegerField(default=1)
+    area_id = models.IntegerField(default=0)
+    data = models.TextField()
+    date_show = models.DateField(_("Date Showing"))
