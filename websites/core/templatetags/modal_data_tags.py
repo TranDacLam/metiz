@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import template
 from datetime import date, timedelta
 from django.http import JsonResponse
@@ -10,7 +11,7 @@ register = template.Library()
 @register.filter(name='get_data_modal')
 def get_data_modal(date, cinema_id=1):
     try:
-    	date = "2017-10-18"
+        date = "2017-10-18"
         if not cinema_id:
             cinema_id = 1
 
@@ -60,9 +61,8 @@ def floatdot(value, decimal_pos=4):
 floatdot.is_safe = True
 
 
-@register.filter
-def get_date_showing(data):
-    print "Debug"
+@register.simple_tag
+def get_date_showing():
     current_date = date(2017, 10, 12)
     end_date = current_date + timedelta(days=6)
     step_date = timedelta(days=1)
@@ -71,5 +71,12 @@ def get_date_showing(data):
     while current_date <= end_date:
         result.append(current_date.strftime('%Y-%m-%d'))
         current_date = current_date + step_date
-    print "get_date_showing",result
     return result
+
+@register.simple_tag
+def get_cites():
+    return {"data": ["Đà Nẵng"]}
+
+@register.simple_tag
+def get_cinema_cites():
+    return ["Metiz Cinema"]

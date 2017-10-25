@@ -94,7 +94,32 @@ def get_seats(request):
 
 # def booking_seats(request):
 #     try:
-
+#         if "lst_seats" not in request.POST:
+#             return JsonResponse({"code": 400, "message": _("Fields lst_seats is required.")}, status=400)
+            
+#         data = {
+#                    "List":[
+#                       {
+#                          "NAME":"Nguyen Van A",
+#                          "PHONE":"0909112233",
+#                          "EMAIL":"abc@gmail.com",
+#                          "ListSeats":[
+#                             {
+#                                "ID":"12007390",
+#                                "NAME":"A07"
+#                             },
+#                             {
+#                                "ID":"12007397",
+#                                "NAME":"A08"
+#                             },
+#                             {
+#                                "ID":"12007405",
+#                                "NAME":"A09"
+#                             }
+#                          ]
+#                       }
+#                    ]
+#                 }
 #     except Exception, e:
 #         print "Error booking_seats : %s" % e
 #         return HttpResponse(status=500)

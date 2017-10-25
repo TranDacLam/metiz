@@ -5,12 +5,12 @@
         <div class="top">
             Lịch chiếu
         </div>
-        {% with ''|get_data_modal as list_data %}
         <div class="row city">
             <h3>{% trans 'Select City' %}</h3>
             <div class="list-item clearfix">
                 <ul>
-                {% for city,item in list_data.data_cinema.items%}
+                {% get_cites as all_cites %}
+                {% for city in all_cites.data %}
                     <li><a class="" data-toggle='tab' href="#{{city}}" data='{{city}}'>{{city}}</a></li>
                 {% endfor %}
                 </ul>
@@ -19,15 +19,13 @@
          <div class="row cinema ">
             <h3>{% trans 'Select Cinema' %}</h3>
             <div class="tab-content">
-                {% for city,item in list_data.data_cinema.items%}
-                <div class="list-cinema clearfix tab-pane " id="{{city}}">
+                
+                
+                <div class="list-cinema clearfix tab-pane " id="id_cinema_detail">
                     <ul class="">
-                        {% for cinema in item %}
-                        <li><a class="btn"  href="#">{{cinema}}</a></li>
-                        {% endfor %}
+                        <li><a class="btn"  href="#">Metiz Cinema</a></li>
                     </ul>
                 </div>
-                {% endfor %}
             </div>
         </div>
         <div class="popup-booking">
@@ -41,8 +39,8 @@
                             <div class="calendar-popup">
                                 <div class="list-time">
                                     <ul class="days-popup" id="play-date-slider">
-                                    {% with ""|get_date_showing as list_date_present %}
-                                     {% for item in list_date_present %}
+                                    {% get_date_showing as list_date_present %}
+                                    {% for item in list_date_present %}
                                         <li class="available"  data-play-date="{{item}}">
                                                 <div class="month" >
                                                     <strong>10</strong>
@@ -51,8 +49,6 @@
                                                 <span class="badge">{{item}}</span>
                                         </li>
                                     {% endfor %}
-                                    {% endwith %}
-                               
                                     </ul>
                                 </div>
                             </div>
@@ -97,7 +93,6 @@
                 </div>
             </section>
         </div>
-         {% endwith %}
     </div>
      <!-- Modal warning -->
     <div class="modal fade" id="warning" role="dialog">
