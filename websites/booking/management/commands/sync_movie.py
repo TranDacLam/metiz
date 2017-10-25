@@ -36,7 +36,7 @@ class Command(BaseCommand):
         resp = urllib2.urlopen(request)
         # handle decoding json
         try:
-            result_dic = json.loads(resp.read())
+            result_dic = json.dumps(resp.read())
             movie, created = MovieSync.objects.get_or_create(
                 name="showtime_current", date_show=current_date, cinema_id=id_server, area_id=id_area)
             movie.data = result_dic

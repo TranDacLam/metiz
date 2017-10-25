@@ -44,3 +44,44 @@ ul.errorlist li, .error{
     margin-top: 5px;
     color: #a94442;
 }
+.content-confirm{
+    margin-bottom: 100px;
+}
+.content-confirm .page-title h1 {
+    color: #fff !important;
+    font-size: 15px;
+    background: none repeat scroll 0 0 #ff5400;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    top: 2px;
+    white-space: nowrap;
+    float: left;
+    padding: 0px 12px;
+    line-height: 40px;
+    margin-bottom: 0px;
+    border-bottom: none;
+}
+.content-confirm .page-title{
+    float: left;
+    width: 100%;
+    border-bottom: 2px solid #ff5400;
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+.load-more{
+    width: 140px;
+    border-radius: 35px;
+    background: #0e1d2f;
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
+    font-size: 15px;
+}
+.load-more:hover{
+    background: #ff5400;
+    border: 1px solid #ff5400;
+}
+@media screen and (max-width: 420px) {
+    .load-more{
+        width: 150px;
+        margin-left: 40px;
+    }
+}

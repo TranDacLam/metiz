@@ -121,3 +121,6 @@
         width: 100%;
     }
 }
+.profile-custom .form-control{
+    font-size: 15px;
+}
