@@ -298,7 +298,7 @@
     text-transform: uppercase;
 }
 #confirm .tab-header li a:hover{
-    border: none;
+    border-color: transparent;
 }
 #confirm .tab-header li.active a{
     background: #ff4900;

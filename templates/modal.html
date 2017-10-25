@@ -125,7 +125,7 @@
                   <h3 class="modal-title">Cảnh báo</h3>
                 </div>
                 <div class="modal-body">
-                    <p>Some text in the modal.</p>
+                    <p>Phim này dành cho lứa tuổi trên 18</p>
                 </div>
                 <div class="modal-footer warning-footer">
                   <button type="button" class="btn" data-dismiss="modal" data-toggle='modal' 
@@ -222,51 +222,48 @@
     </div>
 
     <!-- modal update profile -->
-     <div class="modal fade" id="profile" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Xác nhận thông tin</h4>
-        </div>
-        <div class="modal-body">
-            <p>Xác nhận thông tin sau đây là của bạn</p>
-            <div class="row">
-                {% if errors %}
-                    {% for key, error in errors.items %}
-                        <div class="alert-login col-lg-12 col-sm-6">
-                            <strong>{{ error|escape }}</strong>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                <form class="signin" id="signin_form" method="post" action="{% url 'login' %}">
-                    {% csrf_token %}
-                    <div class="col-sm-12">
-                        <div class="row">
-                             <div class="form-group">
-                                <label>{% trans "Full Name" %}</label>
-                                <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{{user.full_name}}">
+    <div class="modal fade" id="profile" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Xác nhận thông tin</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Xác nhận thông tin sau đây là của bạn</p>
+                    <div class="row">
+                        {% if errors %}
+                            {% for key, error in errors.items %}
+                                <div class="alert-login col-lg-12 col-sm-6">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <form class="signin" id="signin_form" method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="col-sm-12">
+                                <div class="row">
+                                     <div class="form-group">
+                                        <label>{% trans "Full Name" %}</label>
+                                        <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{{user.full_name}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{% trans "Phone" %}</label>
+                                        <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{{user.phone}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{% trans "Email" %}</label>
+                                        <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value='{{user.email}}'>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-login">Login</button>
                             </div>
-                            <div class="form-group">
-                                <label>{% trans "Phone" %}</label>
-                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{{user.phone}}">
-                            </div>
-                            <div class="form-group">
-                                <label>{% trans "Email" %}</label>
-                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value='{{user.email}}'>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-login">Login</button>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-      </div>
-      
     </div>
-  </div>
 </div>
 
 
