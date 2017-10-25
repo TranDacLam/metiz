@@ -4283,11 +4283,11 @@ p.product-name a:hover {
     clear: none;
   }
   .products-grid > li:nth-child(even) {
-    margin-right: 3.7037%;
+    margin-right: 4.7037%;
   }
   .products-grid > li {
     width: 30.8642%;
-    margin-right: 3.7037%;
+    margin-right: 4.7037%;
   }
   .products-grid > li:nth-child(3n+1) {
     clear: left;

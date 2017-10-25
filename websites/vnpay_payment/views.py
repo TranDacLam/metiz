@@ -62,10 +62,9 @@ def payment(request):
         else:
             print("Form input not validate")
     else:
-        total_payment = request.GET.get('total', 0)
+        total_payment = request.GET.get('totalPayment', 0)
+        total_seats = request.GET.get('totalSeat', 0)
         seats = request.GET.get('seats', "")
-        print "Seats ",seats
-        total_seats = len(ast.literal_eval(seats)) if seats else 0
         return render(request, "websites/vnpay_payment/payment.html",
                       {"title": "Thanh toán", "total_payment": total_payment, "seats": seats, "total_seats": total_seats})
 
