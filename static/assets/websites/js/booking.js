@@ -164,26 +164,17 @@ $(document).ready(function() {
     //sold seat
     sc.get(arrStatus).status('unavailable');
 
-    function sumSeat(){
-        var arrSumSeat = [];
-        var e = 0;
-        $('#selected-seats li').each(function(){
-            arrSumSeat[e] = $(this).text();
-            e++;
-        });
-        return arrSumSeat;
-    }
-
     // redirect payment with total and seat
     $('#btnNextBooking').on('click',function(){
         var totalPayment = parseInt($('#total').text());
-        var seatPayment = sumSeat();
+        var seatPayment = sc.find('selected').seatIds;
         if(seatPayment.length < 1){
             alert("Bạn chưa mua vé!");
             return false;
         }
-        window.location.href = "/payment/?total="+ totalPayment + "&seat=" + seatPayment;
+        window.location.href = '/payment/?total='+ totalPayment + '&seats="['+ seatPayment + ']"';
     });
+
 
     // Refresh seat selected
     $('.booking-refresh a').on('click', function(){

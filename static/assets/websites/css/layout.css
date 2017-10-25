@@ -79,6 +79,9 @@ ul.errorlist li, .error{
     background: #ff5400;
     border: 1px solid #ff5400;
 }
+.load-more:focus, .load-more:active:focus{
+    outline: none;
+}
 @media screen and (max-width: 420px) {
     .load-more{
         width: 150px;

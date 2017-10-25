@@ -336,7 +336,7 @@ ul.metiz-movie-tabs {
     background-image: url('/static/assets/websites/images/left-arrow.png');
     cursor: pointer;
     position: absolute;
-    z-index: 99;
+    z-index: 3;
     margin-top: -16px;
     opacity: 0.5;
     -webkit-transition: opacity 0.35s linear 0s;
@@ -350,7 +350,7 @@ ul.metiz-movie-tabs {
     background-image: url('/static/assets/websites/images/right-arrow.png');
     cursor: pointer;
     position: absolute;
-    z-index: 99;
+    z-index: 3;
     margin-top: -16px;
     opacity: 0.5;
     -webkit-transition: opacity 0.35s linear 0s;
