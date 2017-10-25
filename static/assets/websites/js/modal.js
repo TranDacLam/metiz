@@ -28,7 +28,41 @@
             $(".movieslide").css('display', 'none');
             $(".movieslide[data-play-date='" + date + "']").css('display', 'block');
         });
+
+        $(document).on('click', '.popup-movie-schedule', function () { 
+            if($(this).attr("data-date-select")){
+                var date_query = $(this).attr("data-date-select");
+            }else{
+                var currentdate = new Date();
+                var date_query = currentdate.getFullYear() + '-' + (currentdate.getMonth()+1) + '-' + currentdate.getDate();
+            }
+            // Call Ajax get movie show time with current date
+            data = {
+                "date": "2017-10-18",
+                "cinema_id": 1 // get cinema_id from hidden field in popup movie schedule
+            }
+            $.ajax({
+                url: "/movie/show/times",
+                type: 'get',
+                data: data,
+                dataType: 'json',
+                crossDomain:false,
+                context: this,
+            })
+            .done(function(response) {
+                alert("show time Success");
+                console.log(response);
+
+            })
+            .fail(function() {
+                alert("error");
+            });
+        });
+        
+        
     });
+
+
     function startMonth(){
         // $(".badge:contains('1')").parent().addClass('start-month');
         $('.days-popup li span').each(function() {

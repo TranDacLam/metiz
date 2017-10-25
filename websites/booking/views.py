@@ -43,19 +43,17 @@ def get_movie_show_time(request):
                 # Check key not in result then create dictionary create new key
                 # with data is list empty
                 if item["MOVIE_ID"] not in result:
-                    result[item["MOVIE_ID"]] = {"times": [], "id_showtime": item[
-                        "ID"], "movie_id": item["MOVIE_ID"]}
+                    result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item["MOVIE_ID"], "movie_name": item["MOVIE_NAME_VN"]}
 
                 # Check time showing greater than currnet hour
                 if int(item["TIME"].split(':')[0]) >= current_date.hour:
-                    result[item["MOVIE_ID"]]["times"].append(item["TIME"])
+                    result[item["MOVIE_ID"]]["lst_times"].append({"id_showtime": item["ID"], "time":item["TIME"]})
 
         return JsonResponse(result)
 
     except Exception, e:
         print "Error get_movie_show_time : %s" % e
-        return HttpResponse(status=500)
-
+        return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 
 def get_seats(request):
     try:
@@ -92,3 +90,11 @@ def get_seats(request):
     except Exception, e:
         print "Error get_seats : %s" % e
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+
+
+# def booking_seats(request):
+#     try:
+
+#     except Exception, e:
+#         print "Error booking_seats : %s" % e
+#         return HttpResponse(status=500)

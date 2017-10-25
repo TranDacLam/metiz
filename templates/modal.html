@@ -41,17 +41,9 @@
                             <div class="calendar-popup">
                                 <div class="list-time">
                                     <ul class="days-popup" id="play-date-slider">
-                                    {% for item in list_data.data_celendar.last%}
-                                        <li>    
-                                            <div class="month" >
-                                                <strong>09</strong>
-                                            </div>
-                                            <div class="dayofweek">Fri</div>
-                                            <span class="badge">{{item}}</span>
-                                        </li>
-                                    {% endfor %}
-                                     {% for item in list_data.data_celendar.present%}
-                                        <li class="available"  data-play-date="2017-10-{{item}}">
+                                    {% with ""|get_date_showing as list_date_present %}
+                                     {% for item in list_date_present %}
+                                        <li class="available"  data-play-date="{{item}}">
                                                 <div class="month" >
                                                     <strong>10</strong>
                                                 </div>
@@ -59,15 +51,7 @@
                                                 <span class="badge">{{item}}</span>
                                         </li>
                                     {% endfor %}
-                                    {% for item in list_data.data_celendar.future%}
-                                    <li class="" data-play-date="2017-10-{{item}}">    
-                                            <div class="month">
-                                                <strong>10</strong>
-                                            </div>
-                                            <div class="dayofweek">Fri</div>
-                                            <span class="badge" value='{{item}}'>{{item}}</span>
-                                    </li>
-                                    {% endfor %}
+                                    {% endwith %}
                                
                                     </ul>
                                 </div>
