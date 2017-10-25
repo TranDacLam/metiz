@@ -28,3 +28,6 @@ class MovieSync(DateTimeModel):
     area_id = models.IntegerField(default=0)
     data = models.TextField()
     date_show = models.DateField(_("Date Showing"))
+
+    def __str__(self):
+        return '%s' % (self.name)

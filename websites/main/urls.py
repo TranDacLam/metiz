@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^', include('registration.urls')),
+    url(r'^', include('booking.urls')),
     url(r'^', include('vnpay_payment.urls')),
     
     
