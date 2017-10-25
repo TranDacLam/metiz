@@ -4169,7 +4169,7 @@ p.product-name a:hover {
 
 .products-grid > li {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   text-align: center;
 }
 .products-grid > li:after {
@@ -4199,7 +4199,7 @@ p.product-name a:hover {
 
 .products-grid .product-info {
   position: relative;
-  padding-bottom: 95px;
+  padding-bottom: 15px;
 }
 
 .products-grid .actions {

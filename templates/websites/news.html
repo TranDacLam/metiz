@@ -7,6 +7,10 @@
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film.css" media="all" />
 {% endblock %}
 
+{% block extrascript %}
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/news.js"></script>
+{% endblock %}
+
 {% block body_class %}
 	catalog-category-view categorypath-now-showing category-now-showing
 {% endblock %}
@@ -18,7 +22,7 @@
 	    <div class="cate-new-offer">
 			<h1 class="text-center">KHUYẾN MÃI & ƯU ĐÃI</h1>
 		</div>
-		<div class="product-collateral">
+		<div class="product-collateral news-custom">
 			<ul class="cate-new-offer products-grid products-grid--max-4-col first last odd">
 				{% for item in list_news %}
 				<li class="item last">
@@ -44,6 +48,7 @@
 				</li>
 				{% endfor%}			
 			</ul>
+			<div class="text-center"><button id="load-more-news" class="btn btn-primary load-more" data-page="1">Xem thêm</button></div>
 		</div>
 	</div>
 </div>

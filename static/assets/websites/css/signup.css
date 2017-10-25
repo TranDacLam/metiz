@@ -60,3 +60,6 @@
 #address::-webkit-input-placeholder {
     font-size: 12px;
 }
+.login-forgot-pass i{
+    color: black;
+}

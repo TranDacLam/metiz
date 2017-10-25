@@ -35,7 +35,7 @@
 							<a href="{% url 'film_detail' value.id %}" title="{{value.name}}">{{value.name}}</a></h2>
 							<div class="metiz-movie-info">
 								<span class="metiz-info-bold">Thể loại: </span>
-								<span class="metiz-info-normal">{{value.genre.name}}</span>
+								<span class="metiz-info-normal product-cate">{{value.genre.name}}</span>
 							</div>
 							<div class="metiz-movie-info">
 
@@ -64,7 +64,7 @@
 					</li>
 				{%endfor%}	
 			</ul>
-			<div class="text-center"><button id="load-more" class="btn btn-primary" data-page="1">Xem thêm</button></div>
+			<div class="text-center"><button id="load-more" class="btn btn-primary load-more" data-url="showing" data-page="1">Xem thêm</button></div>
 		</div>
 		{% endif %}
 	</div>           
