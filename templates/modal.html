@@ -11,7 +11,7 @@
                 <ul>
                 {% get_cites as all_cites %}
                 {% for city in all_cites.data %}
-                    <li><a class="" data-toggle='tab' href="#{{city}}" data='{{city}}'>{{city}}</a></li>
+                    <li class="active"><a data-toggle='tab' href="#{{city}}" data='{{city}}'>{{city}}</a></li>
                 {% endfor %}
                 </ul>
             </div>
@@ -19,11 +19,9 @@
          <div class="row cinema ">
             <h3>{% trans 'Select Cinema' %}</h3>
             <div class="tab-content">
-                
-                
-                <div class="list-cinema clearfix tab-pane " id="id_cinema_detail">
+                <div class="list-cinema active clearfix tab-pane " id="id_cinema_detail">
                     <ul class="">
-                        <li><a class="btn"  href="#">Metiz Cinema</a></li>
+                        <li><a class="btn active" href="#">Metiz Cinema</a></li>
                     </ul>
                 </div>
             </div>
@@ -41,12 +39,12 @@
                                     <ul class="days-popup" id="play-date-slider">
                                     {% get_date_showing as list_date_present %}
                                     {% for item in list_date_present %}
-                                        <li class="available"  data-play-date="{{item}}">
-                                                <div class="month" >
-                                                    <strong>10</strong>
-                                                </div>
-                                                <div class="dayofweek">Fri</div>
-                                                <span class="badge">{{item}}</span>
+                                        <li class="available popup-movie-schedule" data-date-select="{{item}}">
+                                            <div class="month" >
+                                                <strong>10</strong>
+                                            </div>
+                                            <div class="dayofweek">Fri</div>
+                                            <span class="badge">{{item}}</span>
                                         </li>
                                     {% endfor %}
                                     </ul>
@@ -63,31 +61,9 @@
                             <h3 class="title">Chọn lịch chiếu</h3>
                         </div>
                         <div class="col-xs-12">
-                        {% for item in list_data.data_schedule%}
-                            <!-- detail film -->
-                            <div class="movieslide" data-play-date="{{item.date}}">
-                                {% for info in item.film%}
-                                <div class="movie-time-line-box clearfix" data-control="movie-code" data-age="16" value="2997" >
-                                    <h3 class="movie-name">{{info.name}}</h3>
-                                    <div class="lot-table clearfix">
-                                        <ul class="list-inline list-unstyled theater_time">
-                                            {% for time in info.schedule%}
-                                                <li class="sold-out" data-early="0">
-                                                    <a href="#" data-toggle="modal" data-target="#warning">
-                                                        <span class="time">{{time.from}}</span>
-                                                        <span class="clock">{{time.from}}<span>~{{time.to}}</span></span>
-                                                        <span class="ppnum">{{time.room}}</span>
-                                                        <span class="ppnum">{{time.name_room}}</span>
-                                                        <span class="pp-early" title="Suất chiều đầu"></span>
-                                                    </a>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                </div>
-                                {% endfor %}
+                            <div class="list-schedule">
+                                <!-- schedule film-->
                             </div>
-                        {% endfor %}
                          </div>
                     </div>
                 </div>
