@@ -4,7 +4,7 @@
         transparent 3px, transparent 4px, #E3E3E3 0px);
     color: #0e1d2f;
     text-align: center;
-    padding: 3px;
+    padding: 10px;
     border-radius: 5px;
 }
 .booking-details {
@@ -97,7 +97,7 @@ span.seatCharts-legendDescription {
     border: 2px solid #ff5400;
 }
 #selected-seats {
-    max-height: 111px;
+    max-height: 152px;
     overflow-y: auto;
     overflow-x: none;
     width: 200px;
@@ -180,10 +180,13 @@ div.seatCharts-seat.available.seat-ld {
     margin-left: 8px;
 }
 .booking-details .booking-refresh a{
-    color: #337ab7;
+    color: #241d1e;
 } 
 .booking-refresh a:hover{
     color: #B13026;
     text-decoration: none;
     cursor: pointer;
+}
+.booking-details .booking-refresh i{
+    color: #7e8eaa;
 }
