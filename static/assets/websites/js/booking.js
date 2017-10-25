@@ -168,11 +168,12 @@ $(document).ready(function() {
     $('#btnNextBooking').on('click',function(){
         var totalPayment = parseInt($('#total').text());
         var seatPayment = sc.find('selected').seatIds;
-        if(seatPayment.length < 1){
+        var totalSeat = seatPayment.length;
+        if(totalSeat < 1){
             alert("Bạn chưa mua vé!");
             return false;
         }
-        window.location.href = '/payment/?total='+ totalPayment + '&seats="['+ seatPayment + ']"';
+        window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat +'&seats='+ seatPayment;
     });
 
 

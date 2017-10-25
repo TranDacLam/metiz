@@ -27,12 +27,12 @@
                     <div class="form-group">
                         <label for="order_id">Mã hóa đơn</label>
                         <input class="form-control" id="order_id"
-                               name="order_id" type="text" value="{% now 'YmdHis' %}"/>
+                               name="order_id" type="text" value="{% now 'YmdHis' %}" disabled/>
                     </div>
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
                         <input class="form-control" id="amount"
-                               name="amount" type="number" value=""/>
+                               name="amount" type="number" value="{{ total_payment }}" disabled/>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -73,7 +73,7 @@
                     </div>
                     <div class="form-group">
                         <label for="order_desc">Nội dung thanh toán</label>
-                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2">Thanh toan don hang thoi gian: {% now "Y-m-d H:i:s" %}</textarea>
+                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2">Thanh toán đơn hàng : &#13;&#10; Thời gian: {% now "Y-m-d H:i:s" %} &#13;&#10; Số ghế: {{ total_seats }} &#13;&#10; Ghế: {{ seats }}</textarea>
                     </div>
                 </div>
                 <div class="text-center">

@@ -24,3 +24,6 @@
 .vnpayment .btn-default{
     margin-bottom: 10px;
 }
+.vnpayment textarea.form-control{
+    height: 90px;
+}

@@ -4022,7 +4022,7 @@ ul,ol,li{
 }
 .category-products .products-grid .product-image {
     border: 1px solid #ff5400;
-    display: inline-table;
+    /*display: inline-table; border every image*/
 }
 .products-grid--max-4-col.products-grid .product-image {
     max-width: 100%;
