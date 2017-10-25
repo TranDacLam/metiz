@@ -67,8 +67,12 @@ def get_data_modal(value):
 		]}
 	]},
 	]
+	data_cinema = {'danang':['Metiz Cinema'],
+	'hanoi':['Metiz Cinema 1', 'Metiz Cinema 2'],
+	'hcm':['Metiz Cinema']
+	}
 	data_celendar = {'last' : range(15,27),'present':range(27,30), 'future': range(1,15) }
-	return {'data_schedule': data_schedule, 'data_celendar':data_celendar}
+	return {'data_schedule': data_schedule, 'data_celendar':data_celendar, 'data_cinema': data_cinema}
 
 
 @register.filter

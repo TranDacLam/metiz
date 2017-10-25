@@ -88,7 +88,8 @@ $(document).ready(function() {
 			},
 			password:{
 				required: true,
-				minlength: 8
+				minlength: 8,
+				validatePassword: true
 			},
 		},
 		messages:{
@@ -98,7 +99,7 @@ $(document).ready(function() {
 			},
 			password:{
 				required: message.required,
-				minlength: message.minlength_8
+				minlength: message.minlength_8,
 			}
 		},
 	});

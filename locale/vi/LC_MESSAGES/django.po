@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 11:05+0700\n"
+"POT-Creation-Date: 2017-10-23 15:08+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: templates/modal.html:16
+msgid "Select date play"
+msgstr "Chọn lịch chiếu"
 
 #: templates/registration/email/metiz_account_created_confirm.html:115
 msgid "mail.hello"
@@ -42,84 +46,84 @@ msgstr "Đội Ngũ Hỗ Trợ Helio Center."
 msgid "Metiz Account Password Reset."
 msgstr "Metiz Lấy lại mật khẩu"
 
-#: templates/registration/profile.html:42 templates/registration/signup.html:64
+#: templates/registration/profile.html:56 templates/registration/signup.html:64
 #: websites/core/models.py:127
 msgid "Full Name"
 msgstr "Họ Tên"
 
-#: templates/registration/profile.html:51 templates/registration/signup.html:73
+#: templates/registration/profile.html:65 templates/registration/signup.html:73
 msgid "Gender"
 msgstr "Giới Tính"
 
-#: templates/registration/profile.html:54 templates/registration/signup.html:76
+#: templates/registration/profile.html:68 templates/registration/signup.html:76
 msgid "Male"
 msgstr "Nam"
 
-#: templates/registration/profile.html:55 templates/registration/signup.html:77
+#: templates/registration/profile.html:69 templates/registration/signup.html:77
 msgid "Female"
 msgstr "Nữ"
 
-#: templates/registration/profile.html:63 templates/registration/signup.html:85
+#: templates/registration/profile.html:77 templates/registration/signup.html:85
 msgid "Birth Date"
 msgstr "Ngày Sinh"
 
-#: templates/registration/profile.html:65
+#: templates/registration/profile.html:79
 msgid "Choose Your Birthday.."
 msgstr "Chọn Ngày Sinh Của Bạn"
 
-#: templates/registration/profile.html:72 templates/registration/signup.html:94
+#: templates/registration/profile.html:86 templates/registration/signup.html:94
 #: websites/booking/models.py:14
 msgid "Phone"
 msgstr "Số Điện Thoại"
 
-#: templates/registration/profile.html:74
+#: templates/registration/profile.html:88
 msgid "Enter Phone Here.."
 msgstr "Nhập Số Điện Thoại Ở Đây"
 
-#: templates/registration/profile.html:84 templates/registration/signup.html:40
+#: templates/registration/profile.html:98 templates/registration/signup.html:40
 #: templates/registration/signup.html:107 websites/booking/models.py:15
 msgid "Email"
 msgstr ""
 
-#: templates/registration/profile.html:86
+#: templates/registration/profile.html:100
 msgid "Enter Email Here.."
 msgstr "Nhập email ở đây"
 
-#: templates/registration/profile.html:93
+#: templates/registration/profile.html:107
 #: templates/registration/signup.html:116
 msgid "Personal ID"
 msgstr "Số CMND"
 
-#: templates/registration/profile.html:95
+#: templates/registration/profile.html:109
 msgid "Enter Personal ID Here.."
 msgstr "Nhập Số CMND Ở Đây"
 
-#: templates/registration/profile.html:105
+#: templates/registration/profile.html:119
 #: templates/registration/signup.html:138
 msgid "City"
 msgstr "Thành Phố"
 
-#: templates/registration/profile.html:108
+#: templates/registration/profile.html:122
 #: templates/registration/signup.html:141
 msgid "Choose City"
 msgstr "Chọn Thành Phố"
 
-#: templates/registration/profile.html:116
+#: templates/registration/profile.html:130
 #: templates/registration/signup.html:161
 msgid "District"
 msgstr "Quận"
 
-#: templates/registration/profile.html:119
+#: templates/registration/profile.html:133
 #: templates/registration/signup.html:164
 msgid "Choose District"
 msgstr "Chọn Quận"
 
-#: templates/registration/profile.html:129
+#: templates/registration/profile.html:143
 #: templates/registration/signup.html:175
 msgid "Address"
 msgstr "Địa Chỉ"
 
-#: templates/registration/profile.html:131
+#: templates/registration/profile.html:145
 msgid "Enter Address Here.."
 msgstr "Nhập Địa Chỉ Ở Đây"
 
@@ -419,7 +423,9 @@ msgstr "Mật khẩu của bạn sai. Hãy nhập lại"
 
 #: websites/registration/messages.py:5
 msgid "Your account not active. Please check email and active account."
-msgstr "Tài khoản của bạn chưa được kích hoạt. Vui lòng kiểm tra email và kích hoạt tài khoản"
+msgstr ""
+"Tài khoản của bạn chưa được kích hoạt. Vui lòng kiểm tra email và kích hoạt "
+"tài khoản"
 
 #: websites/registration/metiz_email.py:15
 msgid "Either message_plain or message_html should be not None"
