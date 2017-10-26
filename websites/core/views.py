@@ -284,6 +284,8 @@ def get_post(request):
 
 def get_booking(request):
     try:
+        print('*****************booking***********')
+        print (request.session['booking'])
         return render(request, 'websites/booking.html')
     except Exception, e:
         print "Error: ", e

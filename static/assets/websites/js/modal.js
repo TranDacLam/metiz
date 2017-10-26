@@ -12,6 +12,7 @@ $(document).ready(function() {
         $.each(shedule.lst_times, function(key, value) {
             htmlShedule +=  '<li class="sold-out">'
                                 +'<a href="#" data-toggle="modal" data-target="#warning">'
+                                    +'<input type="hidden" name="id_showtime" value="'+ value.id_showtime +'">'
                                     +'<span class="time">'+ value.time +'</span>'
                                     +'<span class="clock">'+ value.time +'<span>~1:15</span></span>'
                                     +'<span class="ppnum">43</span>' // Số ghế trống
@@ -39,6 +40,7 @@ $(document).ready(function() {
         if($(this).attr("data-date-seat")){
             var date_seat = $(this).attr("data-date-seat");
             $('.days-popup [data-date-select = '+ date_seat +']').addClass('active-date');
+            var date_query = date_seat;
         }else{
             if($(this).attr("data-date-select")){
                 var date_query = $(this).attr("data-date-select");
@@ -68,11 +70,82 @@ $(document).ready(function() {
                 html += listFilm(value);
             });
             $('.list-schedule').html(html);
+            getValue();
         })
         .fail(function() {
             alert("error schedule film");
         });
     });
+    function getValue(){
+         $('.sold-out a').click(function(event) {
+            event.preventDefault();
+            var id_showtime = $(this).children('input').val();
+            console.log(id_showtime);
+            $('.modal input[name=id_showtime]').val(id_showtime);
+        });
+    }
+    
+    $('.submit').click(function(event) {
+        event.preventDefault();
+        data= $(this).parents('.form-popup').serialize();
+        /* Act on the event */
+        $.ajax({
+            url: '/info/booking',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+        })
+        .done(function(data) {
+             $('label.form-error').html('');
+            if(data.errors){
+                $.each(data.errors, function (field, error) {
+                    $('label[for='+ field +']').html(error);
+                });
+            }
+            else{
+                window.location.href='/booking/'
+            }
+        })
+        .fail(function() {
+            console.log("error schedule film");
+        });
+    });
+    $('#agree_term').on('click', function(){
+        if($('#agree_term').prop("checked")){
+            $('.form-popup button').prop('disabled', false);
+        }else{
+            $('.form-popup button').prop('disabled', true);
+        }
+    });
+    $('.open-popup-link').click(function(event) {
+        loadSlideCalendar();
+    });
+    $(window).resize(function(event) {
+        loadSlideCalendar();
+    });
+    function loadSlideCalendar(){
+        if ($( window ).width() < 480 ) {
+            $("#play-date-slider").slick({
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                dots: false,
+                autoplay: false,
+                infinite: false,
+                speed: 500,
+                arrows: true,
+                focusOnSelect: false,
+                autoplaySpeed: 4000,
+                fade: false,
+                centerMode: false,
+                prevArrow: "<div class='slick-prev'><img  src='/static/assets/websites/images/btn_m_prev_on.png'></div>",
+                nextArrow: "<div class='slick-next'><img  src='/static/assets/websites/images/btn_m_next_on.png'></div>"
+            });
+        }
+        else{
+             $("#play-date-slider").slick('unslick');
+        }
+
+    }
 });
 
 function startMonth(){

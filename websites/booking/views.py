@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from booking.models import MovieSync
+from forms import *
 import json
 import ast
 import urllib
@@ -123,3 +124,30 @@ def get_seats(request):
 #     except Exception, e:
 #         print "Error booking_seats : %s" % e
 #         return HttpResponse(status=500)
+def get_info_booking(request):
+    try:
+        if request.method == 'POST':
+            form = BookingForm(request.POST)
+            if form.is_valid():
+                print('****************************')
+                name = form.cleaned_data['name']
+                phone = form.cleaned_data['phone']
+                id_showtime = form.cleaned_data['id_showtime']
+                data = {
+                    'name': name,
+                    'phone': phone,
+                    'id_showtime': id_showtime
+                }
+                request.session['booking'] = data
+                print (request.session['booking'])
+                return JsonResponse({'hoa':2})
+            else:
+                data = {
+                    'errors': form.errors
+                }
+                print(form.errors)
+                return JsonResponse(data)
+    except Exception, e:
+        print "Error get_info_booking : %s" % e
+        return HttpResponse(status=500)
+

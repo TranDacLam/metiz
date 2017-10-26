@@ -5,24 +5,26 @@
         <div class="top">
             Lịch chiếu
         </div>
-        <div class="row city">
-            <h3>{% trans 'Select City' %}</h3>
-            <div class="list-item clearfix">
-                <ul>
-                {% get_cites as all_cites %}
-                {% for city in all_cites.data %}
-                    <li class="active"><a data-toggle='tab' href="#{{city}}" data='{{city}}'>{{city}}</a></li>
-                {% endfor %}
-                </ul>
-            </div>
-        </div>
-         <div class="row cinema ">
-            <h3>{% trans 'Select Cinema' %}</h3>
-            <div class="tab-content">
-                <div class="list-cinema active clearfix tab-pane " id="id_cinema_detail">
-                    <ul class="">
-                        <li><a class="btn active" href="#">Metiz Cinema</a></li>
+        <div class="container">
+            <div class="row city">
+                <h3>{% trans 'Select City' %}</h3>
+                <div class="list-item clearfix">
+                    <ul>
+                    {% get_cites as all_cites %}
+                    {% for city in all_cites.data %}
+                        <li class="active"><a data-toggle='tab' href="#{{city}}" data='{{city}}'>{{city}}</a></li>
+                    {% endfor %}
                     </ul>
+                </div>
+            </div>
+            <div class="row cinema ">
+                <h3>{% trans 'Select Cinema' %}</h3>
+                <div class="tab-content">
+                    <div class="list-cinema active clearfix tab-pane " id="id_cinema_detail">
+                        <ul class="">
+                            <li><a class="btn active" href="#">Metiz Cinema</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,22 +35,20 @@
                         <div class="col-xs-8">
                             <h3>{% trans 'Select date play' %}</h3>
                         </div>
-                        <div class="col-xs-12 col-md-11 col-lg-12 col-sm-10 size">
+                        <div class="col-lg-6 col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-12  size">
                             <div class="calendar-popup">
-                                <div class="list-time">
-                                    <ul class="days-popup" id="play-date-slider">
-                                    {% get_date_showing as list_date_present %}
-                                    {% for item in list_date_present %}
-                                        <li class="available popup-movie-schedule" data-date-select="{{item}}">
-                                            <div class="month" >
-                                                <strong>10</strong>
-                                            </div>
-                                            <div class="dayofweek">Fri</div>
-                                            <span class="badge">{{item}}</span>
-                                        </li>
-                                    {% endfor %}
-                                    </ul>
-                                </div>
+                                <ul class="days-popup" id="play-date-slider">
+                                {% get_date_showing as list_date_present %}
+                                {% for item in list_date_present %}
+                                    <li class="available popup-movie-schedule" data-date-select="{{item}}">
+                                        <div class="month" >
+                                            <strong>10</strong>
+                                        </div>
+                                        <div class="dayofweek">Fri</div>
+                                        <span class="badge">{{ item|slice:'8:' }}</span>
+                                    </li>
+                                {% endfor %}
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,6 @@
     <!-- modal confirm -->
     <div class="modal fade" id="confirm" role="dialog">
         <div class="modal-dialog">
-          <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -107,62 +106,51 @@
                         <!-- MEMBER -->
                         <div id="member" class="tab-pane fade in active">
                             <div class="row">
-                            {% if errors %}
-                                {% for key, error in errors.items %}
-                                    <div class="alert-login col-lg-12 col-sm-6">
-                                        <strong>{{ error|escape }}</strong>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            <form class="signin" id="signin_form" method="post" action="{% url 'login' %}">
-                                {% csrf_token %}
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class=" form-group">
-                                            <label>{% trans "Email" %}</label>
-                                            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
+                                <form class="signin" id="signin_form" method="post" action="{% url 'login' %}">
+                                    {% csrf_token %}
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>{% trans "Email" %}</label>
+                                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{% trans "Password"%}</label>
+                                                <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>{% trans "Password"%}</label>
-                                            <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
-                                        </div>
+                                        <button type="submit" class="btn btn-login">Login</button>
                                     </div>
-                                    <button type="submit" class="btn btn-login">Login</button>
-                                </div>
-                            </form>
+                                </form>
                             </div>
-                            <a class="login-forgot-pass" href="{% url 'password_reset' %}">Tìm lại mật khẩu?</a>
                         </div>
                         <!-- GUEST -->
                         <div id="guest" class="tab-pane fade">
-                            <input name="is_agree" id="is_agree" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
-                            <label class="is_agree" for="is_agree">Tôi đã đọc, hiểu và đồng ý với các <a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_chung">điều khoản</a>.</label>
+                            <input name="agree_term" id="agree_term" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
+                            <label class="agree_term" for="agree_term">Tôi đã đọc, hiểu và đồng ý với các <a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_chung">điều khoản</a>.</label>
                             <div class="row">
-                                {% if errors %}
-                                    {% for key, error in errors.items %}
-                                        <div class="alert-login col-lg-12 col-sm-6">
-                                            <strong>{{ error|escape }}</strong>
-                                        </div>
-                                    {% endfor %}
-                                {% endif %}
-                                <form class="signin" id="signin_form" method="post" action="{% url 'login' %}">
+                                <form class='form-popup' method="post" action="{% url 'info-booking' %}">
                                     {% csrf_token %}
+                                    <input type="hidden" name="id_showtime" id="id_showtime">
                                     <div class="col-sm-12">
                                         <div class="row">
                                              <div class="form-group">
                                                 <label>{% trans "Full Name" %}</label>
                                                 <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}">
+                                                <label class="form-error" for="name" id='name-error'></label>
                                             </div>
                                             <div class="form-group">
                                                 <label>{% trans "Phone" %}</label>
                                                 <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control">
+                                                <label  class="form-error" for="phone" id='phone-error'></label>
                                             </div>
                                             <div class="form-group">
                                                 <label>{% trans "Email" %}</label>
                                                 <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
+                                                <label  class="form-error" for="email" id='email-error'></label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-login">Login</button>
+                                        <button type="submit" id="submit" class="btn btn-login submit" disabled>Đặt vé</button>
                                     </div>
                                 </form>
                             </div>
@@ -185,31 +173,28 @@
                 <div class="modal-body">
                     <p>Xác nhận thông tin sau đây là của bạn</p>
                     <div class="row">
-                        {% if errors %}
-                            {% for key, error in errors.items %}
-                                <div class="alert-login col-lg-12 col-sm-6">
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                        <form class="signin" id="signin_form" method="post" action="{% url 'login' %}">
+                        <form class='form-popup'  method="post" action="{% url 'info-booking' %}">
                             {% csrf_token %}
+                            <input type="hidden" name="id_showtime" id="id_showtime">
                             <div class="col-sm-12">
                                 <div class="row">
                                      <div class="form-group">
                                         <label>{% trans "Full Name" %}</label>
                                         <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{{user.full_name}}">
+                                        <label  class="form-error" for="name" id='name-error'></label>
                                     </div>
                                     <div class="form-group">
                                         <label>{% trans "Phone" %}</label>
                                         <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{{user.phone}}">
+                                        <label  class="form-error" for="phone" id='phone-error'></label>
                                     </div>
                                     <div class="form-group">
                                         <label>{% trans "Email" %}</label>
                                         <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value='{{user.email}}'>
+                                        <label  class="form-error" for="email" id='email-error'></label>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-login">Login</button>
+                                <button type="submit" id='update' class="btn btn-login submit">Xác nhận</button>
                             </div>
                         </form>
                     </div>
