@@ -7,7 +7,6 @@ import urllib2
 import requests
 from booking.models import MovieSync
 from datetime import timedelta
-import datetime
 
 
 class Command(BaseCommand):
@@ -91,9 +90,9 @@ class Command(BaseCommand):
             - Get Movie Showing
         """
         try:
-            # current_date = timezone.localtime(
-                # timezone.now())
-            current_date = datetime.date(2017, 10, 12)
+            current_date = timezone.localtime(
+                timezone.now())
+            # current_date = datetime.date(2017, 10, 12)
             end_date = current_date + timedelta(days=6)
             step_date = timedelta(days=1)
 

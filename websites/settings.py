@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'booking.middleware.DestroySeat',
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -229,6 +230,9 @@ NUMBER_GROUPING = 3
 # ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL='/'
+
+# Set timeout for choice seats
+TIME_SEAT_DELAY = 5
 
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:

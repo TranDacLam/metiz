@@ -4,10 +4,12 @@ from django.shortcuts import render
 from models import *
 from datetime import *
 from django.db.models import Avg, Sum, Count
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
 from itertools import chain
 import itertools
 
+# NOTES : View SQL Query using : print connection.queries
 
 def custom_404(request):
     return render(request, 'websites/errors/404.html', {}, status=404)
@@ -19,12 +21,6 @@ def custom_500(request):
 
 def showing(request):
     try:
-        if request.is_ajax():
-            # convert object models to json
-            # Ajax reuqest with page, db get data other with limit and offset
-            result = {}
-            return JsonResponse(result)
-
         # get data movie showing
         """ 
             Movie Showing Follow Condition:
@@ -34,14 +30,36 @@ def showing(request):
             - order by name
             *Note: in alogilm query movie add extra field priority_null and append priority is null to end list
         """
+        print "request.GET ", request.GET
+        page_items = request.GET.get('page_items', 12)
+        page_number = request.GET.get('page', 1)
+
         movie_showings = Movie.objects.filter(
             release_date__lte=datetime.now(), end_date__gte=datetime.now(), is_draft=False).order_by('priority').extra(
             select={'priority_null': 'priority is null'})
 
         list_data_showing = movie_showings.extra(
             order_by=['priority_null', '-release_date', 'name'])
-        
-        return render(request, 'websites/showing.html', {'list_data_showing': list_data_showing})
+
+        # Pagination QuerySet With Defalt Page is 12 Items
+
+        paginator = Paginator(list_data_showing, page_items)
+        try:
+            movie_page = paginator.page(int(page_number))
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            movie_page = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of
+            # results.
+            movie_page = paginator.page(paginator.num_pages)
+
+        if request.is_ajax():
+            # convert object models to json
+            # Ajax reuqest with page, db get data other with limit and offset
+            return JsonResponse(list(movie_page.object_list.values()))
+
+        return render(request, 'websites/showing.html', {'list_data_showing': movie_page.object_list})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
@@ -54,7 +72,7 @@ def coming_soon(request):
             # Ajax reuqest with page, db get data other with limit and offset
             result = {}
             return JsonResponse(result)
-            
+
         # get data moving comingsoon
         """ 
             Movie Comming Soon Follow Condition:
@@ -64,13 +82,33 @@ def coming_soon(request):
             - order by name
             *Note: in alogilm query movie add extra field priority_null and append priority is null to end list
         """
+        page_items = request.GET.get('page_items', 12)
+        page_number = request.GET.get('page', 1)
+
         movie_comming = Movie.objects.filter(
             release_date__gt=datetime.now(), is_draft=False).extra(select={'priority_null': 'priority is null'})
 
         list_data_coming_soon = movie_comming.extra(
             order_by=['priority_null', 'release_date', 'name'])
 
-        return render(request, 'websites/coming_soon.html', {'list_data_coming_soon': list_data_coming_soon})
+        # Pagination QuerySet With Defalt Page is 12 Items
+        paginator = Paginator(list_data_coming_soon, page_items)
+        try:
+            movie_page = paginator.page(int(page_number))
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            movie_page = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of
+            # results.
+            movie_page = paginator.page(paginator.num_pages)
+
+        if request.is_ajax():
+            # convert object models to json
+            # Ajax reuqest with page, db get data other with limit and offset
+            return JsonResponse(list(movie_page.object_list.values()))
+
+        return render(request, 'websites/coming_soon.html', {'list_data_coming_soon': movie_page.object_list})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
@@ -89,7 +127,7 @@ def film_detail(request, id):
         total_count = comments.aggregate(Count('rating')).get('rating__count')
         total_detail = comments.values(
             'rating').annotate(total=Count('rating')).order_by('-rating')
-        
+
         return render(request, 'websites/film_detail.html',
                       {'total_count': total_count, 'total_detail': total_detail, 'rating__avg': rating__avg,
                        'film_detail': film_detail, 'comments': comments})
@@ -116,6 +154,10 @@ def news(request):
             - If same date then order modified date
             *Note: in alogilm query movie add extra field priority_null and append priority is null to end list
         """
+
+        page_items = request.GET.get('page_items', 12)
+        page_number = request.GET.get('page', 1)
+
         # get news all
         news = NewOffer.objects.all()
 
@@ -135,7 +177,24 @@ def news(request):
         # merge 3 list by order future, present and past
         list_news = list(chain(list_news_future, list_news_present))
 
-        return render(request, 'websites/news.html', {'list_news': list_news})
+        # Pagination QuerySet With Defalt Page is 12 Items
+        paginator_news = Paginator(list_news, page_items)
+        try:
+            news_page = paginator_news.page(int(page_number))
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            news_page = paginator_news.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of
+            # results.
+            news_page = paginator_news.page(paginator_news.num_pages)
+
+        if request.is_ajax():
+            # convert object models to json
+            # Ajax reuqest with page, db get data other with limit and offset
+            return JsonResponse(list(news_page.object_list.values()))
+
+        return render(request, 'websites/news.html', {'list_news': news_page.object_list})
     except Exception, e:
         print "Error: %s" % e
         return HttpResponse(status=500)
@@ -156,23 +215,25 @@ def new_detail(request, id):
 
 def get_technology(request):
     try:
-        req_name = request.GET['name']
-        check = CenimaTechnology.objects.filter(name=req_name)
-        if (check):
+        if 'name' in request.GET:
+            req_name = request.GET['name']
             # get technology detail by name
-            technology = CenimaTechnology.objects.get(name=req_name)
-            content = technology.content
-            name = technology.name
-            data = {
-                'name': name,
-                'content': content
-            }
-            return JsonResponse(data)
-        print "Do not found cenima technology name ", req_name
-        return HttpResponse(status=500)
+            try:
+                technology = CenimaTechnology.objects.get(name=req_name)
+                content = technology.content
+                name = technology.name
+                data = {
+                    'name': name,
+                    'content': content
+                }
+                return JsonResponse(data)
+            except CenimaTechnology.DoesNotExist, e:
+                print "Error get_technology ",e
+                return JsonResponse({"message": "Technology Does Not Exist"}, status=400)
+
     except Exception, e:
         print "Error: ", e
-        return HttpResponse(status=500)
+        return JsonResponse(status=500)
 
 
 def technology_detail(request, name):
@@ -214,7 +275,6 @@ def home(request):
 
         list_showing = movie_showings.extra(
             order_by=['priority_null', '-release_date', 'name'])
-
 
         """ 
             Comming Soon Follow Condition:
