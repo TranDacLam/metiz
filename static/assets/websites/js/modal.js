@@ -1,131 +1,85 @@
-    $(document).ready(function() {
-        // active popup
-        $('.open-popup-link').magnificPopup({
-              type: 'inline',
-              midClick: true,
-        });
-
-        $('.available:first').addClass('active-date');
-        startMonth();
-
-        $('.open-popup-link').click(function(event) {
-            loadSlideCalendar();
-
-            // show  present movies
-            var date= $('li.available.active-date').attr('data-play-date');
-            $(".movieslide[data-play-date='" + date + "']").css('display', 'block');
-            // slick slider go to today
-            var number= $(".active-date").attr('data-slick-index');
-            $("#play-date-slider").slick('slickGoTo',  number);
-        });
-
-        // funtion for choose day
-        $('.available').click(function(event) {
-            $('.days-popup li').removeClass('active-date');
-            $(this).addClass('active-date');
-
-            var date= $(this).attr('data-play-date');
-            $(".movieslide").css('display', 'none');
-            $(".movieslide[data-play-date='" + date + "']").css('display', 'block');
-        });
-
-        $(document).on('click', '.popup-movie-schedule', function () { 
-            if($(this).attr("data-date-select")){
-                var date_query = $(this).attr("data-date-select");
-            }else{
-                var currentdate = new Date();
-                var date_query = currentdate.getFullYear() + '-' + (currentdate.getMonth()+1) + '-' + currentdate.getDate();
-            }
-            // Call Ajax get movie show time with current date
-            data = {
-                "date": "2017-10-18",
-                "cinema_id": 1 // get cinema_id from hidden field in popup movie schedule
-            }
-            $.ajax({
-                url: "/movie/show/times",
-                type: 'get',
-                data: data,
-                dataType: 'json',
-                crossDomain:false,
-                context: this,
-            })
-            .done(function(response) {
-                alert("show time Success");
-                console.log(response);
-
-            })
-            .fail(function() {
-                alert("error");
-            });
-        });
-        
-        
+$(document).ready(function() {
+    // active popup
+    $('.open-popup-link').magnificPopup({
+          type: 'inline',
+          midClick: true,
     });
 
+    startMonth();
 
-    function startMonth(){
-        // $(".badge:contains('1')").parent().addClass('start-month');
-        $('.days-popup li span').each(function() {
-            if ($(this).text() == 1) {
-                $(this).parent().addClass('start-month');
+    function listShedule(shedule){
+        var htmlShedule = '';
+        $.each(shedule.lst_times, function(key, value) {
+            htmlShedule +=  '<li class="sold-out">'
+                                +'<a href="#" data-toggle="modal" data-target="#warning">'
+                                    +'<span class="time">'+ value.time +'</span>'
+                                    +'<span class="clock">'+ value.time +'<span>~1:15</span></span>'
+                                    +'<span class="ppnum">43</span>' // Số ghế trống
+                                    +'<span class="ppnum">Room 2</span>' // room chiếu phim
+                                    +'<span class="pp-early" title="Suất chiều đầu"></span>'
+                                +'</a>'
+                            +'</li>';
+        });
+        return htmlShedule;
+    }
+
+    function listFilm(film){
+        return  '<div class="movie-time-line-box clearfix" data-control="movie-code">'
+                    +'<h3 class="movie-name">'+ film.movie_name +'</h3>'
+                    +'<div class="lot-table clearfix">'
+                        +'<ul class="list-inline list-unstyled theater_time">'
+                            + listShedule(film)
+                        +'</ul>'
+                   +' </div>'
+               +' </div>';
+    }
+
+    $(document).on('click', '.popup-movie-schedule', function () { 
+        $('.days-popup li').removeClass('active-date');
+        if($(this).attr("data-date-seat")){
+            var date_seat = $(this).attr("data-date-seat");
+            $('.days-popup [data-date-select = '+ date_seat +']').addClass('active-date');
+        }else{
+            if($(this).attr("data-date-select")){
+                var date_query = $(this).attr("data-date-select");
+                $(this).addClass('active-date');
+            }else{
+                var date_query = new Date().toJSON().slice(0,10).replace(/-/g,'-');
+                $('.days-popup li:first').addClass('active-date');
             }
-        });
-    }
-    // funcion load slider
-    function loadSlideCalendar(){
-        $("#play-date-slider").slick({
-            slidesToShow: 10,
-            slidesToScroll: 10,
-            dots: false,
-            autoplay: false,
-            infinite: false,
-            speed: 500,
-            arrows: true,
-            focusOnSelect: false,
-            autoplaySpeed: 4000,
-            fade: false,
-            centerMode: false,
-            responsive: [
-                {
-                  breakpoint: 1170,
-                  settings: {
-                    slidesToShow: 8,
-                    slidesToScroll: 8
-                  }
-                },
-                {
-                  breakpoint: 1024,
-                  settings: {
-                    slidesToShow: 8,
-                    slidesToScroll: 8
-                  }
-                },
-                {
-                  breakpoint: 768,
-                  settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5
-                  }
-                },
-                {
-                  breakpoint: 480,
-                  settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                  }
-                }],
-            prevArrow: "<div class='slick-prev'><img  src='/static/assets/websites/images/btn_m_prev_on.png'></div>",
-            nextArrow: "<div class='slick-next'><img  src='/static/assets/websites/images/btn_m_next_on.png'></div>"
-        });
-        // set for default cinema 
-        $('.list-item ul li').first().addClass('active');
-        $('.tab-content .list-cinema').first().addClass('active');
-        $('.tab-content .list-cinema').first().find('a').first().addClass('active');
-        $('.list-cinema li a').click(function(event) {
-            /* Act on the event */
-            $('.list-cinema li a').removeClass('active');
-        });
-
+        }
         
-    }
+        // Call Ajax get movie show time with current date
+        data = {
+            "date": date_query,
+            "cinema_id": 1 // get cinema_id from hidden field in popup movie schedule
+        }
+        $.ajax({
+            url: "/movie/show/times",
+            type: 'get',
+            data: data,
+            dataType: 'json',
+            crossDomain:false,
+            context: this,
+        })
+        .done(function(response) {
+            var html = '';
+            $.each(response, function(key, value) {
+                html += listFilm(value);
+            });
+            $('.list-schedule').html(html);
+        })
+        .fail(function() {
+            alert("error schedule film");
+        });
+    });
+});
 
+function startMonth(){
+    // $(".badge:contains('1')").parent().addClass('start-month');
+    $('.days-popup li span').each(function() {
+        if ($(this).text() == 1) {
+            $(this).parent().addClass('start-month');
+        }
+    });
+}
