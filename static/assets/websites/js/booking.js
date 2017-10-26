@@ -41,6 +41,9 @@ $(document).ready(function() {
         if(objBooking[i].NAME.substring(0,1) == sameStr){
             objSeat[iArr].value.push(parseInt(objBooking[i].NAME.substring(1,3)));
             objSeat[iArr].type_seat.push(typeSeatBooking(objBooking[i].TYPE_SEAT_ID));
+            objSeat[iArr].id_seat.push({
+                            'id': objBooking[i].ID,
+                        });
         }else{
             iArr++;
             //seat max of row, get value trước row seat kế tiếp
@@ -52,19 +55,16 @@ $(document).ready(function() {
             objSeat[iArr] = {
                 'name':objBooking[i].NAME.substring(0,1),
                 'value':[parseInt(objBooking[i].NAME.substring(1,3))],
-                'type_seat':[typeSeatBooking(objBooking[i].TYPE_SEAT_ID)]
+                'type_seat':[typeSeatBooking(objBooking[i].TYPE_SEAT_ID)],
+                'id_seat':[{
+                            'id': objBooking[i].ID,
+                        }]
             };
         }
 
         // array with status
         if(!(objBooking[i].STATUS == "False")){
-            if(parseInt(objBooking[i].NAME.substring(1,3)) < 10){
-                arrStatus[i] = objBooking[i].NAME.replace('0','_');
-            }else{
-                my_string = objBooking[i].NAME.split('');
-                my_string.splice( 1 , 0, '_' );
-                arrStatus[i] = my_string.join('');
-            }
+            arrStatus.push(objBooking[i].ID);
         }
     }
 
@@ -84,7 +84,7 @@ $(document).ready(function() {
                 mapRow[el-1] = "_";
                 number--;
             }else{
-                mapRow[el-1] = objSeat[i].type_seat[number];
+                mapRow[el-1] = objSeat[i].type_seat[number] + '['+ objSeat[i].id_seat[number].id +']';
             }
             number++;
         });
@@ -164,18 +164,66 @@ $(document).ready(function() {
     //sold seat
     sc.get(arrStatus).status('unavailable');
 
+    // Get ID, NAME seat selected. [{"ID": "1", "NAME": "A03"}]
+    function getSeatSelected(){
+        seatSelected = [];
+        var seats =  sc.find('selected').seats;
+        for(i=0;i<seats.length; i++){
+            seatSelected[i] = {
+                'ID': seats[i].settings.id,
+                'NAME': strimNameSeat(seats[i].settings.label)
+            }
+        }
+        return seatSelected;
+    }
+
     // redirect payment with total and seat
     $('#btnNextBooking').on('click',function(){
         var totalPayment = parseInt($('#total').text());
         var seatPayment = sc.find('selected').seatIds;
         var totalSeat = seatPayment.length;
+
+        alert(getSeatSelected());
+
         if(totalSeat < 1){
             alert("Bạn chưa mua vé!");
             return false;
         }
+
+        $.ajax({
+            url: "/movie/seats",
+            type: 'get',
+            data: {
+                id_server: 1,
+
+            },
+            dataType: 'json',
+            crossDomain:false,
+            context: this,
+        })
+        .done(function(response) {
+            var html = '';
+            $.each(response, function(key, value) {
+                html += listFilm(value);
+            });
+            $('.list-schedule').html(html);
+        })
+        .fail(function() {
+            alert("error schedule film");
+        });
+
         window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat +'&seats='+ seatPayment;
     });
 
+
+    function strimNameSeat(str){
+        if(str.length == 2 && parseInt(str.substring(1,3)) < 10){
+            my_string = str.split('');
+            strimStr = my_string.join('0');
+            return strimStr;
+        }
+        return str;
+    }
 
     // Refresh seat selected
     $('.booking-refresh a').on('click', function(){
