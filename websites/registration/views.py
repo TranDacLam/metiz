@@ -91,7 +91,7 @@ def confirm_activation(request, activation_key):
         auth_login(request, user_account)
 
         result['success'] = True
-        return render(request, 'websites/registration/activation_confirm.html', result)
+        return render(request, 'registration/activation_confirm.html', result)
 
     except Exception, e:
         print "Error action confirm_activation : %s" % e
