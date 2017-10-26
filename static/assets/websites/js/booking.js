@@ -182,37 +182,35 @@ $(document).ready(function() {
         var totalPayment = parseInt($('#total').text());
         var seatPayment = sc.find('selected').seatIds;
         var totalSeat = seatPayment.length;
+        var id_server = $('#id_sever').val();
+        var id_showtime = $('#id_showtime').val();
 
-        alert(getSeatSelected());
-
+        // check user selected seat?
         if(totalSeat < 1){
-            alert("Bạn chưa mua vé!");
+            displayMsg();
+            $('.msg-result-js').html(msgResult("Bạn chưa đặt vé!", "warning"));
             return false;
         }
 
         $.ajax({
-            url: "/movie/seats",
-            type: 'get',
+            url: "/verify/seats",
+            type: 'POST',
             data: {
-                id_server: 1,
-
+                id_showtime: id_showtime,
+                id_server: id_server,
+                lst_seats: getSeatSelected()
             },
             dataType: 'json',
             crossDomain:false,
             context: this,
         })
         .done(function(response) {
-            var html = '';
-            $.each(response, function(key, value) {
-                html += listFilm(value);
-            });
-            $('.list-schedule').html(html);
+            window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat +'&seats='+ seatPayment;
         })
-        .fail(function() {
-            alert("error schedule film");
+        .fail(function(error) {
+            displayMsg();
+            $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
         });
-
-        window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat +'&seats='+ seatPayment;
     });
 
 

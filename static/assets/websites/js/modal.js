@@ -72,7 +72,8 @@ $(document).ready(function() {
             $('.list-schedule').html(html);
         })
         .fail(function() {
-            alert("error schedule film");
+            displayMsg();
+            $('.msg-result-js').html(msgResult("Error schedule film!", "danger"));
         });
     });
 });

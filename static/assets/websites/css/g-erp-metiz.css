@@ -1709,7 +1709,6 @@
 		text-transform: uppercase;
 	}
 	.movie-detail-fb-booking {
-		float: right;
 		width: 78%;
 	}
 	.product-view .product-shop .product-name .h1 {
@@ -1787,9 +1786,6 @@
 		width:100% !important;
 		height:auto;
 	}
-	.product-essential .page-title.product-view{
-		display:none;
-	}
 	
 }
 
@@ -1814,9 +1810,6 @@
 	.product-view .product-shop{
 		width:100%;
 		margin-left:0px;
-	}
-	.product-essential .page-title.product-view{
-		display:none;
 	}
 	.product-name h1 {
 		color: #1a1919;
@@ -1870,9 +1863,6 @@
 	.product-view .product-shop{
 		width:100%;
 		margin-left:0px;
-	}
-	.product-essential .page-title.product-view{
-		display:none;
 	}
 	.product-name h1 {
 		color: #1a1919;
