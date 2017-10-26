@@ -19,7 +19,7 @@ $(document).ready(function() {
     })
     .fail(function(error) {
         displayMsg();
-        $('.msg-result-js').html(msgResult("Error load seats", "danger"));
+        $('.msg-result-js').html(msgResult("Error get seats", "danger"));
     });
 
 
@@ -196,6 +196,7 @@ $(document).ready(function() {
         //sold seat
         sc.get(arrStatus).status('unavailable');
 
+        var seatPayment = [];
         // Get ID, NAME seat selected. [{"ID": "1", "NAME": "A03"}]
         function getSeatSelected(){
             seatSelected = new Array();
@@ -205,14 +206,18 @@ $(document).ready(function() {
                     'ID': seats[i].settings.id,
                     'NAME': strimNameSeat(seats[i].settings.label)
                 }));
+
+                seatPayment.push(strimNameSeat(seats[i].settings.label));
             }
             return seatSelected;
         }
 
+
+
         // redirect payment with total and seat
         $('#btnNextBooking').on('click',function(){
             var totalPayment = parseInt($('#total').text());
-            var seatPayment = sc.find('selected').seatIds;
+            var lst_seats = getSeatSelected();
             var totalSeat = seatPayment.length;
 
             // check user selected seat?
@@ -224,7 +229,7 @@ $(document).ready(function() {
             data = {
                 "id_showtime": id_showtime,
                 "id_server": id_server,
-                "lst_seats": "["+ getSeatSelected().toString() +"]"
+                "lst_seats": "["+ lst_seats.toString() +"]"
             }
             $.ajax({
                 url: "/verify/seats",
