@@ -62,7 +62,7 @@ def showing(request):
 
         print movie_page.object_list
 
-        return render(request, 'websites/showing.html', {'list_data_showing': movie_page.object_list})
+        return render(request, 'websites/showing.html', {'list_data_showing': list(movie_page.object_list.values())})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
@@ -106,7 +106,7 @@ def coming_soon(request):
             # results.
             movie_page = paginator.page(paginator.num_pages)
 
-        return render(request, 'websites/coming_soon.html', {'list_data_coming_soon': movie_page.object_list})
+        return render(request, 'websites/coming_soon.html', {'list_data_coming_soon': list(movie_page.object_list.values())})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
@@ -187,7 +187,7 @@ def news(request):
             # results.
             news_page = paginator_news.page(paginator_news.num_pages)
 
-        return render(request, 'websites/news.html', {'list_news': news_page.object_list})
+        return render(request, 'websites/news.html', {'list_news': list(news_page.object_list.values())})
     except Exception, e:
         print "Error: %s" % e
         return HttpResponse(status=500)
