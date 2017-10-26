@@ -337,7 +337,9 @@ def get_post(request):
 
 def get_booking(request):
     try:
-        return render(request, 'websites/booking.html')
+        id_showtime = request.GET.get('id_showtime', "")
+        id_sever = request.GET.get('id_sever', 1)
+        return render(request, 'websites/booking.html', {"id_showtime":id_showtime, "id_sever": id_sever})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
