@@ -50,7 +50,7 @@ def call_api_post_booking(data_json, id_server=1, url="/postBooking"):
             print "Error convert json : %s" % e
             return {"code": 500, "message": _("Handle data error.")}
     except Exception, e:
-        print "Error call_api_seats : %s" % e
+        print "Error call_api_post_booking : %s" % e
         result = {"errors": _("Internal Server Error. Cannot Post Booking.")}
     return result
 
@@ -79,7 +79,7 @@ def call_api_booking_confirm(barcode, id_server=1, status=1):
             print "Error convert json : %s" % e
             return {"code": 500, "message": _("Handle data error.")}
     except Exception, e:
-        print "Error call_api_seats : %s" % e
+        print "Error call_api_booking_confirm : %s" % e
         result = {"errors": _("Internal Server Error. Cannot Post Booking.")}
     return result
 
@@ -107,6 +107,6 @@ def call_api_cancel_seat(seat_id, id_server=1):
             print "Error convert json : %s" % e
             return {"code": 500, "message": _("Handle data error.")}
     except Exception, e:
-        print "Error call_api_seats : %s" % e
+        print "Error call_api_cancel_seat : %s" % e
         result = {"errors": _("Internal Server Error. Cannot Post Booking.")}
     return result

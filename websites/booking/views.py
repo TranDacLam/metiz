@@ -89,7 +89,7 @@ def check_seats(request):
             # get list chair of user selected
             seats_choice = ast.literal_eval(request.POST["lst_seats"])
 
-            if data_seats and seats_choice:
+            if data_seats and data_seats["List"] and seats_choice:
                 seat_has_selected = []
                 # check chairs of a user have been selected before
                 for item in seats_choice:
@@ -122,7 +122,7 @@ def check_seats(request):
                     # Add Seats into session and set seats expire in five
                     # minute
                     request.session['time_choice'] = timezone.localtime(
-                        timezone.now())
+                        timezone.now()).strftime('%Y-%m-%d')
                     request.session['seats_choice'] = seats_choice
                     return JsonResponse(result)
     except Exception, e:
