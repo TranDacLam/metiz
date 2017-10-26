@@ -3,11 +3,8 @@ from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from booking.models import MovieSync
-<<<<<<< HEAD
 from forms import *
-=======
 from booking import api
->>>>>>> develop
 import json
 import ast
 
@@ -80,7 +77,6 @@ def get_seats(request):
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 
 
-<<<<<<< HEAD
 # def booking_seats(request):
 #     try:
 #         if "lst_seats" not in request.POST:
@@ -138,8 +134,6 @@ def get_info_booking(request):
     except Exception, e:
         print "Error get_info_booking : %s" % e
         return HttpResponse(status=500)
-
-=======
 def check_seats(request):
     try:
         if request.method == "POST":
@@ -211,4 +205,4 @@ def booking_payment(request):
     except Exception, e:
         print "Error booking_payment : %s" % e
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
->>>>>>> develop
+
