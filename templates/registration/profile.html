@@ -144,7 +144,7 @@
                                 <div class="col-sm-12 form-group">
                                     <label>{% trans "Address" %}</label>
                                     <div class="inline">
-                                        <textarea name="address" id="address" value="{% if address %}{{ address }} {% endif %}" placeholder="{% trans 'Enter Address Here..' %}" rows="3" class="form-control"></textarea>
+                                        <textarea name="address" id="address" placeholder="{% trans 'Enter Address Here..' %}" rows="3" class="form-control">{% if address %}{{ address }} {% endif %}</textarea>
                                         {% if form.address.errors %}
                                             {{form.address.errors}}
                                         {% endif %}

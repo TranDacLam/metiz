@@ -15,7 +15,6 @@ def payment(request):
     if request.method == 'POST':
         # Process input data and build url payment
         form = PaymentForm(request.POST)
-
         if form.is_valid():
             order_type = form.cleaned_data['order_type']
             order_id = form.cleaned_data['order_id']
@@ -60,7 +59,11 @@ def payment(request):
                 # Redirect to VNPAY
                 return redirect(vnpay_payment_url)
         else:
-            print("Form input not validate")
+            print("Form input not validate %s"%form.errors)
+            return render(request, "websites/vnpay_payment/payment.html",
+                          {"form": form,
+                           "total_payment": request.POST["amount"] if 'amount' in request.POST["amount"] else None,
+                           "order_desc": request.POST["order_desc"] if 'order_desc' in request.POST["order_desc"] else None})
     else:
         total_payment = request.GET.get('totalPayment', 0)
         total_seats = request.GET.get('totalSeat', 0)

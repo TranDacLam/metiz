@@ -3,7 +3,10 @@ $(document).ready(function() {
     $("form").submit(function() {
         // submit more than once return false
         $(this).submit(function() {
-            return false;
+            if(!$(this).valid()){
+                return false;    
+            }
+            
         });
         // submit once return true
         return true;    
