@@ -71,9 +71,10 @@ ul.errorlist li, .error{
 .load-more{
     width: 140px;
     border-radius: 35px;
-    background: #0e1d2f;
+    background: #7e8eaa;
     font-family: "SairaSemiCondensed-Bold", sans-serif;
     font-size: 15px;
+    border-color: #7e8eaa;
 }
 .load-more:hover{
     background: #ff5400;

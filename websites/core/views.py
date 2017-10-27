@@ -57,7 +57,7 @@ def showing(request):
         if request.is_ajax():
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
-            return JsonResponse(list(movie_page.object_list.values()))
+            return JsonResponse(list(movie_page.object_list.values()), safe=False)
 
         return render(request, 'websites/showing.html', {'list_data_showing': movie_page.object_list})
     except Exception, e:
@@ -67,12 +67,6 @@ def showing(request):
 
 def coming_soon(request):
     try:
-        if request.is_ajax():
-            # convert object models to json
-            # Ajax reuqest with page, db get data other with limit and offset
-            result = {}
-            return JsonResponse(result)
-
         # get data moving comingsoon
         """ 
             Movie Comming Soon Follow Condition:
@@ -106,7 +100,7 @@ def coming_soon(request):
         if request.is_ajax():
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
-            return JsonResponse(list(movie_page.object_list.values()))
+            return JsonResponse(list(movie_page.object_list.values()), safe=False)
 
         return render(request, 'websites/coming_soon.html', {'list_data_coming_soon': movie_page.object_list})
     except Exception, e:
@@ -142,12 +136,6 @@ def film_detail(request, id):
 
 def news(request):
     try:
-        if request.is_ajax():
-            # convert object models to json
-            # Ajax reuqest with page, db get data other with limit and offset
-            result = {}
-            return JsonResponse(result)
-
         """ 
             New and Offer for Furute then order by priority and apply_date ascending
             New and Offer for Present then order by priority and apply_date descending
@@ -192,7 +180,7 @@ def news(request):
         if request.is_ajax():
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
-            return JsonResponse(list(news_page.object_list.values()))
+            return JsonResponse(list(news_page.object_list.values()), safe=False)
 
         return render(request, 'websites/news.html', {'list_news': news_page.object_list})
     except Exception, e:
@@ -344,7 +332,9 @@ def get_post(request):
 
 def get_booking(request):
     try:
-        return render(request, 'websites/booking.html')
+        id_showtime = request.GET.get('id_showtime', "")
+        id_sever = request.GET.get('id_sever', 1)
+        return render(request, 'websites/booking.html', {"id_showtime":id_showtime, "id_sever": id_sever})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)

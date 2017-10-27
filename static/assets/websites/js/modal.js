@@ -12,6 +12,7 @@ $(document).ready(function() {
         $.each(shedule.lst_times, function(key, value) {
             htmlShedule +=  '<li class="sold-out">'
                                 +'<a href="#" data-toggle="modal" data-target="#warning">'
+                                    +'<input type="hidden" name="id_showtime" value="'+ value.id_showtime +'">'
                                     +'<span class="time">'+ value.time +'</span>'
                                     +'<span class="clock">'+ value.time +'<span>~1:15</span></span>'
                                     +'<span class="ppnum">43</span>' // Số ghế trống
@@ -39,6 +40,7 @@ $(document).ready(function() {
         if($(this).attr("data-date-seat")){
             var date_seat = $(this).attr("data-date-seat");
             $('.days-popup [data-date-select = '+ date_seat +']').addClass('active-date');
+            var date_query = date_seat;
         }else{
             if($(this).attr("data-date-select")){
                 var date_query = $(this).attr("data-date-select");
@@ -70,7 +72,8 @@ $(document).ready(function() {
             $('.list-schedule').html(html);
         })
         .fail(function() {
-            alert("error schedule film");
+            displayMsg();
+            $('.msg-result-js').html(msgResult("Error schedule film!", "danger"));
         });
     });
 });

@@ -26,38 +26,6 @@ $(document).ready(function($) {
      });
 
 	//  load more
-	// data demo
-	var list_film = [
-		{
-			"id": 4,
-			"name": "Con Giong Bao",
-			"poster": "/assets/websites/images/news/Kingsman_350_X_495.jpg",
-			"director": "Dong chung",
-			"cast": "Tom",
-			"time_running": 111,
-			"release_date": "2017-4-5",
-			"language": "Tieng Anh",
-			"description": "hahaahaha",
-			"trailer": "https://www.youtube.com/watch?v=lWX5Atc6QnY",
-			"genre":{"name": "Hanh Dong"},
-			"rated":{"name":"c18"}
-		},
-		{
-			"id": 10,
-			"name": "Vua bien ca",
-			"poster": "/assets/websites/images/news/Kingsman_350_X_495.jpg",
-			"director": "Dong chung",
-			"cast": "Tom",
-			"time_running": 111,
-			"release_date": "2017-4-3",
-			"language": "Tieng Anh",
-			"description": "hahaahaha",
-			"trailer": "https://www.youtube.com/watch?v=lWX5Atc6QnY",
-			"genre":{"name": "Hanh Dong"},
-			"rated":{"name":"c16"}
-		}
-	];
-
 	// movie html, need set data for movie html in movie_showing(movie)
 	function movie_showing(movie){
 		return 	'<li class="film-lists">'
@@ -71,11 +39,11 @@ $(document).ready(function($) {
 						+'<a href="/film/detail/'+ movie.id +'" title="'+ movie.name +'">'+ movie.name +'</a></h2>'
 						+'<div class="metiz-movie-info">'
 							+'<span class="metiz-info-bold">Thể loại: </span>'
-							+'<span class="metiz-info-normal">'+ movie.genre.name +'</span>'
+							+'<span class="metiz-info-normal">Hanh dong</span>' // movie.genre.name
 						+'</div>'
 						+'<div class="metiz-movie-info">'
 							+'<span class="metiz-info-bold">'+ movie.time_running +' Phút | '
-							+'<span class="rated-'+ movie.rated.name +'">'+ movie.rated.name +'</span></span>'
+							+'<span class="rated-c18">c18</span></span>' // movie.rated.name
 						+'</div>'
 						+'<div class="metiz-movie-info">'
 							+'<span class="metiz-info-bold">Khởi chiếu: </span>'
@@ -115,11 +83,15 @@ $(document).ready(function($) {
 			context: this,
 		})
 		.done(function(response) {
+			if(response.length < 12){
+				$('.metiz-movies>.text-center button').remove();
+			}
+			
 			$(this).attr('data-page',page + 1);
 			var html = '';
 
 			// for from data reponse set function movie_showing(movie)
-			$.each(list_film, function(key, value) {
+			$.each(response, function(key, value) {
 				html += movie_showing(value);
 			});
 			
@@ -128,7 +100,8 @@ $(document).ready(function($) {
 			$(this).prop('disabled', false);
 		})
 		.fail(function() {
-			alert("error");
+			displayMsg();
+        	$('.msg-result-js').html(msgResult("Error load more movie", "danger"));
 		});
 	});
 });

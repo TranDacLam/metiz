@@ -5431,12 +5431,23 @@ p.product-name a:hover {
     padding-right: 0;
     padding-left: 0;
   }
+  .product-view .responsive-fb{
+    display: block;
+  }
+  .product-view .responsive-fb .add-to-cart-wrapper{
+    margin-bottom: 20px;
+  }
+  .product-view .movie-detail-fb-booking{
+    display: none;
+  }
 }
 @media only screen and (min-width: 771px) {
   .product-view .product-shop .product-name {
     display: block;
   }
-
+  .product-view .responsive-fb{
+    display: none;
+  }
   .product-img-box .product-name {
     display: none;
   }
