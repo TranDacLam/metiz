@@ -190,3 +190,6 @@ div.seatCharts-seat.available.seat-ld {
 .booking-details .booking-refresh i{
     color: #7e8eaa;
 }
+.clear-both {
+    clear: both;
+}

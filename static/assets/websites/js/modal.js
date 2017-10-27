@@ -73,7 +73,8 @@ $(document).ready(function() {
             getValue();
         })
         .fail(function() {
-            alert("error schedule film");
+            displayMsg();
+            $('.msg-result-js').html(msgResult("Error schedule film!", "danger"));
         });
     });
     function getValue(){
