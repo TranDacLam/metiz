@@ -19,7 +19,11 @@ $(document).ready(function() {
     })
     .fail(function(error) {
         displayMsg();
-        $('.msg-result-js').html(msgResult("Error get seats", "danger"));
+        if(error.status == 400){
+            $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
+        }else{
+            $('.msg-result-js').html(msgResult("Error get seats", "danger"));
+        }
     });
 
 

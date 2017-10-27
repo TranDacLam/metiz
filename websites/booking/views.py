@@ -93,7 +93,7 @@ def check_seats(request):
                 seat_has_selected = []
                 # check chairs of a user have been selected before
                 for item in seats_choice:
-                    chair = [s["ID"] for s in data_seats["List"] if s[
+                    chair = [str(s["NAME"]) for s in data_seats["List"] if s[
                         "ID"] == item["ID"] and s["STATUS"] == "True"]
                     if chair:
                         seat_has_selected.append(chair[0])

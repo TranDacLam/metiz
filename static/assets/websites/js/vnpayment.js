@@ -37,6 +37,7 @@ $(document).ready(function() {
             amount: { 
                 number: true,
                 required: true,
+                min: 1,
             },
             bank_code: { 
                 required: true,
@@ -49,6 +50,7 @@ $(document).ready(function() {
             amount: {
                 number: 'Vui lòng chỉ nhập số',
                 required: val_required,
+                min: "Vui lòng nhập lớn hơn 0."
             },
             bank_code: {
                 required: val_required,

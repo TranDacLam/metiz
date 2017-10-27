@@ -65,7 +65,7 @@ $(document).ready(function($) {
 	}
 
 	var coutMovie = parseInt($('.load-more').attr('data-count-movie'));
-	if(coutMovie < 2){
+	if(coutMovie < 12){
 		$('.metiz-movies>.text-center button').remove();
 	}
 
@@ -88,7 +88,7 @@ $(document).ready(function($) {
 			context: this,
 		})
 		.done(function(response) {
-			if(response.length < 12){
+			if(page >= response.total_page){
 				$('.metiz-movies>.text-center button').remove();
 			}
 			
@@ -96,7 +96,7 @@ $(document).ready(function($) {
 			var html = '';
 
 			// for from data reponse set function movie_showing(movie)
-			$.each(response, function(key, value) {
+			$.each(response.data, function(key, value) {
 				html += movie_showing(value);
 			});
 			
@@ -104,9 +104,14 @@ $(document).ready(function($) {
 
 			$(this).prop('disabled', false);
 		})
-		.fail(function() {
+		.fail(function(error) {
+			$('.metiz-movies>.text-center button').remove();
 			displayMsg();
-        	$('.msg-result-js').html(msgResult("Error load more movie", "danger"));
+			if(error.status == 400){
+        		$('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
+			}else{
+				$('.msg-result-js').html(msgResult("Error load more movie", "danger"));
+			}
 		});
 	});
 });

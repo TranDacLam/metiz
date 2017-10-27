@@ -44,15 +44,15 @@ $(document).ready(function() {
             context: this,
         })
         .done(function(response) {
-            if(response.length < 12){
-                $('.news-custom>.text-center button').remove();
+            if(page >= response.total_page){
+                $('.metiz-movies>.text-center button').remove();
             }
             
             $(this).attr('data-page',page + 1);
             var html = '';
 
             // for from data reponse set function movie_showing(movie)
-            $.each(response, function(key, value) {
+            $.each(response.data, function(key, value) {
                 html += movie_showing(value);
             });
             
@@ -62,7 +62,11 @@ $(document).ready(function() {
         })
         .fail(function() {
             displayMsg();
-            $('.msg-result-js').html(msgResult("Error load more news", "danger"));
+            if(error.status == 400){
+                $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
+            }else{
+                $('.msg-result-js').html(msgResult("Error load more news", "danger"));
+            }
         });
     });
 });
