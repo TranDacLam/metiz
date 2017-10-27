@@ -119,7 +119,8 @@ def get_info_booking(request):
                 data = {
                     'name': name,
                     'phone': phone,
-                    'id_showtime': id_showtime
+                    'id_showtime': id_showtime,
+                    'cinema_id': 1
                 }
                 request.session['booking'] = data
                 return JsonResponse({})
@@ -130,7 +131,7 @@ def get_info_booking(request):
                 return JsonResponse(data)
     except Exception, e:
         print "Error get_info_booking : %s" % e
-        return HttpResponse(status=500)
+        return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 def check_seats(request):
     try:
         if request.method == "POST":

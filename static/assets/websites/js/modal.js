@@ -84,32 +84,122 @@ $(document).ready(function() {
             $('.modal input[name=id_showtime]').val(id_showtime);
         });
     }
-    //ajax handle form 
-    $('.submit').click(function(event) {
-        event.preventDefault();
-        data= $(this).parents('.form-popup').serialize();
-        /* Act on the event */
-        $.ajax({
-            url: '/info/booking',
-            type: 'POST',
-            dataType: 'json',
-            data: data,
-        })
-        .done(function(data) {
-             $('label.form-error').html('');
-            if(data.errors){
-                $.each(data.errors, function (field, error) {
-                    $('label[for='+ field +']').html(error);
+    var lang = $('html').attr('lang');
+    if ( lang == 'vi') {
+        message = {'required': 'Trường này bắt buộc', 
+        'minlength_6' :'Nhập ít nhất 6 kí tự',
+        'minlength_8' :'Nhập ít nhất 8 kí tự',
+        'email': 'Email không hợp lệ',
+        'number': 'Nhập các chữ số',
+        'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
+        'validatePassword': 'Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt và có cả chữ và số',
+        'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
+    } else {
+        message = {'required': 'This field is required', 
+        'minlength_6' :'Please enter at least 6 characters',
+        'minlength_8' :'Please enter at least 8 characters',
+        'email': 'Please enter a valid email address',
+        'number': 'Please enter a valid number',
+        'equalTo': "Password don't same. Please enter again",
+        'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
+        'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
+    }
+    //handle form 
+    function validateForm(form){
+        $(form).validate({
+            rules:{
+                name:{
+                    required: true,
+                },
+                email:{
+                    email: true
+                },
+                phone:{
+                    required: true,
+                    number: true,
+                    minlength: 8
+                },
+            },
+            messages:{
+                name:{
+                    required: message.required,
+                },
+                email:{
+                    email: message.email
+                },
+                phone:{
+                    required: message.required,
+                    number: message.number,
+                    minlength: message.minlength_8,
+                }
+            },
+            submitHandler: function (form) {
+                data= $(form).serialize();
+                /* Act on the event */
+                $.ajax({
+                    url: '/info/booking',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                })
+                .done(function(data) {
+                     $('label.form-error').html('');
+                    if(data.errors){
+                        $.each(data.errors, function (field, error) {
+                            $('label.form-error[for='+ field +']').html(error);
+                        });
+                    }
+                    else{
+                        window.location.href='/booking/'
+                    }
+                })
+                .fail(function(data) {
+                    $('#error').html(data.message);
+                    console.log(message);
                 });
             }
-            else{
-                window.location.href='/booking/'
-            }
-        })
-        .fail(function() {
-            console.log("error schedule film");
         });
+    }
+    $('#signin_form').validate({
+        rules:{
+            email:{
+                required: true,
+                email: true
+            },
+            password:{
+                required: true,
+                minlength: 8,
+                validatePassword: true
+            },
+        },
+        messages:{
+            email:{
+                required: message.required,
+                email: message.email
+            },
+            password:{
+                required: message.required,
+                minlength: message.minlength_8,
+            }
+        },
+
     });
+    $.validator.addMethod(
+      "validatePassword",
+      function (value, element) {
+        return value.match(/[^a-z0-9 ]/);
+      },
+      message.validatePassword
+    );
+    $('#update_form').submit(function(event) {
+        event.preventDefault();
+        validateForm($(this));
+    });
+    $('#guest_form').submit(function(event) {
+        event.preventDefault();
+        validateForm($(this));
+    });
+    
     //checkbox for form guest
     $('#agree_term').on('click', function(){
         if($('#agree_term').prop("checked")){
@@ -148,85 +238,7 @@ $(document).ready(function() {
         }
 
     }
-    var lang = $('html').attr('lang');
-    if ( lang == 'vi') {
-        message = {'required': 'Trường này bắt buộc', 
-        'minlength_6' :'Nhập ít nhất 6 kí tự',
-        'minlength_8' :'Nhập ít nhất 8 kí tự',
-        'email': 'Email không hợp lệ',
-        'number': 'Nhập các chữ số',
-        'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
-        'validatePassword': 'Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt và có cả chữ và số',
-        'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
-    } else {
-        message = {'required': 'This field is required', 
-        'minlength_6' :'Please enter at least 6 characters',
-        'minlength_8' :'Please enter at least 8 characters',
-        'email': 'Please enter a valid email address',
-        'number': 'Please enter a valid number',
-        'equalTo': "Password don't same. Please enter again",
-        'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
-        'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
-    }
-    $('.form-popup').validate({
-        rules:{
-            name:{
-                required: true,
-            },
-            email:{
-                email: true
-            },
-            phone:{
-                required: true,
-                number: true,
-                minlength: 8
-            },
-        },
-        messages:{
-            name:{
-                required: message.required,
-            },
-            email:{
-                email: message.email
-            },
-            phone:{
-                required: message.required,
-                number: message.number,
-                minlength: message.minlength_8,
-            }
-        },
-    });
-    $('#signin_form').validate({
-        rules:{
-            email:{
-                required: true,
-                email: true
-            },
-            password:{
-                required: true,
-                minlength: 8,
-                validatePassword: true
-            },
-        },
-        messages:{
-            email:{
-                required: message.required,
-                email: message.email
-            },
-            password:{
-                required: message.required,
-                minlength: message.minlength_8,
-            }
-        },
-    });
-    $.validator.addMethod(
-      "validatePassword",
-      function (value, element) {
-        // put your own logic here, this is just a (crappy) example 
-        return value.match(/[^a-z0-9 ]/);
-      },
-      message.validatePassword
-    );
+    
 });
 
 function startMonth(){
