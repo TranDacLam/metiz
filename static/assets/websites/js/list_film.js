@@ -64,6 +64,11 @@ $(document).ready(function($) {
 				+'</li>';
 	}
 
+	var coutMovie = parseInt($('.load-more').attr('data-count-movie'));
+	if(coutMovie < 2){
+		$('.metiz-movies>.text-center button').remove();
+	}
+
 	$('#load-more').on('click', function(e){
 		e.preventDefault();
 		$(this).prop('disabled', true);

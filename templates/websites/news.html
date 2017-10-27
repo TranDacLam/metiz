@@ -22,6 +22,7 @@
 	    <div class="cate-new-offer">
 			<h1 class="text-center">KHUYẾN MÃI & ƯU ĐÃI</h1>
 		</div>
+		{% if list_news %}
 		<div class="product-collateral news-custom">
 			<ul class="cate-new-offer products-grid products-grid--max-4-col first last odd">
 				{% for item in list_news %}
@@ -48,8 +49,9 @@
 				</li>
 				{% endfor%}			
 			</ul>
-			<div class="text-center"><button id="load-more-news" class="btn btn-primary load-more" data-page="1">Xem thêm</button></div>
+			<div class="text-center"><button id="load-more-news" class="btn btn-primary load-more" data-page="2" data-count-news="{{list_news.count}}">Xem thêm</button></div>
 		</div>
+		{% endif %}
 	</div>
 </div>
 {% endblock%}

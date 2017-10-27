@@ -25,6 +25,11 @@ $(document).ready(function() {
                 +'</li>';
     }
 
+    var coutNew = parseInt($('.load-more').attr('data-count-news'));
+    if(coutNew < 12){
+        $('.news-custom>.text-center button').remove();
+    }
+
     $('#load-more-news').on('click', function(e){
         e.preventDefault();
         $(this).prop('disabled', true);
@@ -39,6 +44,10 @@ $(document).ready(function() {
             context: this,
         })
         .done(function(response) {
+            if(response.length < 12){
+                $('.news-custom>.text-center button').remove();
+            }
+            
             $(this).attr('data-page',page + 1);
             var html = '';
 
