@@ -11,6 +11,7 @@ import itertools
 
 # NOTES : View SQL Query using : print connection.queries
 
+
 def custom_404(request):
     return render(request, 'websites/errors/404.html', {}, status=404)
 
@@ -48,16 +49,17 @@ def showing(request):
             movie_page = paginator.page(int(page_number))
         except PageNotAnInteger:
             # If page is not an integer, deliver first page.
-            movie_page = paginator.page(1)
+            return JsonResponse({"message": _("Page Number Not Type Integer.")}, status=400)
         except EmptyPage:
             # If page is out of range (e.g. 9999), deliver last page of
             # results.
-            movie_page = paginator.page(paginator.num_pages)
+            return JsonResponse({"message": _("Page Number Not Found.")}, status=400)
 
         if request.is_ajax():
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
-            return JsonResponse(list(movie_page.object_list.values()), safe=False)
+            return JsonResponse({"data": list(movie_page.object_list.values('id', 'name', 'poster', 'time_running', 'release_date', "genre__name", "rated__name")),
+                                 "total_page": paginator_news.num_pages}, safe=False)
 
         return render(request, 'websites/showing.html', {'list_data_showing': movie_page.object_list})
     except Exception, e:
@@ -91,16 +93,17 @@ def coming_soon(request):
             movie_page = paginator.page(int(page_number))
         except PageNotAnInteger:
             # If page is not an integer, deliver first page.
-            movie_page = paginator.page(1)
+            return JsonResponse({"message": _("Page Number Not Type Integer.")}, status=400)
         except EmptyPage:
             # If page is out of range (e.g. 9999), deliver last page of
             # results.
-            movie_page = paginator.page(paginator.num_pages)
+            return JsonResponse({"message": _("Page Number Not Found.")}, status=400)
 
         if request.is_ajax():
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
-            return JsonResponse(list(movie_page.object_list.values()), safe=False)
+            return JsonResponse({"data": list(movie_page.object_list.values('id', 'name', 'poster', 'time_running', 'release_date', "genre__name", "rated__name")),
+                                 "total_page": paginator_news.num_pages}, safe=False)
 
         return render(request, 'websites/coming_soon.html', {'list_data_coming_soon': movie_page.object_list})
     except Exception, e:
@@ -171,16 +174,20 @@ def news(request):
             news_page = paginator_news.page(int(page_number))
         except PageNotAnInteger:
             # If page is not an integer, deliver first page.
-            news_page = paginator_news.page(1)
+            return JsonResponse({"message": _("Page Number Not Type Integer.")}, status=400)
         except EmptyPage:
             # If page is out of range (e.g. 9999), deliver last page of
             # results.
-            news_page = paginator_news.page(paginator_news.num_pages)
+            return JsonResponse({"message": _("Page Number Not Found.")}, status=400)
 
         if request.is_ajax():
+            news_json = []
+            for item in news_page.object_list:
+                news_json.append({"id": item.id, "image": str(
+                    item.image), "apply_date": item.apply_date})
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
-            return JsonResponse(list(news_page.object_list.values()), safe=False)
+            return JsonResponse({"data": news_json, "total_page": paginator_news.num_pages}, safe=False)
 
         return render(request, 'websites/news.html', {'list_news': news_page.object_list})
     except Exception, e:
@@ -216,7 +223,7 @@ def get_technology(request):
                 }
                 return JsonResponse(data)
             except CenimaTechnology.DoesNotExist, e:
-                print "Error get_technology ",e
+                print "Error get_technology ", e
                 return JsonResponse({"message": "Technology Does Not Exist"}, status=400)
 
     except Exception, e:
@@ -334,7 +341,7 @@ def get_booking(request):
     try:
         id_showtime = request.GET.get('id_showtime', "")
         id_sever = request.GET.get('id_sever', 1)
-        return render(request, 'websites/booking.html', {"id_showtime":id_showtime, "id_sever": id_sever})
+        return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
