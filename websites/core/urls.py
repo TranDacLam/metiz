@@ -16,6 +16,6 @@ urlpatterns = [
     url(r'^cinema/technology/(?P<name>[-\w]+)/$', views.technology_detail, name='technology_detail'),
     url(r'^technology/$', views.get_technology, name='get_technology'),
     url(r'^posts/$', views.get_post, name='get_cms'),
-    url(r'^booking/(?P<id_sever>[0-9]+)/(?P<id_showtime>[0-9A-Za-z-]+)/$', views.get_booking, name='booking_ajax'),
+    url(r'^booking/(?P<id_sever>[0-9]+)/(?P<id_showtime>[0-9A-Za-z-]+)/$', views.get_booking, name='booking'),
     url(r'^booking/$', views.get_booking, name='booking_ajax'),
 ]
