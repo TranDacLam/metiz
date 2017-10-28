@@ -3,7 +3,6 @@ from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from booking.models import MovieSync
-from forms import *
 from booking import api
 import json
 import ast
@@ -77,61 +76,6 @@ def get_seats(request):
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 
 
-# def booking_seats(request):
-#     try:
-#         if "lst_seats" not in request.POST:
-#             return JsonResponse({"code": 400, "message": _("Fields lst_seats is required.")}, status=400)
-            
-#         data = {
-#                    "List":[
-#                       {
-#                          "NAME":"Nguyen Van A",
-#                          "PHONE":"0909112233",
-#                          "EMAIL":"abc@gmail.com",
-#                          "ListSeats":[
-#                             {
-#                                "ID":"12007390",
-#                                "NAME":"A07"
-#                             },
-#                             {
-#                                "ID":"12007397",
-#                                "NAME":"A08"
-#                             },
-#                             {
-#                                "ID":"12007405",
-#                                "NAME":"A09"
-#                             }
-#                          ]
-#                       }
-#                    ]
-#                 }
-#     except Exception, e:
-#         print "Error booking_seats : %s" % e
-#         return HttpResponse(status=500)
-def get_info_booking(request):
-    try:
-        if request.method == 'POST':
-            form = BookingForm(request.POST)
-            if form.is_valid():
-                name = form.cleaned_data['name']
-                phone = form.cleaned_data['phone']
-                id_showtime = form.cleaned_data['id_showtime']
-                data = {
-                    'name': name,
-                    'phone': phone,
-                    'id_showtime': id_showtime,
-                    'cinema_id': 1
-                }
-                request.session['booking'] = data
-                return JsonResponse({})
-            else:
-                data = {
-                    'errors': form.errors
-                }
-                return JsonResponse(data)
-    except Exception, e:
-        print "Error get_info_booking : %s" % e
-        return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 def check_seats(request):
     try:
         if request.method == "POST":
@@ -203,4 +147,3 @@ def booking_payment(request):
     except Exception, e:
         print "Error booking_payment : %s" % e
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
-

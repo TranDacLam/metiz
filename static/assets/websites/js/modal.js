@@ -77,6 +77,7 @@ $(document).ready(function() {
             $('.msg-result-js').html(msgResult("Error schedule film!", "danger"));
         });
     });
+
     function getValue(){
          $('.sold-out a').click(function(event) {
             event.preventDefault();
@@ -85,6 +86,8 @@ $(document).ready(function() {
             $('.modal input[name=id_showtime]').val(id_showtime);
         });
     }
+
+    // message for validate form
     var lang = $('html').attr('lang');
     if ( lang == 'vi') {
         message = {'required': 'Trường này bắt buộc', 
@@ -105,6 +108,7 @@ $(document).ready(function() {
         'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
         'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
     }
+
     //handle form 
     function validateForm(form){
         $(form).validate({
@@ -136,9 +140,8 @@ $(document).ready(function() {
             },
             submitHandler: function (form) {
                 data= $(form).serialize();
-                /* Act on the event */
                 $.ajax({
-                    url: '/info/booking',
+                    url: '/booking/',
                     type: 'POST',
                     dataType: 'json',
                     data: data,
@@ -151,16 +154,16 @@ $(document).ready(function() {
                         });
                     }
                     else{
-                        window.location.href='/booking/'
+                        window.location.href = '/booking/' +data.id_sever + '/' + data.id_showtime;
                     }
                 })
                 .fail(function(data) {
                     $('#error').html(data.message);
-                    console.log(message);
                 });
             }
         });
     }
+
     $('#signin_form').validate({
         rules:{
             email:{
@@ -183,8 +186,10 @@ $(document).ready(function() {
                 minlength: message.minlength_8,
             }
         },
-
+        submitHandler: function (form) {
+        }
     });
+
     $.validator.addMethod(
       "validatePassword",
       function (value, element) {
@@ -192,10 +197,12 @@ $(document).ready(function() {
       },
       message.validatePassword
     );
+
     $('#update_form').submit(function(event) {
         event.preventDefault();
         validateForm($(this));
     });
+
     $('#guest_form').submit(function(event) {
         event.preventDefault();
         validateForm($(this));
@@ -209,13 +216,16 @@ $(document).ready(function() {
             $('.form-popup button').prop('disabled', true);
         }
     });
+
     //active slide for 7 day if browser width < 480
     $('.open-popup-link').click(function(event) {
         loadSlideCalendar();
     });
+
     $(window).resize(function(event) {
         loadSlideCalendar();
     });
+    
     function loadSlideCalendar(){
         if ($( window ).width() < 480 ) {
             $("#play-date-slider").slick({
