@@ -42,7 +42,7 @@
 ul.errorlist li, .error{
     font-size: 13px;
     margin-top: 5px;
-    color: #a94442;
+    color: red;
 }
 .content-confirm{
     margin-bottom: 100px;

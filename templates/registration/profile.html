@@ -85,7 +85,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "Phone" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="phone" value="{% if phone %} {{ phone }} {% endif %}" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control">
+                                        <input type="text" name="phone" value="{% if phone %}{{ phone }}{% endif %}" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control">
                                         {% if form.phone.errors %}
                                             {{form.phone.errors}}
                                         {% endif %}

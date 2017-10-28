@@ -12,18 +12,7 @@ $(document).ready(function($) {
 	});
 
 	// trim string name and category film
-	$('.metiz-movies .film-lists').each(function() {
-            var name_film = $(this).find('.product-name a').text();
-            var cate_film = $(this).find('.product-cate').text();
-            if(name_film.length > 20){
-            	var trimName= name_film.substring(0, 20) + "...";
-            	$(this).find('.product-name a').text(trimName);
-            }
-            if(cate_film.length > 9){
-            	var trimCate = cate_film.substring(0, 10) + "...";
-            	$(this).find('.product-cate').text(trimCate);
-            }
-     });
+	trimNameMovie();
 
 	//  load more
 	// movie html, need set data for movie html in movie_showing(movie)
@@ -119,5 +108,22 @@ $(document).ready(function($) {
 $(document).ajaxComplete(function(){
     try{
         FB.XFBML.parse(); 
+        trimNameMovie();
     }catch(ex){}
 });
+
+// trim string name and category film
+function trimNameMovie(){
+	$('.metiz-movies .film-lists').each(function() {
+            var name_film = $(this).find('.product-name a').text();
+            var cate_film = $(this).find('.product-cate').text();
+            if(name_film.length > 20){
+            	var trimName= name_film.substring(0, 20) + "...";
+            	$(this).find('.product-name a').text(trimName);
+            }
+            if(cate_film.length > 9){
+            	var trimCate = cate_film.substring(0, 10) + "...";
+            	$(this).find('.product-cate').text(trimCate);
+            }
+     });
+}

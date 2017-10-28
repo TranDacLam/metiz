@@ -50,8 +50,7 @@ $(document).ready(function() {
         responsiveClass: true,
         responsive: {
             0: {
-                items: 1,
-                autoWidth: true,
+                items: 2,
             },
             421: {
                 autoWidth: true,
