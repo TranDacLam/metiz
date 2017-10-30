@@ -12,18 +12,7 @@ $(document).ready(function($) {
 	});
 
 	// trim string name and category film
-	$('.metiz-movies .film-lists').each(function() {
-            var name_film = $(this).find('.product-name a').text();
-            var cate_film = $(this).find('.product-cate').text();
-            if(name_film.length > 20){
-            	var trimName= name_film.substring(0, 20) + "...";
-            	$(this).find('.product-name a').text(trimName);
-            }
-            if(cate_film.length > 9){
-            	var trimCate = cate_film.substring(0, 10) + "...";
-            	$(this).find('.product-cate').text(trimCate);
-            }
-     });
+	trimNameMovie();
 
 	//  load more
 	// movie html, need set data for movie html in movie_showing(movie)
@@ -64,6 +53,11 @@ $(document).ready(function($) {
 				+'</li>';
 	}
 
+	var coutMovie = parseInt($('.load-more').attr('data-count-movie'));
+	if(coutMovie < 12){
+		$('.metiz-movies>.text-center button').remove();
+	}
+
 	$('#load-more').on('click', function(e){
 		e.preventDefault();
 		$(this).prop('disabled', true);
@@ -83,7 +77,7 @@ $(document).ready(function($) {
 			context: this,
 		})
 		.done(function(response) {
-			if(response.length < 12){
+			if(page >= response.total_page){
 				$('.metiz-movies>.text-center button').remove();
 			}
 			
@@ -91,7 +85,7 @@ $(document).ready(function($) {
 			var html = '';
 
 			// for from data reponse set function movie_showing(movie)
-			$.each(response, function(key, value) {
+			$.each(response.data, function(key, value) {
 				html += movie_showing(value);
 			});
 			
@@ -99,9 +93,14 @@ $(document).ready(function($) {
 
 			$(this).prop('disabled', false);
 		})
-		.fail(function() {
+		.fail(function(error) {
+			$('.metiz-movies>.text-center button').remove();
 			displayMsg();
-        	$('.msg-result-js').html(msgResult("Error load more movie", "danger"));
+			if(error.status == 400){
+        		$('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
+			}else{
+				$('.msg-result-js').html(msgResult("Error load more movie", "danger"));
+			}
 		});
 	});
 });
@@ -109,5 +108,22 @@ $(document).ready(function($) {
 $(document).ajaxComplete(function(){
     try{
         FB.XFBML.parse(); 
+        trimNameMovie();
     }catch(ex){}
 });
+
+// trim string name and category film
+function trimNameMovie(){
+	$('.metiz-movies .film-lists').each(function() {
+            var name_film = $(this).find('.product-name a').text();
+            var cate_film = $(this).find('.product-cate').text();
+            if(name_film.length > 20){
+            	var trimName= name_film.substring(0, 20) + "...";
+            	$(this).find('.product-name a').text(trimName);
+            }
+            if(cate_film.length > 9){
+            	var trimCate = cate_film.substring(0, 10) + "...";
+            	$(this).find('.product-cate').text(trimCate);
+            }
+     });
+}

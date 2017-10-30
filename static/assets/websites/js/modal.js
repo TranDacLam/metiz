@@ -67,7 +67,9 @@ $(document).ready(function() {
         .done(function(response) {
             var html = '';
             $.each(response, function(key, value) {
-                html += listFilm(value);
+                if(value.lst_times.length > 0){
+                    html += listFilm(value);
+                }
             });
             $('.list-schedule').html(html);
             getValue();

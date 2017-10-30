@@ -1,7 +1,12 @@
 $(document).ready(function() {
+    function getDate(applyDate){
+        return applyDate.replace(/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/g, 'Ngày $3 tháng $2 năm $1');
+    }
+
     //  load more
     // movie html, need set data for movie html in movie_showing(movie)
     function movie_showing(newoffer){
+        console.log(newoffer.apply_date);
         return  '<li class="item last">'
                     +'<a href="/new/detail/'+ newoffer.id +'">'
                         +'<div class="product-poster"">'
@@ -13,7 +18,7 @@ $(document).ready(function() {
                                             +'<div class="colum-right-new-offer">'
                                                 +'<div class="format-new-offer release-day-new-offer">'
                                                     +'<h3 class="glyphicon glyphicon-calendar">'
-                                                    +'<h4>'+ newoffer.apply_date +'</h4></h3>'
+                                                    +'<h4>'+ getDate(newoffer.apply_date) +'</h4></h3>'
                                                 +'</div>'
                                             +'</div>'
                                         +'</div>'
@@ -23,6 +28,11 @@ $(document).ready(function() {
                         +'</div>'
                     +'</a>'
                 +'</li>';
+    }
+
+    var coutNew = parseInt($('.load-more').attr('data-count-news'));
+    if(coutNew < 12){
+        $('.news-custom>.text-center button').remove();
     }
 
     $('#load-more-news').on('click', function(e){
@@ -39,11 +49,15 @@ $(document).ready(function() {
             context: this,
         })
         .done(function(response) {
+            if(page >= response.total_page){
+                $('.metiz-movies>.text-center button').remove();
+            }
+            
             $(this).attr('data-page',page + 1);
             var html = '';
 
             // for from data reponse set function movie_showing(movie)
-            $.each(response, function(key, value) {
+            $.each(response.data, function(key, value) {
                 html += movie_showing(value);
             });
             
@@ -53,7 +67,11 @@ $(document).ready(function() {
         })
         .fail(function() {
             displayMsg();
-            $('.msg-result-js').html(msgResult("Error load more news", "danger"));
+            if(error.status == 400){
+                $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
+            }else{
+                $('.msg-result-js').html(msgResult("Error load more news", "danger"));
+            }
         });
     });
 });

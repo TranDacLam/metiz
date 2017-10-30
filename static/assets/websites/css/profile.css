@@ -24,18 +24,21 @@
         color: #0e1d2f;
     }
     .my-account .page-title h1 {
-        color: #0e1d2f;
+        color: blue;
+    }
+    .my-account form{
+        margin-top: 25px;
     }
 }
 @media only screen and (min-width : 320px) and (max-width : 480px) {
     .my-account form{
-        margin-top: 110px;
+        margin-top: 25px;
     }
     .my-account .page-title h1 {
-        color: #0e1d2f;
+        color: blue;
     }
-    .page-detail .page-title{
-        padding-top: 105px;
+    .block-account{
+        float: none;
     }
 }
 .block-account .block-content ul{
@@ -123,4 +126,10 @@
 }
 .profile-custom .form-control{
     font-size: 15px;
+}
+#profile-validate select{
+    padding: 3px 12px;
+}
+.profile-custom ul.post-detail-metiz{
+    float: none;
 }

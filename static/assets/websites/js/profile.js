@@ -5,7 +5,7 @@ $(document).ready(function() {
     // page profile
     $("#profile-validate").validate({
         rules: {
-            username: { 
+            full_name: { 
                 required: true,
             },
             birth_date: { 
@@ -14,13 +14,14 @@ $(document).ready(function() {
             },
             phone: {
                 required: true,
+                number: true,
             },
             email:{
                 required: true,
             },
         },
         messages:{
-            username: {
+            full_name: {
                 required: val_required,
             },
             birth_date: {
@@ -29,6 +30,7 @@ $(document).ready(function() {
             },
             phone: {
                 required: val_required,
+                number: 'Vui lòng chỉ nhập số',
             },
             email: {
                 required: val_required,

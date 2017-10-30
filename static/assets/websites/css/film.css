@@ -139,7 +139,7 @@ ul.metiz-film-detail-tabs {
 	padding-top: 3px;
 }
 @media screen and (max-width: 460px) {
- 	.product-name-reponsive .button{
+ 	.product-name-reponsive .button, .booking-ticket-bot .button{
 		padding: 2px 5px 2px 5px;
 		border-radius: 15px;
 		border: 2px solid #0e1d2f;
@@ -156,7 +156,7 @@ ul.metiz-film-detail-tabs {
 }
 @media screen and (max-width: 400px) {
 	.product-view .nav-tabs>li>span{
-		font-size: 10px;
+		font-size: 13px;
 		width: 87px;
 		padding: 5px 10px 5px 10px;
 	}
@@ -173,6 +173,10 @@ ul.metiz-film-detail-tabs {
 @media only screen and (max-width: 771px) {
 	.cate-new-offer {
 	    z-index: 3;
+	}
+	.product-view .product-image img{
+		height: 235px;
+		width: 180px;
 	}
 }
 .product-name-reponsive .col-left{
@@ -203,4 +207,7 @@ ul.metiz-film-detail-tabs {
 }
 .news-custom{
 	margin-bottom: 50px;
+}
+.format-new-offer h4{
+	line-height: 2;
 }
