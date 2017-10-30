@@ -72,12 +72,186 @@ $(document).ready(function() {
                 }
             });
             $('.list-schedule').html(html);
+            getValue();
         })
         .fail(function() {
             displayMsg();
             $('.msg-result-js').html(msgResult("Error schedule film!", "danger"));
         });
     });
+
+    function getValue(){
+         $('.sold-out a').click(function(event) {
+            event.preventDefault();
+            var id_showtime = $(this).children('input').val();
+            console.log(id_showtime);
+            $('.modal input[name=id_showtime]').val(id_showtime);
+        });
+    }
+
+    // message for validate form
+    var lang = $('html').attr('lang');
+    if ( lang == 'vi') {
+        message = {'required': 'Trường này bắt buộc', 
+        'minlength_6' :'Nhập ít nhất 6 kí tự',
+        'minlength_8' :'Nhập ít nhất 8 kí tự',
+        'email': 'Email không hợp lệ',
+        'number': 'Nhập các chữ số',
+        'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
+        'validatePassword': 'Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt và có cả chữ và số',
+        'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
+    } else {
+        message = {'required': 'This field is required', 
+        'minlength_6' :'Please enter at least 6 characters',
+        'minlength_8' :'Please enter at least 8 characters',
+        'email': 'Please enter a valid email address',
+        'number': 'Please enter a valid number',
+        'equalTo': "Password don't same. Please enter again",
+        'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
+        'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
+    }
+
+    //handle form 
+    function validateForm(form){
+        $(form).validate({
+            rules:{
+                name:{
+                    required: true,
+                },
+                email:{
+                    email: true
+                },
+                phone:{
+                    required: true,
+                    number: true,
+                    minlength: 8
+                },
+            },
+            messages:{
+                name:{
+                    required: message.required,
+                },
+                email:{
+                    email: message.email
+                },
+                phone:{
+                    required: message.required,
+                    number: message.number,
+                    minlength: message.minlength_8,
+                }
+            },
+            submitHandler: function (form) {
+                data= $(form).serialize();
+                $.ajax({
+                    url: '/booking/',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                })
+                .done(function(data) {
+                     $('label.form-error').html('');
+                    if(data.errors){
+                        $.each(data.errors, function (field, error) {
+                            $('label.form-error[for='+ field +']').html(error);
+                        });
+                    }
+                    else{
+                        window.location.href = '/booking/' +data.id_sever + '/' + data.id_showtime;
+                    }
+                })
+                .fail(function(data) {
+                    $('#error').html(data.message);
+                });
+            }
+        });
+    }
+
+    $('#signin_form').validate({
+        rules:{
+            email:{
+                required: true,
+                email: true
+            },
+            password:{
+                required: true,
+                minlength: 8,
+                validatePassword: true
+            },
+        },
+        messages:{
+            email:{
+                required: message.required,
+                email: message.email
+            },
+            password:{
+                required: message.required,
+                minlength: message.minlength_8,
+            }
+        },
+        submitHandler: function (form) {
+        }
+    });
+
+    $.validator.addMethod(
+      "validatePassword",
+      function (value, element) {
+        return value.match(/[^a-z0-9 ]/);
+      },
+      message.validatePassword
+    );
+
+    $('#update_form').submit(function(event) {
+        event.preventDefault();
+        validateForm($(this));
+    });
+
+    $('#guest_form').submit(function(event) {
+        event.preventDefault();
+        validateForm($(this));
+    });
+    
+    //checkbox for form guest
+    $('#agree_term').on('click', function(){
+        if($('#agree_term').prop("checked")){
+            $('.form-popup button').prop('disabled', false);
+        }else{
+            $('.form-popup button').prop('disabled', true);
+        }
+    });
+
+    //active slide for 7 day if browser width < 480
+    $('.open-popup-link').click(function(event) {
+        loadSlideCalendar();
+    });
+
+    $(window).resize(function(event) {
+        loadSlideCalendar();
+    });
+    
+    function loadSlideCalendar(){
+        if ($( window ).width() < 480 ) {
+            $("#play-date-slider").slick({
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                dots: false,
+                autoplay: false,
+                infinite: false,
+                speed: 500,
+                arrows: true,
+                focusOnSelect: false,
+                autoplaySpeed: 4000,
+                fade: false,
+                centerMode: false,
+                prevArrow: "<div class='slick-prev'><img  src='/static/assets/websites/images/btn_m_prev_on.png'></div>",
+                nextArrow: "<div class='slick-next'><img  src='/static/assets/websites/images/btn_m_next_on.png'></div>"
+            });
+        }
+        else{
+             $("#play-date-slider").slick('unslick');
+        }
+
+    }
+    
 });
 
 function startMonth(){

@@ -7,6 +7,7 @@ from django.db.models import Avg, Sum, Count
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
 from itertools import chain
+from booking.forms import BookingForm
 import itertools
 
 # NOTES : View SQL Query using : print connection.queries
@@ -337,11 +338,30 @@ def get_post(request):
         return HttpResponse(status=500)
 
 
-def get_booking(request):
+def get_booking(request, id_sever = None, id_showtime= None):
     try:
-        id_showtime = request.GET.get('id_showtime', "")
-        id_sever = request.GET.get('id_sever', 1)
-        return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
+        if request.method == 'POST':
+            form = BookingForm(request.POST)
+            if form.is_valid():
+                full_name = form.cleaned_data['name']
+                phone = form.cleaned_data['phone']
+                id_showtime = form.cleaned_data['id_showtime']
+                data = {
+                    'full_name': full_name,
+                    'phone': phone
+                }
+                request.session['booking'] = data
+                return JsonResponse({"id_showtime": id_showtime, "id_sever": 1})
+            else:
+                data = {
+                    'errors': form.errors
+                }
+                return JsonResponse(data)
+        else:
+            print (request.session['booking'])
+            print (id_showtime)
+            print (id_sever)
+            return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
