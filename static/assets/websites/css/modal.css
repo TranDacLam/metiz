@@ -5,11 +5,14 @@
     display: inline-block;
     padding: 0px 1px;
 }
+#test-popup .city{
+    margin-top: 15px;
+}
 #test-popup .list-item a{
     padding: 10px 37px;
     color: #48494c;
 }
-#test-popup .list-item, .list-cinema{
+#test-popup .list-item{
     margin: 20px 0px;
 }
 #test-popup .list-item a:hover{
@@ -25,6 +28,7 @@
     text-decoration: none;
 }
 #test-popup .list-cinema{
+    margin-bottom: 15px;
 }
 #test-popup .list-cinema ul{
 }
@@ -36,9 +40,6 @@
     padding: 10px 30px;
     background: #f3f2f5;
     border-radius: 0px;
-}
-#test-popup .list-cinema{
-    
 }
 
 #test-popup .list-cinema a:hover{
@@ -141,6 +142,7 @@
     margin: 0 10px;
     position: relative;
     padding-top: 16px;
+    width: 37px;
 }
 .month{
     visibility: hidden;
@@ -163,19 +165,12 @@
     font-size: 14px;
     padding: 8px;
 }
-.calendar-popup .list-time {
-    height: 100%;
-    position: relative;
-    /* padding: 0px 0px 0 30px; */
-    padding-right: 20px;
-}
 #play-date-slider{
     
 }
 .calendar-popup .days-popup {
     text-align: center;
     /* padding-left: 10px; */
-    padding-top: 64px;
 }
 .lot-table {
     padding-left: 15px;
@@ -308,38 +303,31 @@
     background: #ff4900;
     color: #ffffff;
 }
+.form-error{
+    color: red;
+    margin-top: 7px;
+}
+#test-popup button{
+    font-family: 'SairaSemiCondensed-Medium';
+}
+#confirm .tab-header a{
+    font-family: 'SairaSemiCondensed-Medium';
+}
 @media only screen and (max-width: 1024px){
-    .slick-next img {
-        /* padding-left: 26px; */
-    }
-    .calendar-popup .list-time {
-        /* padding: 0px 0px 0px 30px; */
-        /* padding-right: 20px; */
-    }
-    .size{
-            margin-left: 20px;
-    }
+   
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px){
-    .calendar-popup .list-time {
-          /* padding: 0px 0px 0px 44px; */
 
-    }
-    .size {
-        margin-left: 37px;
-    }
        
 }
 @media only screen and (max-width: 767px){
-    .size {
-        margin-left: 0px;
+    .size{
+        padding-left: 9%;
     }
 }
 @media only screen and (max-width: 480px){
-    .slick-prev img{
-        padding-left: 0px;
-    }
     .size {
-        margin-left: 10px;
+       padding-right: 25px;
+        padding-left: 14px;
     }
 }
