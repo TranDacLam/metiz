@@ -19,6 +19,9 @@ $(document).ready(function() {
             email:{
                 required: true,
             },
+            personal_id: {
+                number: true,
+            }
         },
         messages:{
             full_name: {
@@ -34,7 +37,10 @@ $(document).ready(function() {
             },
             email: {
                 required: val_required,
-            }    
+            },
+            personal_id: {
+                number: 'Vui lòng chỉ nhập số',
+            }  
         }
     });
     // format birthday
