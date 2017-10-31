@@ -112,7 +112,7 @@ $(document).ready(function() {
         'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
     }
 
-    //handle guest form, update form
+    //validate guest form, update form
     function validateForm(form){
         $(form).validate({
             rules:{
@@ -171,11 +171,6 @@ $(document).ready(function() {
             }
         },
         submitHandler: function (form) {
-            // data= $(form).serialize();
-            data = {
-                'schedule_key': 1,
-                'form': $(form).serialize()
-            }
             $.ajax({
                 url: '/login/',
                 type: 'POST',
