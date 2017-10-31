@@ -10,9 +10,15 @@ $(document).ready(function($) {
 		$('#about-arthouse_contents').css('display','none');
 		$('#arthouse-home_contents').css('display','block');
 	});
-
+	
 	// trim string name and category film
-	trimNameMovie();
+	function trimNameMovie(name, len){
+		if(name.length >= len){
+			var trimName= name.substring(0, len) + "...";
+			return trimName;
+		}
+	    return name;
+	}
 
 	//  load more
 	// movie html, need set data for movie html in movie_showing(movie)
@@ -25,14 +31,14 @@ $(document).ready(function($) {
 					+'</div>'
 					+'<div class="product-info">'
 						+'<h2 class="product-name">'
-						+'<a href="/film/detail/'+ movie.id +'" title="'+ movie.name +'">'+ movie.name +'</a></h2>'
+						+'<a href="/film/detail/'+ movie.id +'" title="'+ movie.name +'">'+ trimNameMovie(movie.name, 21) +'</a></h2>'
 						+'<div class="metiz-movie-info">'
 							+'<span class="metiz-info-bold">Thể loại: </span>'
-							+'<span class="metiz-info-normal">Hanh dong</span>' // movie.genre.name
+							+'<span class="metiz-info-normal">'+ trimNameMovie(movie.genre__name, 12) +'</span>'
 						+'</div>'
 						+'<div class="metiz-movie-info">'
 							+'<span class="metiz-info-bold">'+ movie.time_running +' Phút | '
-							+'<span class="rated-c18">c18</span></span>' // movie.rated.name
+							+'<span class="rated-'+ movie.rated__name +'">'+ movie.rated__name +'</span></span>'
 						+'</div>'
 						+'<div class="metiz-movie-info">'
 							+'<span class="metiz-info-bold">Khởi chiếu: </span>'
@@ -108,22 +114,5 @@ $(document).ready(function($) {
 $(document).ajaxComplete(function(){
     try{
         FB.XFBML.parse(); 
-        trimNameMovie();
     }catch(ex){}
 });
-
-// trim string name and category film
-function trimNameMovie(){
-	$('.metiz-movies .film-lists').each(function() {
-            var name_film = $(this).find('.product-name a').text();
-            var cate_film = $(this).find('.product-cate').text();
-            if(name_film.length > 20){
-            	var trimName= name_film.substring(0, 20) + "...";
-            	$(this).find('.product-name a').text(trimName);
-            }
-            if(cate_film.length > 9){
-            	var trimCate = cate_film.substring(0, 10) + "...";
-            	$(this).find('.product-cate').text(trimCate);
-            }
-     });
-}

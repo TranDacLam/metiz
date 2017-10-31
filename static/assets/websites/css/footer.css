@@ -130,6 +130,17 @@ footer #content-map iframe{
 		height: 300px;
 	}
 }
+@media only screen and (max-width: 420px){
+	footer #content-map iframe{
+		height: auto;
+	}
+	footer h2{
+		font-size: 16px;
+	}
+	footer .content-1 .list li a, .info{
+		font-size: 14px;
+	}
+}
 @media only screen and (max-width: 320px){
 	footer #content-map iframe{
 		height: auto;

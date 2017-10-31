@@ -4006,7 +4006,7 @@ ul,ol,li{
     position: absolute;
     top: 0;
     width: 240px;
-    text-indent: -99999px;
+    text-indent: -9999px;
     display: none;
     cursor: pointer;
 }
