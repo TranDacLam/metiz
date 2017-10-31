@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from forms import *
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout, login as auth_login, get_user_model
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -21,25 +21,41 @@ def logout(request):
 
 def login(request):
     """ Action Login """
-    try:
-        # create flag is login using active tab in page html
-        result = {'is_login': True}
-        # user is active then redirect to home page
-        if request.user.is_active:
-            return redirect(reverse('home'))
+    # try:
+    # create flag is login using active tab in page html
+    result = {'is_login': True}
+    # user is active then redirect to home page
+    if request.user.is_active:
+        return redirect(reverse('home'))
 
-        # validate LoginForm if valid then return homepage otherwise return
-        # error
-        if request.method == 'POST':
-            login_form = LoginForm(request.POST, request=request)
+    # validate LoginForm if valid then return homepage otherwise return
+    # error
+    if request.method == 'POST':
+        login_form = LoginForm(request.POST, request=request)
+        if request.POST.get('schedule_key'):
+            if login_form.is_valid():
+                full_name=request.user.full_name
+                phone=request.user.phone
+                data = {
+                    'full_name': full_name,
+                    'phone': phone
+                }
+                request.session['booking'] = data
+                return JsonResponse({})
+            else:
+                data = {
+                    'errors': login_form.errors
+                }
+                return JsonResponse(data)
+        else:
             if login_form.is_valid():
                 return redirect(reverse('home'))
             else:
                 result['errors'] = login_form.errors
 
-        return render(request, 'registration/signup.html', result)
-    except Exception, e:
-        return HttpResponse(status=500)
+    return render(request, 'registration/signup.html', result)
+    # except Exception, e:
+        # return HttpResponse(status=500)
 
 
 def register_user(request, **kwargs):
