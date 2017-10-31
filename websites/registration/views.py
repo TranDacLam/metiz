@@ -39,9 +39,14 @@ def login(request):
                         request.session['phone'] = request.user.phone
                         request.session['email'] = request.user.email
                         return JsonResponse({})
+                    else:
+                        data={
+                            'error': login_form.errors
+                        }
+                        return JsonResponse({data})
                 except Exception, e:
                     print "Error: ", e
-                    return JsonResponse({"message": login_form.errors },status=500)
+                    return JsonResponse({"message": 'Server Error' },status=500)
             else:
                 if login_form.is_valid():
                     return redirect(reverse('home'))
