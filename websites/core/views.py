@@ -346,11 +346,11 @@ def get_booking(request, id_sever = None, id_showtime= None):
                 full_name = form.cleaned_data['name']
                 phone = form.cleaned_data['phone']
                 id_showtime = form.cleaned_data['id_showtime']
-                data = {
-                    'full_name': full_name,
-                    'phone': phone
-                }
-                request.session['booking'] = data
+                email = form.cleaned_data['email']
+                
+                request.session['full_name'] = full_name
+                request.session['phone'] = phone
+                request.session['email'] = email if email else None
                 return JsonResponse({"id_showtime": id_showtime, "id_sever": 1})
             else:
                 data = {
@@ -358,9 +358,6 @@ def get_booking(request, id_sever = None, id_showtime= None):
                 }
                 return JsonResponse(data)
         else:
-            print (request.session['booking'])
-            print (id_showtime)
-            print (id_sever)
             return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
     except Exception, e:
         print "Error: ", e

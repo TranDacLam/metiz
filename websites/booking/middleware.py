@@ -1,36 +1,34 @@
-from django.conf import settings
+from django.utils.deprecation import MiddlewareMixin
 from django.utils import timezone
-from datetime import timedelta
 from booking import api
 
 
-class DestroySeat(object):
-
-    def __init__(self, get_response):
-        self.get_response = get_response
-        # One-time configuration and initialization.
-
-    def __call__(self, request):
-        # Code to be executed for each request before
-        # the view (and later middleware) are called.
-
-        response = self.get_response(request)
-
-        # Code to be executed for each request/response after
-        # the view is called.
-
-        return response
+class DestroySeat(MiddlewareMixin):
 
     def process_request(self, request):
         try:
-            time_choice = request.session.get("time_choice", "")
-            if time_choice and time_choice + timedelta(minutes=settings.TIME_SEAT_DELAY) < timezone.localtime(timezone.now()):
-                seats_choice = request.session.get("seats_choice", [])
-                print "Destroy Seats middleware ", seats_choice
-                for item in seats_choice:
-                    api.call_api_cancel_seat(item["ID"])
+            movies = request.session.get("movies", "")
+            if movies:
+                
+                print "movies session ", movies
+                current_time = timezone.localtime(timezone.now()).strftime("%Y-%m-%d %H:%M:%S.%f")
+                print "current_time ",current_time
+                for key, value in movies.items():
+                    print "##### TIME SET ",value["time_choice"]
+                    print 
+                    # Compare end time expired
+                    if value["time_choice"] < current_time:
+                        seats_choice = value["seats_choice"]
+                        print "Destroy Seats middleware ", seats_choice
+                        for seat in seats_choice:
+                            api.call_api_cancel_seat(seat["ID"])
 
-                del request.session["time_choice"]
-                del request.session["seats_choice"]
+                        del movies[key]
+                print "After Destroy Seat ", movies
+                if movies:
+                    request.session["movies"] = movies
+                else:
+                    del request.session["movies"]
         except Exception, e:
+            print "Error process_request ", e
             pass

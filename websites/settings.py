@@ -237,6 +237,10 @@ LOGIN_URL='/'
 # Set timeout for choice seats
 TIME_SEAT_DELAY = 5
 
+SMS_KEY = "VNFPT123BLUESEA1"
+SMS_KEY_IV = "154dxc1scfzzad21"
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:
         from config.setting_develop import *
