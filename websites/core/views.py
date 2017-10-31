@@ -353,7 +353,6 @@ def get_booking(request):
                 request.session['email'] = email if email else None
                 id_sever = 1
                 print('*******booking******')
-                print (id_showtime)
                 return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})          
         else:
             print('*******booking******')

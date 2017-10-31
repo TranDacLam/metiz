@@ -319,21 +319,26 @@
 #id_showtime_memeber{
     display: none;
 }
+.warning-footer button{
+    font-size: 18px;
+}
 .modal > * {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 17px;
 }
 #test-popup .modal .form-control{
     font-size: 17px;
 }
 .modal label{
-    font-weight: 600;
+    font-weight: 500;
     font-size: 18px;
+    color: #000000;
 }
 .modal label.form-error,.modal label.error{
-    font-weight: 600;
+    font-weight: 500;
     font-family: 'SairaSemiCondensed-Regular';
     font-size: 14px;
+    color:red;
 }
 .modal .btn-login{
     font-size: 16px;
@@ -341,8 +346,13 @@
 .modal .checkbox-term{
     margin-top: 7px;
 }
-.modal-body p{
-    
+.modal .checkbox-term label{
+    font-size: 17px;
+    font-weight: 500;
+}
+#member #error{
+    color: red;
+    margin-bottom: 10px;
 }
 @media only screen and (max-width: 1024px){
    

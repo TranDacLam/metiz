@@ -189,11 +189,12 @@ $(document).ready(function() {
             })
             .fail(function(data) {
                 if (data.status == 400) {
-                     $.each(data.responseJSON.errors, function(index, val) {
-                        console.log(index);
-                        console.log(val);
+                    $.each(data.responseJSON.errors, function(index, val) {
                         $('#error').html(val);
                     });
+                }
+                else{
+                    $('#error').html(data.responseJSON.message);
                 }
             });
         }
