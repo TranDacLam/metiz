@@ -280,6 +280,7 @@
 .warning-footer .btn{
     background-color: #000000;
     color: #ffffff;
+    border-bottom-color: #000000;
 }
 #confirm .modal-header{
     border-bottom:none;

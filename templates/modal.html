@@ -110,18 +110,16 @@
                                     {% csrf_token %}
                                     <div class="col-sm-12">
                                         <div id="error"></div>
-                                        <div class="row">
-                                            <p id="id_showtime_memeber" ></p>
-                                            <div class="form-group">
-                                                <label>{% trans "Email" %}</label>
-                                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
-                                                <label class="form-error" for="email" id='email-error'></label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>{% trans "Password"%}</label>
-                                                <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
-                                                <label class="form-error" for="password" id='password-error'></label>
-                                            </div>
+                                        <p id="id_showtime_memeber" ></p>
+                                        <div class="form-group">
+                                            <label>{% trans "Email" %}</label>
+                                            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
+                                            <label class="form-error" for="email" id='email-error'></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{% trans "Password"%}</label>
+                                            <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
+                                            <label class="form-error" for="password" id='password-error'></label>
                                         </div>
                                         <button type="submit" class="btn btn-login">Login</button>
                                     </div>
@@ -144,23 +142,21 @@ Xin vui lòng đọc các điều khoản sau cẩn thận trước khi sử d�
                                     {% csrf_token %}
                                     <input type="hidden" name="id_showtime" id="id_showtime">
                                     <div class="col-sm-12">
-                                        <div class="row">
-                                            <div id="error"></div>
-                                             <div class="form-group">
-                                                <label>{% trans "Full Name" %}</label>
-                                                <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{% if request.session.full_name %}{{request.session.full_name}}{% endif %}">
-                                                <label class="form-error" for="name" id='name-error'></label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>{% trans "Phone" %}</label>
-                                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{% if request.session.phone %}{{request.session.phone}}{% endif %}">
-                                                <label  class="form-error" for="phone" id='phone-error'></label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>{% trans "Email" %}</label>
-                                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{% if request.session.email %}{{request.session.email}}{% endif %}">
-                                                <label  class="form-error" for="email" id='email-error'></label>
-                                            </div>
+                                        <div id="error"></div>
+                                         <div class="form-group">
+                                            <label>{% trans "Full Name" %}</label>
+                                            <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{{request.session.full_name}}">
+                                            <label class="form-error" for="name" id='name-error'></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{% trans "Phone" %}</label>
+                                            <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{{request.session.phone}}">
+                                            <label  class="form-error" for="phone" id='phone-error'></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{% trans "Email" %}</label>
+                                            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{{request.session.email}}">
+                                            <label  class="form-error" for="email" id='email-error'></label>
                                         </div>
                                         <button type="submit" id="submit" class="btn btn-login submit" disabled>Đặt vé</button>
                                     </div>
@@ -190,25 +186,23 @@ Xin vui lòng đọc các điều khoản sau cẩn thận trước khi sử d�
                             <input type="hidden" name="id_showtime" id="id_showtime">
                             <div class="col-sm-12">
                                 <div id="error"></div>
-                                <div class="row">
-                                     <div class="form-group">
-                                        <label>{% trans "Full Name" %}</label>
-                                        <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" 
-                                        value="{% if request.session.full_name %}{{request.session.full_name}}{% else %}{{user.full_name}}{% endif %}">
-                                        <label  class="form-error" for="name" id='name-error'></label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>{% trans "Phone" %}</label>
-                                        <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" 
-                                        value="{% if request.session.phone %}{{request.session.phone}}{% else %}{{user.phone}}{% endif %}">
-                                        <label  class="form-error" for="phone" id='phone-error'></label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>{% trans "Email" %}</label>
-                                        <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" 
-                                        value='{% if request.session.email %}{{request.session.email}}{% else %}{{user.email}}{% endif %}'>
-                                        <label  class="form-error" for="email" id='email-error'></label>
-                                    </div>
+                                 <div class="form-group">
+                                    <label>{% trans "Full Name" %}</label>
+                                    <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" 
+                                    value="{% if request.session.full_name %}{{request.session.full_name}}{% else %}{{user.full_name}}{% endif %}">
+                                    <label  class="form-error" for="name" id='name-error'></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>{% trans "Phone" %}</label>
+                                    <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" 
+                                    value="{% if request.session.phone %}{{request.session.phone}}{% else %}{{user.phone}}{% endif %}">
+                                    <label  class="form-error" for="phone" id='phone-error'></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>{% trans "Email" %}</label>
+                                    <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" 
+                                    value='{% if request.session.email %}{{request.session.email}}{% else %}{{user.email}}{% endif %}'>
+                                    <label  class="form-error" for="email" id='email-error'></label>
                                 </div>
                                 <button type="submit" id='update' class="btn btn-login submit">Xác nhận</button>
                             </div>
