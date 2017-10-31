@@ -41,12 +41,12 @@ def login(request):
                         return JsonResponse({})
                     else:
                         data={
-                            'error': login_form.errors
+                            'errors': login_form.errors
                         }
-                        return JsonResponse({data})
+                        return JsonResponse(data , status=400)
                 except Exception, e:
                     print "Error: ", e
-                    return JsonResponse({"message": 'Server Error' },status=500)
+                    return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
             else:
                 if login_form.is_valid():
                     return redirect(reverse('home'))

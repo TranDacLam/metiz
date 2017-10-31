@@ -183,21 +183,18 @@ $(document).ready(function() {
                 data: $(form).serialize() + "&schedule_key=1",
             })
             .done(function(data) {
-                 $('label.form-error').html('');
-                if(data.errors){
-                    $.each(data.errors, function (field, error) {
-                        $('label.form-error[for='+ field +']').html(error);
-                    });
-                }
-                else{
-                    id_showtime = $('#member_form #id_showtime_memeber').text();
-                    id_sever = 1;
-                    window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever;
-                }
+                id_showtime = $('#member_form #id_showtime_memeber').text();
+                id_sever = 1;
+                window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever;
             })
             .fail(function(data) {
-                console.log(data);
-                $('#error').html(data.message);
+                if (data.status == 400) {
+                     $.each(data.responseJSON.errors, function(index, val) {
+                        console.log(index);
+                        console.log(val);
+                        $('#error').html(val);
+                    });
+                }
             });
         }
     });
