@@ -148,17 +148,17 @@ Xin vui lòng đọc các điều khoản sau cẩn thận trước khi sử d�
                                         <div class="row">
                                              <div class="form-group">
                                                 <label>{% trans "Full Name" %}</label>
-                                                <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{% if request.session.booking %}{{request.session.booking.full_name}}{% endif %}">
+                                                <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{% if request.session.full_name %}{{request.session.full_name}}{% endif %}">
                                                 <label class="form-error" for="name" id='name-error'></label>
                                             </div>
                                             <div class="form-group">
                                                 <label>{% trans "Phone" %}</label>
-                                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{% if request.session.booking %}{{request.session.booking.phone}}{% endif %}">
+                                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{% if request.session.phone %}{{request.session.phone}}{% endif %}">
                                                 <label  class="form-error" for="phone" id='phone-error'></label>
                                             </div>
                                             <div class="form-group">
                                                 <label>{% trans "Email" %}</label>
-                                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{% if request.session.booking.email %}{{request.session.booking.email}}{% endif %}">
+                                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{% if request.session.email %}{{request.session.email}}{% endif %}">
                                                 <label  class="form-error" for="email" id='email-error'></label>
                                             </div>
                                         </div>
@@ -194,19 +194,19 @@ Xin vui lòng đọc các điều khoản sau cẩn thận trước khi sử d�
                                      <div class="form-group">
                                         <label>{% trans "Full Name" %}</label>
                                         <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" 
-                                        value="{% if request.session.booking %}{{request.session.booking.full_name}}{% else %}{{user.full_name}}{% endif %}">
+                                        value="{% if request.session.full_name %}{{request.session.full_name}}{% else %}{{user.full_name}}{% endif %}">
                                         <label  class="form-error" for="name" id='name-error'></label>
                                     </div>
                                     <div class="form-group">
                                         <label>{% trans "Phone" %}</label>
                                         <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" 
-                                        value="{% if request.session.booking %}{{request.session.booking.phone}}{% else %}{{user.phone}}{% endif %}">
+                                        value="{% if request.session.phone %}{{request.session.phone}}{% else %}{{user.phone}}{% endif %}">
                                         <label  class="form-error" for="phone" id='phone-error'></label>
                                     </div>
                                     <div class="form-group">
                                         <label>{% trans "Email" %}</label>
                                         <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" 
-                                        value='{% if request.session.booking.email %}{{request.session.booking.email}}{% else %}{{user.email}}{% endif %}'>
+                                        value='{% if request.session.email %}{{request.session.email}}{% else %}{{user.email}}{% endif %}'>
                                         <label  class="form-error" for="email" id='email-error'></label>
                                     </div>
                                 </div>
