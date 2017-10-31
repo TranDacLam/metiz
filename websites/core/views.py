@@ -348,21 +348,15 @@ def get_booking(request):
                 phone = form.cleaned_data['phone']
                 id_showtime = form.cleaned_data['id_showtime']
                 email = form.cleaned_data['email']
-                data = {
-                    'full_name': full_name,
-                    'phone': phone,
-                    'email': email
-                }
-                request.session['booking'] = data
+                request.session['full_name'] = full_name
+                request.session['phone'] = phone
+                request.session['email'] = email if email else None
                 id_sever = 1
                 print('*******booking******')
-                print (request.session['booking'])
                 print (id_showtime)
                 return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})          
         else:
             print('*******booking******')
-            print (request.session['booking'])
-            print (id_showtime)
             id_showtime = request.GET['id_showtime']
             id_sever = request.GET['id_sever']
             return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})

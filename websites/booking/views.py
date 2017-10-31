@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 from booking.models import MovieSync
 from booking import api
 import json
 import ast
-
+from datetime import timedelta
 
 
 def get_movie_show_time(request):
@@ -85,7 +86,9 @@ def check_seats(request):
                 return JsonResponse({"code": 400, "message": _("Fields lst_seats and id_showtime is required.")}, status=400)
 
             # Get new seats from api
-            data_seats = api.call_api_seats(request.POST["id_showtime"], id_server)
+            id_showtime = request.POST["id_showtime"]
+            data_seats = api.call_api_seats(
+                id_showtime, id_server)
             # get list chair of user selected
             seats_choice = ast.literal_eval(request.POST["lst_seats"])
 
@@ -105,25 +108,47 @@ def check_seats(request):
                     full_name = request.session.get("full_name", "")
                     phone = request.session.get("phone", "")
                     email = request.session.get("email", "")
-
+                    # Get Information of user and building data for api update status of seats
                     data_post_booking = {
                         "List": [
                             {
-                                "NAME": full_name,
+                                "NAME": str(full_name),
                                 "PHONE": phone,
-                                "EMAIL": email,
+                                "EMAIL": str(email),
                                 "ListSeats": seats_choice
                             }
                         ]
                     }
                     result = api.call_api_post_booking(
                         data_post_booking, id_server, url="/postBooking")
+                    if not result["BARCODE"]:
+                        return JsonResponse({"code": 400, "message": _("Cannot Booking Seats. Please Contact Administrator.")}, status=400)
 
                     # Add Seats into session and set seats expire in five
                     # minute
-                    request.session['time_choice'] = timezone.localtime(
-                        timezone.now()).strftime('%Y-%m-%d')
-                    request.session['seats_choice'] = seats_choice
+                    current_store = request.session.get("movies", {})
+                    if id_showtime in current_store:
+                        """ 
+                            If session exist id_showtime then append new seat item into session: 
+                            Algorithm :
+                             - step 1 : the list keys_old get all seat id store in session
+                             - step 2 : loop the list seats and add seat dont have in list keys_old
+                        """
+                        old_seat = current_store[id_showtime]["seats_choice"]
+                        keys_old = [old["ID"] for old in old_seat]
+                        for new in seats_choice:
+                            if new["ID"] not in keys_old:
+                                current_store[id_showtime]["seats_choice"].append(new)
+                        
+                    else:
+                        # Add new id_showtime in store movie session
+                        current_store[id_showtime] = {
+                            "time_choice": timezone.localtime(timezone.now() + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
+                            "seats_choice": seats_choice
+                        }
+                    print "### data_store ", current_store
+                    request.session['movies'] = current_store
+
                     return JsonResponse(result)
     except Exception, e:
         print "Error booking_seats : %s" % e

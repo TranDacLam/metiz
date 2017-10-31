@@ -67,6 +67,7 @@
                                         <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">
+                                    <input type="hidden" value="{{ item.movie_api_id }}">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         <button type="button" title="Đặt vé" class="button">Đặt vé</button>
                                     </div>

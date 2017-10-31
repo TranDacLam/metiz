@@ -196,6 +196,7 @@ $(document).ready(function() {
                 }
             })
             .fail(function(data) {
+                console.log(data);
                 $('#error').html(data.message);
             });
         }

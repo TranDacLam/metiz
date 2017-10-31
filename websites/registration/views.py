@@ -21,41 +21,36 @@ def logout(request):
 
 def login(request):
     """ Action Login """
-    # try:
-    # create flag is login using active tab in page html
-    result = {'is_login': True}
-    # user is active then redirect to home page
-    if request.user.is_active:
-        return redirect(reverse('home'))
+    try:
+        # create flag is login using active tab in page html
+        result = {'is_login': True}
+        # user is active then redirect to home page
+        if request.user.is_active:
+            return redirect(reverse('home'))
 
-    # validate LoginForm if valid then return homepage otherwise return
-    # error
-    if request.method == 'POST':
-        login_form = LoginForm(request.POST, request=request)
-        if request.POST.get('schedule_key'):
-            if login_form.is_valid():
-                full_name=request.user.full_name
-                phone=request.user.phone
-                data = {
-                    'full_name': full_name,
-                    'phone': phone
-                }
-                request.session['booking'] = data
-                return JsonResponse({})
+        # validate LoginForm if valid then return homepage otherwise return
+        # error
+        if request.method == 'POST':
+            login_form = LoginForm(request.POST, request=request)
+            if request.POST.get('schedule_key'):
+                try:
+                    if login_form.is_valid():
+                        request.session['full_name'] = request.user.full_name
+                        request.session['phone'] = request.user.phone
+                        request.session['email'] = request.user.email
+                        return JsonResponse({})
+                except Exception, e:
+                    print "Error: ", e
+                    return JsonResponse({"message": login_form.errors },status=500)
             else:
-                data = {
-                    'errors': login_form.errors
-                }
-                return JsonResponse(data)
-        else:
-            if login_form.is_valid():
-                return redirect(reverse('home'))
-            else:
-                result['errors'] = login_form.errors
+                if login_form.is_valid():
+                    return redirect(reverse('home'))
+                else:
+                    result['errors'] = login_form.errors
 
-    return render(request, 'registration/signup.html', result)
-    # except Exception, e:
-        # return HttpResponse(status=500)
+        return render(request, 'registration/signup.html', result)
+    except Exception, e:
+        return HttpResponse(status=500)
 
 
 def register_user(request, **kwargs):

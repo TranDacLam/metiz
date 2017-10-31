@@ -144,17 +144,23 @@ $(document).ready(function() {
             }else{
                 $('.list-district').append('<option value="' + val + '" class = "' + name_city + '">' +val + '</option>');     
             }
+            if(current_city && name_city==current_city){
+                $('.list-district option').addClass('show-district');
+            }
 	 	});
 	 	$('.list-district').children().hide();
-
 	});
+
+    $('.list-district .show-district').css('display','block');
 
 	// funtion show district for each city
 	function selectDistrict(list_city){
 		var name_city= $('.list-city').val();
+        $('.list-district option').removeClass('show-district');
 		$.each(list_city, function(index, val) {
 			if (index == name_city ) {
 				$('.list-district').children().hide();
+                $('.list-district option').first().css('display', 'block').prop("selected", true);
 				$('.list-district option').each(function(index, el) {
 					if ($(this).hasClass(name_city)) {
 						$(this).show();

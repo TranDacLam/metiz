@@ -106,7 +106,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "Personal ID" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="personal_id" value="{% if personal_id %} {{ personal_id }} {% endif %}" id="personal_id" placeholder="{% trans 'Enter Personal ID Here..' %}" class="form-control">
+                                        <input type="text" name="personal_id" value="{% if personal_id %}{{ personal_id }}{% endif %}" id="personal_id" placeholder="{% trans 'Enter Personal ID Here..' %}" class="form-control">
                                         {% if form.personal_id.errors %}
                                             {{form.personal_id.errors}}
                                         {% endif %}

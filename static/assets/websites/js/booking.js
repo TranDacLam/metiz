@@ -176,7 +176,8 @@ $(document).ready(function() {
                         .appendTo($cart);
 
                     $counter.text(sc.find('selected').length+1);
-                    $total.text(recalculateTotal(sc)+this.data().price);
+                    var moneyTotal = recalculateTotal(sc)+this.data().price;
+                    $total.text(moneyTotal.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
 
                     return 'selected';
                 } else if (this.status() == 'selected') { //Checked
@@ -220,7 +221,7 @@ $(document).ready(function() {
 
         // redirect payment with total and seat
         $('#btnNextBooking').on('click',function(){
-            var totalPayment = parseInt($('#total').text());
+            var totalPayment = recalculateTotal(sc);
             var lst_seats = getSeatSelected();
             var totalSeat = seatPayment.length;
 
