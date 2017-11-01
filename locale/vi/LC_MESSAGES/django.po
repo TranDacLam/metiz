@@ -28,7 +28,7 @@ msgstr "Chọn rạp"
 
 #: templates/modal.html:35
 msgid "Select date play"
-msgstr "Chọn lịch chiếu"
+msgstr "Chọn ngày chiếu"
 
 #: templates/modal.html:111 templates/modal.html:151 templates/modal.html:196
 #: templates/registration/profile.html:98 templates/registration/signup.html:40

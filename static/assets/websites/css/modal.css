@@ -1,5 +1,6 @@
 #test-popup .col-xs-8 h3{
     color: black;
+    margin-left: 40px;
 }
 #test-popup .list-item li {
     display: inline-block;
@@ -124,6 +125,7 @@
     margin-top: 20px;
     margin-bottom: 10px;
     color: black;
+    margin-left: 7px;
 }
 
 .popup-booking .movie-time-line-box {
