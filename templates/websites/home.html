@@ -62,14 +62,13 @@
                                 <li class="poster-film film-lists item">
                                     <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <div class="info-movie-home">
-                                        <h3>{{item.name}}</h3>
+                                        <h3 title="{{item.name}}">{{item.name|truncatechars:22}}</h3>
                                         <h4>{{item.time_running}} Phút | <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></h4>
                                         <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">
-                                    <input type="hidden" value="{{ item.movie_api_id }}">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
-                                        <button type="button" title="Đặt vé" class="button">Đặt vé</button>
+                                        <button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                         <span><span>Play</span></span>
@@ -87,13 +86,13 @@
                                 <li class="poster-film film-lists item">
                                     <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <div class="info-movie-home">
-                                        <h3>{{item.name}}</h3>
+                                        <h3 title="{{item.name}}">{{item.name|truncatechars:22}}</h3>
                                         <h4>{{item.time_running}} Phút | <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></h4>
                                         <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
-                                        <button type="button" title="Đặt vé" class="button">Đặt vé</button>
+                                        <button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                             <span><span>Play</span></span>

@@ -80,7 +80,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#signin_form').validate({
+	$('#login_form').validate({
 		rules:{
 			email:{
 				required: true,
@@ -139,13 +139,19 @@ $(document).ready(function() {
         }
 		
 		$.each(val, function(index, val) {
-            if(current_district && val==current_district){
-	 		    $('.list-district').append('<option value="' + val + '" class = "' + name_city + '" selected>' +val + '</option>');
-            }else{
-                $('.list-district').append('<option value="' + val + '" class = "' + name_city + '">' +val + '</option>');     
-            }
             if(current_city && name_city==current_city){
-                $('.list-district option').addClass('show-district');
+                if(current_district && val==current_district){
+    	 		    $('.list-district').append('<option value="' + val + '" class = "' + name_city + ' show-district" selected>' +val + '</option>');
+                }else{
+                    $('.list-district').append('<option value="' + val + '" class = "' + name_city + ' show-district">' +val + '</option>');     
+                }
+            }
+            else{
+                if(current_district && val==current_district){
+                    $('.list-district').append('<option value="' + val + '" class = "' + name_city + '" selected>' +val + '</option>');
+                }else{
+                    $('.list-district').append('<option value="' + val + '" class = "' + name_city + '">' +val + '</option>');     
+                }
             }
 	 	});
 	 	$('.list-district').children().hide();
@@ -156,9 +162,11 @@ $(document).ready(function() {
 	// funtion show district for each city
 	function selectDistrict(list_city){
 		var name_city= $('.list-city').val();
+        console.log(name_city);
         $('.list-district option').removeClass('show-district');
 		$.each(list_city, function(index, val) {
 			if (index == name_city ) {
+                console.log(val);
 				$('.list-district').children().hide();
                 $('.list-district option').first().css('display', 'block').prop("selected", true);
 				$('.list-district option').each(function(index, el) {

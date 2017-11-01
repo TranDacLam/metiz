@@ -28,6 +28,17 @@
 	.add-to-links .button:hover{
 		border: 2px solid #ff5400;
 	}
+	.products-grid--max-4-col.products-grid .product-image  img{
+		height: 231px;
+	}
+	.film-lists ul.add-to-links li:last-child{
+		margin-top: -4px;
+	}
+}
+@media screen and (max-width: 320px){
+	.products-grid--max-4-col.products-grid .product-image  img{
+		height: 421px;
+	}
 }
 .metiz-movies{
 	margin-bottom: 50px;
