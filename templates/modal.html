@@ -30,27 +30,23 @@
         </div>
         <div class="popup-booking">
             <section class="section-lightpink">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <h3>{% trans 'Select date play' %}</h3>
-                        </div>
-                        <div class="col-lg-6 col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-12  size">
-                            <div class="calendar-popup">
-                                <ul class="days-popup" id="play-date-slider">
-                                {% get_date_showing as list_date_present %}
-                                {% for item in list_date_present %}
-                                    <li class="available popup-movie-schedule" data-date-select="{{item}}">
-                                        <div class="month" >
-                                            <strong>10</strong>
-                                        </div>
-                                        <div class="dayofweek">Fri</div>
-                                        <span class="badge">{{ item|slice:'8:' }}</span>
-                                    </li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <h3>{% trans 'Select date play' %}</h3>
+                    </div>
+                    <div class="calendar-popup">
+                        <ul class="days-popup" id="play-date-slider">
+                        {% get_date_showing as list_date_present %}
+                        {% for item in list_date_present %}
+                            <li class="available popup-movie-schedule" data-date-select="{{item|date:'Y-m-d'}}">
+                                <div class="month" >
+                                    <strong>{{ item|date:'m'}}</strong>
+                                </div>
+                                <div class="dayofweek">{{ item|date:'D'}}</div>
+                                <span class="badge">{{ item|date:'d' }}</span>
+                            </li>
+                        {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -121,18 +117,16 @@
                                             <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
                                             <label class="form-error" for="password" id='password-error'></label>
                                         </div>
-                                        <button type="submit" class="btn btn-login">Login</button>
+                                        <button type="submit" class="btn btn-login">{% trans 'Login' %}</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <!-- GUEST -->
                         <div id="guest" class="tab-pane fade">
-                            <textarea class="guest-policy" rows="8" cols="5">ĐIỀU KIỆN VÀ ĐIỀU KHOẢN KHI ĐẶT VÉ:
-Xin vui lòng đọc các điều khoản sau cẩn thận trước khi sử dụng dịch vụ thanh toán trực tuyến. Với việc truy cập vào phần này của website, bạn đã đồng ý với các điều khoản sử dụng của chúng tôi. Các điều khoản này có thể thay đổi theo thời gian và bạn sẽ phải tuân theo các điều khoản được hiển thị từ thời điểm bạn đọc được các điều khoản này. Metiz Cinema luôn luôn mong muốn đem đến những giây phút giải trí tuyệt vời cho khách hàng với chất lượng dịch vụ tốt nhất. Dưới đây sẽ là một số hướng dẫn cho chính sách thanh toán vé trực tuyến.
-    1. Đối tượng áp dụng
-    Chương trình thanh toán online chỉ áp dụng cho các suất chiếu quy định tại Metiz Cinema. Mỗi giao dịch đặt vé có thể thanh toán trực tuyến tối đa 8 vé cho một lần. Nếu bạn có nhu cầu mua vé với số lượng lớn hơn, vui lòng liên hệ với bộ phận Quan Hệ Khách Hàng của chúng tôi qua số điện thoại 1900 6017
-                                </textarea>
+                            {% get_term as term %}
+                            <textarea class="guest-policy" rows="8" cols="5" contenteditable="true">{{ term|safe }}
+                            </textarea>
                             <div class="row checkbox-term">
                                 <input name="agree_term" id="agree_term" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
                                 <label class="agree_term" for="agree_term">Tôi đã đọc, hiểu và đồng ý với các điều khoản</a>.</label>

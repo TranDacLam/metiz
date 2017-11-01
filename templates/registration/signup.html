@@ -45,11 +45,13 @@
                                             <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-login">Login</button>
+                                     <div class="col-sm-6">
+                                        <button type="submit" class="btn btn-login">{% trans 'Login' %}</button>
+                                    </div>
                                 </div>
                             </form>
+                            <a class="login-forgot-pass" href="{% url 'password_reset' %}">Tìm lại mật khẩu? <i class="fa fa-arrow-circle-o-right"></i></a>
                         </div>
-                        <a class="login-forgot-pass" href="{% url 'password_reset' %}">Tìm lại mật khẩu? <i class="fa fa-arrow-circle-o-right"></i></a>
                     </div>
 
 
@@ -191,8 +193,9 @@
                                     {% if redirect_field_value %}
                                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> 
                                     {% endif %}
-                                    <button type="submit" class="btn btn-login" tabindex=12 disabled>{% trans 'Register' %}</button>
-
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-login" tabindex=12 disabled>{% trans 'Signup' %}</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>

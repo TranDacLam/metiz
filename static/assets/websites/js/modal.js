@@ -73,6 +73,10 @@ $(document).ready(function() {
             });
             $('.list-schedule').html(html);
             getValue();
+            console.log(response);
+            if ($('.list-schedule').text() == '') {
+                $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lich Chiếu Nào. Vui Lòng Chọn Ngày Khác<p/>');
+            }
         })
         .fail(function() {
             displayMsg();
@@ -214,39 +218,6 @@ $(document).ready(function() {
         }
     });
 
-    //active slide for 7 day if browser width < 480
-    $('.open-popup-link').click(function(event) {
-        loadSlideCalendar();
-    });
-
-    $(window).resize(function(event) {
-        loadSlideCalendar();
-    });
-    
-    function loadSlideCalendar(){
-        if ($( window ).width() < 480 ) {
-            $("#play-date-slider").slick({
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                dots: false,
-                autoplay: false,
-                infinite: false,
-                speed: 500,
-                arrows: true,
-                focusOnSelect: false,
-                autoplaySpeed: 4000,
-                fade: false,
-                centerMode: false,
-                prevArrow: "<div class='slick-prev'><img  src='/static/assets/websites/images/btn_m_prev_on.png'></div>",
-                nextArrow: "<div class='slick-next'><img  src='/static/assets/websites/images/btn_m_next_on.png'></div>"
-            });
-        }
-        else{
-             $("#play-date-slider").slick('unslick');
-        }
-
-    }
-    
 });
 
 function startMonth(){

@@ -63,7 +63,12 @@
     outline: none;
     box-shadow:none;
 }
-
+#test-popup .empty-schedule{
+    text-align: center;
+    font-size: 23px;
+    margin: 30px 0px 50px 0px;
+    line-height: 1.5;
+}
 .white-popup {
   position: relative;
   background: #FFF;
@@ -142,7 +147,10 @@
     margin: 0 10px;
     position: relative;
     padding-top: 16px;
-    width: 37px;
+    width: 82px;
+    cursor: pointer;
+    display: inline-block;
+    float: none;
 }
 .month{
     visibility: hidden;
@@ -152,25 +160,28 @@
 }
 .dayofweek{
     margin-top: 12px;
+    font-size: 18px;
 }
 .calendar-popup .days-popup li .month > strong {
     font-weight: bold;
     font-size: 30px;
-    border-bottom: 3px solid #3e3e3e;
     padding-bottom: 0px;
+    font-family: 'SairaSemiCondensed-Medium';
 }
 .calendar-popup .days-popup li .badge {
     background-color: transparent;
     color: #C2BDBD;
     font-size: 14px;
-    padding: 8px;
+    padding: 10px 12px;
 }
 #play-date-slider{
     
 }
 .calendar-popup .days-popup {
+    width: 100%;
+    height: auto;
     text-align: center;
-    /* padding-left: 10px; */
+    float: right;
 }
 .lot-table {
     padding-left: 15px;
@@ -256,6 +267,7 @@
 .days-popup li.available .badge {
     color: #3e3e3e;
     cursor: pointer;
+    font-size: 16px;
 }
 .days-popup li.active-date .badge {
     background-color: #3e3e3e;
@@ -263,6 +275,7 @@
     cursor: pointer;
     border-radius: 50%;
     padding: 10px 12px;
+    font-size: 16px;
 }
 .active-date{
     visibility: visible;
@@ -356,20 +369,37 @@
     margin-bottom: 10px;
 }
 @media only screen and (max-width: 1024px){
-   
+    .calendar-popup .days-popup li {
+        width: 66px;
+    }
 }
-@media only screen and (min-width: 768px) and (max-width: 1024px){
-
+@media only screen and (min-width: 769px) and (max-width: 1024px){
+    
        
 }
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 768px){
     .size{
-        padding-left: 9%;
+        margin-left: 16px;
+    }
+    .slick-list.draggable{
+        margin-left: 15px;
+    }
+    .calendar-popup .days-popup li .badge {
+        padding: 8px;
     }
 }
 @media only screen and (max-width: 480px){
     .size {
-       padding-right: 25px;
-        padding-left: 14px;
+        margin-left: -15px;
+    }
+    .slick-list.draggable{
+        margin-left: 31px;
+    }
+    .slick-prev img {
+        padding-left: 32px;
+        padding-top: 18px;
+    }
+    .calendar-popup .days-popup li .badge {
+        padding: 8px;
     }
 }
