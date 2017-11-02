@@ -124,4 +124,14 @@ $(document).ready(function() {
         }
     });
 
+    setTimeout(function(){
+        $('.exceeds-time').html('Thời gian giao dịch đã hết. Xin vui lòng đặt vé lại'
+                                +'<a class="back-booking" onclick="goBack()"> tại đây </a>. Cảm ơn!');
+        $('.vnpayment button').prop('disabled', true);
+    }, 300000);
 });
+
+// back page booking seat
+function goBack() {
+    window.history.back();
+}

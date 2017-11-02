@@ -27,3 +27,17 @@
 .vnpayment textarea.form-control{
     height: 90px;
 }
+.exceeds-time{
+    color: red;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.vnpayment .btn-default[disabled]:hover{
+    background-color: #7e8eaa;
+}
+.back-booking{
+    color: #337ab7;
+}
+.back-booking:hover{
+    cursor: pointer;
+}
