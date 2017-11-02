@@ -270,7 +270,7 @@ def home(request):
             select={'priority_null': 'priority is null'})
 
         list_showing = movie_showings.extra(
-            order_by=['priority_null', '-release_date', 'name'])
+            order_by=['priority_null', 'priority', '-release_date', 'name'])
 
         """ 
             Comming Soon Follow Condition:
@@ -285,7 +285,7 @@ def home(request):
             select={'priority_null': 'priority is null'})
 
         list_coming_soon = movie_soons.extra(
-            order_by=['priority_null', 'release_date', 'name'])
+            order_by=['priority_null', 'priority', 'release_date', 'name'])
 
         # get news order by priority and apply_date
         news = NewOffer.objects.all().order_by('priority').extra(

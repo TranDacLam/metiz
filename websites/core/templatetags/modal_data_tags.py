@@ -3,8 +3,10 @@ from django import template
 from datetime import timedelta
 from django.utils import timezone
 from core.models import Movie
+from booking.models import MovieSync
 
 register = template.Library()
+
 
 @register.filter
 def floatdot(value, decimal_pos=4):
@@ -12,6 +14,7 @@ def floatdot(value, decimal_pos=4):
 
 
 floatdot.is_safe = True
+
 
 @register.simple_tag
 def get_movie_name(movie_id):
@@ -22,6 +25,28 @@ def get_movie_name(movie_id):
         return None
     except Exception, e:
         return None
+
+
+@register.simple_tag
+def verify_showtime_by_id(cinema_id, movie_api_id):
+    try:
+        """
+            Get all movie sync with condition date show greater than or equal to current date
+            Check data movie contain movie_api_id 
+        """
+        result = False
+
+        data_movie = MovieSync.objects.filter(
+            name="showtime_current", date_show__gte=date, cinema_id=cinema_id)
+        
+        if data_movie:
+            for item in data_movie:
+                if item.data.find(movie_api_id) > -1:
+                    result = True
+                    break
+        return result
+    except Exception, e:
+        return False
 
 
 @register.simple_tag
