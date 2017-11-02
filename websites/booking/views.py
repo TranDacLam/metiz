@@ -19,6 +19,7 @@ def get_movie_show_time(request):
 
         date = request.GET.get('date', current_date.date())
         cinema_id = request.GET.get('cinema_id', 1)
+        movie_api_id = request.GET.get('movie_api_id', None)
 
         result = {}
         data_movie = MovieSync.objects.filter(
@@ -38,16 +39,30 @@ def get_movie_show_time(request):
             # Generate dictionary result key is movie_id and values is time
             # showing
             for item in show_times["List"]:
-                # Check key not in result then create dictionary create new key
-                # with data is list empty
-                if item["MOVIE_ID"] not in result:
-                    result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
-                        "MOVIE_ID"], "movie_name": item["MOVIE_NAME_VN"]}
+                # Get Showtime movie by id
+                if movie_api_id:
+                    # Check key not in result then create dictionary create new key
+                    # with data is list empty
+                    if item["MOVIE_ID"] == movie_api_id and item["MOVIE_ID"] not in result:
+                        result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
+                            "MOVIE_ID"], "movie_name": item["MOVIE_NAME_VN"]}
 
-                # Check time showing greater than currnet hour
-                if int(item["TIME"].split(':')[0]) >= current_date.hour:
-                    result[item["MOVIE_ID"]]["lst_times"].append(
-                        {"id_showtime": item["ID"], "time": item["TIME"]})
+                    # Check time showing greater than currnet hour
+                    if item["MOVIE_ID"] == movie_api_id and int(item["TIME"].split(':')[0]) >= current_date.hour:
+                        result[item["MOVIE_ID"]]["lst_times"].append(
+                            {"id_showtime": item["ID"], "time": item["TIME"]})
+                else:
+                    # get all movie showtime
+                    # Check key not in result then create dictionary create new key
+                    # with data is list empty
+                    if item["MOVIE_ID"] not in result:
+                        result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
+                            "MOVIE_ID"], "movie_name": item["MOVIE_NAME_VN"]}
+
+                    # Check time showing greater than currnet hour
+                    if int(item["TIME"].split(':')[0]) >= current_date.hour:
+                        result[item["MOVIE_ID"]]["lst_times"].append(
+                            {"id_showtime": item["ID"], "time": item["TIME"]})
 
         return JsonResponse(result)
 
@@ -82,8 +97,8 @@ def check_seats(request):
         if request.method == "POST":
             # Validate Request Parameter id_server and lst_seats
             id_server = request.POST.get('id_server', 1)
-            if "lst_seats" not in request.POST or "id_showtime" not in request.POST:
-                return JsonResponse({"code": 400, "message": _("Fields lst_seats and id_showtime is required.")}, status=400)
+            if "lst_seats" not in request.POST or "id_showtime" not in request.POST or 'working_id' not in request.POST:
+                return JsonResponse({"code": 400, "message": _("Fields lst_seats and id_showtime, working_id is required.")}, status=400)
 
             # Get new seats from api
             id_showtime = request.POST["id_showtime"]
@@ -108,7 +123,8 @@ def check_seats(request):
                     full_name = request.session.get("full_name", "")
                     phone = request.session.get("phone", "")
                     email = request.session.get("email", "")
-                    # Get Information of user and building data for api update status of seats
+                    # Get Information of user and building data for api update
+                    # status of seats
                     data_post_booking = {
                         "List": [
                             {
@@ -127,24 +143,29 @@ def check_seats(request):
                     # Add Seats into session and set seats expire in five
                     # minute
                     current_store = request.session.get("movies", {})
-                    if id_showtime in current_store:
+                    working_id = request.POST["working_id"]
+                    if working_id in current_store:
                         """ 
                             If session exist id_showtime then append new seat item into session: 
                             Algorithm :
-                             - step 1 : the list keys_old get all seat id store in session
-                             - step 2 : loop the list seats and add seat dont have in list keys_old
+                             - step 1 : Cancel seats old in workingid and add new seats choice
                         """
-                        old_seat = current_store[id_showtime]["seats_choice"]
-                        keys_old = [old["ID"] for old in old_seat]
-                        for new in seats_choice:
-                            if new["ID"] not in keys_old:
-                                current_store[id_showtime]["seats_choice"].append(new)
-                        
+                        if current_store[working_id]["seats_choice"]:
+                            for seat_id in current_store[working_id]["seats_choice"]:
+                                api.call_api_cancel_seat(
+                                    seat_id=seat_id, id_server=id_server)
+
+                        current_store[working_id][
+                            "seats_choice"] = seats_choice
+                        current_store[working_id]["time_choice"] = timezone.localtime(timezone.now(
+                        ) + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
+
                     else:
                         # Add new id_showtime in store movie session
-                        current_store[id_showtime] = {
+                        current_store[working_id] = {
                             "time_choice": timezone.localtime(timezone.now() + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
-                            "seats_choice": seats_choice
+                            "seats_choice": seats_choice,
+                            "id_showtime": id_showtime
                         }
                     print "### data_store ", current_store
                     request.session['movies'] = current_store
@@ -172,3 +193,29 @@ def booking_payment(request):
     except Exception, e:
         print "Error booking_payment : %s" % e
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+
+
+def clear_seeats(request):
+    try:
+        if request.method == "POST":
+            if "working_id" not in request.POST:
+                return JsonResponse({"code": 400, "message": _("Fields working_id is required.")}, status=400)
+
+            id_server = request.POST.get("id_server", 1)
+            working_id = request.POST["working_id"]
+            movie_store = request.session.get("movies", {})
+            # Check Working id exist in session and remove it
+            if movie_store and working_id in movie_store:
+                for seat_id in movie_store[working_id]["seats_choice"]:
+                    api.call_api_cancel_seat(
+                        seat_id=seat_id["ID"], id_server=id_server)
+                del movie_store[working_id]
+
+                if movie_store:
+                    request.session["movies"] = movie_store
+                else:
+                    del request.session["movies"]
+            return JsonResponse({"result": True})
+    except Exception, e:
+        print "Error clear_seeats : %s ", e
+        pass

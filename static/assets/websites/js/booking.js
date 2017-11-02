@@ -1,3 +1,13 @@
+function guid() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+      }
+      return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+        s4() + '-' + s4() + s4() + s4();
+    }
+
 $(document).ready(function() {
     var id_server = $('#id_sever').val();
     var id_showtime = $('#id_showtime').val();
@@ -231,10 +241,12 @@ $(document).ready(function() {
                 $('.msg-result-js').html(msgResult("Bạn chưa đặt vé!", "warning"));
                 return false;
             }
+            var working_id = guid();
             data = {
                 "id_showtime": id_showtime,
                 "id_server": id_server,
-                "lst_seats": "["+ lst_seats.toString() +"]"
+                "lst_seats": "["+ lst_seats.toString() +"]",
+                "working_id": working_id
             }
             $.ajax({
                 url: "/verify/seats",
@@ -245,7 +257,7 @@ $(document).ready(function() {
                 context: this,
             })
             .done(function(response) {
-                window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat +'&seats='+ seatPayment;
+                window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat +'&seats='+ seatPayment + '&working_id='+working_id;
             })
             .fail(function(error) {
                 displayMsg();
