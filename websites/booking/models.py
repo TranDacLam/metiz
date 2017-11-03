@@ -6,16 +6,23 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class BookingInfomation(DateTimeModel):
+    TYPE = (
+        ('pendding', 'Pendding'),
+        ('done', 'Done')
+    )
     user = models.ForeignKey(
         "core.User", related_name='user_booking_rel', null=True, blank=True)
-    movie = models.ForeignKey("core.Movie", related_name='movie_booking_rel')
+    # movie = models.ForeignKey("core.Movie", related_name='movie_booking_rel')
     order_id = models.CharField(_('Order ID'), max_length=100)
     amount = models.FloatField(_('Amount'))
     phone = models.IntegerField(_('Phone'), null=True, blank=True)
     email = models.CharField(_('Email'), max_length=100, null=True, blank=True)
-    seat = models.CharField(_('Seat'), max_length=10)
-    time_showing = models.TimeField(_("Time Show"))
-
+    seats = models.TextField(_('Seats'))
+    barcode = models.CharField(max_length=100, null=True, blank=True)
+    order_desc = models.TextField(_("Description"))
+    id_server = models.IntegerField(default=1)
+    order_status = models.CharField(max_length=50, choices=TYPE, default="pendding")
+    barcode_confirm = models.CharField(max_length=100, null=True, blank=True)
 
 class MovieSync(DateTimeModel):
     TYPE = (

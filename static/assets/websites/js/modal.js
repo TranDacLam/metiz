@@ -84,6 +84,10 @@ $(document).ready(function() {
             });
             $('.list-schedule').html(html);
             getValue();
+            console.log(response);
+            if ($('.list-schedule').text() == '') {
+                $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lich Chiếu Nào. Vui Lòng Chọn Ngày Khác<p/>');
+            }
         })
         .fail(function() {
             displayMsg();
@@ -97,6 +101,7 @@ $(document).ready(function() {
             var id_showtime = $(this).children('input').val();
             console.log(id_showtime);
             $('.modal input[name=id_showtime]').val(id_showtime);
+            $('#member_form #id_showtime_memeber').text(id_showtime);
         });
     }
 
@@ -122,7 +127,7 @@ $(document).ready(function() {
         'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
     }
 
-    //handle form 
+    //validate guest form, update form
     function validateForm(form){
         $(form).validate({
             rules:{
@@ -150,34 +155,15 @@ $(document).ready(function() {
                     number: message.number,
                     minlength: message.minlength_8,
                 }
-            },
-            submitHandler: function (form) {
-                data= $(form).serialize();
-                $.ajax({
-                    url: '/booking/',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: data,
-                })
-                .done(function(data) {
-                     $('label.form-error').html('');
-                    if(data.errors){
-                        $.each(data.errors, function (field, error) {
-                            $('label.form-error[for='+ field +']').html(error);
-                        });
-                    }
-                    else{
-                        window.location.href = '/booking/' +data.id_sever + '/' + data.id_showtime;
-                    }
-                })
-                .fail(function(data) {
-                    $('#error').html(data.message);
-                });
             }
         });
     }
+    $('.form-popup').each(function(index, el) { 
+        validateForm($(this)); 
+    });
 
-    $('#signin_form').validate({
+    // handle member form
+    $('#member_form').validate({
         rules:{
             email:{
                 required: true,
@@ -200,6 +186,27 @@ $(document).ready(function() {
             }
         },
         submitHandler: function (form) {
+            $.ajax({
+                url: '/login/',
+                type: 'POST',
+                dataType: 'json',
+                data: $(form).serialize() + "&schedule_key=1",
+            })
+            .done(function(data) {
+                id_showtime = $('#member_form #id_showtime_memeber').text();
+                id_sever = 1;
+                window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever;
+            })
+            .fail(function(data) {
+                if (data.status == 400) {
+                    $.each(data.responseJSON.errors, function(index, val) {
+                        $('#error').html(val);
+                    });
+                }
+                else{
+                    $('#error').html(data.responseJSON.message);
+                }
+            });
         }
     });
 
@@ -211,15 +218,7 @@ $(document).ready(function() {
       message.validatePassword
     );
 
-    $('#update_form').submit(function(event) {
-        event.preventDefault();
-        validateForm($(this));
-    });
-
-    $('#guest_form').submit(function(event) {
-        event.preventDefault();
-        validateForm($(this));
-    });
+    
     
     //checkbox for form guest
     $('#agree_term').on('click', function(){
@@ -230,39 +229,6 @@ $(document).ready(function() {
         }
     });
 
-    //active slide for 7 day if browser width < 480
-    $('.open-popup-link').click(function(event) {
-        loadSlideCalendar();
-    });
-
-    $(window).resize(function(event) {
-        loadSlideCalendar();
-    });
-    
-    function loadSlideCalendar(){
-        if ($( window ).width() < 480 ) {
-            $("#play-date-slider").slick({
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                dots: false,
-                autoplay: false,
-                infinite: false,
-                speed: 500,
-                arrows: true,
-                focusOnSelect: false,
-                autoplaySpeed: 4000,
-                fade: false,
-                centerMode: false,
-                prevArrow: "<div class='slick-prev'><img  src='/static/assets/websites/images/btn_m_prev_on.png'></div>",
-                nextArrow: "<div class='slick-next'><img  src='/static/assets/websites/images/btn_m_next_on.png'></div>"
-            });
-        }
-        else{
-             $("#play-date-slider").slick('unslick');
-        }
-
-    }
-    
 });
 
 function startMonth(){

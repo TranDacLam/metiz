@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render
+from django.shortcuts import render, redirect, render_to_response
 from models import *
 from datetime import *
 from django.db.models import Avg, Sum, Count
@@ -8,6 +8,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
 from itertools import chain
 from booking.forms import BookingForm
+from django.core.urlresolvers import reverse
 import itertools
 
 # NOTES : View SQL Query using : print connection.queries
@@ -338,7 +339,7 @@ def get_post(request):
         return HttpResponse(status=500)
 
 
-def get_booking(request, id_sever = None, id_showtime= None):
+def get_booking(request):
     try:
         if request.method == 'POST':
             form = BookingForm(request.POST)
@@ -347,17 +348,16 @@ def get_booking(request, id_sever = None, id_showtime= None):
                 phone = form.cleaned_data['phone']
                 id_showtime = form.cleaned_data['id_showtime']
                 email = form.cleaned_data['email']
-                
                 request.session['full_name'] = full_name
                 request.session['phone'] = phone
                 request.session['email'] = email if email else None
-                return JsonResponse({"id_showtime": id_showtime, "id_sever": 1})
-            else:
-                data = {
-                    'errors': form.errors
-                }
-                return JsonResponse(data)
+                id_sever = 1
+                print('*******booking******')
+                return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})          
         else:
+            print('*******booking******')
+            id_showtime = request.GET['id_showtime']
+            id_sever = request.GET['id_sever']
             return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
     except Exception, e:
         print "Error: ", e

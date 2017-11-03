@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from forms import *
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout as auth_logout, login as auth_login, get_user_model
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -32,10 +32,26 @@ def login(request):
         # error
         if request.method == 'POST':
             login_form = LoginForm(request.POST, request=request)
-            if login_form.is_valid():
-                return redirect(reverse('home'))
+            if request.POST.get('schedule_key'):
+                try:
+                    if login_form.is_valid():
+                        request.session['full_name'] = request.user.full_name
+                        request.session['phone'] = request.user.phone
+                        request.session['email'] = request.user.email
+                        return JsonResponse({})
+                    else:
+                        data={
+                            'errors': login_form.errors
+                        }
+                        return JsonResponse(data , status=400)
+                except Exception, e:
+                    print "Error: ", e
+                    return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
             else:
-                result['errors'] = login_form.errors
+                if login_form.is_valid():
+                    return redirect(reverse('home'))
+                else:
+                    result['errors'] = login_form.errors
 
         return render(request, 'registration/signup.html', result)
     except Exception, e:

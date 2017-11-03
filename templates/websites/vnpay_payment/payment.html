@@ -78,7 +78,11 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <input type="hidden" id="working_id" value="{{working_id}}" >
+                    <input type="hidden" id="working_id" name="working_id" value="{{working_id}}" >
+                    <input type="hidden" id="barcode" name="barcode" value="{{barcode}}" >
+                    <input type="hidden" id="seats_choice" name="seats_choice" value="{{seats_choice}}" >
+                    <input type="hidden" id="id_server" name="id_server" value="{{id_server}}" >
+                    
                     <button type="submit" class="btn btn-default" id="btn-payment-seats">Thanh toán Redirect</button>
                 </div>
                 {% csrf_token %}

@@ -9,12 +9,25 @@ import ast
 from forms import PaymentForm
 from vnpay import vnpay
 from django.conf import settings
+from booking.models import BookingInfomation
+from booking import api
+import requests
+import random
+from Crypto.Cipher import AES
+import base64
+from django.utils import timezone
+
 
 
 def payment(request):
     if request.method == 'POST':
         # Process input data and build url payment
         form = PaymentForm(request.POST)
+        barcode = request.POST.get("barcode", None)
+        seats_choice = request.POST.get("seats_choice", None)
+        working_id = request.POST.get("working_id", None)
+        id_server = request.POST.get("id_server", 1)
+        
         if form.is_valid():
             order_type = form.cleaned_data['order_type']
             order_id = form.cleaned_data['order_id']
@@ -49,6 +62,22 @@ def payment(request):
             vnp.requestData['vnp_ReturnUrl'] = settings.VNPAY_RETURN_URL
             vnpay_payment_url = vnp.get_payment_url(
                 settings.VNPAY_PAYMENT_URL, settings.VNPAY_HASH_SECRET_KEY)
+
+            # Remove session and store order in database and verify order id
+            # unsuccessfull, clear seats
+            movies = request.session.get("movies", "")
+            if movies and working_id in movies:
+                del request.session['movies'][working_id]
+
+            # Store order infomation with status is pendding
+            booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session[
+                                              "phone"], email=request.session["email"], seats=seats_choice, barcode=barcode,
+                                              id_server=id_server, order_status="pendding")
+            
+            if not request.user.is_anonymous():
+                booking_order.user = request.user
+            booking_order.save()
+
             print(vnpay_payment_url)
             if request.is_ajax():
                 # Show VNPAY Popup
@@ -59,7 +88,7 @@ def payment(request):
                 # Redirect to VNPAY
                 return redirect(vnpay_payment_url)
         else:
-            print("Form input not validate %s"%form.errors)
+            print("Form input not validate %s" % form.errors)
             return render(request, "websites/vnpay_payment/payment.html",
                           {"form": form,
                            "total_payment": request.POST["amount"] if 'amount' in request.POST["amount"] else None,
@@ -69,9 +98,13 @@ def payment(request):
         total_seats = request.GET.get('totalSeat', 0)
         seats = request.GET.get('seats', "")
         working_id = request.GET.get('working_id', "")
-        
+        barcode = request.GET.get('barcode', "")
+        seats_choice = request.GET.get('seats_choice', "")
+        id_server = request.GET.get('id_server', 1)
+
         return render(request, "websites/vnpay_payment/payment.html",
-                      {"title": "Thanh toán", "total_payment": total_payment, "seats": seats, "total_seats": total_seats, "working_id":working_id})
+                      {"title": "Thanh toán", "total_payment": total_payment, "seats": seats, "total_seats": total_seats,
+                       "working_id": working_id, "barcode": barcode, "seats_choice": seats_choice, "id_server": id_server})
 
 
 def payment_ipn(request):
@@ -116,6 +149,70 @@ def payment_ipn(request):
     return result
 
 
+def data_encrypt_cbc(data):
+    """ encrypt content data with padding """
+    # padding = block_size - (len(data) % block_size)
+    # padding = 16 - (len(data) % 16)
+    # str_with_padding = data + chr(padding)*padding
+    block_size = 16
+    padding = block_size - (len(data) % block_size)
+    data += chr(padding)*padding
+    
+    AES.key_size = 128
+
+    crypt_object = AES.new(key=settings.SMS_KEY,
+                           mode=AES.MODE_CBC, IV=settings.SMS_KEY_IV)
+    
+    encrypted_text = crypt_object.encrypt(data)
+    
+
+    return base64.b64encode(encrypted_text)
+
+
+def send_sms(phone, content):
+    try:
+        phone_number = "84" + str(phone)
+        content_sms = content
+        id_sms = random.randint(0, 999)
+        time_send = timezone.localtime(timezone.now()).strftime("%Y%m%d%H%M%S")
+        brand = settings.SMS_BRAND
+        xml = "<content><ReceiverPhone>%s</ReceiverPhone><Message>%s</Message><RequestID>%s</RequestID><BrandName>%s</BrandName><Senttime>%s</Senttime></content>" % (
+            str(phone_number), str(content_sms), str(id_sms), brand, str(time_send))
+        
+        xml_encode = data_encrypt_cbc(xml.replace("\r\n", ""))  # mã hóa
+        user_ctnet = data_encrypt_cbc(settings.SMS_USER)
+        pass_ctnet = data_encrypt_cbc(settings.SMS_PASSWORD)
+        
+        soap_request = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+        soap_request += "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+        soap_request += "<soap:Body>\n"
+        soap_request += "<sendsms xmlns=\"http://tempuri.org/\">\n"
+        soap_request += "<user>%s</user>\n" % user_ctnet
+        soap_request += "<pass>%s</pass>\n" % pass_ctnet
+        soap_request += "<xml>%s</xml>\n" % xml_encode
+        soap_request += "</sendsms>\n"
+        soap_request += "</soap:Body>\n"
+        soap_request += "</soap:Envelope>"
+        
+        headers = {
+            "Content-type": "text/xml;charset=\"utf-8\"",
+            "Accept": "text/xml",
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
+            "SOAPAction": "\"http://tempuri.org/sendsms\"",
+            "Content-length": "%s" % len(soap_request),
+        }
+        response = requests.post(settings.SMS_URL, data=soap_request, headers=headers)
+        print "SOAP  Ressponse ", response.content
+        return response.content
+        
+
+    except Exception, e:
+        print "Error send_sms : %s" % e
+        pass
+        return None
+
+
 def payment_return(request):
     inputData = request.GET
     if inputData:
@@ -130,8 +227,30 @@ def payment_return(request):
         vnp_PayDate = inputData['vnp_PayDate']
         vnp_BankCode = inputData['vnp_BankCode']
         vnp_CardType = inputData['vnp_CardType']
+
+        try:
+            booking_order = BookingInfomation.objects.get(order_id=order_id)
+        except BookingInfomation.DoesNotExist, e:
+            print "Error BookingInfomation DoesNotExist : %s" % e
+            booking_order = None
+            pass
         if vnp.validate_response(settings.VNPAY_HASH_SECRET_KEY):
             if vnp_ResponseCode == "00":
+                if booking_order:
+                    id_server = booking_order.id_server if booking_order.id_server else 1
+                    # Payment Success update order status and  call api confirm
+                    # booking order
+                    result_confirm = api.call_api_booking_confirm(
+                        booking_order.barcode, id_server)
+                    
+                    booking_order.order_status = "done" if result_confirm["SUCCESS"] == 'true' else 'pendding'
+                    booking_order.save()
+                    
+                    content_sms = """DAT VE THANH CONG. Ve cua quy khach da duoc xac nhan: Ma: %s """ % booking_order.barcode
+                    content_sms += str(booking_order.order_desc.replace("\r\n", ""))
+                    # Send SMS for user
+                    send_sms(booking_order.phone, content_sms)
+                # Success Send SMS or email infomation order for user
                 return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán",
                                                                                       "result": "Thành công", "order_id": order_id,
                                                                                       "amount": amount,
@@ -139,6 +258,9 @@ def payment_return(request):
                                                                                       "vnp_TransactionNo": vnp_TransactionNo,
                                                                                       "vnp_ResponseCode": vnp_ResponseCode})
             else:
+                if booking_order and booking_order.seats:
+                    cancel_seats(booking_order.seats.split(
+                        ","), booking_order.id_server)
                 return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán",
                                                                                       "result": "Lỗi", "order_id": order_id,
                                                                                       "amount": amount,
@@ -146,12 +268,21 @@ def payment_return(request):
                                                                                       "vnp_TransactionNo": vnp_TransactionNo,
                                                                                       "vnp_ResponseCode": vnp_ResponseCode})
         else:
+            if booking_order and booking_order.seats:
+                cancel_seats(booking_order.seats.split(
+                    ","), booking_order.id_server)
+
             return render(request, "websites/vnpay_payment/payment_return.html",
                           {"title": "Kết quả thanh toán", "result": "Lỗi", "order_id": order_id, "amount": amount,
                            "order_desc": order_desc, "vnp_TransactionNo": vnp_TransactionNo,
                            "vnp_ResponseCode": vnp_ResponseCode, "msg": "Sai checksum"})
     else:
         return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán", "result": ""})
+
+
+def cancel_seats(seats_choice, id_server):
+    for seat in seats_choice:
+        api.call_api_cancel_seat(seat, id_server=booking_order.id_server)
 
 
 def query(request):
