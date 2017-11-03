@@ -102,7 +102,7 @@
                         <!-- MEMBER -->
                         <div id="member" class="tab-pane fade in active">
                             <div class="row">
-                                <form class="signin" id='member_form'method="post" action="">
+                                <form class="signin" id='member_form' method="post" action="">
                                     {% csrf_token %}
                                     <div class="col-sm-12">
                                         <div id="error"></div>
@@ -134,7 +134,12 @@
                             <div class="row">
                                 <form class='form-popup' id='guest_form' method="post" action="{% url 'booking' %}">
                                     {% csrf_token %}
+                                    <input type="hidden" name="id_sever" id="id_sever">
                                     <input type="hidden" name="id_showtime" id="id_showtime">
+                                    <input type="hidden" name="id_movie_name" id="id_movie_name">
+                                    <input type="hidden" name="id_movie_time" id="id_movie_time">
+                                    <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
+
                                     <div class="col-sm-12">
                                         <div id="error"></div>
                                          <div class="form-group">
@@ -177,7 +182,12 @@
                     <div class="row">
                         <form class='form-popup' id='update_form'  method="post" action="{% url 'booking' %}">
                             {% csrf_token %}
+                            <input type="hidden" name="id_sever" id="id_sever">
                             <input type="hidden" name="id_showtime" id="id_showtime">
+                            <input type="hidden" name="id_movie_name" id="id_movie_name">
+                            <input type="hidden" name="id_movie_time" id="id_movie_time">
+                            <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
+                            
                             <div class="col-sm-12">
                                 <div id="error"></div>
                                  <div class="form-group">
