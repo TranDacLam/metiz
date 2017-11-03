@@ -7,6 +7,7 @@ $(document).ready(function() {
 
     startMonth();
 
+    // list show time of a movie, callback from function listFilm
     function listShedule(shedule){
         var htmlShedule = '';
         $.each(shedule.lst_times, function(key, value) {
@@ -14,9 +15,9 @@ $(document).ready(function() {
                                 +'<a href="#" data-toggle="modal" data-target="#warning">'
                                     +'<input type="hidden" name="id_showtime" value="'+ value.id_showtime +'">'
                                     +'<span class="time">'+ value.time +'</span>'
-                                    +'<span class="clock">'+ value.time +'<span>~1:15</span></span>'// time to
+                                    +'<span class="clock">'+ value.time +'</span>'
                                     +'<span class="ppnum">43</span>' // Số ghế trống
-                                    +'<span class="ppnum">Room 2</span>' // room chiếu phim
+                                    +'<span class="ppnum"></span>' // room chiếu phim
                                     +'<span class="pp-early" title="Suất chiều đầu"></span>'
                                 +'</a>'
                             +'</li>';
@@ -24,6 +25,7 @@ $(document).ready(function() {
         return htmlShedule;
     }
 
+    // list movie 
     function listFilm(film){
         return  '<div class="movie-time-line-box clearfix" data-control="movie-code">'
                     +'<h3 class="movie-name">'+ film.movie_name +'</h3>'
@@ -35,13 +37,21 @@ $(document).ready(function() {
                +' </div>';
     }
 
+
+    var movie_api_id;
+
     $(document).on('click', '.popup-movie-schedule', function () { 
         $('.days-popup li').removeClass('active-date');
 
+        var id_sever = $('.list-cinema .active').attr('data-id-server');
+        
         // get movie api id at booking ticket every film
-        var movie_api_id = null;
         if($(this).attr("data-movie-api-id")){
-            var movie_api_id = $(this).attr("data-movie-api-id");
+            movie_api_id = $(this).attr("data-movie-api-id");
+        }
+        
+        if($(this).attr("data-all-movie") || $(this).attr("data-date-seat")){
+            movie_api_id = null;
         }
 
         // get date time at page booking 
@@ -64,7 +74,7 @@ $(document).ready(function() {
         data = {
             "date": date_query,
             "movie_api_id": movie_api_id,
-            "cinema_id": 1 // get cinema_id from hidden field in popup movie schedule
+            "cinema_id": id_sever // get cinema_id from hidden field in popup movie schedule
         }
         
         $.ajax({
@@ -84,7 +94,6 @@ $(document).ready(function() {
             });
             $('.list-schedule').html(html);
             getValue();
-            console.log(response);
             if ($('.list-schedule').text() == '') {
                 $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lich Chiếu Nào. Vui Lòng Chọn Ngày Khác<p/>');
             }
@@ -186,6 +195,8 @@ $(document).ready(function() {
             }
         },
         submitHandler: function (form) {
+            var id_sever = $('.list-cinema .active').attr('data-id-server');
+
             $.ajax({
                 url: '/login/',
                 type: 'POST',
@@ -194,7 +205,6 @@ $(document).ready(function() {
             })
             .done(function(data) {
                 id_showtime = $('#member_form #id_showtime_memeber').text();
-                id_sever = 1;
                 window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever;
             })
             .fail(function(data) {
