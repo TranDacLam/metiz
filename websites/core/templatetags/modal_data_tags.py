@@ -37,7 +37,7 @@ def verify_showtime_by_id(cinema_id, movie_api_id):
         result = False
 
         data_movie = MovieSync.objects.filter(
-            name="showtime_current", date_show__gte=date, cinema_id=cinema_id)
+            name="showtime_current", date_show__gte=timezone.localtime(timezone.now()).date(), cinema_id=1)
         
         if data_movie:
             for item in data_movie:
