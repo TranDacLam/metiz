@@ -4,10 +4,47 @@ from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from booking.models import MovieSync
+from booking.forms import BookingForm
 from booking import api
 import json
 import ast
 from datetime import timedelta
+from core.models import Movie
+
+
+def get_booking(request):
+    try:
+        if request.method == 'POST':
+            form = BookingForm(request.POST)
+            if form.is_valid():
+                full_name = form.cleaned_data['name']
+                phone = form.cleaned_data['phone']
+                email = form.cleaned_data['email']
+                request.session['full_name'] = full_name
+                request.session['phone'] = phone
+                request.session['email'] = email if email else None
+
+                id_showtime = form.cleaned_data['id_showtime']
+                id_sever = form.cleaned_data['id_sever']
+                id_movie_name = form.cleaned_data['id_movie_name']
+                id_movie_time = form.cleaned_data['id_movie_time']
+                id_movie_date_active = form.cleaned_data[
+                    'id_movie_date_active']
+                print('*******booking******')
+                return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever,
+                                                                 "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
+                                                                 "id_movie_date_active": id_movie_date_active})
+            else:
+                print "Fail ",form.errors
+                return render(request, 'websites/booking.html')
+        else:
+            print('*******booking******')
+            id_showtime = request.GET.get('id_showtime', "")
+            id_sever = request.GET.get('id_sever', 1)
+            return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
+    except Exception, e:
+        print "Error get_booking : ", e
+        return HttpResponse(status=500)
 
 
 def get_movie_show_time(request):
@@ -32,6 +69,8 @@ def get_movie_show_time(request):
                 show_string = json.loads(data_movie[0].data)
                 show_times = ast.literal_eval(show_string)
 
+                movies_info = Movie.objects.filter(
+                    release_date__lte=date, end_date__gte=date)
             except ValueError as e:
                 print "Error get_movie_show_time convert json : %s" % e
                 return JsonResponse({})
@@ -41,11 +80,13 @@ def get_movie_show_time(request):
             for item in show_times["List"]:
                 # Get Showtime movie by id
                 if movie_api_id:
+                    # Get Movie Name by movie api id
+                    obj_movie = movies_info.filter(movie_api_id=movie_api_id)
                     # Check key not in result then create dictionary create new key
                     # with data is list empty
                     if item["MOVIE_ID"] == movie_api_id and item["MOVIE_ID"] not in result:
                         result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
-                            "MOVIE_ID"], "movie_name": item["MOVIE_NAME_VN"]}
+                            "MOVIE_ID"], "movie_name": obj_movie[0].name if obj_movie else item["MOVIE_NAME_VN"]}
 
                     # Check time showing greater than currnet hour
                     if item["MOVIE_ID"] == movie_api_id and int(item["TIME"].split(':')[0]) >= current_date.hour:
@@ -56,8 +97,12 @@ def get_movie_show_time(request):
                     # Check key not in result then create dictionary create new key
                     # with data is list empty
                     if item["MOVIE_ID"] not in result:
+                        # Get Movie Name by movie api id
+                        obj_movie = movies_info.filter(
+                            movie_api_id=item["MOVIE_ID"])
+
                         result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
-                            "MOVIE_ID"], "movie_name": item["MOVIE_NAME_VN"]}
+                            "MOVIE_ID"], "movie_name": obj_movie[0].name if obj_movie else item["MOVIE_NAME_VN"]}
 
                     # Check time showing greater than currnet hour
                     if int(item["TIME"].split(':')[0]) >= current_date.hour:

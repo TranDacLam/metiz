@@ -13,6 +13,7 @@ $(document).ready(function() {
             htmlShedule +=  '<li class="sold-out">'
                                 +'<a href="#" data-toggle="modal" data-target="#warning">'
                                     +'<input type="hidden" name="id_showtime" value="'+ value.id_showtime +'">'
+                                    +'<input type="hidden" name="id_movie_name" value="'+ shedule.movie_name +'">'
                                     +'<span class="time">'+ value.time +'</span>'
                                     +'<span class="clock">'+ value.time +'<span>~1:15</span></span>'// time to
                                     +'<span class="ppnum">43</span>' // Số ghế trống
@@ -98,9 +99,16 @@ $(document).ready(function() {
     function getValue(){
          $('.sold-out a').click(function(event) {
             event.preventDefault();
-            var id_showtime = $(this).children('input').val();
-            console.log(id_showtime);
+            var id_showtime = $(this).children('input[name=id_showtime]').val();
+            var id_movie_name = $(this).children('input[name=id_movie_name]').val();
+            var id_movie_time = $(this).children('span[class=time]').text();
+            
+            $('.modal input[name=id_sever]').val(1);
             $('.modal input[name=id_showtime]').val(id_showtime);
+            $('.modal input[name=id_movie_name]').val(id_movie_name);
+            $('.modal input[name=id_movie_time]').val(id_movie_time);
+            $('.modal input[name=id_movie_date_active]').val($("li.active-date").attr("data-date-select"));
+            
             $('#member_form #id_showtime_memeber').text(id_showtime);
         });
     }
