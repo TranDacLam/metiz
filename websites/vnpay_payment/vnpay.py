@@ -47,8 +47,8 @@ class vnpay:
                     hasData = str(key) + '=' + str(val)
         hashValue = self.__md5(secret_key + hasData)
 
-        print(
-            'Validate debug, HashData:' + secret_key + hasData + "\n HashValue:" + hashValue + "\nInputHash:" + vnp_SecureHash)
+        # print(
+        #     'Validate debug, HashData:' + secret_key + hasData + "\n HashValue:" + hashValue + "\nInputHash:" + vnp_SecureHash)
 
         return vnp_SecureHash == hashValue
 

@@ -212,11 +212,13 @@ $(document).ready(function() {
         sc.get(arrStatus).status('unavailable');
 
         var seatPayment = [];
+        var seats_choice = [];
         // Get ID, NAME seat selected. [{"ID": "1", "NAME": "A03"}]
         function getSeatSelected(){
             seatSelected = new Array();
             var seats =  sc.find('selected').seats;
             for(i=0;i<seats.length; i++){
+                seats_choice.push(seats[i].settings.id);
                 seatSelected.push(JSON.stringify({
                     'ID': seats[i].settings.id,
                     'NAME': strimNameSeat(seats[i].settings.label)
@@ -257,7 +259,8 @@ $(document).ready(function() {
                 context: this,
             })
             .done(function(response) {
-                window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat +'&seats='+ seatPayment + '&working_id='+working_id;
+                var barcode = response.BARCODE
+                window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat +'&seats='+ seatPayment + '&working_id='+working_id + '&barcode='+ barcode + '&seats_choice='+seats_choice + '&id_server=' +id_server;
             })
             .fail(function(error) {
                 displayMsg();
