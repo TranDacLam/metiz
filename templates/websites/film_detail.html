@@ -32,7 +32,9 @@
 				</div>
 				<div class="product-name-reponsive">
 					<div class="col-left"><h1>{{film_detail.name}}</h1></div>
-					<div class="col-right"><button type="button" title="Đặt vé" class="button">Đặt vé</button></div>
+					<div class="col-right">
+						<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ film_detail.movie_api_id }}">Đặt vé</button>
+					</div>
 				</div>
 				
 				<div class="product-img-box">
@@ -54,7 +56,9 @@
 				<div class="product-shop">
 					<div class="product-name">
 						<div class="col-md-10"><span class="h1">{{film_detail.name}}</span></div>
-						<div class="col-md-2"><button type="button" title="Đặt vé" class="button">Đặt vé</button></div>
+						<div class="col-md-2">
+							<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ film_detail.movie_api_id }}">Đặt vé</button>
+						</div>
 					</div>
 					
 					<!-- Build test -->
@@ -235,7 +239,7 @@
 				</div>
 			</div>
 			<div class="text-center booking-ticket-bot">
-				<button type="button" title="Đặt vé" class="button">Đặt vé</button>
+				<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ film_detail.movie_api_id }}">Đặt vé</button>
 			</div>
 		</div>
 	</div>

@@ -14,7 +14,7 @@ $(document).ready(function() {
                                 +'<a href="#" data-toggle="modal" data-target="#warning">'
                                     +'<input type="hidden" name="id_showtime" value="'+ value.id_showtime +'">'
                                     +'<span class="time">'+ value.time +'</span>'
-                                    +'<span class="clock">'+ value.time +'<span>~1:15</span></span>'
+                                    +'<span class="clock">'+ value.time +'<span>~1:15</span></span>'// time to
                                     +'<span class="ppnum">43</span>' // Số ghế trống
                                     +'<span class="ppnum">Room 2</span>' // room chiếu phim
                                     +'<span class="pp-early" title="Suất chiều đầu"></span>'
@@ -37,11 +37,20 @@ $(document).ready(function() {
 
     $(document).on('click', '.popup-movie-schedule', function () { 
         $('.days-popup li').removeClass('active-date');
+
+        // get movie api id at booking ticket every film
+        var movie_api_id = null;
+        if($(this).attr("data-movie-api-id")){
+            var movie_api_id = $(this).attr("data-movie-api-id");
+        }
+
+        // get date time at page booking 
         if($(this).attr("data-date-seat")){
             var date_seat = $(this).attr("data-date-seat");
             $('.days-popup [data-date-select = '+ date_seat +']').addClass('active-date');
             var date_query = date_seat;
         }else{
+            // get date time on page popup
             if($(this).attr("data-date-select")){
                 var date_query = $(this).attr("data-date-select");
                 $(this).addClass('active-date');
@@ -54,8 +63,10 @@ $(document).ready(function() {
         // Call Ajax get movie show time with current date
         data = {
             "date": date_query,
+            "movie_api_id": movie_api_id,
             "cinema_id": 1 // get cinema_id from hidden field in popup movie schedule
         }
+        
         $.ajax({
             url: "/movie/show/times",
             type: 'get',

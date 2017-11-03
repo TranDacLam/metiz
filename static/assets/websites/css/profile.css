@@ -23,9 +23,6 @@
     .block-content li a{
         color: #0e1d2f;
     }
-    .my-account .page-title h1 {
-        color: blue;
-    }
     .my-account form{
         margin-top: 25px;
     }
@@ -33,9 +30,6 @@
 @media only screen and (min-width : 320px) and (max-width : 480px) {
     .my-account form{
         margin-top: 25px;
-    }
-    .my-account .page-title h1 {
-        color: blue;
     }
     .block-account{
         float: none;
@@ -90,16 +84,30 @@
     .col-left .navbar-inverse{
         background: #222;
     }
-    .my-account .page-title{
-        background: none;
-    }
-
     .col-left  .navbar-inverse .navbar-nav>li>a,
     .col-left  .navbar-inverse .navbar-nav>li>a:focus{
         color: #fff;
     }
     .profile-custom .nav.navbar-nav{
         padding-top: 0;
+    }
+    .my-account .page-title{
+        width: 80.5%;
+    }
+}
+@media only screen and (max-width : 420px) {
+    .my-account .page-title{
+        width: 64.5%;
+    }
+}
+@media only screen and (max-width : 375px) {
+    .my-account .page-title{
+        width: 71.5%;
+    }
+}
+@media only screen and (max-width : 320px) {
+    .my-account .page-title{
+        width: 70.5%;
     }
 }
 @media (min-width: 769px) {
