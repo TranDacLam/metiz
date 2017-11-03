@@ -1,5 +1,6 @@
 #test-popup .col-xs-8 h3{
     color: black;
+    margin-left: 40px;
 }
 #test-popup .list-item li {
     display: inline-block;
@@ -63,7 +64,12 @@
     outline: none;
     box-shadow:none;
 }
-
+#test-popup .empty-schedule{
+    text-align: center;
+    font-size: 23px;
+    margin: 30px 0px 50px 0px;
+    line-height: 1.5;
+}
 .white-popup {
   position: relative;
   background: #FFF;
@@ -119,6 +125,7 @@
     margin-top: 20px;
     margin-bottom: 10px;
     color: black;
+    margin-left: 7px;
 }
 
 .popup-booking .movie-time-line-box {
@@ -142,7 +149,10 @@
     margin: 0 10px;
     position: relative;
     padding-top: 16px;
-    width: 37px;
+    width: 82px;
+    cursor: pointer;
+    display: inline-block;
+    float: none;
 }
 .month{
     visibility: hidden;
@@ -152,25 +162,28 @@
 }
 .dayofweek{
     margin-top: 12px;
+    font-size: 18px;
 }
 .calendar-popup .days-popup li .month > strong {
     font-weight: bold;
     font-size: 30px;
-    border-bottom: 3px solid #3e3e3e;
     padding-bottom: 0px;
+    font-family: 'SairaSemiCondensed-Medium';
 }
 .calendar-popup .days-popup li .badge {
     background-color: transparent;
     color: #C2BDBD;
     font-size: 14px;
-    padding: 8px;
+    padding: 10px 12px;
 }
 #play-date-slider{
     
 }
 .calendar-popup .days-popup {
+    width: 100%;
+    height: auto;
     text-align: center;
-    /* padding-left: 10px; */
+    float: right;
 }
 .lot-table {
     padding-left: 15px;
@@ -256,6 +269,7 @@
 .days-popup li.available .badge {
     color: #3e3e3e;
     cursor: pointer;
+    font-size: 16px;
 }
 .days-popup li.active-date .badge {
     background-color: #3e3e3e;
@@ -263,6 +277,7 @@
     cursor: pointer;
     border-radius: 50%;
     padding: 10px 12px;
+    font-size: 16px;
 }
 .active-date{
     visibility: visible;
@@ -280,6 +295,7 @@
 .warning-footer .btn{
     background-color: #000000;
     color: #ffffff;
+    border-bottom-color: #000000;
 }
 #confirm .modal-header{
     border-bottom:none;
@@ -303,6 +319,9 @@
     background: #ff4900;
     color: #ffffff;
 }
+#test-popup #update{
+    background: #ff4900;
+}
 .form-error{
     color: red;
     margin-top: 7px;
@@ -313,21 +332,76 @@
 #confirm .tab-header a{
     font-family: 'SairaSemiCondensed-Medium';
 }
-@media only screen and (max-width: 1024px){
-   
+#id_showtime_memeber{
+    display: none;
 }
-@media only screen and (min-width: 768px) and (max-width: 1024px){
-
+.warning-footer button{
+    font-size: 18px;
+}
+.modal > * {
+    font-weight: 500;
+    font-size: 17px;
+}
+#test-popup .modal .form-control{
+    font-size: 17px;
+}
+.modal label{
+    font-weight: 500;
+    font-size: 18px;
+    color: #000000;
+}
+.modal label.form-error,.modal label.error{
+    font-weight: 500;
+    font-family: 'SairaSemiCondensed-Regular';
+    font-size: 14px;
+    color:red;
+}
+.modal .btn-login{
+    font-size: 16px;
+}
+.modal .checkbox-term{
+    margin-top: 7px;
+}
+.modal .checkbox-term label{
+    font-size: 17px;
+    font-weight: 500;
+}
+#member #error{
+    color: red;
+    margin-bottom: 10px;
+}
+@media only screen and (max-width: 1024px){
+    .calendar-popup .days-popup li {
+        width: 66px;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px){
+    
        
 }
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 768px){
     .size{
-        padding-left: 9%;
+        margin-left: 16px;
+    }
+    .slick-list.draggable{
+        margin-left: 15px;
+    }
+    .calendar-popup .days-popup li .badge {
+        padding: 8px;
     }
 }
 @media only screen and (max-width: 480px){
     .size {
-       padding-right: 25px;
-        padding-left: 14px;
+        margin-left: -15px;
+    }
+    .slick-list.draggable{
+        margin-left: 31px;
+    }
+    .slick-prev img {
+        padding-left: 32px;
+        padding-top: 18px;
+    }
+    .calendar-popup .days-popup li .badge {
+        padding: 8px;
     }
 }

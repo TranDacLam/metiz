@@ -6,7 +6,7 @@
             Lịch chiếu
         </div>
         <div class="container">
-            <div class="row city">
+            <div class="col-xs-12 row city">
                 <h3>{% trans 'Select City' %}</h3>
                 <div class="list-item clearfix">
                     <ul>
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="row cinema ">
+            <div class="col-xs-12 row cinema ">
                 <h3>{% trans 'Select Cinema' %}</h3>
                 <div class="tab-content">
                     <div class="list-cinema active clearfix tab-pane " id="id_cinema_detail">
@@ -30,27 +30,23 @@
         </div>
         <div class="popup-booking">
             <section class="section-lightpink">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <h3>{% trans 'Select date play' %}</h3>
-                        </div>
-                        <div class="col-lg-6 col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-12  size">
-                            <div class="calendar-popup">
-                                <ul class="days-popup" id="play-date-slider">
-                                {% get_date_showing as list_date_present %}
-                                {% for item in list_date_present %}
-                                    <li class="available popup-movie-schedule" data-date-select="{{item}}">
-                                        <div class="month" >
-                                            <strong>10</strong>
-                                        </div>
-                                        <div class="dayofweek">Fri</div>
-                                        <span class="badge">{{ item|slice:'8:' }}</span>
-                                    </li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <h3>{% trans 'Select date play' %}</h3>
+                    </div>
+                    <div class="calendar-popup">
+                        <ul class="days-popup" id="play-date-slider">
+                        {% get_date_showing as list_date_present %}
+                        {% for item in list_date_present %}
+                            <li class="available popup-movie-schedule" data-date-select="{{item|date:'Y-m-d'}}">
+                                <div class="month" >
+                                    <strong>{{ item|date:'m'}}</strong>
+                                </div>
+                                <div class="dayofweek">{{ item|date:'D'}}</div>
+                                <span class="badge">{{ item|date:'d' }}</span>
+                            </li>
+                        {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -77,7 +73,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h3 class="modal-title">Cảnh báo</h3>
+                  <h2 class="modal-title">Cảnh báo</h2>
                 </div>
                 <div class="modal-body">
                     <p>Phim này dành cho lứa tuổi trên 18</p>
@@ -106,53 +102,55 @@
                         <!-- MEMBER -->
                         <div id="member" class="tab-pane fade in active">
                             <div class="row">
-                                <form class="signin" id="signin_form" method="post" action="">
+                                <form class="signin" id='member_form'method="post" action="">
                                     {% csrf_token %}
                                     <div class="col-sm-12">
                                         <div id="error"></div>
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <label>{% trans "Email" %}</label>
-                                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
-                                                <label class="form-error" for="email" id='email-error'></label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>{% trans "Password"%}</label>
-                                                <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
-                                                <label class="form-error" for="password" id='password-error'></label>
-                                            </div>
+                                        <p id="id_showtime_memeber" ></p>
+                                        <div class="form-group">
+                                            <label>{% trans "Email" %}</label>
+                                            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
+                                            <label class="form-error" for="email" id='email-error'></label>
                                         </div>
-                                        <button type="submit" class="btn btn-login">Login</button>
+                                        <div class="form-group">
+                                            <label>{% trans "Password"%}</label>
+                                            <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
+                                            <label class="form-error" for="password" id='password-error'></label>
+                                        </div>
+                                        <button type="submit" class="btn btn-login">{% trans 'Login' %}</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <!-- GUEST -->
                         <div id="guest" class="tab-pane fade">
-                            <input name="agree_term" id="agree_term" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
-                            <label class="agree_term" for="agree_term">Tôi đã đọc, hiểu và đồng ý với các <a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_chung">điều khoản</a>.</label>
+                            {% get_term as term %}
+                            <textarea class="guest-policy" rows="8" cols="5" contenteditable="true">{{ term|safe }}
+                            </textarea>
+                            <div class="row checkbox-term">
+                                <input name="agree_term" id="agree_term" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
+                                <label class="agree_term" for="agree_term">Tôi đã đọc, hiểu và đồng ý với các điều khoản</a>.</label>
+                            </div>
                             <div class="row">
-                                <form class='form-popup' id='guest_form' method="post" action="">
+                                <form class='form-popup' id='guest_form' method="post" action="{% url 'booking' %}">
                                     {% csrf_token %}
                                     <input type="hidden" name="id_showtime" id="id_showtime">
                                     <div class="col-sm-12">
                                         <div id="error"></div>
-                                        <div class="row">
-                                             <div class="form-group">
-                                                <label>{% trans "Full Name" %}</label>
-                                                <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}">
-                                                <label class="form-error" for="name" id='name-error'></label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>{% trans "Phone" %}</label>
-                                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control">
-                                                <label  class="form-error" for="phone" id='phone-error'></label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>{% trans "Email" %}</label>
-                                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
-                                                <label  class="form-error" for="email" id='email-error'></label>
-                                            </div>
+                                         <div class="form-group">
+                                            <label>{% trans "Full Name" %}</label>
+                                            <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{{request.session.full_name}}">
+                                            <label class="form-error" for="name" id='name-error'></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{% trans "Phone" %}</label>
+                                            <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{{request.session.phone}}">
+                                            <label  class="form-error" for="phone" id='phone-error'></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{% trans "Email" %}</label>
+                                            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{{request.session.email}}">
+                                            <label  class="form-error" for="email" id='email-error'></label>
                                         </div>
                                         <button type="submit" id="submit" class="btn btn-login submit" disabled>Đặt vé</button>
                                     </div>
@@ -172,32 +170,33 @@
             <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Xác nhận thông tin</h4>
+                  <h2 class="modal-title">Xác nhận thông tin</h2>
                 </div>
                 <div class="modal-body">
                     <p>Xác nhận thông tin sau đây là của bạn</p>
                     <div class="row">
-                        <form class='form-popup' id='update_form'  method="post">
+                        <form class='form-popup' id='update_form'  method="post" action="{% url 'booking' %}">
                             {% csrf_token %}
                             <input type="hidden" name="id_showtime" id="id_showtime">
                             <div class="col-sm-12">
                                 <div id="error"></div>
-                                <div class="row">
-                                     <div class="form-group">
-                                        <label>{% trans "Full Name" %}</label>
-                                        <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{{user.full_name}}">
-                                        <label  class="form-error" for="name" id='name-error'></label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>{% trans "Phone" %}</label>
-                                        <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{{user.phone}}">
-                                        <label  class="form-error" for="phone" id='phone-error'></label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>{% trans "Email" %}</label>
-                                        <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value='{{user.email}}'>
-                                        <label  class="form-error" for="email" id='email-error'></label>
-                                    </div>
+                                 <div class="form-group">
+                                    <label>{% trans "Full Name" %}</label>
+                                    <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" 
+                                    value="{% if request.session.full_name %}{{request.session.full_name}}{% else %}{{user.full_name}}{% endif %}">
+                                    <label  class="form-error" for="name" id='name-error'></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>{% trans "Phone" %}</label>
+                                    <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" 
+                                    value="{% if request.session.phone %}{{request.session.phone}}{% else %}{{user.phone}}{% endif %}">
+                                    <label  class="form-error" for="phone" id='phone-error'></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>{% trans "Email" %}</label>
+                                    <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" 
+                                    value='{% if request.session.email %}{{request.session.email}}{% else %}{{user.email}}{% endif %}'>
+                                    <label  class="form-error" for="email" id='email-error'></label>
                                 </div>
                                 <button type="submit" id='update' class="btn btn-login submit">Xác nhận</button>
                             </div>
