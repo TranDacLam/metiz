@@ -31,6 +31,9 @@ nav.sidebar, .main{
 .col2-set {
     text-align: justify;
 }
+.title-about-metiz h1{
+    color: #e71a0f;
+}
 @media only screen and (max-width: 768px){
     .col-left  .navbar-collapse, .skip-content {
         background-color: rgba(255, 255, 255, 0);
@@ -62,6 +65,32 @@ nav.sidebar, .main{
     .col-left .navbar-inverse .navbar-toggle, .col-left .navbar-inverse .navbar-collapse{
         border-color: #ff5400;
     }
+    .content-seperator iframe{
+        width: 60%;
+    }
+    .about-image-metiz {
+        float: left;
+        width: 100%;
+    }
+    .about-image-metiz ul {
+        float: left;
+        width: 100%;
+    }
+    .about-image-metiz ul li {
+        float: left;
+        width: 31%;
+        height: 169px;
+        border: 1px solid;
+        margin: 10px 4px;
+        box-shadow: 3px 3px 3px #333;
+        border-radius: 3px;
+    }
+    .about-image-metiz ul li img {
+        float: left;
+        width: 100%;
+        height: 169px;
+        border-radius: 3px;
+    }
 }
 @media only screen and (max-width: 420px){
     .page-header{
@@ -69,6 +98,17 @@ nav.sidebar, .main{
     }
     .col2-left-layout .col-main .col2-set{
         padding: 0 10px 0px 15px;
+    }
+    .content-seperator iframe{
+        width: 98%;
+    }
+    .about-image-metiz ul li {
+        width: 47%;
+    }
+}
+@media only screen and (max-width: 320px){
+    .about-image-metiz ul li, .about-image-metiz ul li img {
+        height: 121px;
     }
 }
 /*small/medium side display*/

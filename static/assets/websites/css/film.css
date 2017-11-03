@@ -138,6 +138,33 @@ ul.metiz-film-detail-tabs {
 .movie-detail-fb-booking li{
 	padding-top: 3px;
 }
+@media only screen and (max-width: 771px) {
+	.cate-new-offer {
+	    z-index: 3;
+	}
+	.product-view .product-image img{
+		height: 235px;
+		width: 180px;
+	}
+}
+@media only screen and (max-width: 710px){
+	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
+	    height: 151px;
+	    width: 187px;
+	}
+	.format-new-offer h4{
+		font-size: 12px;
+	}
+	.format-new-offer h3{
+		font-size: 17px;
+	}
+	.catalog-category-view .col-main{
+		float: none;
+	}
+	.colum-right-new-offer{
+		margin-left: 5px;
+	}
+}
 @media screen and (max-width: 460px) {
  	.product-name-reponsive .button, .booking-ticket-bot .button{
 		padding: 2px 5px 2px 5px;
@@ -153,6 +180,12 @@ ul.metiz-film-detail-tabs {
 		width: 117px;
 		font-size: 12px;
 	}
+	.colum-right-new-offer{
+		margin-left: 0;
+	}
+	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
+	    height: 146px;
+	}
 }
 @media screen and (max-width: 400px) {
 	.product-view .nav-tabs>li>span{
@@ -164,20 +197,22 @@ ul.metiz-film-detail-tabs {
 		font-size: 22px;
 	}
 }
+@media screen and (max-width: 360px) {
+	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
+	    height: 121px;
+	}
+	.format-new-offer h4{
+		font-size: 10px;
+	}
+	.format-new-offer h3{
+		font-size: 16px;
+	}
+}
 .movie-rating .std{
 	font-weight: bold;
 }
 .cate-new-offer img{
 	display: inline-block;
-}
-@media only screen and (max-width: 771px) {
-	.cate-new-offer {
-	    z-index: 3;
-	}
-	.product-view .product-image img{
-		height: 235px;
-		width: 180px;
-	}
 }
 .product-name-reponsive .col-left{
 	width: 83.3%;

@@ -68,8 +68,10 @@ def payment(request):
         total_payment = request.GET.get('totalPayment', 0)
         total_seats = request.GET.get('totalSeat', 0)
         seats = request.GET.get('seats', "")
+        working_id = request.GET.get('working_id', "")
+        
         return render(request, "websites/vnpay_payment/payment.html",
-                      {"title": "Thanh toán", "total_payment": total_payment, "seats": seats, "total_seats": total_seats})
+                      {"title": "Thanh toán", "total_payment": total_payment, "seats": seats, "total_seats": total_seats, "working_id":working_id})
 
 
 def payment_ipn(request):

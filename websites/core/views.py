@@ -59,7 +59,7 @@ def showing(request):
         if request.is_ajax():
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
-            return JsonResponse({"data": list(movie_page.object_list.values('id', 'name', 'poster', 'time_running', 'release_date', "genre__name", "rated__name")),
+            return JsonResponse({"data": list(movie_page.object_list.values('id', 'name', 'poster', 'time_running', 'release_date', "genre__name", "rated__name", "movie_api_id")),
                                  "total_page": paginator.num_pages}, safe=False)
 
         return render(request, 'websites/showing.html', {'list_data_showing': movie_page.object_list})
@@ -271,7 +271,7 @@ def home(request):
             select={'priority_null': 'priority is null'})
 
         list_showing = movie_showings.extra(
-            order_by=['priority_null', '-release_date', 'name'])
+            order_by=['priority_null', 'priority', '-release_date', 'name'])
 
         """ 
             Comming Soon Follow Condition:
@@ -286,7 +286,7 @@ def home(request):
             select={'priority_null': 'priority is null'})
 
         list_coming_soon = movie_soons.extra(
-            order_by=['priority_null', 'release_date', 'name'])
+            order_by=['priority_null', 'priority', 'release_date', 'name'])
 
         # get news order by priority and apply_date
         news = NewOffer.objects.all().order_by('priority').extra(

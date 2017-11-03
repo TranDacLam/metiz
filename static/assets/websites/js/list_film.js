@@ -10,6 +10,11 @@ $(document).ready(function($) {
 		$('#about-arthouse_contents').css('display','none');
 		$('#arthouse-home_contents').css('display','block');
 	});
+
+	// format date time
+	function getDate(applyDate){
+        return applyDate.replace(/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/g, '$3 - $2 - $1');
+    }
 	
 	// trim string name and category film
 	function trimNameMovie(name, len){
@@ -42,7 +47,7 @@ $(document).ready(function($) {
 						+'</div>'
 						+'<div class="metiz-movie-info">'
 							+'<span class="metiz-info-bold">Khởi chiếu: </span>'
-							+'<span class="metiz-info-normal">'+ movie.release_date +'</span>'
+							+'<span class="metiz-info-normal">'+ getDate(movie.release_date) +'</span>'
 						+'</div>'
 					+'</div>'
 					
@@ -53,7 +58,8 @@ $(document).ready(function($) {
                             +'</div>'
 						
 						+'<li>'
-							+'<button type="button" title="Đặt vé" class="button">Đặt vé</button>'
+							+'<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" '
+							+'data-movie-api-id="'+ movie.movie_api_id +'">Đặt vé</button>'
 						+'</li>'
 					+'</ul>'
 				+'</li>';
@@ -98,6 +104,8 @@ $(document).ready(function($) {
 			$('.metiz-movies>ul').append(html);
 
 			$(this).prop('disabled', false);
+
+			FB.XFBML.parse(); 
 		})
 		.fail(function(error) {
 			$('.metiz-movies>.text-center button').remove();
@@ -109,10 +117,4 @@ $(document).ready(function($) {
 			}
 		});
 	});
-});
-
-$(document).ajaxComplete(function(){
-    try{
-        FB.XFBML.parse(); 
-    }catch(ex){}
 });
