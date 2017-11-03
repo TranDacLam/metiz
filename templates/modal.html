@@ -106,7 +106,11 @@
                                     {% csrf_token %}
                                     <div class="col-sm-12">
                                         <div id="error"></div>
-                                        <p id="id_showtime_memeber" ></p>
+                                        <input type="hidden" name="id_sever" id="id_sever">
+                                        <input type="hidden" name="id_showtime" id="id_showtime">
+                                        <input type="hidden" name="id_movie_name" id="id_movie_name">
+                                        <input type="hidden" name="id_movie_time" id="id_movie_time">
+                                        <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
                                         <div class="form-group">
                                             <label>{% trans "Email" %}</label>
                                             <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">

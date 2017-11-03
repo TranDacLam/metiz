@@ -41,7 +41,12 @@ def get_booking(request):
             print('*******booking******')
             id_showtime = request.GET.get('id_showtime', "")
             id_sever = request.GET.get('id_sever', 1)
-            return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
+            id_movie_name = request.GET.get('id_movie_name', "")
+            id_movie_time = request.GET.get('id_movie_time', "")
+            id_movie_date_active = request.GET.get('id_movie_date_active', "")
+            return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever,
+                                                             "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
+                                                             "id_movie_date_active": id_movie_date_active})
     except Exception, e:
         print "Error get_booking : ", e
         return HttpResponse(status=500)

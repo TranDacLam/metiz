@@ -1,4 +1,124 @@
 $(document).ready(function() {
+    // message for validate form
+    var lang = $('html').attr('lang');
+    if ( lang == 'vi') {
+        message = {'required': 'Trường này bắt buộc', 
+        'minlength_6' :'Nhập ít nhất 6 kí tự',
+        'minlength_8' :'Nhập ít nhất 8 kí tự',
+        'email': 'Email không hợp lệ',
+        'number': 'Nhập các chữ số',
+        'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
+        'validatePassword': 'Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt và có cả chữ và số',
+        'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
+    } else {
+        message = {'required': 'This field is required', 
+        'minlength_6' :'Please enter at least 6 characters',
+        'minlength_8' :'Please enter at least 8 characters',
+        'email': 'Please enter a valid email address',
+        'number': 'Please enter a valid number',
+        'equalTo': "Password don't same. Please enter again",
+        'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
+        'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
+    }
+
+    //validate guest form, update form
+    function validateForm(form){
+        $(form).validate({
+            rules:{
+                name:{
+                    required: true,
+                },
+                email:{
+                    email: true
+                },
+                phone:{
+                    required: true,
+                    number: true,
+                    minlength: 8
+                },
+            },
+            messages:{
+                name:{
+                    required: message.required,
+                },
+                email:{
+                    email: message.email
+                },
+                phone:{
+                    required: message.required,
+                    number: message.number,
+                    minlength: message.minlength_8,
+                }
+            }
+        });
+    }
+    $('.form-popup').each(function(index, el) { 
+        validateForm($(this)); 
+    });
+
+    // handle member form
+    $('#member_form').validate({
+        rules:{
+            email:{
+                required: true,
+                email: true
+            },
+            password:{
+                required: true,
+                minlength: 8,
+                validatePassword: true
+            },
+        },
+        messages:{
+            email:{
+                required: message.required,
+                email: message.email
+            },
+            password:{
+                required: message.required,
+                minlength: message.minlength_8,
+            }
+        },
+        submitHandler: function (form) {
+            $.ajax({
+                url: '/login/',
+                type: 'POST',
+                dataType: 'json',
+                data: $(form).serialize() + "&schedule_key=1",
+            })
+            .done(function(data) {
+                // Get value member form
+                var id_showtime = $('#member_form input[name=id_showtime]').val();
+                var id_sever = $('#member_form input[name=id_sever]').val();
+                var id_movie_name = $('#member_form input[name=id_movie_name]').val();
+                var id_movie_time = $('#member_form input[name=id_movie_time]').val();
+                var id_movie_date_active = $('#member_form input[name=id_movie_date_active]').val();
+
+                window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever
+                            + '&id_movie_name='+ id_movie_name + '&id_movie_time='+ id_movie_time
+                            + '&id_movie_date_active='+ id_movie_date_active;
+            })
+            .fail(function(data) {
+                if (data.status == 400) {
+                    $.each(data.responseJSON.errors, function(index, val) {
+                        $('#error').html(val);
+                    });
+                }
+                else{
+                    $('#error').html(data.responseJSON.message);
+                }
+            });
+        }
+    });
+
+    $.validator.addMethod(
+      "validatePassword",
+      function (value, element) {
+        return value.match(/[^a-z0-9 ]/);
+      },
+      message.validatePassword
+    );
+
     // active popup
     $('.open-popup-link').magnificPopup({
           type: 'inline',
@@ -7,6 +127,27 @@ $(document).ready(function() {
 
     startMonth();
 
+
+    // *** POPUP MOVIE SCHEDULE ***
+    // Get list movie, show time
+    // * Step 1:
+    // - TH1: Click Lịch chiếu (header) or Đổi xuất chiếu (page Booking)
+    // --- Set movie_api_id = null -> let get list movie
+    // - TH2: Click đặt vé a movie
+    // --- get movie_api_id movie selected -> let get a movie selected
+    // * Step 2:
+    // - TH1: Click Lịch chiếu (header)
+    // --- get date_query = date current
+    // - TH2: Click Đổi xuất chiếu (page Booking)
+    // --- get data-date-seat, get date schedule user selected
+    // --- Show popup movie schedule date selected
+    // - TH3: Click đặt vé a movie
+    // --- get movie-api-id movie selected
+    // * Step 3:
+    // - function listShedule: list show time of 1 movie
+    // - function listFilm: list movie of date selected
+    
+    
     // list show time of a movie, callback from function listFilm
     function listShedule(shedule){
         var htmlShedule = '';
@@ -111,132 +252,15 @@ $(document).ready(function() {
             var id_showtime = $(this).children('input[name=id_showtime]').val();
             var id_movie_name = $(this).children('input[name=id_movie_name]').val();
             var id_movie_time = $(this).children('span[class=time]').text();
+            var id_sever = $('.list-cinema .active').attr('data-id-server');
             
-            $('.modal input[name=id_sever]').val(1);
+            $('.modal input[name=id_sever]').val(id_sever);
             $('.modal input[name=id_showtime]').val(id_showtime);
             $('.modal input[name=id_movie_name]').val(id_movie_name);
             $('.modal input[name=id_movie_time]').val(id_movie_time);
             $('.modal input[name=id_movie_date_active]').val($("li.active-date").attr("data-date-select"));
-            
-            $('#member_form #id_showtime_memeber').text(id_showtime);
         });
     }
-
-    // message for validate form
-    var lang = $('html').attr('lang');
-    if ( lang == 'vi') {
-        message = {'required': 'Trường này bắt buộc', 
-        'minlength_6' :'Nhập ít nhất 6 kí tự',
-        'minlength_8' :'Nhập ít nhất 8 kí tự',
-        'email': 'Email không hợp lệ',
-        'number': 'Nhập các chữ số',
-        'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
-        'validatePassword': 'Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt và có cả chữ và số',
-        'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
-    } else {
-        message = {'required': 'This field is required', 
-        'minlength_6' :'Please enter at least 6 characters',
-        'minlength_8' :'Please enter at least 8 characters',
-        'email': 'Please enter a valid email address',
-        'number': 'Please enter a valid number',
-        'equalTo': "Password don't same. Please enter again",
-        'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
-        'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
-    }
-
-    //validate guest form, update form
-    function validateForm(form){
-        $(form).validate({
-            rules:{
-                name:{
-                    required: true,
-                },
-                email:{
-                    email: true
-                },
-                phone:{
-                    required: true,
-                    number: true,
-                    minlength: 8
-                },
-            },
-            messages:{
-                name:{
-                    required: message.required,
-                },
-                email:{
-                    email: message.email
-                },
-                phone:{
-                    required: message.required,
-                    number: message.number,
-                    minlength: message.minlength_8,
-                }
-            }
-        });
-    }
-    $('.form-popup').each(function(index, el) { 
-        validateForm($(this)); 
-    });
-
-    // handle member form
-    $('#member_form').validate({
-        rules:{
-            email:{
-                required: true,
-                email: true
-            },
-            password:{
-                required: true,
-                minlength: 8,
-                validatePassword: true
-            },
-        },
-        messages:{
-            email:{
-                required: message.required,
-                email: message.email
-            },
-            password:{
-                required: message.required,
-                minlength: message.minlength_8,
-            }
-        },
-        submitHandler: function (form) {
-            var id_sever = $('.list-cinema .active').attr('data-id-server');
-
-            $.ajax({
-                url: '/login/',
-                type: 'POST',
-                dataType: 'json',
-                data: $(form).serialize() + "&schedule_key=1",
-            })
-            .done(function(data) {
-                id_showtime = $('#member_form #id_showtime_memeber').text();
-                window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever;
-            })
-            .fail(function(data) {
-                if (data.status == 400) {
-                    $.each(data.responseJSON.errors, function(index, val) {
-                        $('#error').html(val);
-                    });
-                }
-                else{
-                    $('#error').html(data.responseJSON.message);
-                }
-            });
-        }
-    });
-
-    $.validator.addMethod(
-      "validatePassword",
-      function (value, element) {
-        return value.match(/[^a-z0-9 ]/);
-      },
-      message.validatePassword
-    );
-
-    
     
     //checkbox for form guest
     $('#agree_term').on('click', function(){

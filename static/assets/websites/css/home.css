@@ -139,6 +139,10 @@
 #news #show_more:hover #more{
     display:none;
 }
+.info-movie-home>h3>a{
+    color: #fff;
+    text-decoration: none;
+}
 @media screen and (min-width: 1366px) {
     .tab-movie{
 		padding-left: 30px;
