@@ -190,4 +190,8 @@ $(document).ready(function() {
 			$('#signup_form button').prop('disabled', true);
 		}
 	});
+
+	$('#myTabContent .form-group input').click(function(event) {
+		$(this).parent().children('.errorlist').hide();
+	});
 });
