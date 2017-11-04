@@ -137,8 +137,8 @@ $(document).ready(function() {
         }
 
         var sc = $('#seat-map').seatCharts({
-            map: mapArr,
-            naming : {
+            map: mapArr, // List seats
+            naming : { // Name seat columns, rows
                 top : false,
                 rows: rowNaming,
                 columns: arrColumns,

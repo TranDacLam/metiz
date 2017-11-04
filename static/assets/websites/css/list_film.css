@@ -29,15 +29,26 @@
 		border: 2px solid #ff5400;
 	}
 	.products-grid--max-4-col.products-grid .product-image  img{
-		height: 231px;
+		height: 265px;
 	}
 	.film-lists ul.add-to-links li:last-child{
 		margin-top: -4px;
 	}
 }
+@media screen and (max-width: 380px){
+	.products-grid--max-4-col.products-grid .product-image  img{
+		height: 251px;
+	}
+	.category-products .products-grid .product-name a{
+		font-size: 14px;
+	}
+	.metiz-info-normal{
+		font-size: 12px;
+	}
+}
 @media screen and (max-width: 320px){
 	.products-grid--max-4-col.products-grid .product-image  img{
-		height: 421px;
+		height: 216px;
 	}
 }
 .metiz-movies{

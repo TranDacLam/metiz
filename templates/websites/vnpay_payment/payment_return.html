@@ -10,8 +10,8 @@
 {% block main_content %}
 <div class="main">
     <div class="col-main payment-return">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ title }}: {{ result }}</div>
+        <div class="table-payment">
+            <div class="panel-heading"><h2>{{ title }}: {{ result }}</h2></div>
             <div class="panel-body">
                 <p>order_id:{{ order_id }}</p>
                 <p>amount:{{ amount }}</p>
@@ -26,6 +26,7 @@
                     <p class="alert-warning"> {{ msg }}</p>
                 {% endif %}
             </div>
+            <p class="back-link"><a href="/"><small>&laquo; </small>Quay lại trang chủ</a></p>
         </div>
     </div>
 </div>

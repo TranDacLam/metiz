@@ -1558,7 +1558,14 @@
 
 @media only screen and (max-width: 320px){
 	.products-grid--max-4-col > li {
-		width: 100%;
+		width: 49%;
+		margin-right:2%;
+	}
+	.catalog-category-view .page-title h1 {
+		width: 95%;
+	}
+	.catalog-category-view .category-title h1{
+		font-size:28px;
 	}
 }
 

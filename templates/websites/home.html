@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% load i18n %} 
 
+{% load modal_data_tags %}
+
 {% block title %}Metiz Cinema{% endblock title %}
 
 {% block extrascript %}
@@ -96,7 +98,10 @@
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
-                                        <button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
+                                        {% verify_showtime_by_id 1 item.movie_api_id as is_book_able %}
+                                        {% if is_book_able %}
+                                            <button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
+                                        {% endif %}
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                             <span><span>Play</span></span>
