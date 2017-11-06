@@ -131,8 +131,7 @@ $(document).ready(function() {
     });
 
     startMonth();
-
-
+  
     // *** POPUP MOVIE SCHEDULE ***
     // Get list movie, show time
     // * Step 1:
@@ -275,6 +274,7 @@ $(document).ready(function() {
             $('.form-popup button').prop('disabled', true);
         }
     });
+    
 
 });
 
