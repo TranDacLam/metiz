@@ -188,7 +188,7 @@ def news(request):
                     item.image), "apply_date": item.apply_date})
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
-            
+
             return JsonResponse({"data": news_json, "total_page": paginator_news.num_pages}, safe=False)
 
         return render(request, 'websites/news.html', {'list_news': news_page.object_list, "total_item": len(news_page.object_list)})
@@ -297,7 +297,7 @@ def home(request):
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
 
-        #get post item new and offer
+        # get post item new and offer
         new_offer = Post.objects.get(key_query='kq_new_offer', is_draft=False)
 
         return render(request, 'websites/home.html', {'top_news': top_news, 'list_showing': list_showing,
@@ -358,13 +358,16 @@ def get_booking(request):
                 request.session['phone'] = phone
                 request.session['email'] = email if email else None
                 id_sever = 1
-                print('*******booking******')
-                return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})          
-        else:
-            print('*******booking******')
+                return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
+
+        try:
             id_showtime = request.GET['id_showtime']
             id_sever = request.GET['id_sever']
+
             return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
+        except Exception, e:
+            print "Error: ", e
+            return HttpResponse(status=404)
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)

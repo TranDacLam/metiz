@@ -86,7 +86,7 @@ $(document).ready(function() {
             getValue();
             console.log(response);
             if ($('.list-schedule').text() == '') {
-                $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lich Chiếu Nào. Vui Lòng Chọn Ngày Khác<p/>');
+                $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lịch Chiếu Nào. Vui Lòng Chọn Ngày Khác<p/>');
             }
         })
         .fail(function() {
@@ -95,6 +95,7 @@ $(document).ready(function() {
         });
     });
 
+    //set id_showtime for input in form
     function getValue(){
          $('.sold-out a').click(function(event) {
             event.preventDefault();
@@ -190,7 +191,7 @@ $(document).ready(function() {
                 url: '/login/',
                 type: 'POST',
                 dataType: 'json',
-                data: $(form).serialize() + "&schedule_key=1",
+                data: $(form).serialize() + "&is_popup_schedule=1",
             })
             .done(function(data) {
                 id_showtime = $('#member_form #id_showtime_memeber').text();
@@ -198,7 +199,7 @@ $(document).ready(function() {
                 window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever;
             })
             .fail(function(data) {
-                if (data.status == 400) {
+                if (data.responseJSON.code == 400) {
                     $.each(data.responseJSON.errors, function(index, val) {
                         $('#error').html(val);
                     });
@@ -232,7 +233,6 @@ $(document).ready(function() {
 });
 
 function startMonth(){
-    // $(".badge:contains('1')").parent().addClass('start-month');
     $('.days-popup li span').each(function() {
         if ($(this).text() == 1) {
             $(this).parent().addClass('start-month');

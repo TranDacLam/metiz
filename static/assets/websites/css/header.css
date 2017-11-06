@@ -74,6 +74,9 @@ ul.dropdown-menu>li>a:hover{
 }
 
 @media only screen and (min-width: 771px){
+	#header {
+		height: 70px;
+	}
 	#loginNavbar.collapse ul{
 		display:none;
 	}
@@ -231,6 +234,9 @@ ul.dropdown-menu>li>a:hover{
 	}
 	.logo{
 		margin-top:2px;
+	}
+	#dropdown-member{
+		display:none;
 	}
 	.page-header{
 		border-bottom:none;
