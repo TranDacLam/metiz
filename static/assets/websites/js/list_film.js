@@ -26,7 +26,7 @@ $(document).ready(function($) {
 	}
 
 	//  load more
-	// movie html, need set data for movie html in movie_showing(movie)
+	// list movie when load more at film showing, comming soon. Callback event click #load-more
 	function movie_showing(movie){
 		return 	'<li class="film-lists">'
 					+'<div class="product-images">'
@@ -58,13 +58,14 @@ $(document).ready(function($) {
                             +'</div>'
 						
 						+'<li>'
-							+'<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" '
+							+'<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-list-movie popup-movie-schedule" '
 							+'data-movie-api-id="'+ movie.movie_api_id +'">Đặt vé</button>'
 						+'</li>'
 					+'</ul>'
 				+'</li>';
 	}
 
+	// check list movie if < 12 then remove button load more
 	var coutMovie = parseInt($('.load-more').attr('data-count-movie'));
 	if(coutMovie < 12){
 		$('.metiz-movies>.text-center button').remove();
@@ -89,10 +90,12 @@ $(document).ready(function($) {
 			context: this,
 		})
 		.done(function(response) {
+			// Check total page let remove button load more
 			if(page >= response.total_page){
 				$('.metiz-movies>.text-center button').remove();
 			}
 			
+			// increase the value page +1
 			$(this).attr('data-page',page + 1);
 			var html = '';
 
@@ -105,6 +108,13 @@ $(document).ready(function($) {
 
 			$(this).prop('disabled', false);
 
+			// ajax success load popup 
+			$('.open-popup-list-movie').magnificPopup({
+	          	type: 'inline',
+	          	midClick: true,
+		    });
+
+			//ajax success load button facebook
 			FB.XFBML.parse(); 
 		})
 		.fail(function(error) {

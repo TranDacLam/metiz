@@ -3,7 +3,7 @@ $(document).ready(function() {
         return applyDate.replace(/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/g, 'Ngày $3 tháng $2 năm $1');
     }
 
-    //  load more
+    // *** LOAD MORE ***
     // movie html, need set data for movie html in movie_showing(movie)
     function movie_showing(newoffer){
         console.log(newoffer.apply_date);
@@ -30,6 +30,7 @@ $(document).ready(function() {
                 +'</li>';
     }
 
+    // Check list news condition if < 12 remove button load more
     var coutNew = parseInt($('.load-more').attr('data-count-news'));
     if(coutNew < 12){
         $('.news-custom>.text-center button').remove();
@@ -49,10 +50,12 @@ $(document).ready(function() {
             context: this,
         })
         .done(function(response) {
+            // Check total page let remove button load more
             if(page >= response.total_page){
                 $('.metiz-movies>.text-center button').remove();
             }
             
+            // increase the value page +1
             $(this).attr('data-page',page + 1);
             var html = '';
 
