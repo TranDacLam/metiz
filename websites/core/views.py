@@ -188,7 +188,7 @@ def news(request):
                     item.image), "apply_date": item.apply_date})
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
-            
+
             return JsonResponse({"data": news_json, "total_page": paginator_news.num_pages}, safe=False)
 
         return render(request, 'websites/news.html', {'list_news': news_page.object_list, "total_item": len(news_page.object_list)})
@@ -297,11 +297,17 @@ def home(request):
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
 
+        # get post item new and offer
+        new_offer = Post.objects.get(key_query='kq_new_offer', is_draft=False)
+
         return render(request, 'websites/home.html', {'top_news': top_news, 'list_showing': list_showing,
                                                       'list_coming_soon': list_coming_soon,
                                                       'position_1': position_1[0] if position_1 else None,
                                                       'position_2': position_2[0] if position_2 else None,
-                                                      'data_slide': data_slide})
+                                                      'data_slide': data_slide, 'new_offer': new_offer})
+    except Post.DoesNotExist, e:
+        print "Error Post : %s" % e
+        return HttpResponse(status=404)
     except Movie.DoesNotExist, e:
         print "Error Movie : %s" % e
         return HttpResponse(status=404)
@@ -338,3 +344,30 @@ def get_post(request):
         print "Error: ", e
         return HttpResponse(status=500)
 
+
+def get_booking(request):
+    try:
+        if request.method == 'POST':
+            form = BookingForm(request.POST)
+            if form.is_valid():
+                full_name = form.cleaned_data['name']
+                phone = form.cleaned_data['phone']
+                id_showtime = form.cleaned_data['id_showtime']
+                email = form.cleaned_data['email']
+                request.session['full_name'] = full_name
+                request.session['phone'] = phone
+                request.session['email'] = email if email else None
+                id_sever = 1
+                return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
+
+        try:
+            id_showtime = request.GET['id_showtime']
+            id_sever = request.GET['id_sever']
+
+            return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
+        except Exception, e:
+            print "Error: ", e
+            return HttpResponse(status=404)
+    except Exception, e:
+        print "Error: ", e
+        return HttpResponse(status=500)

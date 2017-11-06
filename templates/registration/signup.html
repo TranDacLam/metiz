@@ -60,7 +60,7 @@
                         <div class="row">
                             <form class="signup" id="signup_form" method="post" action="{% url 'register' %}">
                                 {% csrf_token %}
-                                <div class="col-sm-12">
+                                <div class="col-sm-12 signup_fields">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label for="full_name">{% trans "Full Name" %}</label>
@@ -126,48 +126,50 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-sm-6 form-group">
-                                            <label>{% trans "Password"%}</label>
-                                            <div class="inline">
-                                                <input type="password" id="password1" name="password1" 
-                                                placeholder="{% trans 'Enter Password Here' %}"class="form-control" tabindex=7>
-                                                {% if register_form.password1.errors %}
-                                                    {{register_form.password1.errors}}
-                                                {% endif %}
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>{% trans "Password"%}</label>
+                                                <div class="inline">
+                                                    <input type="password" id="password1" name="password1" 
+                                                    placeholder="{% trans 'Enter Password Here' %}"class="form-control" tabindex=7>
+                                                    {% if register_form.password1.errors %}
+                                                        {{register_form.password1.errors}}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>{% trans "Confirm Password" %}</label>
+                                                <div class="inline">
+                                                    <input type="password" name="password2" id="password2" class="form-control" placeholder="{% trans 'Enter Password Again' %}" tabindex=8>
+                                                    {% if register_form.password2.errors %}
+                                                        {{register_form.password2.errors}}
+                                                    {% endif %}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 form-group">
-                                            <label>{% trans "City"%}</label>
-                                            <div class="inline">
-                                                <select class="form-control list-city" name="city" id="city" tabindex=9>
-                                                    <option value="" disabled selected>{% trans "Choose City" %}</option>
-                                                </select>
-                                                {% if register_form.city.errors %}
-                                                    {{register_form.city.errors}}
-                                                {% endif %}
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-6 form-group">
-                                            <label>{% trans "Confirm Password" %}</label>
-                                            <div class="inline">
-                                                <input type="password" name="password2" id="password2" class="form-control" placeholder="{% trans 'Enter Password Again' %}" tabindex=8>
-                                                {% if register_form.password2.errors %}
-                                                    {{register_form.password2.errors}}
-                                                {% endif %}
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>{% trans "City"%}</label>
+                                                <div class="inline">
+                                                    <select class="form-control list-city" name="city" id="city" tabindex=9>
+                                                        <option value="" disabled selected>{% trans "Choose City" %}</option>
+                                                    </select>
+                                                    {% if register_form.city.errors %}
+                                                        {{register_form.city.errors}}
+                                                    {% endif %}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 form-group">
-                                            <label>{% trans "District"%}</label>
-                                             <div class="inline">
-                                                <select class="form-control list-district" name="district" id="district" tabindex=10>
-                                                    <option disabled selected>{% trans "Choose District" %}</option>
-                                                </select>
-                                                {% if register_form.district.errors %}
-                                                    {{register_form.district.errors}}
-                                                {% endif %}
+                                            <div class="form-group">
+                                                <label>{% trans "District"%}</label>
+                                                 <div class="inline">
+                                                    <select class="form-control list-district" name="district" id="district" tabindex=10>
+                                                        <option disabled selected>{% trans "Choose District" %}</option>
+                                                    </select>
+                                                    {% if register_form.district.errors %}
+                                                        {{register_form.district.errors}}
+                                                    {% endif %}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -175,7 +177,7 @@
                                     <div class="row">
                                         <div class="col-sm-12 form-group">
                                             <label>{% trans "Address" %}</label>
-                                            <div class="inline">
+                                            <div class="inline form-address">
                                                 <textarea name="address" id="address" placeholder="{% trans 'Enter Address Here' %}" rows="3" class="form-control" tabindex=11></textarea>
                                                 {% if register_form.address.errors %}
                                                     {{register_form.address.errors}}
@@ -185,7 +187,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 form-group">
-                                            <input name="is_agree" id="is_agree" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
+                                            <input name="is_agree" id="is_agree" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
                                             <label class="is_agree" for="is_agree">
                                                 Tôi đã đọc, hiểu và đồng ý với các <a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_chung">điều khoản</a>.</label>
                                         </div>

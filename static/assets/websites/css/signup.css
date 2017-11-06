@@ -15,14 +15,19 @@
 #signup_form .form-inline {
     display: block;
 }
+#signup_form ul.errorlist, #signup_form ul.errorlist li{
+	float: none;
+}
 .inline .form-control{
 	display:inline-block;
 }
+
 .inline .error{
 	display:inline-block;
 }
 .list-city, .list-district{
 	width: 265px;
+	padding: 0px 5px;
 }
 .form-control.error{
 	color: #555;
@@ -49,10 +54,19 @@
 .alert-login{
 	color: #ff0000;
 }
-#myTabContent ul.errorlist li,#myTabContent .error{
+#myTabContent .error{
     font-size: 13px;
-    margin-top: 5px;
     color: #a94442;
+}
+#myTabContent ul.errorlist li{
+	color: #ff0000;
+	font-size: 13px;
+	margin-left: 15px;
+    margin-top: 5px;
+}
+#myTabContent #signup_form ul.errorlist li{
+    margin-left: 0px;
+    float: none;
 }
 #myTabContent .password-reset-confirm .error,#myTabContent .errorlist {
     margin-right: 0px;
@@ -65,4 +79,42 @@
 }
 #myTabContent .login-forgot-pass{
     padding-left: 30px;
+}
+#myTabContent a.login-forgot-pass{
+    color: #004bff;
+}
+#myTabContent .form-none-padding{
+	padding:0px;
+}
+#myTabContent ul.errorlist li, .error{
+	margin-top: 0px;
+}
+ul ~ label{
+	display:none;
+}
+#is_agree-error{
+	display:none;
+}
+.form-address #address{
+		width: 100%;
+}
+button[type=submit]{
+	text-transform: uppercase;
+}
+
+@media  only screen and (max-width: 767px){
+	.form-address #address{
+		width: 265px;
+	}
+}
+@media  only screen and (max-width: 480px){
+	#signup_form .inline input.form-control,#signup_form .inline select {
+		width: 90%;
+	}
+	#signup_form .signup_fields{
+		padding: 0px;
+	}
+	.form-address #address{
+		width: 250px;
+	}
 }
