@@ -90,31 +90,33 @@ $(document).ready(function($) {
 			context: this,
 		})
 		.done(function(response) {
+			console.log(response);
+			$('.metiz-movies>ul').append(response);
 			// Check total page let remove button load more
-			if(page >= response.total_page){
-				$('.metiz-movies>.text-center button').remove();
-			}
+			// if(page >= response.total_page){
+			// 	$('.metiz-movies>.text-center button').remove();
+			// }
 			
-			// increase the value page +1
-			$(this).attr('data-page',page + 1);
-			var html = '';
+			// // increase the value page +1
+			// $(this).attr('data-page',page + 1);
+			// var html = '';
 
-			// for from data reponse set function movie_showing(movie)
-			$.each(response.data, function(key, value) {
-				html += movie_showing(value);
-			});
+			// // for from data reponse set function movie_showing(movie)
+			// $.each(response.data, function(key, value) {
+			// 	html += movie_showing(value);
+			// });
 			
-			$('.metiz-movies>ul').append(html);
+			// $('.metiz-movies>ul').append(html);
 
-			$(this).prop('disabled', false);
+			// $(this).prop('disabled', false);
 
-			// ajax success load popup 
-			$('.open-popup-list-movie').magnificPopup({
-	          	type: 'inline',
-	          	midClick: true,
-		    });
+			// // ajax success load popup 
+			// $('.open-popup-list-movie').magnificPopup({
+	  //         	type: 'inline',
+	  //         	midClick: true,
+		 //    });
 
-			//ajax success load button facebook
+			// //ajax success load button facebook
 			FB.XFBML.parse(); 
 		})
 		.fail(function(error) {
