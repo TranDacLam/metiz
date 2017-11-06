@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^movie/seats$', views.get_seats, name='movie-seats'),
     url(r'^verify/seats$', views.check_seats, name='verify-seats'),
     url(r'^clear/seats$', views.clear_seeats, name='clear-seats'),
+    url(r'^time-out-booking$', views.time_out_booking, name='time-out-booking'),
 ]

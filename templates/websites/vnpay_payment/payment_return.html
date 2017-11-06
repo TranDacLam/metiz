@@ -13,17 +13,58 @@
         <div class="table-payment">
             <div class="panel-heading"><h2>{{ title }}: {{ result }}</h2></div>
             <div class="panel-body">
-                <p>order_id:{{ order_id }}</p>
-                <p>amount:{{ amount }}</p>
-                <p>order_desc:{{ order_desc }}</p>
-                <p>vnp_TransactionNo:{{ vnp_TransactionNo }}</p>
-                {% if vnp_ResponseCode == '00' %}
-                    <p>vnp_ResponseCode: {{ vnp_ResponseCode }} - Thành công</p>
-                {% else %}
-                    <p>vnp_ResponseCode: {{ vnp_ResponseCode }} - Lỗi</p>
-                {% endif %}
+                <div class="row">
+                    <div class="col-sm-3">
+                        order_id:
+                    </div>
+                    <div class="col-sm-9">
+                        {{ order_id }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        amount:
+                    </div>
+                    <div class="col-sm-9">
+                        {{ amount }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        order_desc:
+                    </div>
+                    <div class="col-sm-9">
+                        {{ order_desc }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        vnp_TransactionNo:
+                    </div>
+                    <div class="col-sm-9">
+                        {{ vnp_TransactionNo }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        vnp_ResponseCode:
+                    </div>
+                    {% if vnp_ResponseCode == '00' %}
+                        <div class="col-sm-9">
+                            {{ vnp_ResponseCode }} - Thành công
+                        </div>
+                    {% else %}
+                        <div class="col-sm-9">
+                            {{ vnp_ResponseCode }} - Lỗi
+                        </div>
+                    {% endif %}
+                </div>
                 {% if msg %}
-                    <p class="alert-warning"> {{ msg }}</p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p class="alert-warning"> {{ msg }}</p>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
             <p class="back-link"><a href="/"><small>&laquo; </small>Quay lại trang chủ</a></p>

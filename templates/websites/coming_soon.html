@@ -37,7 +37,7 @@
 					</div>
 					
 					<div class="product-info">
-						<h2 class="product-name"><a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name|truncatechars:24}}</a></h2>
+						<h2 class="product-name"><a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name|truncatechars:22}}</a></h2>
 						<div class="metiz-movie-info">
 							<span class="metiz-info-bold">Thể loại: </span>
 							<span class="metiz-info-normal product-cate">{{item.genre.name|truncatechars:12}}</span>
@@ -58,7 +58,7 @@
 						<li>
 							<!-- Button like and share facebook, data-href http://domain/filmdetail/id (unique) -->
 							<!-- data-href: https://{{ request.get_host }}{% url 'film_detail' item.id %} -->
-							<div class="fb-like" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+							<div class="fb-like" data-href="http://{{ request.get_host }}{% url 'film_detail' item.id %}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 						</li>
 						
 						{% verify_showtime_by_id 1 item.movie_api_id as is_book_able %}

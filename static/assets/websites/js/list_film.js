@@ -36,7 +36,7 @@ $(document).ready(function($) {
 					+'</div>'
 					+'<div class="product-info">'
 						+'<h2 class="product-name">'
-						+'<a href="/film/detail/'+ movie.id +'" title="'+ movie.name +'">'+ trimNameMovie(movie.name, 21) +'</a></h2>'
+						+'<a href="/film/detail/'+ movie.id +'" title="'+ movie.name +'">'+ trimNameMovie(movie.name, 19) +'</a></h2>'
 						+'<div class="metiz-movie-info">'
 							+'<span class="metiz-info-bold">Thể loại: </span>'
 							+'<span class="metiz-info-normal">'+ trimNameMovie(movie.genre__name, 12) +'</span>'

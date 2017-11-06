@@ -28,7 +28,6 @@ function wireUpEvents() {
         if (!validNavigation) {
             endSession();
         }
-
     });
 
  // Attach the event submit for all forms in the page
@@ -111,6 +110,7 @@ $(document).ready(function() {
         $('.exceeds-time').html('Thời gian giao dịch đã hết. Xin vui lòng đặt vé lại'
                                 +'<a class="back-booking" onclick="goBack()"> tại đây </a>. Cảm ơn!');
         $('.vnpayment button').prop('disabled', true);
+        endSession();
     }, 300000);
 });
 
