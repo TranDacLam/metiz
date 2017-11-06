@@ -110,10 +110,13 @@ def get_movie_show_time(request):
                             "MOVIE_ID"], "movie_name": obj_movie[0].name if obj_movie else item["MOVIE_NAME_VN"]}
 
                     # Check time showing greater than currnet hour
-                    if int(item["TIME"].split(':')[0]) >= current_date.hour:
+                    if item["DATE"] == current_date.strftime("%d/%m/%Y"):
+                        if int(item["TIME"].split(':')[0]) >= current_date.hour:
+                            result[item["MOVIE_ID"]]["lst_times"].append(
+                                {"id_showtime": item["ID"], "time": item["TIME"]})
+                    else:
                         result[item["MOVIE_ID"]]["lst_times"].append(
                             {"id_showtime": item["ID"], "time": item["TIME"]})
-
         return JsonResponse(result)
 
     except Exception, e:
@@ -179,7 +182,7 @@ def check_seats(request):
                         "List": [
                             {
                                 "NAME": str(full_name),
-                                "PHONE": phone,
+                                "PHONE": str(phone),
                                 "EMAIL": str(email),
                                 "ListSeats": seats_choice
                             }
@@ -187,7 +190,9 @@ def check_seats(request):
                     }
                     result = api.call_api_post_booking(
                         data_post_booking, id_server, url="/postBooking")
+                    print "data_post_booking ",data_post_booking
                     if not result["BARCODE"]:
+                        print "result ",result
                         return JsonResponse({"code": 400, "message": _("Cannot Booking Seats. Please Contact Administrator.")}, status=400)
 
                     # Add Seats into session and set seats expire in five

@@ -57,9 +57,10 @@ def showing(request):
 
         if request.is_ajax():
             # convert object models to json
-            # Ajax reuqest with page, db get data other with limit and offset
-            return JsonResponse({"data": list(movie_page.object_list.values('id', 'name', 'poster', 'time_running', 'release_date', "genre__name", "rated__name", "movie_api_id")),
-                                 "total_page": paginator.num_pages}, safe=False)
+            # Ajax reuqest with page, render page and return to client
+            return render(request, 'websites/load_movie_render.html', {'list_data_showing': movie_page.object_list})
+            # return JsonResponse({"data": list(movie_page.object_list.values('id', 'name', 'poster', 'time_running', 'release_date', "genre__name", "rated__name", "movie_api_id")),
+            #                      "total_page": paginator.num_pages}, safe=False)
 
         return render(request, 'websites/showing.html', {'list_data_showing': movie_page.object_list})
     except Exception, e:
