@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    // setting url youtube from link: youtube.../watch.... to youtube.../embed...
+    // so iframe page Home use magnificPopup auto EMBED, iframe detail film need setting
+    
     function getId(url) {
         var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
         var match = url.match(regExp);

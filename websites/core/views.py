@@ -7,7 +7,6 @@ from django.db.models import Avg, Sum, Count
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
 from itertools import chain
-from booking.forms import BookingForm
 from django.core.urlresolvers import reverse
 import itertools
 

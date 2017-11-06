@@ -9,13 +9,8 @@ class DestroySeat(MiddlewareMixin):
         try:
             movies = request.session.get("movies", "")
             if movies:
-                
-                print "movies session ", movies
                 current_time = timezone.localtime(timezone.now()).strftime("%Y-%m-%d %H:%M:%S.%f")
-                print "current_time ",current_time
                 for key, value in movies.items():
-                    print "##### TIME SET ",value["time_choice"]
-                    print 
                     # Compare end time expired
                     if value["time_choice"] < current_time:
                         seats_choice = value["seats_choice"]
@@ -24,7 +19,6 @@ class DestroySeat(MiddlewareMixin):
                             api.call_api_cancel_seat(seat["ID"])
 
                         del movies[key]
-                print "After Destroy Seat ", movies
                 if movies:
                     request.session["movies"] = movies
                 else:

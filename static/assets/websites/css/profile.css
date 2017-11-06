@@ -10,6 +10,9 @@
 .metiz-changepass{
     display: none;
 }
+#profile-validate textarea{
+    width: 265px;
+}
 @media only screen and (min-width : 481px) and (max-width : 768px) {
     .profile-custom{
         padding: 0 20px 0 20px;

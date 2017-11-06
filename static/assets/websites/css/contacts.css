@@ -46,3 +46,63 @@ a{
 	width: 100%; 
 	margin: 20px 0px 10px;
 }
+#contactForm  textarea#comment{
+	width: 265px;		
+}
+.buttons-set button.button{
+	float: left;
+}
+.contacts-index-index .buttons-set{
+	margin-left: 110px;
+}
+.show-address-contact-metiz{
+	margin-left: 5px;
+}
+.title-contact-metiz h1{
+	margin-left: 5px;
+	color: #e71a0f;
+}
+@media screen and (max-width: 767px) {
+	#contactForm .fieldset .legend + .required{
+		margin-right: 5px;
+	}
+	.title-contact-metiz h1{
+		text-align: center;
+	}
+}
+@media screen and (max-width: 420px) {
+	.content-form-contact-metiz #contactForm{
+		padding-left: 5px;
+	}
+	#contactForm input[type=email], 
+	#contactForm input[type=tel], 
+	#contactForm input[type=text],
+	#contactForm  textarea#comment{
+		width: 191px;
+	}
+	.contacts-index-index .buttons-set{
+		margin-left: 71px;
+	}
+}
+@media screen and (max-width: 320px){
+	.show-address-contact-metiz{
+		width: 98%;
+	}
+	.content-form-contact-metiz{
+		float: left;
+		width: 98%;
+		margin-top: 10px; 
+	}
+	#contactForm input[type=email], 
+	#contactForm input[type=tel], 
+	#contactForm input[type=text],
+	#contactForm  textarea#comment{
+		width: 265px;
+	}
+	#contactForm{
+		margin-left: 20px;
+	}
+	.contacts-index-index .buttons-set{
+		margin-left: 110px;
+	}
+}

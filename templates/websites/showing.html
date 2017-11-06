@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% load i18n %}
 
+{% load modal_data_tags %}
+
 {% block title %}Phim Đang Chiếu{% endblock title %}
 
 {% block extrascript %}
@@ -57,9 +59,12 @@
                                 </div>
 							</li>
 							
-							<li>
-								<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ value.movie_api_id }}">Đặt vé</button>
-							</li>
+							{% verify_showtime_by_id 1 value.movie_api_id as is_book_able %}
+							{% if is_book_able %}
+								<li>
+									<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ value.movie_api_id }}">Đặt vé</button>
+								</li>
+							{% endif %}
 						</ul>
 					</li>
 				{%endfor%}	

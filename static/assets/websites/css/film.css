@@ -246,3 +246,12 @@ ul.metiz-film-detail-tabs {
 .format-new-offer h4{
 	line-height: 2;
 }
+.product-view .product-name .col-md-10{
+	padding-left: 0;
+}
+.product-view .add-to-cart-wrapper{
+	padding-left: 0;
+}
+.movie-technology-icons a span{
+	margin-left: 0;
+}

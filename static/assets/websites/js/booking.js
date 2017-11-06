@@ -12,7 +12,7 @@ $(document).ready(function() {
     var id_server = $('#id_sever').val();
     var id_showtime = $('#id_showtime').val();
 
-    // Get list seats
+    // Get list seats 
     $.ajax({
         url: "/movie/seats",
         type: 'GET',
@@ -58,7 +58,7 @@ $(document).ready(function() {
         var price_v;
         var price_l;
 
-        // get Type seat
+        // get Type seat and set Price for every type seat
         function typeSeatBooking(seat){
             var type_seat;
             switch(seat.TYPE_SEAT_ID) {
@@ -137,8 +137,8 @@ $(document).ready(function() {
         }
 
         var sc = $('#seat-map').seatCharts({
-            map: mapArr,
-            naming : {
+            map: mapArr, // List seats
+            naming : { // Name seat columns, rows
                 top : false,
                 rows: rowNaming,
                 columns: arrColumns,
@@ -185,8 +185,11 @@ $(document).ready(function() {
                         .data('seatId', this.settings.id)
                         .appendTo($cart);
 
+                    // set number seat html
                     $counter.text(sc.find('selected').length+1);
+                    // get total price seat selected
                     var moneyTotal = recalculateTotal(sc)+this.data().price;
+                    // set total html and format money VND
                     $total.text(moneyTotal.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
 
                     return 'selected';
@@ -212,11 +215,24 @@ $(document).ready(function() {
         sc.get(arrStatus).status('unavailable');
 
         var seatPayment = [];
+        var seats_choice = [];
+
+        // Trim name seat
+        function strimNameSeat(str){
+            if(str.length == 2 && parseInt(str.substring(1,3)) < 10){
+                my_string = str.split('');
+                strimStr = my_string.join('0');
+                return strimStr;
+            }
+            return str;
+        }
+
         // Get ID, NAME seat selected. [{"ID": "1", "NAME": "A03"}]
         function getSeatSelected(){
             seatSelected = new Array();
             var seats =  sc.find('selected').seats;
             for(i=0;i<seats.length; i++){
+                seats_choice.push(seats[i].settings.id);
                 seatSelected.push(JSON.stringify({
                     'ID': seats[i].settings.id,
                     'NAME': strimNameSeat(seats[i].settings.label)
@@ -234,6 +250,9 @@ $(document).ready(function() {
             var totalPayment = recalculateTotal(sc);
             var lst_seats = getSeatSelected();
             var totalSeat = seatPayment.length;
+            var id_movie_name = $('.name-movie-booking').text();
+            var id_movie_time = $('.time-movie-booking').text();
+            var id_movie_date_active = $('.date-movie-booking').text();
 
             // check user selected seat?
             if(totalSeat < 1){
@@ -257,23 +276,18 @@ $(document).ready(function() {
                 context: this,
             })
             .done(function(response) {
-                window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat +'&seats='+ seatPayment + '&working_id='+working_id;
+                var barcode = response.BARCODE
+                window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat 
+                +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
+                + '&id_movie_time='+id_movie_time + '&id_movie_date_active='+id_movie_date_active
+                + '&working_id='+working_id + '&barcode='+ barcode 
+                + '&seats_choice='+seats_choice + '&id_server=' +id_server;
             })
             .fail(function(error) {
                 displayMsg();
                 $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
             });
         });
-
-
-        function strimNameSeat(str){
-            if(str.length == 2 && parseInt(str.substring(1,3)) < 10){
-                my_string = str.split('');
-                strimStr = my_string.join('0');
-                return strimStr;
-            }
-            return str;
-        }
 
         // Refresh seat selected
         $('.booking-refresh a').on('click', function(){
@@ -282,7 +296,14 @@ $(document).ready(function() {
             $total.text(0);
             $('#selected-seats').html('');
         });
-        }
+    }
+
+    // format date movie
+    $('.date-movie-booking').text(getDate());
+    function getDate(){
+        var date_shedule = $('.date-movie-booking').text();
+        return date_shedule.replace(/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/g, '$3 - $2 - $1');
+    }
 });
 //sum total money
 function recalculateTotal(sc) {

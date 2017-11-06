@@ -15,7 +15,7 @@
         <div class="page-title">
             <h2>{{ title }}</h2>
         </div>
-        <div class="exceeds-time">Thời gian giao dịch cho phép tối đa là 5 phút.</div>
+        <div class="exceeds-time">Lưu ý: Thời gian giao dịch cho phép tối đa là 5 phút. Nếu làm mới trang hoặc thoát giao dịch này sẽ bị hủy.</div>
         <div class="table-responsive">
             <form action="{% url 'payment' %}" id="create_form" method="post">
                 <div class="col-md-6">
@@ -74,11 +74,15 @@
                     </div>
                     <div class="form-group">
                         <label for="order_desc">Nội dung thanh toán</label>
-                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2">{% if not order_desc %}Thanh toán đơn hàng : &#13;&#10; Thời gian: {% now "Y-m-d H:i:s" %} &#13;&#10; Số ghế: {{ total_seats }} &#13;&#10; Ghế: {{ seats }} {% else %} {{ order_desc }} {% endif %} </textarea>
+                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2" readonly>{% if not order_desc %}Phim: {{ id_movie_name }}, Ngày: {{ id_movie_date_active }}, Thời gian: {{ id_movie_time }}, Số ghế: {{ total_seats }}, Ghế: {{ seats }}, Rạp: Metiz Cinema Helio Center.{% else %}{{ order_desc }}{% endif %}</textarea>
                     </div>
                 </div>
                 <div class="text-center">
-                    <input type="hidden" id="working_id" value="{{working_id}}" >
+                    <input type="hidden" id="working_id" name="working_id" value="{{working_id}}" >
+                    <input type="hidden" id="barcode" name="barcode" value="{{barcode}}" >
+                    <input type="hidden" id="seats_choice" name="seats_choice" value="{{seats_choice}}" >
+                    <input type="hidden" id="id_server" name="id_server" value="{{id_server}}" >
+                    
                     <button type="submit" class="btn btn-default" id="btn-payment-seats">Thanh toán Redirect</button>
                 </div>
                 {% csrf_token %}
