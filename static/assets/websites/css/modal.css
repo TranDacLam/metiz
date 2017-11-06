@@ -340,8 +340,11 @@
     color: red;
     margin-top: 7px;
 }
-#test-popup button{
+#test-popup button, .modal-body p{
     font-family: 'SairaSemiCondensed-Medium';
+}
+#test-popup .modal-body p{
+    color: black;
 }
 #confirm .tab-header a{
     font-family: 'SairaSemiCondensed-Medium';
