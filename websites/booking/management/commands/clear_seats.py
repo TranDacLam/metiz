@@ -34,11 +34,12 @@ class Command(BaseCommand):
             - Remove order
         """
         try:
+            print "Handle clear seat every 5 minute"
             bookings = BookingInfomation.objects.filter(order_status='pendding')
             if bookings:
                 current_time = timezone.localtime(timezone.now()).strftime("%Y-%m-%d %H:%M:%S.%f")
                 for item in bookings:
-                    if (timezone.localtime(item.created) + timedelta(minutes=8)).strftime("%Y-%m-%d %H:%M:%S.%f") < current_time:
+                    if (timezone.localtime(item.created) + timedelta(minutes=6)).strftime("%Y-%m-%d %H:%M:%S.%f") < current_time:
                         self.cancel_seat(item.seats.split(','), item.id_server)
                         item.order_status = 'cancel'
                         item.save()
