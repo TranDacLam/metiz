@@ -53,7 +53,7 @@ a{
 	float: left;
 }
 .contacts-index-index .buttons-set{
-	margin-left: 110px;
+	margin-left: 165px;
 }
 .show-address-contact-metiz{
 	margin-left: 5px;
@@ -62,6 +62,12 @@ a{
 	margin-left: 5px;
 	color: #e71a0f;
 }
+#contactForm input[type=email], 
+#contactForm input[type=tel], 
+#contactForm input[type=text],
+#contactForm  textarea#comment{
+	width: 365px;
+}
 @media screen and (max-width: 767px) {
 	#contactForm .fieldset .legend + .required{
 		margin-right: 5px;
@@ -69,22 +75,6 @@ a{
 	.title-contact-metiz h1{
 		text-align: center;
 	}
-}
-@media screen and (max-width: 420px) {
-	.content-form-contact-metiz #contactForm{
-		padding-left: 5px;
-	}
-	#contactForm input[type=email], 
-	#contactForm input[type=tel], 
-	#contactForm input[type=text],
-	#contactForm  textarea#comment{
-		width: 191px;
-	}
-	.contacts-index-index .buttons-set{
-		margin-left: 71px;
-	}
-}
-@media screen and (max-width: 320px){
 	.show-address-contact-metiz{
 		width: 98%;
 	}
@@ -93,6 +83,26 @@ a{
 		width: 98%;
 		margin-top: 10px; 
 	}
+	.show-address-contact-metiz{
+		border-right: none;
+	}
+}
+@media screen and (max-width: 420px) {
+	.content-form-contact-metiz #contactForm{
+		padding-left: 15px;
+	}
+	#contactForm input[type=email], 
+	#contactForm input[type=tel], 
+	#contactForm input[type=text],
+	#contactForm  textarea#comment{
+		width: 327px;
+	}
+	.contacts-index-index .buttons-set{
+		margin-left: 140px;
+	}
+}
+@media screen and (max-width: 320px){
+	
 	#contactForm input[type=email], 
 	#contactForm input[type=tel], 
 	#contactForm input[type=text],
@@ -100,7 +110,7 @@ a{
 		width: 265px;
 	}
 	#contactForm{
-		margin-left: 20px;
+		margin-left: 12px;
 	}
 	.contacts-index-index .buttons-set{
 		margin-left: 110px;
