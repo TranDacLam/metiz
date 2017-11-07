@@ -115,7 +115,7 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
 
 def cancel_seats(seats_choice, id_server):
     for seat in seats_choice:
-        api.call_api_cancel_seat(seat, id_server=booking_order.id_server)
+        api.call_api_cancel_seat(seat, id_server=id_server)
 
 
 def payment(request):
