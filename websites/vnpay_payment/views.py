@@ -43,7 +43,7 @@ def send_sms(phone, content):
             phone_number = str(phone)
         elif str(phone).startswith("0"):
             phone_number = "84" + str(phone)[1:]
-        else
+        else:
             phone_number = "84" + str(phone)
         content_sms = content
         id_sms = random.randint(0, 999)
