@@ -6,6 +6,9 @@
         margin: 0 10px 0 10px;
     }
 }
+#time-cout-down{
+    color: red;
+}
 .vnpayment .form-control{
     width: 265px;
 }

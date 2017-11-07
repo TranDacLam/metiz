@@ -13,7 +13,11 @@
 <div class="main">
     <div class="col-main vnpayment">
         <div class="page-title">
-            <h2>{{ title }}</h2>
+            <h2>
+                {{ title }} 
+                <div class="pull-right" id="time-cout-down">
+                </div>
+            </h2>
         </div>
         <div class="exceeds-time">Lưu ý: Thời gian giao dịch cho phép tối đa là 5 phút. Nếu làm mới hoặc thoát trang giao dịch này sẽ bị hủy.</div>
         <div class="table-responsive">
@@ -32,8 +36,9 @@
                     </div>
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
-                        <input class="form-control" id="amount"
-                               name="amount" type="number" value="{{ total_payment }}" {% if  total_payment > 0 %} readonly {% endif %}/>
+                        <input class="form-control" id="amount-text"
+                               name="amount-text" type="number" value="{{ total_payment }}" {% if  total_payment > 0 %} readonly {% endif %}/>
+                        <input type="hidden" name="amount" id="amount" value="{{ total_payment }}"/>
                     </div>
                 </div>
                 <div class="col-md-6">

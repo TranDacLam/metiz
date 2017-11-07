@@ -52,7 +52,7 @@ $(document).ready(function() {
         .done(function(response) {
             // Check total page let remove button load more
             if(page >= response.total_page){
-                $('.metiz-movies>.text-center button').remove();
+                $('.news-custom>.text-center button').remove();
             }
             
             // increase the value page +1
