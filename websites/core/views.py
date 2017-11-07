@@ -298,16 +298,18 @@ def home(request):
         data_slide = SlideShow.objects.filter(is_draft=False)
 
         # get post item new and offer
-        new_offer = Post.objects.get(key_query='kq_new_offer', is_draft=False)
+        try:
+            new_offer = Post.objects.get(key_query='kq_new_offer', is_draft=False)
 
+        except Post.DoesNotExist, e:
+            print "Error Post : %s" % e
+            new_offer = None
         return render(request, 'websites/home.html', {'top_news': top_news, 'list_showing': list_showing,
                                                       'list_coming_soon': list_coming_soon,
                                                       'position_1': position_1[0] if position_1 else None,
                                                       'position_2': position_2[0] if position_2 else None,
                                                       'data_slide': data_slide, 'new_offer': new_offer})
-    except Post.DoesNotExist, e:
-        print "Error Post : %s" % e
-        return HttpResponse(status=404)
+    
     except Movie.DoesNotExist, e:
         print "Error Movie : %s" % e
         return HttpResponse(status=404)
