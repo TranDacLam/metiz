@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-01 16:23+0700\n"
+"POT-Creation-Date: 2017-11-07 14:45+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,56 +30,77 @@ msgstr "Chọn rạp"
 msgid "Select date play"
 msgstr "Chọn ngày chiếu"
 
-#: templates/modal.html:111 templates/modal.html:151 templates/modal.html:196
+#: templates/modal.html:115 templates/modal.html:160 templates/modal.html:210
 #: templates/registration/profile.html:98 templates/registration/signup.html:40
-#: templates/registration/signup.html:107 websites/booking/models.py:15
+#: templates/registration/signup.html:109 websites/booking/models.py:20
 msgid "Email"
 msgstr ""
 
-#: templates/modal.html:112 templates/modal.html:152 templates/modal.html:197
-#: templates/registration/signup.html:41 templates/registration/signup.html:109
+#: templates/modal.html:116 templates/modal.html:161 templates/modal.html:211
+#: templates/registration/signup.html:41 templates/registration/signup.html:111
 msgid "Enter Email Here"
 msgstr "Nhập email ở đây"
 
-#: templates/modal.html:116 templates/registration/signup.html:44
-#: templates/registration/signup.html:128
+#: templates/modal.html:120 templates/registration/signup.html:44
+#: templates/registration/signup.html:131
 msgid "Password"
 msgstr "Mật Khẩu"
 
-#: templates/modal.html:117 templates/registration/signup.html:45
-#: templates/registration/signup.html:131
+#: templates/modal.html:121 templates/registration/signup.html:45
+#: templates/registration/signup.html:134
 msgid "Enter Password Here"
 msgstr "Nhập Mật Khẩu Ở Đây"
 
-#: templates/modal.html:120 templates/registration/signup.html:48
+#: templates/modal.html:124 templates/registration/signup.html:49
 msgid "Login"
 msgstr "Đăng Nhập"
 
-#: templates/modal.html:141 templates/modal.html:184
-#: templates/registration/profile.html:56 templates/registration/signup.html:64
+#: templates/modal.html:150 templates/modal.html:198
+#: templates/registration/profile.html:56 templates/registration/signup.html:66
 #: websites/core/models.py:128
 msgid "Full Name"
 msgstr "Họ Tên"
 
-#: templates/modal.html:142 templates/modal.html:185
-#: templates/registration/signup.html:66
+#: templates/modal.html:151 templates/modal.html:199
+#: templates/registration/signup.html:68
 msgid "Enter Full Name Here"
 msgstr "Nhập Họ Tên Ở Đây"
 
-#: templates/modal.html:146 templates/modal.html:190
-#: templates/registration/profile.html:86 templates/registration/signup.html:94
-#: websites/booking/models.py:14
+#: templates/modal.html:155 templates/modal.html:204
+#: templates/registration/profile.html:86 templates/registration/signup.html:96
+#: websites/booking/models.py:19
 msgid "Phone"
 msgstr "Số Điện Thoại"
 
-#: templates/modal.html:147 templates/modal.html:191
-#: templates/registration/signup.html:96
+#: templates/modal.html:156 templates/modal.html:205
+#: templates/registration/signup.html:98
 msgid "Enter Phone Here"
 msgstr "Nhập Số Điện Thoại Ở Đây"
 
 #: templates/registration/email/metiz_account_created_confirm.html:115
+#: templates/websites/booking/email/booking_notification.html:115
 msgid "mail.hello"
 msgstr "Xin chào"
+
+#: templates/registration/email/metiz_account_created_confirm.html:118
+msgid "account.created.content1"
+msgstr "Chúc mừng bạn đã đăng ký thành công tài khoản tại"
+
+#: templates/registration/email/metiz_account_created_confirm.html:118
+msgid "account.created.content2"
+msgstr "với địa chỉ email"
+
+#: templates/registration/email/metiz_account_created_confirm.html:118
+msgid "account.created.content3"
+msgstr "Vui lòng bấm vào nút bên dưới để kích hoạt tài khoản"
+
+#: templates/registration/email/metiz_account_created_confirm.html:122
+msgid "account.created.active"
+msgstr "Kích Hoạt Tài Khoản"
+
+#: templates/registration/email/metiz_account_created_confirm.html:125
+msgid "account.created.content4"
+msgstr "Cảm ơn bạn và chào mừng bạn đến với Metiz!"
 
 #: templates/registration/email/metiz_account_created_confirm.html:133
 msgid "mail.register.footer1"
@@ -90,30 +111,32 @@ msgid "mail.register.footer2"
 msgstr "để được hỗ trợ."
 
 #: templates/registration/email/metiz_account_created_confirm.html:137
+#: templates/websites/booking/email/booking_notification.html:134
 msgid "mail.register.footer3"
 msgstr "Trân Trọng Cảm Ơn,"
 
 #: templates/registration/email/metiz_account_created_confirm.html:139
+#: templates/websites/booking/email/booking_notification.html:136
 msgid "mail.register.footer4"
-msgstr "Đội Ngũ Hỗ Trợ Helio Center."
+msgstr "Đội Ngũ Hỗ Trợ Metiz Cinema."
 
 #: templates/registration/password_reset_subject.txt:2
 msgid "Metiz Account Password Reset."
 msgstr "Metiz Lấy lại mật khẩu"
 
-#: templates/registration/profile.html:65 templates/registration/signup.html:73
+#: templates/registration/profile.html:65 templates/registration/signup.html:75
 msgid "Gender"
 msgstr "Giới Tính"
 
-#: templates/registration/profile.html:68 templates/registration/signup.html:76
+#: templates/registration/profile.html:68 templates/registration/signup.html:78
 msgid "Male"
 msgstr "Nam"
 
-#: templates/registration/profile.html:69 templates/registration/signup.html:77
+#: templates/registration/profile.html:69 templates/registration/signup.html:79
 msgid "Female"
 msgstr "Nữ"
 
-#: templates/registration/profile.html:77 templates/registration/signup.html:85
+#: templates/registration/profile.html:77 templates/registration/signup.html:87
 msgid "Birth Date"
 msgstr "Ngày Sinh"
 
@@ -130,7 +153,7 @@ msgid "Enter Email Here.."
 msgstr "Nhập email ở đây"
 
 #: templates/registration/profile.html:107
-#: templates/registration/signup.html:116
+#: templates/registration/signup.html:118
 msgid "Personal ID"
 msgstr "Số CMND"
 
@@ -139,27 +162,27 @@ msgid "Enter Personal ID Here.."
 msgstr "Nhập Số CMND Ở Đây"
 
 #: templates/registration/profile.html:119
-#: templates/registration/signup.html:138
+#: templates/registration/signup.html:153
 msgid "City"
 msgstr "Thành Phố"
 
 #: templates/registration/profile.html:123
-#: templates/registration/signup.html:141
+#: templates/registration/signup.html:156
 msgid "Choose City"
 msgstr "Chọn Thành Phố"
 
 #: templates/registration/profile.html:131
-#: templates/registration/signup.html:161
+#: templates/registration/signup.html:164
 msgid "District"
 msgstr "Quận"
 
 #: templates/registration/profile.html:135
-#: templates/registration/signup.html:164
+#: templates/registration/signup.html:167
 msgid "Choose District"
 msgstr "Chọn Quận"
 
 #: templates/registration/profile.html:145
-#: templates/registration/signup.html:175
+#: templates/registration/signup.html:179
 msgid "Address"
 msgstr "Địa Chỉ"
 
@@ -167,86 +190,107 @@ msgstr "Địa Chỉ"
 msgid "Enter Address Here.."
 msgstr "Nhập Địa Chỉ Ở Đây"
 
-#: templates/registration/signup.html:3 templates/registration/signup.html:194
+#: templates/registration/signup.html:3 templates/registration/signup.html:199
 msgid "Signup"
 msgstr "Đăng Ký"
 
-#: templates/registration/signup.html:87
+#: templates/registration/signup.html:89
 msgid "Choose Your Birthday"
 msgstr "Chọn Ngày Sinh Của Bạn"
 
-#: templates/registration/signup.html:118
+#: templates/registration/signup.html:120
 msgid "Enter Personal ID Here"
 msgstr "Nhập Số CMND Ở Đây"
 
-#: templates/registration/signup.html:152
+#: templates/registration/signup.html:141
 msgid "Confirm Password"
 msgstr "Xác Nhận Mật Khẩu"
 
-#: templates/registration/signup.html:154
+#: templates/registration/signup.html:143
 msgid "Enter Password Again"
 msgstr "Nhập Lại Mật Khẩu"
 
-#: templates/registration/signup.html:177
+#: templates/registration/signup.html:181
 msgid "Enter Address Here"
 msgstr "Nhập Địa Chỉ Ở Đây"
+
+#: templates/websites/booking/email/booking_notification.html:118
+msgid "mail.booking.code"
+msgstr "Vé của quý khách đã được xác nhận. Mã vé"
+
+#: templates/websites/booking/email/booking_notification.html:122
+msgid "mail.booking.content"
+msgstr ""
+
+#: templates/websites/booking/email/booking_notification.html:130
+msgid "mail.booking.footer1"
+msgstr "Nếu gặp sự cố, vui lòng gọi "
+
+#: templates/websites/booking/email/booking_notification.html:130
+msgid "mail.booking.footer2"
+msgstr "để được hỗ trợ."
 
 #: websites/booking/api.py:26 websites/booking/api.py:51
 #: websites/booking/api.py:80 websites/booking/api.py:108
 msgid "Handle data error."
-msgstr ""
+msgstr "Xử lý dử liệu bị lỗi."
 
 #: websites/booking/api.py:54 websites/booking/api.py:83
 #: websites/booking/api.py:111
 msgid "Internal Server Error. Cannot Post Booking."
-msgstr ""
+msgstr "Máy chủ bị lỗi. Không thể booking."
 
-#: websites/booking/models.py:12
+#: websites/booking/models.py:17
 msgid "Order ID"
-msgstr ""
+msgstr "Mã Hoá Đơn"
 
-#: websites/booking/models.py:13
+#: websites/booking/models.py:18
 msgid "Amount"
 msgstr ""
 
-#: websites/booking/models.py:16
-msgid "Seat"
-msgstr ""
+#: websites/booking/models.py:21
+msgid "Seats"
+msgstr "Số Ghế"
 
-#: websites/booking/models.py:17
-msgid "Time Show"
-msgstr "Cho Phép Hiển Thị"
+#: websites/booking/models.py:23 websites/core/models.py:48
+#: websites/core/models.py:105
+msgid "Description"
+msgstr "Mô Tả"
 
-#: websites/booking/models.py:30
+#: websites/booking/models.py:38
 msgid "Date Showing"
 msgstr "Ngày Tham Gia"
 
-#: websites/booking/views.py:56 websites/booking/views.py:77
-#: websites/booking/views.py:155 websites/booking/views.py:174
-#: websites/registration/views.py:49
+#: websites/booking/views.py:124 websites/booking/views.py:145
+#: websites/booking/views.py:231 websites/booking/views.py:250
+#: websites/registration/views.py:46
 msgid "Internal Server Error. Please contact administrator."
-msgstr ""
+msgstr "Máy chủ bị lỗi. Vui lòng liên hệ quản trị viên."
 
-#: websites/booking/views.py:71
+#: websites/booking/views.py:139
 msgid "Fields id_showtime and id_server is required."
-msgstr ""
+msgstr "Trường id_showtime và id_server là bắt buộc."
 
-#: websites/booking/views.py:86
-msgid "Fields lst_seats and id_showtime is required."
-msgstr ""
+#: websites/booking/views.py:154
+msgid "Fields lst_seats and id_showtime, working_id is required."
+msgstr "trường lst_seats và id_showtime và working_id là bắt buộc."
 
-#: websites/booking/views.py:105
+#: websites/booking/views.py:173
 #, python-format
 msgid "These chairs have been selected : %s"
-msgstr ""
+msgstr "Những ghế này đã được chọn : %s"
 
-#: websites/booking/views.py:125
+#: websites/booking/views.py:196
 msgid "Cannot Booking Seats. Please Contact Administrator."
-msgstr ""
+msgstr "Không thể đặt ghế. Vui lòng liên hệ quản trị viên."
 
-#: websites/booking/views.py:163
+#: websites/booking/views.py:239
 msgid "Fields barcode is required."
-msgstr ""
+msgstr "Trường barcode là bắt buộc."
+
+#: websites/booking/views.py:257
+msgid "Fields working_id is required."
+msgstr "Trường working_id là bắt buộc."
 
 #: websites/core/admin.py:30
 msgid "Passwords don't match"
@@ -311,10 +355,6 @@ msgstr ""
 #: websites/core/models.py:176 websites/core/models.py:195
 msgid "Name"
 msgstr "Tên"
-
-#: websites/core/models.py:48 websites/core/models.py:105
-msgid "Description"
-msgstr "Mô Tả"
 
 #: websites/core/models.py:54
 msgid "Rated"
@@ -470,15 +510,15 @@ msgstr "Bài Viết"
 msgid "Slide Show"
 msgstr ""
 
-#: websites/core/views.py:53 websites/core/views.py:97
+#: websites/core/views.py:52 websites/core/views.py:97
 #: websites/core/views.py:178
 msgid "Page Number Not Type Integer."
-msgstr ""
+msgstr "Số trang không phải là kiểu số."
 
-#: websites/core/views.py:57 websites/core/views.py:101
+#: websites/core/views.py:56 websites/core/views.py:101
 #: websites/core/views.py:182
 msgid "Page Number Not Found."
-msgstr ""
+msgstr "Số trang không tìm thấy."
 
 #: websites/registration/forms.py:90
 msgid "[Metiz] You've been created an account - Click to Verify!"
@@ -514,15 +554,15 @@ msgstr ""
 msgid "Either message_html should be not None"
 msgstr ""
 
-#: websites/registration/views.py:71
+#: websites/registration/views.py:68
 msgid "Register Account Successfully."
 msgstr "Tạo Tài Khoản Thành Công."
 
-#: websites/registration/views.py:127
+#: websites/registration/views.py:124
 msgid "Update Password Successfully."
 msgstr "Thay Đổi Mật Khẩu Thành Công."
 
-#: websites/registration/views.py:150
+#: websites/registration/views.py:147
 msgid "Update Profile Successfully."
 msgstr "Cập Nhật Thông Tin Cá Nhân Thành Công."
 
@@ -533,6 +573,13 @@ msgstr ""
 #: websites/settings.py:129
 msgid "English"
 msgstr ""
+
+#: websites/vnpay_payment/views.py:92
+msgid "[Metiz] Booking Movie Tickets Successful !"
+msgstr "[Metiz] Đặt Vé Phim Thành Công"
+
+#~ msgid "Time Show"
+#~ msgstr "Cho Phép Hiển Thị"
 
 #~ msgid "Register"
 #~ msgstr "Đăng Ký"

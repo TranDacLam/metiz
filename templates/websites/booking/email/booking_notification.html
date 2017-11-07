@@ -112,17 +112,14 @@
               </td>
           </tr>
           <tr>
-              <td colspan="2" class="header" align="left" valign="top">{% trans "mail.hello" %} {{user.full_name}}</td>
+              <td colspan="2" class="header" align="left" valign="top">{% trans "mail.hello" %} {{full_name}}</td>
           </tr>
           <tr>
-              <td colspan="2" class="padding-40" align="left" valign="top">{% trans "account.created.content1" %} <b>metiz.vn</b> {% trans "account.created.content2" %} {{ email }}. {% trans "account.created.content3" %}.</td>
+              <td colspan="2" class="padding-40" align="left" valign="top">{% trans "mail.booking.code" %}: <b>{{barcode}}</b></td>
               
           </tr>
           <tr>
-            <td colspan="2" class="padding-40" align="left" valign="top"><span class="site_url font-20" id="site_url" ><a href="{{ activate_url }}" class="activation" target="_blank" >{% trans "account.created.active" %}</a></span></td>
-          </tr>
-          <tr>
-            <td colspan="2" class="padding-40" align="left" valign="top"><span class="site_url" id="site_url"></span> {% trans "account.created.content4" %}!</td>
+            <td colspan="2" class="padding-40" align="left" valign="top">{{content}}</td>
           </tr>
           <tr>
               <td colspan="2" class="sperator-footer" align="left" valign="top">
@@ -130,7 +127,7 @@
               </td>
           </tr>
           <tr>
-              <td colspan="2" class="footer1" align="left" valign="top"><span class="padding-content">{% trans "mail.register.footer1" %}<span class="" id=""><a href="tel:02363630888">(0236) 3 630 888</a></span> {% trans "mail.register.footer2" %}</span></td>
+              <td colspan="2" class="footer1" align="left" valign="top"><span class="padding-content">{% trans "mail.booking.footer1" %}<span class="" id=""><a href="tel:02363630888">(0236) 3 630 888</a></span> {% trans "mail.booking.footer2" %}</span></td>
           </tr>
           <tr>
               <td colspan="2" class="footer1" align="left" valign="top">
