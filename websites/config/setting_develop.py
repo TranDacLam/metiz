@@ -14,7 +14,7 @@ DATABASES = {
 }
 
 # VNPAY CONFIG
-VNPAY_RETURN_URL = 'http://metiz.dht:8000/payment_return'  # get from config
+VNPAY_RETURN_URL = 'http://172.16.12.10:8000/payment_return'  # get from config
 VNPAY_PAYMENT_URL = 'http://sandbox.vnpayment.vn/paymentv2/vpcpay.html'  # get from config
 VNPAY_API_URL = 'http://sandbox.vnpayment.vn/merchant_webapi/merchant.html'
 VNPAY_TMN_CODE = 'HELIOKP1'  # Website ID in VNPAY System, get from config
