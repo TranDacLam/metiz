@@ -359,7 +359,7 @@ ul.metiz-movie-tabs {
     opacity: 1;
 }
 .slide-home-custom{
-    padding-top: 20px;
+    padding-top: 10px;
 }
 .widget-static-block img{
     height: 129px;
@@ -432,6 +432,9 @@ ul.metiz-movie-tabs {
 	}
 	.new-img{
 	}
+    #ads-facebook #banner-home{
+        height: 168px;
+    }
 }
 @media screen and (max-width: 667px) {
 	#news img{
@@ -473,6 +476,10 @@ ul.metiz-movie-tabs {
 	#news #box {
 		height:auto;
 	}
+    #ads-facebook #banner-home{
+        padding: 0px;
+        height: 118px;
+    }
 }
 @media screen and (max-width: 420px) {
     .session-movie .nav-tabs>li>span {

@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class BookingInfomation(DateTimeModel):
     TYPE = (
+        ('cancel', 'Cancel'),
         ('pendding', 'Pendding'),
         ('done', 'Done')
     )

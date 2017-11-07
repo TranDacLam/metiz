@@ -32,18 +32,15 @@ def login(request):
         # error
         if request.method == 'POST':
             login_form = LoginForm(request.POST, request=request)
-            if request.POST.get('schedule_key'):
+            if request.POST.get('is_popup_schedule', None):
                 try:
                     if login_form.is_valid():
                         request.session['full_name'] = request.user.full_name
                         request.session['phone'] = request.user.phone
                         request.session['email'] = request.user.email
                         return JsonResponse({})
-                    else:
-                        data={
-                            'errors': login_form.errors
-                        }
-                        return JsonResponse(data , status=400)
+                        
+                    return JsonResponse({"code": 400, 'errors': login_form.errors}, status=400)
                 except Exception, e:
                     print "Error: ", e
                     return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)

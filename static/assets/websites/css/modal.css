@@ -70,6 +70,18 @@
     margin: 30px 0px 50px 0px;
     line-height: 1.5;
 }
+#test-popup .form-control{
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#test-popup .modal.in .modal-dialog,
+#test-popup .modal.fade .modal-dialog {
+    -webkit-transform: inherit ;
+    -moz-transform: inherit ;
+    -o-transform: inherit ;
+    transform: inherit ;
+}
 .white-popup {
   position: relative;
   background: #FFF;
@@ -120,14 +132,16 @@
     padding: 20px;
     width: 100%;
 }
-.section-white .title{
+.section-white .title, .section-lightpink .title{
     font-size: 24px;
     margin-top: 20px;
     margin-bottom: 10px;
     color: black;
     margin-left: 7px;
 }
-
+.section-lightpink .title{
+    margin-left: 43px;
+}
 .popup-booking .movie-time-line-box {
     padding-bottom: 30px;
 }
@@ -326,8 +340,11 @@
     color: red;
     margin-top: 7px;
 }
-#test-popup button{
+#test-popup button, .modal-body p{
     font-family: 'SairaSemiCondensed-Medium';
+}
+#test-popup .modal-body p{
+    color: black;
 }
 #confirm .tab-header a{
     font-family: 'SairaSemiCondensed-Medium';
@@ -338,6 +355,8 @@
 .modal > * {
     font-weight: 500;
     font-size: 17px;
+    box-shadow: none;
+    text-shadow: none;
 }
 #test-popup .modal .form-control{
     font-size: 17px;

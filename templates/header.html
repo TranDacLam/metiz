@@ -7,9 +7,9 @@
                     <p class="welcome-msg">
                         <a href="{% url 'profile' %}" title="Tài khoản"> Xin chào, 
                          {% if user.username %}  
-                            {{user.username}}!
+                            {{user.username}}
                         {%else%}  
-                            {{user.email}}!
+                            {{user.email}}
                         {%endif%}</a>
                     </p>
                 </div>
@@ -35,7 +35,6 @@
     <div class="page-header-container">
         <a class="logo logo-large" href="{% url 'home'%}">
             <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="large" />
-           
         </a>
        
         <!-- Navigation -->
@@ -43,29 +42,51 @@
             <nav class="navbar">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                             <a class="logo logo-small text-center " href="{% url 'home'%}">
-                                <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="" />
-                            </a>
-                            <a class="logo-medium" href="{% url 'home'%}">
-                                <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="center-block" />
-                            </a>
-                         <div class="skip-links">
-                            <button class=" skip-link skip-nav navbar-toggle " data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+                        <a class="logo logo-small text-center " href="{% url 'home'%}">
+                            <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="" />
+                        </a>
+                        <a class="logo-medium" href="{% url 'home'%}">
+                            <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="center-block" />
+                        </a>
+                        <div class="skip-links">
+                            <button id="menu-btn" class=" skip-link skip-nav navbar-toggle" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
                                 <span class="icon-nav glyphicon glyphicon-align-justify"></span>
                                 <span class="label">Menu</span>
                             </button>
 
-                            <a href="{% url 'login'%}"><button class=" skip-link skip-account navbar-toggle ">
-                                    <span class="icon-nav glyphicon glyphicon-user   "></span>
+                            <button id="login-btn" class=" skip-link skip-account navbar-toggle" data-toggle="collapse" data-target="#loginNavbar" aria-expanded="false">
+                                <span class="icon-nav glyphicon glyphicon-user"></span>
+                                {% if user.is_authenticated %}
+                                    <!-- <span class="label">Hồ sơ/ Đăng xuất</span> -->
+                                    <span class="label">
+                                        {% if user.username %}  
+                                            {{user.username}}
+                                        {%else%}  
+                                            {{user.email}}
+                                        {%endif%}
+                                    </span>
+                                {% else %}
                                     <span class="label">Đăng nhập/ Đăng ký</span>
-                            </button></a>
+                                {% endif %}
+                            </button>
+                            
                         </div>
+                    </div>
+                    <div class="collapse navbar-collapse" id='loginNavbar'>
+                        <ul class="nav navbar-nav">
+                            {% if user.is_authenticated %}
+                                <li class="dropdown"><a class="dropdown-toggle" href="{% url 'profile'%}">Hồ sơ</a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" href="{% url 'logout'%}">Đăng xuất</a></li>
+                            {% else %}
+                                <li class="dropdown"><a class="dropdown-toggle" href="{% url 'login'%}">Đăng nhập</a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" href="{% url 'register'%}">Đăng ký</a></li>
+                            {% endif %}
+                        </ul>
                     </div>
                     <div class="collapse navbar-collapse collapse-custom" id="myNavbar">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
-                                <a href="#test-popup" data-all-movie="true" class="open-popup-link dropdown-toggle popup-movie-schedule" >Lịch chiếu</a>
-                                
+                                <a href="#test-popup" data-date-select="" data-all-movie="true" class="open-popup-link dropdown-toggle popup-movie-schedule" >Lịch chiếu</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Phim </a>
@@ -80,7 +101,7 @@
                             <li class="dropdown">
                                 <a class="dropdown-toggle" href="#">BLOG PHIM</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown" id="dropdown-member">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Thành viên</a>
                                 <ul class="dropdown-menu">
                                     {% if user.is_authenticated %}
