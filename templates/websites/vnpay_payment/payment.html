@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
                         <input class="form-control" id="amount-text"
-                               name="amount-text" type="number" value="{{ total_payment }}" {% if  total_payment > 0 %} readonly {% endif %}/>
+                               name="amount-text" type="text" value="{{ total_payment }}" {% if  total_payment > 0 %} readonly {% endif %}/>
                         <input type="hidden" name="amount" id="amount" value="{{ total_payment }}"/>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                     <input type="hidden" id="id_movie_time" name="id_movie_time" value="{{id_movie_time}}" >
                     <input type="hidden" id="id_movie_date_active" name="id_movie_date_active" value="{{id_movie_date_active}}" >
 
-                    <button type="submit" class="btn btn-default" id="btn-payment-seats">Thanh toán Redirect</button>
+                    <button type="submit" class="btn btn-default" id="btn-payment-seats">THANH TOÁN</button>
                 </div>
                 {% csrf_token %}
                 <div class="form-group"></div>

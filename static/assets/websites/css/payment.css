@@ -6,6 +6,11 @@
         margin: 0 10px 0 10px;
     }
 }
+@media only screen and (min-width: 1024px){
+    .vnpayment #create_form button{
+        margin-right: 60px;
+    }
+}
 #time-cout-down{
     color: red;
 }
@@ -74,4 +79,7 @@
 .payment-return .row .col-sm-3{
     font-family: "SairaSemiCondensed-Media", sans-serif;
     font-weight: bold;
+}
+.vnpayment input,.vnpayment textarea{
+    padding-left: 16px;
 }

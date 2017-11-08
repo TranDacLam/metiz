@@ -12,7 +12,7 @@ $(document).ready(function() {
     	'email': 'Email không hợp lệ',
     	'number': 'Nhập các chữ số',
     	'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
-    	'validatePassword': 'Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt và có cả chữ và số',
+    	'validatePassword': 'Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.',
     	'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
     } else {
     	message = {'required': 'This field is required', 
@@ -26,6 +26,23 @@ $(document).ready(function() {
     	'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
     	'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
     }
+
+    // validate password
+    $.validator.addMethod(
+        "regex",
+         function(value, element) {
+            return this.optional(element) || (value.match(/[a-z]/) && value.match(/[!@#$%^&*()_+A-Z]/) && value.match(/[0-9]/));
+        },
+        message.validatePassword
+    );
+
+    // validate phone, persional only number
+    $('#signup_form input[name=phone], #signup_form input[name=personal_id]').keyup(function(e) {
+        if (/\D/g.test(this.value)) {
+            // Filter non-digits from input value.
+            this.value = this.value.replace(/\D/g, '');
+        }
+    });
 
 	// validate form
 	$('#signup_form').validate({
@@ -49,7 +66,7 @@ $(document).ready(function() {
 			password1:{
 				required: true,
 				minlength: 8,
-				validatePassword: true
+				regex: true
 			},
 			password2:{
 				required: true,
@@ -75,7 +92,7 @@ $(document).ready(function() {
 			},
 			password1:{
 				required: message.required,
-				minlength: message.minlength_8
+				minlength: message.validatePassword
 			},
 			password2:{
 				required: message.required,
@@ -96,7 +113,7 @@ $(document).ready(function() {
 			password:{
 				required: true,
 				minlength: 8,
-				validatePassword: true
+				regex: true
 			},
 		},
 		messages:{
@@ -106,7 +123,7 @@ $(document).ready(function() {
 			},
 			password:{
 				required: message.required,
-				minlength: message.minlength_8,
+				minlength: message.validatePassword,
 			}
 		}
 	});
@@ -140,6 +157,8 @@ $(document).ready(function() {
 	// Step 2: Choose city, hide all district, show district appropriate, 
 	// Step 3: Change city, hide all district, show district appropriate, 
 
+    // *** User for Page profile and signup ***
+    // *begin*
 	// data city 
 	var list_city = {'Đà Nẵng': [' Hải Châu', 'Thanh Khê', ' Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu', 'Hòa Vang', ' Cẩm Lệ', ' Hoàng Sa'], 
 	'Hà Nội': [' Hoàn Kiếm', 'Ba Đình', 'Hai Bà Trưng'], 
@@ -175,7 +194,7 @@ $(document).ready(function() {
 	 	});
 	});
 	$('.list-district').children().hide();
-
+    $('.list-district .show-district').css('display','block');
 
 	// funtion show district for each city
 	function selectDistrict(list_city){
@@ -197,13 +216,15 @@ $(document).ready(function() {
 		event.preventDefault();
 		selectDistrict(list_city);
 	});
-
+   
 	// set datetimepicker
 	$('#birth_date').datetimepicker({
 		timepicker:false,
 		format:'d-m-Y',
         maxDate:'0'
 	});
+
+    // *end*
 
 	// checkbox dieu khoan register
 	$('#is_agree').on('click', function(){

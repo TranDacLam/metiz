@@ -242,3 +242,6 @@ div.seatCharts-seat.available.seat-ld {
 .clear-both {
     clear: both;
 }
+div.seatCharts-space{
+    height: 100%;
+}

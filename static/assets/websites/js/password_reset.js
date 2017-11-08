@@ -1,10 +1,11 @@
 $(document).ready(function() {
+    var valid_pass = "Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt";
     $.validator.addMethod(
         "regex",
          function(value, element) {
             return this.optional(element) || (value.match(/[a-z]/) && value.match(/[!@#$%^&*()_+A-Z]/) && value.match(/[0-9]/));
         },
-        "Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt"
+        valid_pass
     );
 
     $("#form-validate").validate({
@@ -22,7 +23,7 @@ $(document).ready(function() {
         messages:{
             new_password1: {
                 required: 'Mật khẩu không được để trống.',
-                minlength: 'Mật khẩu ít nhất 8 ký tự.',
+                minlength: valid_pass,
             },
             new_password2: { 
                 equalTo:"Hai trường mật khẩu không giống nhau.",

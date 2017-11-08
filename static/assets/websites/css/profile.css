@@ -134,6 +134,9 @@
     nav.sidebar li {
         width: 100%;
     }
+    .metiz-edit-btn.buttons-set button.button{
+        margin-right: 32px;
+    }
 }
 .profile-custom .form-control{
     font-size: 15px;

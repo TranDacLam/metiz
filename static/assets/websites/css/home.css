@@ -468,6 +468,13 @@ ul.metiz-movie-tabs {
 	}
 	.new-img{
 	}
+    #ads-facebook #banner-home{
+        padding: 0px;
+        height: 104px;
+    }
+    #ads-facebook{
+        padding: 35px 0px 35px 0px;
+    }
 }
 @media screen and (max-width: 520px) {
 	#news img{
@@ -496,8 +503,7 @@ ul.metiz-movie-tabs {
 		height:auto;
 	}
     #ads-facebook #banner-home{
-        padding: 0px;
-        height: 118px;
+        height: 90px;
     }
 }
 @media screen and (max-width: 420px) {
@@ -594,6 +600,9 @@ ul.metiz-movie-tabs {
     }
     .owl-nav .lSPrev img, .owl-nav .lSNext img{
         width: 45px
+    }
+    #ads-facebook #banner-home{
+        height: 79px;
     }
 }
 @media screen and (max-width: 360px) {
