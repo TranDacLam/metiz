@@ -5,18 +5,117 @@ from datetime import datetime
 from django.core.serializers import json
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
-import ast
+from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
+from django.contrib.sites.models import Site
 from forms import PaymentForm
 from vnpay import vnpay
 from django.conf import settings
 from booking.models import BookingInfomation
 from booking import api
+from registration import metiz_email
+from Crypto.Cipher import AES
+import ast
 import requests
 import random
-from Crypto.Cipher import AES
 import base64
-from django.utils import timezone
 
+
+def data_encrypt_cbc(data):
+    """ encrypt content data with padding """
+    # padding = block_size - (len(data) % block_size)
+    # padding = 16 - (len(data) % 16)
+    # str_with_padding = data + chr(padding)*padding
+    block_size = 16
+    padding = block_size - (len(data) % block_size)
+    data += chr(padding) * padding
+
+    AES.key_size = 128
+
+    crypt_object = AES.new(key=settings.SMS_KEY,
+                           mode=AES.MODE_CBC, IV=settings.SMS_KEY_IV)
+
+    encrypted_text = crypt_object.encrypt(data)
+
+    return base64.b64encode(encrypted_text)
+
+
+def send_sms(phone, content):
+    try:
+        if str(phone).startswith("84"):
+            phone_number = str(phone)
+        elif str(phone).startswith("0"):
+            phone_number = "84" + str(phone)[1:]
+        else:
+            phone_number = "84" + str(phone)
+        content_sms = content
+        id_sms = random.randint(0, 999)
+        time_send = timezone.localtime(timezone.now()).strftime("%Y%m%d%H%M%S")
+        brand = settings.SMS_BRAND
+        xml = "<content><ReceiverPhone>%s</ReceiverPhone><Message>%s</Message><RequestID>%s</RequestID><BrandName>%s</BrandName><Senttime>%s</Senttime></content>" % (
+            str(phone_number), str(content_sms), str(id_sms), brand, str(time_send))
+
+        xml_encode = data_encrypt_cbc(xml.replace("\r\n", ""))  # mã hóa
+        user_ctnet = data_encrypt_cbc(settings.SMS_USER)
+        pass_ctnet = data_encrypt_cbc(settings.SMS_PASSWORD)
+
+        soap_request = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+        soap_request += "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+        soap_request += "<soap:Body>\n"
+        soap_request += "<sendsms xmlns=\"http://tempuri.org/\">\n"
+        soap_request += "<user>%s</user>\n" % user_ctnet
+        soap_request += "<pass>%s</pass>\n" % pass_ctnet
+        soap_request += "<xml>%s</xml>\n" % xml_encode
+        soap_request += "</sendsms>\n"
+        soap_request += "</soap:Body>\n"
+        soap_request += "</soap:Envelope>"
+
+        headers = {
+            "Content-type": "text/xml;charset=\"utf-8\"",
+            "Accept": "text/xml",
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
+            "SOAPAction": "\"http://tempuri.org/sendsms\"",
+            "Content-length": "%s" % len(soap_request),
+        }
+        response = requests.post(
+            settings.SMS_URL, data=soap_request, headers=headers)
+        print "SOAP  Ressponse ", response.content
+        return response.content
+
+    except Exception, e:
+        print "Error send_sms : %s" % e
+        pass
+        return None
+
+
+def send_mail_booking(is_secure, email, full_name, barcode, content):
+    try:
+        message_html = "websites/booking/email/booking_notification.html"
+        subject = _("[Metiz] Booking Movie Tickets Successful !")
+
+        protocol = 'http://'
+        if is_secure:
+            protocol = 'https://'
+        logo_url = protocol + \
+            str(Site.objects.get_current()) + \
+            '/static/websites/img/logo.png'
+        data_binding = {
+            'full_name': full_name,
+            'URL_LOGO': logo_url,
+            'barcode': barcode,
+            'content': content
+        }
+        # Send email activation link
+        metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
+                              email], data_binding)
+    except Exception, e:
+        print "Error se , ", e
+
+
+def cancel_seats(seats_choice, id_server):
+    for seat in seats_choice:
+        api.call_api_cancel_seat(seat, id_server=id_server)
 
 
 def payment(request):
@@ -27,7 +126,7 @@ def payment(request):
         seats_choice = request.POST.get("seats_choice", None)
         working_id = request.POST.get("working_id", None)
         id_server = request.POST.get("id_server", 1)
-        
+
         if form.is_valid():
             order_type = form.cleaned_data['order_type']
             order_id = form.cleaned_data['order_id']
@@ -73,7 +172,7 @@ def payment(request):
             booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session[
                                               "phone"], email=request.session["email"], seats=seats_choice, barcode=barcode,
                                               id_server=id_server, order_status="pendding")
-            
+
             if not request.user.is_anonymous():
                 booking_order.user = request.user
             booking_order.save()
@@ -112,6 +211,7 @@ def payment(request):
 
 
 def payment_ipn(request):
+    """ Process Status Payment """
     inputData = request.GET
     if inputData:
         vnp = vnpay()
@@ -127,21 +227,76 @@ def payment_ipn(request):
         vnp_CardType = inputData['vnp_CardType']
         if vnp.validate_response(settings.VNPAY_HASH_SECRET_KEY):
             # Check & Update Order Status in your Database
-            # Your code here
-            firstTimeUpdate = True
-            if firstTimeUpdate:
-                if vnp_ResponseCode == '00':
-                    print('Payment Success. Your code implement here')
-                else:
-                    print('Payment Error. Your code implement here')
+            try:
+                """ 
+                    get booking order verify with vnpayment 
+                    step 1: get booking order by id, 
+                            return code 00 if process successfully. 
+                            return code 01 if order_id not found. 
+                            return code 02 if order have been process before.
+                            return code 99 if process booking movie error.
+                    step 2: Call Api Confirm Booking and send sms or email if success
+                    Step 3: Handle payment process error
+                """
+                booking_order = BookingInfomation.objects.get(
+                    order_id=order_id)
 
-                # Return VNPAY: Merchant update success
-                result = JsonResponse(
-                    {'RspCode': '00', 'Message': 'Confirm Success'})
-            else:
-                # Already Update
-                result = JsonResponse(
-                    {'RspCode': '02', 'Message': 'Order Already Update'})
+                # Verify Order_id proccess update before
+                if booking_order.order_status == 'done':
+                    return JsonResponse({'RspCode': '02', 'Message': 'Order Already Update'})
+
+                if vnp_ResponseCode == '00':
+                    print('Payment Success. Processing Booking Confirm')
+                    id_server = booking_order.id_server if booking_order.id_server else 1
+                    # Payment Success update order status and  call api confirm
+                    # booking order
+                    result_confirm = api.call_api_booking_confirm(
+                        booking_order.barcode, id_server)
+
+                    # Handle Confirm Booking Error
+                    if result_confirm["SUCCESS"] == 'false':
+                        # Payment Error: cancel seats chooice and return for
+                        # vnpayment
+                        if booking_order.seats:
+                            cancel_seats(booking_order.seats.split(
+                                ","), booking_order.id_server)
+
+                        booking_order.order_status = 'cancel'
+                        booking_order.save()
+                        return JsonResponse({'RspCode': '99', 'Message': 'Process Booking Movie Error'})
+
+                    # Handle Confirm Booking Success and send sms or email
+                    booking_order.order_status = "done"
+                    booking_order.save()
+
+                    content_sms = """DAT VE THANH CONG. Ve cua quy khach da duoc xac nhan: Ma: %s """ % booking_order.barcode
+                    content_sms += str(booking_order.order_desc.replace("\r\n", ""))
+                    # Send SMS for user
+                    send_sms(booking_order.phone, content_sms)
+
+                    # Send Email
+                    if booking_order.email:
+                        send_mail_booking(request.is_secure(), booking_order.email, request.session[
+                                          "full_name"], booking_order.barcode, booking_order.order_desc)
+
+                    # Return VNPAY: Merchant update success
+                    result = JsonResponse(
+                        {'RspCode': '00', 'Message': 'Confirm Success'})
+                else:
+                    print('Payment Error. Processing Payment Error')
+                    # Payment Error: cancel seats chooice and return for
+                    # vnpayment
+                    if booking_order.seats:
+                        cancel_seats(booking_order.seats.split(
+                            ","), booking_order.id_server)
+
+                    result = JsonResponse(
+                        {'RspCode': vnp_ResponseCode, 'Message': 'Confirm Error'})
+
+            except BookingInfomation.DoesNotExist, e:
+                print "Error BookingInfomation DoesNotExist : %s" % e
+                return JsonResponse(
+                    {'RspCode': '01', 'Message': 'Order_id Not Found'})
 
         else:
             # Invalid Signature
@@ -151,70 +306,6 @@ def payment_ipn(request):
         result = JsonResponse({'RspCode': '99', 'Message': 'Invalid request'})
 
     return result
-
-
-def data_encrypt_cbc(data):
-    """ encrypt content data with padding """
-    # padding = block_size - (len(data) % block_size)
-    # padding = 16 - (len(data) % 16)
-    # str_with_padding = data + chr(padding)*padding
-    block_size = 16
-    padding = block_size - (len(data) % block_size)
-    data += chr(padding)*padding
-    
-    AES.key_size = 128
-
-    crypt_object = AES.new(key=settings.SMS_KEY,
-                           mode=AES.MODE_CBC, IV=settings.SMS_KEY_IV)
-    
-    encrypted_text = crypt_object.encrypt(data)
-    
-
-    return base64.b64encode(encrypted_text)
-
-
-def send_sms(phone, content):
-    try:
-        phone_number = "84" + str(phone)
-        content_sms = content
-        id_sms = random.randint(0, 999)
-        time_send = timezone.localtime(timezone.now()).strftime("%Y%m%d%H%M%S")
-        brand = settings.SMS_BRAND
-        xml = "<content><ReceiverPhone>%s</ReceiverPhone><Message>%s</Message><RequestID>%s</RequestID><BrandName>%s</BrandName><Senttime>%s</Senttime></content>" % (
-            str(phone_number), str(content_sms), str(id_sms), brand, str(time_send))
-        
-        xml_encode = data_encrypt_cbc(xml.replace("\r\n", ""))  # mã hóa
-        user_ctnet = data_encrypt_cbc(settings.SMS_USER)
-        pass_ctnet = data_encrypt_cbc(settings.SMS_PASSWORD)
-        
-        soap_request = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-        soap_request += "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
-        soap_request += "<soap:Body>\n"
-        soap_request += "<sendsms xmlns=\"http://tempuri.org/\">\n"
-        soap_request += "<user>%s</user>\n" % user_ctnet
-        soap_request += "<pass>%s</pass>\n" % pass_ctnet
-        soap_request += "<xml>%s</xml>\n" % xml_encode
-        soap_request += "</sendsms>\n"
-        soap_request += "</soap:Body>\n"
-        soap_request += "</soap:Envelope>"
-        
-        headers = {
-            "Content-type": "text/xml;charset=\"utf-8\"",
-            "Accept": "text/xml",
-            "Cache-Control": "no-cache",
-            "Pragma": "no-cache",
-            "SOAPAction": "\"http://tempuri.org/sendsms\"",
-            "Content-length": "%s" % len(soap_request),
-        }
-        response = requests.post(settings.SMS_URL, data=soap_request, headers=headers)
-        print "SOAP  Ressponse ", response.content
-        return response.content
-        
-
-    except Exception, e:
-        print "Error send_sms : %s" % e
-        pass
-        return None
 
 
 def payment_return(request):
@@ -232,28 +323,8 @@ def payment_return(request):
         vnp_BankCode = inputData['vnp_BankCode']
         vnp_CardType = inputData['vnp_CardType']
 
-        try:
-            booking_order = BookingInfomation.objects.get(order_id=order_id)
-        except BookingInfomation.DoesNotExist, e:
-            print "Error BookingInfomation DoesNotExist : %s" % e
-            booking_order = None
-            pass
         if vnp.validate_response(settings.VNPAY_HASH_SECRET_KEY):
             if vnp_ResponseCode == "00":
-                if booking_order:
-                    id_server = booking_order.id_server if booking_order.id_server else 1
-                    # Payment Success update order status and  call api confirm
-                    # booking order
-                    result_confirm = api.call_api_booking_confirm(
-                        booking_order.barcode, id_server)
-                    
-                    booking_order.order_status = "done" if result_confirm["SUCCESS"] == 'true' else 'pendding'
-                    booking_order.save()
-                    
-                    content_sms = """DAT VE THANH CONG. Ve cua quy khach da duoc xac nhan: Ma: %s """ % booking_order.barcode
-                    content_sms += str(booking_order.order_desc.replace("\r\n", ""))
-                    # Send SMS for user
-                    send_sms(booking_order.phone, content_sms)
                 # Success Send SMS or email infomation order for user
                 return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán",
                                                                                       "result": "Thành công", "order_id": order_id,
@@ -262,9 +333,7 @@ def payment_return(request):
                                                                                       "vnp_TransactionNo": vnp_TransactionNo,
                                                                                       "vnp_ResponseCode": vnp_ResponseCode})
             else:
-                if booking_order and booking_order.seats:
-                    cancel_seats(booking_order.seats.split(
-                        ","), booking_order.id_server)
+
                 return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán",
                                                                                       "result": "Lỗi", "order_id": order_id,
                                                                                       "amount": amount,
@@ -272,21 +341,12 @@ def payment_return(request):
                                                                                       "vnp_TransactionNo": vnp_TransactionNo,
                                                                                       "vnp_ResponseCode": vnp_ResponseCode})
         else:
-            if booking_order and booking_order.seats:
-                cancel_seats(booking_order.seats.split(
-                    ","), booking_order.id_server)
-
             return render(request, "websites/vnpay_payment/payment_return.html",
                           {"title": "Kết quả thanh toán", "result": "Lỗi", "order_id": order_id, "amount": amount,
                            "order_desc": order_desc, "vnp_TransactionNo": vnp_TransactionNo,
                            "vnp_ResponseCode": vnp_ResponseCode, "msg": "Sai checksum"})
     else:
         return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán", "result": ""})
-
-
-def cancel_seats(seats_choice, id_server):
-    for seat in seats_choice:
-        api.call_api_cancel_seat(seat, id_server=booking_order.id_server)
 
 
 def query(request):

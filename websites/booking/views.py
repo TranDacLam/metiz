@@ -35,7 +35,6 @@ def get_booking(request):
                                                                  "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
                                                                  "id_movie_date_active": id_movie_date_active})
             else:
-                print "Fail ",form.errors
                 return render(request, 'websites/booking.html')
         else:
             print('*******booking******')
@@ -51,6 +50,39 @@ def get_booking(request):
         print "Error get_booking : ", e
         return HttpResponse(status=500)
 
+
+def time_out_booking(request):
+    try:
+        return render(request, 'websites/time_out_booking.html')
+    except Exception, e:
+        print "Error time out booking : ", e
+        return HttpResponse(status=500)
+
+
+
+def build_show_time_json(current_date, item, result, movies_info, obj_movie=None):    
+    """ Build Data Json For Movie ShowTime """
+                
+    # Check key not in result then create dictionary create new key
+    # with data is list empty
+    if item["MOVIE_ID"] not in result:
+        # GET movie object by movie_api_id detail or get by MOVIE_ID
+        if not obj_movie:
+            obj_movie = movies_info.filter(
+                                movie_api_id=item["MOVIE_ID"])
+
+        result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
+            "MOVIE_ID"], "movie_name": obj_movie[0].name if obj_movie else item["MOVIE_NAME_VN"],
+            "rated": obj_movie[0].rated.name if obj_movie else None , "time_running": obj_movie[0].time_running if obj_movie else 0}
+
+    # Check time showing greater than currnet hour
+    if item["DATE"] == current_date.strftime("%d/%m/%Y"):
+        if int(item["TIME"].split(':')[0]) >= current_date.hour:
+            result[item["MOVIE_ID"]]["lst_times"].append(
+                {"id_showtime": item["ID"], "time": item["TIME"]})
+    else:
+        result[item["MOVIE_ID"]]["lst_times"].append(
+            {"id_showtime": item["ID"], "time": item["TIME"]})
 
 def get_movie_show_time(request):
     try:
@@ -74,6 +106,7 @@ def get_movie_show_time(request):
                 show_string = json.loads(data_movie[0].data)
                 show_times = ast.literal_eval(show_string)
 
+                # get all movies
                 movies_info = Movie.objects.filter(
                     release_date__lte=date, end_date__gte=date)
             except ValueError as e:
@@ -82,41 +115,20 @@ def get_movie_show_time(request):
 
             # Generate dictionary result key is movie_id and values is time
             # showing
+            # get movie object if movie_api_id not empty
+            obj_movie = None
+            if movie_api_id:
+                obj_movie = movies_info.filter(movie_api_id=movie_api_id)
+
             for item in show_times["List"]:
                 # Get Showtime movie by id
                 if movie_api_id:
                     # Get Movie Name by movie api id
-                    obj_movie = movies_info.filter(movie_api_id=movie_api_id)
-                    # Check key not in result then create dictionary create new key
-                    # with data is list empty
-                    if item["MOVIE_ID"] == movie_api_id and item["MOVIE_ID"] not in result:
-                        result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
-                            "MOVIE_ID"], "movie_name": obj_movie[0].name if obj_movie else item["MOVIE_NAME_VN"]}
-
-                    # Check time showing greater than currnet hour
-                    if item["MOVIE_ID"] == movie_api_id and int(item["TIME"].split(':')[0]) >= current_date.hour:
-                        result[item["MOVIE_ID"]]["lst_times"].append(
-                            {"id_showtime": item["ID"], "time": item["TIME"]})
+                    if item["MOVIE_ID"] == movie_api_id:
+                        build_show_time_json(current_date, item, result, movies_info, obj_movie)
                 else:
-                    # get all movie showtime
-                    # Check key not in result then create dictionary create new key
-                    # with data is list empty
-                    if item["MOVIE_ID"] not in result:
-                        # Get Movie Name by movie api id
-                        obj_movie = movies_info.filter(
-                            movie_api_id=item["MOVIE_ID"])
+                    build_show_time_json(current_date, item, result, movies_info)
 
-                        result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
-                            "MOVIE_ID"], "movie_name": obj_movie[0].name if obj_movie else item["MOVIE_NAME_VN"]}
-
-                    # Check time showing greater than currnet hour
-                    if item["DATE"] == current_date.strftime("%d/%m/%Y"):
-                        if int(item["TIME"].split(':')[0]) >= current_date.hour:
-                            result[item["MOVIE_ID"]]["lst_times"].append(
-                                {"id_showtime": item["ID"], "time": item["TIME"]})
-                    else:
-                        result[item["MOVIE_ID"]]["lst_times"].append(
-                            {"id_showtime": item["ID"], "time": item["TIME"]})
         return JsonResponse(result)
 
     except Exception, e:
@@ -190,9 +202,9 @@ def check_seats(request):
                     }
                     result = api.call_api_post_booking(
                         data_post_booking, id_server, url="/postBooking")
-                    print "data_post_booking ",data_post_booking
+                    print "data_post_booking ", data_post_booking
                     if not result["BARCODE"]:
-                        print "result ",result
+                        print "result ", result
                         return JsonResponse({"code": 400, "message": _("Cannot Booking Seats. Please Contact Administrator.")}, status=400)
 
                     # Add Seats into session and set seats expire in five
@@ -262,6 +274,7 @@ def clear_seeats(request):
             # Check Working id exist in session and remove it
             if movie_store and working_id in movie_store:
                 for seat_id in movie_store[working_id]["seats_choice"]:
+                    print "##### Clear Seat ", seat_id
                     api.call_api_cancel_seat(
                         seat_id=seat_id["ID"], id_server=id_server)
                 del movie_store[working_id]
