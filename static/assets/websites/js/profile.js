@@ -59,7 +59,7 @@ $(document).ready(function() {
          function(value, element) {
             return this.optional(element) || (value.match(/[a-z]/) && value.match(/[!@#$%^&*()_+A-Z]/) && value.match(/[0-9]/));
         },
-        "Mật khẩu có ít nhất một số, một ký tự thường và một ký tự hoa (hoặc ký tự đặc biệt)"
+        "Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt"
     );
 
     $("#change-pass-validate").validate({

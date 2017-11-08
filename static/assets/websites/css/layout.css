@@ -32,7 +32,7 @@
     width: 300px;
     min-height: 50px;
     padding: 10px;
-    text-align: -webkit-left;
+    text-align: left;
     white-space: normal;
     z-index: 4;
 }
@@ -88,4 +88,26 @@ ul.errorlist li, .error{
         width: 150px;
         margin-left: 40px;
     }
+}
+.page-title-timeout{
+    width: 100%;
+    border-bottom: 2px solid #ff5400;
+    padding-top: 60px;
+
+}
+.custom-time-out{
+    margin-top: 30px;
+}
+.custom-time-out p{
+    color: red;
+    text-align: center;
+}
+.custom-time-out button{
+    float:right;
+    cursor:pointer;
+    background-color: #7e8eaa;
+    color: #fff;
+}
+.col1-layout .time-out-booking{
+    margin: 0px 10px 120px 10px;
 }

@@ -58,11 +58,10 @@ def showing(request):
         if request.is_ajax():
             # convert object models to json
             # Ajax reuqest with page, render page and return to client
-            return render(request, 'websites/load_movie_render.html', {'list_data_showing': movie_page.object_list})
-            # return JsonResponse({"data": list(movie_page.object_list.values('id', 'name', 'poster', 'time_running', 'release_date', "genre__name", "rated__name", "movie_api_id")),
-            #                      "total_page": paginator.num_pages}, safe=False)
+            return render(request, 'websites/load_movie_render.html', {'list_data_film': movie_page.object_list})
 
-        return render(request, 'websites/showing.html', {'list_data_showing': movie_page.object_list})
+        return render(request, 'websites/list_film.html', {'list_data_film': movie_page.object_list, 'total_page': paginator.num_pages,
+                                                            'title': "Phim Đang Chiếu"})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)
@@ -103,10 +102,10 @@ def coming_soon(request):
         if request.is_ajax():
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
-            return JsonResponse({"data": list(movie_page.object_list.values('id', 'name', 'poster', 'time_running', 'release_date', "genre__name", "rated__name")),
-                                 "total_page": paginator.num_pages}, safe=False)
+            return render(request, 'websites/load_movie_render.html', {'list_data_film': movie_page.object_list})
 
-        return render(request, 'websites/coming_soon.html', {'list_data_coming_soon': movie_page.object_list})
+        return render(request, 'websites/list_film.html', {'list_data_film': movie_page.object_list, 'total_page': paginator.num_pages,
+                                                            'title': "Phim Sắp Chiếu"})
     except Exception, e:
         print "Error: ", e
         return HttpResponse(status=500)

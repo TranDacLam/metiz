@@ -34,6 +34,10 @@ nav.sidebar, .main{
 .title-about-metiz h1{
     color: #e71a0f;
 }
+.content-seperator iframe{
+    width: 100%;
+    height: 401px;
+}
 @media only screen and (max-width: 768px){
     .col-left  .navbar-collapse, .skip-content {
         background-color: rgba(255, 255, 255, 0);
@@ -66,7 +70,8 @@ nav.sidebar, .main{
         border-color: #ff5400;
     }
     .content-seperator iframe{
-        width: 60%;
+        width: 68%;
+        height: 315px;
     }
     .about-image-metiz {
         float: left;
@@ -92,6 +97,12 @@ nav.sidebar, .main{
         border-radius: 3px;
     }
 }
+@media only screen and (max-width: 768px){
+    .content-seperator iframe{
+        width: 96%;
+        height: 315px;
+    }
+}
 @media only screen and (max-width: 420px){
     .page-header{
         height: 86px;
@@ -101,6 +112,7 @@ nav.sidebar, .main{
     }
     .content-seperator iframe{
         width: 98%;
+        height: 267px;
     }
     .about-image-metiz ul li {
         width: 47%;
@@ -109,6 +121,9 @@ nav.sidebar, .main{
 @media only screen and (max-width: 320px){
     .about-image-metiz ul li, .about-image-metiz ul li img {
         height: 121px;
+    }
+    .content-seperator iframe{
+        height: 226px;
     }
 }
 /*small/medium side display*/

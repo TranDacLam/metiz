@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% load modal_data_tags %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block extrascript %}
+{% endblock %}
+
+{% block body_class %}
+	catalog-category-view categorypath-now-showing category-now-showing
+{% endblock %}
+
+{% block container_class%}col1-layout{% endblock%}
+
+{% block main_content%}
+<div class="main">
+	<div class="col-main">
+		<div class="page-title category-title">
+			<h1>{{title}}</h1>
+		</div>
+		{% if list_data_film %}
+			<div class="category-products metiz-movies">
+				<ul class="products-grid products-grid--max-4-col">
+					{% include 'websites/load_movie_render.html' %}	
+				</ul>
+				<div class="text-center"><button id="load-more" class="btn btn-primary load-more" data-url="showing" data-page="2" data-total-page="{{total_page}}">Xem thêm</button></div>
+			</div>
+		{% endif %}
+	</div>           
+</div>
+{% endblock%}

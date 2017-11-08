@@ -52,6 +52,14 @@ def get_booking(request):
         return HttpResponse(status=500)
 
 
+def time_out_booking(request):
+    try:
+        return render(request, 'websites/time_out_booking.html')
+    except Exception, e:
+        print "Error time out booking : ", e
+        return HttpResponse(status=500)
+
+
 def get_movie_show_time(request):
     try:
         """

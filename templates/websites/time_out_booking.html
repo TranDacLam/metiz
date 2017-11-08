@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+
+{% block title %}Hết Thời Gian Đặt Vé{% endblock title %} 
+
+{% block container_class %}col1-layout {% endblock %}
+
+{% block extrascript %}
+{% endblock %}
+
+{% block main_content %}
+<div class="main">            
+    <div class="col-main time-out-booking">
+        <div class="page-title-timeout">
+            <h2>Thông báo</h2>
+        </div>
+        <div class="custom-time-out">
+            <div>
+                <p>Đã hết thời gian quy định. Bạn có thể bắt đầu lại bằng cách bấm vào nút bên dưới.</p>               
+                <br>                  
+                <button href="#test-popup" class="open-popup-link popup-movie-schedule btn btn-black" type="button">Đặt vé lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

@@ -1,7 +1,7 @@
 {% load i18n %}
 
 {% load modal_data_tags %}
-{% for value in list_data_showing %}
+{% for value in list_data_film %}
 	<li class="film-lists">				
 		<div class="product-images">
 			<a href="{% url 'film_detail' value.id %}" title="{{value.name}}" class="product-image">
@@ -27,18 +27,16 @@
 			</div>
 		</div>
 		<!-- <div class="ribon position-1"></div> -->
-		
 		<ul class="add-to-links">
 			<li>
 				<!-- Button like and share facebook, data-href http://domain/filmdetail/id (unique) -->
 				<div class="fb-like fb_iframe_widget" data-href="http://elearning.vooc.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
 	            </div>
 			</li>
-			
 			{% verify_showtime_by_id 1 value.movie_api_id as is_book_able %}
 			{% if is_book_able %}
 				<li>
-					<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ value.movie_api_id }}">Đặt vé</button>
+					<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-list-movie popup-movie-schedule" data-movie-api-id="{{ value.movie_api_id }}">Đặt vé</button>
 				</li>
 			{% endif %}
 		</ul>

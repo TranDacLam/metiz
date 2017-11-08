@@ -197,7 +197,9 @@ $(document).ready(function() {
                         //Update Number
                         $counter.text(sc.find('selected').length-1);
                         //update totalnum
-                        $total.text(recalculateTotal(sc)-this.data().price);
+                        var updateMoneyTotal = recalculateTotal(sc)-this.data().price;
+                        // set total html and format money VND
+                        $total.text(updateMoneyTotal.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
 
                         //Delete reservation
                         $('#cart-item-'+this.settings.id).remove();
