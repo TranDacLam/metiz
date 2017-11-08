@@ -3,7 +3,7 @@
 <div id="test-popup" class="white-popup mfp-hide">
     <div class="div-login">
         <div class="top">
-            Lịch chiếu
+            Lịch chiếu 
         </div>
         <div class="container">
             <div class="col-xs-12 row city">
@@ -76,10 +76,10 @@
                   <h2 class="modal-title">Cảnh báo</h2>
                 </div>
                 <div class="modal-body">
-                    <p>Phim này dành cho lứa tuổi trên 18</p>
+                    <p id='results'>Phim này dành cho lứa tuổi trên 18</p>
                 </div>
                 <div class="modal-footer warning-footer">
-                  <button type="button" id="btn-warning" class="btn" data-dismiss="modal" data-toggle='modal' 
+                  <button type="button" id="" class="btn btn-login" data-dismiss="modal" data-toggle='modal' 
                   data-target='{% if user.is_authenticated %}#profile {% else %}#confirm {% endif %}'>Tôi đồng ý</button>
                 </div>
             </div>
@@ -151,9 +151,10 @@
                                             <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{{request.session.full_name}}">
                                             <label class="form-error" for="name" id='name-error'></label>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group form-phone">
                                             <label>{% trans "Phone" %}</label>
-                                            <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{{request.session.phone}}">
+                                            <div class="country-code">+84</div>
+                                            <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{{request.session.phone}}">
                                             <label  class="form-error" for="phone" id='phone-error'></label>
                                         </div>
                                         <div class="form-group">
@@ -200,9 +201,10 @@
                                     value="{% if request.session.full_name %}{{request.session.full_name}}{% else %}{{user.full_name}}{% endif %}">
                                     <label  class="form-error" for="name" id='name-error'></label>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group form-phone">
                                     <label>{% trans "Phone" %}</label>
-                                    <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" 
+                                    <div class="country-code">+84</div>
+                                    <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" 
                                     value="{% if request.session.phone %}{{request.session.phone}}{% else %}{{user.phone}}{% endif %}">
                                     <label  class="form-error" for="phone" id='phone-error'></label>
                                 </div>
