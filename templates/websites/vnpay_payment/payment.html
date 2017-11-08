@@ -87,7 +87,11 @@
                     <input type="hidden" id="barcode" name="barcode" value="{{barcode}}" >
                     <input type="hidden" id="seats_choice" name="seats_choice" value="{{seats_choice}}" >
                     <input type="hidden" id="id_server" name="id_server" value="{{id_server}}" >
-                    
+                    <input type="hidden" id="id_showtime" name="id_showtime" value="{{id_showtime}}" >
+                    <input type="hidden" id="id_movie_name" name="id_movie_name" value="{{id_movie_name}}" >
+                    <input type="hidden" id="id_movie_time" name="id_movie_time" value="{{id_movie_time}}" >
+                    <input type="hidden" id="id_movie_date_active" name="id_movie_date_active" value="{{id_movie_date_active}}" >
+
                     <button type="submit" class="btn btn-default" id="btn-payment-seats">Thanh toán Redirect</button>
                 </div>
                 {% csrf_token %}

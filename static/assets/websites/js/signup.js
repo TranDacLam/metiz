@@ -164,11 +164,9 @@ $(document).ready(function() {
 	// funtion show district for each city
 	function selectDistrict(list_city){
 		var name_city= $('.list-city').val();
-        console.log(name_city);
         $('.list-district option').removeClass('show-district');
 		$.each(list_city, function(index, val) {
 			if (index == name_city ) {
-                console.log(val);
 				$('.list-district').children().hide();
                 $('.list-district option').first().css('display', 'block').prop("selected", true);
 				$('.list-district option').each(function(index, el) {

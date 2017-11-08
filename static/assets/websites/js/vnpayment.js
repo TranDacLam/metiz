@@ -48,6 +48,8 @@ function wireUpEvents() {
 
 
 $(document).ready(function() {
+
+    // When Back about booking
     window.onload = function () {
         if (typeof history.pushState === "function") {
             history.pushState("loadpage", null, null);
@@ -55,34 +57,17 @@ $(document).ready(function() {
                 history.pushState('new_loadpage', null, null);
                 // Handle the back (or forward) buttons here
                 // Will NOT handle refresh, use onbeforeunload for this.
-                var id_showtime = $('#member_form input[name=id_showtime]').val();
-                var id_sever = $('#member_form input[name=id_sever]').val();
-                var id_movie_name = $('#member_form input[name=id_movie_name]').val();
-                var id_movie_time = $('#member_form input[name=id_movie_time]').val();
-                var id_movie_date_active = $('#member_form input[name=id_movie_date_active]').val();
+                var id_showtime = $('#create_form input[name=id_showtime]').val();
+                var id_sever = $('#create_form input[name=id_sever]').val();
+                var id_movie_name = $('#create_form input[name=id_movie_name]').val();
+                var id_movie_time = $('#create_form input[name=id_movie_time]').val();
+                var id_movie_date_active = $('#create_form input[name=id_movie_date_active]').val();
 
                 window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever
                             + '&id_movie_name='+ id_movie_name + '&id_movie_time='+ id_movie_time
                             + '&id_movie_date_active='+ id_movie_date_active;
             };
         }
-        // else {
-        //     var ignoreHashChange = true;
-        //     window.onhashchange = function () {
-        //         if (!ignoreHashChange) {
-        //             ignoreHashChange = true;
-        //             window.location.hash = Math.random();
-        //             alert("refres");
-        //             // Detect and redirect change here
-        //             // Works in older FF and IE9
-        //             // * it does mess with your hash symbol (anchor?) pound sign
-        //             // delimiter on the end of the URL
-        //         }
-        //         else {
-        //             ignoreHashChange = false;   
-        //         }
-        //     };
-        // }
     }
     wireUpEvents();  
 
@@ -152,22 +137,22 @@ $(document).ready(function() {
     $('#create_form input[name=amount-text]').val(money_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
 });
 
-// back page booking seat
-function goBack() {
-    window.history.back();
-}
-
+// *** COUNT DOWN ***
 function startTimer(duration, display) {
+    // Create 3 variable timer, minutes, seconds
     var timer = duration, minutes, seconds;
+    // Set time out every 1s
     setInterval(function () {
         minutes = parseInt(timer / 60, 10)
         seconds = parseInt(timer % 60, 10);
 
+        // Set  minutes, seconds. VD: 4:9 -> 04:09
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         display.text(minutes + ":" + seconds);
 
+        // Condition timer = -1 then clear seats and redirect /timeout/booking
         if (--timer < 0) {
             endSession();
             window.location.href = '/timeout/booking'
@@ -176,6 +161,7 @@ function startTimer(duration, display) {
 }
 
 jQuery(function ($) {
+    // Set time count down
     var fiveMinutes = 60 * 5,
         display = $('#time-cout-down');
     startTimer(fiveMinutes, display);

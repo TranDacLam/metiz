@@ -12,7 +12,15 @@ $(document).ready(function() {
     var id_server = $('#id_sever').val();
     var id_showtime = $('#id_showtime').val();
 
-    // Get list seats 
+    // icon before load ajax success 
+    $(document).ajaxStart(function(){
+        $(".ajax-loader").css("display", "block");
+    });
+    $(document).ajaxComplete(function(){
+        $(".ajax-loader").css("display", "none");
+    });
+
+    // Get list seats
     $.ajax({
         url: "/movie/seats",
         type: 'GET',
@@ -283,7 +291,7 @@ $(document).ready(function() {
                 +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
                 + '&id_movie_time='+id_movie_time + '&id_movie_date_active='+id_movie_date_active
                 + '&working_id='+working_id + '&barcode='+ barcode 
-                + '&seats_choice='+seats_choice + '&id_server=' +id_server;
+                + '&seats_choice='+seats_choice + '&id_server=' +id_server + '&id_showtime=' +id_showtime;
             })
             .fail(function(error) {
                 displayMsg();
