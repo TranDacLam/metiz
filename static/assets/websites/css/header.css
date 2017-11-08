@@ -72,7 +72,9 @@ ul.dropdown-menu>li>a:hover{
 #loginNavbar ul.navbar-nav, #loginNavbar ul.navbar-nav li{
 	float:none;
 }
-
+.header-top-account a:hover, .header-career a:hover{
+	color: #ff5400;
+}
 @media only screen and (min-width: 771px){
 	#header {
 		height: 70px;
