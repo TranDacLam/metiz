@@ -48,6 +48,42 @@ function wireUpEvents() {
 
 
 $(document).ready(function() {
+    window.onload = function () {
+        if (typeof history.pushState === "function") {
+            history.pushState("loadpage", null, null);
+            window.onpopstate = function () {
+                history.pushState('new_loadpage', null, null);
+                // Handle the back (or forward) buttons here
+                // Will NOT handle refresh, use onbeforeunload for this.
+                var id_showtime = $('#member_form input[name=id_showtime]').val();
+                var id_sever = $('#member_form input[name=id_sever]').val();
+                var id_movie_name = $('#member_form input[name=id_movie_name]').val();
+                var id_movie_time = $('#member_form input[name=id_movie_time]').val();
+                var id_movie_date_active = $('#member_form input[name=id_movie_date_active]').val();
+
+                window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever
+                            + '&id_movie_name='+ id_movie_name + '&id_movie_time='+ id_movie_time
+                            + '&id_movie_date_active='+ id_movie_date_active;
+            };
+        }
+        // else {
+        //     var ignoreHashChange = true;
+        //     window.onhashchange = function () {
+        //         if (!ignoreHashChange) {
+        //             ignoreHashChange = true;
+        //             window.location.hash = Math.random();
+        //             alert("refres");
+        //             // Detect and redirect change here
+        //             // Works in older FF and IE9
+        //             // * it does mess with your hash symbol (anchor?) pound sign
+        //             // delimiter on the end of the URL
+        //         }
+        //         else {
+        //             ignoreHashChange = false;   
+        //         }
+        //     };
+        // }
+    }
     wireUpEvents();  
 
     $("#btnPopup").click(function (event) {
