@@ -62,7 +62,7 @@ def showing(request):
             return render(request, 'websites/load_movie_render.html', {'list_data_film': movie_page.object_list})
 
         return render(request, 'websites/list_film.html', {'list_data_film': movie_page.object_list, 'total_page': paginator.num_pages,
-                                                            'title': "Phim Đang Chiếu"})
+                                                           'title': "Phim Đang Chiếu"})
     except Exception, e:
         print "Error action showing: ", e
         return HttpResponse(status=500)
@@ -106,7 +106,7 @@ def coming_soon(request):
             return render(request, 'websites/load_movie_render.html', {'list_data_film': movie_page.object_list})
 
         return render(request, 'websites/list_film.html', {'list_data_film': movie_page.object_list, 'total_page': paginator.num_pages,
-                                                            'title': "Phim Sắp Chiếu"})
+                                                           'title': "Phim Sắp Chiếu"})
     except Exception, e:
         print "Error action : ", e
         return HttpResponse(status=500)
@@ -299,7 +299,8 @@ def home(request):
 
         # get post item new and offer
         try:
-            new_offer = Post.objects.get(key_query='kq_new_offer', is_draft=False)
+            new_offer = Post.objects.get(
+                key_query='kq_new_offer', is_draft=False)
 
         except Post.DoesNotExist, e:
             print "Error Post : %s" % e
@@ -309,7 +310,7 @@ def home(request):
                                                       'position_1': position_1[0] if position_1 else None,
                                                       'position_2': position_2[0] if position_2 else None,
                                                       'data_slide': data_slide, 'new_offer': new_offer})
-    
+
     except Exception, e:
         print "Error action home : ", e
         return HttpResponse(status=500)
@@ -342,4 +343,3 @@ def get_post(request):
     except Exception, e:
         print "Error action get_post : ", e
         return HttpResponse(status=500)
-
