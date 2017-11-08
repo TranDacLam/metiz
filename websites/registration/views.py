@@ -42,7 +42,7 @@ def login(request):
                         
                     return JsonResponse({"code": 400, 'errors': login_form.errors}, status=400)
                 except Exception, e:
-                    print "Error: ", e
+                    print "Error action login : ", e
                     return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
             else:
                 if login_form.is_valid():
