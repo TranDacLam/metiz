@@ -6,6 +6,7 @@ from datetime import *
 from django.db.models import Avg, Sum, Count
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
+from django.utils.translation import ugettext_lazy as _
 from itertools import chain
 from django.core.urlresolvers import reverse
 import itertools
@@ -63,7 +64,7 @@ def showing(request):
         return render(request, 'websites/list_film.html', {'list_data_film': movie_page.object_list, 'total_page': paginator.num_pages,
                                                             'title': "Phim Đang Chiếu"})
     except Exception, e:
-        print "Error: ", e
+        print "Error action showing: ", e
         return HttpResponse(status=500)
 
 
@@ -107,7 +108,7 @@ def coming_soon(request):
         return render(request, 'websites/list_film.html', {'list_data_film': movie_page.object_list, 'total_page': paginator.num_pages,
                                                             'title': "Phim Sắp Chiếu"})
     except Exception, e:
-        print "Error: ", e
+        print "Error action : ", e
         return HttpResponse(status=500)
 
 
@@ -202,10 +203,10 @@ def new_detail(request, id):
         new = NewOffer.objects.get(pk=id)
         return render(request, 'websites/new_detail.html', {'new': new})
     except NewOffer.DoesNotExist, e:
-        print "Error new_detail : %s" % e
+        print "Error action new_detail : %s" % e
         return HttpResponse(status=404)
     except Exception, e:
-        print "Error: ", e
+        print "Error action new_detail : ", e
         return HttpResponse(status=500)
 
 
@@ -228,7 +229,7 @@ def get_technology(request):
                 return JsonResponse({"message": "Technology Does Not Exist"}, status=400)
 
     except Exception, e:
-        print "Error: ", e
+        print "Error action get_technology : ", e
         return JsonResponse(status=500)
 
 
@@ -240,7 +241,7 @@ def technology_detail(request, name):
         technology = allTechnology.get(name=name)
         return render(request, 'websites/cinema_technology.html', {'technology': technology, 'allTechnology': allTechnology})
     except Exception, e:
-        print "Error: ", e
+        print "Error action technology_detail : ", e
         return HttpResponse(status=500)
 
 
@@ -309,11 +310,8 @@ def home(request):
                                                       'position_2': position_2[0] if position_2 else None,
                                                       'data_slide': data_slide, 'new_offer': new_offer})
     
-    except Movie.DoesNotExist, e:
-        print "Error Movie : %s" % e
-        return HttpResponse(status=404)
     except Exception, e:
-        print "Error: ", e
+        print "Error action home : ", e
         return HttpResponse(status=500)
 
 
@@ -342,33 +340,6 @@ def get_post(request):
         print "Error get_post : id or key_query does not exist"
         return HttpResponse(status=404)
     except Exception, e:
-        print "Error: ", e
+        print "Error action get_post : ", e
         return HttpResponse(status=500)
 
-
-def get_booking(request):
-    try:
-        if request.method == 'POST':
-            form = BookingForm(request.POST)
-            if form.is_valid():
-                full_name = form.cleaned_data['name']
-                phone = form.cleaned_data['phone']
-                id_showtime = form.cleaned_data['id_showtime']
-                email = form.cleaned_data['email']
-                request.session['full_name'] = full_name
-                request.session['phone'] = phone
-                request.session['email'] = email if email else None
-                id_sever = 1
-                return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
-
-        try:
-            id_showtime = request.GET['id_showtime']
-            id_sever = request.GET['id_sever']
-
-            return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever})
-        except Exception, e:
-            print "Error: ", e
-            return HttpResponse(status=404)
-    except Exception, e:
-        print "Error: ", e
-        return HttpResponse(status=500)

@@ -15,6 +15,7 @@ function endSession() {
         dataType: 'json',
         crossDomain:false,
         context: this,
+        async: false
     });
 }
 
@@ -23,12 +24,16 @@ function wireUpEvents() {
 * For a list of events that triggers onbeforeunload on IE
 * check http://msdn.microsoft.com/en-us/library/ms536907(VS.85).aspx
 */
-
-    $(window).bind('beforeunload', function(){
-        if (!validNavigation) {
+    
+    window.onbeforeunload = function() {
+        if (!validNavigation) { 
             endSession();
+            window.setTimeout(function () { 
+                window.location.href = "/timeout/booking";
+            }, 0); 
+            window.onbeforeunload = null; // necessary to prevent infinite loop, that kills your browser 
         }
-    });
+    }
 
  // Attach the event submit for all forms in the page
      $("form").bind("submit", function() {
@@ -129,7 +134,7 @@ function startTimer(duration, display) {
 
         if (--timer < 0) {
             endSession();
-            window.location.href = '/time-out-booking'
+            window.location.href = '/timeout/booking'
         }
     }, 1000);
 }

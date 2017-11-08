@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-03 10:04+0000\n"
+"POT-Creation-Date: 2017-11-07 14:38+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,274 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: templates/modal.html:10
+msgid "Select City"
+msgstr ""
+
+#: templates/modal.html:21
+msgid "Select Cinema"
+msgstr ""
+
+#: templates/modal.html:35
+msgid "Select date play"
+msgstr ""
+
+#: templates/modal.html:115 templates/modal.html:160 templates/modal.html:210
+#: templates/registration/profile.html:98 templates/registration/signup.html:40
+#: templates/registration/signup.html:109 websites/booking/models.py:20
+msgid "Email"
+msgstr ""
+
+#: templates/modal.html:116 templates/modal.html:161 templates/modal.html:211
+#: templates/registration/signup.html:41 templates/registration/signup.html:111
+msgid "Enter Email Here"
+msgstr ""
+
+#: templates/modal.html:120 templates/registration/signup.html:44
+#: templates/registration/signup.html:131
+msgid "Password"
+msgstr ""
+
+#: templates/modal.html:121 templates/registration/signup.html:45
+#: templates/registration/signup.html:134
+msgid "Enter Password Here"
+msgstr ""
+
+#: templates/modal.html:124 templates/registration/signup.html:49
+msgid "Login"
+msgstr ""
+
+#: templates/modal.html:150 templates/modal.html:198
+#: templates/registration/profile.html:56 templates/registration/signup.html:66
+#: websites/core/models.py:128
+msgid "Full Name"
+msgstr ""
+
+#: templates/modal.html:151 templates/modal.html:199
+#: templates/registration/signup.html:68
+msgid "Enter Full Name Here"
+msgstr ""
+
+#: templates/modal.html:155 templates/modal.html:204
+#: templates/registration/profile.html:86 templates/registration/signup.html:96
+#: websites/booking/models.py:19
+msgid "Phone"
+msgstr ""
+
+#: templates/modal.html:156 templates/modal.html:205
+#: templates/registration/signup.html:98
+msgid "Enter Phone Here"
+msgstr ""
+
+#: templates/registration/email/metiz_account_created_confirm.html:115
+#: templates/websites/booking/email/booking_notification.html:115
+msgid "mail.hello"
+msgstr ""
+
+#: templates/registration/email/metiz_account_created_confirm.html:118
+msgid "account.created.content1"
+msgstr "Congratulations! You have successfully registered to"
+
+#: templates/registration/email/metiz_account_created_confirm.html:118
+msgid "account.created.content2"
+msgstr "with the email"
+
+#: templates/registration/email/metiz_account_created_confirm.html:118
+msgid "account.created.content3"
+msgstr "Please click the button below to activate your account"
+
+#: templates/registration/email/metiz_account_created_confirm.html:122
+msgid "account.created.active"
+msgstr "Activate Account"
+
+#: templates/registration/email/metiz_account_created_confirm.html:125
+msgid "account.created.content4"
+msgstr "Thank you for registering and welcome to Metiz"
+
+#: templates/registration/email/metiz_account_created_confirm.html:133
+#: templates/websites/booking/email/booking_notification.html:133
+msgid "mail.register.footer1"
+msgstr ""
+
+#: templates/registration/email/metiz_account_created_confirm.html:133
+#: templates/websites/booking/email/booking_notification.html:133
+msgid "mail.register.footer2"
+msgstr ""
+
+#: templates/registration/email/metiz_account_created_confirm.html:137
+#: templates/websites/booking/email/booking_notification.html:137
+msgid "mail.register.footer3"
+msgstr ""
+
+#: templates/registration/email/metiz_account_created_confirm.html:139
+#: templates/websites/booking/email/booking_notification.html:139
+msgid "mail.register.footer4"
+msgstr ""
+
+#: templates/registration/password_reset_subject.txt:2
+msgid "Metiz Account Password Reset."
+msgstr ""
+
+#: templates/registration/profile.html:65 templates/registration/signup.html:75
+msgid "Gender"
+msgstr ""
+
+#: templates/registration/profile.html:68 templates/registration/signup.html:78
+msgid "Male"
+msgstr ""
+
+#: templates/registration/profile.html:69 templates/registration/signup.html:79
+msgid "Female"
+msgstr ""
+
+#: templates/registration/profile.html:77 templates/registration/signup.html:87
+msgid "Birth Date"
+msgstr ""
+
+#: templates/registration/profile.html:79
+msgid "Choose Your Birthday.."
+msgstr ""
+
+#: templates/registration/profile.html:88
+msgid "Enter Phone Here.."
+msgstr ""
+
+#: templates/registration/profile.html:100
+msgid "Enter Email Here.."
+msgstr ""
+
+#: templates/registration/profile.html:107
+#: templates/registration/signup.html:118
+msgid "Personal ID"
+msgstr ""
+
+#: templates/registration/profile.html:109
+msgid "Enter Personal ID Here.."
+msgstr ""
+
+#: templates/registration/profile.html:119
+#: templates/registration/signup.html:153
+msgid "City"
+msgstr ""
+
+#: templates/registration/profile.html:123
+#: templates/registration/signup.html:156
+msgid "Choose City"
+msgstr ""
+
+#: templates/registration/profile.html:131
+#: templates/registration/signup.html:164
+msgid "District"
+msgstr ""
+
+#: templates/registration/profile.html:135
+#: templates/registration/signup.html:167
+msgid "Choose District"
+msgstr ""
+
+#: templates/registration/profile.html:145
+#: templates/registration/signup.html:179
+msgid "Address"
+msgstr ""
+
+#: templates/registration/profile.html:147
+msgid "Enter Address Here.."
+msgstr ""
+
+#: templates/registration/signup.html:3 templates/registration/signup.html:199
+msgid "Signup"
+msgstr ""
+
+#: templates/registration/signup.html:89
+msgid "Choose Your Birthday"
+msgstr ""
+
+#: templates/registration/signup.html:120
+msgid "Enter Personal ID Here"
+msgstr ""
+
+#: templates/registration/signup.html:141
+msgid "Confirm Password"
+msgstr ""
+
+#: templates/registration/signup.html:143
+msgid "Enter Password Again"
+msgstr ""
+
+#: templates/registration/signup.html:181
+msgid "Enter Address Here"
+msgstr ""
+
+#: websites/booking/api.py:26 websites/booking/api.py:51
+#: websites/booking/api.py:80 websites/booking/api.py:108
+msgid "Handle data error."
+msgstr ""
+
+#: websites/booking/api.py:54 websites/booking/api.py:83
+#: websites/booking/api.py:111
+msgid "Internal Server Error. Cannot Post Booking."
+msgstr ""
+
+#: websites/booking/models.py:17
+msgid "Order ID"
+msgstr ""
+
+#: websites/booking/models.py:18
+msgid "Amount"
+msgstr ""
+
+#: websites/booking/models.py:21
+msgid "Seats"
+msgstr ""
+
+#: websites/booking/models.py:23 websites/core/models.py:48
+#: websites/core/models.py:105
+msgid "Description"
+msgstr ""
+
+#: websites/booking/models.py:38
+msgid "Date Showing"
+msgstr ""
+
+#: websites/booking/views.py:124 websites/booking/views.py:145
+#: websites/booking/views.py:231 websites/booking/views.py:250
+#: websites/registration/views.py:46
+msgid "Internal Server Error. Please contact administrator."
+msgstr ""
+
+#: websites/booking/views.py:139
+msgid "Fields id_showtime and id_server is required."
+msgstr ""
+
+#: websites/booking/views.py:154
+msgid "Fields lst_seats and id_showtime, working_id is required."
+msgstr ""
+
+#: websites/booking/views.py:173
+#, python-format
+msgid "These chairs have been selected : %s"
+msgstr ""
+
+#: websites/booking/views.py:196
+msgid "Cannot Booking Seats. Please Contact Administrator."
+msgstr ""
+
+#: websites/booking/views.py:239
+msgid "Fields barcode is required."
+msgstr ""
+
+#: websites/booking/views.py:257
+msgid "Fields working_id is required."
+msgstr ""
+
+#: websites/core/admin.py:30
+msgid "Passwords don't match"
+msgstr ""
+
+#: websites/core/admin.py:127
+msgid "End date must be greater than release date."
+msgstr ""
 
 #: websites/core/custom_models.py:64
 msgid "Staff Status"
@@ -39,94 +307,94 @@ msgstr ""
 msgid "Date Joined"
 msgstr ""
 
-#: websites/core/custom_models.py:76 websites/core/models.py:18
+#: websites/core/custom_models.py:76 websites/core/models.py:17
 msgid "Modified Date"
 msgstr ""
 
-#: websites/core/models.py:15
+#: websites/core/models.py:14
 msgid "Created Date"
 msgstr ""
 
-#: websites/core/models.py:33 websites/core/models.py:176
-#: websites/core/models.py:214
+#: websites/core/models.py:32 websites/core/models.py:177
+#: websites/core/models.py:215
 msgid "Image"
 msgstr ""
 
-#: websites/core/models.py:34
+#: websites/core/models.py:33 websites/core/models.py:217
 msgid "Sub Url"
 msgstr ""
 
-#: websites/core/models.py:35
+#: websites/core/models.py:34
 msgid "Is Show"
 msgstr ""
 
-#: websites/core/models.py:36
+#: websites/core/models.py:35
 msgid "Position"
 msgstr ""
 
-#: websites/core/models.py:42
+#: websites/core/models.py:41
 msgid "Banner"
 msgstr ""
 
-#: websites/core/models.py:48 websites/core/models.py:157
-#: websites/core/models.py:175 websites/core/models.py:194
+#: websites/core/models.py:47 websites/core/models.py:158
+#: websites/core/models.py:176 websites/core/models.py:195
 msgid "Name"
 msgstr ""
 
-#: websites/core/models.py:49 websites/core/models.py:105
-msgid "Description"
-msgstr ""
-
-#: websites/core/models.py:55
+#: websites/core/models.py:54
 msgid "Rated"
 msgstr ""
 
-#: websites/core/models.py:60
+#: websites/core/models.py:59
 msgid "Name Genre"
 msgstr ""
 
-#: websites/core/models.py:66
+#: websites/core/models.py:65
 msgid "Genre"
 msgstr ""
 
-#: websites/core/models.py:67
+#: websites/core/models.py:66
 msgid "Genres"
 msgstr ""
 
-#: websites/core/models.py:82
+#: websites/core/models.py:81
 msgid "Type Name"
 msgstr ""
 
-#: websites/core/models.py:88
+#: websites/core/models.py:87
 msgid "Movie Type"
 msgstr ""
 
-#: websites/core/models.py:89
+#: websites/core/models.py:88
 msgid "Movie Types"
 msgstr ""
 
-#: websites/core/models.py:94
+#: websites/core/models.py:93
 msgid "Movie Name"
 msgstr ""
 
-#: websites/core/models.py:96
+#: websites/core/models.py:95
 msgid "Poster"
 msgstr ""
 
-#: websites/core/models.py:97
+#: websites/core/models.py:96
 msgid "Director"
 msgstr ""
 
-#: websites/core/models.py:98
+#: websites/core/models.py:97
 msgid "Cast"
 msgstr ""
 
-#: websites/core/models.py:99
+#: websites/core/models.py:98
 msgid "Time Running"
 msgstr ""
 
-#: websites/core/models.py:100
+#: websites/core/models.py:99
 msgid "Release Date"
+msgstr ""
+
+#: websites/core/models.py:100
+msgid "End Date"
 msgstr ""
 
 #: websites/core/models.py:104
@@ -137,100 +405,158 @@ msgstr ""
 msgid "Trailer"
 msgstr ""
 
-#: websites/core/models.py:107 websites/core/models.py:180
-#: websites/core/models.py:215
+#: websites/core/models.py:107 websites/core/models.py:181
+#: websites/core/models.py:216
 msgid "Priority"
 msgstr ""
 
-#: websites/core/models.py:114
-msgid "Movie"
+#: websites/core/models.py:109
+msgid "Movie API ID"
 msgstr ""
 
 #: websites/core/models.py:115
+msgid "Movie"
+msgstr ""
+
+#: websites/core/models.py:116
 msgid "Movies"
 msgstr ""
 
-#: websites/core/models.py:127
-msgid "Full Name"
-msgstr ""
-
-#: websites/core/models.py:128
+#: websites/core/models.py:129
 msgid "Avatar"
 msgstr ""
 
-#: websites/core/models.py:130
+#: websites/core/models.py:131
 msgid "Review"
 msgstr ""
 
-#: websites/core/models.py:131
+#: websites/core/models.py:132
 msgid "Rating"
 msgstr ""
 
-#: websites/core/models.py:132
+#: websites/core/models.py:133
 msgid "Date Post"
 msgstr ""
 
-#: websites/core/models.py:139
+#: websites/core/models.py:140
 msgid "Comment"
 msgstr ""
 
-#: websites/core/models.py:140
+#: websites/core/models.py:141
 msgid "Comments"
 msgstr ""
 
-#: websites/core/models.py:158 websites/core/models.py:177
-#: websites/core/models.py:195
+#: websites/core/models.py:159 websites/core/models.py:178
+#: websites/core/models.py:196
 msgid "Content"
 msgstr ""
 
-#: websites/core/models.py:164
+#: websites/core/models.py:165
 msgid "Cenima Technology"
 msgstr ""
 
-#: websites/core/models.py:165
+#: websites/core/models.py:166
 msgid "Cenima Technologys"
 msgstr ""
 
-#: websites/core/models.py:178
+#: websites/core/models.py:179
 msgid "Condition"
 msgstr ""
 
-#: websites/core/models.py:179
+#: websites/core/models.py:180
 msgid "Apply For"
 msgstr ""
 
-#: websites/core/models.py:181
+#: websites/core/models.py:182
 msgid "Apply Date"
 msgstr ""
 
-#: websites/core/models.py:188
+#: websites/core/models.py:189
 msgid "New Offer"
 msgstr ""
 
-#: websites/core/models.py:189
+#: websites/core/models.py:190
 msgid "New Offers"
 msgstr ""
 
-#: websites/core/models.py:196
+#: websites/core/models.py:197
 msgid "Key Query"
 msgstr ""
 
-#: websites/core/models.py:208
+#: websites/core/models.py:209
 msgid "Post"
 msgstr ""
 
-#: websites/core/models.py:209
+#: websites/core/models.py:210
 msgid "Posts"
 msgstr ""
 
-#: websites/core/models.py:222
+#: websites/core/models.py:224
 msgid "Slide Show"
 msgstr ""
 
-#: websites/settings.py:117
+#: websites/core/views.py:52 websites/core/views.py:97
+#: websites/core/views.py:178
+msgid "Page Number Not Type Integer."
+msgstr ""
+
+#: websites/core/views.py:56 websites/core/views.py:101
+#: websites/core/views.py:182
+msgid "Page Number Not Found."
+msgstr ""
+
+#: websites/registration/forms.py:90
+msgid "[Metiz] You've been created an account - Click to Verify!"
+msgstr ""
+
+#: websites/registration/forms.py:158
+msgid "The old password fields did not match."
+msgstr ""
+
+#: websites/registration/forms.py:166
+msgid "The two password fields did not match."
+msgstr ""
+
+#: websites/registration/messages.py:3
+msgid "Email does not exits in system. Please check again."
+msgstr ""
+
+#: websites/registration/messages.py:4
+msgid "Your password wrong. Please enter again."
+msgstr ""
+
+#: websites/registration/messages.py:5
+msgid "Your account not active. Please check email and active account."
+msgstr ""
+
+#: websites/registration/metiz_email.py:15
+msgid "Either message_plain or message_html should be not None"
+msgstr ""
+
+#: websites/registration/metiz_email.py:42
+msgid "Either message_html should be not None"
+msgstr ""
+
+#: websites/registration/views.py:68
+msgid "Register Account Successfully."
+msgstr ""
+
+#: websites/registration/views.py:124
+msgid "Update Password Successfully."
+msgstr ""
+
+#: websites/registration/views.py:147
+msgid "Update Profile Successfully."
+msgstr ""
+
+#: websites/settings.py:128
 msgid "Vietnamese"
 msgstr ""
 
-#: websites/settings.py:118
+#: websites/settings.py:129
 msgid "English"
+msgstr ""
+
+#: websites/vnpay_payment/views.py:92
+msgid "[Metiz] Booking Movie Tickets Successful !"
 msgstr ""

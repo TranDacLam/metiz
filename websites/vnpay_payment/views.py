@@ -5,17 +5,20 @@ from datetime import datetime
 from django.core.serializers import json
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
-import ast
+from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
+from django.contrib.sites.models import Site
 from forms import PaymentForm
 from vnpay import vnpay
 from django.conf import settings
 from booking.models import BookingInfomation
 from booking import api
+from registration import metiz_email
+from Crypto.Cipher import AES
+import ast
 import requests
 import random
-from Crypto.Cipher import AES
 import base64
-from django.utils import timezone
 
 
 def data_encrypt_cbc(data):
@@ -86,9 +89,33 @@ def send_sms(phone, content):
         return None
 
 
+def send_mail_booking(is_secure, email, full_name, barcode, content):
+    try:
+        message_html = "websites/booking/email/booking_notification.html"
+        subject = _("[Metiz] Booking Movie Tickets Successful !")
+
+        protocol = 'http://'
+        if is_secure:
+            protocol = 'https://'
+        logo_url = protocol + \
+            str(Site.objects.get_current()) + \
+            '/static/websites/img/logo.png'
+        data_binding = {
+            'full_name': full_name,
+            'URL_LOGO': logo_url,
+            'barcode': barcode,
+            'content': content
+        }
+        # Send email activation link
+        metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
+                              email], data_binding)
+    except Exception, e:
+        print "Error se , ", e
+
+
 def cancel_seats(seats_choice, id_server):
     for seat in seats_choice:
-        api.call_api_cancel_seat(seat, id_server=booking_order.id_server)
+        api.call_api_cancel_seat(seat, id_server=id_server)
 
 
 def payment(request):
@@ -213,7 +240,7 @@ def payment_ipn(request):
                 """
                 booking_order = BookingInfomation.objects.get(
                     order_id=order_id)
-                
+
                 # Verify Order_id proccess update before
                 if booking_order.order_status == 'done':
                     return JsonResponse({'RspCode': '02', 'Message': 'Order Already Update'})
@@ -238,14 +265,19 @@ def payment_ipn(request):
                         booking_order.save()
                         return JsonResponse({'RspCode': '99', 'Message': 'Process Booking Movie Error'})
 
-
                     # Handle Confirm Booking Success and send sms or email
                     booking_order.order_status = "done"
+                    booking_order.save()
 
                     content_sms = """DAT VE THANH CONG. Ve cua quy khach da duoc xac nhan: Ma: %s """ % booking_order.barcode
                     content_sms += str(booking_order.order_desc.replace("\r\n", ""))
                     # Send SMS for user
                     send_sms(booking_order.phone, content_sms)
+
+                    # Send Email
+                    if booking_order.email:
+                        send_mail_booking(request.is_secure(), booking_order.email, request.session[
+                                          "full_name"], booking_order.barcode, booking_order.order_desc)
 
                     # Return VNPAY: Merchant update success
                     result = JsonResponse(
