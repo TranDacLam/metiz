@@ -131,7 +131,9 @@
             {% for item in top_news %}
                 <div class="new-img col-lg-3 col-md-3 col-sm-3 col-xs-6">
                     <img class="" src="{{MEDIA_URL}}{{item.image}}" alt="{{item.name}}">
-                    <a class="bg_hover" href="{% url 'new_detail' item.id %}"></a>
+                    <a class="bg_hover word-wrap" href="{% url 'new_detail' item.id %}">
+                        <p>{{item.name}}</p>
+                    </a>
                 </div>
                     {% if forloop.counter|add:"-2"|divisibleby:"4" %}
                         </div><div class="row">
@@ -144,6 +146,7 @@
         </div>
     </div>
 </div>
+
 <div id="ads-facebook">
     <div class="container">
     {% if position_2 %}

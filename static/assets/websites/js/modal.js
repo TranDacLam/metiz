@@ -7,7 +7,7 @@ $(document).ready(function() {
     var lang = $('html').attr('lang');
     if ( lang == 'vi') {
         message = {'required': 'Trường này bắt buộc', 
-        'phone': 'số điện thoại không hợp lệ',
+        'phone': 'Số điện thoại không hợp lệ',
         'minlength_2' :'Nhập ít nhất 2 kí tự', 
         'minlength_6' :'Nhập ít nhất 6 kí tự',
         'minlength_8' :'Nhập ít nhất 8 kí tự',
@@ -18,7 +18,7 @@ $(document).ready(function() {
         'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
     } else {
         message = {'required': 'This field is required', 
-        'phone': 'invalid telephone number',
+        'phone': 'Invalid telephone number',
         'minlength_2' :'Please enter at least 2 characters', 
         'minlength_6' :'Please enter at least 6 characters',
         'minlength_8' :'Please enter at least 8 characters',

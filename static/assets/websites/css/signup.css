@@ -96,7 +96,8 @@ ul ~ label{
 	display:none;
 }
 .form-address #address{
-		width: 100%;
+	width: 100%;
+	max-height: 70px;
 }
 #myTabContent button[type=submit]{
 	text-transform: uppercase;
@@ -111,6 +112,13 @@ ul ~ label{
 }
 #myTabContent #phone{
 	padding-left: 40px;
+}
+#myTabContent input[type=number]::-webkit-inner-spin-button, 
+#myTabContent input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
 @media  only screen and (max-width: 767px){
 	.form-address #address{
