@@ -32,7 +32,7 @@ def login(request):
         # error
         if request.method == 'POST':
             login_form = LoginForm(request.POST, request=request)
-            if request.POST['is_popup_schedule']:
+            if request.POST.get('is_popup_schedule', None):
                 try:
                     if login_form.is_valid():
                         request.session['full_name'] = request.user.full_name

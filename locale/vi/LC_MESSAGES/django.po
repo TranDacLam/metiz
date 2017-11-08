@@ -39,7 +39,7 @@ msgstr ""
 #: templates/modal.html:112 templates/modal.html:152 templates/modal.html:197
 #: templates/registration/signup.html:41 templates/registration/signup.html:109
 msgid "Enter Email Here"
-msgstr "Nhập email ở đây"
+msgstr "Nhập Email Ở Đây"
 
 #: templates/modal.html:116 templates/registration/signup.html:44
 #: templates/registration/signup.html:128
@@ -127,7 +127,7 @@ msgstr "Nhập Số Điện Thoại Ở Đây"
 
 #: templates/registration/profile.html:100
 msgid "Enter Email Here.."
-msgstr "Nhập email ở đây"
+msgstr "Nhập Email Ở Đây"
 
 #: templates/registration/profile.html:107
 #: templates/registration/signup.html:116

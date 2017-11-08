@@ -6,6 +6,9 @@
     display: inline-block;
     padding: 0px 1px;
 }
+#test-popup .mfp-close{
+    opacity: 1;
+}
 #test-popup .city{
     margin-top: 15px;
 }
@@ -24,9 +27,11 @@
 }
 #test-popup .list-item li.active a{
     background: url('../images/bullet03.gif') no-repeat 20px;
-    background-color: #282425;
+    background-color: #ff5400;
     color: #ffffff;
     text-decoration: none;
+    font-size: 19px;
+    font-family: "SairaSemiCondensed-Medium";
 }
 #test-popup .list-cinema{
     margin-bottom: 15px;
@@ -41,6 +46,8 @@
     padding: 10px 30px;
     background: #f3f2f5;
     border-radius: 0px;
+    font-size: 19px;
+    font-family: "SairaSemiCondensed-Medium";
 }
 
 #test-popup .list-cinema a:hover{
@@ -63,6 +70,7 @@
     border-color: #000000;
     outline: none;
     box-shadow:none;
+
 }
 #test-popup .empty-schedule{
     text-align: center;
@@ -115,13 +123,14 @@
 }
 .div-login .top {
     background: #fff;
-    color: #333;
+    color: #ff5400;
     padding: 20px;
-    border-bottom: 1px solid #c0c0c0;
+    border-bottom: 1px solid #ff5400;
     width: 100%;
     height: auto;
     line-height: 20px;
-    font-size: 16px;
+    font-size: 24px;
+    font-family: "SairaSemiCondensed-Medium";
     
 }
 .popup-booking .toggle-tabs{
@@ -137,10 +146,10 @@
     margin-top: 20px;
     margin-bottom: 10px;
     color: black;
-    margin-left: 7px;
+    margin-left: -76px;
 }
 .section-lightpink .title{
-    margin-left: 43px;
+    margin-left: 20px;
 }
 .popup-booking .movie-time-line-box {
     padding-bottom: 30px;
@@ -227,11 +236,12 @@
     color: #666;
     cursor: pointer;
     position: relative;
+    font-family: 'SairaSemiCondensed-Medium';
 }
 
 .theater_time > li a {
     display: block;
-    color: #666;
+    color: #000;
 }
 
 .theater_time > li .clock {
@@ -240,24 +250,20 @@
     line-height: 38px;
     border-bottom: 1px solid #e5e5e5;
     font-size: 15px;
-    font-weight: bold;
 }
 .theater_time > li .time {
     display: block;
     height: 38px;
     line-height: 38px;
     border-bottom: 1px solid #e5e5e5;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 18px;
 }
 .theater_time > li .ppnum {
     display: block;
     height: 19px;
     line-height: 19px;
-    font-size: 12px;
-}
-.theater_time > li a {
-    color: #666;
+    font-size: 14px;
+    font-family: 'SairaSemiCondensed-Regular';
 }
 .toggle-tabs li:hover .days-popup{
     border: 2px solid #000000;
@@ -267,15 +273,20 @@
 }
 .list-inline a {
     text-decoration: none;
-    transition: color 600ms linear;
+    transition: color 300ms linear;
 }
 .list-inline li:hover a{
-    background-color: #000000;
+    background-color: #ff5400;
     color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
 }
 .list-inline li:hover .clock{
     display: block;
-    border-bottom: 1px solid #000000 ;
+    border-bottom: 1px solid #ff5400 ;
+    font-size: 18px;
+    font-weight: bold;
+     font-family: 'SairaSemiCondensed-Medium';
 }
 .list-inline li:hover .time{
     display: none;
@@ -286,7 +297,7 @@
     font-size: 16px;
 }
 .days-popup li.active-date .badge {
-    background-color: #3e3e3e;
+    background-color: #ff5400;
     color: #fff;
     cursor: pointer;
     border-radius: 50%;
@@ -307,9 +318,6 @@
     border: 0px;
 }
 .warning-footer .btn{
-    background-color: #000000;
-    color: #ffffff;
-    border-bottom-color: #000000;
 }
 #confirm .modal-header{
     border-bottom:none;
@@ -332,9 +340,6 @@
 #confirm .tab-header li a:focus{
     background: #ff4900;
     color: #ffffff;
-}
-#test-popup #update{
-    background: #ff4900;
 }
 .form-error{
     color: red;
@@ -385,6 +390,20 @@
 #member #error{
     color: red;
     margin-bottom: 10px;
+}
+#test-popup .country-code{
+    color: #bfbfbf;
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    padding-right: 4px;
+    border-right: 1px solid #cccccc
+}
+#test-popup #phone{
+    padding-left: 40px;
+}
+#test-popup .form-phone{
+    position: relative;
 }
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
