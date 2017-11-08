@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 	// *** Validate form and set data city, district ***
-
 	//message for validate
 	var lang = $('html').attr('lang');
     if ( lang == 'vi') {
@@ -68,7 +67,6 @@ $(document).ready(function() {
 			},
 			phone:{
 				required: message.required,
-				number: message.number,
 				validatePhone: message.phone
 			},
 			email:{

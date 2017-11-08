@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+    // Validate guest_form, update_form
+    // Validate and handle member_form by ajax
+    
     // message for validate form
     var lang = $('html').attr('lang');
     if ( lang == 'vi') {
