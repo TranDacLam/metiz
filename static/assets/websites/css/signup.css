@@ -98,10 +98,20 @@ ul ~ label{
 .form-address #address{
 		width: 100%;
 }
-button[type=submit]{
+#myTabContent button[type=submit]{
 	text-transform: uppercase;
 }
-
+#myTabContent .country-code{
+	color: #bfbfbf;
+	position: absolute;
+    top: 30px;
+    left: 23px;
+    padding-right: 4px;
+    border-right: 1px solid #cccccc
+}
+#myTabContent #phone{
+	padding-left: 40px;
+}
 @media  only screen and (max-width: 767px){
 	.form-address #address{
 		width: 265px;
