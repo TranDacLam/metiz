@@ -6,6 +6,7 @@ from datetime import *
 from django.db.models import Avg, Sum, Count
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
+from django.utils.translation import ugettext_lazy as _
 from itertools import chain
 from django.core.urlresolvers import reverse
 import itertools
@@ -309,9 +310,6 @@ def home(request):
                                                       'position_2': position_2[0] if position_2 else None,
                                                       'data_slide': data_slide, 'new_offer': new_offer})
     
-    except Movie.DoesNotExist, e:
-        print "Error Movie : %s" % e
-        return HttpResponse(status=404)
     except Exception, e:
         print "Error action home : ", e
         return HttpResponse(status=500)
