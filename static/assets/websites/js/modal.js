@@ -1,4 +1,19 @@
 $(document).ready(function() {
+    
+    //close popup by esc key
+    $("body").on("keyup", function(e){
+        var key = e.which;
+        if (key == 27){
+            e.preventDefault();
+            if($('#test-popup .modal').hasClass('in')){
+                $('#test-popup .modal').modal('hide');
+            }
+            else{
+                $.magnificPopup.close();
+            }
+        } 
+    });
+
 
     // Validate guest_form, update_form
     // Validate and handle member_form by ajax
@@ -138,6 +153,7 @@ $(document).ready(function() {
     $('.open-popup-link').magnificPopup({
           type: 'inline',
           midClick: true,
+          enableEscapeKey: false,
     });
     
     

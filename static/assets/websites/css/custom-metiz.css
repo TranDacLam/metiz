@@ -1143,8 +1143,7 @@ body.customer-account .my-account .fieldset.metiz-changepass h2{
     position: relative;
     display: inline-block;
     width: 100%;
-    margin: 10px 0;
-    /*border: 1px solid #ededed;*/
+    margin: 0px 0px 10px 0px;
 }
 .slideshow-prev {
     left: 8px;

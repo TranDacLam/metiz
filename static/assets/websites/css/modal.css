@@ -8,6 +8,7 @@
 }
 #test-popup .mfp-close{
     opacity: 1;
+    z-index:0;
 }
 #test-popup .city{
     margin-top: 15px;
@@ -399,7 +400,7 @@
     margin-bottom: 10px;
 }
 #test-popup .country-code{
-    color: #bfbfbf;
+    color: #555;
     position: absolute;
     top: 30px;
     left: 5px;
