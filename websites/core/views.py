@@ -14,14 +14,6 @@ import itertools
 # NOTES : View SQL Query using : print connection.queries
 
 
-def custom_404(request):
-    return render(request, 'websites/errors/404.html', {}, status=404)
-
-
-def custom_500(request):
-    return render(request, 'websites/errors/500.html', {}, status=500)
-
-
 def showing(request):
     try:
         # get data movie showing
@@ -164,7 +156,7 @@ def news(request):
             'priority').extra(select={'priority_null': 'priority is null'})
 
         list_news_present = news_present.extra(
-            order_by=['priority_null', '-apply_date', 'modified'])
+            order_by=['priority_null', '-apply_date', '-modified', 'name'])
 
         # merge 3 list by order future, present and past
         list_news = list(chain(list_news_future, list_news_present))
@@ -292,8 +284,8 @@ def home(request):
         news = NewOffer.objects.all().order_by('priority').extra(
             select={'priority_null': 'priority is null'})
 
-        top_news = news.extra(order_by=['priority_null', 'apply_date'])[:5]
-
+        top_news = news.extra(order_by=['priority_null', '-apply_date'])[:5]
+        print 'top_news ', top_news
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
 
@@ -343,3 +335,6 @@ def get_post(request):
     except Exception, e:
         print "Error action get_post : ", e
         return HttpResponse(status=500)
+
+def contacts(request):
+    return render(request, 'websites/contacts.html')

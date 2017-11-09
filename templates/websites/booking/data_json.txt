@@ -1,0 +1,1 @@
+id_Server={{id_server}}&Secret={{secret}}&Json={'List': [{'PHONE': '{{phone}}', 'ListSeats': {{list_seats}}, 'NAME': '{{full_name}}', 'EMAIL': '{{email}}'}]}

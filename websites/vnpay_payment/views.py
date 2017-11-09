@@ -127,6 +127,11 @@ def payment(request):
         working_id = request.POST.get("working_id", None)
         id_server = request.POST.get("id_server", 1)
 
+        # Verify Session Booking Timeout before redirect to vnpayment
+        movies_session = request.session.get("movies", "")
+        if not movies_session or (movies_session and working_id not in movies_session):
+            return redirect("time-out-booking")
+
         if form.is_valid():
             order_type = form.cleaned_data['order_type']
             order_id = form.cleaned_data['order_id']
@@ -164,8 +169,8 @@ def payment(request):
 
             # Remove session and store order in database and verify order id
             # unsuccessfull, clear seats
-            movies = request.session.get("movies", "")
-            if movies and working_id in movies:
+            
+            if movies_session and working_id in movies_session:
                 del request.session['movies'][working_id]
 
             # Store order infomation with status is pendding

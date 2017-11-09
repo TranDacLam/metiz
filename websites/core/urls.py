@@ -1,10 +1,6 @@
 from django.conf.urls import url, include
 import views
 
-
-handler404 = 'core.views.custom_404'
-handler500 = 'core.views.custom_500'
-
 urlpatterns = [
 
 	url(r'^$', views.home, name='home'),
@@ -16,4 +12,5 @@ urlpatterns = [
     url(r'^cinema/technology/(?P<name>[-\w]+)/$', views.technology_detail, name='technology_detail'),
     url(r'^technology/$', views.get_technology, name='get_technology'),
     url(r'^posts/$', views.get_post, name='get_cms'),
+    url(r'^contacts/$', views.contacts, name='contacts'),
 ]

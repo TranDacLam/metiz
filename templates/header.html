@@ -89,7 +89,7 @@
                                 <a href="#test-popup" data-date-select="" data-all-movie="true" class="open-popup-link dropdown-toggle popup-movie-schedule" >Lịch chiếu</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Phim </a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="id-menu-movie" >Phim </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li ><a href="{% url 'showing'%}">Phim Đang Chiếu</a></li>
                                     <li ><a href="{% url 'comingsoon'%}">Phim Sắp Chiếu</a></li>
@@ -102,7 +102,7 @@
                                 <a class="dropdown-toggle" href="#">BLOG PHIM</a>
                             </li>
                             <li class="dropdown" id="dropdown-member">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Thành viên</a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="id-menu-member">Thành viên</a>
                                 <ul class="dropdown-menu">
                                     {% if user.is_authenticated %}
                                         <li><a href="{% url 'profile'%}">Hồ sơ</a></li>
