@@ -143,11 +143,13 @@
     color: #fff;
     text-decoration: none;
 }
-@media screen and (min-width: 1366px) {
-    .tab-movie{
-		padding-left: 30px;
-	}
-}
+/* .box-new{
+    padding-left: 15px;
+    width: 560px;
+    padding-right: 0px;
+    margin-right: 7px;
+} */
+
 .tab-event{
 	height: 201px; 
 	overflow: hidden
@@ -228,6 +230,17 @@ ul.metiz-movie-tabs {
 .info-movie-home h4{
 	text-transform: uppercase;
 }
+ #news #box{
+    width: 545px;
+}
+@media screen and (min-width: 1366px) {
+    .tab-movie{
+        padding-left: 30px;
+    }
+    #news #box{
+        width: 545px;
+    }
+}
 @media only screen and (max-width: 1365px){
     .owl-nav .lSNext {
         right: 36px;
@@ -260,6 +273,9 @@ ul.metiz-movie-tabs {
 	.detail-pay-film a{
 		padding: 12px 19px 12px 19px;
 	}
+    #news #box{
+        width: 446px;
+    } 
 }
 @media only screen and (max-width: 960px){
 	.owl-nav .lSNext{
@@ -287,6 +303,9 @@ ul.metiz-movie-tabs {
 	}
     .detail-pay-film button, .detail-pay-film a{
         font-size: 13px;
+    }
+    #news #box{
+        width: 350px;
     }
 }
 @media screen and (max-width: 680px) {

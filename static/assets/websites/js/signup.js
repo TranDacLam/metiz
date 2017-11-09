@@ -1,7 +1,11 @@
 $(document).ready(function() {
+
+	// *** Validate form and set data city, district ***
+	//message for validate
 	var lang = $('html').attr('lang');
     if ( lang == 'vi') {
     	message = {'required': 'Trường này bắt buộc',
+    	'phone': 'số điện thoại không hợp lệ',
     	'minlength_2' :'Nhập ít nhất 2 kí tự', 
     	'minlength_6' :'Nhập ít nhất 6 kí tự',
     	'minlength_8' :'Nhập ít nhất 8 kí tự',
@@ -12,6 +16,7 @@ $(document).ready(function() {
     	'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
     } else {
     	message = {'required': 'This field is required', 
+    	'phone': 'invalid telephone number',
     	'minlength_2' :'Please enter at least 2 characters', 
     	'minlength_6' :'Please enter at least 6 characters',
     	'minlength_8' :'Please enter at least 8 characters',
@@ -35,7 +40,7 @@ $(document).ready(function() {
 			},
 			phone:{
 				required: true,
-				number: true
+				validatePhone: true,
 			},
 			email:{
 				required: true,
@@ -62,7 +67,7 @@ $(document).ready(function() {
 			},
 			phone:{
 				required: message.required,
-				number: message.number
+				validatePhone: message.phone
 			},
 			email:{
 				required: message.required,
@@ -103,7 +108,7 @@ $(document).ready(function() {
 				required: message.required,
 				minlength: message.minlength_8,
 			}
-		},
+		}
 	});
 	$.validator.addMethod(
       "validateDate",
@@ -121,9 +126,21 @@ $(document).ready(function() {
       },
       message.validatePassword
     );
-   
+    $.validator.addMethod(
+      "validatePhone",
+      function (value, element) {
+        // put your own logic here, this is just a (crappy) example 
+        return value.match(/^(01[2689]|09|[0-9]|[0-9]{2})[0-9]{8}$/);
+      },
+      message.phone
+    );
 
-	// demo data 
+   	// CHOOSE CITY AND DISTRICT
+	// Step 1: Load data for city and district, but district hide
+	// Step 2: Choose city, hide all district, show district appropriate, 
+	// Step 3: Change city, hide all district, show district appropriate, 
+
+	// data city 
 	var list_city = {'Đà Nẵng': [' Hải Châu', 'Thanh Khê', ' Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu', 'Hòa Vang', ' Cẩm Lệ', ' Hoàng Sa'], 
 	'Hà Nội': [' Hoàn Kiếm', 'Ba Đình', 'Hai Bà Trưng'], 
 	'Hồ Chí Minh': ['1','2','3', '4', '5', '6', 'Tân Bình'], 'Khác': ['Khác']};
@@ -156,21 +173,17 @@ $(document).ready(function() {
                 }
             }
 	 	});
-	 	$('.list-district').children().hide();
 	});
+	$('.list-district').children().hide();
 
-    $('.list-district .show-district').css('display','block');
 
 	// funtion show district for each city
 	function selectDistrict(list_city){
 		var name_city= $('.list-city').val();
-        console.log(name_city);
-        $('.list-district option').removeClass('show-district');
+        $('.list-district').children().hide();
+        $('.list-district option').first().css('display', 'block').prop("selected", true);
 		$.each(list_city, function(index, val) {
 			if (index == name_city ) {
-                console.log(val);
-				$('.list-district').children().hide();
-                $('.list-district option').first().css('display', 'block').prop("selected", true);
 				$('.list-district option').each(function(index, el) {
 					if ($(this).hasClass(name_city)) {
 						$(this).show();
@@ -200,7 +213,7 @@ $(document).ready(function() {
 		}
 	});
 
-	//delete old error message when fill input
+	//delete old error message when fill input in register form
 	$('#myTabContent .form-group input').click(function(event) {
 		$(this).parent().children('.errorlist').hide();
 	});
