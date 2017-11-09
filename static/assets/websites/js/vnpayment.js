@@ -1,8 +1,7 @@
 var validNavigation = false;
 
 function endSession() {
-// Browser or broswer tab is closed
-// Do sth here ...
+    // Call server clear session
     var working_id = $("#working_id").val();
     var id_server = $('.vnpayment #create_form input[name=id_server]').val();
     $.ajax({
@@ -19,35 +18,18 @@ function endSession() {
     });
 }
 
-function wireUpEvents() {
-/*
-* For a list of events that triggers onbeforeunload on IE
-* check http://msdn.microsoft.com/en-us/library/ms536907(VS.85).aspx
-*/
-    
-    window.onbeforeunload = function() {
-        if (!validNavigation) { 
-            endSession();
-            window.setTimeout(function () { 
-                window.location.href = "/timeout/booking";
-            }, 0); 
-            window.onbeforeunload = null; // necessary to prevent infinite loop, that kills your browser 
-        }
-    }
-
- // Attach the event submit for all forms in the page
-     $("form").bind("submit", function() {
-        validNavigation = true;
-     });
-
- // Attach the event click for all inputs in the page
-     $("input[type=submit]").bind("click", function() {
-        validNavigation = true;
-     });
-}
-
 
 $(document).ready(function() {
+    // detect redirect page only ecept button submit form and change showtime
+    $('body a').click(function(evt){    
+       if(evt.target.id == "btn-payment-seats" || $(evt.target).hasClass("popup-movie-schedule") || evt.target.id == "id-menu-member" || evt.target.id == "id-menu-movie"){
+          return;
+       }else{
+            endSession();
+       }
+        
+    });
+
     window.onload = function () {
         if (typeof history.pushState === "function") {
             history.pushState("loadpage", null, null);
@@ -55,6 +37,7 @@ $(document).ready(function() {
                 history.pushState('new_loadpage', null, null);
                 // Handle the back (or forward) buttons here
                 // Will NOT handle refresh, use onbeforeunload for this.
+                endSession();
                 var id_showtime = $('#member_form input[name=id_showtime]').val();
                 var id_sever = $('#member_form input[name=id_sever]').val();
                 var id_movie_name = $('#member_form input[name=id_movie_name]').val();
@@ -66,25 +49,7 @@ $(document).ready(function() {
                             + '&id_movie_date_active='+ id_movie_date_active;
             };
         }
-        // else {
-        //     var ignoreHashChange = true;
-        //     window.onhashchange = function () {
-        //         if (!ignoreHashChange) {
-        //             ignoreHashChange = true;
-        //             window.location.hash = Math.random();
-        //             alert("refres");
-        //             // Detect and redirect change here
-        //             // Works in older FF and IE9
-        //             // * it does mess with your hash symbol (anchor?) pound sign
-        //             // delimiter on the end of the URL
-        //         }
-        //         else {
-        //             ignoreHashChange = false;   
-        //         }
-        //     };
-        // }
     }
-    wireUpEvents();  
 
     $("#btnPopup").click(function (event) {
         // event.preventDefault();
@@ -92,6 +57,7 @@ $(document).ready(function() {
         var postData = $("#create_form").serialize();
         console.log("postData ",postData);
         var submitUrl = $("#create_form").attr("action");
+        // Call server verify session
         $.ajax({
             type: "POST",
             url: submitUrl,
@@ -166,7 +132,7 @@ function startTimer(duration, display) {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.text(minutes + ":" + seconds);
+        // display.text(minutes + ":" + seconds);
 
         if (--timer < 0) {
             endSession();
