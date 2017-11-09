@@ -139,16 +139,7 @@ $(document).ready(function() {
           type: 'inline',
           midClick: true,
     });
-    //Add class start-month in day 1
-    startMonth();
-
-    function startMonth(){
-        $('.days-popup li span').each(function() {
-            if ($(this).text() == 1) {
-                $(this).parent().addClass('start-month');
-            }
-        });
-    }
+    
     
    
     // *** POPUP MOVIE SCHEDULE ***
@@ -179,8 +170,9 @@ $(document).ready(function() {
                                 +'<a href="#" data-toggle="modal" data-target="#warning">'
                                     +'<input type="hidden" name="id_showtime" value="'+ value.id_showtime +'">'
                                     +'<input type="hidden" name="id_movie_name" value="'+ shedule.movie_name +'">'
-                                    +'<span class="time">'+ value.time +'</span>'
-                                    +'<span class="clock">'+ value.time +'</span>'
+                                    +'<span class="time">'
+                                        + value.time +'<span class="time-end"> ~ '+ value.time +'</span>'
+                                    +'</span>'
                                     +'<span class="ppnum">43</span>' // Số ghế trống
                                     +'<span class="ppnum"></span>' // room chiếu phim
                                     +'<span class="pp-early" title="Suất chiều đầu"></span>'
@@ -200,12 +192,15 @@ $(document).ready(function() {
                         +'</ul>'
                    +' </div>'
                +' </div>';
-    }
+    } 
 
 
     var movie_api_id;
 
     $(document).on('click', '.popup-movie-schedule', function () { 
+        
+        //set data for Month
+        $('#center-month').text($(this).children('.hide-month').text());
         $('.days-popup li').removeClass('active-date');
 
         var id_sever = $('.list-cinema .active').attr('data-id-server');
@@ -232,6 +227,8 @@ $(document).ready(function() {
             }else{
                 var date_query = new Date().toJSON().slice(0,10).replace(/-/g,'-');
                 $('.days-popup li:first').addClass('active-date');
+                //set data for Month
+                $('#center-month').text($('.days-popup li:first').children('.hide-month').text());
             }
         }
         
@@ -256,6 +253,7 @@ $(document).ready(function() {
                 if(value.lst_times.length > 0){
                     html += listFilm(value);
                 }
+
             });
             $('.list-schedule').html(html);
             getValue();
@@ -294,6 +292,5 @@ $(document).ready(function() {
         }
     });
     
-
 });
 

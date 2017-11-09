@@ -31,17 +31,16 @@
         <div class="popup-booking">
             <section class="section-lightpink">
                 <h3 class="title">{% trans 'Select date play' %}</h3>
-                <div class="row">
-                    <div class="col-xs-6">
+                <div class="calendar-popup ">
+                    <div class="month" >
+                       <strong id="center-month">Tháng 11</strong>
                     </div>
-                    <div class="calendar-popup">
+                    <div class="row">
                         <ul class="days-popup" id="play-date-slider">
                         {% get_date_showing as list_date_present %}
                         {% for item in list_date_present %}
                             <li class="available popup-movie-schedule" data-date-select="{{item|date:'Y-m-d'}}">
-                                <div class="month" >
-                                    <strong>{{ item|date:'m'}}</strong>
-                                </div>
+                                <div class="hide-month">{{ item|date:'M'}}</div>
                                 <div class="dayofweek">{{ item|date:'D'}}</div>
                                 <span class="badge">{{ item|date:'d' }}</span>
                             </li>
