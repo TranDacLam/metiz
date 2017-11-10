@@ -640,10 +640,9 @@ ul.metiz-movie-tabs {
     .owl-nav .lSPrev img, .owl-nav .lSNext img{
         width: 45px
     }
-<<<<<<< HEAD
     #ads-facebook #banner-home{
         height: 79px;
-=======
+    }
     #news .bg_hover{
         left: 15px;
         height:154px;
@@ -652,7 +651,6 @@ ul.metiz-movie-tabs {
     #news .bg_hover p{
         padding-top: 13px;
         font-size: 15px;
->>>>>>> develop
     }
 }
 @media screen and (max-width: 360px) {

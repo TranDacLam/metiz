@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    var val_required = 'Trường này là bắt buộc';
     $("#contactForm").validate({
         rules: {
             name: { 
@@ -8,19 +7,25 @@ $(document).ready(function() {
             email:{
                 required: true,
             },
-            comment:{
+            telephone:{
+                required: true,
+            },
+            subject:{
                 required: true,
             }
         },
         messages:{
             name: {
-                required: val_required,
+                required: "Vui lòng nhập tên",
             },
             email: {
-                required: val_required,
+                required: "Vui lòng nhập email",
             },
-            comment:{
-                required: val_required,
+            telephone: {
+                required: "Vui lòng nhập số điện thoại",
+            },
+            subject:{
+                required: "Vui lòng nhập chủ đề",
             },
         }
     });
