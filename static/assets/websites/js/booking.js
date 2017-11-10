@@ -40,7 +40,7 @@ $(document).ready(function() {
         context: this,
     })
     .done(function(response) {
-        if(response.List.length){
+        if(response.List && response.List.length > 0){
             bookingSeat(response.List);
         }else{
             displayMsg();

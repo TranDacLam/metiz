@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
@@ -190,19 +191,10 @@ def check_seats(request):
                     email = request.session.get("email", "")
                     # Get Information of user and building data for api update
                     # status of seats
-                    data_post_booking = {
-                        "List": [
-                            {
-                                "NAME": str(full_name),
-                                "PHONE": str(phone),
-                                "EMAIL": str(email),
-                                "ListSeats": seats_choice
-                            }
-                        ]
-                    }
+
                     result = api.call_api_post_booking(
-                        data_post_booking, id_server, url="/postBooking")
-                    print "data_post_booking ", data_post_booking
+                        full_name, phone, email, seats_choice, id_server, url="/postBooking")
+
                     if not result["BARCODE"]:
                         print "result ", result
                         return JsonResponse({"code": 400, "message": _("Cannot Booking Seats. Please Contact Administrator.")}, status=400)
@@ -287,3 +279,4 @@ def clear_seeats(request):
     except Exception, e:
         print "Error clear_seeats : %s ", e
         pass
+

@@ -1,8 +1,13 @@
+# -*- coding: utf-8 -*-
 from django.conf import settings
 import json
 import urllib
 import urllib2
 import requests
+from django.template import loader, Context, Template
+from django.utils.translation import ugettext_lazy as _
+import HTMLParser
+
 
 
 def call_api_seats(id_showtime, id_server=1):
@@ -30,16 +35,27 @@ def call_api_seats(id_showtime, id_server=1):
     return result
 
 
-def call_api_post_booking(data_json, id_server=1, url="/postBooking"):
+def call_api_post_booking(full_name, phone, email, seats_choice, id_server=1, url="/postBooking"):
     try:
         """ Call API get new seats of show time """
         url_booking = settings.BASE_URL_CINESTAR + url
-        values = {
-            "Json": data_json,
-            "id_Server": id_server,
-            "Secret": settings.CINESTAR_SERECT_KEY
+        
+        data_binding = {
+            "secret": settings.CINESTAR_SERECT_KEY,
+            "id_server": id_server,
+            "phone": phone,
+            "list_seats": str(seats_choice),
+            "full_name": str(full_name),
+            "email": email
+
         }
-        request = urllib2.Request(url_booking, data=urllib.urlencode(values),
+
+        cxt = Context(data_binding)
+        """ bind data to html template """
+        html_parse = HTMLParser.HTMLParser()
+        text_content = html_parse.unescape(loader.get_template("websites/booking/data_json.txt").render(cxt))
+        
+        request = urllib2.Request(url_booking, data=str(text_content),
                                   headers={'Content-Type': 'application/x-www-form-urlencoded'})
         resp = urllib2.urlopen(request)
         # handle decoding json
