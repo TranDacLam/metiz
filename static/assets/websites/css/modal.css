@@ -8,6 +8,7 @@
 }
 #test-popup .mfp-close{
     opacity: 1;
+    z-index:0;
 }
 #test-popup .city{
     margin-top: 15px;
@@ -90,6 +91,13 @@
     -o-transform: inherit ;
     transform: inherit ;
 }
+#test-popup input[type=number]::-webkit-inner-spin-button, 
+#test-popup input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
 .white-popup {
   position: relative;
   background: #FFF;
@@ -124,7 +132,7 @@
 .div-login .top {
     background: #fff;
     color: #ff5400;
-    padding: 20px;
+    padding: 15px;
     border-bottom: 1px solid #ff5400;
     width: 100%;
     height: auto;
@@ -146,10 +154,7 @@
     margin-top: 20px;
     margin-bottom: 10px;
     color: black;
-    margin-left: -76px;
-}
-.section-lightpink .title{
-    margin-left: 20px;
+    padding-left: 15px;
 }
 .popup-booking .movie-time-line-box {
     padding-bottom: 30px;
@@ -177,13 +182,17 @@
     display: inline-block;
     float: none;
 }
-.month{
-    visibility: hidden;
+#test-popup .month{
+    text-align:center;
 }
-.start-month .month{
-    visibility: visible;
+#test-popup .hide-month{
+    display:none;
 }
-.dayofweek{
+#test-popup .month strong{
+    font-weight: bold;
+    font-size: 28px;
+}
+#test-popup .dayofweek{
     margin-top: 12px;
     font-size: 18px;
 }
@@ -244,13 +253,6 @@
     color: #000;
 }
 
-.theater_time > li .clock {
-    display: none;
-    height: 38px;
-    line-height: 38px;
-    border-bottom: 1px solid #e5e5e5;
-    font-size: 15px;
-}
 .theater_time > li .time {
     display: block;
     height: 38px;
@@ -271,6 +273,9 @@
 .current .days-popup{
     border: 2px solid #000000;
 }
+.time .time-end{
+    display:none;
+}
 .list-inline a {
     text-decoration: none;
     transition: color 300ms linear;
@@ -281,16 +286,15 @@
     font-size: 18px;
     font-weight: bold;
 }
-.list-inline li:hover .clock{
-    display: block;
-    border-bottom: 1px solid #ff5400 ;
-    font-size: 18px;
-    font-weight: bold;
-     font-family: 'SairaSemiCondensed-Medium';
+.list-inline li:hover .time-end{
+    display: inline;
 }
 .list-inline li:hover .time{
-    display: none;
+    border-color: #ff5400;
 }
+/* .list-inline li:hover .time{
+    display: none;
+} */
 .days-popup li.available .badge {
     color: #3e3e3e;
     cursor: pointer;
@@ -313,11 +317,15 @@
 .slick-slide, .slick-slide *{ 
     outline: none !important;
 }
+#warning .modal-header{
+    border-bottom-color: #ff4000;
+}
 .warning-footer{
     text-align: center;
     border: 0px;
 }
 .warning-footer .btn{
+    text-transform: uppercase;
 }
 #confirm .modal-header{
     border-bottom:none;
@@ -392,7 +400,7 @@
     margin-bottom: 10px;
 }
 #test-popup .country-code{
-    color: #bfbfbf;
+    color: #555;
     position: absolute;
     top: 30px;
     left: 5px;
@@ -442,6 +450,13 @@
     }
     .calendar-popup .days-popup li .badge {
         padding: 8px;
+    }
+    #confirm .modal-header{
+        padding: 0px;
+    }
+    #confirm .modal-header .tab-header li{
+        width: 100px;
+        font-size: 13px;
     }
     .calendar-popup .days-popup li{
         width: 87px;

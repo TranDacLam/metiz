@@ -36,14 +36,6 @@ $(document).ready(function() {
         message.validatePassword
     );
 
-    // validate phone, persional only number
-    $('#signup_form input[name=phone], #signup_form input[name=personal_id]').keyup(function(e) {
-        if (/\D/g.test(this.value)) {
-            // Filter non-digits from input value.
-            this.value = this.value.replace(/\D/g, '');
-        }
-    });
-
 	// validate form
 	$('#signup_form').validate({
 		rules:{

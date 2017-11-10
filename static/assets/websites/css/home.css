@@ -88,7 +88,7 @@
 }
 #news .bg_hover{
     display:none;
-    background: url('../images/news/detail_hover.png');
+    background: url('../images/news/bg_hover.png');
     background-size: 100% auto;
     position: absolute;
     top: 0px;
@@ -98,11 +98,30 @@
     background-repeat:no-repeat;
     background-size:contain;
     background-position:center;
+    text-decoration: none;
+}
+
+#news .word-wrap p{
+    word-wrap: break-word;      /* IE 5.5-7 */
+    white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+    white-space: pre-wrap;      /* current browsers */
+}
+#news .word-wrap p{
+    text-align:center;
+    text-transform: uppercase;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 40px;
+    line-height: 1.2;
+    font-size: 24px;
+    font-family: 'SairaSemiCondensed-SemiBold', sans-serif;
+    color: #ffffff;
+
 }
 #news .new-img:hover .bg_hover{
     display: block;
-    
 }
+
 #news .container h1{
     font-weight: 700;
     font-family:  'SairaSemiCondensed-Bold', sans-serif;
@@ -131,7 +150,7 @@
     color: #606060;
 }
 #more_hover{
-    display:none
+    display:none;
 }
 #news #show_more:hover #more_hover{
     display:block;
@@ -139,6 +158,7 @@
 #news #show_more:hover #more{
     display:none;
 }
+
 .info-movie-home>h3>a{
     color: #fff;
     text-decoration: none;
@@ -377,9 +397,6 @@ ul.metiz-movie-tabs {
 .slideshow-container .prev-arrow:hover {
     opacity: 1;
 }
-.slide-home-custom{
-    padding-top: 10px;
-}
 .widget-static-block img{
     height: 129px;
     width: auto;
@@ -392,6 +409,9 @@ ul.metiz-movie-tabs {
 .session-movie .metiz-movie-tabs li{
     font-family: "SairaSemiCondensed-Bold", sans-serif;
 }
+ #ads-facebook #banner-home{
+     padding:2px;
+ }
 @media screen and (max-width: 1200px) {
 	#news img{
 		height:212px;
@@ -422,7 +442,10 @@ ul.metiz-movie-tabs {
 		width:170px;
 		left:15px;
 	}
-
+    #news .bg_hover p{
+        padding-top: 15px;
+        font-size: 17px;
+    }
 	#news #box {
 	    height: auto;
 	    padding: 6px;
@@ -447,12 +470,15 @@ ul.metiz-movie-tabs {
 	#news .bg_hover{
 		height:300px;
 		width:300px;
-		left:15px;
+		left:35px;
 	}
 	.new-img{
 	}
     #ads-facebook #banner-home{
         height: 168px;
+    }
+    #news #box{
+         width: auto;   
     }
 }
 @media screen and (max-width: 667px) {
@@ -464,9 +490,7 @@ ul.metiz-movie-tabs {
 	#news .bg_hover{
 		height:250px;
 		width:250px;
-		left:15px;
-	}
-	.new-img{
+		left:33px;
 	}
     #ads-facebook #banner-home{
         padding: 0px;
@@ -474,6 +498,9 @@ ul.metiz-movie-tabs {
     }
     #ads-facebook{
         padding: 35px 0px 35px 0px;
+    }
+	#news #box{
+         width: auto;
     }
 }
 @media screen and (max-width: 520px) {
@@ -497,8 +524,11 @@ ul.metiz-movie-tabs {
 	#news .bg_hover{
 		height:154px;
 		width:154px;
-		left: 15px;
+		left: 18px;
 	}
+    #news .bg_hover p{
+        font-size: 15px;
+    }
 	#news #box {
 		height:auto;
 	}
@@ -577,6 +607,15 @@ ul.metiz-movie-tabs {
     #news #box p{
         font-size: 14px;
     }
+    #news .bg_hover{
+        left: 18px;
+        height:154px;
+        width:154px;
+    }
+    #news .bg_hover p{
+        padding-top: 14px;
+        font-size: 16px;
+    }
 }
 @media screen and (max-width: 380px) {
     .slideshow-containe-movier .poster-film .product-img {
@@ -601,8 +640,19 @@ ul.metiz-movie-tabs {
     .owl-nav .lSPrev img, .owl-nav .lSNext img{
         width: 45px
     }
+<<<<<<< HEAD
     #ads-facebook #banner-home{
         height: 79px;
+=======
+    #news .bg_hover{
+        left: 15px;
+        height:154px;
+        width:154px;
+    }
+    #news .bg_hover p{
+        padding-top: 13px;
+        font-size: 15px;
+>>>>>>> develop
     }
 }
 @media screen and (max-width: 360px) {
@@ -611,7 +661,7 @@ ul.metiz-movie-tabs {
 		width:130px;
 	}
 	#news .bg_hover{
-		left: 15px;
+		left: 17px;
 		height:130px;
 		width:130px;
 
@@ -659,5 +709,14 @@ ul.metiz-movie-tabs {
     .owl-nav .lSNext{
         top: 28%;
         right: -22px;
+    }
+    #news .bg_hover{
+        left: 15px;
+        height:130px;
+        width:130px;
+    }
+    #news .bg_hover p{
+        padding-top: 13px;
+        font-size: 13px;
     }
 }

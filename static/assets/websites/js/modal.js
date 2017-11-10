@@ -1,4 +1,19 @@
 $(document).ready(function() {
+    
+    //close popup by esc key
+    $("body").on("keyup", function(e){
+        var key = e.which;
+        if (key == 27){
+            e.preventDefault();
+            if($('#test-popup .modal').hasClass('in')){
+                $('#test-popup .modal').modal('hide');
+            }
+            else{
+                $.magnificPopup.close();
+            }
+        } 
+    });
+
 
     // Validate guest_form, update_form
     // Validate and handle member_form by ajax
@@ -7,7 +22,7 @@ $(document).ready(function() {
     var lang = $('html').attr('lang');
     if ( lang == 'vi') {
         message = {'required': 'Trường này bắt buộc', 
-        'phone': 'số điện thoại không hợp lệ',
+        'phone': 'Số điện thoại không hợp lệ',
         'minlength_2' :'Nhập ít nhất 2 kí tự', 
         'minlength_6' :'Nhập ít nhất 6 kí tự',
         'minlength_8' :'Nhập ít nhất 8 kí tự',
@@ -18,7 +33,7 @@ $(document).ready(function() {
         'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
     } else {
         message = {'required': 'This field is required', 
-        'phone': 'invalid telephone number',
+        'phone': 'Invalid telephone number',
         'minlength_2' :'Please enter at least 2 characters', 
         'minlength_6' :'Please enter at least 6 characters',
         'minlength_8' :'Please enter at least 8 characters',
@@ -138,17 +153,9 @@ $(document).ready(function() {
     $('.open-popup-link').magnificPopup({
           type: 'inline',
           midClick: true,
+          enableEscapeKey: false,
     });
-    //Add class start-month in day 1
-    startMonth();
-
-    function startMonth(){
-        $('.days-popup li span').each(function() {
-            if ($(this).text() == 1) {
-                $(this).parent().addClass('start-month');
-            }
-        });
-    }
+    
     
    
     // *** POPUP MOVIE SCHEDULE ***
@@ -179,8 +186,9 @@ $(document).ready(function() {
                                 +'<a href="#" data-toggle="modal" data-target="#warning">'
                                     +'<input type="hidden" name="id_showtime" value="'+ value.id_showtime +'">'
                                     +'<input type="hidden" name="id_movie_name" value="'+ shedule.movie_name +'">'
-                                    +'<span class="time">'+ value.time +'</span>'
-                                    +'<span class="clock">'+ value.time +'</span>'
+                                    +'<span class="time">'
+                                        + value.time +'<span class="time-end"> ~ '+ value.time +'</span>'
+                                    +'</span>'
                                     +'<span class="ppnum">43</span>' // Số ghế trống
                                     +'<span class="ppnum"></span>' // room chiếu phim
                                     +'<span class="pp-early" title="Suất chiều đầu"></span>'
@@ -200,12 +208,15 @@ $(document).ready(function() {
                         +'</ul>'
                    +' </div>'
                +' </div>';
-    }
+    } 
 
 
     var movie_api_id;
 
     $(document).on('click', '.popup-movie-schedule', function () { 
+        
+        //set data for Month
+        $('#center-month').text($(this).children('.hide-month').text());
         $('.days-popup li').removeClass('active-date');
 
         var id_sever = $('.list-cinema .active').attr('data-id-server');
@@ -232,6 +243,8 @@ $(document).ready(function() {
             }else{
                 var date_query = new Date().toJSON().slice(0,10).replace(/-/g,'-');
                 $('.days-popup li:first').addClass('active-date');
+                //set data for Month
+                $('#center-month').text($('.days-popup li:first').children('.hide-month').text());
             }
         }
         
@@ -256,6 +269,7 @@ $(document).ready(function() {
                 if(value.lst_times.length > 0){
                     html += listFilm(value);
                 }
+
             });
             $('.list-schedule').html(html);
             getValue();
@@ -294,6 +308,5 @@ $(document).ready(function() {
         }
     });
     
-
 });
 
