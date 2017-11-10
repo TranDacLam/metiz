@@ -202,6 +202,7 @@ $(document).ready(function() {
 	$('#birth_date').datetimepicker({
 		timepicker:false,
 		format:'d-m-Y',
+		maxDate: '0'
 	});
 
 	// checkbox dieu khoan register
