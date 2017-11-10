@@ -64,6 +64,9 @@ class LoginForm(forms.Form):
 
 class MetizSignupForm(UserCreationForm):
 
+    phone = forms.CharField(error_messages={'unique':_("This phone number already exists.")})
+    email = forms.CharField(error_messages={'unique':_("This email already exists.")})
+    
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request")
         super(MetizSignupForm, self).__init__(*args, **kwargs)

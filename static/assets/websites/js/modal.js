@@ -5,8 +5,8 @@ $(document).ready(function() {
         var key = e.which;
         if (key == 27){
             e.preventDefault();
-            if($('#test-popup .modal').hasClass('in')){
-                $('#test-popup .modal').modal('hide');
+            if($('#modal-popup .modal').hasClass('in')){
+                $('#modal-popup .modal').modal('hide');
             }
             else{
                 $.magnificPopup.close();
@@ -182,18 +182,29 @@ $(document).ready(function() {
     function listShedule(shedule){
         var htmlShedule = '';
         $.each(shedule.lst_times, function(key, value) {
+
+            //set end time for film schedule
+            var today = new Date();
+            var dateStr= value.time;
+            var splitTime = dateStr.split(':');
+            var time_end = new Date(today.getFullYear(), today.getMonth(), today.getDate(), splitTime[0], splitTime[1], 0);
+            time_end.setMinutes(time_end.getMinutes()+ shedule.time_running);
+            var time_end_str = '~' + time_end.getHours() + ':' + time_end.getMinutes();
+
             htmlShedule +=  '<li class="sold-out">'
-                                +'<a href="#" data-toggle="modal" data-target="#warning">'
+                                +'<a href="#" >'
                                     +'<input type="hidden" name="id_showtime" value="'+ value.id_showtime +'">'
                                     +'<input type="hidden" name="id_movie_name" value="'+ shedule.movie_name +'">'
                                     +'<span class="time">'
-                                        + value.time +'<span class="time-end"> ~ '+ value.time +'</span>'
+                                        + value.time +'<span class="time-end">'+time_end_str+'</span>'
                                     +'</span>'
                                     +'<span class="ppnum">43</span>' // Số ghế trống
                                     +'<span class="ppnum"></span>' // room chiếu phim
                                     +'<span class="pp-early" title="Suất chiều đầu"></span>'
                                 +'</a>'
                             +'</li>';
+            
+               
         });
         return htmlShedule;
     }
@@ -202,7 +213,7 @@ $(document).ready(function() {
     function listFilm(film){
         return  '<div class="movie-time-line-box clearfix" data-control="movie-code">'
                     +'<h3 class="movie-name">'+ film.movie_name +'</h3>'
-                    +'<div class="lot-table clearfix">'
+                    +'<div class="lot-table clearfix" data-rated="'+ film.rated +'" >'
                         +'<ul class="list-inline list-unstyled theater_time">'
                             + listShedule(film)
                         +'</ul>'
@@ -213,8 +224,9 @@ $(document).ready(function() {
 
     var movie_api_id;
 
-    $(document).on('click', '.popup-movie-schedule', function () { 
+    $(document).on('click', '.popup-movie-schedule', function () {
         
+                
         //set data for Month
         $('#center-month').text($(this).children('.hide-month').text());
         $('.days-popup li').removeClass('active-date');
@@ -269,6 +281,7 @@ $(document).ready(function() {
                 if(value.lst_times.length > 0){
                     html += listFilm(value);
                 }
+                
 
             });
             $('.list-schedule').html(html);
@@ -276,6 +289,7 @@ $(document).ready(function() {
             if ($('.list-schedule').text() == '') {
                 $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lịch Chiếu Nào. Vui Lòng Chọn Ngày Khác.<p/>');
             }
+
         })
         .fail(function() {
             displayMsg();
@@ -296,6 +310,15 @@ $(document).ready(function() {
             $('.modal input[name=id_movie_name]').val(id_movie_name);
             $('.modal input[name=id_movie_time]').val(id_movie_time);
             $('.modal input[name=id_movie_date_active]').val($("li.active-date").attr("data-date-select"));
+            
+            //set content for modal #warnning or skip
+            var rated = $(this).parents('.lot-table').attr('data-rated');
+            if(rated != 'null'){
+                $('#warning #content-warnning').text(rated);
+                $('#warning').modal('show');
+            }else{
+                $('#btn-skip').click();
+            }
         });
     }
     
@@ -307,6 +330,6 @@ $(document).ready(function() {
             $('.form-popup button').prop('disabled', true);
         }
     });
-    
+   
 });
 

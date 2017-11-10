@@ -1,32 +1,32 @@
-#test-popup .col-xs-8 h3{
+#modal-popup .col-xs-8 h3{
     color: black;
     margin-left: 40px;
 }
-#test-popup .list-item li {
+#modal-popup .list-item li {
     display: inline-block;
     padding: 0px 1px;
 }
-#test-popup .mfp-close{
+#modal-popup .mfp-close{
     opacity: 1;
     z-index:0;
 }
-#test-popup .city{
+#modal-popup .city{
     margin-top: 15px;
 }
-#test-popup .list-item a{
+#modal-popup .list-item a{
     padding: 10px 37px;
     color: #48494c;
 }
-#test-popup .list-item{
+#modal-popup .list-item{
     margin: 20px 0px;
 }
-#test-popup .list-item a:hover{
+#modal-popup .list-item a:hover{
     transition: color 0.5s linear;
     background-color: #282425;
     color: #ffffff;
     text-decoration: none;
 }
-#test-popup .list-item li.active a{
+#modal-popup .list-item li.active a{
     background: url('../images/bullet03.gif') no-repeat 20px;
     background-color: #ff5400;
     color: #ffffff;
@@ -34,15 +34,15 @@
     font-size: 19px;
     font-family: "SairaSemiCondensed-Medium";
 }
-#test-popup .list-cinema{
+#modal-popup .list-cinema{
     margin-bottom: 15px;
 }
-#test-popup .list-cinema ul{
+#modal-popup .list-cinema ul{
 }
-#test-popup .list-cinema li{
+#modal-popup .list-cinema li{
     padding:0px 3px;
 }
-#test-popup .list-cinema a{
+#modal-popup .list-cinema a{
     color: #48494c;
     padding: 10px 30px;
     background: #f3f2f5;
@@ -51,12 +51,12 @@
     font-family: "SairaSemiCondensed-Medium";
 }
 
-#test-popup .list-cinema a:hover{
+#modal-popup .list-cinema a:hover{
     text-decoration: none;
     background-color: #ffffff;
     border-color: #000000;
 }
-#test-popup .list-cinema.active ul li a:focus{
+#modal-popup .list-cinema.active ul li a:focus{
     background: url('../images/bg_ckth.png') no-repeat 10px;
     text-decoration: none;
     background-color: #ffffff;
@@ -64,7 +64,7 @@
     outline: none;
     box-shadow:none;
 }
-#test-popup .list-cinema.active ul li a.active{
+#modal-popup .list-cinema.active ul li a.active{
     background: url('../images/bg_ckth.png') no-repeat 10px;
     text-decoration: none;
     background-color: #ffffff;
@@ -73,30 +73,33 @@
     box-shadow:none;
 
 }
-#test-popup .empty-schedule{
+#modal-popup .empty-schedule{
     text-align: center;
     font-size: 23px;
     margin: 30px 0px 50px 0px;
     line-height: 1.5;
 }
-#test-popup .form-control{
+#modal-popup .form-control{
     box-shadow: none;
     text-shadow: none;
 }
 
-#test-popup .modal.in .modal-dialog,
-#test-popup .modal.fade .modal-dialog {
+#modal-popup .modal.in .modal-dialog,
+#modal-popup .modal.fade .modal-dialog {
     -webkit-transform: inherit ;
     -moz-transform: inherit ;
     -o-transform: inherit ;
     transform: inherit ;
 }
-#test-popup input[type=number]::-webkit-inner-spin-button, 
-#test-popup input[type=number]::-webkit-outer-spin-button { 
+#modal-popup input[type=number]::-webkit-inner-spin-button, 
+#modal-popup input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin: 0; 
+}
+#modal-popup #btn-skip{
+    display:none;
 }
 .white-popup {
   position: relative;
@@ -182,17 +185,17 @@
     display: inline-block;
     float: none;
 }
-#test-popup .month{
+#modal-popup .month{
     text-align:center;
 }
-#test-popup .hide-month{
+#modal-popup .hide-month{
     display:none;
 }
-#test-popup .month strong{
+#modal-popup .month strong{
     font-weight: bold;
     font-size: 28px;
 }
-#test-popup .dayofweek{
+#modal-popup .dayofweek{
     margin-top: 12px;
     font-size: 18px;
 }
@@ -353,10 +356,10 @@
     color: red;
     margin-top: 7px;
 }
-#test-popup button, .modal-body p{
+#modal-popup button, .modal-body p{
     font-family: 'SairaSemiCondensed-Medium';
 }
-#test-popup .modal-body p{
+#modal-popup .modal-body p{
     color: black;
 }
 #confirm .tab-header a{
@@ -371,7 +374,7 @@
     box-shadow: none;
     text-shadow: none;
 }
-#test-popup .modal .form-control{
+#modal-popup .modal .form-control{
     font-size: 17px;
 }
 .modal label{
@@ -399,7 +402,7 @@
     color: red;
     margin-bottom: 10px;
 }
-#test-popup .country-code{
+#modal-popup .country-code{
     color: #555;
     position: absolute;
     top: 30px;
@@ -407,10 +410,10 @@
     padding-right: 4px;
     border-right: 1px solid #cccccc
 }
-#test-popup #phone{
+#modal-popup #phone{
     padding-left: 40px;
 }
-#test-popup .form-phone{
+#modal-popup .form-phone{
     position: relative;
 }
 @media only screen and (max-width: 1024px){

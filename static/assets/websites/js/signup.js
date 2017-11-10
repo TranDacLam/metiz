@@ -7,7 +7,7 @@ $(document).ready(function() {
     	message = {'required': 'Trường này bắt buộc',
     	'phone': 'số điện thoại không hợp lệ',
     	'minlength_2' :'Nhập ít nhất 2 kí tự', 
-    	'minlength_6' :'Nhập ít nhất 6 kí tự',
+    	'minlength_9' :'Nhập ít nhất 9 kí tự',
     	'minlength_8' :'Nhập ít nhất 8 kí tự',
     	'email': 'Email không hợp lệ',
     	'number': 'Nhập các chữ số',
@@ -18,7 +18,7 @@ $(document).ready(function() {
     	message = {'required': 'This field is required', 
     	'phone': 'invalid telephone number',
     	'minlength_2' :'Please enter at least 2 characters', 
-    	'minlength_6' :'Please enter at least 6 characters',
+    	'minlength_9' :'Please enter at least 9 characters',
     	'minlength_8' :'Please enter at least 8 characters',
     	'email': 'Please enter a valid email address',
     	'number': 'Please enter a valid number',
@@ -55,6 +55,9 @@ $(document).ready(function() {
 				required: true,
 				equalTo: "#password1"
 			},
+			personal_id:{
+				minlength: 9,
+			}
 		},
 		messages:{
 			full_name:{
@@ -81,6 +84,9 @@ $(document).ready(function() {
 				required: message.required,
 				equalTo: message.equalTo
 			},
+			personal_id:{
+				minlength: message.minlength_9,
+			}
 		},
 		success: function(element) {
 			element.text('OK!').addClass('valid');
@@ -217,5 +223,10 @@ $(document).ready(function() {
 	//delete old error message when fill input in register form
 	$('#myTabContent .form-group input').click(function(event) {
 		$(this).parent().children('.errorlist').hide();
+	});
+
+	//dont allow key e in input phone
+	$("#myTabContent input[type=number]").on("keydown", function(e){
+		return e.keyCode == 69 ? false : true;
 	});
 });

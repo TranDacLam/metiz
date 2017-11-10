@@ -1,6 +1,7 @@
 {% load modal_data_tags %}
 {% load i18n %}
-<div id="test-popup" class="white-popup mfp-hide">
+<input type="hidden" value="">
+<div id="modal-popup" class="white-popup mfp-hide">
     <div class="div-login">
         <div class="top">
             Lịch chiếu 
@@ -63,6 +64,10 @@
             </section>
         </div>
     </div>
+    <!-- button to skip warnning modal -->
+    <button type="button" id="btn-skip" data-dismiss="modal" data-toggle='modal' 
+                  data-target='{% if user.is_authenticated %}#profile {% else %}#confirm {% endif %}'></button>
+
      <!-- Modal warning -->
     <div class="modal" id="warning" role="dialog">
         <div class="modal-dialog">
@@ -73,10 +78,10 @@
                   <h2 class="modal-title">Cảnh báo</h2>
                 </div>
                 <div class="modal-body">
-                    <p id='results'>Phim này dành cho lứa tuổi trên 18</p>
+                    <p id='content-warnning'></p>
                 </div>
                 <div class="modal-footer warning-footer">
-                  <button type="button" id="" class="btn btn-login" data-dismiss="modal" data-toggle='modal' 
+                  <button type="button" class="btn btn-login" data-dismiss="modal" data-toggle='modal' 
                   data-target='{% if user.is_authenticated %}#profile {% else %}#confirm {% endif %}'>Tôi đồng ý</button>
                 </div>
             </div>
