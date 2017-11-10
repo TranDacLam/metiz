@@ -12,7 +12,22 @@ $(document).ready(function() {
     var id_server = $('#id_sever').val();
     var id_showtime = $('#id_showtime').val();
 
-    // Get list seats 
+    // icon before load ajax success 
+    $(document).ajaxStart(function(){
+        $(".ajax-loader").css("display", "block");
+    });
+    $(document).ajaxComplete(function(){
+        $(".ajax-loader").css("display", "none");
+    });
+
+    // disable key space when select seat
+    $('.seatCharts-cell').keydown(function(e) {
+        if(e.which === 32){
+            return false;
+        }
+    });
+
+    // Get list seats
     $.ajax({
         url: "/movie/seats",
         type: 'GET',
@@ -25,7 +40,17 @@ $(document).ready(function() {
         context: this,
     })
     .done(function(response) {
-        bookingSeat(response.List);
+        if(response.List && response.List.length > 0){
+            bookingSeat(response.List);
+        }else{
+            displayMsg();
+            $('.msg-result-js').html(msgResult("Lỗi hệ thống! Vui lòng liên hệ "
+                +"với admin để được hỗ trợ, hệ thống sẽ quay lại trang chủ sau 10 giây. Cảm ơn!", "danger"));
+            setTimeout(function(){ 
+                window.location ='/';
+            }, 10000);
+        }
+        
     })
     .fail(function(error) {
         displayMsg();
@@ -283,7 +308,7 @@ $(document).ready(function() {
                 +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
                 + '&id_movie_time='+id_movie_time + '&id_movie_date_active='+id_movie_date_active
                 + '&working_id='+working_id + '&barcode='+ barcode 
-                + '&seats_choice='+seats_choice + '&id_server=' +id_server;
+                + '&seats_choice='+seats_choice + '&id_server=' +id_server + '&id_showtime=' +id_showtime;
             })
             .fail(function(error) {
                 displayMsg();

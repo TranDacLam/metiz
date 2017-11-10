@@ -111,3 +111,6 @@ ul.errorlist li, .error{
 .col1-layout .time-out-booking{
     margin: 0px 10px 120px 10px;
 }
+.customer-account-forgotpassword .page-title{
+    text-transform: uppercase;
+}

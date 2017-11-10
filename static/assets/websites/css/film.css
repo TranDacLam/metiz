@@ -186,6 +186,9 @@ ul.metiz-film-detail-tabs {
 	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
 	    height: 146px;
 	}
+	.news-custom .load-more{
+		margin-left: 0px;
+	}
 }
 @media screen and (max-width: 400px) {
 	.product-view .nav-tabs>li>span{
@@ -206,6 +209,11 @@ ul.metiz-film-detail-tabs {
 	}
 	.format-new-offer h3{
 		font-size: 16px;
+	}
+}
+@media screen and (max-width: 360px) {
+	.news-custom .load-more{
+		width: 112px;
 	}
 }
 .movie-rating .std{

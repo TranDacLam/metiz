@@ -6,8 +6,8 @@
                 <div class="header-career">
                     <p class="welcome-msg">
                         <a href="{% url 'profile' %}" title="Tài khoản"> Xin chào, 
-                         {% if user.username %}  
-                            {{user.username}}
+                         {% if user.full_name %}  
+                            {{user.full_name}}
                         {%else%}  
                             {{user.email}}
                         {%endif%}</a>

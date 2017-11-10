@@ -58,6 +58,7 @@
             </ul>
             <dl class="collateral-tabs tab-movie">
                 <div class="tab-content tabcontent">
+                    {% verify_showtime_by_id 1 item.movie_api_id as is_book_able %}
                     <div id="movie-tab-1" class="tab-pane fade in active slideshow-containe-movier">
                         <ul class="feature_slide_show owl-carousel">
                             {% for item in list_showing %}
@@ -65,14 +66,17 @@
                                     <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <div class="info-movie-home">
                                         <h3>
-                                            <a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name|truncatechars:22}}</a>
+                                            <a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name|truncatechars:21}}</a>
                                         </h3>
                                         <h4>{{item.time_running}} Phút | <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></h4>
                                         <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
-                                        <button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
+                                        {% verify_showtime_by_id 1 item.movie_api_id as is_book_able %}
+                                        {% if is_book_able %}
+                                            <button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
+                                        {% endif %}
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                         <span><span>Play</span></span>
@@ -91,7 +95,7 @@
                                     <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <div class="info-movie-home">
                                         <h3>
-                                            <a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name|truncatechars:22}}</a>
+                                            <a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name|truncatechars:21}}</a>
                                         </h3>
                                         <h4>{{item.time_running}} Phút | <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></h4>
                                         <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>

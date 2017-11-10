@@ -15,7 +15,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-3">
-                        order_id:
+                        Mã hóa đơn :
                     </div>
                     <div class="col-sm-9">
                         {{ order_id }}
@@ -23,7 +23,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
-                        amount:
+                        Số tiền :
                     </div>
                     <div class="col-sm-9">
                         {{ amount }}
@@ -31,7 +31,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
-                        order_desc:
+                        Mô tả đặt vé :
                     </div>
                     <div class="col-sm-9">
                         {{ order_desc }}
@@ -39,7 +39,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
-                        vnp_TransactionNo:
+                        Số giao dịch :
                     </div>
                     <div class="col-sm-9">
                         {{ vnp_TransactionNo }}
@@ -47,15 +47,15 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
-                        vnp_ResponseCode:
+                        Kết quả giao dịch :
                     </div>
                     {% if vnp_ResponseCode == '00' %}
                         <div class="col-sm-9">
-                            {{ vnp_ResponseCode }} - Thành công
+                            Thành công
                         </div>
                     {% else %}
                         <div class="col-sm-9">
-                            {{ vnp_ResponseCode }} - Lỗi
+                            Lỗi
                         </div>
                     {% endif %}
                 </div>

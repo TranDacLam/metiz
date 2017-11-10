@@ -4,6 +4,10 @@
 
 {% block title %}Liên hệ{% endblock title %}
 
+{% block extrascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/contacts.js"></script>
+{% endblock %}
+
 {% block extrastylesheet %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/contacts.css" media="all" />
 {% endblock %}
@@ -76,6 +80,8 @@ contacts-index-index
 									<input name="name" id="name" title="Tên" value="" class="input-text required-entry" type="text" />
 								</div>
 							</div>
+						</li>
+						<li>
 							<div class="field">
 								<label for="email" class="required"><em>*</em>Email</label>
 								<div class="input-box">
@@ -84,21 +90,30 @@ contacts-index-index
 							</div>
 						</li>
 						<li>
-							<label for="telephone">Điện thoại</label>
-							<div class="input-box">
-								<input name="telephone" id="telephone" title="Điện thoại" value="" class="input-text" type="tel" />
+							<div class="field">
+								<label for="telephone" class="required"><em>*</em>Điện thoại</label>
+								<div class="input-box">
+									<input name="telephone" id="telephone" title="Điện thoại" value="" class="input-text" type="tel" />
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="field">
+								<label for="subject" class="required"><em>*</em>Chủ đề cần hỗ trợ</label>
+								<div class="input-box">
+									<input name="subject" id="subject" title="Chủ đề cần hỗ trợ" value="" class="input-text" type="text" />
+								</div>
 							</div>
 						</li>
 						<li class="wide">
-							<label for="comment" class="required"><em>*</em>Nội dung cần liên hệ</label>
+							<label for="message">Nội dung cần liên hệ</label>
 							<div class="input-box">
-								<textarea name="comment" id="comment" title="Nội dung cần liên hệ" class="required-entry input-text" cols="5" rows="3"></textarea>
+								<textarea name="message" id="message" title="Nội dung cần liên hệ" class="required-entry input-text" cols="5" rows="3"></textarea>
 							</div>
 						</li>
 					</ul>
 				</div>
 				<div class="buttons-set">
-					<input type="text" name="hideit" id="hideit" value="" />
 					<button type="submit" title="Gửi đi" class="button"><span><span>Gửi đi</span></span></button>
 				</div>
 			</form>

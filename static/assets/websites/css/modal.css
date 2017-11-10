@@ -413,6 +413,10 @@
 #test-popup .form-phone{
     position: relative;
 }
+.modal .modal-dialog button.close{
+    opacity: 1;
+    color: #5d5b5b;
+}
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
         width: 66px;
@@ -453,5 +457,16 @@
     #confirm .modal-header .tab-header li{
         width: 100px;
         font-size: 13px;
+    }
+    .calendar-popup .days-popup li{
+        width: 87px;
+    }
+    .section-white .title{
+        margin-left: -2px;
+    }
+}
+@media only screen and (max-width: 320px){
+    .calendar-popup .days-popup li{
+        width: 70px;
     }
 }

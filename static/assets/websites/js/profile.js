@@ -1,6 +1,15 @@
 $(document).ready(function() {
     var val_required = 'Trường này là bắt buộc';
     var val_date = 'Nhập ngày theo định dạng dd-mm-yyyy';
+    var valid_pass = "Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.";
+
+    // validate phone, persional only number
+    $('#profile-validate input[name=phone], #profile-validate input[name=personal_id]').keyup(function(e) {
+        if (/\D/g.test(this.value)) {
+            // Filter non-digits from input value.
+            this.value = this.value.replace(/\D/g, '');
+        }
+    });
 
     // page profile
     $("#profile-validate").validate({
@@ -59,7 +68,7 @@ $(document).ready(function() {
          function(value, element) {
             return this.optional(element) || (value.match(/[a-z]/) && value.match(/[!@#$%^&*()_+A-Z]/) && value.match(/[0-9]/));
         },
-        "Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt"
+        valid_pass
     );
 
     $("#change-pass-validate").validate({
@@ -74,7 +83,8 @@ $(document).ready(function() {
                 regex: true,
             }, 
              new_password2: { 
-                equalTo: '[name="new_password"]'
+                equalTo: '[name="new_password"]',
+                required: true,
                }
         },
         messages:{
@@ -83,12 +93,12 @@ $(document).ready(function() {
                 minlength: 'Mật khẩu ít nhất 8 ký tự.',
             },
             new_password: {
-                required: 'Mật khẩu không được để trống.',
-                minlength: 'Mật khẩu ít nhất 8 ký tự.',
+                required: 'Mật khẩu mới không được để trống.',
+                minlength: valid_pass,
             },
             new_password2: { 
                 equalTo:"Hai trường mật khẩu không giống nhau.",
-                required: 'Xác nhận mật khẩu không được để trống.',
+                required: 'Nhập lại mật khẩu mới không được để trống.',
             }
         }
     });
