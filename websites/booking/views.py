@@ -108,8 +108,7 @@ def get_movie_show_time(request):
                 show_times = ast.literal_eval(show_string)
 
                 # get all movies
-                movies_info = Movie.objects.filter(
-                    release_date__lte=date, end_date__gte=date)
+                movies_info = Movie.objects.filter(end_date__gte=date)
             except ValueError as e:
                 print "Error get_movie_show_time convert json : %s" % e
                 return JsonResponse({})
