@@ -12,10 +12,11 @@ $(document).ready(function() {
     var id_server = $('#id_sever').val();
     var id_showtime = $('#id_showtime').val();
 
-    // icon before load ajax success 
+    // show icon load when ajax start 
     $(document).ajaxStart(function(){
         $(".ajax-loader").css("display", "block");
     });
+    // hidden icon load when ajax complete
     $(document).ajaxComplete(function(){
         $(".ajax-loader").css("display", "none");
     });
@@ -43,9 +44,11 @@ $(document).ready(function() {
         context: this,
     })
     .done(function(response) {
+        // Check List seat 
         if(response.List && response.List.length > 0){
             bookingSeat(response.List);
         }else{
+            // show message when List seat empty, setTimeout 10s back home
             displayMsg();
             $('.msg-result-js').html(msgResult("Lỗi hệ thống! Vui lòng liên hệ "
                 +"với admin để được hỗ trợ, hệ thống sẽ quay lại trang chủ sau 10 giây. Cảm ơn!", "danger"));
@@ -156,7 +159,7 @@ $(document).ready(function() {
             return arrRange;
         };
 
-        // numberRange get value (1,3) -> [1,2] 
+        // numberRange get value (1,3) -> [1,2,3] 
         var arrColumns = numberRange(1, seatMax);
 
         // get array map seat Charts
