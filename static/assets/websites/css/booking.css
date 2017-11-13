@@ -168,18 +168,18 @@ span.seatCharts-legendDescription {
 }
 .ajax-loader>p{
     position: absolute; 
-    top: 30%; 
-    left: 39%;
+    top: 40%; 
+    left: 44%;
 }
 @media only screen and (max-width: 1366px){
     .ajax-loader>p{
-        left: 36%;
+        left: 42%;
     }
 }
 @media only screen and (max-width: 1024px){
     .ajax-loader>p{
-        top: 22%; 
-        left: 32%;
+        top: 30%; 
+        left: 40.5%;
     }
 }
 @media only screen and (max-width: 768px){
@@ -193,26 +193,26 @@ span.seatCharts-legendDescription {
         scroll-direction: horizontal;
     }
     .ajax-loader>p{
-        top: 35%; 
-        left: 37%;
+        top: 44%; 
+        left: 49%;
     }
 }
 @media only screen and (max-width: 600px){
     .ajax-loader>p{
-        top: 40%; 
-        left: 32%;
+        top: 55%; 
+        left: 46.5%;
     }
 }
 @media only screen and (max-width: 420px){
     .ajax-loader>p{
-        top: 35%; 
-        left: 25%;
+        top: 45%; 
+        left: 45%;
     }
 }
 @media only screen and (max-width: 320px){
     .ajax-loader>p{
         top: 50%; 
-        left: 18%;
+        left: 44%;
     }
 }
 div.seatCharts-seat.available.seat-vip {

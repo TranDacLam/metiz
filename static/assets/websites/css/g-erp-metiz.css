@@ -2441,6 +2441,7 @@
 	}
 	.form-change-pass .buttons-set{
 		/*position: absolute;*/
+		margin-top: 30px;
 		top: 80px;
 		right: 275px;
 		padding: 3px 7px !important;

@@ -76,6 +76,7 @@ $(document).ready(function() {
             old_password: { 
                 minlength: 8,
                 required: true,
+                regex: true,
             }, 
             new_password: { 
                 minlength: 8,
@@ -90,7 +91,7 @@ $(document).ready(function() {
         messages:{
             old_password: {
                 required: 'Mật khẩu không được để trống.',
-                minlength: 'Mật khẩu ít nhất 8 ký tự.',
+                minlength: valid_pass,
             },
             new_password: {
                 required: 'Mật khẩu mới không được để trống.',

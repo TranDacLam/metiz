@@ -27,6 +27,9 @@ $(document).ready(function() {
         }
     });
 
+    // variable setTimeout
+    var timer;
+
     // Get list seats
     $.ajax({
         url: "/movie/seats",
@@ -46,7 +49,7 @@ $(document).ready(function() {
             displayMsg();
             $('.msg-result-js').html(msgResult("Lỗi hệ thống! Vui lòng liên hệ "
                 +"với admin để được hỗ trợ, hệ thống sẽ quay lại trang chủ sau 10 giây. Cảm ơn!", "danger"));
-            setTimeout(function(){ 
+            timer = setTimeout(function(){ 
                 window.location ='/';
             }, 10000);
         }
@@ -59,6 +62,11 @@ $(document).ready(function() {
         }else{
             $('.msg-result-js').html(msgResult("Error get seats", "danger"));
         }
+    });
+
+    // Clear setTimeout when click show popup schedule in 10s back home
+    $('.popup-movie-schedule').on('click', function(){
+        window.clearTimeout(timer);
     });
 
 
@@ -139,12 +147,17 @@ $(document).ready(function() {
         }
 
         // Range 
-        function numberRange (start, end) {
-            return new Array(end - start).fill().map((d, i) => i + start);
-        }
+        var numberRange = function(start, stop, step) {
+            var arrRange = [start];
+            while (start < stop) {
+                start += step || 1;
+                arrRange.push(start);
+            }
+            return arrRange;
+        };
 
         // numberRange get value (1,3) -> [1,2] 
-        var arrColumns = numberRange(1, seatMax+1);
+        var arrColumns = numberRange(1, seatMax);
 
         // get array map seat Charts
         for(i=0; i< objSeat.length; i++){
@@ -284,7 +297,7 @@ $(document).ready(function() {
             // check user selected seat?
             if(totalSeat < 1){
                 displayMsg();
-                $('.msg-result-js').html(msgResult("Bạn chưa đặt vé!", "warning"));
+                $('.msg-result-js').html(msgResult("Bạn chưa chọn ghế!", "warning"));
                 return false;
             }
             var working_id = guid();

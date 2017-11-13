@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block extrascript %}
+    <script src="{{ STATIC_URL }}assets/websites/js/payment_return.js"></script>
 {% endblock %}
 {% block main_content %}
 <div class="main">
@@ -26,7 +27,7 @@
                         Số tiền :
                     </div>
                     <div class="col-sm-9">
-                        {{ amount }}
+                        <span class="amout-pay-return">{{ amount }}</span>
                     </div>
                 </div>
                 <div class="row">
