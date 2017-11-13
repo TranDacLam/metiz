@@ -7,7 +7,7 @@ $(document).ready(function() {
             email:{
                 required: true,
             },
-            telephone:{
+            phone:{
                 required: true,
             },
             subject:{
@@ -21,7 +21,7 @@ $(document).ready(function() {
             email: {
                 required: "Vui lòng nhập email",
             },
-            telephone: {
+            phone: {
                 required: "Vui lòng nhập số điện thoại",
             },
             subject:{
