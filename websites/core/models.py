@@ -222,3 +222,15 @@ class SlideShow(DateTimeModel):
 
     class Meta:
         verbose_name = _('Slide Show')
+
+
+@python_2_unicode_compatible
+class Contact(DateTimeModel):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=50)
+    phone = models.CharField(max_length=20, null=True, blank=True)
+    subject = models.CharField(max_length=50)
+    message = models.TextField()
+
+    def __str__(self):
+        return '%s' % (self.name)

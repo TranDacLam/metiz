@@ -4,17 +4,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 DATABASES = {
     'default': {
-        'NAME': 'helio_web',
+        'NAME': 'metiz_uat',
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
         'PORT': 3306,
-        'USER': 'helio',
-        'PASSWORD': 'admin@helio.vn'
+        'USER': 'metiz_admin',
+        'PASSWORD': 'Admin@Met1z.vn'
     }    
 }
 
 # VNPAY CONFIG
-VNPAY_RETURN_URL = 'http://metiz.dht:8000/payment_return'  # get from config
+VNPAY_RETURN_URL = 'http://103.95.197.103:8000/payment_return'  # get from config
 VNPAY_PAYMENT_URL = 'http://sandbox.vnpayment.vn/paymentv2/vpcpay.html'  # get from config
 VNPAY_API_URL = 'http://sandbox.vnpayment.vn/merchant_webapi/merchant.html'
 VNPAY_TMN_CODE = 'ZJLNTI3D'  # Website ID in VNPAY System, get from config
