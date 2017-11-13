@@ -88,13 +88,12 @@ def register_user(request, **kwargs):
                     'phone'] if 'phone' in request.POST else None
                 context['email'] = request.POST[
                     'email'] if 'email' in request.POST else None
-                context['password'] = request.POST[
-                    'password'] if 'password' in request.POST else None
+                context['password1'] = request.POST[
+                    'password1'] if 'password1' in request.POST else None
                 context['password2'] = request.POST[
                     'password2'] if 'password2' in request.POST else None
                 context['is_signup'] = True
                 context['form'] = register_form
-
                 return render(request, 'registration/signup.html', context)
 
         return render(request, 'registration/signup.html',

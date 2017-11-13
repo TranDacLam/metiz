@@ -229,4 +229,16 @@ $(document).ready(function() {
 	$("#myTabContent input[type=number]").on("keydown", function(e){
 		return e.keyCode == 69 ? false : true;
 	});
+
+	//set null for password when return error form
+	if ($('#password1').val() && $('#password2').val()){
+		$('#password1').one("click",function(event) {
+			$('#password1').val(null);
+		});
+		$('#password2').one("click",function(event) {
+			$('#password2').val(null);
+			
+		});
+	}
+	
 });
