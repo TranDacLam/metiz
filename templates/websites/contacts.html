@@ -68,7 +68,7 @@ contacts-index-index
 				</div>
 			</div><div class="content-form-contact-metiz">
 			<div id="messages_product_view"></div>
-			<form action="#" id="contactForm" method="post" class="scaffold-form">
+			<form action="" id="contactForm" method="post" class="scaffold-form">
 				<div class="fieldset">
 					<h2 class="legend">Thông tin liên hệ</h2>
 					<p class="required">* Phải nhập thông tin</p>
@@ -79,6 +79,9 @@ contacts-index-index
 								<div class="input-box">
 									<input name="name" id="name" title="Tên" value="" class="input-text required-entry" type="text" />
 								</div>
+								{% if forms.name.errors %}
+                                    {{forms.name.errors}}
+                                {% endif %}
 							</div>
 						</li>
 						<li>
@@ -87,14 +90,20 @@ contacts-index-index
 								<div class="input-box">
 									<input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
 								</div>
+								{% if forms.email.errors %}
+                                    {{forms.email.errors}}
+                                {% endif %}
 							</div>
 						</li>
 						<li>
 							<div class="field">
-								<label for="telephone" class="required"><em>*</em>Điện thoại</label>
+								<label for="phone" class="required"><em>*</em>Điện thoại</label>
 								<div class="input-box">
-									<input name="telephone" id="telephone" title="Điện thoại" value="" class="input-text" type="tel" />
+									<input name="phone" id="phone" title="Điện thoại" value="" class="input-text" type="tel" />
 								</div>
+								{% if forms.phone.errors %}
+                                    {{forms.phone.errors}}
+                                {% endif %}
 							</div>
 						</li>
 						<li>
@@ -103,6 +112,9 @@ contacts-index-index
 								<div class="input-box">
 									<input name="subject" id="subject" title="Chủ đề cần hỗ trợ" value="" class="input-text" type="text" />
 								</div>
+								{% if forms.subject.errors %}
+                                    {{forms.subject.errors}}
+                                {% endif %}
 							</div>
 						</li>
 						<li class="wide">
@@ -110,9 +122,13 @@ contacts-index-index
 							<div class="input-box">
 								<textarea name="message" id="message" title="Nội dung cần liên hệ" class="required-entry input-text" cols="5" rows="3"></textarea>
 							</div>
+							{% if forms.message.errors %}
+                                {{forms.message.errors}}
+                            {% endif %}
 						</li>
 					</ul>
 				</div>
+				{% csrf_token %}
 				<div class="buttons-set">
 					<button type="submit" title="Gửi đi" class="button"><span><span>Gửi đi</span></span></button>
 				</div>
