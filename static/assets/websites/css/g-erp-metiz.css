@@ -1953,7 +1953,8 @@
 	}
 	form .form-instructions {
 		font-style: italic;
-		font-family: Verdana,Arial,sans-serif font-size: 13px;
+		font-family: "SairaSemiCondensed", sans-serif;
+		font-size: 13px;
 		color: #a0a0a0;
 	}
 	.from-login-account {
