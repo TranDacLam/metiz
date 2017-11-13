@@ -9,7 +9,7 @@ SERVERS = {
 }
 BRANCH = {
     'development': 'develop',
-    'uat': 'develop',
+    'uat': 'uat',
     'production': 'production'
 }
 
@@ -27,19 +27,19 @@ PASSWORDS = {
 
 VIRTUAL_ENVS = {
     'development': 'source /home/adminvn/envs_root/metiz_env/bin/activate',
-    'uat': 'source /home/thangv/envs/helio_web_env/bin/activate',
+    'uat': 'source /home/ubuntu/envs_root/metiz_uat_env/bin/activate',
     'production': 'source /home/thangv/envs/helio_web_env/bin/activate'
 }
 
 PATHS = {
     'development': '/home/adminvn/sites/metiz',
-    'uat': '/home/thangv/projects/helio_web/',
+    'uat': '/home/ubuntu/projects/metiz',
     'production': '/home/thangv/projects/helio_web/'
 }
 
 PROCESS_ID = {
     'development': '/tmp/metiz_web.pid',
-    'uat' : '/tmp/helio_api_web.pid',
+    'uat': '/tmp/metiz_uat_web.pid',
     'production': '/tmp/helio_web.pid'
 }
 

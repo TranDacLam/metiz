@@ -4,12 +4,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 DATABASES = {
     'default': {
-        'NAME': 'metiz_db',
+        'NAME': 'metiz_uat',
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
         'PORT': 3306,
-        'USER': 'helio',
-        'PASSWORD': 'admin@helio.vn'
+        'USER': 'metiz_admin',
+        'PASSWORD': 'Admin@Met1z.vn'
     }    
 }
 

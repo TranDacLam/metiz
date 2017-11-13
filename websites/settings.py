@@ -240,6 +240,8 @@ TIME_SEAT_DELAY = 5
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:
         from config.setting_develop import *
+    elif 'UAT' in os.environ and os.environ['UAT']:
+        from config.setting_uat import *
     else:
         from config.setting_local import *
     
