@@ -4,7 +4,7 @@ ENV = 'development' # Choices ['uat','production','development']
 #ENV = 'production'
 SERVERS = {
     'development': '172.16.12.10',
-    'uat': '49.156.53.49',
+    'uat': '103.95.197.103',
     'production' : '49.156.53.49'
 }
 BRANCH = {
