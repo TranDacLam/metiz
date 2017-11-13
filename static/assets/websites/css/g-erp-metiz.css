@@ -1462,7 +1462,7 @@
 /* ---------------------------------- NOW SHOWING ---------------------------------- */
 @media only screen and (min-width: 771px){
 	.catalog-category-view .category-title {
-		border-bottom: 3px solid #0e1d2f;
+		border-bottom: 3px solid #ff5400;
 		margin-bottom: 35px;
 		position: relative;
 	}
@@ -1530,7 +1530,7 @@
 		width: 100% !important;
 	}
 	.catalog-category-view .category-title {
-		border-bottom: 2px solid #0e1d2f;
+		border-bottom: 2px solid #ff5400;
 		margin-bottom: 25px;
 		margin-top:-15px;
 		position: relative;
@@ -2401,7 +2401,7 @@
 		float:left;
 		width:100%;
 		color: #0e1d2f;
-		font-size:13px;
+		font-size:15px;
 	}
 	.form-change-pass{
 		float:left;

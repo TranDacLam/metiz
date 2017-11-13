@@ -6,7 +6,6 @@ $(document).ready(function() {
     // *** LOAD MORE ***
     // movie html, need set data for movie html in movie_showing(movie)
     function movie_showing(newoffer){
-        console.log(newoffer.apply_date);
         return  '<li class="item last">'
                     +'<a href="/new/detail/'+ newoffer.id +'">'
                         +'<div class="product-poster"">'

@@ -65,8 +65,8 @@
                                     <label>{% trans "Gender" %}</label>
                                     <div class="form-check form-check-inline">
                                       <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked="checked"> {% trans "Male" %}
-                                        <input class="form-check-input" type="radio" name="gender" id="gender" value="female" > {% trans "Female" %}
+                                        <input class="form-check-input" type="radio" name="gender" id="gender" value="male" {% if gender == "male" %}checked{% endif %}> {% trans "Male" %}
+                                        <input class="form-check-input" type="radio" name="gender" id="gender" value="female" {% if gender == "female" %}checked{% endif %}> {% trans "Female" %}
                                       </label>
                                     </div>
                                 </div>

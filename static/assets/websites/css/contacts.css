@@ -46,7 +46,7 @@ a{
 	width: 100%; 
 	margin: 20px 0px 10px;
 }
-#contactForm  textarea#comment{
+#contactForm  textarea#message{
 	width: 265px;		
 }
 .buttons-set button.button{
@@ -65,8 +65,15 @@ a{
 #contactForm input[type=email], 
 #contactForm input[type=tel], 
 #contactForm input[type=text],
-#contactForm  textarea#comment{
+#contactForm  textarea#message{
 	width: 365px;
+}
+.contact-metiz{
+	margin-bottom: 15px;
+}
+.contact-metiz .buttons-set button:hover{
+	background-color: #ff5400;
+	border: 2px solid #ff5400;
 }
 @media screen and (max-width: 767px) {
 	#contactForm .fieldset .legend + .required{
@@ -94,7 +101,7 @@ a{
 	#contactForm input[type=email], 
 	#contactForm input[type=tel], 
 	#contactForm input[type=text],
-	#contactForm  textarea#comment{
+	#contactForm  textarea#message{
 		width: 327px;
 	}
 	.contacts-index-index .buttons-set{
@@ -106,7 +113,7 @@ a{
 	#contactForm input[type=email], 
 	#contactForm input[type=tel], 
 	#contactForm input[type=text],
-	#contactForm  textarea#comment{
+	#contactForm  textarea#message{
 		width: 265px;
 	}
 	#contactForm{
@@ -115,4 +122,8 @@ a{
 	.contacts-index-index .buttons-set{
 		margin-left: 110px;
 	}
+}
+.content-form-contact-metiz .error{
+	width: 100%;
+    margin-top: 5px;
 }

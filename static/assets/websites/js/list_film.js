@@ -20,7 +20,7 @@ $(document).ready(function($) {
 	//  load more
 	// check total page let remove button load more
 	var total_page = parseInt($('.load-more').attr('data-total-page'));
-	if(parseInt($('.load-more').attr('data-page')) >= total_page){
+	if(parseInt($('.load-more').attr('data-page')) > total_page){
 		$('.metiz-movies>.text-center button').remove();
 	}
 

@@ -117,32 +117,3 @@ $(document).ready(function() {
     var money_total = $('#create_form input[name=amount-text]').val();
     $('#create_form input[name=amount-text]').val(money_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
 });
-
-// back page booking seat
-function goBack() {
-    window.history.back();
-}
-
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        // display.text(minutes + ":" + seconds);
-
-        if (--timer < 0) {
-            endSession();
-            window.location.href = '/timeout/booking'
-        }
-    }, 1000);
-}
-
-jQuery(function ($) {
-    var fiveMinutes = 60 * 5,
-        display = $('#time-cout-down');
-    startTimer(fiveMinutes, display);
-});
