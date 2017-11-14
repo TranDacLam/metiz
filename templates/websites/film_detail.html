@@ -140,7 +140,7 @@
 							<div class="row">
 								<div class="col-sm-5 rating-custom">
 									<div class="rating-block text-center">
-										<h4>Average user rating</h4>
+										<h4>Đánh Giá Trung Bình</h4>
 										
 										<h2 class="bold padding-bottom-7 rating-num">{{ rating__avg.rating|floatdot:1 }}<small>/ 5</small></h2>
 										
@@ -223,7 +223,7 @@
 											<div class="col-sm-3">
 												<img src="{{MEDIA_URL}}{{item.avatar}}" class="img-rounded">
 												<div class="review-block-name"><a href="#">{{item.full_name}}</a></div>
-												<div class="review-block-date">{{item.date_post | date:'d-m-Y'}}<br/>{{ item.date_post | timesince }} ago</div>
+												<div class="review-block-date">{{item.date_post | date:'d-m-Y'}}<br/>{{ item.date_post | timesince }} trước</div>
 											</div>
 											<div class="col-sm-9">
 												<div class="review-block-rate">

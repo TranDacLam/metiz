@@ -86,7 +86,7 @@ ul.errorlist li, .error{
 @media screen and (max-width: 420px) {
     .load-more{
         width: 150px;
-        margin-left: 40px;
+        margin-left: 0;
     }
 }
 .page-title-timeout{
