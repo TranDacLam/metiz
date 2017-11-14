@@ -15,9 +15,8 @@ BRANCH = {
 
 USERS = {
     'development': 'adminvn',
-    # 'uat': 'thangv',
-    'production': 'thangv',
-    'api': 'thangv'
+    'uat': 'Ubuntu',
+    'production': 'thangv'
 }
 
 PASSWORDS = {
