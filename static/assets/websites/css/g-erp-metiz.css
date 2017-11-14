@@ -2440,7 +2440,8 @@
 		border: 1px solid #b5b5b5;
 	}
 	.form-change-pass .buttons-set{
-		position: absolute;
+		/*position: absolute;*/
+		margin-top: 30px;
 		top: 80px;
 		right: 275px;
 		padding: 3px 7px !important;

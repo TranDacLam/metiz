@@ -71,6 +71,9 @@
 .review-block-description{
 	font-size:15px;
 }
+#xzoom-default{
+	width: 181px;
+}
 @media only screen and (min-width: 771px) {
 	.rating-block{
 		height: 187px;

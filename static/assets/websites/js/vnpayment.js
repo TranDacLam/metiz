@@ -55,7 +55,6 @@ $(document).ready(function() {
         // event.preventDefault();
         // var postData = JSON.stringify($("#create_form").serializeArray());
         var postData = $("#create_form").serialize();
-        console.log("postData ",postData);
         var submitUrl = $("#create_form").attr("action");
         // Call server verify session
         $.ajax({
@@ -64,7 +63,6 @@ $(document).ready(function() {
             data: postData,
             dataType: "JSON",
             success: function (x) {
-                console.log("success ",x);
                 if (x.code === '00') {
                     if (window.vnpay) {
                         vnpay.open({width: 768, height: 600, url: x.data});
@@ -112,6 +110,12 @@ $(document).ready(function() {
             }
         }
     });
+
+    // setTimeOut 5 minutes will redirect page timeout/booking
+    setTimeout(function(){
+        endSession();
+        window.location.href = '/timeout/booking'
+    }, 300000);
 
     // format money
     var money_total = $('#create_form input[name=amount-text]').val();
