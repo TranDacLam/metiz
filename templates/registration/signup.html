@@ -97,7 +97,7 @@
                                             <label>{% trans "Phone" %}</label>
                                             <div class="inline">
                                                 <div class="country-code">+84</div>
-                                                <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" tabindex="4" value="{{ phone }}">
+                                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" tabindex="4" value="{{ phone }}">
                                                 {% if register_form.phone.errors %}
                                                     {{register_form.phone.errors}}
                                                 {% endif %}
@@ -118,7 +118,7 @@
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Personal ID" %}</label>
                                             <div class="inline">
-                                                <input type="number" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Personal ID Here' %}" class="form-control" tabindex=6>
+                                                <input type="text" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Personal ID Here' %}" class="form-control" tabindex=6>
                                                 {% if register_form.personal_id.errors %}
                                                     {{register_form.personal_id.errors}}
                                                 {% endif %}
