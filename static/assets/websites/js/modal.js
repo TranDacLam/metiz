@@ -29,7 +29,7 @@ $(document).ready(function() {
         'email': 'Email không hợp lệ',
         'number': 'Nhập các chữ số',
         'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
-        'validatePassword': 'Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt và có cả chữ và số',
+        'validatePassword': 'Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.',
         'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
     } else {
         message = {'required': 'This field is required', 
@@ -89,7 +89,7 @@ $(document).ready(function() {
             password:{
                 required: true,
                 minlength: 8,
-                validatePassword: true
+                regex: true
             },
         },
         messages:{
@@ -134,13 +134,15 @@ $(document).ready(function() {
         }
     });
 
+     // validate password
     $.validator.addMethod(
-      "validatePassword",
-      function (value, element) {
-        return value.match(/[^a-z0-9 ]/);
-      },
-      message.validatePassword
+        "regex",
+         function(value, element) {
+            return this.optional(element) || (value.match(/[a-z]/) && value.match(/[!@#$%^&*()_+A-Z]/) && value.match(/[0-9]/));
+        },
+        message.validatePassword
     );
+
      $.validator.addMethod(
       "validatePhone",
       function (value, element) {
@@ -151,11 +153,11 @@ $(document).ready(function() {
     );
     // active popup
     $('.open-popup-link').magnificPopup({
-          type: 'inline',
-          midClick: true,
-          enableEscapeKey: false,
+        type: 'inline',
+        midClick: true,
+        enableEscapeKey: false,
+       
     });
-    
     
    
     // *** POPUP MOVIE SCHEDULE ***
@@ -182,21 +184,25 @@ $(document).ready(function() {
     function listShedule(shedule){
         var htmlShedule = '';
         $.each(shedule.lst_times, function(key, value) {
-
+            
             //set end time for film schedule
-            var today = new Date();
-            var dateStr= value.time;
-            var splitTime = dateStr.split(':');
-            var time_end = new Date(today.getFullYear(), today.getMonth(), today.getDate(), splitTime[0], splitTime[1], 0);
-            time_end.setMinutes(time_end.getMinutes()+ shedule.time_running);
-            var time_end_str = '~' + time_end.getHours() + ':' + time_end.getMinutes();
+            var startTime = value.time.split(':').map( Number );
+            var munite = (shedule.time_running + startTime[1])%60;
+            var hour = startTime[0] + ((shedule.time_running + startTime[1] - munite)/60);
+            if (munite < 10 ){
+                munite = '0' + munite;
+            }
+            if (hour > 23){
+                hour -= 24;
+            }
+            var endTime = '~' + hour + ':' + munite;
 
             htmlShedule +=  '<li class="sold-out">'
                                 +'<a href="#" >'
                                     +'<input type="hidden" name="id_showtime" value="'+ value.id_showtime +'">'
                                     +'<input type="hidden" name="id_movie_name" value="'+ shedule.movie_name +'">'
                                     +'<span class="time">'
-                                        + value.time +'<span class="time-end">'+time_end_str+'</span>'
+                                        + value.time +'<span class="time-end">'+endTime+'</span>'
                                     +'</span>'
                                     +'<span class="ppnum">43</span>' // Số ghế trống
                                     +'<span class="ppnum"></span>' // room chiếu phim
@@ -281,7 +287,6 @@ $(document).ready(function() {
                 if(value.lst_times.length > 0){
                     html += listFilm(value);
                 }
-                
 
             });
             $('.list-schedule').html(html);

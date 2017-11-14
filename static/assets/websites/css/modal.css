@@ -6,6 +6,9 @@
     display: inline-block;
     padding: 0px 1px;
 }
+.modal-open {    
+    overflow: scroll;
+}
 #modal-popup .mfp-close{
     opacity: 1;
     z-index:0;
@@ -42,6 +45,7 @@
 #modal-popup .list-cinema li{
     padding:0px 3px;
 }
+
 #modal-popup .list-cinema a{
     color: #48494c;
     padding: 10px 30px;
@@ -302,14 +306,18 @@
     color: #3e3e3e;
     cursor: pointer;
     font-size: 16px;
+    height: 36px;
+    width: 36px;
 }
 .days-popup li.active-date .badge {
     background-color: #ff5400;
     color: #fff;
     cursor: pointer;
     border-radius: 50%;
-    padding: 10px 12px;
+    padding: 10px 11px;
     font-size: 16px;
+    height: 36px;
+    width: 36px;
 }
 .active-date{
     visibility: visible;
