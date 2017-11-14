@@ -64,7 +64,7 @@
         </div>
     </div>
 </div>
- <!-- Modal warning -->
+<!-- Modal warning -->
 <div class="modal" id="warning" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
@@ -77,7 +77,7 @@
                 <p id='results'>Phim này dành cho lứa tuổi trên 18</p>
             </div>
             <div class="modal-footer warning-footer">
-              <button type="button" id="btn-aggress" class="btn btn-login" data-dismiss="modal" data-toggle='modal' 
+              <button type="button" id="" class="btn btn-login" data-dismiss="modal" data-toggle='modal' 
               data-target='{% if user.is_authenticated %}#profile {% else %}#confirm {% endif %}'>Tôi đồng ý</button>
             </div>
         </div>
@@ -85,7 +85,7 @@
 </div>
 
 <!-- modal confirm -->
-<div class="modal fade" id="confirm" data-toggle="modal" role="dialog" data-keyboard="false">
+<div class="modal fade" id="confirm" data-toggle="modal"  role="dialog" data-keyboard="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -131,7 +131,7 @@
                         </textarea>
                         <div class="row checkbox-term">
                             <input name="agree_term" id="agree_term" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
-                            <label class="agree_term" for="agree_term">Tôi đã đọc, hiểu và đồng ý với các điều khoản</a>.</label>
+                            <label class="agree_term" for="agree_term">Tôi đã đọc, hiểu và đồng ý với các điều khoản.</label>
                         </div>
                         <div class="row">
                             <form class='form-popup' id='guest_form' method="post" action="{% url 'booking' %}">
@@ -220,6 +220,3 @@
         </div>
     </div>
 </div>
-
-
-

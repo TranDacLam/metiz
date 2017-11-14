@@ -12,6 +12,8 @@ DATABASES = {
         'PASSWORD': 'root'
     }
 }
+# Default Email Contact
+DEFAULT_TO_ADMIN_EMAIL = "thaophan@vooc.vn"
 
 # VNPAY CONFIG
 VNPAY_RETURN_URL = 'http://metiz.dht:8000/payment_return'  # get from config

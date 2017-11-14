@@ -16,9 +16,10 @@
 	position:absolute;
 	top:0;
 	left:0;
-	width:100%;
+	width:97%;
 	height:100%;
 	border:0;
+	margin: 0 10px 0 10px;
 }
 .col-main{
 	width: 100%;
@@ -107,6 +108,9 @@ a{
 	.contacts-index-index .buttons-set{
 		margin-left: 140px;
 	}
+	.map_container iframe {
+		width: 94.5%;
+	}
 }
 @media screen and (max-width: 320px){
 	
@@ -121,6 +125,9 @@ a{
 	}
 	.contacts-index-index .buttons-set{
 		margin-left: 110px;
+	}
+	.map_container iframe {
+		width: 93.5%;
 	}
 }
 .content-form-contact-metiz .error{

@@ -7,9 +7,11 @@ from django.db.models import Avg, Sum, Count
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
 from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
 from itertools import chain
 from django.core.urlresolvers import reverse
 import itertools
+from core.forms import ContactForm
 
 # NOTES : View SQL Query using : print connection.queries
 
@@ -336,5 +338,23 @@ def get_post(request):
         print "Error action get_post : ", e
         return HttpResponse(status=500)
 
+
 def contacts(request):
-    return render(request, 'websites/contacts.html')
+    """
+        Send Contact to metiz administrator
+        step 1 : validate data
+        step 2 : data is valid then save to database end send mail to admin
+    """
+    try:
+        contact_form = ContactForm()
+        if request.method == "POST":
+            contact_form = ContactForm(request.POST)
+            # check form valid
+            if contact_form.is_valid():
+                contact_form.save(is_secure=request.is_secure())
+                messages.success(request, _('Send Contact Successfully.'))
+            
+        return render(request, 'websites/contacts.html', {"forms": contact_form})
+    except Exception as e:
+        print "Error action contacts : ", e
+        return HttpResponse(status=500)
