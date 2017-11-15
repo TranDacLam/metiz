@@ -417,6 +417,9 @@
     opacity: 1;
     color: #5d5b5b;
 }
+.modal form button {
+    text-transform: uppercase;
+}
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
         width: 66px;

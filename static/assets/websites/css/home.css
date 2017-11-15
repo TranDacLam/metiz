@@ -44,7 +44,7 @@
 	font-weight: bold;
 }
 .session-movie .nav-tabs>li>span {
-	padding: 7px 25px;;
+	padding: 7px 25px;
 	border: 3px solid #fff;
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0);
@@ -252,6 +252,11 @@ ul.metiz-movie-tabs {
 }
  #news #box{
     width: 545px;
+}
+@media screen and (min-width: 767px) {
+    .session-movie .nav-tabs>li.last>span{
+        padding: 7px 35px;
+    }
 }
 @media screen and (min-width: 1366px) {
     .tab-movie{

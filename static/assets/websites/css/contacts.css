@@ -16,10 +16,9 @@
 	position:absolute;
 	top:0;
 	left:0;
-	width:97%;
+	width:100%;
 	height:100%;
 	border:0;
-	margin: 0 10px 0 10px;
 }
 .col-main{
 	width: 100%;
@@ -38,6 +37,7 @@ a{
 	color: #f07469;
 }
 .contact-customer-service{
+	font-family: "SairaSemiCondensed-Medium", sans-serif;
 	color: #636363; 
 	padding-bottom: 4px; 
 	border-bottom: 1px solid #636363; 
@@ -46,6 +46,9 @@ a{
 	text-transform: uppercase; 
 	width: 100%; 
 	margin: 20px 0px 10px;
+}
+.contact-metiz .theater-name h2 {
+	font-family: "SairaSemiCondensed-Medium", sans-serif;
 }
 #contactForm  textarea#message{
 	width: 265px;		
@@ -108,9 +111,6 @@ a{
 	.contacts-index-index .buttons-set{
 		margin-left: 140px;
 	}
-	.map_container iframe {
-		width: 94.5%;
-	}
 }
 @media screen and (max-width: 320px){
 	
@@ -125,9 +125,6 @@ a{
 	}
 	.contacts-index-index .buttons-set{
 		margin-left: 110px;
-	}
-	.map_container iframe {
-		width: 93.5%;
 	}
 }
 .content-form-contact-metiz .error{
