@@ -147,7 +147,7 @@
 										<input class="rating rating-loading" value="{{ rating__avg.rating|floatdot:1 }}" data-min="0" data-max="5" data-step="0,5" data-size="xs" data-readonly="true">
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4 col-sm-7">
 									{% if total_count %}
 						            <div class="row rating-desc">
 						                <div class="col-xs-3 col-md-3 text-right">
@@ -215,7 +215,7 @@
 								
 							{% endif %}
 							<div class="row">
-								<div class="col-sm-9">
+								<div class="col-sm-9 review-custom">
 									<hr/>
 									<div class="review-block">
 									{% for item in comments %}
