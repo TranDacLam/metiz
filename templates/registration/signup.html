@@ -24,35 +24,35 @@
                 
                 <div id="myTabContent" class="tab-content">
                     <!-- ======================== SIGN IN ===================-->
-                     <div class="tab-pane in col-lg-12 well {% if is_login %} active {% endif %}" id="login">
-                        <div class="row">
-                            {% if errors %}
-                                {% for key, error in errors.items %}
-                                    <div class="alert-login col-lg-12 col-sm-6">
-                                        <strong>{{ error|escape }}</strong>
+                    <div class="tab-pane in col-lg-12 well {% if is_login %} active {% endif %}" id="login">
+                        <form class="signin" id="login_form" method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="row">
+                                {% if errors %}
+                                    {% for key, error in errors.items %}
+                                    <div class="alert-login col-md-6">
+                                        {{ error|escape }}
                                     </div>
-                                {% endfor %}
-                            {% endif %}
-                            <form class="signin" id="login_form" method="post" action="{% url 'login' %}">
-                                {% csrf_token %}
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-6 form-group">
-                                            <label>{% trans "Email" %}</label>
-                                            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
-                                        </div>
-                                        <div class="col-sm-6 form-group">
-                                            <label>{% trans "Password"%}</label>
-                                            <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
-                                        </div>
-                                    </div>
-                                     <div class="col-sm-6">
-                                        <button type="submit" class="btn btn-login">{% trans 'Login' %}</button>
-                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>{% trans "Email" %}</label>
+                                    <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
                                 </div>
-                            </form>
+                                <div class="col-md-6">
+                                    <label>{% trans "Password"%}</label>
+                                    <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <button type="submit" class="btn btn-login">{% trans 'Login' %}</button>
+                                </div>
+                            </div>
                             <a class="login-forgot-pass" href="{% url 'password_reset' %}">Tìm lại mật khẩu? <i class="fa fa-arrow-circle-o-right"></i></a>
-                        </div>
+                        </form>
                     </div>
 
 
@@ -97,7 +97,7 @@
                                             <label>{% trans "Phone" %}</label>
                                             <div class="inline">
                                                 <div class="country-code">+84</div>
-                                                <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" tabindex="4" value="{{ phone }}">
+                                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" tabindex="4" value="{{ phone }}">
                                                 {% if register_form.phone.errors %}
                                                     {{register_form.phone.errors}}
                                                 {% endif %}
@@ -118,7 +118,7 @@
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Personal ID" %}</label>
                                             <div class="inline">
-                                                <input type="number" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Personal ID Here' %}" class="form-control" tabindex=6>
+                                                <input type="text" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Personal ID Here' %}" class="form-control" tabindex=6>
                                                 {% if register_form.personal_id.errors %}
                                                     {{register_form.personal_id.errors}}
                                                 {% endif %}

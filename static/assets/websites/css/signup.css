@@ -53,6 +53,7 @@
 }
 .alert-login{
 	color: #ff0000;
+	padding: 0px;
 }
 #myTabContent .error{
     font-size: 13px;
