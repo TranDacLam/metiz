@@ -32,6 +32,7 @@ class MovieSync(DateTimeModel):
         ('showtime_current', 'Show Times'),
     )
     name = models.CharField(max_length=50, choices=TYPE)
+    # cinema_id is equal id_server
     cinema_id = models.IntegerField(default=1)
     area_id = models.IntegerField(default=0)
     data = models.TextField()

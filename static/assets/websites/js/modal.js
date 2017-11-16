@@ -249,6 +249,7 @@ $(document).ready(function() {
         }
         
         // Call Ajax get movie show time with current date
+        // cinema_id is equal id_server
         data = {
             "date": date_query,
             "movie_api_id": movie_api_id,
