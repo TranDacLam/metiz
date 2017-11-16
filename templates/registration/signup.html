@@ -47,11 +47,15 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 form-group">
+                                <div class="col-md-12">
                                     <button type="submit" class="btn btn-login">{% trans 'Login' %}</button>
                                 </div>
                             </div>
-                            <a class="login-forgot-pass" href="{% url 'password_reset' %}">Tìm lại mật khẩu? <i class="fa fa-arrow-circle-o-right"></i></a>
+                            <div class="row">
+                                <div class='col-md-12'>
+                                    <a class="login-forgot-pass" href="{% url 'password_reset' %}">Tìm lại mật khẩu? <i class="fa fa-arrow-circle-o-right"></i></a>
+                                </div>
+                            </div>
                         </form>
                     </div>
 

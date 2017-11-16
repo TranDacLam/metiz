@@ -439,6 +439,7 @@
     }
     .calendar-popup .days-popup li .badge {
         padding: 8px;
+        width: 50%;
     }
 }
 @media only screen and (max-width: 480px){
@@ -454,6 +455,7 @@
     }
     .calendar-popup .days-popup li .badge {
         padding: 8px;
+        width: 38%;
     }
     #confirm .modal-header{
         padding: 0px;
