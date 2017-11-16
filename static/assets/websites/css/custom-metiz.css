@@ -3840,6 +3840,8 @@ ul,ol,li{
     float: left;
     margin-bottom: 30px;
     width: 100%;
+    margin-top: 40px;
+    padding: 0 10px;
 }
 .contact-metiz {
     float: left;
@@ -3847,14 +3849,13 @@ ul,ol,li{
 }
 .show-address-contact-metiz {
     float: left;
-    width: 43%;
+    width: 29%;
     padding-right: 3%;
-    border-right: 2px solid #bdbab1;
 }
 .content-form-contact-metiz {
     float: right;
     min-height: 150px;
-    width: 54%;
+    width: 70%;
     margin-top: -18px;
 }
 .contact-metiz .theater-name h2 {
@@ -3862,12 +3863,6 @@ ul,ol,li{
     font-size: 18px !important;
     line-height: 26px !important;
     color: #636363;
-}
-.show-address-contact-metiz {
-    float: left;
-    width: 43%;
-    padding-right: 3%;
-    border-right: 2px solid #bdbab1;
 }
 .add-contact-metiz {
     border-top: 1px solid #636363;
@@ -3899,7 +3894,8 @@ ul,ol,li{
     width: 365px;
 }
 .content-form-contact-metiz #contactForm{
-    padding-left:28px;
+    padding-left:50px;
+    border-left: 2px solid #bdbab1;
 }
 /* =========================================== NOW SHOWING =========================================== */
 .metiz-movies .products-grid > li{

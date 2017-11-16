@@ -291,6 +291,7 @@
 }
 .list-inline li:hover .time{
     border-color: #ff5400;
+    font-size: 16px;
 }
 /* .list-inline li:hover .time{
     display: none;

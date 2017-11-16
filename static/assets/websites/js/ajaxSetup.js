@@ -31,10 +31,10 @@ $(document).ready(function() {
     $.ajaxSetup({ cache: false });
     
     // FB init function
-    // FB.init({
-    //     appId: fbAppId,
-    //     version: 'v2.9',
-    //     cookie     : true,
-    //     xfbml      : true
-    // });
+    FB.init({
+        appId: fbAppId,
+        version: 'v2.9',
+        cookie     : true,
+        xfbml      : true
+    });
 });
