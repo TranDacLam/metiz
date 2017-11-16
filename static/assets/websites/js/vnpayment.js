@@ -38,11 +38,11 @@ $(document).ready(function() {
                 // Handle the back (or forward) buttons here
                 // Will NOT handle refresh, use onbeforeunload for this.
                 endSession();
-                var id_showtime = $('#member_form input[name=id_showtime]').val();
-                var id_sever = $('#member_form input[name=id_sever]').val();
-                var id_movie_name = $('#member_form input[name=id_movie_name]').val();
-                var id_movie_time = $('#member_form input[name=id_movie_time]').val();
-                var id_movie_date_active = $('#member_form input[name=id_movie_date_active]').val();
+                var id_showtime = $('#create_form input[name=id_showtime]').val();
+                var id_sever = $('#create_form input[name=id_sever]').val();
+                var id_movie_name = $('#create_form input[name=id_movie_name]').val();
+                var id_movie_time = $('#create_form input[name=id_movie_time]').val();
+                var id_movie_date_active = $('#create_form input[name=id_movie_date_active]').val();
 
                 window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever
                             + '&id_movie_name='+ id_movie_name + '&id_movie_time='+ id_movie_time

@@ -119,9 +119,14 @@ def film_detail(request, id):
         total_count = comments.aggregate(Count('rating')).get('rating__count')
         total_detail = comments.values(
             'rating').annotate(total=Count('rating')).order_by('-rating')
+        # Calculated percent of rating
+        percent = {'5':0, '4':0, '3':0, '2':0, '1':0}
+        
+        for r in total_detail:
+            percent[str(r['rating'])] = r["total"] * 100 / total_count
 
         return render(request, 'websites/film_detail.html',
-                      {'total_count': total_count, 'total_detail': total_detail, 'rating__avg': rating__avg,
+                      {'total_count': total_count, 'rating_percent': percent, 'rating__avg': rating__avg,
                        'film_detail': film_detail, 'comments': comments})
 
     except Movie.DoesNotExist, e:

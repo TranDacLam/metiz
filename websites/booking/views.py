@@ -80,10 +80,10 @@ def build_show_time_json(current_date, item, result, movies_info, obj_movie=None
     if item["DATE"] == current_date.strftime("%d/%m/%Y"):
         if int(item["TIME"].split(':')[0]) >= current_date.hour:
             result[item["MOVIE_ID"]]["lst_times"].append(
-                {"id_showtime": item["ID"], "time": item["TIME"]})
+                {"id_showtime": item["ID"], "time": item["TIME"], "room_name": item["ROOM_NAME"]})
     else:
         result[item["MOVIE_ID"]]["lst_times"].append(
-            {"id_showtime": item["ID"], "time": item["TIME"]})
+            {"id_showtime": item["ID"], "time": item["TIME"], "room_name": item["ROOM_NAME"]})
 
 def get_movie_show_time(request):
     try:
@@ -93,6 +93,7 @@ def get_movie_show_time(request):
         current_date = timezone.localtime(timezone.now())
 
         date = request.GET.get('date', current_date.date())
+        # cinema_id is equal id_server
         cinema_id = request.GET.get('cinema_id', 1)
         movie_api_id = request.GET.get('movie_api_id', None)
 
