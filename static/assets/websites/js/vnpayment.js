@@ -3,7 +3,7 @@ var validNavigation = false;
 function endSession() {
     // Call server clear session
     var working_id = $("#working_id").val();
-    var id_server = $('.vnpayment #create_form input[name=id_server]').val();
+    var id_server = $('.vnpayment #payment_form input[name=id_server]').val();
     $.ajax({
         url: "clear/seats",
         type: 'POST',
@@ -38,11 +38,11 @@ $(document).ready(function() {
                 // Handle the back (or forward) buttons here
                 // Will NOT handle refresh, use onbeforeunload for this.
                 endSession();
-                var id_showtime = $('#create_form input[name=id_showtime]').val();
-                var id_sever = $('#create_form input[name=id_sever]').val();
-                var id_movie_name = $('#create_form input[name=id_movie_name]').val();
-                var id_movie_time = $('#create_form input[name=id_movie_time]').val();
-                var id_movie_date_active = $('#create_form input[name=id_movie_date_active]').val();
+                var id_showtime = $('#payment_form input[name=id_showtime]').val();
+                var id_sever = $('#payment_form input[name=id_sever]').val();
+                var id_movie_name = $('#payment_form input[name=id_movie_name]').val();
+                var id_movie_time = $('#payment_form input[name=id_movie_time]').val();
+                var id_movie_date_active = $('#payment_form input[name=id_movie_date_active]').val();
 
                 window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever
                             + '&id_movie_name='+ id_movie_name + '&id_movie_time='+ id_movie_time
@@ -53,9 +53,9 @@ $(document).ready(function() {
 
     $("#btnPopup").click(function (event) {
         // event.preventDefault();
-        // var postData = JSON.stringify($("#create_form").serializeArray());
-        var postData = $("#create_form").serialize();
-        var submitUrl = $("#create_form").attr("action");
+        // var postData = JSON.stringify($("#payment_form").serializeArray());
+        var postData = $("#payment_form").serialize();
+        var submitUrl = $("#payment_form").attr("action");
         // Call server verify session
         $.ajax({
             type: "POST",
@@ -82,7 +82,7 @@ $(document).ready(function() {
 
     // validate form
     var val_required = 'Trường này là bắt buộc';
-    $("#create_form").validate({
+    $("#payment_form").validate({
         rules: {
             amount: { 
                 number: true,
@@ -118,6 +118,6 @@ $(document).ready(function() {
     }, 300000);
 
     // format money
-    var money_total = $('#create_form input[name=amount-text]').val();
-    $('#create_form input[name=amount-text]').val(money_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
+    var money_total = $('#payment_form input[name=amount-text]').val();
+    $('#payment_form input[name=amount-text]').val(money_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
 });
