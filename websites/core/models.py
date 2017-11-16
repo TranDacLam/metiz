@@ -130,7 +130,7 @@ class Comment(DateTimeModel):
         max_length=500, upload_to="comment_avatar", null=True, blank=True)
     review = models.TextField(_("Review"))
     rating = models.IntegerField(_("Rating"), default=5, choices=STAR)
-    date_post = models.DateField(_("Date Post"))
+    date_post = models.DateTimeField(_("Date Post"))
     movie = models.ForeignKey('Movie', related_name='movie_comment_rel')
 
     def __str__(self):

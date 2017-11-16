@@ -160,8 +160,8 @@ $(document).ready(function() {
 
     // Check browser there must be IE
     var isIE = window.navigator.userAgent.indexOf("Trident");
-    
-    if(isIE > 0){
+    var isIOS = navigator.userAgent.match(/(\(iPod|\(iPhone|\(iPad)/);
+    if(isIE > 0 || isIOS){
         // Browser IE
 
         // *** CHOOSE CITY AND DISTRICT ***

@@ -68,6 +68,10 @@
     <title>{% block title %}{% endblock title %}</title>
     {% block metacontent %}{% endblock %}
 
+    <script type="text/javascript">
+        var fbAppId = '{{FB_APP_ID}}';
+    </script>
+
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js" ></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.validate-1.17.0.min.js" ></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
@@ -77,7 +81,8 @@
     <!-- datepiker for signup, profile -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/bootstrap-datepicker/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/bootstrap-datepicker/bootstrap-datepicker.vi.min.js"></script>
-
+    <!-- facebook -->
+    <script src = "//connect.facebook.net/en_US/sdk.js"></script>
     <!-- slide movie page home -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/owl.carousel.min.js"></script>
     <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.js"></script>
@@ -93,7 +98,6 @@
     <!-- showing -->
     <!-- coming_soon-->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/ajaxSetup.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/facebook.js"></script>
     <!-- showing, coming soon -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
     <!-- js for footer -->

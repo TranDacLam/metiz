@@ -210,8 +210,8 @@ $(document).ready(function() {
                                     +'<span class="time">'
                                         + value.time +'<span class="time-end">'+endTime+'</span>'
                                     +'</span>'
-                                    +'<span class="ppnum">43</span>' // Số ghế trống
-                                    +'<span class="ppnum"></span>' // room chiếu phim
+                                    +'<span class="ppnum">Phòng chiếu</span>'
+                                    +'<span class="ppnum">'+ value.room_name +'</span>' // room chiếu phim
                                     +'<span class="pp-early" title="Suất chiều đầu"></span>'
                                 +'</a>'
                             +'</li>';

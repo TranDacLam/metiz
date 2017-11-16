@@ -283,6 +283,9 @@ $(document).ready(function() {
 
                 seatPayment.push(strimNameSeat(seats[i].settings.label));
             }
+            // Sort by name seat
+            seatPayment.sort();
+            
             return seatSelected;
         }
 
@@ -294,8 +297,9 @@ $(document).ready(function() {
             var lst_seats = getSeatSelected();
             var totalSeat = seatPayment.length;
             var id_movie_name = $('.name-movie-booking').text();
-            var id_movie_time = $('.time-movie-booking').text();
+            var movie_time_replace = $('.time-movie-booking').text();
             var id_movie_date_active = $('.date-movie-booking').text();
+            var id_movie_time = movie_time_replace.replace('~', '-');
 
             // check user selected seat?
             if(totalSeat < 1){

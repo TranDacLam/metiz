@@ -120,8 +120,8 @@ def film_detail(request, id):
         total_detail = comments.values(
             'rating').annotate(total=Count('rating')).order_by('-rating')
         # Calculated percent of rating
-        percent = {'5':0, '4':0, '3':0, '2':0, '1':0}
-        
+        percent = {'5': 0, '4': 0, '3': 0, '2': 0, '1': 0}
+
         for r in total_detail:
             percent[str(r['rating'])] = r["total"] * 100 / total_count
 
@@ -152,18 +152,12 @@ def news(request):
         # get news all
         news = NewOffer.objects.all()
 
-        news_future = news.filter(apply_date__gt=datetime.now()).order_by(
-            'priority').extra(select={'priority_null': 'priority is null'})
-
-        list_news_future = news_future.extra(
-            order_by=['priority_null', 'apply_date', 'modified'])
+        list_news_future = news.filter(apply_date__gt=datetime.now()).order_by(
+            'apply_date', 'created')
 
         # get news present
-        news_present = news.filter(apply_date__lte=datetime.now()).order_by(
-            'priority').extra(select={'priority_null': 'priority is null'})
-
-        list_news_present = news_present.extra(
-            order_by=['priority_null', '-apply_date', '-modified', 'name'])
+        list_news_present = news.filter(apply_date__lte=datetime.now()).order_by(
+            '-apply_date', '-created', 'name')
 
         # merge 3 list by order future, present and past
         list_news = list(chain(list_news_future, list_news_present))
@@ -291,8 +285,8 @@ def home(request):
         news = NewOffer.objects.all().order_by('priority').extra(
             select={'priority_null': 'priority is null'})
 
-        top_news = news.extra(order_by=['priority_null', '-apply_date'])[:5]
-        print 'top_news ', top_news
+        top_news = news.extra(order_by=['priority_null', 'priority', '-created'])[:5]
+        
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
 
@@ -358,7 +352,7 @@ def contacts(request):
             if contact_form.is_valid():
                 contact_form.save(is_secure=request.is_secure())
                 messages.success(request, _('Send Contact Successfully.'))
-            
+
         return render(request, 'websites/contacts.html', {"forms": contact_form})
     except Exception as e:
         print "Error action contacts : ", e
