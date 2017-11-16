@@ -34,12 +34,12 @@
 				<div class="fb-like fb_iframe_widget" data-href="http://{{ request.get_host }}{% url 'film_detail' value.id %}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
 	            </div>
 			</li>
-			{% verify_showtime_by_id 1 value.movie_api_id as is_book_able %}
-			{% if is_book_able %}
-				<li>
+			<li>
+				{% verify_showtime_by_id 1 value.movie_api_id as is_book_able %}
+				{% if is_book_able %}
 					<button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-list-movie popup-movie-schedule" data-movie-api-id="{{ value.movie_api_id }}">Đặt vé</button>
-				</li>
-			{% endif %}
+				{% endif %}
+			</li>
 		</ul>
 	</li>
 {% endfor %}
