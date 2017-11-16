@@ -172,6 +172,9 @@ def update_profile(request):
             user_form = UpdateUserForm(request.POST, user=user)
             if user_form.is_valid():
                 user_form.save()
+                request.session['full_name'] = request.user.full_name
+                request.session['phone'] = request.user.phone
+                request.session['email'] = request.user.email
                 messages.success(request, _('Update Profile Successfully.'))
                 return redirect(reverse('profile'))
             else:

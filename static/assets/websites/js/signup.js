@@ -256,14 +256,15 @@ $(document).ready(function() {
         });
     }
 	
-   
-	// set datetimepicker
-	$('#birth_date').datetimepicker({
-		timepicker:false,
-		format:'d-m-Y',
-        maxDate:'0'
-	});
 
+	// set datetimepicker for signup and profile
+    $("#birth_date").datepicker({ 
+        autoclose: true, 
+        format:"dd-mm-yyyy",
+        language: 'vi',
+        defaultViewDate:'01-01-1996',
+        endDate:"0d"
+    })
     // *end*
 
 	// checkbox dieu khoan register

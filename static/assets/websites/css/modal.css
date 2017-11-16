@@ -9,6 +9,13 @@
 .modal-open {    
     overflow: scroll;
 }
+/* Focus on input pushes cursor out in mobile */
+#modal-popup input{
+    -webkit-transform: none;
+    -moz-transform: none;
+    -o-transform: none;
+}
+
 #modal-popup .mfp-close{
     opacity: 1;
     z-index:0;
