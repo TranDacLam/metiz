@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-10 16:22+0700\n"
+"POT-Creation-Date: 2017-11-16 16:00+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,49 +30,50 @@ msgstr "Chọn rạp"
 msgid "Select date play"
 msgstr "Chọn ngày chiếu"
 
-#: templates/modal.html:112 templates/modal.html:158 templates/modal.html:209
+#: templates/modal.html:113 templates/modal.html:159 templates/modal.html:210
 #: templates/registration/profile.html:98 templates/registration/signup.html:41
 #: templates/registration/signup.html:110 websites/booking/models.py:20
 msgid "Email"
 msgstr ""
 
-#: templates/modal.html:113 templates/modal.html:159 templates/modal.html:210
+#: templates/modal.html:114 templates/modal.html:160 templates/modal.html:211
 #: templates/registration/signup.html:42 templates/registration/signup.html:112
 msgid "Enter Email Here"
 msgstr "Nhập Email Ở Đây"
 
-#: templates/modal.html:117 templates/registration/signup.html:45
+#: templates/modal.html:118 templates/registration/signup.html:45
 #: templates/registration/signup.html:132
 msgid "Password"
 msgstr "Mật Khẩu"
 
-#: templates/modal.html:118 templates/registration/signup.html:46
+#: templates/modal.html:119 templates/registration/signup.html:46
 #: templates/registration/signup.html:135
 msgid "Enter Password Here"
 msgstr "Nhập Mật Khẩu Ở Đây"
 
-#: templates/modal.html:121 templates/registration/signup.html:50
+#: templates/modal.html:122 templates/registration/signup.html:3
+#: templates/registration/signup.html:51
 msgid "Login"
 msgstr "Đăng Nhập"
 
-#: templates/modal.html:147 templates/modal.html:196
+#: templates/modal.html:148 templates/modal.html:197
 #: templates/registration/profile.html:56 templates/registration/signup.html:67
 #: websites/core/models.py:128
 msgid "Full Name"
 msgstr "Họ Tên"
 
-#: templates/modal.html:148 templates/modal.html:197
+#: templates/modal.html:149 templates/modal.html:198
 #: templates/registration/signup.html:69
 msgid "Enter Full Name Here"
 msgstr "Nhập Họ Tên Ở Đây"
 
-#: templates/modal.html:152 templates/modal.html:202
+#: templates/modal.html:153 templates/modal.html:203
 #: templates/registration/profile.html:86 templates/registration/signup.html:97
 #: websites/booking/models.py:19
 msgid "Phone"
 msgstr "Số Điện Thoại"
 
-#: templates/modal.html:154 templates/modal.html:204
+#: templates/modal.html:155 templates/modal.html:205
 #: templates/registration/signup.html:100
 msgid "Enter Phone Here"
 msgstr "Nhập Số Điện Thoại Ở Đây"
@@ -269,38 +270,38 @@ msgstr "Số Ghế"
 msgid "Description"
 msgstr "Mô Tả"
 
-#: websites/booking/models.py:38
+#: websites/booking/models.py:39
 msgid "Date Showing"
 msgstr "Ngày Tham Gia"
 
-#: websites/booking/views.py:136 websites/booking/views.py:157
-#: websites/booking/views.py:234 websites/booking/views.py:253
+#: websites/booking/views.py:137 websites/booking/views.py:158
+#: websites/booking/views.py:235 websites/booking/views.py:254
 #: websites/registration/views.py:46
 msgid "Internal Server Error. Please contact administrator."
 msgstr "Máy chủ bị lỗi. Vui lòng liên hệ quản trị viên."
 
-#: websites/booking/views.py:151
+#: websites/booking/views.py:152
 msgid "Fields id_showtime and id_server is required."
 msgstr "Trường id_showtime và id_server là bắt buộc."
 
-#: websites/booking/views.py:166
+#: websites/booking/views.py:167
 msgid "Fields lst_seats and id_showtime, working_id is required."
 msgstr "trường lst_seats và id_showtime và working_id là bắt buộc."
 
-#: websites/booking/views.py:185
+#: websites/booking/views.py:186
 #, python-format
 msgid "These chairs have been selected : %s"
 msgstr "Những ghế này đã được chọn : %s"
 
-#: websites/booking/views.py:199
+#: websites/booking/views.py:200
 msgid "Cannot Booking Seats. Please Contact Administrator."
 msgstr "Không thể đặt ghế. Vui lòng liên hệ quản trị viên."
 
-#: websites/booking/views.py:242
+#: websites/booking/views.py:243
 msgid "Fields barcode is required."
 msgstr "Trường barcode là bắt buộc."
 
-#: websites/booking/views.py:260
+#: websites/booking/views.py:261
 msgid "Fields working_id is required."
 msgstr "Trường working_id là bắt buộc."
 
@@ -338,7 +339,7 @@ msgstr "Ngày Tham Gia"
 msgid "Modified Date"
 msgstr "Ngày Thay Đổi"
 
-#: websites/core/forms.py:12
+#: websites/core/forms.py:13
 msgid "Enter a whole number."
 msgstr "Phải Nhập Kiểu Số."
 
@@ -346,12 +347,12 @@ msgstr "Phải Nhập Kiểu Số."
 msgid "Created Date"
 msgstr "Ngày Tạo"
 
-#: websites/core/models.py:32 websites/core/models.py:177
-#: websites/core/models.py:215
+#: websites/core/models.py:32 websites/core/models.py:178
+#: websites/core/models.py:216
 msgid "Image"
 msgstr "Hình Ảnh"
 
-#: websites/core/models.py:33 websites/core/models.py:217
+#: websites/core/models.py:33 websites/core/models.py:218
 msgid "Sub Url"
 msgstr "Đường Dẫn Tương Đối"
 
@@ -367,8 +368,8 @@ msgstr "Vị Trí"
 msgid "Banner"
 msgstr ""
 
-#: websites/core/models.py:47 websites/core/models.py:158
-#: websites/core/models.py:176 websites/core/models.py:195
+#: websites/core/models.py:47 websites/core/models.py:159
+#: websites/core/models.py:177 websites/core/models.py:196
 msgid "Name"
 msgstr "Tên"
 
@@ -436,8 +437,8 @@ msgstr "Ngôn Ngữ"
 msgid "Trailer"
 msgstr ""
 
-#: websites/core/models.py:107 websites/core/models.py:181
-#: websites/core/models.py:216
+#: websites/core/models.py:107 websites/core/models.py:182
+#: websites/core/models.py:217
 msgid "Priority"
 msgstr "Độ Ưu Tiên"
 
@@ -469,74 +470,78 @@ msgstr "Xếp Hạng"
 msgid "Date Post"
 msgstr "Ngày Đăng"
 
-#: websites/core/models.py:140
+#: websites/core/models.py:134
+msgid "Time Post"
+msgstr "Giờ Đăng"
+
+#: websites/core/models.py:141
 msgid "Comment"
 msgstr "Bình Luận"
 
-#: websites/core/models.py:141
+#: websites/core/models.py:142
 msgid "Comments"
 msgstr "Bình Luận"
 
-#: websites/core/models.py:159 websites/core/models.py:178
-#: websites/core/models.py:196
+#: websites/core/models.py:160 websites/core/models.py:179
+#: websites/core/models.py:197
 msgid "Content"
 msgstr "Nội Dung"
 
-#: websites/core/models.py:165
+#: websites/core/models.py:166
 msgid "Cenima Technology"
 msgstr "Công Nghệ Rạp Phim"
 
-#: websites/core/models.py:166
+#: websites/core/models.py:167
 msgid "Cenima Technologys"
 msgstr "Công Nghệ Rạp Phim"
 
-#: websites/core/models.py:179
+#: websites/core/models.py:180
 msgid "Condition"
 msgstr "Điều Kiện"
 
-#: websites/core/models.py:180
+#: websites/core/models.py:181
 msgid "Apply For"
 msgstr "Áp Dụng Cho"
 
-#: websites/core/models.py:182
+#: websites/core/models.py:183
 msgid "Apply Date"
 msgstr "Ngày Áp Dụng"
 
-#: websites/core/models.py:189
+#: websites/core/models.py:190
 msgid "New Offer"
 msgstr "Tin Mới và Ưu Đãi"
 
-#: websites/core/models.py:190
+#: websites/core/models.py:191
 msgid "New Offers"
 msgstr "Tin Mới và Ưu Đãi"
 
-#: websites/core/models.py:197
+#: websites/core/models.py:198
 msgid "Key Query"
 msgstr ""
 
-#: websites/core/models.py:209
+#: websites/core/models.py:210
 msgid "Post"
 msgstr "Bài Viết"
 
-#: websites/core/models.py:210
+#: websites/core/models.py:211
 msgid "Posts"
 msgstr "Bài Viết"
 
-#: websites/core/models.py:224
+#: websites/core/models.py:225
 msgid "Slide Show"
 msgstr ""
 
 #: websites/core/views.py:47 websites/core/views.py:91
-#: websites/core/views.py:172
+#: websites/core/views.py:177
 msgid "Page Number Not Type Integer."
 msgstr "Số trang không phải là kiểu số."
 
 #: websites/core/views.py:51 websites/core/views.py:95
-#: websites/core/views.py:176
+#: websites/core/views.py:181
 msgid "Page Number Not Found."
 msgstr "Số trang không tìm thấy."
 
-#: websites/core/views.py:349
+#: websites/core/views.py:360
 msgid "Send Contact Successfully."
 msgstr "Gởi Liên Hệ Thành Công."
 
