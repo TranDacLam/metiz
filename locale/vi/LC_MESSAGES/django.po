@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-16 17:00+0700\n"
+"POT-Creation-Date: 2017-11-16 17:25+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -542,22 +542,26 @@ msgid "Send Contact Successfully."
 msgstr "Gởi Liên Hệ Thành Công."
 
 #: websites/registration/forms.py:67
-msgid "This phone number already exists."
-msgstr "Số điện thoại này đã tồn tại."
+msgid "User with this phone already exists."
+msgstr "Số điện thoại đã được sử dụng."
 
 #: websites/registration/forms.py:68
-msgid "This email already exists."
-msgstr "Email này đã tồn tại"
+msgid "User with this email already exists."
+msgstr "Email đã được sử dụng."
 
 #: websites/registration/forms.py:93
 msgid "[Metiz] You've been created an account - Click to Verify!"
 msgstr "[Metiz] Kích Hoạt Tài Khoản!"
 
-#: websites/registration/forms.py:161
+#: websites/registration/forms.py:140
+msgid "This phone is already in use."
+msgstr "Số điện thoại đã được sử dụng."
+
+#: websites/registration/forms.py:170
 msgid "The old password fields did not match."
 msgstr "Mật Khẩu Cũ Không Đúng. Vui Lòng Nhập Lại."
 
-#: websites/registration/forms.py:169
+#: websites/registration/forms.py:178
 msgid "The two password fields did not match."
 msgstr "Mật Khẩu Mới Không Trùng Khớp. Vui Lòng Nhập Lại."
 
