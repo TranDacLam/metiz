@@ -8,7 +8,7 @@
 #myTabContent label.error {
 	font-family: 'SairaSemiCondensed-Regular';
 	color: red;
-	padding: 2px 8px;
+	padding: 5px 0 0;
 	margin-top: 2px;
 	
 }
@@ -78,11 +78,9 @@
 #myTabContent .login-forgot-pass i{
     color: black;
 }
-#myTabContent .login-forgot-pass{
-    padding-left: 30px;
-}
 #myTabContent a.login-forgot-pass{
     color: #004bff;
+    padding: 15px 0 0;
 }
 #myTabContent .form-none-padding{
 	padding:0px;
@@ -102,6 +100,7 @@ ul ~ label{
 }
 #myTabContent button[type=submit]{
 	text-transform: uppercase;
+	margin: 5px 0 0 0;
 }
 #myTabContent .country-code{
 	color: #bfbfbf;
@@ -126,6 +125,13 @@ ul ~ label{
 		width: 265px;
 	}
 }
+/* Portrait and Landscape */
+@media only screen and (max-width: 768px) {
+
+	#myTabContent button[type=submit] {
+		margin: 15px 0 10px;
+	}
+}
 @media  only screen and (max-width: 480px){
 	#signup_form .inline input.form-control,#signup_form .inline select {
 		width: 90%;
@@ -135,5 +141,11 @@ ul ~ label{
 	}
 	.form-address #address{
 		width: 250px;
+	}
+	#myTabContent button[type=submit] {
+		margin: 15px 0 0;
+	}
+	#myTabContent a.login-forgot-pass {
+		padding: 10px 0 0 ;
 	}
 }

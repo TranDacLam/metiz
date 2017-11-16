@@ -24,46 +24,28 @@ contacts-index-index
 		<div id="messages_product_view"></div>
 		<div class="location-ho-metiz container">
 			<div class="page-title title-contact-metiz">
-				<h1>Liên hệ với chúng tôi</h1>
-			</div>
-			<div class="row">
-				<div class="map_container col-md-12 col-xs-12">
-					<iframe frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJsxV0yOgZQjERTKQwTYD4R_0&key=AIzaSyAA-Ck93lFyP6N_jY2ZVcRaSO8qoffNQiE" allowfullscreen></iframe>
-				</div>
+				<h1>LIÊN HỆ VỚI CHÚNG TÔI</h1>
 			</div>
 		</div>
 		<div class="contact-metiz">
 			<div class="show-address-contact-metiz">
 				<div class="theater-name">
-					<h2>TRỤ SỞ CHÍNH</h2>
+					<h2>DỊCH VỤ KHÁCH HÀNG</h2>
 				</div>
 				<div class="address-contact-metiz-block">
 					<div class="address-contact-metiz-block-content">
 						<div class="address-contact-metiz">
 							<div class="add-contact-metiz">
-								<p>Tòa nhà Helio, đường 2 tháng 9, Thành phố Đà Nẵng.</p>
-								<p class="contact-customer-service">DỊCH VỤ KHÁCH HÀNG</p>
 								<p>Hotline: 1111 1111</p>
-								<p>Giờ làm việc: 8:00 - 22:00</p>
-								<p>Tất cả các ngày bao gồm cả Lễ Tết</p>
-								<p>Email hỗ trợ: <a href="#">contacts@vooc.vn</a></p>
+								<p>Email: <a href="#">contacts@vooc.vn</a></p>
 							</div>
 							<div class="contact-media-sale">
-								<h3>LIÊN HỆ QUẢNG CÁO</h3>
-								<p>Phòng kinh doanh:&nbsp;+84-28-3822 0333</p>
-								<p>Ext: 278 (Ms.An)&nbsp;</p>
+								<h3>LIÊN HỆ QUẢNG CÁO & HỢP TÁC</h3>
 								<p>Hotline: 0981005390</p>
 								<p>Email:&nbsp;<a href="#">contacts@vooc.vn</a></p>
 							</div>
 							<div class="contact-page-metiz-cinemas">
-								<h3>LIÊN HỆ HỢP TÁC & TÀI TRỢ</h3>
-								<p>Phòng truyền thông:&nbsp;+84-28-3822 0333</p>
-								<p>Ext: 119 (Ms. Lâm)</p>
-								<p>Email: <a href="#">contacts@vooc.vn</a></p>
-							</div>
-							<div class="contact-page-metiz-cinemas">
-								<h3>VỀ CÁC RẠP METIZ</h3>
-								<p>Chi tiết về các rạp Metiz (địa chỉ, giá vé), vui lòng nhấn vào  <a href="#">đây.</a></p>
+								<p>Tất cả các ngày bao gồm Lễ, Tết</p>
 							</div>
 						</div>
 					</div>
@@ -75,59 +57,63 @@ contacts-index-index
 					<h2 class="legend">Thông tin liên hệ</h2>
 					<p class="required">* Phải nhập thông tin</p>
 					<ul class="form-list">
-						<li class="fields">
-							<div class="field">
-								<label for="name" class="required"><em>*</em>Tên</label>
-								<div class="input-box">
-									<input name="name" id="name" title="Tên" value="" class="input-text required-entry" type="text" />
+						<div class="col-md-6">
+							<li class="fields">
+								<div class="field">
+									<label for="name" class="required"><em>*</em>Tên</label>
+									<div class="input-box">
+										<input name="name" id="name" title="Tên" value="" class="input-text required-entry" type="text" />
+									</div>
+									{% if forms.name.errors %}
+	                                    {{forms.name.errors}}
+	                                {% endif %}
 								</div>
-								{% if forms.name.errors %}
-                                    {{forms.name.errors}}
-                                {% endif %}
-							</div>
-						</li>
-						<li>
-							<div class="field">
-								<label for="email" class="required"><em>*</em>Email</label>
-								<div class="input-box">
-									<input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
+							</li>
+							<li>
+								<div class="field">
+									<label for="email" class="required"><em>*</em>Email</label>
+									<div class="input-box">
+										<input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
+									</div>
+									{% if forms.email.errors %}
+	                                    {{forms.email.errors}}
+	                                {% endif %}
 								</div>
-								{% if forms.email.errors %}
-                                    {{forms.email.errors}}
-                                {% endif %}
-							</div>
-						</li>
-						<li>
-							<div class="field">
-								<label for="phone" class="required"><em>*</em>Điện thoại</label>
-								<div class="input-box">
-									<input name="phone" id="phone" title="Điện thoại" value="" class="input-text" type="text" />
+							</li>
+							<li>
+								<div class="field">
+									<label for="phone" class="required"><em>*</em>Điện thoại</label>
+									<div class="input-box">
+										<input name="phone" id="phone" title="Điện thoại" value="" class="input-text" type="text" />
+									</div>
+									{% if forms.phone.errors %}
+	                                    {{forms.phone.errors}}
+	                                {% endif %}
 								</div>
-								{% if forms.phone.errors %}
-                                    {{forms.phone.errors}}
-                                {% endif %}
-							</div>
-						</li>
-						<li>
-							<div class="field">
-								<label for="subject" class="required"><em>*</em>Chủ đề cần hỗ trợ</label>
-								<div class="input-box">
-									<input name="subject" id="subject" title="Chủ đề cần hỗ trợ" value="" class="input-text" type="text" />
+							</li>
+						</div>
+						<div class="col-md-6">
+							<li>
+								<div class="field">
+									<label for="subject" class="required"><em>*</em>Chủ đề cần hỗ trợ</label>
+									<div class="input-box">
+										<input name="subject" id="subject" title="Chủ đề cần hỗ trợ" value="" class="input-text" type="text" />
+									</div>
+									{% if forms.subject.errors %}
+	                                    {{forms.subject.errors}}
+	                                {% endif %}
 								</div>
-								{% if forms.subject.errors %}
-                                    {{forms.subject.errors}}
-                                {% endif %}
-							</div>
-						</li>
-						<li class="wide">
-							<label for="message">Nội dung cần liên hệ</label>
-							<div class="input-box">
-								<textarea name="message" id="message" title="Nội dung cần liên hệ" class="required-entry input-text" cols="5" rows="3"></textarea>
-							</div>
-							{% if forms.message.errors %}
-                                {{forms.message.errors}}
-                            {% endif %}
-						</li>
+							</li>
+							<li class="wide">
+								<label for="message">Nội dung cần liên hệ</label>
+								<div class="input-box">
+									<textarea name="message" id="message" title="Nội dung cần liên hệ" class="required-entry input-text" cols="5" rows="5"></textarea>
+								</div>
+								{% if forms.message.errors %}
+	                                {{forms.message.errors}}
+	                            {% endif %}
+							</li>
+						</div>
 					</ul>
 				</div>
 				{% csrf_token %}
@@ -135,6 +121,13 @@ contacts-index-index
 					<button type="submit" title="Gửi đi" class="button"><span><span>Gửi đi</span></span></button>
 				</div>
 			</form>
+		</div>
+		<div class="location-bot-metiz">
+			<div class="row">
+				<div class="map_container col-md-12 col-xs-12">
+					<iframe frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJsxV0yOgZQjERTKQwTYD4R_0&key=AIzaSyAA-Ck93lFyP6N_jY2ZVcRaSO8qoffNQiE" allowfullscreen></iframe>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

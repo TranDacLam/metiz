@@ -291,6 +291,7 @@
 }
 .list-inline li:hover .time{
     border-color: #ff5400;
+    font-size: 16px;
 }
 /* .list-inline li:hover .time{
     display: none;
@@ -438,6 +439,7 @@
     }
     .calendar-popup .days-popup li .badge {
         padding: 8px;
+        width: 50%;
     }
 }
 @media only screen and (max-width: 480px){
@@ -453,6 +455,7 @@
     }
     .calendar-popup .days-popup li .badge {
         padding: 8px;
+        width: 38%;
     }
     #confirm .modal-header{
         padding: 0px;

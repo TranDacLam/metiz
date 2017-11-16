@@ -141,6 +141,11 @@ ul.metiz-film-detail-tabs {
 .movie-detail-fb-booking li{
 	padding-top: 3px;
 }
+@media only screen and (max-width: 768px) {
+	.review-custom{
+		width: 94%;
+	}
+}
 @media only screen and (max-width: 771px) {
 	.cate-new-offer {
 	    z-index: 3;
@@ -166,6 +171,9 @@ ul.metiz-film-detail-tabs {
 	}
 	.colum-right-new-offer{
 		margin-left: 5px;
+	}
+	.rating-desc{
+		margin-top: 20px;
 	}
 }
 @media screen and (max-width: 460px) {
