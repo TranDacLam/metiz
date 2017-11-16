@@ -335,6 +335,10 @@ $(document).ready(function() {
             $('.form-popup button').prop('disabled', true);
         }
     });
-   
+    
+    //dont allow key e in input phone
+    $("#modal-popup input[type=number]").on("keydown", function(e){
+        return e.keyCode == 69 ? false : true;
+    });
 });
 

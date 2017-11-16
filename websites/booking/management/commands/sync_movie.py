@@ -95,7 +95,7 @@ class Command(BaseCommand):
             # current_date = datetime.date(2017, 10, 12)
             end_date = current_date + timedelta(days=6)
             step_date = timedelta(days=1)
-
+            print "Sync Movie By Date : ",current_date
             while current_date <= end_date:
                 self.get_show_times(current_date=current_date.strftime('%Y-%m-%d'))
                 current_date = current_date + step_date

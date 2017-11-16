@@ -22,12 +22,14 @@ contacts-index-index
 <div class="main">
 	<div class="col-main">
 		<div id="messages_product_view"></div>
-		<div class="location-ho-metiz">
+		<div class="location-ho-metiz container">
 			<div class="page-title title-contact-metiz">
 				<h1>Liên hệ với chúng tôi</h1>
 			</div>
-			<div class="map_container">
-				<iframe frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJsxV0yOgZQjERTKQwTYD4R_0&key=AIzaSyAA-Ck93lFyP6N_jY2ZVcRaSO8qoffNQiE" allowfullscreen></iframe>
+			<div class="row">
+				<div class="map_container col-md-12 col-xs-12">
+					<iframe frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJsxV0yOgZQjERTKQwTYD4R_0&key=AIzaSyAA-Ck93lFyP6N_jY2ZVcRaSO8qoffNQiE" allowfullscreen></iframe>
+				</div>
 			</div>
 		</div>
 		<div class="contact-metiz">
@@ -99,7 +101,7 @@ contacts-index-index
 							<div class="field">
 								<label for="phone" class="required"><em>*</em>Điện thoại</label>
 								<div class="input-box">
-									<input name="phone" id="phone" title="Điện thoại" value="" class="input-text" type="tel" />
+									<input name="phone" id="phone" title="Điện thoại" value="" class="input-text" type="text" />
 								</div>
 								{% if forms.phone.errors %}
                                     {{forms.phone.errors}}

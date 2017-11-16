@@ -1,3 +1,6 @@
+.vnpayment #create_form button{
+        font-family: "SairaSemiCondensed-Bold", sans-serif;
+}
 @media only screen and (min-width: 340px){
     .vnpayment{
         padding: 0 20px 50px 20px;
