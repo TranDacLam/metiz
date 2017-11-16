@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-16 16:00+0700\n"
+"POT-Creation-Date: 2017-11-16 17:10+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -347,12 +347,12 @@ msgstr "Phải Nhập Kiểu Số."
 msgid "Created Date"
 msgstr "Ngày Tạo"
 
-#: websites/core/models.py:32 websites/core/models.py:178
-#: websites/core/models.py:216
+#: websites/core/models.py:32 websites/core/models.py:177
+#: websites/core/models.py:215
 msgid "Image"
 msgstr "Hình Ảnh"
 
-#: websites/core/models.py:33 websites/core/models.py:218
+#: websites/core/models.py:33 websites/core/models.py:217
 msgid "Sub Url"
 msgstr "Đường Dẫn Tương Đối"
 
@@ -368,8 +368,8 @@ msgstr "Vị Trí"
 msgid "Banner"
 msgstr ""
 
-#: websites/core/models.py:47 websites/core/models.py:159
-#: websites/core/models.py:177 websites/core/models.py:196
+#: websites/core/models.py:47 websites/core/models.py:158
+#: websites/core/models.py:176 websites/core/models.py:195
 msgid "Name"
 msgstr "Tên"
 
@@ -437,8 +437,8 @@ msgstr "Ngôn Ngữ"
 msgid "Trailer"
 msgstr ""
 
-#: websites/core/models.py:107 websites/core/models.py:182
-#: websites/core/models.py:217
+#: websites/core/models.py:107 websites/core/models.py:181
+#: websites/core/models.py:216
 msgid "Priority"
 msgstr "Độ Ưu Tiên"
 
@@ -470,94 +470,94 @@ msgstr "Xếp Hạng"
 msgid "Date Post"
 msgstr "Ngày Đăng"
 
-#: websites/core/models.py:134
-msgid "Time Post"
-msgstr "Giờ Đăng"
-
-#: websites/core/models.py:141
+#: websites/core/models.py:140
 msgid "Comment"
 msgstr "Bình Luận"
 
-#: websites/core/models.py:142
+#: websites/core/models.py:141
 msgid "Comments"
 msgstr "Bình Luận"
 
-#: websites/core/models.py:160 websites/core/models.py:179
-#: websites/core/models.py:197
+#: websites/core/models.py:159 websites/core/models.py:178
+#: websites/core/models.py:196
 msgid "Content"
 msgstr "Nội Dung"
 
-#: websites/core/models.py:166
+#: websites/core/models.py:165
 msgid "Cenima Technology"
 msgstr "Công Nghệ Rạp Phim"
 
-#: websites/core/models.py:167
+#: websites/core/models.py:166
 msgid "Cenima Technologys"
 msgstr "Công Nghệ Rạp Phim"
 
-#: websites/core/models.py:180
+#: websites/core/models.py:179
 msgid "Condition"
 msgstr "Điều Kiện"
 
-#: websites/core/models.py:181
+#: websites/core/models.py:180
 msgid "Apply For"
 msgstr "Áp Dụng Cho"
 
-#: websites/core/models.py:183
+#: websites/core/models.py:182
 msgid "Apply Date"
 msgstr "Ngày Áp Dụng"
 
-#: websites/core/models.py:190
+#: websites/core/models.py:189
 msgid "New Offer"
 msgstr "Tin Mới và Ưu Đãi"
 
-#: websites/core/models.py:191
+#: websites/core/models.py:190
 msgid "New Offers"
 msgstr "Tin Mới và Ưu Đãi"
 
-#: websites/core/models.py:198
+#: websites/core/models.py:197
 msgid "Key Query"
 msgstr ""
 
-#: websites/core/models.py:210
+#: websites/core/models.py:209
 msgid "Post"
 msgstr "Bài Viết"
 
-#: websites/core/models.py:211
+#: websites/core/models.py:210
 msgid "Posts"
 msgstr "Bài Viết"
 
-#: websites/core/models.py:225
+#: websites/core/models.py:224
 msgid "Slide Show"
 msgstr ""
 
 #: websites/core/views.py:47 websites/core/views.py:91
-#: websites/core/views.py:177
+#: websites/core/views.py:171
 msgid "Page Number Not Type Integer."
 msgstr "Số trang không phải là kiểu số."
 
 #: websites/core/views.py:51 websites/core/views.py:95
-#: websites/core/views.py:181
+#: websites/core/views.py:175
 msgid "Page Number Not Found."
 msgstr "Số trang không tìm thấy."
 
-#: websites/core/views.py:360
+#: websites/core/views.py:354
 msgid "Send Contact Successfully."
 msgstr "Gởi Liên Hệ Thành Công."
 
-#: websites/registration/forms.py:66
+#: websites/registration/forms.py:67
 msgid "User with this phone already exists."
-msgstr ""
+msgstr "Số điện thoại đã được sử dụng."
 
-#: websites/registration/forms.py:91
+#: websites/registration/forms.py:92
 msgid "[Metiz] You've been created an account - Click to Verify!"
 msgstr "[Metiz] Kích Hoạt Tài Khoản!"
 
-#: websites/registration/forms.py:159
+#: websites/registration/forms.py:139
+msgid "This phone is already in use."
+msgstr "Số điện thoại đã được sử dụng."
+
+#: websites/registration/forms.py:169
 msgid "The old password fields did not match."
 msgstr "Mật Khẩu Cũ Không Đúng. Vui Lòng Nhập Lại."
 
-#: websites/registration/forms.py:167
+#: websites/registration/forms.py:177
 msgid "The two password fields did not match."
 msgstr "Mật Khẩu Mới Không Trùng Khớp. Vui Lòng Nhập Lại."
 
@@ -607,6 +607,9 @@ msgstr ""
 #: websites/vnpay_payment/views.py:95
 msgid "[Metiz] Booking Movie Tickets Successful !"
 msgstr "[Metiz] Đặt Vé Phim Thành Công"
+
+#~ msgid "Time Post"
+#~ msgstr "Giờ Đăng"
 
 #~ msgid "Time Show"
 #~ msgstr "Cho Phép Hiển Thị"
