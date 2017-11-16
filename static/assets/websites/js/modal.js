@@ -14,6 +14,12 @@ $(document).ready(function() {
         } 
     });
 
+    //fix bug input element in modals 
+    if( navigator.userAgent.match(/iPhone|iPad|iPod/i) || navigator.userAgent.match(/Android/i)){
+        $('#myModal').on('shown.bs.modal', function () {
+            $('body').css('overflow','hidden');
+        })
+    }
 
     // Validate guest_form, update_form
     // Validate and handle member_form by ajax

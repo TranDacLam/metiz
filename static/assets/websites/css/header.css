@@ -286,7 +286,6 @@ ul.dropdown-menu>li>a:hover{
 	.navbar-nav li.dropdown>a{
 		padding-top: 5px;
 		padding-left: 25px;
-		background: url('../images/caret.png') no-repeat scroll 4px;
 	}
 	.navbar-nav li.dropdown{
 		border-bottom: 1px solid #7e8eaa;
