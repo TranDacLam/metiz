@@ -15,7 +15,7 @@ $(document).ready(function() {
     });
 
     //fix bug input element in modals 
-    if( navigator.userAgent.match(/iPhone|iPad|iPod/i) || navigator.userAgent.match(/Android/i)){
+    if( navigator.userAgent.match(/iPhone|iPod/i) || navigator.userAgent.match(/Android/i)){
         $('#myModal').on('shown.bs.modal', function () {
             $('body').css('overflow','hidden');
         })
@@ -162,7 +162,7 @@ $(document).ready(function() {
         type: 'inline',
         midClick: true,
         enableEscapeKey: false,
-       
+        // overflowY: 'hidden',
     });
     
    
@@ -193,15 +193,15 @@ $(document).ready(function() {
             
             //set end time for film schedule
             var startTime = value.time.split(':').map( Number );
-            var munite = (shedule.time_running + startTime[1])%60;
-            var hour = startTime[0] + ((shedule.time_running + startTime[1] - munite)/60);
-            if (munite < 10 ){
-                munite = '0' + munite;
+            var minute = (shedule.time_running + startTime[1])%60;
+            var hour = startTime[0] + Math.floor((shedule.time_running + startTime[1])/60);
+            if (minute < 10 ){
+                minute = '0' + minute;
             }
             if (hour > 23){
                 hour -= 24;
             }
-            var endTime = '~' + hour + ':' + munite;
+            var endTime = '~' + hour + ':' + minute;
 
             htmlShedule +=  '<li class="sold-out">'
                                 +'<a href="#" >'

@@ -464,6 +464,9 @@
         padding: 8px;
         width: 50%;
     }
+    #modal-popup .content-schedule{
+        width: auto;
+    }
 }
 @media only screen and (max-width: 480px){
     .modal-open {    
