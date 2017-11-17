@@ -80,6 +80,10 @@ footer .content-1 .col-lg-3{
 .address{
 	margin-top:20px;
 	line-height: 1.4;
+	padding-right: 15px;
+}
+.map-left {
+	margin: 0 -15px;
 }
 footer .map a{
 	margin-top:18px;
@@ -136,8 +140,26 @@ footer #content-map iframe{
 		color: inherit; 
 		text-decoration: none; 
 	}
+	.info {
+    	font-size: 13px;
+	}
+	footer h2 {
+    	font-weight: bold;
+    	font-size: 19px;
+	}
+	img.map-trigger {
+		width: 40px;
+		height: 40px;
+	}
+	footer .content-1 .list li a {
+    	font-size: 13px;
+	}
+	footer .map a{
+		margin:15px;
+		font-size:12px
+	}
 }
-@media only screen and (max-width: 420px){
+@media only screen and (max-width: 425px){
 	footer #content-map iframe{
 		height: auto;
 	}
@@ -147,9 +169,17 @@ footer #content-map iframe{
 	footer .content-1 .list li a, .info{
 		font-size: 14px;
 	}
+	footer .map a{
+		margin:15px -35px;
+		font-size:12px
+	}
 }
 @media only screen and (max-width: 320px){
 	footer #content-map iframe{
 		height: auto;
+	}
+	footer .map a{
+		margin:15px -15px;
+		font-size:12px
 	}
 }
