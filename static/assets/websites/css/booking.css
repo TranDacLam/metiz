@@ -206,7 +206,7 @@ div.seatCharts-space{
         left: 46.5%;
     }
 }
-@media only screen and (max-width: 420px){
+@media only screen and (max-width: 414px){
     .ajax-loader>p{
         top: 45%; 
         left: 45%;
@@ -215,12 +215,12 @@ div.seatCharts-space{
         height: auto;
     }
 }
-@media (min-width: 381px) and (max-width: 420px) {
+@media (min-width: 376px) and (max-width: 414px) {
     .seatCharts-row div:nth-child(9n+11) {
         margin-left: 34px;
     }
 }
-@media (min-width: 321px) and (max-width: 380px) {
+@media (min-width: 321px) and (max-width: 375px) {
     .seatCharts-row div:nth-child(7n+9) {
         margin-left: 34px;
     }
