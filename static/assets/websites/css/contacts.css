@@ -91,15 +91,21 @@ a{
     padding: 0 10px;
     margin-bottom: -50px;
 }
+#contactForm textarea#message{
+	height: 98px;
+}
 @media screen and (max-width: 768px) {
 	.content-form-contact-metiz{
-		width: 49%;
+		width: 51%;
 	}
 	.show-address-contact-metiz{
-		width: 43%;
+		width: 41%;
 	}
 	.contacts-index-index .buttons-set {
 	    margin-left: 44%;
+	}
+	#contactForm .fieldset .legend + .required{
+		margin-right: 37px;
 	}
 }
 @media screen and (max-width: 767px) {
@@ -139,6 +145,17 @@ a{
 	}
 	.location-bot-metiz{
 		margin-bottom: -20px;
+	}
+	.content-form-contact-metiz #contactForm{
+		padding-left: 29px;
+	}
+}
+@media screen and (max-width: 380px) {
+	.content-form-contact-metiz #contactForm{
+		padding-left: 7px;
+	}
+	#contactForm .fieldset .legend + .required{
+		margin-right: 22px;
 	}
 }
 @media screen and (max-width: 320px){

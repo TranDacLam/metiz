@@ -63,7 +63,7 @@ ul.dropdown-menu>li>a:hover{
 .skip-link.skip-account{
 		display: none;
 	}
-.header-top-account a{
+.header-container a{
 	font-family: 'SairaSemiCondensed-Medium';
 	font-size: 14px;
 	color: #7e8eaa;
