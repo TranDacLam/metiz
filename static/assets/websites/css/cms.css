@@ -87,7 +87,7 @@ nav.sidebar, .main{
     .about-image-metiz ul li {
         float: left;
         width: 31%;
-        height: 169px;
+        height: 142px;
         border: 1px solid;
         margin: 10px 4px;
         box-shadow: 3px 3px 3px #333;
@@ -96,7 +96,7 @@ nav.sidebar, .main{
     .about-image-metiz ul li img {
         float: left;
         width: 100%;
-        height: 169px;
+        height: 142px;
         border-radius: 3px;
     }
     #faqAccordion{

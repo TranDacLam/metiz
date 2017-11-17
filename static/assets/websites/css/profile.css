@@ -100,17 +100,37 @@
 }
 @media only screen and (max-width : 420px) {
     .my-account .page-title{
-        width: 64.5%;
+        width: 68.5%;
+    }
+    .profile-custom .my-account{
+        margin-left: 25px;
+    }
+    .metiz-edit-btn.buttons-set button.button{
+        margin-right: 20px;
     }
 }
 @media only screen and (max-width : 375px) {
     .my-account .page-title{
         width: 71.5%;
     }
+    .profile-custom .my-account {
+        margin-left: 5px;
+    }
+    .metiz-edit-btn.buttons-set button.button{
+        margin-right: 0;
+    }
 }
 @media only screen and (max-width : 320px) {
     .my-account .page-title{
         width: 70.5%;
+    }
+    #profile-validate .list-city, 
+    #profile-validate .list-district,
+    #profile-validate textarea{
+        width: 230px;
+    }
+    .profile-custom .my-account{
+        margin-left: 0;
     }
 }
 @media (min-width: 769px) {
