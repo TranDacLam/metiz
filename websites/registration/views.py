@@ -67,6 +67,34 @@ def register_user(request, **kwargs):
                 register_form.save()
                 messages.success(request, _('Register Account Successfully. Please Check Your Email and Active Account.'))
                 return redirect(reverse('home'))
+            else:
+                # keep data of user input
+                context = {}
+                context['full_name'] = request.POST[
+                    'full_name'] if 'full_name' in request.POST else None
+                context['birth_date'] = request.POST[
+                    'birth_date'] if 'birth_date' in request.POST else None
+                context['address'] = request.POST[
+                    'address'] if 'address' in request.POST else None
+                context['personal_id'] = request.POST[
+                    'personal_id'] if 'personal_id' in request.POST else None
+                context['gender'] = request.POST[
+                    'gender'] if 'gender' in request.POST else None
+                context['city'] = request.POST[
+                    'city'] if 'city' in request.POST else None
+                context['district'] = request.POST[
+                    'district'] if 'district' in request.POST else None
+                context['phone'] = request.POST[
+                    'phone'] if 'phone' in request.POST else None
+                context['email'] = request.POST[
+                    'email'] if 'email' in request.POST else None
+                context['password1'] = request.POST[
+                    'password1'] if 'password1' in request.POST else None
+                context['password2'] = request.POST[
+                    'password2'] if 'password2' in request.POST else None
+                context['is_signup'] = True
+                context['form'] = register_form
+                return render(request, 'registration/signup.html', context)
 
         return render(request, 'registration/signup.html',
                       {'register_form': register_form, 'is_signup': True})
@@ -144,6 +172,9 @@ def update_profile(request):
             user_form = UpdateUserForm(request.POST, user=user)
             if user_form.is_valid():
                 user_form.save()
+                request.session['full_name'] = request.user.full_name
+                request.session['phone'] = request.user.phone
+                request.session['email'] = request.user.email
                 messages.success(request, _('Update Profile Successfully.'))
                 return redirect(reverse('profile'))
             else:

@@ -5,8 +5,8 @@ $(document).ready(function() {
         var key = e.which;
         if (key == 27){
             e.preventDefault();
-            if($('#test-popup .modal').hasClass('in')){
-                $('#test-popup .modal').modal('hide');
+            if($('#modal-popup .modal').hasClass('in')){
+                $('#modal-popup .modal').modal('hide');
             }
             else{
                 $.magnificPopup.close();
@@ -14,6 +14,12 @@ $(document).ready(function() {
         } 
     });
 
+    //fix bug input element in modals 
+    if( navigator.userAgent.match(/iPhone|iPad|iPod/i) || navigator.userAgent.match(/Android/i)){
+        $('#myModal').on('shown.bs.modal', function () {
+            $('body').css('overflow','hidden');
+        })
+    }
 
     // Validate guest_form, update_form
     // Validate and handle member_form by ajax
@@ -29,7 +35,7 @@ $(document).ready(function() {
         'email': 'Email không hợp lệ',
         'number': 'Nhập các chữ số',
         'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
-        'validatePassword': 'Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt và có cả chữ và số',
+        'validatePassword': 'Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.',
         'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
     } else {
         message = {'required': 'This field is required', 
@@ -89,7 +95,7 @@ $(document).ready(function() {
             password:{
                 required: true,
                 minlength: 8,
-                validatePassword: true
+                regex: true
             },
         },
         messages:{
@@ -134,13 +140,15 @@ $(document).ready(function() {
         }
     });
 
+     // validate password
     $.validator.addMethod(
-      "validatePassword",
-      function (value, element) {
-        return value.match(/[^a-z0-9 ]/);
-      },
-      message.validatePassword
+        "regex",
+         function(value, element) {
+            return this.optional(element) || (value.match(/[a-z]/) && value.match(/[!@#$%^&*()_+A-Z]/) && value.match(/[0-9]/));
+        },
+        message.validatePassword
     );
+
      $.validator.addMethod(
       "validatePhone",
       function (value, element) {
@@ -151,11 +159,11 @@ $(document).ready(function() {
     );
     // active popup
     $('.open-popup-link').magnificPopup({
-          type: 'inline',
-          midClick: true,
-          enableEscapeKey: false,
+        type: 'inline',
+        midClick: true,
+        enableEscapeKey: false,
+       
     });
-    
     
    
     // *** POPUP MOVIE SCHEDULE ***
@@ -182,18 +190,33 @@ $(document).ready(function() {
     function listShedule(shedule){
         var htmlShedule = '';
         $.each(shedule.lst_times, function(key, value) {
+            
+            //set end time for film schedule
+            var startTime = value.time.split(':').map( Number );
+            var munite = (shedule.time_running + startTime[1])%60;
+            var hour = startTime[0] + ((shedule.time_running + startTime[1] - munite)/60);
+            if (munite < 10 ){
+                munite = '0' + munite;
+            }
+            if (hour > 23){
+                hour -= 24;
+            }
+            var endTime = '~' + hour + ':' + munite;
+
             htmlShedule +=  '<li class="sold-out">'
-                                +'<a href="#" data-toggle="modal" data-target="#warning">'
+                                +'<a href="#" >'
                                     +'<input type="hidden" name="id_showtime" value="'+ value.id_showtime +'">'
                                     +'<input type="hidden" name="id_movie_name" value="'+ shedule.movie_name +'">'
                                     +'<span class="time">'
-                                        + value.time +'<span class="time-end"> ~ '+ value.time +'</span>'
+                                        + value.time +'<span class="time-end">'+endTime+'</span>'
                                     +'</span>'
                                     +'<span class="ppnum">Phòng chiếu</span>'
                                     +'<span class="ppnum">'+ value.room_name +'</span>' // room chiếu phim
                                     +'<span class="pp-early" title="Suất chiều đầu"></span>'
                                 +'</a>'
                             +'</li>';
+            
+               
         });
         return htmlShedule;
     }
@@ -202,7 +225,7 @@ $(document).ready(function() {
     function listFilm(film){
         return  '<div class="movie-time-line-box clearfix" data-control="movie-code">'
                     +'<h3 class="movie-name">'+ film.movie_name +'</h3>'
-                    +'<div class="lot-table clearfix">'
+                    +'<div class="lot-table clearfix" data-rated="'+ film.rated +'" >'
                         +'<ul class="list-inline list-unstyled theater_time">'
                             + listShedule(film)
                         +'</ul>'
@@ -213,8 +236,9 @@ $(document).ready(function() {
 
     var movie_api_id;
 
-    $(document).on('click', '.popup-movie-schedule', function () { 
+    $(document).on('click', '.popup-movie-schedule', function () {
         
+                
         //set data for Month
         $('#center-month').text($(this).children('.hide-month').text());
         $('.days-popup li').removeClass('active-date');
@@ -277,6 +301,7 @@ $(document).ready(function() {
             if ($('.list-schedule').text() == '') {
                 $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lịch Chiếu Nào. Vui Lòng Chọn Ngày Khác.<p/>');
             }
+
         })
         .fail(function() {
             displayMsg();
@@ -297,6 +322,15 @@ $(document).ready(function() {
             $('.modal input[name=id_movie_name]').val(id_movie_name);
             $('.modal input[name=id_movie_time]').val(id_movie_time);
             $('.modal input[name=id_movie_date_active]').val($("li.active-date").attr("data-date-select"));
+            
+            //set content for modal #warnning or skip
+            var rated = $(this).parents('.lot-table').attr('data-rated');
+            if(rated != 'null'){
+                $('#warning #content-warnning').text(rated);
+                $('#warning').modal('show');
+            }else{
+                $('#btn-skip').click();
+            }
         });
     }
     
@@ -309,5 +343,9 @@ $(document).ready(function() {
         }
     });
     
+    //dont allow key e in input phone
+    $("#modal-popup input[type=number]").on("keydown", function(e){
+        return e.keyCode == 69 ? false : true;
+    });
 });
 

@@ -63,8 +63,10 @@ class LoginForm(forms.Form):
 
 
 class MetizSignupForm(UserCreationForm):
-    phone = forms.CharField(error_messages={'unique': _('User with this phone already exists.')})
 
+    phone = forms.CharField(error_messages={'unique':_("User with this phone already exists.")})
+    email = forms.CharField(error_messages={'unique':_("User with this email already exists.")})
+    
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request")
         super(MetizSignupForm, self).__init__(*args, **kwargs)
@@ -128,6 +130,15 @@ class UpdateUserForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user")
         super(UpdateUserForm, self).__init__(*args, **kwargs)
+
+    def clean_phone(self):
+        cleaned_data = super(UpdateUserForm, self).clean()
+        phone = cleaned_data.get("phone")
+        
+        check_phone = User.objects.filter(phone=phone).exclude(pk=self.user.id)
+        if check_phone.count() > 0:
+            raise forms.ValidationError(_('This phone is already in use.'))
+        return phone
 
     def save(self):
         self.user.full_name = self.cleaned_data.get('full_name')

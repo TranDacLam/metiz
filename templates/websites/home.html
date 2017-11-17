@@ -75,7 +75,7 @@
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         {% verify_showtime_by_id 1 item.movie_api_id as is_book_able %}
                                         {% if is_book_able %}
-                                            <button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
+                                            <button href="#modal-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
                                         {% endif %}
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
@@ -104,7 +104,7 @@
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         {% verify_showtime_by_id 1 item.movie_api_id as is_book_able %}
                                         {% if is_book_able %}
-                                            <button href="#test-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
+                                            <button href="#modal-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
                                         {% endif %}
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
@@ -155,7 +155,7 @@
     <div class="container">
     {% if position_2 %}
         <a href="{{ position_2.sub_url }}">
-            <img class="col-xs-12" id="banner-home" src="{{ MEDIA_URL }}{{ position_2.image }}" alt="{{ position_2.sub_url}}">
+            <img class="col-xs-12" id="banner-home" src="{{ MEDIA_URL }}{{ position_2.image }}" alt="">
         </a>
     {% endif %}
     </div>
