@@ -4,16 +4,16 @@ $(document).ready(function() {
  		$('.icon-nav').removeClass('bg-icon');
  		$(this).children('.icon-nav').toggleClass('bg-icon');
  	});
+
  	$('#login-btn').click(function(event) {
- 		/* Act on the event */
- 		if ($('#myNavbar').hasClass('collapse in')) {
- 			$('#myNavbar').removeClass('in');
- 		}
+ 		if ($('#menuNavbar').hasClass('collapse in') || $('#menuNavbar').hasClass('collapsing')) {
+		 	$('#menuNavbar').collapse('hide');
+		 }
  	});
+
  	$('#menu-btn').click(function(event) {
- 		/* Act on the event */
- 		if ($('#loginNavbar').hasClass('collapse in')) {
- 			$('#loginNavbar').removeClass('in');
+ 		if ($('#loginNavbar').hasClass('collapse in') || $('#loginNavbar').hasClass('collapsing')) {
+	 		$('#loginNavbar').collapse('hide');
  		}
  	});
 });

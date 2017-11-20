@@ -2,29 +2,12 @@
 <div class="header-language-background">
     <div class="header-container">
         <div class="header-language-right">
-            {% if user.is_authenticated %}
-                <div class="header-career">
-                    <p class="welcome-msg">
-                        <a href="{% url 'profile' %}" title="Tài khoản"> Xin chào, 
-                         {% if user.full_name %}  
-                            {{user.full_name}}
-                        {%else%}  
-                            {{user.email}}
-                        {%endif%}</a>
-                    </p>
-                </div>
-            {% endif%}
+            <div class="header-career">
+                Hotline: 1900 6017
+            </div>
             <div class="header-top-account">
                 <div class="account-header-wrapper">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'logout'%}" title="Thoát" class="topskip-link skip-account">
-                            <span>Đăng xuất</span>
-                        </a>
-                    {% else %}
-                        <div class="topskip-link skip-account">
-                            <span><a href="{% url 'login'%}">Đăng nhập</a>/ <a href="{% url 'register' %}">Đăng ký</a></span>
-                        </div>
-                    {% endif%}
+                    Giờ làm việc: 8:00 - 22:00
                 </div>
             </div>
         </div>
@@ -49,7 +32,7 @@
                             <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="center-block" />
                         </a>
                         <div class="skip-links">
-                            <button id="menu-btn" class=" skip-link skip-nav navbar-toggle" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+                            <button id="menu-btn" class=" skip-link skip-nav navbar-toggle" data-toggle="collapse" data-target="#menuNavbar" aria-expanded="false">
                                 <span class="icon-nav glyphicon glyphicon-align-justify"></span>
                                 <span class="label">Menu</span>
                             </button>
@@ -83,7 +66,7 @@
                             {% endif %}
                         </ul>
                     </div>
-                    <div class="collapse navbar-collapse collapse-custom" id="myNavbar">
+                    <div class="collapse navbar-collapse collapse-custom" id="menuNavbar">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
                                 <a href="#modal-popup" data-date-select="" data-all-movie="true" class="open-popup-link dropdown-toggle popup-movie-schedule" >Lịch chiếu</a>
@@ -98,6 +81,36 @@
                             <li class="dropdown">
                                 <a class="dropdown-toggle" href="{% url 'news'%}">Khuyến mãi</a>
                             </li>
+                            <!-- pending -->
+                            <!-- <li class="dropdown">
+                                <a class="dropdown-toggle" href="#">BLOG PHIM</a>
+                            </li> -->
+                            <li class="dropdown responsive-user-header">
+                                <a>|</a>
+                            </li>
+                            {% if user.is_authenticated %}
+                                <li class="dropdown hover-user-header">
+                                    <a href="{% url 'profile'%}" >
+                                        {% if user.full_name %}  
+                                            {{user.full_name|truncatechars:15}}
+                                        {% else %}  
+                                            {{user.email|truncatechars:15}}
+                                        {% endif %}
+                                        <span>/</span>
+                                    </a>
+                                </li>
+                                <li class="dropdown hover-user-header custom-user-header">
+                                    <a href="{% url 'logout'%}" >Đăng xuất</a>
+                                </li>
+                            {% else %}
+                                <li class="dropdown hover-user-header">
+                                    <a href="{% url 'login'%}" >Đăng Nhập <span>/</span></a>
+                                </li>
+                                <li class="dropdown hover-user-header custom-user-header">
+                                    <a href="{% url 'register'%}" >Đăng Ký</a>
+                                </li>
+                            {% endif %}
+
                         </ul>
                     </div>
                 </div>

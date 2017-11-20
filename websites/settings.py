@@ -83,7 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.media',
                 'django.template.context_processors.i18n',
-                'main.middleware.get_app_fb_id',
+                'main.context_processors.get_app_fb_id',
             ],
         },
     },
