@@ -55,12 +55,11 @@ contacts-index-index
 			<form action="" id="contactForm" method="post" class="scaffold-form">
 				<div class="fieldset">
 					<h2 class="legend">Thông tin liên hệ</h2>
-					<p class="required">* Phải nhập thông tin</p>
 					<ul class="form-list">
 						<div class="col-md-6">
 							<li class="fields">
 								<div class="field">
-									<label for="name" class="required"><em>*</em>Tên</label>
+									<label for="name">Tên</label>
 									<div class="input-box">
 										<input name="name" id="name" title="Tên" value="" class="input-text required-entry" type="text" />
 									</div>
@@ -71,7 +70,7 @@ contacts-index-index
 							</li>
 							<li>
 								<div class="field">
-									<label for="email" class="required"><em>*</em>Email</label>
+									<label for="email">Email</label>
 									<div class="input-box">
 										<input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
 									</div>
@@ -82,7 +81,7 @@ contacts-index-index
 							</li>
 							<li>
 								<div class="field">
-									<label for="phone" class="required"><em>*</em>Điện thoại</label>
+									<label for="phone">Điện thoại</label>
 									<div class="input-box">
 										<input name="phone" id="phone" title="Điện thoại" value="" class="input-text" type="text" />
 									</div>
@@ -93,17 +92,6 @@ contacts-index-index
 							</li>
 						</div>
 						<div class="col-md-6">
-							<li>
-								<div class="field">
-									<label for="subject" class="required"><em>*</em>Chủ đề cần hỗ trợ</label>
-									<div class="input-box">
-										<input name="subject" id="subject" title="Chủ đề cần hỗ trợ" value="" class="input-text" type="text" />
-									</div>
-									{% if forms.subject.errors %}
-	                                    {{forms.subject.errors}}
-	                                {% endif %}
-								</div>
-							</li>
 							<li class="wide">
 								<label for="message">Nội dung cần liên hệ</label>
 								<div class="input-box">
