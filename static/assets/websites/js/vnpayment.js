@@ -39,46 +39,17 @@ $(document).ready(function() {
                 // Will NOT handle refresh, use onbeforeunload for this.
                 endSession();
                 var id_showtime = $('#payment_form input[name=id_showtime]').val();
-                var id_sever = $('#payment_form input[name=id_sever]').val();
+                var id_server = $('#payment_form input[name=id_server]').val();
                 var id_movie_name = $('#payment_form input[name=id_movie_name]').val();
                 var id_movie_time = $('#payment_form input[name=id_movie_time]').val();
                 var id_movie_date_active = $('#payment_form input[name=id_movie_date_active]').val();
 
-                window.location.href = '/booking?id_showtime='+ id_showtime + '&id_sever='+ id_sever
+                window.location.href = '/booking?id_showtime='+ id_showtime + '&id_server='+ id_server
                             + '&id_movie_name='+ id_movie_name + '&id_movie_time='+ id_movie_time
                             + '&id_movie_date_active='+ id_movie_date_active;
             };
         }
     }
-
-    $("#btnPopup").click(function (event) {
-        // event.preventDefault();
-        // var postData = JSON.stringify($("#payment_form").serializeArray());
-        var postData = $("#payment_form").serialize();
-        var submitUrl = $("#payment_form").attr("action");
-        // Call server verify session
-        $.ajax({
-            type: "POST",
-            url: submitUrl,
-            data: postData,
-            dataType: "JSON",
-            success: function (x) {
-                if (x.code === '00') {
-                    if (window.vnpay) {
-                        vnpay.open({width: 768, height: 600, url: x.data});
-                    }
-                    else {
-                        location.href = x.data;
-                    }
-                    return false;
-                } else {
-                    alert(x.Message);
-                }
-            },
-            crossDomain: false
-        });
-        return false;
-    });
 
     // validate form
     var val_required = 'Trường này là bắt buộc';
