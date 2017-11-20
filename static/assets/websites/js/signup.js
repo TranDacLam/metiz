@@ -160,11 +160,11 @@ $(document).ready(function() {
             calYearPickMin: 100,
             closeCallback: function(){
                 if($('#birth_date').val() != ''){
-                    $('#birth_date-error').css('display', 'inline-block');
+                    $('#birth_date-error').css('visibility', 'visible');
                 }
             },
             openCallback: function(){
-                $('#birth_date-error').css('display', 'none');
+                $('#birth_date-error').css('visibility', 'hidden');
             }
         });
 

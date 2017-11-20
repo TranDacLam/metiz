@@ -25,7 +25,7 @@
 	display:inline;
 }
 #myTabContent #birth_date-error{
-	display:none;
+	visibility:hidden;
 }
 #myTabContent label.valid {
 	width: 20px;
@@ -157,12 +157,22 @@ ul ~ label{
 /* Portrait and Landscape */
 @media only screen and (max-width: 768px) {
 
+
 	#myTabContent button[type=submit] {
 		margin: 15px 0 10px;
 	}
 }
 @media  only screen and (max-width: 480px){
+	#jtdb-0 .modal-content{
+        width: auto;
+    }
 	#signup_form .inline input.form-control,#signup_form .inline select {
+		width: 90%;
+	}
+	#myTabContent .input-group {
+        display: inline;
+    }
+	#myTabContent .input-group #birth_date{
 		width: 90%;
 	}
 	#signup_form .signup_fields{
