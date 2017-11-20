@@ -1,3 +1,32 @@
+#myTabContent ul, #myTabContent li, #myTabContent ol{
+    float:none;
+}
+#jtdb-0 ul, #jtdb-0 li, #jtdb-0 ol{
+    float:none;
+}
+#myTabContent .input-group #birth_date{
+	border-radius: 4px;
+	width: 265px;
+}
+#myTabContent .ui-datebox-container{
+	margin-top: 30px;
+	width: 265px;
+}
+#myTabContent .ui-datebox-griddate {
+	width: 35px;
+}
+#myTabContent .btn-default:hover{
+	background-color:#ff4000;
+}
+.ui-datebox-cal-pickers fieldset .input-sm:first-child{
+	width: 57%!important;
+}
+#myTabContent .input-group{
+	display:inline;
+}
+#myTabContent #birth_date-error{
+	display:none;
+}
 #myTabContent label.valid {
 	width: 20px;
 	height: 20px;

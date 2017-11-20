@@ -9,6 +9,9 @@
 .modal-open {    
     overflow: scroll;
 }
+.hide-area{
+    display:none;
+}
 /* Focus on input pushes cursor out in mobile */
 #modal-popup input{
     -webkit-transform: none;
@@ -438,11 +441,6 @@
 }
 .modal form button {
     text-transform: uppercase;
-}
-.modal-fixed{ 
-    position: fixed; 
-    width: 100%; 
-    overflow: hidden;
 }
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
