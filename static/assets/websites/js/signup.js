@@ -153,11 +153,11 @@ $(document).ready(function() {
             useHeader: false,
             calShowDays: false,
             calUsePickers: true,
-            calHighToday:false,
+            calHighToday:true,
             themeDatePick: 'warning',
             defaultValue: "1996-01-01",
-            calYearPickMax: 5,
-            calYearPickMin: -5,
+            calYearPickMax: 'NOW',
+            calYearPickMin: 100,
             closeCallback: function(){
                 if($('#birth_date').val() != ''){
                     $('#birth_date-error').css('display', 'inline-block');
