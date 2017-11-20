@@ -25,7 +25,9 @@
 #list-social #instagram_show:hover #instagram_hover{
 	display:block;
 }
-
+.fb-page, .fb-page iframe[style], .fb-page span {
+    width: 100% !important;
+}
 footer #list-social ul.list-inline li 
 {    
 	float: none; 
@@ -83,11 +85,16 @@ footer .content-1 .col-lg-3{
 	padding-right: 15px;
 }
 .map-left {
-	margin: 0 -15px;
+	padding:0px;
+	width: 35%;
+}
+img.map-trigger {
+	display: inline-block;
 }
 footer .map a{
-	margin-top:18px;
-	font-size:14px;
+	margin:20px 0;
+	font-size:16px;
+	padding-left: 0px;
 }
 footer .content-1 .list{
 	padding-top: 12px;
@@ -147,19 +154,19 @@ footer #content-map iframe{
     	font-weight: bold;
     	font-size: 19px;
 	}
-	img.map-trigger {
-		width: 40px;
-		height: 40px;
-	}
 	footer .content-1 .list li a {
     	font-size: 13px;
 	}
+	.map-left {
+		width: 40%;
+	}
 	footer .map a{
-		margin:15px;
-		font-size:12px
+		font-size:12px;
+		margin: 20px 0px;
 	}
 }
-@media only screen and (max-width: 425px){
+
+@media only screen and (max-width: 414px){
 	footer #content-map iframe{
 		height: auto;
 	}
@@ -170,8 +177,11 @@ footer #content-map iframe{
 		font-size: 14px;
 	}
 	footer .map a{
-		margin:15px -35px;
-		font-size:12px
+		font-size:12px;
+		margin: 20px 0;
+	}
+	.map-left {
+		width: 25%;
 	}
 }
 @media only screen and (max-width: 320px){
@@ -179,7 +189,6 @@ footer #content-map iframe{
 		height: auto;
 	}
 	footer .map a{
-		margin:15px -15px;
 		font-size:12px
 	}
 }

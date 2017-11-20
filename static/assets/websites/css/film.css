@@ -200,6 +200,9 @@ ul.metiz-film-detail-tabs {
 	.news-custom .load-more{
 		margin-left: 0px;
 	}
+	.name-new-offer {
+		font-size: 12px;
+	}
 }
 @media screen and (max-width: 400px) {
 	.product-view .nav-tabs>li>span{
