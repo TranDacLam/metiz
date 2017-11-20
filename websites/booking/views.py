@@ -26,13 +26,13 @@ def get_booking(request):
                 request.session['email'] = email if email else None
 
                 id_showtime = form.cleaned_data['id_showtime']
-                id_sever = form.cleaned_data['id_sever']
+                id_server = form.cleaned_data['id_server']
                 id_movie_name = form.cleaned_data['id_movie_name']
                 id_movie_time = form.cleaned_data['id_movie_time']
                 id_movie_date_active = form.cleaned_data[
                     'id_movie_date_active']
                 print('*******booking******')
-                return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever,
+                return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_server": id_server,
                                                                  "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
                                                                  "id_movie_date_active": id_movie_date_active})
             else:
@@ -40,11 +40,11 @@ def get_booking(request):
         else:
             print('*******booking******')
             id_showtime = request.GET.get('id_showtime', "")
-            id_sever = request.GET.get('id_sever', 1)
+            id_server = request.GET.get('id_server', 1)
             id_movie_name = request.GET.get('id_movie_name', "")
             id_movie_time = request.GET.get('id_movie_time', "")
             id_movie_date_active = request.GET.get('id_movie_date_active', "")
-            return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_sever": id_sever,
+            return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_server": id_server,
                                                              "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
                                                              "id_movie_date_active": id_movie_date_active})
     except Exception, e:
@@ -119,13 +119,13 @@ def get_movie_show_time(request):
             # get movie object if movie_api_id not empty
             obj_movie = None
             if movie_api_id:
-                obj_movie = movies_info.filter(movie_api_id=movie_api_id)
+                obj_movie = movies_info.filter(movie_api_id=movie_api_id.strip())
 
             for item in show_times["List"]:
                 # Get Showtime movie by id
                 if movie_api_id:
                     # Get Movie Name by movie api id
-                    if item["MOVIE_ID"] == movie_api_id:
+                    if item["MOVIE_ID"].strip() == movie_api_id.strip():
                         build_show_time_json(current_date, item, result, movies_info, obj_movie)
                 else:
                     build_show_time_json(current_date, item, result, movies_info)

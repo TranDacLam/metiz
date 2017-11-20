@@ -10,7 +10,7 @@ $(document).ready(function() {
             phone:{
                 required: true,
             },
-            subject:{
+            message:{
                 required: true,
             }
         },
@@ -24,9 +24,9 @@ $(document).ready(function() {
             phone: {
                 required: "Vui lòng nhập số điện thoại",
             },
-            subject:{
-                required: "Vui lòng nhập chủ đề",
-            },
+            message: {
+                required: "Vui lòng nhập nội dung",
+            }
         }
     });
 });

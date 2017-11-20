@@ -64,7 +64,7 @@ nav.sidebar, .main{
         float: none;
     }
     .col2-left-layout .col-main .col2-set{
-        padding: 0 20px 0px 40px;
+        padding: 0 20px 0px 261px;
     }
     .col-left .navbar-toggle{
         background-color: #ff5400;
@@ -87,7 +87,7 @@ nav.sidebar, .main{
     .about-image-metiz ul li {
         float: left;
         width: 31%;
-        height: 169px;
+        height: 142px;
         border: 1px solid;
         margin: 10px 4px;
         box-shadow: 3px 3px 3px #333;
@@ -96,17 +96,31 @@ nav.sidebar, .main{
     .about-image-metiz ul li img {
         float: left;
         width: 100%;
-        height: 169px;
+        height: 142px;
         border-radius: 3px;
     }
     #faqAccordion{
         padding-top: 20px;
     }
-}
-@media only screen and (max-width: 768px){
     .content-seperator iframe{
         width: 96%;
         height: 315px;
+    }
+    #faqAccordion .panel-title a.ing{
+        display: inline-block;
+        width: 95%;
+    }
+    #faqAccordion .panel-title div.pull-right{
+        margin-right: -10px;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 768px){
+    #faqAccordion .panel-body:after{
+        content: '';
+        display: inline;
+    }
+    .content-seperator iframe{
+        width: 100%;
     }
 }
 @media only screen and (max-width: 420px){
@@ -187,7 +201,7 @@ nav.sidebar, .main{
     nav.sidebar{
         width: 240px;
         height: 100%;
-        margin-left: -197px;
+        /*margin-left: -197px;*/
         float: left;
         z-index: 10;
         margin-bottom: 10px;

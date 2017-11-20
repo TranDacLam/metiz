@@ -9,7 +9,7 @@ function guid() {
     }
 
 $(document).ready(function() {
-    var id_server = $('#id_sever').val();
+    var id_server = $('#id_server').val();
     var id_showtime = $('#id_showtime').val();
 
     // show icon load when ajax start 

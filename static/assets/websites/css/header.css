@@ -63,7 +63,7 @@ ul.dropdown-menu>li>a:hover{
 .skip-link.skip-account{
 		display: none;
 	}
-.header-top-account a{
+.header-container a{
 	font-family: 'SairaSemiCondensed-Medium';
 	font-size: 14px;
 	color: #7e8eaa;
@@ -74,6 +74,15 @@ ul.dropdown-menu>li>a:hover{
 }
 .header-top-account a:hover, .header-career a:hover{
 	color: #ff5400;
+}
+.navbar-nav li.custom-user-header{
+	margin-left: -26px;
+}
+.navbar-nav li.hover-user-header a:hover{
+	color: #ff5400;
+}
+.navbar-nav li.hover-user-header a:hover span{
+	color: #fff;
 }
 @media only screen and (min-width: 771px){
 	#header {
@@ -135,8 +144,6 @@ ul.dropdown-menu>li>a:hover{
 	.logo-small{
 		display:none;
 	}
-
-	
 }
 @media only screen and (min-width: 768px) and (max-width: 770px){
 	#loginNavbar.collapse ul{
@@ -293,7 +300,10 @@ ul.dropdown-menu>li>a:hover{
 	.skip-links {
 	    margin-top: 10px;
 	}
-
+	.navbar-nav li.responsive-user-header,
+	.navbar-nav li.hover-user-header{
+		display: none;
+	}
 }
 @media only screen and (max-width: 480px){
 	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
