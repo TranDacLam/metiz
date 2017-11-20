@@ -9,6 +9,7 @@ import custom_models
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from core import widgets
 
 
 class UserCreationForm(forms.ModelForm):
@@ -163,7 +164,17 @@ class CenimaTechnologyAdmin(admin.ModelAdmin):
 admin.site.register(CenimaTechnology, CenimaTechnologyAdmin)
 
 
+class CommentForm(forms.ModelForm):
+    date_post = forms.SplitDateTimeField(
+        widget=widgets.CustomAdminSplitDateTime())
+
+    class Meta:
+        model = Comment
+        fields = '__all__'
+
+
 class CommentAdmin(admin.ModelAdmin):
+    form = CommentForm
     pass
 admin.site.register(Comment, CommentAdmin)
 

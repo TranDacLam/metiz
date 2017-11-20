@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.sites.models import Site
 from django.conf import settings
@@ -11,7 +12,6 @@ class ContactForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput())
     email = forms.CharField(widget=forms.TextInput())
     phone = forms.IntegerField(error_messages={'invalid': _('Enter a whole number.')}, widget=forms.TextInput(), required=True)
-    subject = forms.CharField(widget=forms.TextInput())
     message = forms.CharField(widget=forms.TextInput(), required=False)
 
     def __init__(self, *args, **kwargs):
@@ -21,12 +21,11 @@ class ContactForm(forms.Form):
         name = self.cleaned_data['name']
         email = self.cleaned_data['email']
         phone = self.cleaned_data['phone']
-        subject = self.cleaned_data['subject']
         message = self.cleaned_data['message']
 
         if commit:
             try:
-                contact = Contact(name=name, email=email, phone=phone, subject=subject, message=message)
+                contact = Contact(name=name, email=email, phone=phone, message=message)
                 contact.save()
 
                 message_html = "websites/email/contact_email.html"
@@ -38,17 +37,19 @@ class ContactForm(forms.Form):
                     str(Site.objects.get_current()) + \
                     '/static/websites/img/logo.png'
 
+                _subject = _("[Metiz] Hỗ trợ khách hàng")
+
                 data_render = {
                     "name": name,
                     "email": email,
                     "phone": phone,
-                    "subject": subject,
+                    "subject": _subject,
                     "message": message,
                     'logo_url': logo_url
 
                 }
 
-                metiz_email.send_mail(subject=subject, message_plain=None, message_html=message_html,
+                metiz_email.send_mail(subject=_subject, message_plain=None, message_html=message_html,
                                       email_from=settings.DEFAULT_FROM_EMAIL, email_to=[settings.DEFAULT_TO_ADMIN_EMAIL], data_binding=data_render)
             except Exception, e:
                 print 'Error ContactForm ', e
