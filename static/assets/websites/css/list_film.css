@@ -18,6 +18,9 @@
 .add-to-links li{
 	padding-top: 3px;
 }
+.category-now-showing .page-title h1{
+	text-transform: uppercase;
+}
 @media screen and (max-width: 420px) {
  	.add-to-links .button{
 		padding: 2px 5px 2px 5px;
