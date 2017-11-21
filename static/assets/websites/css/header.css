@@ -82,7 +82,11 @@ ul.dropdown-menu>li>a:hover{
 	color: #ff5400;
 }
 .navbar-nav li.hover-user-header a:hover span{
-	color: #fff;
+	color: #7e8eaa;
+}
+.navbar-nav li.hover-user-header a{
+	color: #7e8eaa;
+	font-size: 14px;
 }
 @media only screen and (min-width: 771px){
 	#header {
