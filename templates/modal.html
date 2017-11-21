@@ -132,9 +132,11 @@
                         </div>
                         <!-- GUEST -->
                         <div id="guest" class="tab-pane fade">
-                            {% get_term as term %}
-                            <textarea class="guest-policy" rows="8" cols="5" contenteditable="true">{{ term|safe }}
+                            <textarea class="guest-policy" rows="8" cols="5" contenteditable="true">
+    ĐIỀU KIỆN VÀ ĐIỀU KHOẢN KHI ĐẶT VÉ:
+    Xin vui lòng đọc các điều khoản sau cẩn thận trước khi sử dụng dịch vụ thanh toán trực tuyến. Với việctruy cập vào phần này của website, bạn đã đồng ý với các điều khoản sử dụng của chúng tôi. Các điều khoản này có thể thay đổi theo thời 
                             </textarea>
+
                             <div class="row checkbox-term">
                                 <input name="agree_term" id="agree_term" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
                                 <label class="agree_term" for="agree_term">Tôi đã đọc, hiểu và đồng ý với các điều khoản.</label>
