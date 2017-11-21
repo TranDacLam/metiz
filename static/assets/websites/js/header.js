@@ -16,4 +16,8 @@ $(document).ready(function() {
 	 		$('#loginNavbar').collapse('hide');
  		}
  	});
+ 	//close menu when click lich chieu
+ 	$('.open-popup-link').click(function(event) {
+ 		$('#menuNavbar').collapse('hide');
+ 	});
 });
