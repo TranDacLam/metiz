@@ -461,7 +461,7 @@
 }
 @media only screen and (max-width: 768px){
      #modal-popup .modal-dialog{
-        width: auto;
+        width: 500px;
     }
     #myTabContent .input-group {
         display: table;
@@ -481,6 +481,9 @@
     }
 }
 @media only screen and (max-width: 480px){
+    #modal-popup .modal-dialog{
+        width: auto;
+    }
     .modal-open {    
         overflow: hidden;
     }

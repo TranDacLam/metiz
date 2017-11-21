@@ -2,9 +2,9 @@
 from django import template
 from datetime import timedelta
 from django.utils import timezone
-from core.models import Movie
+from core.models import Movie, Rated
 from booking.models import MovieSync
-
+import json
 register = template.Library()
 
 
@@ -73,4 +73,10 @@ def get_cinema_cites():
 
 @register.simple_tag
 def get_term():
+
 	return "ĐIỀU KIỆN VÀ ĐIỀU KHOẢN KHI ĐẶT VÉ: \n Xin vui lòng đọc các điều khoản sau cẩn thận trước khi sử dụng dịch vụ thanh toán trực tuyến. Với việc truy cập vào phần này của website, bạn đã đồng ý với các điều khoản sử dụng của chúng tôi. Các điều khoản này có thể thay đổi theo thời gian và bạn sẽ phải tuân theo các điều khoản được hiển thị từ thời điểm bạn đọc được các điều khoản này. Metiz Cinema luôn luôn mong muốn đem đến những giây phút giải trí tuyệt vời cho khách hàng với chất lượng dịch vụ tốt nhất. Dưới đây sẽ là một số hướng dẫn cho chính sách thanh toán vé trực tuyến.1. Đối tượng áp dụngChương trình thanh toán online chỉ áp dụng cho các suất chiếu quy định tại Metiz Cinema. Mỗi giao dịch đặt vé có thể thanh toán trực tuyến tối đa 8 vé cho một lần. Nếu bạn có nhu cầu mua vé với số lượng lớn hơn, vui lòng liên hệ với bộ phận Quan Hệ Khách Hàng của chúng tôi qua số điện thoại 1900 6017"
+
+@register.simple_tag
+def get_rated():
+    rated = Rated.objects.values('name', 'description')
+    return json.dumps(list(rated))
