@@ -175,10 +175,10 @@ ul.dropdown-menu>li>a:hover{
 	    background: #031327;
 	}
 	
-	.nav.navbar-nav{
+	/*.nav.navbar-nav{
 		padding-top: 50px;
 
-	}
+	}*/
 	.logo {
 		margin-top:13px;
 		left: 0px;
@@ -199,6 +199,8 @@ ul.dropdown-menu>li>a:hover{
 		display: block;
     	position: relative;
     	width: 100px;
+    	background: #031327;
+    	bottom: 27px;
 	}
 	.logo-medium img{
 		width: 100%;

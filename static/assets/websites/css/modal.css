@@ -118,6 +118,9 @@
     appearance: none;
     margin: 0; 
 }
+#modal-popup input[type=number] {
+    -moz-appearance: textfield;
+}
 #modal-popup #btn-skip{
     display:none;
 }
