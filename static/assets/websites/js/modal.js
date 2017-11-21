@@ -13,15 +13,33 @@ $(document).ready(function() {
         }
     });
 
-    //fix background scroll in modals on ios
-    if (navigator.userAgent.match(/iPhone|iPod|iPad/i)) {
-        $('#modal-popup .modal').on('shown.bs.modal', function() {
-            $('body').css('overflow', 'hidden');
+    //fix background scroll in modals on mobile
+    if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
+
+        if (navigator.userAgent.match(/iPhone|iPod|iPad|/i)){
+            $('#modal-popup .modal').on('shown.bs.modal', function() {
+                $('body').css('overflow', 'hidden');
+            });
+            $('#modal-popup .modal').on('hide.bs.modal', function() {
+                $('body').css('overflow', 'scroll');
+            });
+        }
+        // active popup
+        $('.open-popup-link').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            enableEscapeKey: false,
+            fixedContentPos: true,
         });
-        $('#modal-popup .modal').on('hide.bs.modal', function() {
-            $('body').css('overflow', 'scroll');
+    }else{
+        // active popup
+        $('.open-popup-link').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            enableEscapeKey: false,
         });
     }
+    
 
     // Validate guest_form, update_form
     // Validate and handle member_form by ajax
@@ -162,13 +180,7 @@ $(document).ready(function() {
         },
         message.phone
     );
-    // active popup
-    $('.open-popup-link').magnificPopup({
-        type: 'inline',
-        midClick: true,
-        enableEscapeKey: false,
-        // overflowY: 'hidden',
-    });
+    
 
 
     // *** POPUP MOVIE SCHEDULE ***
