@@ -108,7 +108,7 @@
                                     {% csrf_token %}
                                     <div class="col-sm-12">
                                         <div id="error"></div>
-                                        <input type="hidden" name="id_sever" id="id_sever">
+                                        <input type="hidden" name="id_server" id="id_server">
                                         <input type="hidden" name="id_showtime" id="id_showtime">
                                         <input type="hidden" name="id_movie_name" id="id_movie_name">
                                         <input type="hidden" name="id_movie_time" id="id_movie_time">
@@ -140,7 +140,7 @@
                             <div class="row">
                                 <form class='form-popup' id='guest_form' method="post" action="{% url 'booking' %}">
                                     {% csrf_token %}
-                                    <input type="hidden" name="id_sever" id="id_sever">
+                                    <input type="hidden" name="id_server" id="id_server">
                                     <input type="hidden" name="id_showtime" id="id_showtime">
                                     <input type="hidden" name="id_movie_name" id="id_movie_name">
                                     <input type="hidden" name="id_movie_time" id="id_movie_time">
@@ -189,7 +189,7 @@
                     <div class="row">
                         <form class='form-popup' id='update_form'  method="post" action="{% url 'booking' %}">
                             {% csrf_token %}
-                            <input type="hidden" name="id_sever" id="id_sever">
+                            <input type="hidden" name="id_server" id="id_server">
                             <input type="hidden" name="id_showtime" id="id_showtime">
                             <input type="hidden" name="id_movie_name" id="id_movie_name">
                             <input type="hidden" name="id_movie_time" id="id_movie_time">
