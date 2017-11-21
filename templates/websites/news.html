@@ -35,21 +35,18 @@
 										<div class="poster-small-new-offer">
 											<img alt="" src="{{MEDIA_URL}}{{item.image}}">
 											<div class="colum-right-new-offer">
-												<div class="name-new-offer">
-													{{item.name}}
-												</div>
 												{% if item.end_date %}
 													<div class="format-new-offer release-day-new-offer">
-														<h3 class="glyphicon glyphicon-calendar"></h3>
 														<h4>{{item.apply_date|date:"d/m/Y"}} - {{ item.end_date|date:"d/m/Y"}}</h4>
 													</div>
 												{% else %}
 													<div class="format-new-offer release-day-new-offer">
-														<h3 class="glyphicon glyphicon-calendar"></h3>
 														<h4>{{item.apply_date|date:"d/m/Y"}} - Áp Dụng Liên Tục</h4>
-														<h5></>
 													</div>
 												{% endif %}
+												<h2 class="product-name">
+													{{item.name}}
+												</h2>
 											</div>
 										</div>
 									</div>

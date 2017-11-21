@@ -5140,28 +5140,12 @@ span.movie-rating-detail.c18{
     float: left;
     width: 100%;
 }
-.name-new-offer {
-    padding-top: 15px;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: bold;
-}
+
 .format-new-offer {
-    float: left;
     width: 100%;
     margin-top: 5px;
 }
-.format-new-offer h3 {
-    float: left;
-    font-size: 22px;
-    height: 20px;
-    margin-bottom: 0;
-    text-transform: none;
-    width: 25px;
-    color: #ff5400;
-}
 .format-new-offer h4 {
-    float: left;
     font-size: 14px;
     font-weight: normal;
     margin-bottom: 0;
