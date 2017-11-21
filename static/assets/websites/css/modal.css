@@ -9,6 +9,15 @@
 .modal-open {    
     overflow: scroll;
 }
+.hide-area{
+    display:none;
+}
+#modal-popup .modal-dialog{
+    width: 500px;
+}
+#modal-popup .modal-content{
+    width:100%;
+}
 /* Focus on input pushes cursor out in mobile */
 #modal-popup input{
     -webkit-transform: none;
@@ -439,21 +448,24 @@
 .modal form button {
     text-transform: uppercase;
 }
-.modal-fixed{ 
-    position: fixed; 
-    width: 100%; 
-    overflow: hidden;
-}
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
         width: 66px;
     }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px){
-    
+    #modal-popup .modal-dialog{
+        width: 500px;
+    }
        
 }
 @media only screen and (max-width: 768px){
+     #modal-popup .modal-dialog{
+        width: auto;
+    }
+    #myTabContent .input-group {
+        display: table;
+    }
     .size{
         margin-left: 16px;
     }

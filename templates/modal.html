@@ -6,7 +6,7 @@
         <div class="top">
             Lịch chiếu 
         </div>
-        <div class="container">
+        <div class="container hide-area">
             <div class="col-xs-12 row city">
                 <h3>{% trans 'Select City' %}</h3>
                 <div class="list-item clearfix">
@@ -52,7 +52,7 @@
             </section>
             <section class="section-white">
             <h3 class="title">Chọn lịch chiếu</h3>
-                <div class="container">
+                <div class="container content-schedule">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="list-schedule">
@@ -200,20 +200,20 @@
                                  <div class="form-group">
                                     <label>{% trans "Full Name" %}</label>
                                     <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" 
-                                    value="{% if request.session.full_name %}{{request.session.full_name}}{% else %}{{user.full_name}}{% endif %}">
+                                    value="{{user.full_name}}">
                                     <label  class="form-error" for="name" id='name-error'></label>
                                 </div>
                                 <div class="form-group form-phone">
                                     <label>{% trans "Phone" %}</label>
                                     <div class="country-code">+84</div>
                                     <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" 
-                                    value="{% if request.session.phone %}{{request.session.phone}}{% else %}{{user.phone}}{% endif %}">
+                                    value="{{user.phone}}">
                                     <label  class="form-error" for="phone" id='phone-error'></label>
                                 </div>
                                 <div class="form-group">
                                     <label>{% trans "Email" %}</label>
                                     <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" 
-                                    value='{% if request.session.email %}{{request.session.email}}{% else %}{{user.email}}{% endif %}'>
+                                    value='{{user.email}}'>
                                     <label  class="form-error" for="email" id='email-error'></label>
                                 </div>
                                 <button type="submit" id='update' class="btn btn-login submit">Xác nhận</button>
