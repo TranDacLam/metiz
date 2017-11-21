@@ -13,10 +13,13 @@ $(document).ready(function() {
         }
     });
 
-    //fix bug input element in modals 
-    if (navigator.userAgent.match(/iPhone|iPod/i) || navigator.userAgent.match(/Android/i)) {
-        $('#myModal').on('shown.bs.modal', function() {
+    //fix background scroll in modals on ios
+    if (navigator.userAgent.match(/iPhone|iPod/i)) {
+        $('#modal-popup .modal').on('shown.bs.modal', function() {
             $('body').css('overflow', 'hidden');
+        });
+        $('#modal-popup .modal').on('hide.bs.modal', function() {
+            $('body').css('overflow', 'scroll');
         })
     }
 
