@@ -198,7 +198,6 @@ def update_profile(request):
 
                 context['email'] = user.email
                 context['form'] = user_form
-                context['is_return'] = True
 
         return render(request, "registration/profile.html", context)
     except Exception, e:

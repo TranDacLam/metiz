@@ -42,8 +42,8 @@
                                 {% if user.is_authenticated %}
                                     <!-- <span class="label">Hồ sơ/ Đăng xuất</span> -->
                                     <span class="label">
-                                        {% if user.username %}  
-                                            {{user.username}}
+                                        {% if user.full_name %}  
+                                            {{user.full_name}}
                                         {%else%}  
                                             {{user.email}}
                                         {%endif%}
