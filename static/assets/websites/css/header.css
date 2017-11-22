@@ -78,7 +78,9 @@ ul.dropdown-menu>li>a:hover{
 .navbar-nav li.custom-user-header{
 	margin-left: -26px;
 }
-.navbar-nav li.hover-user-header a:hover{
+.navbar-nav li.hover-user-header a:hover,
+.navbar-nav li.hover-user-header a span.name-user-header:hover,
+.navbar-nav li.hover-user-header a span.responsive-name-user:hover{
 	color: #ff5400;
 }
 .navbar-nav li.hover-user-header a:hover span{
@@ -87,6 +89,9 @@ ul.dropdown-menu>li>a:hover{
 .navbar-nav li.hover-user-header a{
 	color: #7e8eaa;
 	font-size: 14px;
+}
+.hover-user-header .responsive-name-user{
+	display: none;
 }
 @media only screen and (min-width: 771px){
 	#header {
@@ -211,7 +216,12 @@ ul.dropdown-menu>li>a:hover{
 	.skip-links{
 		border:none;
 	}
-
+	.hover-user-header .name-user-header{
+		display: none;
+	}
+	.hover-user-header .responsive-name-user{
+		display: block;
+	}
 }
 
 /* Navbar change */

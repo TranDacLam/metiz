@@ -86,3 +86,9 @@
 .vnpayment input,.vnpayment textarea{
     padding-left: 16px;
 }
+@media only screen and (max-width: 414px){
+    .payment-return .row{
+        border-bottom: 1px solid;
+        padding-bottom: 10px;
+    }
+}

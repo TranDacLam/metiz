@@ -36,6 +36,9 @@
 #profile-validate textarea{
     width: 265px;
 }
+.post-detail-metiz li .pull-right{
+    margin-top: 3px;
+}
 .profile-custom .country-code {
     color: #bfbfbf;
     position: absolute;

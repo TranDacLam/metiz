@@ -21,13 +21,6 @@ $(document).ready(function() {
         $(".ajax-loader").css("display", "none");
     });
 
-    // disable key space when select seat
-    $('.seatCharts-cell').keydown(function(e) {
-        if(e.which === 32){
-            return false;
-        }
-    });
-
     // variable setTimeout
     var timer;
 
@@ -47,6 +40,16 @@ $(document).ready(function() {
         // Check List seat 
         if(response.List && response.List.length > 0){
             bookingSeat(response.List);
+
+            // disable select seat when keydown key space
+            // Step 1: Turn off keydown (key space), override event keydown (key space) in library seat-charts.
+            // Step 2: Turn on keydown and handle event prevenDefault
+            $("#seat-map .seatCharts-row div.seatCharts-seat.seatCharts-cell.available").off("keydown");
+            $("#seat-map .seatCharts-row div.seatCharts-seat.seatCharts-cell.available").on("keydown", function(e){
+                if (e.which == 32) {
+                    e.preventDefault();
+                }        
+            });
         }else{
             // show message when List seat empty, setTimeout 10s back home
             displayMsg();

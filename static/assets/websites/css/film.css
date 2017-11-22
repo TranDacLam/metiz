@@ -97,16 +97,17 @@ ul.metiz-film-detail-tabs {
     border-bottom: none;
 }
 .product-view .nav-tabs>li>span{
-	padding: 5px 25px 5px 25px;
+	font-family: "SairaSemiCondensed-SemiBold", sans-serif;
+	padding: 10px 25px 10px 25px;
 	border: 1.5px solid #0e1d2f;
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0);
 	color: #0e1d2f;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 	cursor: pointer;
 	float: left;
-	width: 135px
+	width: 120px
 }
 .product-view .nav-tabs>li>span:hover {	
 	border: 1.5px solid #ff5400;
@@ -117,7 +118,7 @@ ul.metiz-film-detail-tabs {
 .product-view .nav-tabs>li.active>span{
 	color: #ffffff;
 	background-color: #ff5400;
-	border: 2px solid #ff5400;
+	border: 1.5px solid #ff5400;
 	font-weight: bold;
 }
 .product-view .nav-tabs>li:first-child, .product-view .nav-tabs>li:nth-child(2){
@@ -129,17 +130,18 @@ ul.metiz-film-detail-tabs {
 .booking-ticket-bot .button, 
 .product-shop .button,
 .product-name-reponsive .button{
-	padding: 5px 10px 5px 10px;
+	padding: 10px 23px 10px 23px;
 	border-radius: 25px;
-    border: 3px solid #0e1d2f;
+    border: 1.5px solid #0e1d2f;
     font-weight: bold;
     background: #0e1d2f;
+    margin-top: -10px;
 }
 .booking-ticket-bot .button:hover, 
 .product-shop .button:hover,
 .product-name-reponsive .button:hover{
 	background: #ff5400;
-	border: 3px solid #ff5400;
+	border: 1.5px solid #ff5400;
 }
 .movie-detail-fb-booking li{
 	padding-top: 3px;
@@ -161,6 +163,11 @@ ul.metiz-film-detail-tabs {
 @media only screen and (max-width: 768px) {
 	.review-custom{
 		width: 94%;
+	}
+	.booking-ticket-bot .button, 
+	.product-shop .button, 
+	.product-name-reponsive .button{
+		font-size: 16px;
 	}
 }
 @media only screen and (max-width: 771px) {
@@ -193,20 +200,20 @@ ul.metiz-film-detail-tabs {
 		margin-top: 20px;
 	}
 }
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 414px) {
  	.product-name-reponsive .button, .booking-ticket-bot .button{
-		padding: 2px 5px 2px 5px;
-		border-radius: 15px;
-		border: 2px solid #0e1d2f;
-	    font-size: 10px;
-	    margin-top: 5px;
+		padding: 5px 13px 5px 13px;
+		border-radius: 16px;
+		border: 1.5px solid #0e1d2f;
+	    font-size: 13px;
+	    margin-top: -5px;
 	}
 	.product-name-reponsive .button:hover{
 		border: 2px solid #ff5400;
 	}
 	.product-view .nav-tabs>li>span{
 		width: 117px;
-		font-size: 12px;
+		font-size: 16px;
 	}
 	.colum-right-new-offer{
 		margin-left: 0;
@@ -241,10 +248,13 @@ ul.metiz-film-detail-tabs {
 	.format-new-offer h3{
 		font-size: 16px;
 	}
-}
-@media screen and (max-width: 360px) {
 	.news-custom .load-more{
 		width: 112px;
+	}
+	.product-name-reponsive .button, 
+	.booking-ticket-bot .button{
+		padding: 5px 8px 5px 8px;
+	    font-size: 12px;
 	}
 }
 .movie-rating .std{
