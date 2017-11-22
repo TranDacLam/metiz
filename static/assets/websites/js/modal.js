@@ -13,12 +13,33 @@ $(document).ready(function() {
         }
     });
 
-    //fix bug input element in modals 
-    if (navigator.userAgent.match(/iPhone|iPod/i) || navigator.userAgent.match(/Android/i)) {
-        $('#myModal').on('shown.bs.modal', function() {
-            $('body').css('overflow', 'hidden');
-        })
+    //fix background scroll in modals on mobile
+    if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
+
+        if (navigator.userAgent.match(/iPhone|iPod|iPad|/i)){
+            $('#modal-popup .modal').on('shown.bs.modal', function() {
+                $('body').css('overflow', 'hidden');
+            });
+            $('#modal-popup .modal').on('hide.bs.modal', function() {
+                $('body').css('overflow', 'scroll');
+            });
+        }
+        // active popup
+        $('.open-popup-link').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            enableEscapeKey: false,
+            fixedContentPos: true,
+        });
+    }else{
+        // active popup
+        $('.open-popup-link').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            enableEscapeKey: false,
+        });
     }
+    
 
     // Validate guest_form, update_form
     // Validate and handle member_form by ajax
@@ -159,13 +180,7 @@ $(document).ready(function() {
         },
         message.phone
     );
-    // active popup
-    $('.open-popup-link').magnificPopup({
-        type: 'inline',
-        midClick: true,
-        enableEscapeKey: false,
-        // overflowY: 'hidden',
-    });
+    
 
 
     // *** POPUP MOVIE SCHEDULE ***
@@ -297,7 +312,7 @@ $(document).ready(function() {
                     if (value.lst_times.length > 0) {
                         html += listFilm(value);
                     }
-
+                    console.log(value);
                 });
                 $('.list-schedule').html(html);
                 getValue();
@@ -328,15 +343,31 @@ $(document).ready(function() {
 
             //set content for modal #warnning or skip
             var rated = $(this).parents('.lot-table').attr('data-rated');
-            if (rated != 'null') {
-                $('#warning #content-warnning').text(rated);
-                $('#warning').modal('show');
-            } else {
+            // ingore null or p
+            if (rated == 'null' || rated == 'p') {
+
                 $('#btn-skip').click();
+
+            } else {
+                content = JSON.parse($('#rated').text());
+                for (i = 0; i < content.length; i++) {
+                    if (content[i].name == rated) {
+                        $('#warning #content-warnning').text(content[i].description);
+                        break;
+                    }
+                }
+                $('#warning').modal('show');
             }
         });
     }
 
+    // $.each(content, function(index, data) {
+    //     $.each(data, function(name, description) {
+    //         if (name == content) {
+    //             $('#warning #content-warnning').text(description);
+    //         }
+    //     });
+    // });
     //checkbox for form guest
     $('#agree_term').on('click', function() {
         if ($('#agree_term').prop("checked")) {

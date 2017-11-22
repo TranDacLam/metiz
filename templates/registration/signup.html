@@ -1,9 +1,9 @@
-{% extends "layout.html" %} 
+{% extends 'layout.html' %}
 {% load i18n %} 
 {% block title %}{% if is_login %}{% trans "Login" %}{% else %}{% trans "Signup" %}{% endif %}{% endblock title %} 
 
 {% block extrascript %} 
-   
+
 {% endblock %} 
 
 {% block extrastylesheet %} 
@@ -95,6 +95,7 @@
                                                 {% if form.errors.birth_date %}
                                                     {{form.errors.birth_date}}
                                                 {% endif %}
+                                                <label id="birth_date-error" class="error valid" for="birth_date">OK!</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 form-group">

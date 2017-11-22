@@ -142,6 +142,45 @@ $(document).ready(function() {
       message.phone
     );
 
+
+
+    // set datetimepicker for signup and profile
+    $('#birth_date').datebox({
+            mode: "calbox",
+            beforeToday: true,
+            useFocus: true,
+            useButton: false,
+            useHeader: false,
+            calShowDays: false,
+            calUsePickers: true,
+            calHighToday:true,
+            themeDatePick: 'warning',
+            defaultValue: "1996-01-01",
+            calYearPickMax: 'NOW',
+            calYearPickMin: 100,
+            closeCallback: function(){
+                if($('#birth_date').val() != ''){
+                    $('#birth_date-error').css('visibility', 'visible');
+                }
+            },
+            openCallback: function(){
+                $('#birth_date-error').css('visibility', 'hidden');
+            }
+        });
+
+    if( navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)){
+        $('#birth_date').datebox({
+            mode: "flipbox",
+            beforeToday: true,
+            useFocus: true,
+            useButton: false,
+            useHeader: true,
+            defaultValue: "1996-01-01",
+        });
+    }
+    $('#birth_date').attr("readonly", false);
+    // *end*
+
    	// CHOOSE CITY AND DISTRICT
 	// Step 1: Load data for city and district, but district hide
 	// Step 2: Choose city, hide all district, show district appropriate, 
@@ -257,15 +296,6 @@ $(document).ready(function() {
     }
 	
 
-	// set datetimepicker for signup and profile
-    $("#birth_date").datepicker({ 
-        autoclose: true, 
-        format:"dd-mm-yyyy",
-        language: 'vi',
-        defaultViewDate:'01-01-1996',
-        endDate:"0d"
-    })
-    // *end*
 
 	// checkbox dieu khoan register
 	$('#is_agree').on('click', function(){

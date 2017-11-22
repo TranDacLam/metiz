@@ -1,3 +1,26 @@
+.profile-custom .input-group #birth_date{
+    border-radius: 4px;
+    width: 265px;
+}
+.profile-custom .ui-datebox-container{
+    margin-top: 30px;
+    width: 265px;
+}
+.profile-custom .ui-datebox-griddate {
+    width: 35px;
+}
+.profile-custom .btn-default:hover{
+    background-color:#ff4000;
+}
+.ui-datebox-cal-pickers fieldset .input-sm:first-child{
+    width: 57%!important;
+}
+.profile-custom .input-group{
+    display:inline;
+}
+.profile-custom #birth_date-error{
+    display:none;
+}
 .profile-custom{
     padding: 50px 0 50px 0;
 }
@@ -15,6 +38,21 @@
 }
 .post-detail-metiz li .pull-right{
     margin-top: 3px;
+}
+.profile-custom .country-code {
+    color: #bfbfbf;
+    position: absolute;
+    top: 32px;
+    left: 23px;
+    padding-right: 4px;
+    border-right: 1px solid #cccccc;
+}
+.profile-custom #phone {
+    padding-left: 40px;
+}
+/* because dateBox lirbrary change height form-group */
+.profile-custom .form-birthday{
+    height:60px;
 }
 @media only screen and (min-width : 481px) and (max-width : 768px) {
     .profile-custom{

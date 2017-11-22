@@ -88,7 +88,7 @@
 }
 #news .bg_hover{
     display:none;
-    background: url('../images/news/bg_hover.png');
+    background-color: rgba(255, 84, 0, 0.8);
     background-size: 100% auto;
     position: absolute;
     top: 0px;
@@ -116,8 +116,23 @@
     font-size: 24px;
     font-family: 'SairaSemiCondensed-SemiBold', sans-serif;
     color: #ffffff;
+    height: 62%;
 
 }
+#news .word-wrap .detail-btn{
+    border-radius: 25px;
+    border: 1.5px solid #ffffff;
+    font-weight: bold;
+    padding: 10px 23px;
+    font-size: 18px;
+    font-family: "SairaSemiCondensed-SemiBold", sans-serif;
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    width: 113px;
+    margin: 0 auto;
+}
+    
 #news .new-img:hover .bg_hover{
     display: block;
 }
@@ -358,7 +373,10 @@ ul.metiz-movie-tabs {
     }
     #news #box{
         width: 446px;
-    } 
+    }
+    #news .word-wrap p{
+        font-size: 20px;
+    }
 }
 @media screen and (max-width: 1200px) {
 	#news img{
@@ -392,6 +410,9 @@ ul.metiz-movie-tabs {
 	}
     #news .bg_hover p{
         padding-top: 15px;
+        font-size: 17px;
+    }
+    #news .bg_hover .detail-btn{
         font-size: 17px;
     }
 	#news #box {
@@ -438,6 +459,12 @@ ul.metiz-movie-tabs {
     .detail-pay-film button, .detail-pay-film a{
         font-size: 13px;
     }
+    #news .bg_hover .detail-btn{
+        padding: 7px 16px 7px 16px;
+        font-size: 13px;
+        line-height: 19px;
+    }
+   
 }
 
 @media screen and (max-width: 767px) {
@@ -459,6 +486,10 @@ ul.metiz-movie-tabs {
     #news #box{
         width: auto; 
         margin-left: 20px;  
+    }
+     #news .bg_hover p{
+        padding-top: 40px;
+        font-size: 26px;
     }
 }
 @media screen and (max-width: 680px) {
@@ -632,6 +663,11 @@ ul.metiz-movie-tabs {
         padding-top: 14px;
         font-size: 16px;
     }
+    #news .bg_hover .detail-btn{
+        font-size: 9px;
+        padding: 2px 9px 2px 9px;
+        width: 68px;
+    }
 }
 @media screen and (max-width: 380px) {
     .slideshow-containe-movier .poster-film .product-img {
@@ -663,7 +699,7 @@ ul.metiz-movie-tabs {
         margin: 0px;
     }
     #news .bg_hover{
-        left: 15px;
+        left: 8px;
         height:154px;
         width:154px;
     }
@@ -731,7 +767,7 @@ ul.metiz-movie-tabs {
         right: -22px;
     }
     #news .bg_hover{
-        left: 15px;
+        left: 7px;
         height:130px;
         width:130px;
     }
