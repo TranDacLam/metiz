@@ -85,15 +85,15 @@ footer .content-1 .col-lg-3{
 	padding-right: 15px;
 }
 .map-left {
-	padding:0px;
+	padding-left:10px;
+	position: relative;
+	top: 5px;
 }
-img.map-trigger {
+img.map-trigger{
 	display: inline-block;
 }
-footer .map a{
-	margin:20px 0;
-	font-size:16px;
-	padding-left: 0px;
+.show {
+	display: inline-block!important;
 }
 footer .content-1 .list{
 	padding-top: 12px;
@@ -156,10 +156,6 @@ footer #content-map iframe{
 	footer .content-1 .list li a {
     	font-size: 13px;
 	}
-	footer .map a{
-		font-size:12px;
-		margin: 20px 0px;
-	}
 }
 
 @media only screen and (max-width: 414px){
@@ -172,16 +168,9 @@ footer #content-map iframe{
 	footer .content-1 .list li a, .info{
 		font-size: 14px;
 	}
-	footer .map a{
-		font-size:12px;
-		margin: 20px 0;
-	}
 }
 @media only screen and (max-width: 320px){
 	footer #content-map iframe{
 		height: auto;
-	}
-	footer .map a{
-		font-size:12px
 	}
 }
