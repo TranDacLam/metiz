@@ -6,6 +6,7 @@
     display: inline-block;
     padding: 0px 1px;
 }
+/* popup background dont scroll in desktop and android */
 .modal-open {    
     overflow: scroll;
 }
@@ -14,17 +15,11 @@
 }
 #modal-popup .modal-dialog{
     width: 500px;
+    margin: 0 auto;
 }
 #modal-popup .modal-content{
     width:100%;
 }
-/* Focus on input pushes cursor out in mobile */
-#modal-popup input{
-    -webkit-transform: none;
-    -moz-transform: none;
-    -o-transform: none;
-}
-
 #modal-popup .mfp-close{
     opacity: 1;
     z-index:0;
@@ -451,6 +446,7 @@
 .modal form button {
     text-transform: uppercase;
 }
+
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
         width: 66px;
@@ -464,7 +460,7 @@
 }
 @media only screen and (max-width: 768px){
      #modal-popup .modal-dialog{
-        width: auto;
+        width: 500px;
     }
     #myTabContent .input-group {
         display: table;
@@ -483,9 +479,42 @@
         width: auto;
     }
 }
+@media only screen and (max-width: 767px){
+    #modal-popup .modal-dialog {
+        width: 60%;
+    }
+    #modal-popup .section-white{
+        overflow-y: scroll;
+        height: 300px;
+        
+    }
+    .section-white::-webkit-scrollbar {
+    -webkit-appearance: none;
+    }
+
+    .section-white::-webkit-scrollbar:vertical {
+        width: 12px;
+    }
+
+    .section-white::-webkit-scrollbar:horizontal {
+        height: 12px;
+    }
+
+    .section-white::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, .5);
+        border-radius: 10px;
+        border: 2px solid #ffffff;
+    }
+
+    .section-white::-webkit-scrollbar-track {
+        border-radius: 10px;  
+        background-color: #ffffff; 
+    }
+
+}
 @media only screen and (max-width: 480px){
-    .modal-open {    
-        overflow: hidden;
+    #modal-popup .modal-dialog{
+        width: 70%;
     }
     .size {
         margin-left: -15px;
@@ -513,6 +542,11 @@
     }
     .section-white .title{
         margin-left: -2px;
+    }
+}
+@media only screen and (max-width: 414px){
+    #modal-popup .modal-dialog {
+        width: 90%;
     }
 }
 @media only screen and (max-width: 320px){

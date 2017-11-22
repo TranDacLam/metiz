@@ -36,6 +36,21 @@
 #profile-validate textarea{
     width: 265px;
 }
+.profile-custom .country-code {
+    color: #bfbfbf;
+    position: absolute;
+    top: 32px;
+    left: 23px;
+    padding-right: 4px;
+    border-right: 1px solid #cccccc;
+}
+.profile-custom #phone {
+    padding-left: 40px;
+}
+/* because dateBox lirbrary change height form-group */
+.profile-custom .form-birthday{
+    height:60px;
+}
 @media only screen and (min-width : 481px) and (max-width : 768px) {
     .profile-custom{
         padding: 0 20px 0 20px;

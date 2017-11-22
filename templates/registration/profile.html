@@ -73,10 +73,10 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-6 form-group">
+                                <div class="col-sm-6 form-group form-birthday">
                                     <label>{% trans "Birth Date" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="birth_date" id="birth_date" value="{% if is_return %}{{ birth_date }}{% elif birth_date %}{{ birth_date | date:'d-m-Y' }}{% endif %}" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control">                
+                                        <input type="text" name="birth_date" id="birth_date" value="{% if form.errors %}{{ birth_date }}{% elif birth_date %}{{ birth_date | date:'d-m-Y' }}{% endif %}" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control">                
                                         {% if form.birth_date.errors %}
                                             {{form.birth_date.errors}}
                                         {% endif %}
@@ -85,6 +85,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label>{% trans "Phone" %}</label>
                                     <div class="inline">
+                                        <div class="country-code">+84</div>
                                         <input type="text" name="phone" value="{% if phone %}{{ phone }}{% endif %}" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control">
                                         {% if form.phone.errors %}
                                             {{form.phone.errors}}
