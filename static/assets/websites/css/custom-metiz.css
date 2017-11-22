@@ -5140,7 +5140,12 @@ span.movie-rating-detail.c18{
     float: left;
     width: 100%;
 }
-
+.colum-right-new-offer h2.product-name{
+    color: #0e1d2f;
+    font-size: 15px;
+    font-weight: bold;
+}
+ 
 .format-new-offer {
     width: 100%;
     margin-top: 5px;
