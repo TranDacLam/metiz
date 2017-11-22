@@ -122,6 +122,10 @@ footer #content-map iframe{
 	height: 550px;
 	border: 0;
 }
+footer .content-1 .map .pull-left{
+	padding-left: 0px;
+	margin-top: 0px;
+}
 @media only screen and (max-width: 768px) {
 	footer .content-3 p{
 		text-align:center;
