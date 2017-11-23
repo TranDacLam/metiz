@@ -317,7 +317,10 @@ ul.dropdown-menu>li>a:hover{
 		display: none;
 	}
 }
-@media only screen and (max-width: 736px){
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
 	.navbar-nav li.dropdown>a{
 		margin-left: 0px;
     	margin-right: 0px;
@@ -326,7 +329,8 @@ ul.dropdown-menu>li>a:hover{
 	.navbar-header .skip-links #login-btn{
 		height: 50px;
 		font-size: 25px;
-	}.navbar-header .skip-links{
+	}
+	.navbar-header .skip-links{
 		background-color: #031327;
 	}
 }
@@ -370,5 +374,13 @@ ul.dropdown-menu>li>a:hover{
 	.navbar-nav li.dropdown>a{
 		margin-left: 10px;
 		padding-left: 27px;
+	}
+	.navbar-header .skip-links #menu-btn,
+	.navbar-header .skip-links #login-btn{
+		height: 50px;
+		font-size: 25px;
+	}
+	.navbar-header .skip-links{
+		background-color: #031327;
 	}
 }

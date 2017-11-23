@@ -111,7 +111,10 @@ a{
 		margin-left: 12px;
 	}
 }
-@media screen and (max-width: 736px) {
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape) {
 	#contactForm .fieldset .legend + .required{
 		margin-right: 5px;
 	}
@@ -167,6 +170,10 @@ a{
 	}
 	.show-address-contact-metiz{
 		margin-left: 45px;
+	}
+	.content-form-contact-metiz{
+		float: left;
+		width: 52%;
 	}
 }
 @media screen and (max-width: 375px) {

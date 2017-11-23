@@ -227,7 +227,10 @@ div.seatCharts-seat.available.seat-ld {
         left: 49%;
     }
 }
-@media only screen and (max-width: 736px){
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
     div.seatCharts-cell {
         height: 18px;
         width: 18px;
