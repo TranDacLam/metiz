@@ -77,6 +77,12 @@
 .col-main >div.custom-fiml-detail{
 	padding-top: 40px;
 }
+.custom-fiml-detail .product-shop div.std{
+    display: -webkit-box;
+}
+.custom-fiml-detail .product-shop>div>label{
+    width: 100px;
+}
 @media only screen and (min-width: 771px) {
 	.rating-block{
 		height: 187px;

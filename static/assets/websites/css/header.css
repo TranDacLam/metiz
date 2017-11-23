@@ -286,10 +286,6 @@ ul.dropdown-menu>li>a:hover{
 	    padding: 20px;
 	    margin-top: -26px;
 	}
-	.skip-link.skip-account.navbar-toggle {
-		border-right: 1px solid #EDEDED;
-	}
-
 	ul.dropdown-menu li a{
 		color: #636363;
 	}

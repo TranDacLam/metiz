@@ -224,9 +224,6 @@
 	.skip-link.skip-account {
 		display: none;
 	}
-	.skip-link:last-child {
-		border-right: 1px solid #ccc;
-	}
 	.widget-static-block{
 		display:none;
 	}
@@ -1792,9 +1789,6 @@
 		width: 100%;
 		float: left;
 	}
-	.catalog-product-view .main{
-		margin-top:10px;
-	}
 	.product-view .product-img-box .product-name {
 		display: inline-block;
 		width:100%;
@@ -1844,9 +1838,6 @@
 	.product-view .product-img-box {
 		width: 100%;
 		float: left;
-	}
-	.catalog-product-view .main{
-		margin-top:10px;
 	}
 	.product-view .product-img-box .product-name {
 		display: inline-block;

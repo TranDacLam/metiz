@@ -66,32 +66,32 @@
 					<!-- Build test -->
 					<div class="movie-director movie-info">
 						<label>Đạo diễn: </label>
-						<div class="std">&nbsp; {{film_detail.director}}</div>
+						<div class="std">{{film_detail.director}}</div>
 					</div>
 					<div class="movie-actress movie-info">
 						<label>Diễn viên:</label>
-						<div class="std">&nbsp; {{film_detail.cast}}
+						<div class="std">{{film_detail.cast}}
 						</div>
 					</div>
 					<div class="movie-genre movie-info">
 						<label>Thể loại: </label>
-						<div class="std">&nbsp; {{film_detail.genre.name}}</div>
+						<div class="std">{{film_detail.genre.name}}</div>
 					</div>
 					<div class="movie-release movie-info">
 						<label>Khởi chiếu: </label>
-						<div class="std">&nbsp;  {{film_detail.release_date | date:"d-m-Y"}}</div>
+						<div class="std">{{film_detail.release_date | date:"d-m-Y"}}</div>
 					</div>
 					<div class="movie-actress movie-info">
 						<label>Thời lượng: </label>
-						<div class="std">&nbsp;  {{film_detail.time_running}} phút</div>
+						<div class="std">{{film_detail.time_running}} phút</div>
 					</div>
 					<div class="movie-language movie-info">
 						<label>Ngôn ngữ: </label>
-						<div class="std">&nbsp;  {{film_detail.language}}</div>
+						<div class="std">{{film_detail.language}}</div>
 					</div>
 					<div class="movie-rating movie-rated-web">
 						<label>Rated: </label>
-						<div class="std">&nbsp;  <span class="rated-{{film_detail.rated.name}}">{{ film_detail.rated.name }}</span> - {{ film_detail.rated.description | safe }}</div>
+						<div class="std"><span class="rated-{{film_detail.rated.name}}">{{ film_detail.rated.name }}</span> - {{ film_detail.rated.description | safe }}</div>
 					</div> 
 					<div class="movie-technology-icons">
 						<a href="javascript:void(0)" class="movie-detail-icon-type" title="{{film_detail.movie_type.name}}">
