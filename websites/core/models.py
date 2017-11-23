@@ -180,6 +180,7 @@ class NewOffer(DateTimeModel):
     apply_for = models.CharField(_("Apply For"), max_length=50, default='all', choices=GENDER)
     priority = models.IntegerField(_("Priority"), null=True, blank=True)
     apply_date = models.DateField(_("Apply Date"), default=datetime.date.today, editable=True)
+    end_date = models.DateField(_("End Date"), default=datetime.date.today, editable=True)
     movies = models.ManyToManyField('Movie', blank=True)
 
     def __str__(self):
