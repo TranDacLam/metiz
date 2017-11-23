@@ -317,6 +317,19 @@ ul.dropdown-menu>li>a:hover{
 		display: none;
 	}
 }
+@media only screen and (max-width: 736px){
+	.navbar-nav li.dropdown>a{
+		margin-left: 0px;
+    	margin-right: 0px;
+	}
+	.navbar-header .skip-links #menu-btn,
+	.navbar-header .skip-links #login-btn{
+		height: 50px;
+		font-size: 25px;
+	}.navbar-header .skip-links{
+		background-color: #031327;
+	}
+}
 @media only screen and (max-width: 480px){
 	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
 	    background-color: #10132d;
