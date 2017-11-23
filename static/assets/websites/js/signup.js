@@ -51,6 +51,7 @@ $(document).ready(function() {
 				required: true,
 				validatePhone: true,
 			},
+
 			email:{
 				required: true,
 				email: true
@@ -64,9 +65,9 @@ $(document).ready(function() {
 				required: true,
 				equalTo: "#password1"
 			},
-			personal_id:{
-				minlength: 9,
-			}
+            personal_id:{
+               minlength: 9,
+           }
 		},
 		messages:{
 			full_name:{
@@ -93,9 +94,9 @@ $(document).ready(function() {
 				required: message.required,
 				equalTo: message.equalTo
 			},
-			personal_id:{
-				minlength: message.minlength_9,
-			}
+            personal_id:{
+               minlength: message.minlength_9,
+           }
 		},
 		success: function(element) {
 			element.text('OK!').addClass('valid');
@@ -158,14 +159,16 @@ $(document).ready(function() {
             defaultValue: "1996-01-01",
             calYearPickMax: 'NOW',
             calYearPickMin: 100,
+            beforeOpenCallback: function(){
+                $('.input-group #birth_date-error').css('display', 'none');// of jquery validate
+                $('.birthday-inline #birth_date_valid').css('display', 'none');
+                $('#birth_date').css('color','#555');
+            },
             closeCallback: function(){
                 if($('#birth_date').val() != ''){
-                    $('#birth_date-error').css('visibility', 'visible');
-                }
+                    $('.birthday-inline #birth_date_valid').css('display', 'inline-block');
+                };
             },
-            openCallback: function(){
-                $('#birth_date-error').css('visibility', 'hidden');
-            }
         });
 
     if( navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)){

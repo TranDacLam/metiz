@@ -6,10 +6,11 @@
     display: inline-block;
     padding: 0px 1px;
 }
-/* popup background dont scroll in desktop and android */
+/* popup background dont scroll in desktop*/
 .modal-open {    
     overflow: scroll;
 }
+
 .hide-area{
     display:none;
 }
@@ -119,7 +120,6 @@
 .white-popup {
   position: relative;
   background: #FFF;
-  padding: 20px 0px;
   width: 92%;
   max-width: 1310px;
   margin: 50px auto;
@@ -150,7 +150,7 @@
 .div-login .top {
     background: #fff;
     color: #ff5400;
-    padding: 15px;
+    padding: 25px 15px;
     border-bottom: 1px solid #ff5400;
     width: 100%;
     height: auto;
@@ -167,7 +167,7 @@
     padding: 20px;
     width: 100%;
 }
-.section-white .title, .section-lightpink .title{
+.popup-booking .title{
     font-size: 24px;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -443,7 +443,6 @@
 .modal form button {
     text-transform: uppercase;
 }
-
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
         width: 66px;
@@ -480,6 +479,7 @@
     #modal-popup .modal-dialog {
         width: 60%;
     }
+
     #modal-popup .section-white{
         overflow-y: scroll;
         height: 300px;
@@ -513,6 +513,10 @@
     #modal-popup .modal-dialog{
         width: 70%;
     }
+    /* fix background scroll in modals on android */
+    .modal-open {    
+        overflow: hidden;
+    }
     .size {
         margin-left: -15px;
     }
@@ -536,9 +540,6 @@
     }
     .calendar-popup .days-popup li{
         width: 87px;
-    }
-    .section-white .title{
-        margin-left: -2px;
     }
 }
 @media only screen and (max-width: 414px){

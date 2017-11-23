@@ -39,7 +39,7 @@ $(document).ready(function() {
             enableEscapeKey: false,
         });
     }
-    
+
 
     // Validate guest_form, update_form
     // Validate and handle member_form by ajax
