@@ -117,3 +117,13 @@ ul.errorlist li, .error{
 .form-control{
     line-height: 30px;
 }
+@media only screen and (max-width: 736px){
+    .page-header{
+        height: 132px;
+    }
+}
+@media screen and (max-width: 414px) {
+    .page-header{
+        height: 40px;
+    }
+}

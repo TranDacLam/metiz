@@ -2,10 +2,16 @@
 	display:none;
 }
 .postTitle{
-	padding-top: 40px;
+	padding-bottom: 30px;
 }
 .detail-content-new-offer{
 	padding-bottom: 30px;
+}
+.button-like-share {
+	padding: 20px 0;
+}
+.postDetail {
+	font-family: "Montserrat", sans-serif;
 }
 @media only screen and (max-width: 767px) {
 	.postTitle{

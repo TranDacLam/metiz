@@ -12,8 +12,8 @@
     color: #ffffff;
     padding-left: 0px;
     padding-right: 0px;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .navbar-nav li.dropdown>a:focus{
 	/* opacity:0; */
@@ -76,7 +76,7 @@ ul.dropdown-menu>li>a:hover{
 	color: #ff5400;
 }
 .navbar-nav li.custom-user-header{
-	margin-left: -26px;
+	margin-left: -36px;
 }
 .navbar-nav li.hover-user-header a:hover,
 .navbar-nav li.hover-user-header a span.name-user-header:hover,
@@ -180,10 +180,6 @@ ul.dropdown-menu>li>a:hover{
 	    background: #031327;
 	}
 	
-	.nav.navbar-nav{
-		padding-top: 50px;
-
-	}
 	.logo {
 		margin-top:13px;
 		left: 0px;
@@ -204,6 +200,8 @@ ul.dropdown-menu>li>a:hover{
 		display: block;
     	position: relative;
     	width: 100px;
+    	background: #031327;
+    	bottom: 27px;
 	}
 	.logo-medium img{
 		width: 100%;

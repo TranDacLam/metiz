@@ -48,9 +48,6 @@ nav.sidebar, .main{
     .col-left  .navbar-collapse, .skip-content {
         background-color: rgba(255, 255, 255, 0);
     }
-    .page-header{
-        height: 150px;
-    }
     .title-about-metiz{
         text-align: center;
     }

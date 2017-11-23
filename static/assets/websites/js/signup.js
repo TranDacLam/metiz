@@ -328,3 +328,11 @@ $(document).ready(function() {
 	}
 	
 });
+// Can enter 0 number at the end or middle but not at the geginning.
+$(document).ready(function() {
+    $('.textPhone').keypress(function(event){ 
+       if (this.value.length == 0 && event.which == 48 ){
+           return false;
+       }
+    });
+});

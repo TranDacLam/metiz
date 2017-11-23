@@ -26,21 +26,19 @@
         </div>
     </div>
     <div class="container">
-        
         <div class="row content-1">
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <img id="logo-footer" src="{{STATIC_URL}}/assets/websites/images/logo_footer.png" alt="">
-                <h3 class="info address">
-                    Tầng 1 Helio Center, Đường 2/9, Hải Châu, Đà Nẵng
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 marg-top30">
+                <img id="logo-footer" class="img-responsive" src="{{STATIC_URL}}/assets/websites/images/logo_footer.png" alt="">
+                <h3 class="info address">Tầng 1 Helio Center, <span class="line-down"><br></span>Đường 2/9, Hải Châu, <span class="line-down"><br></span>Đà Nẵng
                 </h3>
-                <div class="map clearfix">
-                    <div class="col-xs-4 col-lg-3 pull-left">
+                <ul>
+                    <li>
                         <img class="map-trigger" src="{{STATIC_URL}}/assets/websites/images/map.png" alt="">
-                    </div>
-                    <a class="col-xs-8 col-lg-9 map-trigger" href="#">XEM BẢN ĐỒ</a>
-                </div>
+                        <a class="map-left map-trigger" href="#">XEM BẢN ĐỒ</a>
+                    </li>
+                </ul>
             </div> 
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 marg-top30">
                 <h2>METIZ CINEMA</h2>
                 <ul class="list">
                     <li><a href="{% url 'get_cms' %}?key_query=kq_gioi_thieu">Giới Thiệu</a></li>
@@ -48,20 +46,21 @@
                     <li><a href="{% url 'contacts' %}">Liên Hệ</a></li>
                 </ul>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 marg-top30">
                 <h2>THÔNG TIN CHUNG</h2>
                 <ul class="list">
                     <li><a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_chung">ĐIỀU KHOẢN CHUNG</a></li>
                     <li><a href="{% url 'get_cms' %}?key_query=kq_cau_hoi_thuong_gap">CÂU HỎI THƯỜNG GẶP</a></li>
+                    <li><a href="{% url 'get_cms' %}?key_query=kq_quy_dinh_tai_rap">QUY ĐỊNH TẠI RẠP</a></li>
                 </ul>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 marg-top30 fb-custom">
                 <div class="fb-page" data-href="https://www.facebook.com/metizcinema" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                     <blockquote cite="https://www.facebook.com/metizcinema" class="fb-xfbml-parse-ignore">
-                        <a href="https://www.facebook.com/metizcinema">Metiz Cinema</a>
+                        <a href="">Metiz Cinema</a>
                     </blockquote>
                 </div>
-            </div>>
+            </div>
         </div>
         <div class="row text-center">
             <div id="content-map">

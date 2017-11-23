@@ -154,8 +154,11 @@
 		/*background: url("../images/bg-cgv/bg-top.png") repeat-x scroll left bottom transparent;*/
 		background: #031327;
 		background-size: 10px 135px;
-		height: 135px;
+		height: 70px;
 		padding-bottom: 0px;
+	}
+	.header-container {
+		padding-top: 40px;
 	}
 	.header-language-right{
 		float:right;
