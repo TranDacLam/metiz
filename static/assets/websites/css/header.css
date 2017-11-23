@@ -76,7 +76,7 @@ ul.dropdown-menu>li>a:hover{
 	color: #ff5400;
 }
 .navbar-nav li.custom-user-header{
-	margin-left: -26px;
+	margin-left: -36px;
 }
 .navbar-nav li.hover-user-header a:hover,
 .navbar-nav li.hover-user-header a span.name-user-header:hover,
@@ -318,6 +318,23 @@ ul.dropdown-menu>li>a:hover{
 		display: none;
 	}
 }
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
+	.navbar-nav li.dropdown>a{
+		margin-left: 0px;
+    	margin-right: 0px;
+	}
+	.navbar-header .skip-links #menu-btn,
+	.navbar-header .skip-links #login-btn{
+		height: 50px;
+		font-size: 25px;
+	}
+	.navbar-header .skip-links{
+		background-color: #031327;
+	}
+}
 @media only screen and (max-width: 480px){
 	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
 	    background-color: #10132d;
@@ -358,5 +375,13 @@ ul.dropdown-menu>li>a:hover{
 	.navbar-nav li.dropdown>a{
 		margin-left: 10px;
 		padding-left: 27px;
+	}
+	.navbar-header .skip-links #menu-btn,
+	.navbar-header .skip-links #login-btn{
+		height: 50px;
+		font-size: 25px;
+	}
+	.navbar-header .skip-links{
+		background-color: #031327;
 	}
 }

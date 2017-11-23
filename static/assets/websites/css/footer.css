@@ -134,6 +134,14 @@ footer #content-map iframe{
 	height: 550px;
 	border: 0;
 }
+footer .content-1 .map .pull-left{
+	padding-left: 0px;
+	margin-top: 0px;
+}
+footer .fb-custom{
+	padding-left: 30px;
+	padding-right: 0px;
+}
 @media only screen and (max-width: 768px) {
 	footer .content-3 p{
 		text-align:center;
@@ -159,7 +167,19 @@ footer #content-map iframe{
     	font-size: 13px;
 	}
 }
-
+@media only screen and (max-width: 736px){
+	.line-down{
+		display: none;
+	}
+	footer .content-1 h3.address{
+		text-align: center;
+		padding-right: 0px;
+	}
+	footer .fb-custom{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
 @media only screen and (max-width: 414px){
 	footer #content-map iframe{
 		height: auto;
@@ -174,5 +194,11 @@ footer #content-map iframe{
 @media only screen and (max-width: 320px){
 	footer #content-map iframe{
 		height: auto;
+	}
+	footer h2{
+		font-size: 14px;
+	}
+	footer .content-1 .list li a{
+		font-size: 12px;
 	}
 }

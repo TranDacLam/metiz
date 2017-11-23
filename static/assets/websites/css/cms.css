@@ -48,9 +48,6 @@ nav.sidebar, .main{
     .col-left  .navbar-collapse, .skip-content {
         background-color: rgba(255, 255, 255, 0);
     }
-    .page-header{
-        height: 150px;
-    }
     .title-about-metiz{
         text-align: center;
     }
@@ -126,14 +123,17 @@ nav.sidebar, .main{
         width: 100%;
     }
 }
-@media only screen and (max-width: 736px){
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
     .col2-left-layout .col-main .col2-set{
         padding: 0 10px 0px 15px;
     }
 }
 @media only screen and (max-width: 414px){
     .page-header{
-        height: 86px;
+        height: 40px;
     }
     .content-seperator iframe{
         width: 100%;
@@ -146,7 +146,9 @@ nav.sidebar, .main{
         margin-right: -25px;
         margin-top: 3px;
     }
-
+    .col2-left-layout .col-main .col2-set{
+        padding: 0 10px 0px 15px;
+    }
 }
 @media only screen and (max-width: 320px){
     .about-image-metiz ul li, .about-image-metiz ul li img {

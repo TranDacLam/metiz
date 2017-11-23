@@ -277,6 +277,8 @@ $(document).ready(function() {
             var date_seat = $(this).attr("data-date-seat");
             $('.days-popup [data-date-select = ' + date_seat + ']').addClass('active-date');
             var date_query = date_seat;
+            //set data for Month
+            $('#center-month').text($('.days-popup li.active-date').children('.hide-month').text());
         } else {
             // get date time on page popup
             if ($(this).attr("data-date-select")) {

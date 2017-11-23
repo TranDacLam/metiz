@@ -107,8 +107,14 @@ a{
 	#contactForm .fieldset .legend + .required{
 		margin-right: 37px;
 	}
+	.show-address-contact-metiz{
+		margin-left: 12px;
+	}
 }
-@media screen and (max-width: 767px) {
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape) {
 	#contactForm .fieldset .legend + .required{
 		margin-right: 5px;
 	}
@@ -116,24 +122,31 @@ a{
 		text-align: center;
 	}
 	.show-address-contact-metiz{
-		width: 98%;
+		width: 44%;
 	}
 	.content-form-contact-metiz{
 		float: left;
-		width: 98%;
-		margin-top: 10px; 
-	}
-	.show-address-contact-metiz{
-		border-right: none;
+		width: 52%;
 	}
 	.content-form-contact-metiz #contactForm{
-		border-left: none;
+		padding-left: 42px;
+	}
+	#contactForm ul.form-list{
+		float: none;
 	}
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 568px){
 	.content-form-contact-metiz #contactForm{
-		padding-left: 10px;
+		padding-left: 0px;
 	}
+	#contactForm input[type=email], 
+	#contactForm input[type=tel], 
+	#contactForm input[type=text], 
+	#contactForm  textarea#message{
+		width: 256px;
+	}
+}
+@media screen and (max-width: 414px) {
 	#contactForm input[type=email], 
 	#contactForm input[type=tel], 
 	#contactForm input[type=text],
@@ -148,14 +161,30 @@ a{
 	}
 	.content-form-contact-metiz #contactForm{
 		padding-left: 29px;
+		margin-top: 15px;
+		border-left: none;
+	}
+	.content-form-contact-metiz,
+	.show-address-contact-metiz{
+		width: 90%;
+	}
+	.show-address-contact-metiz{
+		margin-left: 45px;
+	}
+	.content-form-contact-metiz{
+		float: left;
+		width: 52%;
 	}
 }
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 375px) {
 	.content-form-contact-metiz #contactForm{
 		padding-left: 7px;
 	}
 	#contactForm .fieldset .legend + .required{
 		margin-right: 22px;
+	}
+	.show-address-contact-metiz {
+	    margin-left: 23px;
 	}
 }
 @media screen and (max-width: 320px){

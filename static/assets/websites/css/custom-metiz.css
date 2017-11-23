@@ -3856,7 +3856,6 @@ ul,ol,li{
     float: right;
     min-height: 150px;
     width: 70%;
-    margin-top: -18px;
 }
 .contact-metiz .theater-name h2 {
     text-transform: uppercase;
@@ -5143,7 +5142,6 @@ span.movie-rating-detail.c18{
 .colum-right-new-offer h2.product-name{
     color: #0e1d2f;
     font-size: 15px;
-    font-weight: bold;
 }
  
 .format-new-offer {

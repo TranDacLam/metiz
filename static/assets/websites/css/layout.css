@@ -117,3 +117,16 @@ ul.errorlist li, .error{
 .form-control{
     line-height: 30px;
 }
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
+    .page-header{
+        height: 154px;
+    }
+}
+@media screen and (max-width: 414px) {
+    .page-header{
+        height: 50px;
+    }
+}

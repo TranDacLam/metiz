@@ -185,7 +185,7 @@ div.seatCharts-seat.available.seat-ld {
 }
 .booking-refresh {
     margin-top: 220px;
-    margin-left: 8px;
+    margin-left: 4px;
 }
 .booking-details .booking-refresh a{
     color: #241d1e;
@@ -227,7 +227,10 @@ div.seatCharts-seat.available.seat-ld {
         left: 49%;
     }
 }
-@media only screen and (max-width: 736px){
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
     div.seatCharts-cell {
         height: 18px;
         width: 18px;
@@ -238,6 +241,9 @@ div.seatCharts-seat.available.seat-ld {
     .ajax-loader>p{
         top: 55%; 
         left: 46.5%;
+    }
+    .booking-refresh {
+        margin-left: 0px;
     }
 }
 @media only screen and (max-width: 480px) {
