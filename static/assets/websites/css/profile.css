@@ -136,7 +136,7 @@
         padding-top: 0;
     }
     .my-account .page-title{
-        width: 80.5%;
+        width: 85.5%;
     }
 }
 @media only screen and (max-width : 420px) {
@@ -201,9 +201,6 @@
 }
 .profile-custom .form-control{
     font-size: 15px;
-}
-#profile-validate select{
-    padding: 3px 12px;
 }
 .profile-custom ul.post-detail-metiz{
     float: none;

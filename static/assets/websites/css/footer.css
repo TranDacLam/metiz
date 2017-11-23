@@ -87,10 +87,12 @@ footer .content-1 .marg-top30{
 .map-left {
 	padding-left:10px;
 	position: relative;
-	top: 5px;
+	top: 20px;
+	float: left;
 }
 img.map-trigger{
 	display: inline-block;
+	float: left;
 }
 .show {
 	display: inline-block!important;

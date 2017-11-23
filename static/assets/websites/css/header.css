@@ -209,6 +209,7 @@ ul.dropdown-menu>li>a:hover{
 	
 	.page-header{
 		border-bottom:none;
+		height: 70px;
 	}
 	.collapse-custom{
 		border-bottom:none;
