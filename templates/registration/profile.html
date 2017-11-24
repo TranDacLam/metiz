@@ -46,7 +46,7 @@
             <div class="page-title">
                 <h1>Thông tin tài khoản</h1>
             </div>
-            <div class="col-lg-12 >
+            <div class="col-lg-12" >
                 <div class="row">
                     <form action="{% url 'update_profile' %}" method="post" autocomplete="off" id="profile-validate" class="scaffold-form metiz-edit-account" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -89,7 +89,7 @@
                                         <label>{% trans "Phone" %}</label>
                                         <div class="inline">
                                             <div class="country-code">+84</div>
-                                            <input type="text" name="phone" value="{% if phone %}{{ phone }}{% endif %}" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control">
+                                            <input type="text" name="phone" value="{% if phone %}{{ phone }}{% endif %}" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control textPhone">
                                             {% if form.phone.errors %}
                                                 {{form.phone.errors}}
                                             {% endif %}
