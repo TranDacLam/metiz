@@ -464,7 +464,9 @@ ul.metiz-movie-tabs {
         font-size: 13px;
         line-height: 19px;
     }
-   
+   .session-movie dl{
+    margin-bottom: 0px;
+   }
 }
 
 @media screen and (max-width: 767px) {

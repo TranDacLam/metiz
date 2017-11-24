@@ -150,7 +150,7 @@ $(document).ready(function() {
 
                     window.location.href = '/booking?id_showtime=' + id_showtime + '&id_server=' + id_server +
                         '&id_movie_name=' + id_movie_name + '&id_movie_time=' + id_movie_time +
-                        '&id_movie_date_active=' + id_movie_date_active + '&movie_api_id' + movie_api_id;
+                        '&id_movie_date_active=' + id_movie_date_active + '&movie_api_id=' + movie_api_id;
                 })
                 .fail(function(data) {
                     if (data.responseJSON.code == 400) {
@@ -270,7 +270,7 @@ $(document).ready(function() {
             movie_api_id = $(this).attr("data-movie-api-id");
         }
 
-        if ($(this).attr("data-all-movie") || $(this).attr("data-date-seat")) {
+        if ($(this).attr("data-all-movie")) {
             movie_api_id = null;
         }
 
@@ -279,6 +279,9 @@ $(document).ready(function() {
             var date_seat = $(this).attr("data-date-seat");
             $('.days-popup [data-date-select = ' + date_seat + ']').addClass('active-date');
             var date_query = date_seat;
+            if($('.booking-details #movie_api_id').val() != 'null'){
+                movie_api_id = $('.booking-details #movie_api_id').val()
+            }
             //set data for Month
             $('#center-month').text($('.days-popup li.active-date').children('.hide-month').text());
         } else {
@@ -342,7 +345,7 @@ $(document).ready(function() {
 
             $('.modal input[name=id_server]').val(id_server);
             $('.modal input[name=id_showtime]').val(id_showtime);
-            $('.modal input[name=id_showtime]').val(movie_api_id);
+            $('.modal input[name=movie_api_id]').val(movie_api_id);
             $('.modal input[name=id_movie_name]').val(id_movie_name);
             $('.modal input[name=id_movie_time]').val(id_movie_time);
             $('.modal input[name=id_movie_date_active]').val($("li.active-date").attr("data-date-select"));
