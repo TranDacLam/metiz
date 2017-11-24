@@ -152,6 +152,9 @@ ul ~ label{
 #myTabContent input[type=number] {
 	-moz-appearance: textfield;
 }
+.col-main{
+    margin-bottom: 0px;
+}
 @media  only screen and (max-width: 767px){
 	.form-address #address{
 		width: 265px;

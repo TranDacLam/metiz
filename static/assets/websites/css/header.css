@@ -312,6 +312,9 @@ ul.dropdown-menu>li>a:hover{
 	.navbar-nav li.hover-user-header{
 		display: none;
 	}
+	#menuNavbar .navbar-nav{
+		margin: 1.5px -15px;
+	}
 }
 @media only screen 
 and (min-width: 568px) 
@@ -332,7 +335,7 @@ and (orientation: landscape){
 }
 @media only screen and (max-width: 480px){
 	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-	    background-color: #10132d;
+	    background-color: #eee;
 	    border-color: #337ab7;
 	}
 	.icon-nav{
@@ -378,5 +381,9 @@ and (orientation: landscape){
 	}
 	.navbar-header .skip-links{
 		background-color: #031327;
+	}
+	.navbar-nav li.dropdown>a{
+		margin-left: 0px;
+    	margin-right: 0px;
 	}
 }

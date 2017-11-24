@@ -121,12 +121,12 @@ and (min-width: 568px)
 and (max-width: 736px) 
 and (orientation: landscape){
     .page-header{
-        height: 195px;
+        height: 192px;
     }
 }
 @media screen and (max-width: 414px) {
     .page-header{
-        height: 145px;
+        height: 143px;
     }
     .load-more{
         width: 150px;

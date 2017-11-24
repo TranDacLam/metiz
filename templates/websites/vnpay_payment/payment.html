@@ -21,7 +21,7 @@
         <div class="exceeds-time">Lưu ý: Thời gian giao dịch cho phép tối đa là 5 phút. Hết thời gian quy định giao dịch này sẽ bị hủy.</div>
         <div class="table-responsive">
             <form action="{% url 'payment' %}" id="payment_form" method="post">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6 responsive-payment">
                     <div class="form-group">
                         <label for="language">Loại hàng hóa </label>
                         <select name="order_type" id="order_type" class="form-control">
@@ -40,7 +40,7 @@
                         <input type="hidden" name="amount" id="amount" value="{{ total_payment }}"/>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6 responsive-payment">
                     <div class="form-group">
                         <label for="bank_code">Ngân hàng</label>
                         <select name="bank_code" id="bank_code" class="form-control">
