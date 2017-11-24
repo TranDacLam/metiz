@@ -111,7 +111,7 @@
 	}
 	#header-nav {
 		display: block;
-		left: 200px;
+		left: 150px;
 		position: absolute;
 	}
 	.nav-primary a {
@@ -154,7 +154,7 @@
 		/*background: url("../images/bg-cgv/bg-top.png") repeat-x scroll left bottom transparent;*/
 		background: #031327;
 		background-size: 10px 135px;
-		height: 70px;
+		height: 135px;
 		padding-bottom: 0px;
 	}
 	.header-container {
