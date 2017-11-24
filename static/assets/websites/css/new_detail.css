@@ -13,6 +13,7 @@
 .postDetail {
 	font-family: "Montserrat", sans-serif;
 }
+
 @media only screen and (max-width: 767px) {
 	.postTitle{
 		text-align: center;

@@ -77,6 +77,7 @@
 .col-main >div.custom-fiml-detail{
 	padding-top: 40px;
 }
+
 @media only screen and (min-width: 771px) {
 	.rating-block{
 		height: 187px;
@@ -168,6 +169,9 @@ ul.metiz-film-detail-tabs {
 	.product-shop .button, 
 	.product-name-reponsive .button{
 		font-size: 16px;
+	} 
+	.poster-small-new-offer {
+		padding: 10px;
 	}
 }
 @media only screen and (max-width: 771px) {
@@ -180,10 +184,6 @@ ul.metiz-film-detail-tabs {
 	}
 }
 @media only screen and (max-width: 710px){
-	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
-	    height: 151px;
-	    width: 187px;
-	}
 	.format-new-offer h4{
 		font-size: 12px;
 	}
@@ -198,6 +198,19 @@ ul.metiz-film-detail-tabs {
 	}
 	.rating-desc{
 		margin-top: 20px;
+	}
+}
+@media screen and (max-width: 736px) {
+	.poster-small-new-offer {
+		width: 200px;
+		height: 200px;
+	}
+
+}
+@media screen and (max-width: 667px) {
+	.poster-small-new-offer {
+		width: 167px;
+		height: 167px;
 	}
 }
 @media screen and (max-width: 414px) {
@@ -218,9 +231,6 @@ ul.metiz-film-detail-tabs {
 	.colum-right-new-offer{
 		margin-left: 0;
 	}
-	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
-	    height: 146px;
-	}
 	.news-custom .load-more{
 		margin-left: 0px;
 	}
@@ -239,8 +249,12 @@ ul.metiz-film-detail-tabs {
 	}
 }
 @media screen and (max-width: 360px) {
-	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
-	    height: 121px;
+	.poster-small-new-offer {
+		width: 130px;
+		height: 130px;
+	}
+	.colum-right-new-offer h2.product-name {
+		font-size: 12px;
 	}
 	.format-new-offer h4{
 		font-size: 10px;
