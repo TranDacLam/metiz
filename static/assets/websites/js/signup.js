@@ -66,6 +66,7 @@ $(document).ready(function() {
 				equalTo: "#password1"
 			},
             personal_id:{
+                required: false,
                minlength: 9,
            }
 		},
@@ -99,7 +100,12 @@ $(document).ready(function() {
            }
 		},
 		success: function(element) {
-			element.text('OK!').addClass('valid');
+            if($('#personal_id').val() == ''){
+                element.not('#personal_id-error').text('OK!').addClass('valid');
+            }else{
+                element.text('OK!').addClass('valid');
+            }
+
 		}
 	});
 
@@ -160,11 +166,16 @@ $(document).ready(function() {
             calYearPickMax: 'NOW',
             calYearPickMin: 100,
             beforeOpenCallback: function(){
-                $('.input-group #birth_date-error').css('display', 'none');// of jquery validate
+                //if having error hide errortext 
+                if($('#birth_date-error').length){
+                    $('.input-group #birth_date-error').css('display', 'none');// of jquery validate
+                    $('#birth_date').css('color','#555');
+                }
+                // hide tick image before show popup
                 $('.birthday-inline #birth_date_valid').css('display', 'none');
-                $('#birth_date').css('color','#555');
             },
             closeCallback: function(){
+                //if date valid show tick image
                 if($('#birth_date').val() != ''){
                     $('.birthday-inline #birth_date_valid').css('display', 'inline-block');
                 };

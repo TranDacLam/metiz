@@ -155,6 +155,20 @@ ul ~ label{
     appearance: none;
     margin: 0; 
 }
+
+/* override class library */
+.modal-title .closer{
+	float: right!important;
+}
+.ui-datebox-flipcontent{
+	height: 95px;
+}
+.ui-datebox-flipcontent div{
+	height: 95px;
+}
+.ui-overlay-shadow .bg-warning{
+	background-color: #ff5400;
+}
 /* Portrait and Landscape */
 @media only screen and (max-width: 768px) {
 

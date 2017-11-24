@@ -513,10 +513,6 @@
     #modal-popup .modal-dialog{
         width: 70%;
     }
-    /* fix background scroll in modals on android */
-    .modal-open {    
-        overflow: hidden;
-    }
     .size {
         margin-left: -15px;
     }
