@@ -7,6 +7,7 @@ class BookingForm(forms.Form):
 	email = forms.EmailField( required=False)
 	id_server = forms.CharField()
 	id_showtime = forms.CharField()
+	movie_api_id = forms.CharField()
 	id_movie_name = forms.CharField()
 	id_movie_time = forms.CharField()
 	id_movie_date_active = forms.CharField()

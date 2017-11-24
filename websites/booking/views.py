@@ -27,6 +27,7 @@ def get_booking(request):
 
                 id_showtime = form.cleaned_data['id_showtime']
                 id_server = form.cleaned_data['id_server']
+                movie_api_id = form.cleaned_data['movie_api_id']
                 id_movie_name = form.cleaned_data['id_movie_name']
                 id_movie_time = form.cleaned_data['id_movie_time']
                 id_movie_date_active = form.cleaned_data[
@@ -34,19 +35,22 @@ def get_booking(request):
                 print('*******booking******')
                 return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_server": id_server,
                                                                  "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
-                                                                 "id_movie_date_active": id_movie_date_active})
+                                                                 "id_movie_date_active": id_movie_date_active,
+                                                                 "movie_api_id": movie_api_id})
             else:
                 return render(request, 'websites/booking.html')
         else:
             print('*******booking******')
             id_showtime = request.GET.get('id_showtime', "")
             id_server = request.GET.get('id_server', 1)
+            movie_api_id = request.GET.get('movie_api_id', "")
             id_movie_name = request.GET.get('id_movie_name', "")
             id_movie_time = request.GET.get('id_movie_time', "")
             id_movie_date_active = request.GET.get('id_movie_date_active', "")
             return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_server": id_server,
                                                              "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
-                                                             "id_movie_date_active": id_movie_date_active})
+                                                             "id_movie_date_active": id_movie_date_active,
+                                                             "movie_api_id": movie_api_id})
     except Exception, e:
         print "Error get_booking : ", e
         return HttpResponse(status=500)

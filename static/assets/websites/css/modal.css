@@ -211,7 +211,7 @@
 }
 #modal-popup .month strong{
     font-weight: bold;
-    font-size: 28px;
+    font-size: 25px;
 }
 #modal-popup .dayofweek{
     margin-top: 12px;
@@ -478,6 +478,9 @@
     #modal-popup .content-schedule{
         width: auto;
     }
+    #modal-popup .month strong{
+    font-size: 23px;
+}
 }
 @media only screen and (max-width: 767px){
     #modal-popup .modal-dialog {

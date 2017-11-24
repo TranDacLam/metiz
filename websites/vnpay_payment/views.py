@@ -206,6 +206,7 @@ def payment(request):
         seats_choice = request.GET.get('seats_choice', "")
         id_server = request.GET.get('id_server', 1)
         id_showtime = request.GET.get('id_showtime', "")
+        movie_api_id = request.GET.get('movie_api_id', "")
         id_movie_name = request.GET.get('id_movie_name', "")
         id_movie_time = request.GET.get('id_movie_time', "")
         id_movie_date_active = request.GET.get('id_movie_date_active', "")
@@ -213,7 +214,8 @@ def payment(request):
         return render(request, "websites/vnpay_payment/payment.html",
                       {"title": "Thanh toán", "total_payment": total_payment, "seats": seats, "total_seats": total_seats,
                        "working_id": working_id, "barcode": barcode, "seats_choice": seats_choice, "id_server": id_server, "id_showtime": id_showtime,
-                       "id_movie_name": id_movie_name, "id_movie_time": id_movie_time, "id_movie_date_active": id_movie_date_active})
+                       "id_movie_name": id_movie_name, "id_movie_time": id_movie_time, "id_movie_date_active": id_movie_date_active,
+                       "movie_api_id": movie_api_id})
 
 
 def payment_ipn(request):

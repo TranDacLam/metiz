@@ -21,7 +21,7 @@
         <div class="exceeds-time">Lưu ý: Thời gian giao dịch cho phép tối đa là 5 phút. Hết thời gian quy định giao dịch này sẽ bị hủy.</div>
         <div class="table-responsive">
             <form action="{% url 'payment' %}" id="payment_form" method="post">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6 responsive-payment">
                     <div class="form-group">
                         <label for="language">Loại hàng hóa </label>
                         <select name="order_type" id="order_type" class="form-control">
@@ -40,7 +40,7 @@
                         <input type="hidden" name="amount" id="amount" value="{{ total_payment }}"/>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6 responsive-payment">
                     <div class="form-group">
                         <label for="bank_code">Ngân hàng</label>
                         <select name="bank_code" id="bank_code" class="form-control">
@@ -87,6 +87,7 @@
                     <input type="hidden" id="seats_choice" name="seats_choice" value="{{seats_choice}}" >
                     <input type="hidden" id="id_server" name="id_server" value="{{id_server}}" >
                     <input type="hidden" id="id_showtime" name="id_showtime" value="{{id_showtime}}" >
+                    <input type="hidden" id="movie_api_id" name="movie_api_id" value="{{movie_api_id}}" >
                     <input type="hidden" id="id_movie_name" name="id_movie_name" value="{{id_movie_name}}" >
                     <input type="hidden" id="id_movie_time" name="id_movie_time" value="{{id_movie_time}}" >
                     <input type="hidden" id="id_movie_date_active" name="id_movie_date_active" value="{{id_movie_date_active}}" >
