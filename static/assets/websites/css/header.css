@@ -313,7 +313,7 @@ ul.dropdown-menu>li>a:hover{
 	.navbar-nav li.hover-user-header{
 		display: none;
 	}
-	#menuNavbar .navbar-nav{
+	#menuNavbar .navbar-nav, #loginNavbar .navbar-nav{
 		margin: 1.5px -15px;
 	}
 }

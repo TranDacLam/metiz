@@ -1,11 +1,8 @@
 $(document).ready(function() {
-    // validate phone, persional only number
-    $('#contactForm input[name=phone]').keyup(function(e) {
-        if (/\D/g.test(this.value)) {
-            // Filter non-digits from input value.
-            this.value = this.value.replace(/\D/g, '');
-        }
-    });
+    // validate phone only number
+    var selectorPhone = $("#contactForm input[name=phone]");
+    // Call back validOnlyNumber layout.js 
+    validOnlyNumber(selectorPhone, '');
 
     $("#contactForm").validate({
         rules: {
@@ -14,9 +11,12 @@ $(document).ready(function() {
             },
             email:{
                 required: true,
+                email: true
             },
             phone:{
                 required: true,
+                rangelength:[10, 12],
+                number: true
             },
             message:{
                 required: true,
@@ -28,9 +28,12 @@ $(document).ready(function() {
             },
             email: {
                 required: "Vui lòng nhập email",
+                email: "Email không hợp lệ"
             },
             phone: {
                 required: "Vui lòng nhập số điện thoại",
+                rangelength: "Số điện thoại không hợp lệ",
+                number: "Vui lòng chỉ nhập chữ số"
             },
             message: {
                 required: "Vui lòng nhập nội dung",
