@@ -24,21 +24,15 @@ $(document).ready(function() {
                 $('body').css('overflow', 'scroll');
             });
         }
-        // active popup
-        $('.open-popup-link').magnificPopup({
-            type: 'inline',
-            midClick: true,
-            enableEscapeKey: false,
-            fixedContentPos: true,
-        });
-    }else{
-        // active popup
-        $('.open-popup-link').magnificPopup({
-            type: 'inline',
-            midClick: true,
-            enableEscapeKey: false,
-        });
+
     }
+    // active popup
+    $('.open-popup-link').magnificPopup({
+        type: 'inline',
+        midClick: true,
+        enableEscapeKey: false,
+        fixedContentPos: true,
+    });
 
 
     // Validate guest_form, update_form
@@ -319,7 +313,6 @@ $(document).ready(function() {
                     if (value.lst_times.length > 0) {
                         html += listFilm(value);
                     }
-                    console.log(value);
                 });
                 $('.list-schedule').html(html);
                 getValue();

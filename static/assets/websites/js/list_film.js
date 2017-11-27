@@ -11,12 +11,14 @@ $(document).ready(function($) {
 		$('#arthouse-home_contents').css('display','block');
 	});
 
-	// popup schedule
-	$('.open-popup-list-movie').magnificPopup({
-      	type: 'inline',
-      	midClick: true,
+    // active popup
+    $('.open-popup-list-movie').magnificPopup({
+        type: 'inline',
+        midClick: true,
+        enableEscapeKey: false,
+        fixedContentPos: true,
     });
-
+    
 	//  load more
 	// check total page let remove button load more
 	var total_page = parseInt($('.load-more').attr('data-total-page'));
