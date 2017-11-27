@@ -5619,10 +5619,36 @@ span.movie-rating-detail.c18{
     }
     
 }
-@media only screen  and (min-width: 320px) and (max-width: 480px){
+
+@media only screen  and (max-width: 412px) {
+    .col-left-detail-content-new-offer img{
+        max-width:100%;
+        height: 372px;
+    }
+}
+@media only screen  and (max-width: 375px) {
+    .col-left-detail-content-new-offer img{
+        max-width:100%;
+        height: 335px;
+    }
+}
+@media only screen  and (max-width: 360px) {
+    .col-left-detail-content-new-offer img{
+        max-width:100%;
+        height: 320px;
+    }
+}
+
+@media only screen  and (max-width: 320px) {
     .col-left-detail-content-new-offer img{
         max-width:100%;
         height: 280px;
+    }
+}
+
+@media only screen  and (min-width: 320px) and (max-width: 480px){
+    .col-left-detail-content-new-offer img{
+        max-width:100%;
     }
     .col-left-first{
         float:left;
@@ -5984,7 +6010,7 @@ span.movie-rating-detail.c18{
 @media only screen and (min-width: 641px) and (max-width: 770px){
     .col-left-detail-content-new-offer img{
         max-width:100%;
-        height: 240px;
+        height: 173px;
     }
 }
 @media handheld and (max-width: 770px){
