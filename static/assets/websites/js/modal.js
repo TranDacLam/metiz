@@ -39,7 +39,7 @@ $(document).ready(function() {
             enableEscapeKey: false,
         });
     }
-    
+
 
     // Validate guest_form, update_form
     // Validate and handle member_form by ajax
@@ -354,29 +354,15 @@ $(document).ready(function() {
             var rated = $(this).parents('.lot-table').attr('data-rated');
             // ingore null or p
             if (rated == 'null' || rated == 'p') {
-
                 $('#btn-skip').click();
-
             } else {
                 content = JSON.parse($('#rated').text());
-                for (i = 0; i < content.length; i++) {
-                    if (content[i].name == rated) {
-                        $('#warning #content-warnning').text(content[i].description);
-                        break;
-                    }
-                }
+                $('#warning #content-warnning').text(content[rated]);
                 $('#warning').modal('show');
             }
         });
     }
-
-    // $.each(content, function(index, data) {
-    //     $.each(data, function(name, description) {
-    //         if (name == content) {
-    //             $('#warning #content-warnning').text(description);
-    //         }
-    //     });
-    // });
+    
     //checkbox for form guest
     $('#agree_term').on('click', function() {
         if ($('#agree_term').prop("checked")) {
