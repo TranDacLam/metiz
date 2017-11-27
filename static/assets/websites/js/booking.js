@@ -11,6 +11,7 @@ function guid() {
 $(document).ready(function() {
     var id_server = $('#id_server').val();
     var id_showtime = $('#id_showtime').val();
+    var movie_api_id = $('#movie_api_id').val();
 
     // show icon load when ajax start 
     $(document).ajaxStart(function(){
@@ -330,7 +331,8 @@ $(document).ready(function() {
                 +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
                 + '&id_movie_time='+id_movie_time + '&id_movie_date_active='+id_movie_date_active
                 + '&working_id='+working_id + '&barcode='+ barcode 
-                + '&seats_choice='+seats_choice + '&id_server=' +id_server + '&id_showtime=' +id_showtime;
+                + '&seats_choice='+seats_choice + '&id_server=' +id_server + '&id_showtime=' +id_showtime
+                + '&movie_api_id=' +movie_api_id;
             })
             .fail(function(error) {
                 displayMsg();
