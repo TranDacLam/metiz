@@ -41,12 +41,12 @@ nav.sidebar, .main{
 #faqAccordion{
     padding-top: 98px;
 }
+.post-detail-metiz li .pull-right{
+    margin-top: 3px;
+}
 @media only screen and (max-width: 768px){
     .col-left  .navbar-collapse, .skip-content {
         background-color: rgba(255, 255, 255, 0);
-    }
-    .page-header{
-        height: 150px;
     }
     .title-about-metiz{
         text-align: center;
@@ -123,19 +123,28 @@ nav.sidebar, .main{
         width: 100%;
     }
 }
-@media only screen and (max-width: 420px){
-    .page-header{
-        height: 86px;
-    }
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
     .col2-left-layout .col-main .col2-set{
         padding: 0 10px 0px 15px;
     }
+}
+@media only screen and (max-width: 414px){
     .content-seperator iframe{
-        width: 98%;
+        width: 100%;
         height: 267px;
     }
     .about-image-metiz ul li {
         width: 47%;
+    }
+    #faqAccordion .panel-title i.pull-right{
+        margin-right: -25px;
+        margin-top: 3px;
+    }
+    .col2-left-layout .col-main .col2-set{
+        padding: 0 10px 0px 15px;
     }
 }
 @media only screen and (max-width: 320px){

@@ -90,13 +90,9 @@
                             </li>
                             {% if user.is_authenticated %}
                                 <li class="dropdown hover-user-header">
-                                    <a href="{% url 'profile'%}" >
-                                        {% if user.full_name %}  
-                                            {{user.full_name|truncatechars:15}}
-                                        {% else %}  
-                                            {{user.email|truncatechars:15}}
-                                        {% endif %}
-                                        <span>/</span>
+                                    <a href="{% url 'profile'%}" > 
+                                        <span class="name-user-header">{{user.full_name|truncatechars:20}} <span>/</span></span>
+                                        <span class="responsive-name-user">{{user.full_name|truncatechars:10}} <span>/</span></span>
                                     </a>
                                 </li>
                                 <li class="dropdown hover-user-header custom-user-header">
@@ -110,6 +106,7 @@
                                     <a href="{% url 'register'%}" >Đăng Ký</a>
                                 </li>
                             {% endif %}
+
                         </ul>
                     </div>
                 </div>

@@ -36,6 +36,9 @@
 #profile-validate textarea{
     width: 265px;
 }
+.post-detail-metiz li .pull-right{
+    margin-top: 3px;
+}
 .profile-custom .country-code {
     color: #bfbfbf;
     position: absolute;
@@ -104,8 +107,9 @@
     color: #0e1d2f;
 }
 @media only screen and (max-width: 768px){
-    .col-left  .navbar-collapse, .skip-content {
-        background-color: rgba(255, 255, 255, 0);
+    .col-left  .navbar-collapse, .skip-content,
+    .profile-custom .navbar-header {
+        background-color: #f1eee9;
     }
     .col-left .navbar-inverse .navbar-brand{
         color: #fb0000;
@@ -127,16 +131,16 @@
     }
     .col-left  .navbar-inverse .navbar-nav>li>a,
     .col-left  .navbar-inverse .navbar-nav>li>a:focus{
-        color: #fff;
+        color: #0e1d2f;
     }
     .profile-custom .nav.navbar-nav{
         padding-top: 0;
     }
     .my-account .page-title{
-        width: 80.5%;
+        width: 85.5%;
     }
 }
-@media only screen and (max-width : 420px) {
+@media only screen and (max-width : 414px) {
     .my-account .page-title{
         width: 68.5%;
     }
@@ -198,9 +202,6 @@
 }
 .profile-custom .form-control{
     font-size: 15px;
-}
-#profile-validate select{
-    padding: 3px 12px;
 }
 .profile-custom ul.post-detail-metiz{
     float: none;

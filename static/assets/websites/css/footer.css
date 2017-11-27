@@ -25,7 +25,9 @@
 #list-social #instagram_show:hover #instagram_hover{
 	display:block;
 }
-
+.fb-page, .fb-page iframe[style], .fb-page span {
+    width: 100% !important;
+}
 footer #list-social ul.list-inline li 
 {    
 	float: none; 
@@ -70,7 +72,7 @@ footer a:hover{
 footer .content-1{
 	margin-top:40px;
 }
-footer .content-1 .col-lg-3{
+footer .content-1 .marg-top30{
 	margin-top:30px;
 }
 .info{
@@ -80,10 +82,20 @@ footer .content-1 .col-lg-3{
 .address{
 	margin-top:20px;
 	line-height: 1.4;
+	padding-right: 15px;
 }
-footer .map a{
-	margin-top:18px;
-	font-size:14px;
+.map-left {
+	padding-left:10px;
+	position: relative;
+	top: 20px;
+	float: left;
+}
+img.map-trigger{
+	display: inline-block;
+	float: left;
+}
+.show {
+	display: inline-block!important;
 }
 footer .content-1 .list{
 	padding-top: 12px;
@@ -122,6 +134,14 @@ footer #content-map iframe{
 	height: 550px;
 	border: 0;
 }
+footer .content-1 .map .pull-left{
+	padding-left: 0px;
+	margin-top: 0px;
+}
+footer .fb-custom{
+	padding-left: 30px;
+	padding-right: 0px;
+}
 @media only screen and (max-width: 768px) {
 	footer .content-3 p{
 		text-align:center;
@@ -136,8 +156,31 @@ footer #content-map iframe{
 		color: inherit; 
 		text-decoration: none; 
 	}
+	.info {
+    	font-size: 13px;
+	}
+	footer h2 {
+    	font-weight: bold;
+    	font-size: 19px;
+	}
+	footer .content-1 .list li a {
+    	font-size: 13px;
+	}
 }
-@media only screen and (max-width: 420px){
+@media only screen and (max-width: 736px){
+	.line-down{
+		display: none;
+	}
+	footer .content-1 h3.address{
+		text-align: center;
+		padding-right: 0px;
+	}
+	footer .fb-custom{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+@media only screen and (max-width: 414px){
 	footer #content-map iframe{
 		height: auto;
 	}
@@ -151,5 +194,11 @@ footer #content-map iframe{
 @media only screen and (max-width: 320px){
 	footer #content-map iframe{
 		height: auto;
+	}
+	footer h2{
+		font-size: 14px;
+	}
+	footer .content-1 .list li a{
+		font-size: 12px;
 	}
 }

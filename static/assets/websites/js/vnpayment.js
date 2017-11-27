@@ -40,13 +40,14 @@ $(document).ready(function() {
                 endSession();
                 var id_showtime = $('#payment_form input[name=id_showtime]').val();
                 var id_server = $('#payment_form input[name=id_server]').val();
+                var movie_api_id = $('#payment_form input[name=movie_api_id]').val();
                 var id_movie_name = $('#payment_form input[name=id_movie_name]').val();
                 var id_movie_time = $('#payment_form input[name=id_movie_time]').val();
                 var id_movie_date_active = $('#payment_form input[name=id_movie_date_active]').val();
 
                 window.location.href = '/booking?id_showtime='+ id_showtime + '&id_server='+ id_server
                             + '&id_movie_name='+ id_movie_name + '&id_movie_time='+ id_movie_time
-                            + '&id_movie_date_active='+ id_movie_date_active;
+                            + '&id_movie_date_active='+ id_movie_date_active + '&movie_api_id='+ movie_api_id;
             };
         }
     }

@@ -83,12 +83,6 @@ ul.errorlist li, .error{
 .load-more:focus, .load-more:active:focus{
     outline: none;
 }
-@media screen and (max-width: 420px) {
-    .load-more{
-        width: 150px;
-        margin-left: 0;
-    }
-}
 .page-title-timeout{
     width: 100%;
     border-bottom: 2px solid #ff5400;
@@ -116,4 +110,26 @@ ul.errorlist li, .error{
 }
 .form-control{
     line-height: 30px;
+}
+@media only screen and (max-width: 736px){
+    .main-container{
+        margin-top: 0px;
+    }
+}
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
+    .page-header{
+        height: 192px;
+    }
+}
+@media screen and (max-width: 414px) {
+    .page-header{
+        height: 143px;
+    }
+    .load-more{
+        width: 150px;
+        margin-left: 0;
+    }
 }

@@ -178,7 +178,7 @@ def news(request):
             news_json = []
             for item in news_page.object_list:
                 news_json.append({"id": item.id, "image": str(
-                    item.image), "apply_date": item.apply_date})
+                    item.image), "apply_date": item.apply_date, "name": item.name, "end_date": item.end_date})
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
 

@@ -9,6 +9,11 @@
         margin: 0 10px 0 10px;
     }
 }
+@media only screen and (min-width: 736px){
+    .vnpayment .btn-default {
+        margin-right: 55px;
+    }
+}
 @media only screen and (min-width: 1024px){
     .vnpayment #create_form button{
         margin-right: 60px;
@@ -85,4 +90,38 @@
 }
 .vnpayment input,.vnpayment textarea{
     padding-left: 16px;
+}
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
+    .responsive-payment{
+        width: 50%;
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+@media only screen 
+and (width: 568px) 
+and (orientation: landscape){
+    .vnpayment .form-control{
+        width: 232px;
+    }
+}
+@media only screen and (max-width: 414px){
+    .payment-return .row{
+        border-bottom: 1px solid;
+        padding-bottom: 10px;
+    }
+    #payment_form{
+        margin-left: 20px;
+    }
+}
+@media only screen and (max-width: 360px){
+    #payment_form{
+        margin-left: 15px;
+    }
 }

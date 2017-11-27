@@ -168,6 +168,16 @@ ul ~ label{
 }
 .ui-overlay-shadow .bg-warning{
 	background-color: #ff5400;
+#myTabContent input[type=number] {
+	-moz-appearance: textfield;
+}
+.col-main{
+    margin-bottom: 0px;
+}
+@media  only screen and (max-width: 767px){
+	.form-address #address{
+		width: 265px;
+	}
 }
 /* Portrait and Landscape */
 @media only screen and (max-width: 768px) {
@@ -215,4 +225,18 @@ ul ~ label{
 	#myTabContent a.login-forgot-pass {
 		padding: 10px 0 0 ;
 	}
+}
+@media only screen 
+  and (min-width: 375px) 
+  and (max-width: 736px)
+  and (orientation: landscape) { 
+    .top-row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .top-row > div {
+      float: left;
+      width: 50%;
+    }
 }

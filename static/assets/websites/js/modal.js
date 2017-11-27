@@ -143,13 +143,14 @@ $(document).ready(function() {
                     // Get value member form
                     var id_showtime = $('#member_form input[name=id_showtime]').val();
                     var id_server = $('#member_form input[name=id_server]').val();
+                    var movie_api_id = $('#member_form input[name=movie_api_id]').val();
                     var id_movie_name = $('#member_form input[name=id_movie_name]').val();
                     var id_movie_time = $('#member_form input[name=id_movie_time]').val();
                     var id_movie_date_active = $('#member_form input[name=id_movie_date_active]').val();
 
                     window.location.href = '/booking?id_showtime=' + id_showtime + '&id_server=' + id_server +
                         '&id_movie_name=' + id_movie_name + '&id_movie_time=' + id_movie_time +
-                        '&id_movie_date_active=' + id_movie_date_active;
+                        '&id_movie_date_active=' + id_movie_date_active + '&movie_api_id=' + movie_api_id;
                 })
                 .fail(function(data) {
                     if (data.responseJSON.code == 400) {
@@ -224,6 +225,7 @@ $(document).ready(function() {
                 '<a href="#" >' +
                 '<input type="hidden" name="id_showtime" value="' + value.id_showtime + '">' +
                 '<input type="hidden" name="id_movie_name" value="' + shedule.movie_name + '">' +
+                '<input type="hidden" name="movie_api_id" value="' + movie_api_id + '">' +
                 '<span class="time">' +
                 value.time + '<span class="time-end">' + endTime + '</span>' +
                 '</span>' +
@@ -268,7 +270,7 @@ $(document).ready(function() {
             movie_api_id = $(this).attr("data-movie-api-id");
         }
 
-        if ($(this).attr("data-all-movie") || $(this).attr("data-date-seat")) {
+        if ($(this).attr("data-all-movie")) {
             movie_api_id = null;
         }
 
@@ -277,6 +279,11 @@ $(document).ready(function() {
             var date_seat = $(this).attr("data-date-seat");
             $('.days-popup [data-date-select = ' + date_seat + ']').addClass('active-date');
             var date_query = date_seat;
+            if($('.booking-details #movie_api_id').val() != 'null'){
+                movie_api_id = $('.booking-details #movie_api_id').val()
+            }
+            //set data for Month
+            $('#center-month').text($('.days-popup li.active-date').children('.hide-month').text());
         } else {
             // get date time on page popup
             if ($(this).attr("data-date-select")) {
@@ -332,11 +339,13 @@ $(document).ready(function() {
             event.preventDefault();
             var id_showtime = $(this).children('input[name=id_showtime]').val();
             var id_movie_name = $(this).children('input[name=id_movie_name]').val();
+            var movie_api_id = $(this).children('input[name=movie_api_id]').val();
             var id_movie_time = $(this).children('span[class=time]').text();
             var id_server = $('.list-cinema .active').attr('data-id-server');
 
             $('.modal input[name=id_server]').val(id_server);
             $('.modal input[name=id_showtime]').val(id_showtime);
+            $('.modal input[name=movie_api_id]').val(movie_api_id);
             $('.modal input[name=id_movie_name]').val(id_movie_name);
             $('.modal input[name=id_movie_time]').val(id_movie_time);
             $('.modal input[name=id_movie_date_active]').val($("li.active-date").attr("data-date-select"));

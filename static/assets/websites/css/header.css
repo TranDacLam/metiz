@@ -12,8 +12,8 @@
     color: #ffffff;
     padding-left: 0px;
     padding-right: 0px;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .navbar-nav li.dropdown>a:focus{
 	/* opacity:0; */
@@ -76,9 +76,11 @@ ul.dropdown-menu>li>a:hover{
 	color: #ff5400;
 }
 .navbar-nav li.custom-user-header{
-	margin-left: -26px;
+	margin-left: -36px;
 }
-.navbar-nav li.hover-user-header a:hover{
+.navbar-nav li.hover-user-header a:hover,
+.navbar-nav li.hover-user-header a span.name-user-header:hover,
+.navbar-nav li.hover-user-header a span.responsive-name-user:hover{
 	color: #ff5400;
 }
 .navbar-nav li.hover-user-header a:hover span{
@@ -87,6 +89,9 @@ ul.dropdown-menu>li>a:hover{
 .navbar-nav li.hover-user-header a{
 	color: #7e8eaa;
 	font-size: 14px;
+}
+.hover-user-header .responsive-name-user{
+	display: none;
 }
 @media only screen and (min-width: 771px){
 	#header {
@@ -175,10 +180,6 @@ ul.dropdown-menu>li>a:hover{
 	    background: #031327;
 	}
 	
-	.nav.navbar-nav{
-		padding-top: 50px;
-
-	}
 	.logo {
 		margin-top:13px;
 		left: 0px;
@@ -199,6 +200,8 @@ ul.dropdown-menu>li>a:hover{
 		display: block;
     	position: relative;
     	width: 100px;
+    	background: #031327;
+    	bottom: 27px;
 	}
 	.logo-medium img{
 		width: 100%;
@@ -206,6 +209,7 @@ ul.dropdown-menu>li>a:hover{
 	
 	.page-header{
 		border-bottom:none;
+		height: 70px;
 	}
 	.collapse-custom{
 		border-bottom:none;
@@ -213,7 +217,12 @@ ul.dropdown-menu>li>a:hover{
 	.skip-links{
 		border:none;
 	}
-
+	.hover-user-header .name-user-header{
+		display: none;
+	}
+	.hover-user-header .responsive-name-user{
+		display: block;
+	}
 }
 
 /* Navbar change */
@@ -278,10 +287,6 @@ ul.dropdown-menu>li>a:hover{
 	    padding: 20px;
 	    margin-top: -26px;
 	}
-	.skip-link.skip-account.navbar-toggle {
-		border-right: 1px solid #EDEDED;
-	}
-
 	ul.dropdown-menu li a{
 		color: #636363;
 	}
@@ -308,10 +313,30 @@ ul.dropdown-menu>li>a:hover{
 	.navbar-nav li.hover-user-header{
 		display: none;
 	}
+	#menuNavbar .navbar-nav{
+		margin: 1.5px -15px;
+	}
+}
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
+	.navbar-nav li.dropdown>a{
+		margin-left: 0px;
+    	margin-right: 0px;
+	}
+	.navbar-header .skip-links #menu-btn,
+	.navbar-header .skip-links #login-btn{
+		height: 50px;
+		font-size: 25px;
+	}
+	.navbar-header .skip-links{
+		background-color: #031327;
+	}
 }
 @media only screen and (max-width: 480px){
 	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-	    background-color: #10132d;
+	    background-color: #eee;
 	    border-color: #337ab7;
 	}
 	.icon-nav{
@@ -349,5 +374,17 @@ ul.dropdown-menu>li>a:hover{
 	.navbar-nav li.dropdown>a{
 		margin-left: 10px;
 		padding-left: 27px;
+	}
+	.navbar-header .skip-links #menu-btn,
+	.navbar-header .skip-links #login-btn{
+		height: 50px;
+		font-size: 25px;
+	}
+	.navbar-header .skip-links{
+		background-color: #031327;
+	}
+	.navbar-nav li.dropdown>a{
+		margin-left: 0px;
+    	margin-right: 0px;
 	}
 }

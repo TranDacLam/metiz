@@ -19,22 +19,34 @@
 		<div id="messages_product_view">
 		</div>
 		<div class="postWrapper">
-			<div class="postTitle">
-				<h2>{{new.name}}</h2>
-			</div>
 			<div class="postContent">
 				<div class="detail-content-new-offer">
-					<div class="col-left-detail-content-new-offer"><span> <img alt="" src="{{MEDIA_URL}}{{new.image}}"> </span></div>
+					<div class="col-left-detail-content-new-offer">
+						<ul>
+							<li> <img alt="" src="{{MEDIA_URL}}{{new.image}}"> </li>
+							<br>
+							<!-- Button like and share Facebook  -->
+							<li class="button-like-share">
+								<div class="fb-like fb_iframe_widget" data-href="http://{{ request.get_host }}{% url 'new_detail' new.id %}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
+					            </div>
+							</li>
+						</ul>
+					</div>
 					<div class="col-right-detail-content-new-offer">
 						<div class="social-detail-content-new-offer">
 							<div class="fb-like" data-href="#" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false">
-								{{new.content| safe}}
-								<p>&nbsp;</p>
-								{% if new.condition %}
-									<p><strong>Điều kiện & điều khoản</strong></p>
+								<div class="postTitle">
+									<h2>{{new.name}}</h2>
+								</div>
+								<div class="postDetail">
+									{{new.content| safe}}
 									<p>&nbsp;</p>
-									{{new.condition| safe}}
-								{% endif %}
+									{% if new.condition %}
+										<p><strong>Điều kiện & điều khoản</strong></p>
+										<p>&nbsp;</p>
+										{{new.condition| safe}}
+									{% endif %}
+								</div>
 							</div>
 						</div>
 					</div>

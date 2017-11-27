@@ -112,6 +112,7 @@
                                         <div id="error"></div>
                                         <input type="hidden" name="id_server" id="id_server">
                                         <input type="hidden" name="id_showtime" id="id_showtime">
+                                        <input type="hidden" name="movie_api_id" id="movie_api_id">
                                         <input type="hidden" name="id_movie_name" id="id_movie_name">
                                         <input type="hidden" name="id_movie_time" id="id_movie_time">
                                         <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
@@ -146,6 +147,7 @@
                                     {% csrf_token %}
                                     <input type="hidden" name="id_server" id="id_server">
                                     <input type="hidden" name="id_showtime" id="id_showtime">
+                                    <input type="hidden" name="movie_api_id" id="movie_api_id">
                                     <input type="hidden" name="id_movie_name" id="id_movie_name">
                                     <input type="hidden" name="id_movie_time" id="id_movie_time">
                                     <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
@@ -160,8 +162,7 @@
                                         <div class="form-group form-phone">
                                             <label>{% trans "Phone" %}</label>
                                             <div class="country-code">+84</div>
-                                            <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control" value="{{request.session.phone}}" pattern="\d*">
-                                            <!-- pattern attr for mobile -->
+                                            <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{{request.session.phone}}"  pattern="\d*">
                                             <label  class="form-error" for="phone" id='phone-error'></label>
                                         </div>
                                         <div class="form-group">
@@ -196,6 +197,7 @@
                             {% csrf_token %}
                             <input type="hidden" name="id_server" id="id_server">
                             <input type="hidden" name="id_showtime" id="id_showtime">
+                            <input type="hidden" name="movie_api_id" id="movie_api_id">
                             <input type="hidden" name="id_movie_name" id="id_movie_name">
                             <input type="hidden" name="id_movie_time" id="id_movie_time">
                             <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
