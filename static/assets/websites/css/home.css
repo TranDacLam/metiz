@@ -119,7 +119,7 @@
     height: 62%;
 
 }
-#news .word-wrap .detail-btn{
+#news .detail-btn{
     border-radius: 25px;
     border: 1.5px solid #ffffff;
     font-weight: bold;
@@ -371,6 +371,10 @@ ul.metiz-movie-tabs {
     .detail-pay-film a{
         padding: 12px 19px 12px 19px;
     }
+    #news .detail-btn{
+        padding: 12px 19px 12px 19px;
+        width: 104px;
+    }
     #news #box{
         width: 446px;
     }
@@ -412,7 +416,7 @@ ul.metiz-movie-tabs {
         padding-top: 15px;
         font-size: 17px;
     }
-    #news .bg_hover .detail-btn{
+    #news .detail-btn{
         font-size: 17px;
     }
 	#news #box {
@@ -459,10 +463,11 @@ ul.metiz-movie-tabs {
     .detail-pay-film button, .detail-pay-film a{
         font-size: 13px;
     }
-    #news .bg_hover .detail-btn{
-        padding: 7px 16px 7px 16px;
+    #news .detail-btn{
+        padding:7px 18.5px 7px 18.5px;
         font-size: 13px;
         line-height: 19px;
+        width: 86px;
     }
    .session-movie dl{
     margin-bottom: 0px;
@@ -668,7 +673,7 @@ ul.metiz-movie-tabs {
     #news .bg_hover .detail-btn{
         font-size: 9px;
         padding: 2px 9px 2px 9px;
-        width: 68px;
+        width: 52px;
     }
 }
 @media screen and (max-width: 380px) {

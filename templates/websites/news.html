@@ -33,7 +33,9 @@
 								<div class="content-new-offer">
 									<div class="colum-left-new-offer">
 										<div class="poster-small-new-offer">
-											<img alt="" src="{{MEDIA_URL}}{{item.image}}">
+											<div class="crop-square">
+												<img alt="" src="{{MEDIA_URL}}{{item.image}}">
+											</div>
 											<div class="colum-right-new-offer">
 												{% if item.end_date %}
 													<div class="format-new-offer release-day-new-offer">
