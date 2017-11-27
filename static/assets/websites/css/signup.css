@@ -168,11 +168,12 @@ ul ~ label{
 }
 /* Portrait and Landscape */
 @media only screen and (max-width: 768px) {
-
-
 	#myTabContent button[type=submit] {
 		margin: 15px 0 10px;
 	}
+    .modal-open {
+        position:fixed;
+    }
 }
 @media  only screen and (max-width: 767px){
 	.form-address #address{
