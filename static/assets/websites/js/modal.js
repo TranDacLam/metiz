@@ -19,9 +19,11 @@ $(document).ready(function() {
         if (navigator.userAgent.match(/iPhone|iPod|iPad|/i)){
             $('#modal-popup .modal').on('shown.bs.modal', function() {
                 $('body').css('overflow', 'hidden');
+                $('.mfp-ready').attr('style', 'overflow-y:hidden');
             });
             $('#modal-popup .modal').on('hide.bs.modal', function() {
                 $('body').css('overflow', 'scroll');
+                $('.mfp-ready').attr('style', 'overflow-y:auto');
             });
         }
 
@@ -46,7 +48,7 @@ $(document).ready(function() {
             'phone': 'Số điện thoại không hợp lệ',
             'minlength_2': 'Nhập ít nhất 2 kí tự',
             'minlength_6': 'Nhập ít nhất 6 kí tự',
-            'minlength_8': 'Nhập ít nhất 8 kí tự',
+            'minlength_8': 'Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.',
             'email': 'Email không hợp lệ',
             'number': 'Nhập các chữ số',
             'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
@@ -123,7 +125,7 @@ $(document).ready(function() {
             },
             password: {
                 required: message.required,
-                minlength: message.minlength_8,
+                minlength: message.validatePassword,
             }
         },
         submitHandler: function(form) {
