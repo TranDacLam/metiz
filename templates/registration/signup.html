@@ -92,19 +92,19 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Birth Date" %}</label>
-                                            <div class="inline">
+                                            <div class="inline birthday-inline">
                                                 <input type="text" name="birth_date" id="birth_date" placeholder="{% trans 'Choose Your Birthday' %}" class="form-control" value="{% if birth_date %}{{ birth_date }}{% endif %}" tabindex=3 >
                                                 {% if form.errors.birth_date %}
                                                     {{form.errors.birth_date}}
                                                 {% endif %}
-                                                <label id="birth_date-error" class="error valid" for="birth_date">OK!</label>
+                                                <label id="birth_date_valid" class="valid" for="birth_date">OK!</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Phone" %}</label>
                                             <div class="inline">
                                                 <div class="country-code">+84</div>
-                                                <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" tabindex="4" value="{{ phone }}">
+                                                <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" tabindex="4" value="{{ phone }}"  pattern="\d*" >
                                                 {% if form.errors.phone %}
                                                     {{form.errors.phone}}
                                                 {% endif %}
@@ -126,7 +126,7 @@
                                         <div class="col-sm-6 form-group">
                                             <label>{% trans "Personal ID" %}</label>
                                             <div class="inline">
-                                                <input type="number" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Personal ID Here' %}" class="form-control" tabindex=6 value="{% if personal_id %}{{ personal_id }}{% endif %}">
+                                                <input type="number" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Personal ID Here' %}" class="form-control" tabindex=6 pattern='\d' value="{% if personal_id %}{{ personal_id }}{% endif %}" pattern="\d*">
                                                 {% if form.errors.personal_id %}
                                                     {{form.errors.personal_id}}
                                                 {% endif %}
@@ -135,52 +135,50 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>{% trans "Password"%}</label>
-                                                <div class="inline">
-                                                    <input type="password" id="password1" name="password1" 
-                                                    placeholder="{% trans 'Enter Password Here' %}"class="form-control" tabindex=7 value="{% if password1 %}{{ password1 }}{% endif %}">
-                                                    {% if form.errors.password1 %}
-                                                        {{form.errors.password1}}
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>{% trans "Confirm Password" %}</label>
-                                                <div class="inline">
-                                                    <input type="password" name="password2" id="password2" class="form-control" placeholder="{% trans 'Enter Password Again' %}" tabindex=8 value="{% if password2 %}{{ password2 }}{% endif %}">
-                                                    {% if form.errors.password2 %}
-                                                        {{form.errors.password2}}
-                                                    {% endif %}
-                                                </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "Password"%}</label>
+                                            <div class="inline">
+                                                <input type="password" id="password1" name="password1" 
+                                                placeholder="{% trans 'Enter Password Here' %}"class="form-control" tabindex=7 value="{% if password1 %}{{ password1 }}{% endif %}">
+                                                {% if form.errors.password1 %}
+                                                    {{form.errors.password1}}
+                                                {% endif %}
                                             </div>
                                         </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>{% trans "City"%}</label>
-                                                <div class="inline">
-                                                    <input type="hidden" id="id_city" value="{{ city }}">
-                                                    <select class="form-control list-city" name="city" id="city" tabindex=9>
-                                                        <option value="" disabled selected>{% trans "Choose City" %}</option>
-                                                    </select>
-                                                    {% if form.errors.city %}
-                                                        {{form.errors.city}}
-                                                    {% endif %}
-                                                </div>
+                                        <div class="col-sm-6 form-group ">
+                                            <label>{% trans "Confirm Password" %}</label>
+                                            <div class="inline">
+                                                <input type="password" name="password2" id="password2" class="form-control" placeholder="{% trans 'Enter Password Again' %}" tabindex=8 value="{% if password2 %}{{ password2 }}{% endif %}">
+                                                {% if form.errors.password2 %}
+                                                    {{form.errors.password2}}
+                                                {% endif %}
                                             </div>
-                                            <div class="form-group">
-                                                <label>{% trans "District"%}</label>
-                                                 <div class="inline">
-                                                    <input type="hidden" id="id_district" value="{{ district }}">
-                                                    <select class="form-control list-district" name="district" id="district" tabindex=10>
-                                                        <option disabled selected>{% trans "Choose District" %}</option>
-                                                    </select>
-                                                    {% if form.errors.district %}
-                                                        {{form.errors.district}}
-                                                    {% endif %}
-                                                </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <label>{% trans "City"%}</label>
+                                            <div class="inline">
+                                                <input type="hidden" id="id_city" value="{{ city }}">
+                                                <select class="form-control list-city" name="city" id="city" tabindex=9>
+                                                    <option value="" disabled selected>{% trans "Choose City" %}</option>
+                                                </select>
+                                                {% if form.errors.city %}
+                                                    {{form.errors.city}}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 form-group ">
+                                            <label>{% trans "District"%}</label>
+                                             <div class="inline">
+                                                <input type="hidden" id="id_district" value="{{ district }}">
+                                                <select class="form-control list-district" name="district" id="district" tabindex=10>
+                                                    <option disabled selected>{% trans "Choose District" %}</option>
+                                                </select>
+                                                {% if form.errors.district %}
+                                                    {{form.errors.district}}
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>

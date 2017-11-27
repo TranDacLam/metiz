@@ -24,8 +24,11 @@
 #myTabContent .input-group{
 	display:inline;
 }
-#myTabContent #birth_date-error{
-	visibility:hidden;
+#myTabContent #birth_date_valid{
+	display:none;
+}
+.birthday-inline{
+	height: 30px;
 }
 #myTabContent label.valid {
 	width: 20px;
@@ -39,7 +42,10 @@
 	color: red;
 	padding: 5px 0 0;
 	margin-top: 2px;
-	
+}
+/* hide valid of validate jquery */
+#myTabContent .input-group .valid#birth_date-error{
+	display:none!important;
 }
 #signup_form .form-inline {
     display: block;
@@ -168,7 +174,20 @@ ul ~ label{
 		margin: 15px 0 10px;
 	}
 }
+@media  only screen and (max-width: 767px){
+	.form-address #address{
+		width: 265px;
+	}
+	#signup_form .form-group{
+		width:50%;
+		float:left;
+	}
+}
 @media  only screen and (max-width: 480px){
+	#signup_form .form-group{
+		width:100%;
+		float:none;
+	}
 	#jtdb-0 .modal-content{
         width: auto;
     }
