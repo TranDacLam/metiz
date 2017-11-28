@@ -45,7 +45,7 @@ def call_api_post_booking(full_name, phone, email, seats_choice, id_server=1, ur
             "id_server": id_server,
             "phone": phone,
             "list_seats": str(seats_choice),
-            "full_name": str(full_name),
+            "full_name": str(full_name).replace("<", "").replace(">", "").replace("&", "").replace("'", "").replace('\\', ""),
             "email": email
 
         }
