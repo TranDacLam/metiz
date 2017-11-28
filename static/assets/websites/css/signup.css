@@ -27,9 +27,7 @@
 #myTabContent #birth_date_valid{
 	display:none;
 }
-.birthday-inline{
-	height: 30px;
-}
+
 #myTabContent label.valid {
 	width: 20px;
 	height: 20px;
@@ -189,6 +187,12 @@ ul ~ label{
 		width:100%;
 		float:none;
 	}
+	#birth_date_valid {
+		position: relative;
+		float: right;
+		bottom: 30px;
+		left: -8px;
+	}
 	#jtdb-0 .modal-content{
         width: auto;
     }
@@ -196,7 +200,7 @@ ul ~ label{
 		width: 90%;
 	}
 	#myTabContent .input-group {
-        display: inline;
+        display: inline-block;
     }
 	#myTabContent .input-group #birth_date{
 		width: 90%;
@@ -229,6 +233,11 @@ span.closer.glyphicon.glyphicon-remove.pull-left {
 }
 .ui-datebox-flipcenter.ui-overlay-shadow{
 	top: -21px !important;
+}
+@media screen and (max-width: 320px){
+	#birth_date_valid {
+		left: -2px;
+	}
 }
 @media only screen 
   and (min-width: 375px) 
