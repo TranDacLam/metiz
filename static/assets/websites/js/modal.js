@@ -23,24 +23,33 @@ $(document).ready(function() {
             $('body').css('overflow', 'scroll');
             $('.mfp-ready').attr('style', 'overflow-y:auto');
         });
+         // active popup
+        $('.open-popup-link').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            enableEscapeKey: false,
+            fixedContentPos: true,
+            //prevent background scroll
+            callbacks: {
+                open: function() {
+                    $('body').css('overflow', 'hidden');
+                },
+                close: function() {
+                    $('body').css('overflow', 'auto');
+                },
+            }
+        });
 
+    }else{
+        // active popup
+        $('.open-popup-link').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            enableEscapeKey: false,
+            fixedContentPos: true,
+        });
     }
-    // active popup
-    $('.open-popup-link').magnificPopup({
-        type: 'inline',
-        midClick: true,
-        enableEscapeKey: false,
-        fixedContentPos: true,
-        //prevent background scroll
-        callbacks: {
-            open: function() {
-                $('body').css('overflow', 'hidden');
-            },
-            close: function() {
-                $('body').css('overflow', 'auto');
-            },
-        }
-    });
+    
 
 
     // Validate guest_form, update_form
