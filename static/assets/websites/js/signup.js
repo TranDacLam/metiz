@@ -152,6 +152,13 @@ $(document).ready(function() {
 
 
     // set datetimepicker for signup and profile
+
+    // Get current date 5 year ago
+    var date_now = new Date();
+    var date_day = ("0" + date_now.getDate()).slice(-2);
+    var date_month = ("0" + (date_now.getMonth() + 1)).slice(-2);
+    var date_today = (date_now.getFullYear() - 5) + "-" + (date_month) + "-" + (date_day);
+
     $('#birth_date').datebox({
             mode: "calbox",
             beforeToday: true,
@@ -162,7 +169,7 @@ $(document).ready(function() {
             calUsePickers: true,
             calHighToday:true,
             themeDatePick: 'warning',
-            defaultValue: "1996-01-01",
+            defaultValue: date_today,
             calYearPickMax: 'NOW',
             calYearPickMin: 100,
             beforeOpenCallback: function(){
@@ -189,7 +196,7 @@ $(document).ready(function() {
             useFocus: true,
             useButton: false,
             useHeader: true,
-            defaultValue: "1996-01-01",
+            defaultValue: date_today,
         });
     }
     $('#birth_date').attr("readonly", false);
