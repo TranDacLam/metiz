@@ -17,6 +17,15 @@ $(document).ready(function($) {
         midClick: true,
         enableEscapeKey: false,
         fixedContentPos: true,
+        //prevent background scroll
+        callbacks: {
+            open: function() {
+                $('body').css('overflow', 'hidden');
+            },
+            close: function() {
+                $('body').css('overflow', 'auto');
+            },
+        }
     });
     
 	//  load more

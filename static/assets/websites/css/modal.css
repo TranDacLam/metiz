@@ -314,6 +314,20 @@
     border-color: #ff5400;
     font-size: 16px;
 }
+/* change background for schedule firm on mobile */
+.list-inline li .mobile-schedule{
+    background-color: #ff5400;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+.list-inline li .mobile-schedule .time-end{
+    display: inline;
+}
+.list-inline li .mobile-schedule .time{
+    border-color: #ff5400;
+    font-size: 16px;
+}
 /* .list-inline li:hover .time{
     display: none;
 } */
