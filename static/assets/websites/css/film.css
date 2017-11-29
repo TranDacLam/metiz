@@ -21,6 +21,9 @@
 	overflow: visible;
 	clip: auto; 
 }
+.sr-only.percent0 {
+	display: none;
+}
 .rating-container .clear-rating {
 	display: none;
 }
