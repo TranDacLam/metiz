@@ -1,0 +1,14 @@
+.content-error{
+    margin: 100px 0;
+}
+.color-error{
+    color: #ff5400;
+}
+h1.color-error{
+    font-size: 90px;
+}
+h3.color-error{
+    font-size: 40px;
+    margin-top: -20px;
+    margin-bottom: 50px;
+}

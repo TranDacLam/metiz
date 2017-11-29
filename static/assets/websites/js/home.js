@@ -56,13 +56,17 @@ $(document).ready(function() {
                 autoWidth: true,
                 margin: 5,
             },
-            769: {
+            767: {
                 items: 3,
                 margin: 5,
             },
-            1024: {
+            992: {
                 items: 4,
                 margin: 20,
+            },
+            1025: {
+                items: 4,
+                margin: 35,
             }
         }
     }
