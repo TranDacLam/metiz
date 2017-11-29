@@ -131,6 +131,8 @@ class MovieForm(forms.ModelForm):
 
 class MovieAdmin(admin.ModelAdmin):
     form = MovieForm
+    # inlines = [GenreInline, ]
+    filter_horizontal = ('genre', )
     formfield_overrides = {
         models.TextField: {'widget': CKEditorUploadingWidget()},
     }

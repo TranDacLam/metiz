@@ -65,7 +65,7 @@ $(document).ready(function() {
             'minlength_6': 'Nhập ít nhất 6 kí tự',
             'minlength_8': 'Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.',
             'email': 'Email không hợp lệ',
-            'number': 'Nhập các chữ số',
+            'number': 'Vui lòng chỉ nhập các chữ số',
             'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
             'validatePassword': 'Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.',
             'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',
@@ -85,6 +85,15 @@ $(document).ready(function() {
         }
     }
 
+    // validate phone only number
+    // Form Update modal schedule
+    var selectorPhone_update_form = $("#update_form input[name=phone]");
+    // Form Guest modal schedule
+    var selectorPhone_guest_form = $("#guest_form input[name=phone]");
+    // Call back validOnlyNumber layout.js 
+    validOnlyNumber(selectorPhone_update_form, selectorPhone_update_form.val());
+    validOnlyNumber(selectorPhone_guest_form, selectorPhone_guest_form.val());
+
     //validate guest form, update form
     function validateForm(form) {
         $(form).validate({
@@ -99,6 +108,8 @@ $(document).ready(function() {
                 phone: {
                     required: true,
                     validatePhone: true,
+                    number: true,
+                    rangelength:[10, 12],
                 },
             },
             messages: {
@@ -112,6 +123,8 @@ $(document).ready(function() {
                 phone: {
                     required: message.required,
                     validatePhone: message.phone,
+                    number: message.number,
+                    rangelength: message.phone,
                 }
             }
         });

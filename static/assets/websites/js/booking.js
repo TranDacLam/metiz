@@ -81,6 +81,7 @@ $(document).ready(function() {
         var $cart = $('#selected-seats'), //Sitting Area
         $counter = $('#counter'), //Votes
         $total = $('#total'); //Total money
+        var maximumSeat = 8; // choice seat maximum is 8 seat
 
         var sameStr = '';
         var iArr = -1;
@@ -223,7 +224,8 @@ $(document).ready(function() {
                 ]
             },
             click: function () { //Click event
-                if (this.status() == 'available') { //optional seat
+                // Check status and maximum seat choice
+                if (this.status() == 'available' && sc.find('selected').length < maximumSeat) { //optional seat
                     $('<li>'+this.settings.label+'</li>')
                     // $('<li>'+(this.settings.character)+''+this.settings.label+'</li>')
                         .attr('id', 'cart-item-'+this.settings.id)
@@ -253,6 +255,11 @@ $(document).ready(function() {
                 } else if (this.status() == 'unavailable') { //sold
                     return 'unavailable';
                 } else {
+                    // check maximum seat result message
+                    if(sc.find('selected').length >= maximumSeat ){
+                        displayMsg();
+                        $('.msg-result-js').html(msgResult("Vui lòng chỉ chọn tối đa 8 ghế.", "warning"));
+                    }
                     return this.style();
                 }
             }
@@ -302,7 +309,7 @@ $(document).ready(function() {
             var totalSeat = seatPayment.length;
             var id_movie_name = $('.name-movie-booking').text();
             var id_movie_time = $('.time-movie-booking').text().replace('~', '-');
-            var id_movie_date_active = $('.btn-changeschedule').attr('data-date-seat');
+            var id_movie_date_active = $('.date-movie-booking').text();
 
             // check user selected seat?
             if(totalSeat < 1){
@@ -353,7 +360,7 @@ $(document).ready(function() {
     $('.date-movie-booking').text(getDate());
     function getDate(){
         var date_shedule = $('.date-movie-booking').text();
-        return date_shedule.replace(/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/g, '$3 - $2 - $1');
+        return date_shedule.replace(/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/g, '$3-$2-$1');
     }
 });
 //sum total money

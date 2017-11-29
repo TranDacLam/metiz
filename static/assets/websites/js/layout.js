@@ -12,3 +12,17 @@ $(document).ready(function() {
         return true;    
     });
 });
+
+// Valid only number input
+function validOnlyNumber(selector, prevVal){
+    selector.on("input", function (evt) {
+        var self = $(this);
+        // check value input only number
+        if (self.val().match(/^-?\d*(\.(?=\d*)\d*)?$/) !== null) {
+            prevVal = self.val()
+        } else {
+            // not number return value before
+            self.val(prevVal);
+        }
+    });
+}

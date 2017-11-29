@@ -40,7 +40,7 @@
     margin-top: 3px;
 }
 .profile-custom .country-code {
-    color: #bfbfbf;
+    color: #555;
     position: absolute;
     top: 32px;
     left: 23px;
@@ -138,6 +138,9 @@
     }
     .my-account .page-title{
         width: 85.5%;
+    }
+    .modal-open {
+        position: fixed;
     }
 }
 @media only screen and (max-width : 414px) {

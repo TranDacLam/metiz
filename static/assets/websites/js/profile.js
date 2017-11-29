@@ -4,12 +4,11 @@ $(document).ready(function() {
     var valid_pass = "Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.";
 
     // validate phone, persional only number
-    $('#profile-validate input[name=phone], #profile-validate input[name=personal_id]').keyup(function(e) {
-        if (/\D/g.test(this.value)) {
-            // Filter non-digits from input value.
-            this.value = this.value.replace(/\D/g, '');
-        }
-    });
+    var selectorPhone = $("#profile-validate input[name=phone]");
+    var selectorPersonal = $("#profile-validate input[name=personal_id]");
+    // Call back validOnlyNumber layout.js 
+    validOnlyNumber(selectorPhone, selectorPhone.val());
+    validOnlyNumber(selectorPersonal, selectorPersonal.val());
 
     // page profile
     $("#profile-validate").validate({
@@ -24,12 +23,14 @@ $(document).ready(function() {
             phone: {
                 required: true,
                 number: true,
+                rangelength:[10, 12],
             },
             email:{
                 required: true,
             },
             personal_id: {
                 number: true,
+                rangelength:[9, 9],
             }
         },
         messages:{
@@ -43,12 +44,14 @@ $(document).ready(function() {
             phone: {
                 required: val_required,
                 number: 'Vui lòng chỉ nhập số',
+                rangelength: "Số điện thoại không hợp lệ",
             },
             email: {
                 required: val_required,
             },
             personal_id: {
                 number: 'Vui lòng chỉ nhập số',
+                rangelength: 'Vui lòng nhập CMND gồm 9 chữ số'
             }  
         }
     });
