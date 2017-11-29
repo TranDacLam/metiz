@@ -15,6 +15,9 @@
 .ui-datebox-cal-pickers fieldset .input-sm:first-child{
     width: 57%!important;
 }
+.ui-datebox-cal-pickers fieldset .input-sm {
+    padding-top: 0px;
+}
 .profile-custom .input-group{
     display:inline;
 }
