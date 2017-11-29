@@ -13,7 +13,9 @@ $(document).ready(function() {
                                 +'<div class="content-new-offer">'
                                    +'<div class="colum-left-new-offer">'
                                         +'<div class="poster-small-new-offer">'
-                                            +'<img alt="" src="/media/'+ newoffer.image +'">'
+                                            +'<div class="crop-square">'
+                                                +'<img alt="" src="/media/'+ newoffer.image +'">'
+                                            +'</div>'
                                             +'<div class="colum-right-new-offer">'
                                                 +'<div class="format-new-offer release-day-new-offer">'
                                                     +'<h4>'+ getDate(newoffer.apply_date) 

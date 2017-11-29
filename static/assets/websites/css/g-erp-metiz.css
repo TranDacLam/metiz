@@ -3232,10 +3232,6 @@
 		display: inline-block;
 		width: 360px;
 	}
-	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer img {
-		height: auto;
-		width: 100% !important;
-	}
 	.cate-new-offer.products-grid--max-4-col > li:nth-child(3n){
 		margin-right: 0px !important;
 	}
