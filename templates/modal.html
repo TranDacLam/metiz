@@ -162,7 +162,7 @@
                                         <div class="form-group form-phone">
                                             <label>{% trans "Phone" %}</label>
                                             <div class="country-code">+84</div>
-                                            <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{{request.session.phone}}"  pattern="\d*">
+                                            <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{{request.session.phone}}"  pattern="\d*">
                                             <label  class="form-error" for="phone" id='phone-error'></label>
                                         </div>
                                         <div class="form-group">
@@ -213,7 +213,7 @@
                                 <div class="form-group form-phone">
                                     <label>{% trans "Phone" %}</label>
                                     <div class="country-code">+84</div>
-                                    <input type="number" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" 
+                                    <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" 
                                     value="{{user.phone}}">
                                     <label  class="form-error" for="phone" id='phone-error'></label>
                                 </div>
