@@ -184,7 +184,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-sm-12 form-group">
+                                        <div class="col-xs-12 form-group rsp-address">
                                             <label>{% trans "Address" %}</label>
                                             <div class="inline form-address">
                                                 <textarea name="address" id="address" placeholder="{% trans 'Enter Address Here' %}" rows="3" class="form-control" tabindex=11>{% if address %}{{ address }} {% endif %}</textarea>
@@ -195,16 +195,27 @@
                                         </div>  
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-12 form-group">
+                                        <div class="col-sm-6 form-group rsp-rules">
                                             <input name="is_agree" id="is_agree" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
                                             <label class="is_agree" for="is_agree">
                                                 Tôi đã đọc, hiểu và đồng ý với các <a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_chung">điều khoản</a>.</label>
+                                        </div>
+
+                                        <div class="col-sm-6 form-group">
+                                            <label for="amount">Captcha</label>
+                                            <div class="input-box">
+                                                {{ form.captcha }}
+                                            </div>
+                                            <span class="captcha-error"></span>
+                                            {% if form.captcha.errors %}
+                                                {{form.captcha.errors}}
+                                            {% endif %}
                                         </div>
                                     </div>
                                     {% if redirect_field_value %}
                                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> 
                                     {% endif %}
-                                    <div class="col-sm-12">
+                                    <div class="col-xs-12">
                                         <button type="submit" id='register' class="btn btn-login" tabindex=12 disabled>{% trans 'Signup' %}</button>
                                     </div>
                                 </div>

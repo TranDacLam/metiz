@@ -81,7 +81,19 @@
                         <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2" readonly>{% if not order_desc %}Phim: {{ id_movie_name }}, Ngày: {{ id_movie_date_active }}, Thời gian: {{ id_movie_time }}, Số ghế: {{ total_seats }}, Ghế: {{ seats }}, Rạp: Metiz Cinema.{% else %}{{ order_desc }}{% endif %}</textarea>
                     </div>
                 </div>
-                <div class="text-center">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="amount">Captcha</label>
+                        <div class="input-box">
+                            {{ form.captcha }}
+                        </div>
+                        <span class="captcha-error"></span>
+                        {% if form.captcha.errors %}
+                            {{form.captcha.errors}}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="text-center col-xs-12">
                     <input type="hidden" id="working_id" name="working_id" value="{{working_id}}" >
                     <input type="hidden" id="barcode" name="barcode" value="{{barcode}}" >
                     <input type="hidden" id="seats_choice" name="seats_choice" value="{{seats_choice}}" >

@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.sites.models import Site
 from django.conf import settings
 from django import forms
+from captcha.fields import ReCaptchaField
 from core.models import Contact
 from registration import metiz_email
 
@@ -13,6 +14,7 @@ class ContactForm(forms.Form):
     email = forms.CharField(widget=forms.TextInput())
     phone = forms.IntegerField(error_messages={'invalid': _('Enter a whole number.')}, widget=forms.TextInput(), required=True)
     message = forms.CharField(widget=forms.TextInput(), required=False)
+    captcha = ReCaptchaField(required=True)
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)

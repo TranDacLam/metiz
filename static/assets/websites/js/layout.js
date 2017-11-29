@@ -11,6 +11,17 @@ $(document).ready(function() {
         // submit once return true
         return true;    
     });
+
+    // Submit form check captcha
+    $('#contactForm, #payment_form, #signup_form').on('submit', function(e) {
+        if(grecaptcha.getResponse() == "") {
+            e.preventDefault();
+            $('.captcha-error').text("Vui lòng xác nhận captcha");
+            return false;
+        }
+        //recaptcha passed validation 
+        return true;
+    });
 });
 
 // Valid only number input
