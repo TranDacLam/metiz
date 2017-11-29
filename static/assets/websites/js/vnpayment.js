@@ -43,7 +43,7 @@ $(document).ready(function() {
                 var movie_api_id = $('#payment_form input[name=movie_api_id]').val();
                 var id_movie_name = $('#payment_form input[name=id_movie_name]').val();
                 var id_movie_time = $('#payment_form input[name=id_movie_time]').val();
-                var id_movie_date_active = $('#payment_form input[name=id_movie_date_active]').val();
+                var id_movie_date_active = getDate($('#payment_form input[name=id_movie_date_active]').val());
 
                 window.location.href = '/booking?id_showtime='+ id_showtime + '&id_server='+ id_server
                             + '&id_movie_name='+ id_movie_name + '&id_movie_time='+ id_movie_time
@@ -92,4 +92,9 @@ $(document).ready(function() {
     // format money
     var money_total = $('#payment_form input[name=amount-text]').val();
     $('#payment_form input[name=amount-text]').val(money_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
+
+    // Format date
+    function getDate(date_shedule){
+        return date_shedule.replace(/([0-9]{2})\-([0-9]{2})\-([0-9]{4})/g, '$3-$2-$1');
+    }
 });

@@ -44,6 +44,9 @@ nav.sidebar, .main{
 .post-detail-metiz li .pull-right{
     margin-top: 3px;
 }
+body.mfp-zoom-out-cur{
+    overflow: hidden;
+}
 @media only screen and (max-width: 768px){
     .col-left  .navbar-collapse, .skip-content {
         background-color: rgba(255, 255, 255, 0);
