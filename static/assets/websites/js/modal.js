@@ -100,7 +100,7 @@ $(document).ready(function() {
                     required: true,
                     validatePhone: true,
                     number: true,
-                    rangelength:[10, 12],
+                    rangelength:[9, 12],
                 },
             },
             messages: {
