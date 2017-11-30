@@ -75,7 +75,11 @@
 					</div>
 					<div class="movie-genre movie-info">
 						<label>Thể loại: </label>
-						<div class="std">{{film_detail.genre.name}}</div>
+						<div class="std">
+						{% for item in film_detail.genre.all%}
+							<span>{% if forloop.last %}{{ item }}{% else %}{{ item }},{% endif %}</span>
+						{% endfor %}
+						</div>
 					</div>
 					<div class="movie-release movie-info">
 						<label>Khởi chiếu: </label>

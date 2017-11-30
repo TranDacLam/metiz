@@ -15,17 +15,32 @@ $(document).ready(function() {
 
     //fix background scroll in modals on mobile
     if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
+        $('#modal-popup .modal').on('shown.bs.modal', function() {
+            $('body').css('overflow', 'hidden');
+            $('.mfp-ready').attr('style', 'overflow-y:hidden');
+        });
+        $('#modal-popup .modal').on('hide.bs.modal', function() {
+            $('body').css('overflow', 'scroll');
+            $('.mfp-ready').attr('style', 'overflow-y:auto');
+        });
+         // active popup
+        $('.open-popup-link').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            enableEscapeKey: false,
+            fixedContentPos: true,
+            //prevent background scroll
+            callbacks: {
+                open: function() {
+                    $('body').css('overflow', 'hidden');
+                },
+                close: function() {
+                    $('body').css('overflow', 'auto');
+                },
+            }
+        });
 
-        if (navigator.userAgent.match(/iPhone|iPod|iPad|/i)){
-            $('#modal-popup .modal').on('shown.bs.modal', function() {
-                $('body').css('overflow', 'hidden');
-                $('.mfp-ready').attr('style', 'overflow-y:hidden');
-            });
-            $('#modal-popup .modal').on('hide.bs.modal', function() {
-                $('body').css('overflow', 'scroll');
-                $('.mfp-ready').attr('style', 'overflow-y:auto');
-            });
-        }
+    }else{
         // active popup
         $('.open-popup-link').magnificPopup({
             type: 'inline',
@@ -33,14 +48,8 @@ $(document).ready(function() {
             enableEscapeKey: false,
             fixedContentPos: true,
         });
-    }else{
-        // active popup
-        $('.open-popup-link').magnificPopup({
-            type: 'inline',
-            midClick: true,
-            enableEscapeKey: false,
-        });
     }
+    
 
 
     // Validate guest_form, update_form
@@ -334,7 +343,6 @@ $(document).ready(function() {
                     if (value.lst_times.length > 0) {
                         html += listFilm(value);
                     }
-                    console.log(value);
                 });
                 $('.list-schedule').html(html);
                 getValue();
@@ -348,14 +356,14 @@ $(document).ready(function() {
                 $('.msg-result-js').html(msgResult("Error schedule film!", "danger"));
             });
     });
-
     function getValue() {
-        $('.sold-out a').click(function(event) {
-            event.preventDefault();
-            var id_showtime = $(this).children('input[name=id_showtime]').val();
-            var id_movie_name = $(this).children('input[name=id_movie_name]').val();
-            var movie_api_id = $(this).children('input[name=movie_api_id]').val();
-            var id_movie_time = $(this).children('span[class=time]').text();
+
+        function showPopup(element){
+
+            var id_showtime = element.children('input[name=id_showtime]').val();
+            var id_movie_name = element.children('input[name=id_movie_name]').val();
+            var movie_api_id = element.children('input[name=movie_api_id]').val();
+            var id_movie_time = element.children('span[class=time]').text();
             var id_server = $('.list-cinema .active').attr('data-id-server');
 
             $('.modal input[name=id_server]').val(id_server);
@@ -366,7 +374,7 @@ $(document).ready(function() {
             $('.modal input[name=id_movie_date_active]').val($("li.active-date").attr("data-date-select"));
 
             //set content for modal #warnning or skip
-            var rated = $(this).parents('.lot-table').attr('data-rated');
+            var rated = element.parents('.lot-table').attr('data-rated');
             // ingore null or p
             if (rated == 'null' || rated == 'p') {
                 $('#btn-skip').click();
@@ -375,7 +383,24 @@ $(document).ready(function() {
                 $('#warning #content-warnning').text(content[rated]);
                 $('#warning').modal('show');
             }
-        });
+        }
+
+        /* change background for schedule firm on mobile */
+        if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
+            $('.sold-out a').on('click', function(event) {
+                $(this).addClass('mobile-schedule');
+                showPopup($(this));
+            });
+            $('#modal-popup .modal').on('hide.bs.modal', function() {
+                $('.sold-out a').removeClass('mobile-schedule');
+            });
+        }else{
+            $('.sold-out a').click(function(event) {
+                event.preventDefault();
+                showPopup($(this));
+            });
+        }
+        
     }
     
     //checkbox for form guest
@@ -391,4 +416,6 @@ $(document).ready(function() {
     $("#modal-popup input[type=number]").on("keydown", function(e) {
         return e.keyCode == 69 ? false : true;
     });
+
+
 });

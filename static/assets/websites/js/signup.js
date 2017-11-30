@@ -45,6 +45,7 @@ $(document).ready(function() {
 
 	// validate form
 	$('#signup_form').validate({
+        focusInvalid: false,
 		rules:{
 			full_name:{
 				minlength: 2,
@@ -118,8 +119,10 @@ $(document).ready(function() {
             }else{
                 element.text('OK!').addClass('valid');
             }
-
-		}
+		},
+        invalidHandler: function() {
+            $(this).find("input.error").not('#birth_date').focus();
+        }
 	});
 
 	$('#login_form').validate({
@@ -191,14 +194,14 @@ $(document).ready(function() {
                     $('.input-group #birth_date-error').css('display', 'none');// of jquery validate
                     $('#birth_date').css('color','#555');
                 }
-                // hide tick image before show popup
-                $('.birthday-inline #birth_date_valid').css('display', 'none');
             },
             closeCallback: function(){
                 //if date valid show tick image
                 if($('#birth_date').val() != ''){
                     $('.birthday-inline #birth_date_valid').css('display', 'inline-block');
-                };
+                }else{
+                    $('.input-group #birth_date-error').css('display', 'inline-block');
+                }
             },
         });
 

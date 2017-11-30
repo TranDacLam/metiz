@@ -77,3 +77,13 @@ def get_rated():
     rated = Rated.objects.values('name', 'description')
     data = {item['name'] : item['description'] for item in rated }
     return json.dumps(data)
+
+@register.filter
+def list_to_string(list_genre):
+    str_genre = ''
+    for index, item in enumerate(list_genre):
+        if index == len(list_genre)-1:
+            str_genre += item.name
+        else:
+            str_genre += item.name +', '
+    return str_genre
