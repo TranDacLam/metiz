@@ -8,3 +8,4 @@ django-ckeditor
 #django-allauth
 requests
 pycrypto
+django-recaptcha

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # 'core.apps.CoreConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'captcha',
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',
@@ -237,6 +238,9 @@ LOGIN_URL='/'
 
 # Set timeout for choice seats
 TIME_SEAT_DELAY = 5
+
+# Config Google reCaptcha
+NOCAPTCHA = True
 
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:
