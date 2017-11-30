@@ -8,13 +8,16 @@
 				<img src="{{MEDIA_URL}}{{value.poster}}" alt="{{value.name}}">
 			</a>
 		</div>
+
 		
 		<div class="product-info">
 			<h2 class="product-name">
 			<a href="{% url 'film_detail' value.id %}" title="{{value.name}}">{{value.name|truncatechars:20}}</a></h2>
 			<div class="metiz-movie-info">
 				<span class="metiz-info-bold">Thể loại: </span>
-				<span class="metiz-info-normal product-cate">{{value.genre.name|truncatechars:12}}</span>
+				<span class="metiz-info-normal product-cate">
+					{{ value.genre.all|list_to_string|truncatechars:12 }}
+				</span>
 			</div>
 			<div class="metiz-movie-info">
 
