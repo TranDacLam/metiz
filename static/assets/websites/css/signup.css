@@ -70,6 +70,9 @@
 	background-color: #7e8eaa;
 	color: #ffffff;
 	font-weight: bold;
+} 
+li.login-wth90 {
+	width: 90px;
 }
 .btn-login:hover{
 	background-color: #ff4900;
@@ -205,6 +208,9 @@ ul ~ label{
     }
 	#signup_form .signup_fields{
 		padding: 0px;
+	}
+	.form-address #address{
+		width: 90%;
 	}
 	#myTabContent button[type=submit] {
 		margin: 15px 0 0;

@@ -314,6 +314,20 @@
     border-color: #ff5400;
     font-size: 16px;
 }
+/* change background for schedule firm on mobile */
+.list-inline li .mobile-schedule{
+    background-color: #ff5400;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+.list-inline li .mobile-schedule .time-end{
+    display: inline;
+}
+.list-inline li .mobile-schedule .time{
+    border-color: #ff5400;
+    font-size: 16px;
+}
 /* .list-inline li:hover .time{
     display: none;
 } */
@@ -363,13 +377,19 @@
     color: #ffffff;
     background: #7e8eaa;
     text-transform: uppercase;
+    padding: 8px;
 }
 #confirm .tab-header li a:hover{
     border-color: transparent;
 }
 #confirm .tab-header li.active a{
     background: #ff4900;
-    color: #ffffff
+    color: #ffffff;
+    padding: 8px;  
+}
+li.btn-guest-wth117 {
+    width: 103px;
+    text-align: center;
 }
 #confirm .tab-header li a:focus{
     background: #ff4900;
@@ -443,6 +463,7 @@
     opacity: 1;
     color: #5d5b5b;
 }
+
 .modal form button {
     text-transform: uppercase;
 }
