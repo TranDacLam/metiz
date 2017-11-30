@@ -15,7 +15,7 @@ $(document).ready(function() {
             },
             phone:{
                 required: true,
-                rangelength:[10, 12],
+                rangelength:[10, 11],
                 number: true
             },
             message:{
