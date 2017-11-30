@@ -25,6 +25,9 @@
 	float: none;
 	display: inline-block;
 }
+.metiz-movies .product-cate{
+	font-size: 13px;
+}
 @media screen and (max-width: 736px) {
 	.category-now-showing .page-title h1{
 		font-size: 25px;
