@@ -1,4 +1,18 @@
 $(document).ready(function() {
+    $(".form-validate").validate({
+        rules: {
+            email: {
+                required:true,
+                email:true,
+            },
+        },
+        messages:{
+            email: {
+                required: "Email không được để trống",
+                email: "Email không hợp lệ",
+            }
+        }
+    });
     var valid_pass = "Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt";
     $.validator.addMethod(
         "regex",

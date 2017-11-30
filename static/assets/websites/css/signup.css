@@ -70,6 +70,9 @@
 	background-color: #7e8eaa;
 	color: #ffffff;
 	font-weight: bold;
+} 
+li.login-wth90 {
+	width: 90px;
 }
 .btn-login:hover{
 	background-color: #ff4900;
@@ -128,7 +131,7 @@ ul ~ label{
 	display:none;
 }
 .form-address #address{
-	width: 100%;
+	width: 96%;
 	max-height: 70px;
 }
 #myTabContent button[type=submit]{
@@ -209,7 +212,7 @@ ul ~ label{
 		padding: 0px;
 	}
 	.form-address #address{
-		width: 250px;
+		width: 90%;
 	}
 	#myTabContent button[type=submit] {
 		margin: 15px 0 0;
