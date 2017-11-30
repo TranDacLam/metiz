@@ -98,6 +98,16 @@ contacts-index-index
 	                                {{forms.message.errors}}
 	                            {% endif %}
 							</li>
+							<li class="">
+								<label>Captcha</label>
+								<div class="input-box">
+									{{ forms.captcha }}
+								</div>
+								<span class="captcha-error"></span>
+								{% if forms.captcha.errors %}
+	                                {{forms.captcha.errors}}
+	                            {% endif %}
+							</li>
 						</div>
 					</ul>
 				</div>

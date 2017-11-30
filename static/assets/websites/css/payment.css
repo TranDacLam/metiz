@@ -116,12 +116,17 @@ and (orientation: landscape){
         border-bottom: 1px solid;
         padding-bottom: 10px;
     }
-    #payment_form{
-        margin-left: 20px;
+    .vnpayment .form-control{
+        width: 100%;
     }
 }
 @media only screen and (max-width: 360px){
     #payment_form{
         margin-left: 15px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .vnpayment .g-recaptcha iframe, .g-recaptcha>div{
+        margin-left: -9px;
     }
 }

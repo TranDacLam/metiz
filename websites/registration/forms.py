@@ -1,4 +1,5 @@
 from django import forms
+from captcha.fields import ReCaptchaField
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
@@ -66,6 +67,7 @@ class MetizSignupForm(UserCreationForm):
 
     phone = forms.CharField(error_messages={'unique':_("User with this phone already exists.")})
     email = forms.CharField(error_messages={'unique':_("User with this email already exists.")})
+    captcha = ReCaptchaField(required=True)
     
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request")

@@ -93,6 +93,16 @@ ul.dropdown-menu>li>a:hover{
 .hover-user-header .responsive-name-user{
 	display: none;
 }
+#header-nav .menu-ul-first{
+	left: 200px;
+	position: absolute;
+}
+#header-nav .menu-ul-first li{
+	margin-right: 60px;
+}
+.navbar-nav li.custom-user-header a{
+	margin-right: 0;
+}
 @media only screen and (min-width: 771px){
 	#header {
 		height: 70px;
@@ -115,6 +125,7 @@ ul.dropdown-menu>li>a:hover{
 		background: #031327;
 	    position: absolute;
 	    top: -96px;
+	    z-index: 1;
 	}
 	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
 	    background: none;
@@ -152,6 +163,11 @@ ul.dropdown-menu>li>a:hover{
 	}
 	.logo-small{
 		display:none;
+	}
+}
+@media only screen and (max-width: 1024px){
+	#header-nav .menu-ul-first li{
+		margin-right: 20px;
 	}
 }
 @media only screen and (min-width: 768px) and (max-width: 770px){
@@ -222,6 +238,9 @@ ul.dropdown-menu>li>a:hover{
 	}
 	.hover-user-header .responsive-name-user{
 		display: block;
+	}
+	#header-nav .menu-ul-first{
+		left: 110px;
 	}
 }
 
@@ -315,6 +334,10 @@ ul.dropdown-menu>li>a:hover{
 	}
 	#menuNavbar .navbar-nav, #loginNavbar .navbar-nav{
 		margin: 1.5px -15px;
+	}
+	#header-nav .menu-ul-first{
+		left: 20px;
+		position: static;
 	}
 }
 @media only screen 

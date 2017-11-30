@@ -23,7 +23,8 @@ $(document).ready(function() {
             phone: {
                 required: true,
                 number: true,
-                rangelength:[10, 12],
+                minlength: 9,
+                validatePhone: true,
             },
             email:{
                 required: true,
@@ -44,7 +45,8 @@ $(document).ready(function() {
             phone: {
                 required: val_required,
                 number: 'Vui lòng chỉ nhập số',
-                rangelength: "Số điện thoại không hợp lệ",
+                minlength: "Số điện thoại không hợp lệ",
+                validatePhone: "Số điện thoại không hợp lệ",
             },
             email: {
                 required: val_required,

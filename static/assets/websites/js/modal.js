@@ -85,6 +85,14 @@ $(document).ready(function() {
         }
     }
 
+    // Can enter 0 number at the end or middle but not at the geginning.
+    // use modal, signup, profile
+    $('.textPhone').keypress(function(event){ 
+       if (this.value.length == 0 && event.which == 48 ){
+           return false;
+       }
+    });
+
     // validate phone only number
     // Form Update modal schedule
     var selectorPhone_update_form = $("#update_form input[name=phone]");
@@ -109,7 +117,7 @@ $(document).ready(function() {
                     required: true,
                     validatePhone: true,
                     number: true,
-                    rangelength:[9, 12],
+                    minlength: 9,
                 },
             },
             messages: {
@@ -124,7 +132,7 @@ $(document).ready(function() {
                     required: message.required,
                     validatePhone: message.phone,
                     number: message.number,
-                    rangelength: message.phone,
+                    minlength: message.phone,
                 }
             }
         });
@@ -197,6 +205,7 @@ $(document).ready(function() {
         message.validatePassword
     );
 
+    // use for modal, signup, profile
     $.validator.addMethod(
         "validatePhone",
         function(value, element) {
