@@ -278,7 +278,7 @@ def payment_ipn(request):
                     booking_order.order_status = "done"
                     booking_order.save()
 
-                    content_sms = """DAT VE THANH CONG. Ve cua quy khach da duoc xac nhan: Ma: %s, """ % booking_order.barcode
+                    content_sms = """Ban da dat ve thanh cong tai Metiz Cinema. Ma dat ve: %s, """ % booking_order.barcode
                     content_sms += str(booking_order.order_desc.replace("\r\n", ""))
                     # Send SMS for user
                     send_sms(booking_order.phone, content_sms)
