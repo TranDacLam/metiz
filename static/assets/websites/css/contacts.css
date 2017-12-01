@@ -75,7 +75,11 @@ a{
 }
 .contact-metiz .buttons-set button:hover{
 	background-color: #ff5400;
-	border: 2px solid #ff5400;
+	border: 1.5px solid #ff5400;
+}
+.g-recaptcha iframe{
+	width: 293px;
+	border: 1px solid #d3d3d3;
 }
 #contactForm .fieldset .legend + .required{
 	margin-bottom: 15px;
@@ -92,7 +96,7 @@ a{
     margin-bottom: -50px;
 }
 #contactForm textarea#message{
-	height: 98px;
+	height: 95px;
 }
 @media screen and (max-width: 768px) {
 	.content-form-contact-metiz{
@@ -145,6 +149,9 @@ and (orientation: landscape) {
 	#contactForm  textarea#message{
 		width: 256px;
 	}
+	.show-address-contact-metiz{
+		width: 40%;
+	}
 }
 @media screen and (max-width: 414px) {
 	#contactForm input[type=email], 
@@ -173,7 +180,10 @@ and (orientation: landscape) {
 	}
 	.content-form-contact-metiz{
 		float: left;
-		width: 52%;
+		width: 98%;
+	}
+	.contact-metiz{
+		width: 99%;
 	}
 }
 @media screen and (max-width: 375px) {
@@ -196,6 +206,9 @@ and (orientation: landscape) {
 	}
 	.contacts-index-index .buttons-set{
 		margin-left: 125px;
+	}
+	#contactForm ul.form-list{
+		width: 100%;
 	}
 }
 .content-form-contact-metiz .error{

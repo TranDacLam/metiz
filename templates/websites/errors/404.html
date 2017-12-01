@@ -1,16 +1,17 @@
 {% extends "layout.html" %}
 
-{% block title %}404 - Page Not Found{% endblock title %}
+{% block title %}404 - Không tìm thấy trang{% endblock title %}
 {% block extrastylesheet %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}assets/websites/css/error_404_500.css">
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/global.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/error_404_500.css" media="all" />
 {% endblock %}
 
-{% block main_content %}  
-    <div align="center" class="content-error">
-        <h1 class="color-error">404</h1>
-    	<h3 class="color-error">Page Not Found</h3>
-    	<p class="detail">Please try one of the following pages:</p>
-    	<a role="button" class="btn-custom-style home-page-link" href="/">Home page</a>
+{% block main_content %}
+    <div class="container">
+        <div align="center" class="content-error">
+            <h1 class="color-error">404</h1>
+            <h3 class="color-error">Không tìm thấy trang</h3>
+            <p class="detail">Vui lòng click vào đường dẫn bên dưới để quay lại trang chủ:</p>
+            <a role="button" class="btn-custom-style home-page-link" href="/">Trang chủ</a>
+        </div>
     </div>
 {% endblock %}

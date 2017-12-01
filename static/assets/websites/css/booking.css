@@ -34,27 +34,25 @@ div.seatCharts-cell {
     font-size: 13px;
 }
 div.seatCharts-seat {
-    color: #fff;
+    color: #777;
     cursor: pointer;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius: 5px;
 }
 div.seatCharts-row {
     height: 35px;
 }
 div.seatCharts-seat.available {
-    background-color: #B9DEA0;
+    border: 2px solid #c9c2b5;
+    background-color: rgba(255, 255, 255, 0);
 }
 div.seatCharts-seat.focused {
     background-color: #76B474;
     border: none;
 }
 div.seatCharts-seat.selected {
-    background-color: #E6CAC4;
+    background-color: #72ba14;
 }
 div.seatCharts-seat.unavailable {
-    background-color: #472B34;
+    background: url('../../websites/images/Seat_booked.png');
     cursor: not-allowed;
 }
 div.seatCharts-container {
@@ -175,13 +173,16 @@ div.seatCharts-space{
     height: 100%;
 }
 div.seatCharts-seat.available.seat-vip {
-    background-color: #e96107;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid #ffc000;
 }
 div.seatCharts-seat.available.seat-couple {
-    background-color: #e40a8b;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid #ec008c;
 }
 div.seatCharts-seat.available.seat-ld {
-    background-color: #83399a;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid #83399a;
 }
 .booking-refresh {
     margin-top: 220px;
@@ -245,6 +246,10 @@ and (orientation: landscape){
     .booking-refresh {
         margin-left: 0px;
     }
+    div.seatCharts-seat.unavailable {
+        background: url('../../websites/images/Seat_booked.png') -4px -3px;
+        cursor: not-allowed;
+    }
 }
 @media only screen and (max-width: 480px) {
     div.seatCharts-cell{
@@ -284,7 +289,22 @@ and (orientation: landscape){
     .booking-refresh {
         margin-top: 163px;
     }
-}
+    div.seatCharts-seat.unavailable {
+        background: url(../../websites/images/Seat_booked.png) -6px -6px;
+        cursor: not-allowed;
+    }
+    div.seatCharts-seat.available {
+        border: 1px solid #c9c2b5;
+    }
+    div.seatCharts-seat.available.seat-vip {
+        border: 1px solid #ffc000;
+    }
+    div.seatCharts-seat.available.seat-couple {
+        border: 1px solid #ec008c;
+    }
+    div.seatCharts-seat.available.seat-ld {
+        border: 1px solid #83399a;
+    }
 @media only screen and (max-width: 375px){
     div.seatCharts-cell {
         height: 10px;

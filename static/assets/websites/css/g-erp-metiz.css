@@ -38,7 +38,6 @@
 	.header-container{
 		height: 29px;
 		margin: 0 auto;
-		width: 980px;
 		padding-top: 40px;
 	}
 	.header-language-right{
@@ -86,7 +85,6 @@
 	}
 	/* =========== content header =============== */
 	.page-header-container{
-		width:980px;
 		margin:0px auto;
 	}
 	#search_mini_form #search {
@@ -111,8 +109,6 @@
 	}
 	#header-nav {
 		display: block;
-		left: 150px;
-		position: absolute;
 	}
 	.nav-primary a {
 		color: rgb(34, 34, 34);
@@ -169,7 +165,6 @@
 	}
 	.header-top-account{
 		float:right;
-		margin-right:15px;
 	}
 	#select-language{
 		float:right;
@@ -197,7 +192,7 @@
 	}
 	.header-language-right {
 		width: 100%;
-		padding:3px 10px;
+		padding:3px 0px;
 	}
 	.logo {
 		left: 40%;
@@ -236,10 +231,6 @@
 	.header-career p a{
 		font-size:12px !important;
 		line-height:12px;
-	}
-	.header-top-account {
-		float: right;
-		margin-right: 8px;
 	}
 	.logout-msg {
 		margin: 0px !important;
@@ -1224,8 +1215,8 @@
 		margin-right:0px;
 	}
 	.slideshow-containe-movier .poster-film .product-img {
-		height: 355px;
-		width: 240px;
+		height: 385px;
+		width: 260px;
 	}	
 	.home-movie-selection .feature_film_content h3 {
 		color: #fff;
@@ -2395,8 +2386,8 @@
 	}
 	.form-change-pass{
 		float:left;
-		width:96%;
-		margin:30px 2%;
+		width:100%;
+		margin:30px 0px;
 		border: 1px solid #e8e8dd;
 		min-height: 250px;
 	}

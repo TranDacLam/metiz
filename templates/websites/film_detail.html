@@ -160,7 +160,7 @@
 						                    	
 						                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
 						                            aria-valuemin="0" aria-valuemax="100" style="width: {{ rating_percent.5 }}%"> 
-						                            <span class="sr-only">{{ rating_percent.5 }}%</span>
+						                            <span class="sr-only percent{{ rating_percent.5 }}">{{ rating_percent.5 }}%</span>
 						                        </div>
 						                        
 						                    </div>
@@ -172,7 +172,7 @@
 						                    <div class="progress">
 						                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
 						                            aria-valuemin="0" aria-valuemax="100" style="width: {{ rating_percent.4 }}%">
-						                            <span class="sr-only">{{ rating_percent.4 }}%</span>
+						                            <span class="sr-only percent{{ rating_percent.4 }}">{{ rating_percent.4 }}%</span>
 						                        </div>
 						                    </div>
 						                </div>
@@ -183,7 +183,7 @@
 						                    <div class="progress">
 						                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
 						                            aria-valuemin="0" aria-valuemax="100" style="width: {{ rating_percent.3 }}%">
-						                            <span class="sr-only">{{ rating_percent.3 }}%</span>
+						                            <span class="sr-only percent{{ rating_percent.3 }}">{{ rating_percent.3 }}%</span>
 						                        </div>
 						                    </div>
 						                </div>
@@ -194,7 +194,7 @@
 						                    <div class="progress">
 						                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
 						                            aria-valuemin="0" aria-valuemax="100" style="width: {{ rating_percent.2 }}%">
-						                            <span class="sr-only">{{ rating_percent.2 }}%</span>
+						                            <span class="sr-only percent{{ rating_percent.2 }}">{{ rating_percent.2 }}%</span>
 						                        </div>
 						                    </div>
 						                </div>
@@ -205,7 +205,7 @@
 						                    <div class="progress">
 						                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80"
 						                            aria-valuemin="0" aria-valuemax="100" style="width: {{ rating_percent.1 }}%">
-						                            <span class="sr-only">{{ rating_percent.1 }}%</span>
+						                            <span class="sr-only percent{{rating_percent.1}}">{{ rating_percent.1 }}%</span>
 						                        </div>
 						                    </div>
 						                </div>
@@ -222,7 +222,11 @@
 									{% for item in comments %}
 										<div class="row">
 											<div class="col-sm-3">
-												<img src="{{MEDIA_URL}}{{item.avatar}}" class="img-rounded">
+												{% if item.avatar %}
+													<img src="{{MEDIA_URL}}{{item.avatar}}" class="img-rounded">
+												{% else %}
+													<img src="{{ STATIC_URL }}assets/websites/images/profile-icon.png" alt="user" class="img-rounded" />
+												{%endif %}
 												<div class="review-block-name"><a href="#">{{item.full_name}}</a></div>
 												<div class="review-block-date">{{item.date_post | date:'d-m-Y'}}<br/>{{ item.date_post | timesince }} trước</div>
 											</div>

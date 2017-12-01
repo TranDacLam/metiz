@@ -59,7 +59,7 @@ $(document).ready(function() {
 				required: true,
 				validatePhone: true,
                 number: true,
-                rangelength:[10, 12],
+                minlength:9,
 			},
 
 			email:{
@@ -94,7 +94,7 @@ $(document).ready(function() {
 				required: message.required,
 				validatePhone: message.phone,
                 number: message.number,
-                rangelength: message.phone,
+                minlength: message.phone,
 			},
 			email:{
 				required: message.required,
@@ -158,15 +158,6 @@ $(document).ready(function() {
       },
       message.validateDate
     );
-    $.validator.addMethod(
-      "validatePhone",
-      function (value, element) {
-        // put your own logic here, this is just a (crappy) example 
-        return value.match(/^(01[2689]|09|[0-9]|[0-9]{2})[0-9]{8}$/);
-      },
-      message.phone
-    );
-
 
 
     // set datetimepicker for signup and profile
@@ -365,13 +356,4 @@ $(document).ready(function() {
 			
 		});
 	}
-	
-});
-// Can enter 0 number at the end or middle but not at the geginning.
-$(document).ready(function() {
-    $('.textPhone').keypress(function(event){ 
-       if (this.value.length == 0 && event.which == 48 ){
-           return false;
-       }
-    });
 });

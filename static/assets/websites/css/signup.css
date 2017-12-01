@@ -70,6 +70,9 @@
 	background-color: #7e8eaa;
 	color: #ffffff;
 	font-weight: bold;
+} 
+li.login-wth90 {
+	width: 90px;
 }
 .btn-login:hover{
 	background-color: #ff4900;
@@ -128,7 +131,7 @@ ul ~ label{
 	display:none;
 }
 .form-address #address{
-	width: 100%;
+	width: 96%;
 	max-height: 70px;
 }
 #myTabContent button[type=submit]{
@@ -159,11 +162,6 @@ ul ~ label{
 .col-main{
     margin-bottom: 0px;
 }
-@media  only screen and (max-width: 767px){
-	.form-address #address{
-		width: 265px;
-	}
-}
 /* Portrait and Landscape */
 @media only screen and (max-width: 768px) {
 	#myTabContent button[type=submit] {
@@ -181,6 +179,15 @@ ul ~ label{
 		width:50%;
 		float:left;
 	}
+    #signup_form .inline input.form-control, 
+    #signup_form .inline select,
+    #myTabContent .input-group #birth_date,
+    .form-address #address{
+        width: 100%;
+    }
+    #signup_form .rsp-rules{
+        width: 100%;
+    }
 }
 @media  only screen and (max-width: 480px){
 	#signup_form .form-group{
@@ -196,20 +203,14 @@ ul ~ label{
 	#jtdb-0 .modal-content{
         width: auto;
     }
-	#signup_form .inline input.form-control,#signup_form .inline select {
-		width: 90%;
-	}
 	#myTabContent .input-group {
         display: inline-block;
     }
-	#myTabContent .input-group #birth_date{
-		width: 90%;
-	}
 	#signup_form .signup_fields{
 		padding: 0px;
 	}
 	.form-address #address{
-		width: 250px;
+		width: 90%;
 	}
 	#myTabContent button[type=submit] {
 		margin: 15px 0 0;
@@ -238,6 +239,13 @@ span.closer.glyphicon.glyphicon-remove.pull-left {
 	#birth_date_valid {
 		left: -2px;
 	}
+    #myTabContent #create{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .account-wrap{
+        padding: 0;
+    }
 }
 @media only screen 
   and (min-width: 375px) 
@@ -251,5 +259,11 @@ span.closer.glyphicon.glyphicon-remove.pull-left {
     .top-row > div {
       float: left;
       width: 50%;
+    }
+    #signup_form .rsp-address {
+        width: 100%;
+    }
+    .form-address #address{
+        width: 100%;
     }
 }

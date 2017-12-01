@@ -9,7 +9,7 @@
     left: 5px;
     width: 64px;
     display: block;
-    top: 31%;
+    top: 30%;
     height: 64px;
     cursor: pointer;
     position: absolute;
@@ -21,10 +21,10 @@
 }
 .owl-nav .lSNext {
     background-position: 0 0;
-    right: 26px;
+    right: 8px;
     width: 64px;
     display: block;
-    top: 31%;
+    top: 30%;
     height: 64px;
     cursor: pointer;
     position: absolute;
@@ -164,6 +164,10 @@
     font-size: 16px;
     color: #606060;
 }
+#news div.row{
+    margin-right: -15px;
+    margin-left: -15px;
+}
 #more_hover{
     display:none;
 }
@@ -194,7 +198,7 @@
 }
 .detail-pay-film{                        
     visibility: hidden;
-    width: 240px;
+    width: 260px;
     
 }
 .detail-pay-film button, .detail-pay-film a{
@@ -227,7 +231,7 @@
 }
 .info-movie-home{
 	padding-top: 20px;
-	width: 240px;
+	width: 260px;
 }
 .info-movie-home h3{
 	font-size:20px;
@@ -332,11 +336,8 @@ ul.metiz-movie-tabs {
     }
 }
 @media screen and (min-width: 1366px) {
-    .tab-movie{
-        padding-left: 30px;
-    }
     #news #box{
-        width: 545px;
+        width: 555px;
     }
 }
 @media only screen and (max-width: 1365px){
@@ -359,6 +360,9 @@ ul.metiz-movie-tabs {
         height: 340px;
         width: 222px;
     }
+    .slideshow-containe-movier .poster-film{
+        width: 240px;
+    }
     .owl-nav .lSNext{
         right: 2px;
     }
@@ -380,6 +384,9 @@ ul.metiz-movie-tabs {
     }
     #news .word-wrap p{
         font-size: 20px;
+    }
+    .detail-pay-film {
+        width: 240px;
     }
 }
 @media screen and (max-width: 1200px) {
@@ -469,9 +476,12 @@ ul.metiz-movie-tabs {
         line-height: 19px;
         width: 86px;
     }
-   .session-movie dl{
-    margin-bottom: 0px;
-   }
+    .session-movie dl{
+        margin-bottom: 0px;
+    }
+    #news div.row{
+        margin: 2px;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -497,6 +507,14 @@ ul.metiz-movie-tabs {
      #news .bg_hover p{
         padding-top: 40px;
         font-size: 26px;
+    }
+    .slideshow-containe-movier .poster-film {
+        width: 205px;
+    }
+    .slideshow-containe-movier .poster-film .product-img,
+    .info-movie-home, .detail-pay-film,
+    .feature_slide_show .poster-film:hover .play-button {
+        width: 208px;
     }
 }
 @media screen and (max-width: 680px) {
