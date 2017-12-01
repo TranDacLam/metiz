@@ -16,7 +16,7 @@
 			<div class="metiz-movie-info">
 				<span class="metiz-info-bold">Thể loại: </span>
 				<span class="metiz-info-normal product-cate">
-					{{ value.genre.all|list_to_string|truncatechars:12 }}
+					{{value.genre.all|join:","|truncatechars:12}}
 				</span>
 			</div>
 			<div class="metiz-movie-info">
