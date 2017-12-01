@@ -337,6 +337,13 @@ ul.dropdown-menu>li>a:hover{
 		left: 20px;
 		position: static;
 	}
+	.page-header-container{
+        padding-right: 0;
+        padding-left: 0;
+    }
+	#header-nav .menu-ul-first li{
+        margin-right: 0;
+    }
 }
 @media only screen 
 and (min-width: 568px) 

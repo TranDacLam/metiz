@@ -22,6 +22,9 @@ $(document).ready(function() {
         $(".ajax-loader").css("display", "none");
     });
 
+    // Disable forcus outside  area choice seat 
+    $('#seat-map').attr('aria-activedescendant', '');
+
     // variable setTimeout
     var timer;
 
@@ -215,9 +218,9 @@ $(document).ready(function() {
             legend : { //Definition legend
                 node : $('#legend'),
                 items : [
-                    [ 'a', 'unavailable', 'Ghế đã có người đặt'],
+                    [ 'a', 'unavailable', 'Ghế đã đặt'],
                     [ 'a', 'selected', 'Ghế đang chọn'],
-                    [ 'a', 'available',   'Ghế trống' ],
+                    [ 'a', 'available',   'Ghế thường' ],
                     [ 'v', 'available',   'Ghế VIP' ],
                     [ 'c', 'available',   'Ghế couple' ],
                     [ 'l', 'available',   'Ghế cao cấp' ]
