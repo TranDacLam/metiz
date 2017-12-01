@@ -307,9 +307,10 @@ $(document).ready(function() {
             var totalPayment = recalculateTotal(sc);
             var lst_seats = getSeatSelected();
             var totalSeat = seatPayment.length;
-            var id_movie_name = $('.name-movie-booking').text();
             var id_movie_time = $('.time-movie-booking').text().replace('~', '-');
             var id_movie_date_active = $('.date-movie-booking').text();
+            // Translate string, toUpperCase first letter of string, substring if string > 20 character
+            var id_movie_name = firstLeterCase(translateVI($('.name-movie-booking').text())).substring(0, 25);
 
             // check user selected seat?
             if(totalSeat < 1){
@@ -334,7 +335,7 @@ $(document).ready(function() {
             })
             .done(function(response) {
                 var barcode = response.BARCODE
-                window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat 
+                window.location.href = '/payment?totalPayment='+ totalPayment
                 +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
                 + '&id_movie_time='+id_movie_time + '&id_movie_date_active='+id_movie_date_active
                 + '&working_id='+working_id + '&barcode='+ barcode 
@@ -370,4 +371,30 @@ function recalculateTotal(sc) {
         total += this.data().price;
     });
     return total;
+}
+
+
+// translate unikey
+function translateVI(str) {  
+    str= str.toLowerCase();  
+    str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");  
+    str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");  
+    str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i");  
+    str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");  
+    str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");  
+    str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");  
+    str= str.replace(/đ/g,"d");  
+    return str;  
+}
+
+// toUpperCase first leter of string
+function firstLeterCase(str){
+    str = str.toLowerCase();
+    var array = str.split(' ');
+    for(var c = 0; c < array.length; c++){
+        if(array[c][0] != null){
+            array[c] = array[c][0].toUpperCase() + array[c].substring(1);
+        }
+    }
+    return array.join('');
 }

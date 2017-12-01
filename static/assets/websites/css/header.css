@@ -98,7 +98,7 @@ ul.dropdown-menu>li>a:hover{
 	position: absolute;
 }
 #header-nav .menu-ul-first li{
-	margin-right: 60px;
+	margin-right: 20px;
 }
 .navbar-nav li.custom-user-header a{
 	margin-right: 0;
@@ -163,11 +163,6 @@ ul.dropdown-menu>li>a:hover{
 	}
 	.logo-small{
 		display:none;
-	}
-}
-@media only screen and (max-width: 1024px){
-	#header-nav .menu-ul-first li{
-		margin-right: 20px;
 	}
 }
 @media only screen and (min-width: 768px) and (max-width: 770px){
@@ -241,6 +236,9 @@ ul.dropdown-menu>li>a:hover{
 	}
 	#header-nav .menu-ul-first{
 		left: 110px;
+	}
+	#header-nav .menu-ul-first li{
+		margin-right: 0;
 	}
 }
 
