@@ -2559,7 +2559,7 @@ textarea {
   font-size: 15px;
 }
 .input-text:focus {
-  border: 1px solid #e71a0f;
+  border: 1px solid #66afe9;
 }
 
 .input-text.validation-failed {
