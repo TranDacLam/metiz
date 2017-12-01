@@ -26,11 +26,12 @@
 }
 #myTabContent #birth_date_valid{
 	display:none;
+	margin-top: 6px;
 }
 
 #myTabContent label.valid {
 	width: 20px;
-	height: 20px;
+	height: 12px;
 	background: url(../images/valid.png) center center no-repeat;
 	display: inline-block;
 	text-indent: -9999px;
@@ -38,8 +39,8 @@
 #myTabContent label.error {
 	font-family: 'SairaSemiCondensed-Regular';
 	color: red;
-	padding: 5px 0 0;
-	margin-top: 2px;
+	padding: 0px;
+	margin: 0px;
 }
 /* hide valid of validate jquery */
 #myTabContent .input-group .valid#birth_date-error{
@@ -183,7 +184,7 @@ ul ~ label{
     #signup_form .inline select,
     #myTabContent .input-group #birth_date,
     .form-address #address{
-        width: 100%;
+        width: 90%;
     }
     #signup_form .rsp-rules{
         width: 100%;

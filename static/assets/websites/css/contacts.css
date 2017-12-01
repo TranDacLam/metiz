@@ -98,6 +98,13 @@ a{
 #contactForm textarea#message{
 	height: 95px;
 }
+.address-contact-metiz-block .phone-number{
+	color: #f07469;
+}
+.address-contact-metiz-block .phone-number:hover {
+    color: #23527c;
+    text-decoration: underline;
+}
 @media screen and (max-width: 768px) {
 	.content-form-contact-metiz{
 		width: 51%;
