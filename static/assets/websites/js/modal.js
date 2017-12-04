@@ -86,13 +86,19 @@ $(document).ready(function() {
     }
 
     // Can enter 0 number at the end or middle but not at the geginning.
+    // Check the first characters and remove if it equal == 0
+    // Then replace input with new value
     // use modal, signup, profile
-    $('.textPhone').keypress(function(event){ 
-       if (this.value.length == 0 && event.which == 48 ){
-           return false;
+    
+    $('.textPhone').on('change keyup paste',function(event){ 
+        var valPhone = $('.textPhone').val();
+        for(i=0; i < valPhone.length; i++){
+            if(valPhone.charAt(0) == 0) {
+                valPhone = valPhone.substr(1);
+            }
        }
-    });
-
+        $('.textPhone').val(valPhone); 
+});
     // validate phone only number
     // Form Update modal schedule
     var selectorPhone_update_form = $("#update_form input[name=phone]");
