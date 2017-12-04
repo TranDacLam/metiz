@@ -305,12 +305,17 @@ and (orientation: landscape){
     div.seatCharts-seat.available.seat-ld {
         border: 1px solid #83399a;
     }
+}
 @media only screen and (max-width: 375px){
     div.seatCharts-cell {
-        height: 10px;
-        width: 10px;
+        height: 11px;
+        width: 11px;
         line-height: 10px;
         font-size: 5px;
+    }
+    div.seatCharts-seat.unavailable {
+        background: url(../../websites/images/Seat_booked.png) -7.1px -7.4px;
+        cursor: not-allowed;
     }
 }
 @media only screen and (max-width: 320px){
@@ -323,5 +328,9 @@ and (orientation: landscape){
         width: 8px;
         line-height: 8px;
         font-size: 4px;
+    }
+    div.seatCharts-seat.unavailable {
+        background: url(../../websites/images/Seat_booked.png) -8.2px -8.4px;
+        cursor: not-allowed;
     }
 }

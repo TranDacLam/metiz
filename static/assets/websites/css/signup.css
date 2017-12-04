@@ -211,7 +211,7 @@ ul ~ label{
 		padding: 0px;
 	}
 	.form-address #address{
-		width: 90%;
+		width: 100%;
 	}
 	#myTabContent button[type=submit] {
 		margin: 15px 0 0;

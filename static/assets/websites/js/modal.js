@@ -312,7 +312,10 @@ $(document).ready(function() {
             var date_seat = $(this).attr("data-date-seat");
             $('.days-popup [data-date-select = ' + date_seat + ']').addClass('active-date');
             var date_query = date_seat;
-            if($('.booking-details #movie_api_id').val() != 'null'){
+            // get movie api id from booking
+            var get_movie_api = $('.booking-details #movie_api_id').val();
+            movie_api_id = null;
+            if(get_movie_api != 'null' && get_movie_api != 'undefined'){
                 movie_api_id = $('.booking-details #movie_api_id').val()
             }
             //set data for Month
@@ -337,6 +340,7 @@ $(document).ready(function() {
             "movie_api_id": movie_api_id,
             "cinema_id": id_server // get cinema_id from hidden field in popup movie schedule
         }
+
 
         $.ajax({
                 url: "/movie/show/times",
