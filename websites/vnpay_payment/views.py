@@ -110,7 +110,7 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
         metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
                               email], data_binding)
     except Exception, e:
-        print "Error se , ", e
+        print "Error send_mail_booking : ", e
 
 
 def cancel_seats(seats_choice, id_server):
