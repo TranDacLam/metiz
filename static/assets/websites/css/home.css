@@ -561,10 +561,18 @@ ul.metiz-movie-tabs {
 	#news #box{
         margin: 0px 18px; 
     }
+    #news .box-new{
+        padding: 0px 14px;
+    }
+}
+@media screen and (max-width: 640px) {
+    #news .box-new{
+        padding: 0px 8px;
+    }
 }
 @media screen and (max-width: 568px) {
     #news .box-new{
-        padding: 0px 10px;
+        padding: 0px 9px;
     }
     #news #box{
         margin: 0px;
@@ -574,6 +582,7 @@ ul.metiz-movie-tabs {
     }
 
 }
+
 @media screen and (max-width: 520px) {
 	#news img{
 		height:214px;
@@ -674,7 +683,7 @@ ul.metiz-movie-tabs {
         font-size: 15px;
     }
     #news #box {
-        margin: 0px 9px;
+        margin: 0px 7px;
     }
     #news #box p{
         font-size: 14px;
@@ -751,7 +760,9 @@ ul.metiz-movie-tabs {
         background: url(../images/icon_play.png) no-repeat 46px 89px rgba(255, 84, 0, 0.8);
         background-size: 45px;
     }
-
+    #news .box-new {
+        padding: 0 15px;
+    }
 }
 @media screen and (max-width: 320px) {
     .session-movie .nav-tabs>li.active>span{
@@ -799,5 +810,8 @@ ul.metiz-movie-tabs {
     #news .bg_hover p{
         padding-top: 13px;
         font-size: 13px;
+    }
+    #news .box-new{
+        padding: 0px 6px;
     }
 }
