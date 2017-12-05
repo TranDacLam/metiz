@@ -26,11 +26,12 @@
 }
 #myTabContent #birth_date_valid{
 	display:none;
+	margin-top: 6px;
 }
 
 #myTabContent label.valid {
 	width: 20px;
-	height: 20px;
+	height: 12px;
 	background: url(../images/valid.png) center center no-repeat;
 	display: inline-block;
 	text-indent: -9999px;
@@ -38,8 +39,8 @@
 #myTabContent label.error {
 	font-family: 'SairaSemiCondensed-Regular';
 	color: red;
-	padding: 5px 0 0;
-	margin-top: 2px;
+	padding: 0px;
+	margin: 0px;
 }
 /* hide valid of validate jquery */
 #myTabContent .input-group .valid#birth_date-error{
@@ -131,7 +132,7 @@ ul ~ label{
 	display:none;
 }
 .form-address #address{
-	width: 96%;
+	width: 265px;
 	max-height: 70px;
 }
 #myTabContent button[type=submit]{
@@ -183,7 +184,7 @@ ul ~ label{
     #signup_form .inline select,
     #myTabContent .input-group #birth_date,
     .form-address #address{
-        width: 100%;
+        width: 90%;
     }
     #signup_form .rsp-rules{
         width: 100%;
@@ -220,19 +221,19 @@ ul ~ label{
 	}
 }
 /*Customize reponsive modal date of birth */
-span.closer.glyphicon.glyphicon-remove.pull-left {
+#myTabContent span.closer.glyphicon.glyphicon-remove.pull-left {
 	float: right !important;
 }
-.ui-datebox-flipcontent div {
+#myTabContent .ui-datebox-flipcontent div {
 	height: 145px;
 }
-.ui-datebox-flipcontent {
+#myTabContent .ui-datebox-flipcontent {
 	height: 117px;
 }
-.ui-datebox-controls {
+#myTabContent .ui-datebox-controls {
 	padding-top: 35px;
 }
-.ui-datebox-flipcenter.ui-overlay-shadow{
+#myTabContent .ui-datebox-flipcenter.ui-overlay-shadow{
 	top: -21px !important;
 }
 @media screen and (max-width: 320px){
@@ -264,6 +265,6 @@ span.closer.glyphicon.glyphicon-remove.pull-left {
         width: 100%;
     }
     .form-address #address{
-        width: 100%;
+        width: 47%;
     }
 }

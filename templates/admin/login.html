@@ -9,6 +9,7 @@
 <!-- EXTRAHEAD-->
 {% block extrahead %}
     {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/admin/css/admin_login.css" media="all" />
     <script type="text/javascript">
         (function($) {
             $(window).load(function(){ $('#id_username').focus(); });

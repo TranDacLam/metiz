@@ -110,7 +110,7 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
         metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
                               email], data_binding)
     except Exception, e:
-        print "Error se , ", e
+        print "Error send_mail_booking : ", e
 
 
 def cancel_seats(seats_choice, id_server):
@@ -276,7 +276,7 @@ def payment_ipn(request):
                     booking_order.order_status = "done"
                     booking_order.save()
 
-                    content_sms = """DAT VE THANH CONG. Ve cua quy khach da duoc xac nhan: Ma: %s, """ % booking_order.barcode
+                    content_sms = """Ban da dat ve thanh cong tai Metiz Cinema. Ma dat ve: %s, """ % booking_order.barcode
                     content_sms += str(booking_order.order_desc.replace("\r\n", ""))
                     # Send SMS for user
                     send_sms(booking_order.phone, content_sms)

@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var lang = $('html').attr('lang');
     if ( lang == 'vi') {
     	message = {'required': 'Trường này bắt buộc',
-    	'phone': 'số điện thoại không hợp lệ',
+    	'phone': 'Số điện thoại không hợp lệ',
     	'minlength_2' :'Nhập ít nhất 2 kí tự', 
     	'minlength_9' :'Nhập ít nhất 9 kí tự',
     	'minlength_8' :'Nhập ít nhất 8 kí tự',
@@ -127,13 +127,15 @@ $(document).ready(function() {
            }
 		},
 		success: function(element) {
+            //personal_id is null,it don't add class valid
             if($('#personal_id').val() == ''){
-                element.not('#personal_id-error').text('OK!').addClass('valid');
+                element.not('#personal_id-error').addClass('valid');
             }else{
-                element.text('OK!').addClass('valid');
+                element.addClass('valid');
             }
 		},
         invalidHandler: function() {
+            //don't focus input birth_date
             $(this).find("input.error").not('#birth_date').focus();
         }
 	});
