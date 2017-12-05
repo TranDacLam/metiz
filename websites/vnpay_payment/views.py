@@ -199,7 +199,6 @@ def payment(request):
                            "order_desc": request.POST["order_desc"] if 'order_desc' in request.POST["order_desc"] else None})
     else:
         total_payment = request.GET.get('totalPayment', 0)
-        total_seats = request.GET.get('totalSeat', 0)
         seats = request.GET.get('seats', "")
         working_id = request.GET.get('working_id', "")
         barcode = request.GET.get('barcode', "")
@@ -213,7 +212,7 @@ def payment(request):
         form = PaymentForm()
 
         return render(request, "websites/vnpay_payment/payment.html",
-                      {"title": "Thanh toán", "total_payment": total_payment, "seats": seats, "total_seats": total_seats,
+                      {"title": "Thanh toán", "total_payment": total_payment, "seats": seats,
                        "working_id": working_id, "barcode": barcode, "seats_choice": seats_choice, "id_server": id_server, "id_showtime": id_showtime,
                        "id_movie_name": id_movie_name, "id_movie_time": id_movie_time, "id_movie_date_active": id_movie_date_active,
                        "movie_api_id": movie_api_id, "form": form})
@@ -278,7 +277,7 @@ def payment_ipn(request):
                     booking_order.order_status = "done"
                     booking_order.save()
 
-                    content_sms = """DAT VE THANH CONG. Ve cua quy khach da duoc xac nhan: Ma: %s, """ % booking_order.barcode
+                    content_sms = """Ban da dat ve thanh cong tai Metiz Cinema. Ma dat ve: %s, """ % booking_order.barcode
                     content_sms += str(booking_order.order_desc.replace("\r\n", ""))
                     # Send SMS for user
                     send_sms(booking_order.phone, content_sms)

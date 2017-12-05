@@ -22,6 +22,12 @@ $(document).ready(function() {
         //recaptcha passed validation 
         return true;
     });
+
+    // Message updating Blog phim on Menu
+    $('.blog-updating').on('click', function(){
+        displayMsg();
+        $('.msg-result-js').html(msgResult("Chức năng đang được cập nhật. Mời bạn quay lại vào lúc khác", "info"));
+    });
 });
 
 // Valid only number input

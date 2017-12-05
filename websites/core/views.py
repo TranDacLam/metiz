@@ -357,3 +357,19 @@ def contacts(request):
     except Exception as e:
         print "Error action contacts : ", e
         return HttpResponse(status=500)
+
+
+def blog_film(request):
+    try:
+        return render(request, 'websites/blog_film.html')
+    except Exception as e:
+        print "Error action blog_film : ", e
+        return HttpResponse(status=500)
+
+
+def blog_film_detail(request):
+    try:
+        return render(request, 'websites/blog_film_detail.html')
+    except Exception as e:
+        print "Error action blog_film_detail : ", e
+        return HttpResponse(status=500)
