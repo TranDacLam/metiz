@@ -543,7 +543,7 @@ msgstr "Số trang không tìm thấy."
 
 #: websites/core/views.py:354
 msgid "Send Contact Successfully."
-msgstr "Gởi Liên Hệ Thành Công."
+msgstr "Gửi Liên Hệ Thành Công."
 
 #: websites/registration/forms.py:67
 msgid "User with this phone already exists."
@@ -594,7 +594,7 @@ msgstr ""
 #: websites/registration/views.py:68
 msgid ""
 "Register Account Successfully. Please Check Your Email and Active Account."
-msgstr "Đăng Ký Thành Công. Vui lòng kiểm tra email và kích hoạt tài khoản."
+msgstr "Đăng ký thành công. Vui lòng kiểm tra email và kích hoạt tài khoản."
 
 #: websites/registration/views.py:152
 msgid "Update Password Successfully."
