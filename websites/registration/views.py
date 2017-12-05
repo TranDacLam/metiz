@@ -97,7 +97,7 @@ def register_user(request, **kwargs):
                 return render(request, 'registration/signup.html', context)
 
         return render(request, 'registration/signup.html',
-                      {'register_form': register_form, 'is_signup': True, 'form': register_form})
+                      {'register_form': register_form, 'is_signup': True})
     except Exception, e:
         print "Error action register_user : %s" % e
         return HttpResponse(status=500)

@@ -12,17 +12,6 @@ $(document).ready(function() {
         return true;    
     });
 
-    // Submit form check captcha
-    $('#contactForm, #payment_form, #signup_form').on('submit', function(e) {
-        if(grecaptcha.getResponse() == "") {
-            e.preventDefault();
-            $('.captcha-error').text("Vui lòng xác nhận captcha");
-            return false;
-        }
-        //recaptcha passed validation 
-        return true;
-    });
-
     // Message updating Blog phim on Menu
     $('.blog-updating').on('click', function(){
         displayMsg();

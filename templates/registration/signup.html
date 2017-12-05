@@ -145,7 +145,7 @@
                                                 {% endif %}
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 form-group ">
+                                        <div class="col-sm-6 form-group" id="scroll-captcha">
                                             <label>{% trans "Confirm Password" %}</label>
                                             <div class="inline">
                                                 <input type="password" name="password2" id="password2" class="form-control" placeholder="{% trans 'Enter Password Again' %}" tabindex=8 value="{% if password2 %}{{ password2 }}{% endif %}">
@@ -204,12 +204,9 @@
                                         <div class="col-sm-6 form-group">
                                             <label for="amount">Captcha</label>
                                             <div class="input-box">
-                                                {{ form.captcha }}
+                                                <div id="re-captcha" class="g-recaptcha" ></div>
                                             </div>
                                             <span class="captcha-error"></span>
-                                            {% if form.captcha.errors %}
-                                                {{form.captcha.errors}}
-                                            {% endif %}
                                         </div>
                                     </div>
                                     {% if redirect_field_value %}

@@ -85,6 +85,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.i18n',
                 'main.context_processors.get_app_fb_id',
+                'main.context_processors.get_app_recaptcha_key',
             ],
         },
     },
