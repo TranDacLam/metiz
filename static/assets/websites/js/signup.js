@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var lang = $('html').attr('lang');
     if ( lang == 'vi') {
     	message = {'required': 'Trường này bắt buộc',
-    	'phone': 'số điện thoại không hợp lệ',
+    	'phone': 'Số điện thoại không hợp lệ',
     	'minlength_2' :'Nhập ít nhất 2 kí tự', 
     	'minlength_9' :'Nhập ít nhất 9 kí tự',
     	'minlength_8' :'Nhập ít nhất 8 kí tự',

@@ -86,13 +86,19 @@ $(document).ready(function() {
     }
 
     // Can enter 0 number at the end or middle but not at the geginning.
+    // Check the first characters and remove if it equal == 0
+    // Then replace input with new value
     // use modal, signup, profile
-    $('.textPhone').keypress(function(event){ 
-       if (this.value.length == 0 && event.which == 48 ){
-           return false;
+    
+    $('.textPhone').on('change keyup paste',function(event){ 
+        var valPhone = $('.textPhone').val();
+        for(i=0; i < valPhone.length; i++){
+            if(valPhone.charAt(0) == 0) {
+                valPhone = valPhone.substr(1);
+            }
        }
-    });
-
+        $('.textPhone').val(valPhone); 
+});
     // validate phone only number
     // Form Update modal schedule
     var selectorPhone_update_form = $("#update_form input[name=phone]");
@@ -312,7 +318,10 @@ $(document).ready(function() {
             var date_seat = $(this).attr("data-date-seat");
             $('.days-popup [data-date-select = ' + date_seat + ']').addClass('active-date');
             var date_query = date_seat;
-            if($('.booking-details #movie_api_id').val() != 'null'){
+            // get movie api id from booking
+            var get_movie_api = $('.booking-details #movie_api_id').val();
+            movie_api_id = null;
+            if(get_movie_api != 'null' && get_movie_api != 'undefined'){
                 movie_api_id = $('.booking-details #movie_api_id').val()
             }
             //set data for Month
@@ -337,6 +346,7 @@ $(document).ready(function() {
             "movie_api_id": movie_api_id,
             "cinema_id": id_server // get cinema_id from hidden field in popup movie schedule
         }
+
 
         $.ajax({
                 url: "/movie/show/times",

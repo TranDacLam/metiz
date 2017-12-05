@@ -132,7 +132,7 @@ ul ~ label{
 	display:none;
 }
 .form-address #address{
-	width: 96%;
+	width: 265px;
 	max-height: 70px;
 }
 #myTabContent button[type=submit]{
@@ -211,7 +211,7 @@ ul ~ label{
 		padding: 0px;
 	}
 	.form-address #address{
-		width: 90%;
+		width: 100%;
 	}
 	#myTabContent button[type=submit] {
 		margin: 15px 0 0;
@@ -265,6 +265,6 @@ span.closer.glyphicon.glyphicon-remove.pull-left {
         width: 100%;
     }
     .form-address #address{
-        width: 100%;
+        width: 47%;
     }
 }
