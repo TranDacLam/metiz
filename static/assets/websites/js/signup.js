@@ -43,6 +43,19 @@ $(document).ready(function() {
     validOnlyNumber(selectorPhone, '');
     validOnlyNumber(selectorPersonal, '');
 
+    // Submit form check validate captcha
+    $('#signup_form').on('submit', function(e) {
+        var res = grecaptcha.getResponse(widId);
+
+        if (res == "" || res == undefined || res.length == 0){
+            e.preventDefault();
+            $('.captcha-error').text("Vui lòng xác nhận captcha");
+            return false;
+        }
+        //recaptcha passed validation 
+        return true;
+    });
+
 	// validate form
 	$('#signup_form').validate({
         focusInvalid: false,
@@ -357,3 +370,25 @@ $(document).ready(function() {
 		});
 	}
 });
+
+// load recaptcha 
+var widId = "";
+// device IOS
+var isIOS = navigator.userAgent.match(/(\(iPod|\(iPhone|\(iPad)/);
+// scroll to form conactForm
+var focusWhatever = function (response) {
+    // check device
+    if(isIOS){
+        $("html, body").animate({ scrollTop: $("#scroll-captcha").offset().top }, "slow");
+    }
+};
+
+// on load captcha
+var onloadCallback = function ()
+{
+    widId = grecaptcha.render('re-captcha', {
+        'sitekey': recaptchaKey,
+        'theme': "light",
+        'callback' : focusWhatever
+    });
+};

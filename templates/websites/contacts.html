@@ -103,12 +103,9 @@ contacts-index-index
 							<li class="">
 								<label>Captcha</label>
 								<div class="input-box">
-									{{ forms.captcha }}
+									<div id="re-captcha" class="g-recaptcha" ></div>
 								</div>
 								<span class="captcha-error"></span>
-								{% if forms.captcha.errors %}
-	                                {{forms.captcha.errors}}
-	                            {% endif %}
 							</li>
 						</div>
 					</ul>

@@ -68,8 +68,10 @@
     <title>{% block title %}{% endblock title %}</title>
     {% block metacontent %}{% endblock %}
 
+    <!-- Get key captcha and id FB -->
     <script type="text/javascript">
         var fbAppId = '{{FB_APP_ID}}';
+        var recaptchaKey = '{{RECAPTCHA_PUBLIC_KEY}}';
     </script>
 
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js" ></script>
@@ -83,6 +85,9 @@
 
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.seat-charts.min.js"></script>
+    
+    <!-- Captcha use contact, payment, signup -->
+    <script src="http://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 
     <!-- facebook -->
     <script src = "//connect.facebook.net/en_US/sdk.js"></script>

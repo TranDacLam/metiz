@@ -49,6 +49,22 @@ $(document).ready(function() {
             $(this).addClass('active');
             $('.title-about-metiz').html('<h1>'+ response.name +'</h1>');
             $('.content-seperator').html('<p>'+ response.content +'</p>');
+
+            // popup mutil image "Goi Thieu Metiz" when use ajax
+            $('.popup-gallery').magnificPopup({
+                delegate: 'a',
+                type: 'image',
+                tLoading: 'Đang tải ảnh #%curr%...',
+                mainClass: 'mfp-img-mobile',
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: true,
+                    preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+                },
+                image: {
+                    tError: 'Lỗi tải ảnh.'
+                }
+            });
         })
         .fail(function() {
             alert("error");

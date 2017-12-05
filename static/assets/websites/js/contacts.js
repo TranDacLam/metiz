@@ -4,6 +4,19 @@ $(document).ready(function() {
     // Call back validOnlyNumber layout.js 
     validOnlyNumber(selectorPhone, '');
 
+    // Submit form check validate captcha
+    $('#contactForm').on('submit', function(e) {
+        var res = grecaptcha.getResponse(widId);
+
+        if (res == "" || res == undefined || res.length == 0){
+            e.preventDefault();
+            $('.captcha-error').text("Vui lòng xác nhận captcha");
+            return false;
+        }
+        //recaptcha passed validation 
+        return true;
+    });
+
     $("#contactForm").validate({
         rules: {
             name: { 
@@ -41,3 +54,25 @@ $(document).ready(function() {
         }
     });
 });
+
+// load recaptcha 
+var widId = "";
+// device IOS
+var isIOS = navigator.userAgent.match(/(\(iPod|\(iPhone|\(iPad)/);
+// scroll to form conactForm
+var focusWhatever = function (response) {
+    // check device
+    if(isIOS){
+        $("html, body").animate({ scrollTop: $("#contactForm").offset().top }, "slow");
+    }
+};
+
+// on load captcha
+var onloadCallback = function ()
+{
+    widId = grecaptcha.render('re-captcha', {
+        'sitekey': recaptchaKey,
+        'theme': "light",
+        'callback' : focusWhatever
+    });
+};
