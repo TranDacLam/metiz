@@ -221,19 +221,19 @@ ul ~ label{
 	}
 }
 /*Customize reponsive modal date of birth */
-span.closer.glyphicon.glyphicon-remove.pull-left {
+#myTabContent span.closer.glyphicon.glyphicon-remove.pull-left {
 	float: right !important;
 }
-.ui-datebox-flipcontent div {
+#myTabContent .ui-datebox-flipcontent div {
 	height: 145px;
 }
-.ui-datebox-flipcontent {
+#myTabContent .ui-datebox-flipcontent {
 	height: 117px;
 }
-.ui-datebox-controls {
+#myTabContent .ui-datebox-controls {
 	padding-top: 35px;
 }
-.ui-datebox-flipcenter.ui-overlay-shadow{
+#myTabContent .ui-datebox-flipcenter.ui-overlay-shadow{
 	top: -21px !important;
 }
 @media screen and (max-width: 320px){

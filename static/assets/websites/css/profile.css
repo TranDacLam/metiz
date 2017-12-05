@@ -57,6 +57,16 @@
 .profile-custom .form-birthday{
     height:60px;
 }
+.ui-datebox-container ul, .ui-datebox-container li{
+    float:none;
+}
+/*Customize reponsive modal date of birth */
+.profile-custom .ui-datebox-flipcontent div{
+    height: 125px;
+}
+.profile-custom .ui-datebox-flipcenter{
+    top: -32.5px!important;
+}
 @media only screen and (min-width : 481px) and (max-width : 768px) {
     .profile-custom{
         padding: 0 20px 0 20px;
