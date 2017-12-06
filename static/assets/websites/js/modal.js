@@ -85,20 +85,33 @@ $(document).ready(function() {
         }
     }
 
-    // Can enter 0 number at the end or middle but not at the geginning.
+    // Can enter 0 number at the end or middle but not at the beginning.
     // Check the first characters and remove if it equal == 0
     // Then replace input with new value
-    // use modal, signup, profile
+    // use modal, profile, register
     
-    $('.textPhone').on('change keyup paste',function(event){ 
-        var valPhone = $('.textPhone').val();
-        for(i=0; i < valPhone.length; i++){
-            if(valPhone.charAt(0) == 0) {
-                valPhone = valPhone.substr(1);
-            }
-       }
-        $('.textPhone').val(valPhone); 
-});
+    //Prevent to enter 0(zero) number at the second character
+    $('.textPhone').on('keydown',function(event){
+        var caretPos = this.selectionStart;
+        var keyCode = event.which || event.keyCode;
+        var isZero = keyCode == 48 || keyCode == 96;
+        var valPhone = $(this).val();
+        if (caretPos < 2 && valPhone.startsWith("0") && isZero) {
+            return false;
+        } 
+    });
+    // Call event Paste 
+     $('.textPhone').bind('paste', function(e) {
+        var pasteText = e.originalEvent.clipboardData.getData('Text');
+        $(this).val(removeBeforePhoneNumber(pasteText)); 
+        return false;
+    });
+    $('.textPhone').on('blur',function(event){ 
+        var valPhone = $(this).val();
+        $(this).val(removeBeforePhoneNumber(valPhone));
+    });
+
+    
     // validate phone only number
     // Form Update modal schedule
     var selectorPhone_update_form = $("#update_form input[name=phone]");
