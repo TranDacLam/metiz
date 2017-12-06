@@ -201,15 +201,21 @@ def check_seats(request):
                 if seat_has_selected:
                     return JsonResponse({"code": 400, "message": _("These chairs have been selected : %s" % seat_has_selected)}, status=400)
                 else:
+                    # init url api without member card
+                    url="/postBooking"
                     # Call Booking Seats
                     full_name = request.session.get("full_name", "")
                     phone = request.session.get("phone", "")
                     email = request.session.get("email", "")
                     # Get Information of user and building data for api update
                     # status of seats
+                    member_card = request.POST.get('member_card')
+                    #Change api url when card member is not null
+                    if member_card:
+                        url = "/postBookingMember"
 
                     result = api.call_api_post_booking(
-                        full_name, phone, email, seats_choice, id_server, None, url="/postBooking")
+                        full_name, phone, email, seats_choice, id_server, member_card, url)
 
                     if not result["BARCODE"]:
                         print "result ", result
