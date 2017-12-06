@@ -27,7 +27,7 @@ function validOnlyNumber(selector, prevVal){
     selector.on("input", function (evt) {
         var self = $(this);
         // check value input only number
-        if (self.val().match(/^-?\d*(\.(?=\d*)\d*)?$/) !== null) {
+        if (self.val().match(/^[0-9]*$/) !== null) {
             prevVal = self.val()
         } else {
             // not number return value before
