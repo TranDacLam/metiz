@@ -369,6 +369,7 @@ $(document).ready(function() {
 			
 		});
 	}
+
 });
 
 // load recaptcha 

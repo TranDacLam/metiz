@@ -17,6 +17,9 @@ $(document).ready(function() {
         displayMsg();
         $('.msg-result-js').html(msgResult("Chức năng đang được cập nhật. Mời bạn quay lại vào lúc khác", "info"));
     });
+
+
+    
 });
 
 // Valid only number input
@@ -32,3 +35,12 @@ function validOnlyNumber(selector, prevVal){
         }
     });
 }
+
+// Function validate phone number
+// Remove 0 number before phone number 
+    function removeBeforePhoneNumber(str) {
+        if(typeof str !== 'undefined'){
+            var trimmed = str.replace(/\b0+/g, "");
+            return trimmed;
+        }
+    } 
