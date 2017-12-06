@@ -52,6 +52,19 @@ $(document).ready(function() {
         }
     }
 
+    // Submit form check validate captcha
+    $('#payment_form').on('submit', function(e) {
+        var res = grecaptcha.getResponse(widId);
+
+        if (res == "" || res == undefined || res.length == 0){
+            e.preventDefault();
+            $('.captcha-error').text("Vui lòng xác nhận captcha");
+            return false;
+        }
+        //recaptcha passed validation 
+        return true;
+    });
+
     // validate form
     var val_required = 'Trường này là bắt buộc';
     $("#payment_form").validate({
@@ -98,3 +111,25 @@ $(document).ready(function() {
         return date_shedule.replace(/([0-9]{2})\-([0-9]{2})\-([0-9]{4})/g, '$3-$2-$1');
     }
 });
+
+// load recaptcha 
+var widId = "";
+// device IOS
+var isIOS = navigator.userAgent.match(/(\(iPod|\(iPhone|\(iPad)/);
+// scroll to form conactForm
+var focusWhatever = function (response) {
+    // check device
+    if(isIOS){
+        $("html, body").animate({ scrollTop: $("#payment_form").offset().top }, "slow");
+    }
+};
+
+// on load captcha
+var onloadCallback = function ()
+{
+    widId = grecaptcha.render('re-captcha', {
+        'sitekey': recaptchaKey,
+        'theme': "light",
+        'callback' : focusWhatever
+    });
+};
