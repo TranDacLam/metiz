@@ -15,6 +15,10 @@ $(document).ready(function() {
  		if ($('#loginNavbar').hasClass('collapse in') || $('#loginNavbar').hasClass('collapsing')) {
 	 		$('#loginNavbar').collapse('hide');
  		}
+ 		
+ 		if ($('#bs-sidebar-navbar-collapse-1').hasClass('collapse in') || $('#bs-sidebar-navbar-collapse-1').hasClass('collapsing')) {
+	 		$('#bs-sidebar-navbar-collapse-1').collapse('hide');
+ 		}
  	});
  	//close menu when click lich chieu
  	$('.open-popup-link').click(function(event) {
