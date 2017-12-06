@@ -563,11 +563,11 @@ msgstr "Số điện thoại đã được sử dụng."
 
 #: websites/registration/forms.py:170
 msgid "The old password fields did not match."
-msgstr "Mật Khẩu Cũ Không Đúng. Vui Lòng Nhập Lại."
+msgstr "Mật khẩu cũ không đúng. Vui lòng nhập lại."
 
 #: websites/registration/forms.py:178
 msgid "The two password fields did not match."
-msgstr "Mật Khẩu Mới Không Trùng Khớp. Vui Lòng Nhập Lại."
+msgstr "Mật khẩu mới không trùng khớp. Vui lòng nhập lại."
 
 #: websites/registration/messages.py:3
 msgid "Email does not exits in system. Please check again."
@@ -598,11 +598,11 @@ msgstr "Đăng ký thành công. Vui lòng kiểm tra email và kích hoạt tà
 
 #: websites/registration/views.py:152
 msgid "Update Password Successfully."
-msgstr "Thay Đổi Mật Khẩu Thành Công."
+msgstr "Thay đổi mật khẩu thành công."
 
 #: websites/registration/views.py:178
 msgid "Update Profile Successfully."
-msgstr "Cập Nhật Thông Tin Cá Nhân Thành Công."
+msgstr "Cập nhật thông tin cá nhân thành công."
 
 #: websites/settings.py:129
 msgid "Vietnamese"
