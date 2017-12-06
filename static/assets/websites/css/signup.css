@@ -1,3 +1,9 @@
+.account-wrap, .account-wrap label{
+    font-family: "Montserrat", sans-serif;
+}
+.account-wrap button{
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
+}
 #myTabContent ul, #myTabContent li, #myTabContent ol{
     float:none;
 }
@@ -161,7 +167,8 @@ ul ~ label{
 	-moz-appearance: textfield;
 }
 .col-main{
-    margin-bottom: 0px;
+    float: none;
+    margin: 0 auto;
 }
 /* Portrait and Landscape */
 @media only screen and (max-width: 768px) {
