@@ -1933,7 +1933,7 @@
 	}
 	form .form-instructions {
 		font-style: italic;
-		font-family: "SairaSemiCondensed", sans-serif;
+		font-family: "Montserrat", sans-serif;
 		font-size: 15px;
 		color: #a0a0a0;
 	}
@@ -2342,7 +2342,7 @@
 		padding:0px 25px;
 		width:100%;
 	}	
-	.customer-account-forgotpassword .page-title{
+	/*.customer-account-forgotpassword .page-title{
 		float:left;
 		width:100%;
 		border-bottom: 2px solid #ff5400;
@@ -2360,7 +2360,7 @@
 		line-height:40px;
 		margin-bottom:0px;
 		border-bottom:none;		
-	}
+	}*/
 	.customer-account-forgotpassword  #form-validate {
 		float:left;
 		width:100%;		
@@ -2558,7 +2558,6 @@
 		height: 169px;
 		border: 1px solid;
 		margin: 10px 4px;
-		box-shadow: 3px 3px 3px #333;
 		border-radius: 3px;
 	}
 	.about-image-metiz ul li img {
