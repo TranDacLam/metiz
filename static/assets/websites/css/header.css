@@ -29,8 +29,11 @@
 }
 #header-nav {
     border-bottom: none;
+    height: 70px;
 }
-
+nav.navbar {
+	max-height: 100%;
+}
 
 ul.dropdown-menu>li>a:hover{
 	background: transparent;
@@ -89,6 +92,7 @@ ul.dropdown-menu>li>a:hover{
 .navbar-nav li.hover-user-header a{
 	color: #7e8eaa;
 	font-size: 14px;
+	z-index: 999;
 }
 .hover-user-header .responsive-name-user{
 	display: none;
@@ -227,11 +231,19 @@ ul.dropdown-menu>li>a:hover{
 		border-bottom:none;
 		height: 70px;
 	}
+	.page-header-container.container{
+		height: 100%;
+	}
+	.col-left.sidebar.col-left-first {
+		position: relative;
+		bottom: 25px;
+	}
 	.collapse-custom{
 		border-bottom:none;
 	}
 	.skip-links{
 		border:none;
+		display: none;
 	}
 	.hover-user-header .name-user-header{
 		display: none;
