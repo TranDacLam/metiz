@@ -77,6 +77,12 @@ a{
 #contactForm  textarea#message{
 	width: 289px;
 }
+#contactForm #message::-webkit-input-placeholder {
+    font-size: 12px;
+}
+#contactForm #message{
+	padding-top: 0px;
+}
 .contact-metiz .buttons-set button:hover{
 	background-color: #ff5400;
 	border: 1.5px solid #ff5400;
