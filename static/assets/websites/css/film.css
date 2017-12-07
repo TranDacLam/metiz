@@ -74,6 +74,12 @@
 .review-block-description{
 	font-size:15px;
 }
+.xzoom { 
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;  
+  margin-bottom: 15px; 
+}
 #xzoom-default{
 	width: 181px;
 }
@@ -164,7 +170,7 @@ ul.metiz-film-detail-tabs {
     font-family: 'SairaSemiCondensed-Bold';
 }
 .custom-fiml-detail{
-	font-family: "Montserrat-Light", sans-serif;
+	font-family: "Montserrat", sans-serif;
 }
 .custom-fiml-detail .product-shop label{
 	font-family: "Montserrat-Medium", sans-serif;

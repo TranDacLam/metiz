@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // popup mutil image "Goi Thieu Metiz"
     $('.popup-gallery').magnificPopup({
-        delegate: 'a',
+        delegate: 'img',
         type: 'image',
         tLoading: 'Đang tải ảnh #%curr%...',
         mainClass: 'mfp-img-mobile',
@@ -12,6 +12,11 @@ $(document).ready(function() {
         },
         image: {
             tError: 'Lỗi tải ảnh.'
+        },
+        callbacks: {
+            elementParse: function(qw) {
+                qw.src = qw.el.attr('src');
+            }
         }
     });
 
@@ -52,7 +57,7 @@ $(document).ready(function() {
 
             // popup mutil image "Goi Thieu Metiz" when use ajax
             $('.popup-gallery').magnificPopup({
-                delegate: 'a',
+                delegate: 'img',
                 type: 'image',
                 tLoading: 'Đang tải ảnh #%curr%...',
                 mainClass: 'mfp-img-mobile',
@@ -63,6 +68,11 @@ $(document).ready(function() {
                 },
                 image: {
                     tError: 'Lỗi tải ảnh.'
+                },
+                callbacks: {
+                    elementParse: function(qw) {
+                        qw.src = qw.el.attr('src');
+                    }
                 }
             });
         })

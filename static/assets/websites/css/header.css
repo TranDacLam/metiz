@@ -386,6 +386,7 @@ and (orientation: landscape){
 	.header-phone{
 		height: 21px;
 		margin: 0px;
+		font-size: 10px;
 	}
 	.header-phone a{
 		font-size: 10px;

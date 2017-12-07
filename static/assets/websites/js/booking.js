@@ -302,31 +302,35 @@ $(document).ready(function() {
             
             return seatSelected;
         }
-
-
-
-        // redirect payment with total and seat
+        // click booking next button.
         $('#btnNextBooking').on('click',function(){
-            var totalPayment = recalculateTotal(sc);
             var lst_seats = getSeatSelected();
             var totalSeat = seatPayment.length;
-            var id_movie_time = $('.time-movie-booking').text().replace('~', '-');
-            var id_movie_date_active = $('.date-movie-booking').text();
-            // Translate string, toUpperCase first letter of string, substring if string > 20 character
-            var id_movie_name = firstLeterCase(translateVI($('.name-movie-booking').text())).substring(0, 25);
-
             // check user selected seat?
             if(totalSeat < 1){
                 displayMsg();
                 $('.msg-result-js').html(msgResult("Bạn chưa chọn ghế!", "warning"));
                 return false;
+            } else {
+                $('#member_card_modal').modal('show');
             }
+            
+        });
+        // Click add Card button
+        $('#btn_add_card').on('click',function(){
+            var totalPayment = recalculateTotal(sc);
+            var id_movie_time = $('.time-movie-booking').text().replace('~', '-');
+            var id_movie_date_active = $('.date-movie-booking').text();
+            // Translate string, toUpperCase first letter of string, substring if string > 20 character
+            var id_movie_name = firstLeterCase(translateVI($('.name-movie-booking').text())).substring(0, 25);
+
             var working_id = guid();
             data = {
                 "id_showtime": id_showtime,
                 "id_server": id_server,
-                "lst_seats": "["+ lst_seats.toString() +"]",
-                "working_id": working_id
+                "lst_seats": "["+ seatSelected.toString() +"]",
+                "working_id": working_id,
+                "member_card": $("#member_card").val()
             }
             $.ajax({
                 url: "/verify/seats",
@@ -349,7 +353,55 @@ $(document).ready(function() {
                 displayMsg();
                 $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
             });
+            
         });
+        
+
+        // redirect payment with total and seat
+        // $('#btnNextBooking').on('click',function(){
+        //     var totalPayment = recalculateTotal(sc);
+        //     var lst_seats = getSeatSelected();
+        //     var totalSeat = seatPayment.length;
+        //     var id_movie_time = $('.time-movie-booking').text().replace('~', '-');
+        //     var id_movie_date_active = $('.date-movie-booking').text();
+        //     // Translate string, toUpperCase first letter of string, substring if string > 20 character
+        //     var id_movie_name = firstLeterCase(translateVI($('.name-movie-booking').text())).substring(0, 25);
+
+        //     // check user selected seat?
+        //     if(totalSeat < 1){
+        //         displayMsg();
+        //         $('.msg-result-js').html(msgResult("Bạn chưa chọn ghế!", "warning"));
+        //         return false;
+        //     }
+        //     var working_id = guid();
+        //     data = {
+        //         "id_showtime": id_showtime,
+        //         "id_server": id_server,
+        //         "lst_seats": "["+ lst_seats.toString() +"]",
+        //         "working_id": working_id
+        //     }
+        //     $.ajax({
+        //         url: "/verify/seats",
+        //         type: 'POST',
+        //         data: data,
+        //         dataType: 'json',
+        //         crossDomain:false,
+        //         context: this,
+        //     })
+        //     .done(function(response) {
+        //         var barcode = response.BARCODE
+        //         window.location.href = '/payment?totalPayment='+ totalPayment
+        //         +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
+        //         + '&id_movie_time='+id_movie_time + '&id_movie_date_active='+id_movie_date_active
+        //         + '&working_id='+working_id + '&barcode='+ barcode 
+        //         + '&seats_choice='+seats_choice + '&id_server=' +id_server + '&id_showtime=' +id_showtime
+        //         + '&movie_api_id=' +movie_api_id;
+        //     })
+        //     .fail(function(error) {
+        //         displayMsg();
+        //         $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
+        //     });
+        // });
 
         // Refresh seat selected
         $('.booking-refresh a').on('click', function(){
