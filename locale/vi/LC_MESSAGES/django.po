@@ -543,7 +543,7 @@ msgstr "Số trang không tìm thấy."
 
 #: websites/core/views.py:354
 msgid "Send Contact Successfully."
-msgstr "Gửi Liên Hệ Thành Công."
+msgstr "Gửi liên hệ thành công."
 
 #: websites/registration/forms.py:67
 msgid "User with this phone already exists."
