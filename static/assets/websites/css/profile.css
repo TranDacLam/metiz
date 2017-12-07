@@ -1,3 +1,10 @@
+.profile-custom #profile-validate,
+.profile-custom #profile-validate label{
+    font-family: "Montserrat", sans-serif;
+}
+.profile-custom #profile-validate button{
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
+}
 .profile-custom .input-group #birth_date{
     border-radius: 4px;
     width: 265px;

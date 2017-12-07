@@ -78,13 +78,13 @@
                     </div>
                     <div class="form-group">
                         <label for="order_desc">Nội dung thanh toán</label>
-                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2" readonly>{% if not order_desc %}phim: {{ id_movie_name }}, suat chieu: {{ id_movie_time }} ngay: {{ id_movie_date_active }}. Ghe: {{ seats }}. Rap: Metiz Cinema.{% else %}{{ order_desc }}{% endif %}</textarea>
+                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2" readonly>{% if not order_desc %}Phim: {{ id_movie_name }}, Suat chieu: {{ id_movie_time }}, Ngay: {{ id_movie_date_active }}, Ghe: {{ seats }}, Rap: Metiz Cinema.{% else %}{{ order_desc }}{% endif %}</textarea>
                     </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="amount">Captcha</label>
-                        <<div class="input-box">
+                        <div class="input-box">
                             <div id="re-captcha" class="g-recaptcha" ></div>
                         </div>
                         <span class="captcha-error"></span>

@@ -1,3 +1,11 @@
+.title-contact-metiz h1, .contact-metiz .buttons-set button.button{
+	font-family: "SairaSemiCondensed-Medium", sans-serif;
+}
+.contact-metiz label,
+.contact-customer-service,
+.contact-metiz .theater-name h2{
+	font-family: "Montserrat", sans-serif;
+}
 .buttons-set input{
 	display:none !important;
 }
@@ -37,7 +45,6 @@ a{
 	color: #f07469;
 }
 .contact-customer-service{
-	font-family: "SairaSemiCondensed-Medium", sans-serif;
 	color: #636363; 
 	padding-bottom: 4px; 
 	border-bottom: 1px solid #636363; 
@@ -46,9 +53,6 @@ a{
 	text-transform: uppercase; 
 	width: 100%; 
 	margin: 20px 0px 10px;
-}
-.contact-metiz .theater-name h2 {
-	font-family: "SairaSemiCondensed-Medium", sans-serif;
 }
 #contactForm  textarea#message{
 	width: 265px;		
