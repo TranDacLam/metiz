@@ -3109,20 +3109,20 @@ body {
 /* ============================================ *
  * Language switcher + welcome message
  * ============================================ */
-.header-language-background {
+.header-info {
   height: 70px;
   text-transform: uppercase;
 }
-.header-language-background:after {
+.header-info:after {
   content: '';
   display: table;
   clear: both;
 }
-.header-language-background .form-language,
-.header-language-background .currency-switcher {
+.header-info .form-language,
+.header-info .currency-switcher {
   float: left;
 }
-.header-language-background .welcome-msg {
+.header-info .welcome-msg {
   float: right;
 }
 

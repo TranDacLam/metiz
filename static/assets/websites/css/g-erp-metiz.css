@@ -40,14 +40,14 @@
 		margin: 0 auto;
 		padding-top: 40px;
 	}
-	.header-language-right{
+	.header-right{
 		float:right;
 	}
 	.header-language-container{
 		float:right;
 		margin-top:2px;
 	}
-	.header-top-account{
+	.header-top-time{
 		float:right;
 	}
 	#select-language{
@@ -156,14 +156,14 @@
 	.header-container {
 		padding-top: 40px;
 	}
-	.header-language-right{
+	.header-right{
 		float:right;
 	}
 	.header-language-container{
 		float:right;
 		margin-top:2px;
 	}
-	.header-top-account{
+	.header-top-time{
 		float:right;
 	}
 	#select-language{
@@ -190,7 +190,7 @@
 	#header .page-header-container .account-cart-wrapper{
 		display:none;
 	}
-	.header-language-right {
+	.header-right {
 		width: 100%;
 		padding:3px 0px;
 	}
@@ -225,10 +225,10 @@
 	.cms-index-index .main-container{
 		background:none !important;
 	}
-	.header-career {
-		margin-right:8px !important;
+	.header-phone {
+		margin-right:8px;
 	}
-	.header-career p a{
+	.header-phone p a{
 		font-size:12px !important;
 		line-height:12px;
 	}
@@ -245,8 +245,8 @@
 }
 
 @media only screen and (max-width: 600px){
-	.cgv-screen-600, .header-career{
-		display:none !important;
+	.cgv-screen-600, .header-phone{
+		display:none;
 	}	
 	.switcher-language{
 		display:none;
@@ -260,12 +260,9 @@
 }
 
 @media only screen and (max-width: 480px){
-	.header-language-right > div.header-top-account {
-		display:none;
-	}
-	#header .page-header-container .account-cart-wrapper {
+	/* #header .page-header-container .account-cart-wrapper {
 		display: inline-block;
-	}
+	} */
 	.switcher-language{
 		display:block;
 	}
@@ -298,12 +295,12 @@
 	.skip-links .skip-link.skip-account {
 		display:block;
 	}
-	.header-language-background{
+	/* .header-info{
 		position:relative;
 		height:0px;
 		z-index:900;
 	}
-	.header-language-right{
+	.header-right{
 		top: 55px;
 		height: 40px;
 		position: absolute;
@@ -331,7 +328,7 @@
 		text-align:center;
 		vertical-align:middle;
 		line-height:40px;
-	}
+	} */
 	#select-language li{
 		background:none;
 	}
