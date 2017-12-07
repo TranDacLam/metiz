@@ -296,7 +296,7 @@ $(document).ready(function() {
         // click booking next button.
         $('#btnNextBooking').on('click',function(){
             // get length Seat selected
-            var totalSeat = getSeatSelected().map(item => JSON.parse(item).ID).length;
+            var totalSeat = getSeatSelected().length;
             // check user selected seat?
             if(totalSeat < 1){
                 displayMsg();
