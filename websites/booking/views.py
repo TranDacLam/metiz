@@ -15,6 +15,9 @@ from core.models import Movie
 
 def get_booking(request):
     try:
+        """ Action render page booking for user selected chair, 
+            this action support for two action get and post
+        """
         if request.method == 'POST':
             form = BookingForm(request.POST)
             if form.is_valid():
@@ -58,27 +61,27 @@ def get_booking(request):
 
 def time_out_booking(request):
     try:
+        """ Action render page notification timeout for user """
         return render(request, 'websites/time_out_booking.html')
     except Exception, e:
         print "Error time out booking : ", e
         return HttpResponse(status=500)
 
 
-
-def build_show_time_json(current_date, item, result, movies_info, obj_movie=None):    
+def build_show_time_json(current_date, item, result, movies_info, obj_movie=None):
     """ Build Data Json For Movie ShowTime """
-                
+
     # Check key not in result then create dictionary create new key
     # with data is list empty
     if item["MOVIE_ID"] not in result:
         # GET movie object by movie_api_id detail or get by MOVIE_ID
         if not obj_movie:
             obj_movie = movies_info.filter(
-                                movie_api_id=item["MOVIE_ID"])
+                movie_api_id=item["MOVIE_ID"])
 
         result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
             "MOVIE_ID"], "movie_name": obj_movie[0].name if obj_movie else item["MOVIE_NAME_VN"],
-            "rated": obj_movie[0].rated.name if obj_movie else None , "time_running": obj_movie[0].time_running if obj_movie else 0}
+            "rated": obj_movie[0].rated.name if obj_movie else None, "time_running": obj_movie[0].time_running if obj_movie else 0}
 
     # Check time showing greater than currnet hour
     if item["DATE"] == current_date.strftime("%d/%m/%Y"):
@@ -88,6 +91,7 @@ def build_show_time_json(current_date, item, result, movies_info, obj_movie=None
     else:
         result[item["MOVIE_ID"]]["lst_times"].append(
             {"id_showtime": item["ID"], "time": item["TIME"], "room_name": item["ROOM_NAME"]})
+
 
 def get_movie_show_time(request):
     try:
@@ -123,16 +127,19 @@ def get_movie_show_time(request):
             # get movie object if movie_api_id not empty
             obj_movie = None
             if movie_api_id:
-                obj_movie = movies_info.filter(movie_api_id=movie_api_id.strip())
+                obj_movie = movies_info.filter(
+                    movie_api_id=movie_api_id.strip())
 
             for item in show_times["List"]:
                 # Get Showtime movie by id
                 if movie_api_id:
                     # Get Movie Name by movie api id
                     if item["MOVIE_ID"].strip() == movie_api_id.strip():
-                        build_show_time_json(current_date, item, result, movies_info, obj_movie)
+                        build_show_time_json(
+                            current_date, item, result, movies_info, obj_movie)
                 else:
-                    build_show_time_json(current_date, item, result, movies_info)
+                    build_show_time_json(
+                        current_date, item, result, movies_info)
 
         return JsonResponse(result)
 
@@ -164,6 +171,11 @@ def get_seats(request):
 
 def check_seats(request):
     try:
+        """ 
+            Action verify seats have been selected before
+            - step 1 : verify if seat aready selected then response error
+            - step 2 : Seats no have selected then post booking for user
+        """
         if request.method == "POST":
             # Validate Request Parameter id_server and lst_seats
             id_server = request.POST.get('id_server', 1)
@@ -197,7 +209,7 @@ def check_seats(request):
                     # status of seats
 
                     result = api.call_api_post_booking(
-                        full_name, phone, email, seats_choice, id_server, url="/postBooking")
+                        full_name, phone, email, seats_choice, id_server, None, url="/postBooking")
 
                     if not result["BARCODE"]:
                         print "result ", result
@@ -209,9 +221,9 @@ def check_seats(request):
                     working_id = request.POST["working_id"]
                     if working_id in current_store:
                         """ 
-                            If session exist id_showtime then append new seat item into session: 
+                            If session exist working_id then append new seat item into session: 
                             Algorithm :
-                             - step 1 : Cancel seats old in workingid and add new seats choice
+                             - Cancel seats old in workingid and add new seats choice
                         """
                         if current_store[working_id]["seats_choice"]:
                             for seat_id in current_store[working_id]["seats_choice"]:
@@ -224,11 +236,10 @@ def check_seats(request):
                         ) + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
 
                     else:
-                        # Add new id_showtime in store movie session
+                        # Add new key as working_id in store movie session
                         current_store[working_id] = {
                             "time_choice": timezone.localtime(timezone.now() + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
-                            "seats_choice": seats_choice,
-                            "id_showtime": id_showtime
+                            "seats_choice": seats_choice
                         }
                     print "### data_store ", current_store
                     request.session['movies'] = current_store
@@ -283,4 +294,3 @@ def clear_seeats(request):
     except Exception, e:
         print "Error clear_seeats : %s ", e
         pass
-

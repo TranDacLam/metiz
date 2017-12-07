@@ -61,7 +61,6 @@ $(document).ready(function() {
         focusInvalid: false,
 		rules:{
 			full_name:{
-				minlength: 2,
 	        	required: true
 			},
 			birth_date:{
@@ -97,7 +96,6 @@ $(document).ready(function() {
 		messages:{
 			full_name:{
 				required: message.required,
-				minlength: message.minlength_2
 			},
 			birth_date:{
 				required: message.required,
@@ -369,6 +367,7 @@ $(document).ready(function() {
 			
 		});
 	}
+
 });
 
 // load recaptcha 
