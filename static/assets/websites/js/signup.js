@@ -10,6 +10,7 @@ $(document).ready(function() {
     	'minlength_9' :'Nhập ít nhất 9 kí tự',
     	'minlength_8' :'Nhập ít nhất 8 kí tự',
     	'email': 'Email không hợp lệ',
+        'rangelength_1_70': 'Họ và tên chứa ít nhất 1 kí tự và nhiều nhất 70 kí tự',
     	'number': 'Vui lòng chỉ nhập các chữ số',
     	'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
     	'validatePassword': 'Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.',
@@ -21,6 +22,7 @@ $(document).ready(function() {
     	'minlength_9' :'Please enter at least 9 characters',
     	'minlength_8' :'Please enter at least 8 characters',
     	'email': 'Please enter a valid email address',
+        'rangelength_1_70': 'Please enter a value between 1 and 70 characters long',
     	'number': 'Please enter a valid number',
     	'equalTo': "Password don't same. Please enter again",
     	'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
@@ -61,7 +63,8 @@ $(document).ready(function() {
         focusInvalid: false,
 		rules:{
 			full_name:{
-	        	required: true
+	        	required: true,
+                rangelength: [1, 70]
 			},
 			birth_date:{
 				required: true,
@@ -96,6 +99,7 @@ $(document).ready(function() {
 		messages:{
 			full_name:{
 				required: message.required,
+                rangelength: message.rangelength_1_70,
 			},
 			birth_date:{
 				required: message.required,

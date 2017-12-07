@@ -15,6 +15,7 @@ $(document).ready(function() {
         rules: {
             full_name: { 
                 required: true,
+                rangelength: [1, 70],
             },
             birth_date: { 
                 required: true,
@@ -37,6 +38,7 @@ $(document).ready(function() {
         messages:{
             full_name: {
                 required: val_required,
+                rangelength: "Họ và tên chứa ít nhất 1 kí tự và nhiều nhất 70 kí tự",
             },
             birth_date: {
                 required: val_required,
