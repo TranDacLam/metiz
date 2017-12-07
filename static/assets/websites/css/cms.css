@@ -119,10 +119,6 @@ body.mfp-zoom-out-cur{
         background-color: rgba(255, 255, 255, 0);
         color: #0e1d2f;
     }
-    .mfp-container {
-        position : absolute; 
-        height: auto;
-    }
 }
 @media only screen and (min-width: 767px) and (max-width: 768px){
     #faqAccordion .panel-body:after{
@@ -139,6 +135,9 @@ and (max-width: 736px)
 and (orientation: landscape){
     .col2-left-layout .col-main .col2-set{
         padding: 0 15px 0px 15px;
+    }
+    .mfp-content img.mfp-img{
+        min-height: 375px;
     }
 }
 @media only screen and (width: 568px) {
@@ -163,6 +162,10 @@ and (orientation: landscape){
     }
     .mfp-container {
         margin-top: 40%;
+    }
+    .mfp-container {
+        position : absolute; 
+        height: auto;
     }
 }
 @media only screen and (max-width: 320px){

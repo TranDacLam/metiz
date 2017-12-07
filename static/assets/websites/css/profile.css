@@ -1,5 +1,7 @@
 .profile-custom #profile-validate,
-.profile-custom #profile-validate label{
+.profile-custom #profile-validate label,
+.profile-custom #change-pass-validate,
+.profile-custom #change-pass-validate label{
     font-family: "Montserrat", sans-serif;
 }
 .profile-custom #profile-validate button{
