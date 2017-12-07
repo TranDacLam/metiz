@@ -1,3 +1,15 @@
+.booking-custom, .booking-custom .booking-details p{
+    font-family: "Montserrat", sans-serif;
+}
+.booking-custom>div>h2{
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
+}
+.booking-details .seatCharts-legend{
+    font-size: 12px;
+}
+.booking-custom .step-2-navigator a{
+    font-family: "SairaSemiCondensed-Light", sans-serif;
+}
 .front{
     margin: 5px 32px 45px 32px;
     background-image: repeating-linear-gradient(50deg, #E3E3E3 0px, #E3E3E3 3px,
@@ -16,7 +28,7 @@
 }
 .booking-details p{
     line-height:26px;
-    font-size:16px;
+    font-size:15px;
     font-family: "SairaSemiCondensed-Medium", sans-serif
 }
 .booking-details p span{
@@ -31,7 +43,7 @@ div.seatCharts-cell {
     float: left;
     text-align: center;
     outline: none;
-    font-size: 13px;
+    font-size: 11px;
 }
 div.seatCharts-seat {
     color: #777;
@@ -242,9 +254,9 @@ and (orientation: landscape){
     div.seatCharts-cell {
         height: 18px;
         width: 18px;
-        line-height: 18px;
+        line-height: 15px;
         margin: 2px;
-        font-size: 10px;
+        font-size: 8px;
     }
     .ajax-loader>p{
         top: 55%; 
@@ -311,6 +323,9 @@ and (orientation: landscape){
     }
     div.seatCharts-seat.available.seat-ld {
         border: 1px solid #83399a;
+    }
+    #seat-map .front{
+        font-size: 12px;
     }
 }
 @media only screen and (max-width: 375px){

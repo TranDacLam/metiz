@@ -1,3 +1,12 @@
+#modal-popup #update_form,
+#modal-popup #update_form label,
+#modal-popup #member_form,
+#modal-popup #member_form label,
+#modal-popup #guest_form,
+#modal-popup #guest_form label,
+#guest .guest-policy, #guest .agree_term{
+    font-family: "Montserrat", sans-serif;
+}
 #modal-popup .col-xs-8 h3{
     color: black;
     margin-left: 40px;
@@ -413,16 +422,16 @@ li.btn-guest-wth117 {
 }
 .modal > * {
     font-weight: 500;
-    font-size: 17px;
+    font-size: 15px;
     box-shadow: none;
     text-shadow: none;
 }
 #modal-popup .modal .form-control{
-    font-size: 17px;
+    font-size: 15px;
 }
 .modal label{
     font-weight: 500;
-    font-size: 18px;
+    font-size: 15px;
     color: #000000;
 }
 .modal label.form-error,.modal label.error{
@@ -438,7 +447,7 @@ li.btn-guest-wth117 {
     margin-top: 7px;
 }
 .modal .checkbox-term label{
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
 }
 #member #error{
