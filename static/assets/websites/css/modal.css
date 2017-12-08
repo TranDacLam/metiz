@@ -397,7 +397,7 @@
     padding: 8px;  
 }
 li.btn-guest-wth117 {
-    width: 103px;
+    width: 112px;
     text-align: center;
 }
 #confirm .tab-header li a:focus{
@@ -408,14 +408,15 @@ li.btn-guest-wth117 {
     color: red;
     margin-top: 7px;
 }
-#modal-popup button, .modal-body p{
+#modal-popup button{
     font-family: 'SairaSemiCondensed-Medium';
 }
 #modal-popup .modal-body p{
     color: black;
+    font-family: 'Montserrat-Medium';
 }
 #confirm .tab-header a{
-    font-family: 'SairaSemiCondensed-Medium';
+    font-family: 'Montserrat-Medium';
 }
 .warning-footer button{
     font-size: 18px;
