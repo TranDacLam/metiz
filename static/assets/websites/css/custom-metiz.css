@@ -1,7 +1,7 @@
 a:hover,a:focus{
     outline:none;
 }
-.header-language-right {
+.header-right {
     text-align: right;
     display: inline-block;
     width: 100%;
@@ -14,26 +14,26 @@ a:hover,a:focus{
     color: #636363;
     text-align: center;
 }
-.header-language-right .links li, .header-language-right > p, .header-language-right > div {
+.header-right .links li, .header-right > p, .header-right > div {
     display: inline-block;
 }
-.header-language-background, .header-language-background a {
+.header-info, .header-info a {
     color: #fff;
     font-size: 14px;
 }
-.header-language-background a:hover{
+.header-info a:hover{
     text-decoration:none;
 }
-.header-career,.header-top-account{
+.header-phone,.header-top-time{
     padding-top:5px;
 }
-.header-career{
+.header-phone{
     margin-right:15px;
 }
 .logout-msg{
     margin:0 10px;
 }
-.header-language-background .welcome-msg{
+.header-info .welcome-msg{
     float:none;
 }
 .welcome-msg{
@@ -5819,7 +5819,6 @@ span.movie-rating-detail.c18{
     .about-image-metiz li{
         border: 1px solid;
         margin: 10px 4px;
-        box-shadow: 3px 3px 3px #333;
         border-radius: 3px;
     }
     .cms-page-view .std.content-cms-about-us{
@@ -5900,7 +5899,6 @@ span.movie-rating-detail.c18{
     .about-image-metiz li{
         border: 1px solid;
         margin: 10px 4px;
-        box-shadow: 3px 3px 3px #333;
         border-radius: 3px;
     }
     .cms-page-view .std.content-cms-about-us{
@@ -5989,7 +5987,6 @@ span.movie-rating-detail.c18{
     .about-image-metiz li{
         border: 1px solid;
         margin: 10px 4px;
-        box-shadow: 3px 3px 3px #333;
         border-radius: 3px;
     }
     .cms-page-view .std.content-cms-about-us{

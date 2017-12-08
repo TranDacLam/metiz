@@ -34,6 +34,9 @@
 .booking-details p span{
     color:#666
 }
+#member_card_modal .modal-header {
+    border-bottom-color: #ff4000;
+}
 div.seatCharts-cell {
     color: #182C4E;
     height: 25px;
@@ -220,6 +223,14 @@ div.seatCharts-seat.available.seat-ld {
 }
 #member_card_modal .modal-body p.member-card-info {
     margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+#member_card_modal label {
+    font-family: 'Montserrat', sans-serif;
+}
+#btn_add_card {
+    font-family: 'SairaSemiCondensed-Medium';
+    text-transform: uppercase;
 }
 #seat-map:focus{
     outline: none;

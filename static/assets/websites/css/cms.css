@@ -92,7 +92,6 @@ body.mfp-zoom-out-cur{
         height: 142px;
         border: 1px solid;
         margin: 10px 4px;
-        box-shadow: 3px 3px 3px #333;
         border-radius: 3px;
     }
     .about-image-metiz ul li img {
@@ -142,7 +141,10 @@ and (orientation: landscape){
 }
 @media only screen and (width: 568px) {
     .about-image-metiz ul li {
-        width: 31.8%;
+        width: 48%;
+    }
+    .about-image-metiz ul li, .about-image-metiz ul li img  {
+        height: 175px;
     }
 }
 @media only screen and (max-width: 414px){
@@ -152,6 +154,9 @@ and (orientation: landscape){
     }
     .about-image-metiz ul li {
         width: 47%;
+    }
+    .about-image-metiz ul li, .about-image-metiz ul li img {
+        height: 120px;
     }
     #faqAccordion .panel-title i.pull-right{
         margin-right: -25px;
@@ -168,13 +173,24 @@ and (orientation: landscape){
         height: auto;
     }
 }
+@media only screen and (max-width: 375px) {
+    .about-image-metiz ul li, .about-image-metiz ul li img {
+        height: 110px;
+    }
+}
+@media only screen and (max-width: 360px){ 
+    .about-image-metiz ul li, .about-image-metiz ul li img  {
+        height: 110px;
+    }
+}
 @media only screen and (max-width: 320px){
     .about-image-metiz ul li, .about-image-metiz ul li img {
-        height: 121px;
+        height: 95px;
     }
     .content-seperator iframe{
         height: 226px;
     }
+    
 }
 /*small/medium side display*/
 @media (min-width: 768px) {

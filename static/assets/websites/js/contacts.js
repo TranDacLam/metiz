@@ -21,6 +21,7 @@ $(document).ready(function() {
         rules: {
             name: { 
                 required: true,
+                rangelength: [1, 70],
             },
             email:{
                 required: true,
@@ -38,6 +39,7 @@ $(document).ready(function() {
         messages:{
             name: {
                 required: "Vui lòng nhập tên",
+                rangelength: "Họ và tên chứa ít nhất 1 kí tự và nhiều nhất 70 kí tự",
             },
             email: {
                 required: "Vui lòng nhập email",
