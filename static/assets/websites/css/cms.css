@@ -47,6 +47,10 @@ nav.sidebar, .main{
 .post-detail-metiz li .pull-right{
     margin-top: 3px;
 }
+.std h3, h4.panel-title{
+    font-family: "Montserrat", sans-serif;
+}
+
 body.mfp-zoom-out-cur{
     overflow: hidden;
 }
