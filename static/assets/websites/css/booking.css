@@ -232,6 +232,9 @@ div.seatCharts-seat.available.seat-ld {
     font-family: 'SairaSemiCondensed-Medium';
     text-transform: uppercase;
 }
+#seat-map:focus{
+    outline: none;
+}
 @media only screen and (max-width: 1366px){
     .ajax-loader>p{
         left: 42%;
