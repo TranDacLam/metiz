@@ -134,4 +134,168 @@ $(document).ready(function() {
         var valPhone = $(this).val();
         $(this).val(removeBeforePhoneNumber(valPhone));
     });
+        // set datetimepicker for signup and profile
+
+    // Get current date 5 year ago
+    var date_now = new Date();
+    var date_day = ("0" + date_now.getDate()).slice(-2);
+    var date_month = ("0" + (date_now.getMonth() + 1)).slice(-2);
+    var date_today = (date_now.getFullYear() - 5) + "-" + (date_month) + "-" + (date_day);
+
+    $('#birth_date').datebox({
+            mode: "calbox",
+            beforeToday: true,
+            useFocus: true,
+            useButton: false,
+            useHeader: false,
+            calShowDays: false,
+            calUsePickers: true,
+            calHighToday:true,
+            themeDatePick: 'warning',
+            defaultValue: date_today,
+            calYearPickMax: 'NOW',
+            calYearPickMin: 100,
+            beforeOpenCallback: function(){
+                //if having error hide errortext 
+                if($('#birth_date-error').length){
+                    $('.input-group #birth_date-error').css('display', 'none');// of jquery validate
+                    $('#birth_date').css('color','#555');
+                }
+            },
+            closeCallback: function(){
+                //if date valid show tick image
+                if($('#birth_date').val() != ''){
+                    $('.birthday-inline #birth_date_valid').css('display', 'inline-block');
+                }else{
+                    $('.input-group #birth_date-error').css('display', 'inline-block');
+                }
+            },
+        });
+
+    if( navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)){
+        $('#birth_date').datebox({
+            mode: "flipbox",
+            beforeToday: true,
+            useFocus: true,
+            useButton: false,
+            useHeader: true,
+            defaultValue: date_today,
+        });
+    }
+    $('#birth_date').attr("readonly", false);
+    // *end*
+
+    // CHOOSE CITY AND DISTRICT
+    // Step 1: Load data for city and district, but district hide
+    // Step 2: Choose city, hide all district, show district appropriate, 
+    // Step 3: Change city, hide all district, show district appropriate, 
+
+    // *** User for Page profile and signup ***
+    // *begin*
+    // data city 
+    var list_city = {'Đà Nẵng': ['Hải Châu', 'Thanh Khê', ' Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu', 'Hòa Vang', ' Cẩm Lệ', ' Hoàng Sa'], 
+    'Hà Nội': [' Hoàn Kiếm', 'Ba Đình', 'Hai Bà Trưng'], 
+    'Hồ Chí Minh': ['1','2','3', '4', '5', '6', 'Tân Bình'], 'Khác': ['Khác']};
+    
+    // load city and district but district hide
+    var current_city = $("#id_city").val();
+    var current_district = $("#id_district").val();
+
+    // Check browser there must be IE
+    var isIE = window.navigator.userAgent.indexOf("Trident");
+    var isIOS = navigator.userAgent.match(/(\(iPod|\(iPhone|\(iPad)/);
+    if(isIE > 0 || isIOS){
+        // Browser IE
+
+        // *** CHOOSE CITY AND DISTRICT ***
+        // Step 1: Get current city and current district
+        // Step 2: 
+        // - TH1: load first page, call function selectDistrict
+        // --- Get all district of current city
+        // - TH2: change city
+        // --- Remove all list city and dictrict, not remove "Chon Quan" (disavled).
+        // --- callback function selectDictrict, back TH1.
+
+        selectDistrict(list_city, current_city);
+        // funtion show district for each city
+        function selectDistrict(list_city, current_name_city){
+            $.each(list_city, function(index, val) {
+                var name_city= index;
+                if(current_name_city && name_city==current_name_city){
+                    $('.list-city').append('<option value="' + name_city + '" selected>' +name_city + '</option>');
+                }else{
+                    $('.list-city').append('<option value="' + name_city + '">' +name_city + '</option>');    
+                }
+
+                if(current_name_city && name_city==current_name_city){
+                    $.each(val, function(index, val) {
+                        if(current_district && val==current_district){
+                            $('.list-district').append('<option value="' + val + '" class = "' + name_city + '" selected>' +val + '</option>');
+                        }else{
+                            $('.list-district').append('<option value="' + val + '" class = "' + name_city + '">' +val + '</option>');     
+                        }
+                    });
+                }
+            });
+        };
+
+        $('.list-city').on('change', function(event) {
+            event.preventDefault();
+            var name_city= $('.list-city').val();
+            $('.list-city option').remove();
+            $('.list-district option').not(":disabled").remove();
+            $('.list-district option').attr('selected', 'selected');
+            selectDistrict(list_city, name_city);
+        });
+    }else{
+        // Browser not IE
+        $.each(list_city, function(index, val) {
+            var name_city= index;
+            if(current_city && name_city==current_city){
+                $('.list-city').append('<option value="' + name_city + '" selected>' +name_city + '</option>');
+            }else{
+                $('.list-city').append('<option value="' + name_city + '">' +name_city + '</option>');    
+            }
+            
+            $.each(val, function(index, val) {
+                if(current_city && name_city==current_city){
+                    if(current_district && val==current_district){
+                        $('.list-district').append('<option value="' + val + '" class = "' + name_city + ' show-district" selected>' +val + '</option>');
+                    }else{
+                        $('.list-district').append('<option value="' + val + '" class = "' + name_city + ' show-district">' +val + '</option>');     
+                    }
+                }
+                else{
+                    if(current_district && val==current_district){
+                        $('.list-district').append('<option value="' + val + '" class = "' + name_city + '" selected>' +val + '</option>');
+                    }else{
+                        $('.list-district').append('<option value="' + val + '" class = "' + name_city + '">' +val + '</option>');     
+                    }
+                }
+            });
+        });
+        $('.list-district').children().hide();
+        $('.list-district .show-district').css('display','block');
+
+        // funtion show district for each city
+        function selectDistrict(list_city){
+            var name_city= $('.list-city').val();
+            $('.list-district').children().hide();
+            $('.list-district option').first().css('display', 'block').prop("selected", true);
+            $.each(list_city, function(index, val) {
+                if (index == name_city ) {
+                    $('.list-district option').each(function(index, el) {
+                        if ($(this).hasClass(name_city)) {
+                            $(this).show();
+                        }
+                    });
+                }
+             });
+        };
+
+        $('.list-city').on('change', function(event) {
+            event.preventDefault();
+            selectDistrict(list_city);
+        });
+    }
 });

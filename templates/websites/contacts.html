@@ -4,12 +4,14 @@
 
 {% block title %}Liên hệ{% endblock title %}
 
-{% block extrascript %}
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/contacts.js"></script>
+{% block extrastylesheet %}
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/contacts.css" media="all" />
 {% endblock %}
 
-{% block extrastylesheet %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/contacts.css" media="all" />
+{% block extrascript %}
+<!-- Captcha use contact, payment, signup -->
+    <script src="http://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/contacts.js"></script>
 {% endblock %}
 
 {% block container_class %}col2-left-layout{% endblock %}

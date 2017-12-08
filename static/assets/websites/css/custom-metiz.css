@@ -4962,7 +4962,6 @@ table .text p.deluxe{
     margin-top:7px;
 }
 .movie-technology-icons a span{
-    background-image: url("../images/bg-cgv/movie-icon.png");
     display: inline-block;
     float: left;
     height: 45px;
@@ -5008,7 +5007,6 @@ table .text p.deluxe{
     display: block;
     height: 45px;
     width: 68px;
-    background-image: url("../images/bg-cgv/movie-icon.png");
 }
 span.movie-rating-detail.p{
     background-position: -711px 0px;

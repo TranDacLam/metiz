@@ -476,6 +476,15 @@ li.btn-guest-wth117 {
 .modal form button {
     text-transform: uppercase;
 }
+#modal-popup .btn-login{
+    background-color: #7e8eaa;
+    color: #ffffff;
+    font-weight: bold;
+} 
+#modal-popup .btn-login:hover{
+    background-color: #ff4900;
+    color: #ffffff;
+}
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
         width: 66px;

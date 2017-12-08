@@ -5,13 +5,26 @@
 
 {% block title %}Metiz Cinema{% endblock title %}
 
-{% block extrascript %}
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js"></script> 
-{% endblock %}
-
 {% block extrastylesheet %}
+    <!-- slide movie page home -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/owl.carousel.min.css" media="all" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}assets/css/carousel/home_banner.css" media="all" />
+    <link rel="stylesheet"  href="{{ STATIC_URL }}assets/websites/css/slide_carousel.css"/>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/home.css" media="all" />
 {% endblock %}
+
+{% block extrascript %}
+    <!-- slide movie page home -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/owl.carousel.min.js"></script>
+    <!-- Home -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" ></script>
+    <script src="{{ STATIC_URL }}assets/js/carousel/banner_slide.js"></script>
+    <script src="{{ STATIC_URL }}assets/websites/js/slide_carousel.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js"></script> 
+
+{% endblock %}
+
+
 
 {% block container_class %}col1-layout {% endblock %}
 {%block body_class %}cms-index-index cms-home{% endblock %}
