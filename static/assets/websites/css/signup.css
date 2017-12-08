@@ -1,3 +1,12 @@
+.account-wrap, .account-wrap label{
+    font-family: "Montserrat", sans-serif;
+}
+.account-wrap button{
+    font-family: "SairaSemiCondensed-Medium", sans-serif;
+}
+.account-tabs .toggle-tabs li span a {
+	font-family: "Montserrat-Medium", sans-serif;
+}
 #myTabContent ul, #myTabContent li, #myTabContent ol{
     float:none;
 }
@@ -73,7 +82,7 @@
 	font-weight: bold;
 } 
 li.login-wth90 {
-	width: 90px;
+	width: 110px;
 }
 .btn-login:hover{
 	background-color: #ff4900;
@@ -161,7 +170,8 @@ ul ~ label{
 	-moz-appearance: textfield;
 }
 .col-main{
-    margin-bottom: 0px;
+    float: none;
+    margin: 0 auto;
 }
 /* Portrait and Landscape */
 @media only screen and (max-width: 768px) {

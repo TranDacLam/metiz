@@ -1,3 +1,12 @@
+#modal-popup #update_form,
+#modal-popup #update_form label,
+#modal-popup #member_form,
+#modal-popup #member_form label,
+#modal-popup #guest_form,
+#modal-popup #guest_form label,
+#guest .guest-policy, #guest .agree_term{
+    font-family: "Montserrat", sans-serif;
+}
 #modal-popup .col-xs-8 h3{
     color: black;
     margin-left: 40px;
@@ -388,7 +397,7 @@
     padding: 8px;  
 }
 li.btn-guest-wth117 {
-    width: 103px;
+    width: 112px;
     text-align: center;
 }
 #confirm .tab-header li a:focus{
@@ -399,30 +408,31 @@ li.btn-guest-wth117 {
     color: red;
     margin-top: 7px;
 }
-#modal-popup button, .modal-body p{
+#modal-popup button{
     font-family: 'SairaSemiCondensed-Medium';
 }
 #modal-popup .modal-body p{
     color: black;
+    font-family: 'Montserrat-Medium';
 }
 #confirm .tab-header a{
-    font-family: 'SairaSemiCondensed-Medium';
+    font-family: 'Montserrat-Medium';
 }
 .warning-footer button{
     font-size: 18px;
 }
 .modal > * {
     font-weight: 500;
-    font-size: 17px;
+    font-size: 15px;
     box-shadow: none;
     text-shadow: none;
 }
 #modal-popup .modal .form-control{
-    font-size: 17px;
+    font-size: 15px;
 }
 .modal label{
     font-weight: 500;
-    font-size: 18px;
+    font-size: 15px;
     color: #000000;
 }
 .modal label.form-error,.modal label.error{
@@ -438,7 +448,7 @@ li.btn-guest-wth117 {
     margin-top: 7px;
 }
 .modal .checkbox-term label{
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
 }
 #member #error{

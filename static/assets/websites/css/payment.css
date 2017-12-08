@@ -1,5 +1,12 @@
+.vnpayment,
+.vnpayment label, input, select, textarea,
+.payment-return .panel-body,
+.payment-return .back-link a{
+    font-family: "Montserrat", sans-serif;
+}
+.vnpayment .page-title h2, .vnpayment .btn-default,
 .vnpayment #create_form button{
-        font-family: "SairaSemiCondensed-Bold", sans-serif;
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
 }
 @media only screen and (min-width: 340px){
     .vnpayment{
@@ -85,11 +92,14 @@
     line-height: 1.8;
 }
 .payment-return .row .col-sm-3{
-    font-family: "SairaSemiCondensed-Media", sans-serif;
-    font-weight: bold;
+    font-family: "Montserrat-Medium", sans-serif;
 }
 .vnpayment input,.vnpayment textarea{
     padding-left: 16px;
+}
+.col-main{
+    float: none;
+    margin: 0 auto;
 }
 @media only screen 
 and (min-width: 568px) 

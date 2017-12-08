@@ -22,9 +22,6 @@ $(document).ready(function() {
         $(".ajax-loader").css("display", "none");
     });
 
-    // Disable forcus outside  area choice seat 
-    $('#seat-map').attr('aria-activedescendant', '');
-
     // variable setTimeout
     var timer;
 
@@ -54,6 +51,8 @@ $(document).ready(function() {
                     e.preventDefault();
                 }        
             });
+            // Disable forcus outside  area choice seat 
+            $('#seat-map').unbind("focus");
         }else{
             // show message when List seat empty, setTimeout 10s back home
             displayMsg();
@@ -271,9 +270,6 @@ $(document).ready(function() {
         //sold seat
         sc.get(arrStatus).status('unavailable');
 
-        var seatPayment = [];
-        var seats_choice = [];
-
         // Trim name seat
         function strimNameSeat(str){
             if(str.length == 2 && parseInt(str.substring(1,3)) < 10){
@@ -286,26 +282,20 @@ $(document).ready(function() {
 
         // Get ID, NAME seat selected. [{"ID": "1", "NAME": "A03"}]
         function getSeatSelected(){
-            seatSelected = new Array();
+            var seatSelected = new Array();
             var seats =  sc.find('selected').seats;
             for(i=0;i<seats.length; i++){
-                seats_choice.push(seats[i].settings.id);
                 seatSelected.push(JSON.stringify({
                     'ID': seats[i].settings.id,
                     'NAME': strimNameSeat(seats[i].settings.label)
                 }));
-
-                seatPayment.push(strimNameSeat(seats[i].settings.label));
             }
-            // Sort by name seat
-            seatPayment.sort();
-            
             return seatSelected;
         }
         // click booking next button.
         $('#btnNextBooking').on('click',function(){
-            var lst_seats = getSeatSelected();
-            var totalSeat = seatPayment.length;
+            // get length Seat selected
+            var totalSeat = getSeatSelected().length;
             // check user selected seat?
             if(totalSeat < 1){
                 displayMsg();
@@ -323,6 +313,9 @@ $(document).ready(function() {
             var id_movie_date_active = $('.date-movie-booking').text();
             // Translate string, toUpperCase first letter of string, substring if string > 20 character
             var id_movie_name = firstLeterCase(translateVI($('.name-movie-booking').text())).substring(0, 25);
+
+            // get id, name seat selected
+            var seatSelected = getSeatSelected();
 
             var working_id = guid();
             data = {
@@ -342,6 +335,11 @@ $(document).ready(function() {
             })
             .done(function(response) {
                 var barcode = response.BARCODE
+                // get array id seat selected
+                var seats_choice = seatSelected.map(item => JSON.parse(item).ID);
+                // get array name seat selected va sort by name
+                var seatPayment = seatSelected.map(item => JSON.parse(item).NAME).sort();
+
                 window.location.href = '/payment?totalPayment='+ totalPayment
                 +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
                 + '&id_movie_time='+id_movie_time + '&id_movie_date_active='+id_movie_date_active
@@ -353,55 +351,7 @@ $(document).ready(function() {
                 displayMsg();
                 $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
             });
-            
         });
-        
-
-        // redirect payment with total and seat
-        // $('#btnNextBooking').on('click',function(){
-        //     var totalPayment = recalculateTotal(sc);
-        //     var lst_seats = getSeatSelected();
-        //     var totalSeat = seatPayment.length;
-        //     var id_movie_time = $('.time-movie-booking').text().replace('~', '-');
-        //     var id_movie_date_active = $('.date-movie-booking').text();
-        //     // Translate string, toUpperCase first letter of string, substring if string > 20 character
-        //     var id_movie_name = firstLeterCase(translateVI($('.name-movie-booking').text())).substring(0, 25);
-
-        //     // check user selected seat?
-        //     if(totalSeat < 1){
-        //         displayMsg();
-        //         $('.msg-result-js').html(msgResult("Bạn chưa chọn ghế!", "warning"));
-        //         return false;
-        //     }
-        //     var working_id = guid();
-        //     data = {
-        //         "id_showtime": id_showtime,
-        //         "id_server": id_server,
-        //         "lst_seats": "["+ lst_seats.toString() +"]",
-        //         "working_id": working_id
-        //     }
-        //     $.ajax({
-        //         url: "/verify/seats",
-        //         type: 'POST',
-        //         data: data,
-        //         dataType: 'json',
-        //         crossDomain:false,
-        //         context: this,
-        //     })
-        //     .done(function(response) {
-        //         var barcode = response.BARCODE
-        //         window.location.href = '/payment?totalPayment='+ totalPayment
-        //         +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
-        //         + '&id_movie_time='+id_movie_time + '&id_movie_date_active='+id_movie_date_active
-        //         + '&working_id='+working_id + '&barcode='+ barcode 
-        //         + '&seats_choice='+seats_choice + '&id_server=' +id_server + '&id_showtime=' +id_showtime
-        //         + '&movie_api_id=' +movie_api_id;
-        //     })
-        //     .fail(function(error) {
-        //         displayMsg();
-        //         $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
-        //     });
-        // });
 
         // Refresh seat selected
         $('.booking-refresh a').on('click', function(){

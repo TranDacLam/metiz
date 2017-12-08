@@ -29,8 +29,11 @@
 }
 #header-nav {
     border-bottom: none;
+    height: 70px;
 }
-
+nav.navbar {
+	max-height: 100%;
+}
 
 ul.dropdown-menu>li>a:hover{
 	background: transparent;
@@ -42,9 +45,6 @@ ul.dropdown-menu>li>a:hover{
 .dropdown-menu>li>a:focus{
 	background: transparent;
 }
-/*.header-language-background{
-	display: none;
-}*/
 #header{
 	z-index: 4;
     position: relative;
@@ -72,7 +72,7 @@ ul.dropdown-menu>li>a:hover{
 #loginNavbar ul.navbar-nav, #loginNavbar ul.navbar-nav li{
 	float:none;
 }
-.header-top-account a:hover{
+.header-top-time a:hover{
 	color: #ff5400;
 }
 .navbar-nav li.custom-user-header{
@@ -89,6 +89,7 @@ ul.dropdown-menu>li>a:hover{
 .navbar-nav li.hover-user-header a{
 	color: #7e8eaa;
 	font-size: 14px;
+	z-index: 999;
 }
 .hover-user-header .responsive-name-user{
 	display: none;
@@ -103,7 +104,7 @@ ul.dropdown-menu>li>a:hover{
 .navbar-nav li.custom-user-header a{
 	margin-right: 0;
 }
-.header-career a{
+.header-phone a{
 	color: #fff;
 	font-family: "SairaSemiCondensed-Regular", sans-serif;
 	text-decoration: none;
@@ -227,11 +228,19 @@ ul.dropdown-menu>li>a:hover{
 		border-bottom:none;
 		height: 70px;
 	}
+	.page-header-container.container{
+		height: 100%;
+	}
+	.col-left.sidebar.col-left-first {
+		position: relative;
+		bottom: 25px;
+	}
 	.collapse-custom{
 		border-bottom:none;
 	}
 	.skip-links{
 		border:none;
+		display: none;
 	}
 	.hover-user-header .name-user-header{
 		display: none;
@@ -249,8 +258,20 @@ ul.dropdown-menu>li>a:hover{
 
 /* Navbar change */
 @media only screen and (max-width: 767px) {
-	.header-language-background{
-		display:none;
+	.header-info{
+	    position: absolute;
+	    z-index: 40000;
+	    right: 0;
+	    top: 46px;
+	}
+	.header-info .header-phone{
+		display:block;
+	}
+	.header-info .header-top-time{
+		display:block;
+	}
+	.header-phone{
+		margin: 0px;
 	}
 	.icon-nav{
 		font-size: 20px;
@@ -368,6 +389,26 @@ and (orientation: landscape){
 	}
 }
 @media only screen and (max-width: 480px){
+	.header-container{
+		padding: 0px 10px 0px 0px;
+	}
+	.header-info .header-top-time{
+		display:block;
+	}
+	.header-phone{
+		height: 21px;
+		margin: 0px;
+		font-size: 10px;
+	}
+	.header-phone a{
+		font-size: 10px;
+	}
+	.header-top-time{
+		padding: 0px;
+	}
+	.time-header{
+		font-size: 10px;
+	}
 	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
 	    background-color: #eee;
 	    border-color: #337ab7;
@@ -388,7 +429,7 @@ and (orientation: landscape){
 	#select-language li a span{
 		padding-top: 8px;
 	}
-	.header-language-background{
+	.header-info{
 		display: block;
 	}
 	.main-container {
