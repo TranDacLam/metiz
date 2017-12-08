@@ -22,9 +22,6 @@ $(document).ready(function() {
         $(".ajax-loader").css("display", "none");
     });
 
-    // Disable forcus outside  area choice seat 
-    $('#seat-map').attr('aria-activedescendant', '');
-
     // variable setTimeout
     var timer;
 
@@ -54,6 +51,8 @@ $(document).ready(function() {
                     e.preventDefault();
                 }        
             });
+            // Disable forcus outside  area choice seat 
+            $('#seat-map').unbind("focus");
         }else{
             // show message when List seat empty, setTimeout 10s back home
             displayMsg();

@@ -221,6 +221,9 @@ div.seatCharts-seat.available.seat-ld {
 #member_card_modal .modal-body p.member-card-info {
     margin-bottom: 30px;
 }
+#seat-map:focus{
+    outline: none;
+}
 @media only screen and (max-width: 1366px){
     .ajax-loader>p{
         left: 42%;
