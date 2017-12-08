@@ -57,7 +57,7 @@
                                     <div class="col-sm-6 form-group">
                                     <label for="full_name">{% trans "Full Name" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="full_name" id="full_name" value="{%if full_name %}{{ full_name }}{% endif %}" title="User Name" placeholder="Nhập Họ Tên Ở Đây" class="input-text validate-mobile required-entry" /> 
+                                        <input type="text" name="full_name" id="full_name" value="{%if full_name %}{{ full_name }}{% endif %}" title="User Name" placeholder="Nhập Họ Tên Ở Đây" class="input-text validate-mobile required-entry form-control" /> 
                                         {% if form.full_name.errors %}
                                             {{form.full_name.errors}}
                                         {% endif %}

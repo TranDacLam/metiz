@@ -21,12 +21,6 @@
 .profile-custom .btn-default:hover{
     background-color:#ff4000;
 }
-.ui-datebox-cal-pickers fieldset .input-sm:first-child{
-    width: 57%!important;
-}
-.ui-datebox-cal-pickers fieldset .input-sm {
-    padding-top: 0px;
-}
 .profile-custom .input-group{
     display:inline;
 }
@@ -74,7 +68,17 @@
     height: 125px;
 }
 .profile-custom .ui-datebox-flipcenter{
-    top: -32.5px!important;
+    top: -32.5px !important;
+}
+.ui-datebox-gridheader h4 {
+    font-family: "Montserrat", sans-serif;
+}
+.ui-datebox-cal-pickers fieldset .input-sm:first-child{
+    width: 57%!important;
+}
+.ui-datebox-cal-pickers fieldset .input-sm {
+    padding-top: 0px;
+    font-family: "Montserrat", sans-serif;
 }
 @media only screen and (min-width : 481px) and (max-width : 768px) {
     .profile-custom{
@@ -224,9 +228,6 @@
     .metiz-edit-btn.buttons-set button.button{
         margin-right: 32px;
     }
-}
-.profile-custom .form-control{
-    font-size: 15px;
 }
 .profile-custom ul.post-detail-metiz{
     float: none;
