@@ -4,10 +4,15 @@
 {% block title %}{{film_detail.name}}{% endblock title %}
 
 {% block extrastylesheet %}
+<!-- film detail -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/star-rating.min.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/zoom/xzoom.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film.css" media="all" />
 {% endblock %}
+
 {% block extrascript %}
+<!-- film detail -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/star-rating.min.js"></script>
 	<!--Documents: https://github.com/payalord/xZoom/blob/master/doc/manual.md-->
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/zoom/setup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/zoom/xzoom.min.js"></script>

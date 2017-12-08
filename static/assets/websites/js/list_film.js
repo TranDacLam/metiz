@@ -1,16 +1,5 @@
 $(document).ready(function($) {
-	$('#about-arthouse_contents').css('display','none');
-	$('#about-arthouse').click(function(event) {
-		/* Act on the event */
-		$('#about-arthouse_contents').css('display','block');
-		$('#arthouse-home_contents').css('display','none');
-	});
-	$('#arthouse-home').click(function(event) {
-		/* Act on the event */
-		$('#about-arthouse_contents').css('display','none');
-		$('#arthouse-home_contents').css('display','block');
-	});
-
+	
     // active popup
     $('.open-popup-list-movie').magnificPopup({
         type: 'inline',
