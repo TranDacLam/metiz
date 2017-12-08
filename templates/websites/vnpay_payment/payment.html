@@ -3,9 +3,13 @@
 {% block title %}Thanh Toán{% endblock title %}
 
 {% block extrastylesheet %}
+ <!-- Payment and payment_return -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/payment.css" media="all" />
 {% endblock %}
 
 {% block extrascript %}
+    <!-- Captcha use contact, payment, signup -->
+    <script src="http://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     <script src="{{ STATIC_URL }}assets/websites/js/vnpayment.js"></script>
 {% endblock %}
 

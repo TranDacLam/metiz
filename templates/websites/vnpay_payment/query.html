@@ -1,5 +1,15 @@
 {% extends "layout.html" %}
+
+{% block extrastylesheet %}
+    <!-- refund, query has datetimepicker -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/datetimepicker/jquery.datetimepicker.css">
+     <!-- query, refund -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/query_refund.css" media="all" />
+{% endblock %}
+
 {% block extrascript %}
+    <!-- refund, query has datetimepicker -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/query.js"></script>
 {% endblock %}
 {% block main_content %}
