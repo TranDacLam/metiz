@@ -248,6 +248,8 @@ try:
         from config.setting_develop import *
     elif 'UAT' in os.environ and os.environ['UAT']:
         from config.setting_uat import *
+    elif 'PRODUCTION' in os.environ and os.environ['PRODUCTION']:
+        from config.setting_production import *
     else:
         from config.setting_local import *
     

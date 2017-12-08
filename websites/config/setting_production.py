@@ -16,7 +16,7 @@ DATABASES = {
 }
 
 # Default Email Contact
-DEFAULT_TO_ADMIN_EMAIL = "thaophan@vooc.vn"
+DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
 
 # VNPAY CONFIG
 VNPAY_RETURN_URL = 'http://metiz.vn/payment_return'  # get from config
@@ -27,7 +27,7 @@ VNPAY_HASH_SECRET_KEY = 'YTDBTUZONRERICMBLYIRTRTEJDPCZDFK'  # Secret key for cre
 
 
 # POS Cinestar config
-CINESTAR_SERECT_KEY = 'c5dc96d7e47a494886547746657b15a0'
+CINESTAR_SERECT_KEY = '5ba90f1cc2d540edbb01e3ffc85bc7f2'
 BASE_URL_CINESTAR = 'http://113.176.107.20:8080/helio.asmx'
 
 # SMS Config

@@ -3,12 +3,18 @@
 {% block title %}{% if is_login %}{% trans "Login" %}{% else %}{% trans "Signup" %}{% endif %}{% endblock title %} 
 
 {% block extrastylesheet %} 
+    <!-- datepiker for signup, profile -->
+    <link href="{{ STATIC_URL }}assets/css/dateBox/jtsage-datebox.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/signup.css">
 {% endblock %} 
 
 {% block extrascript %} 
+    <!-- datepiker for signup, profile -->
+    <script src="{{ STATIC_URL }}assets/js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}assets/js/dateBox/jtsage-datebox.min.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}assets/js/dateBox/messages-datebox.js" type="text/javascript"></script>
     <!-- Captcha use contact, payment, signup -->
-    <script src="http://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     <!-- signup -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/signup.js"></script>
 {% endblock %} 
