@@ -1,6 +1,6 @@
 from fabric.api import *
 
-ENV = 'development' # Choices ['uat','production','development']
+ENV = 'uat' # Choices ['uat','production','development']
 #ENV = 'production'
 SERVERS = {
     'development': '172.16.12.10',
@@ -15,9 +15,8 @@ BRANCH = {
 
 USERS = {
     'development': 'adminvn',
-    # 'uat': 'thangv',
     'production': 'ubuntu',
-    'api': 'ubuntu'
+    'uat': 'ubuntu'
 }
 
 PASSWORDS = {
@@ -73,8 +72,8 @@ def deploy():
                 run('pip install -r ../requirements.txt')
                 run('python manage.py collectstatic --noinput')
                 run('python manage.py migrate')
-                # sudo('systemctl restart uwsgi_helio')
-                sudo('su -s /bin/bash www-data -c "%s;%s" '%(env.activate,"uwsgi --reload %s"%PROCESS_ID[ENV]))
+                sudo('systemctl restart uwsgi_metiz_uat')
+                # sudo('su -s /bin/bash www-data -c "%s;%s" '%(env.activate,"uwsgi --reload %s"%PROCESS_ID[ENV]))
 
 
         
