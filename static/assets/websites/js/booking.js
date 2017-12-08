@@ -13,6 +13,14 @@ $(document).ready(function() {
     var id_showtime = $('#id_showtime').val();
     var movie_api_id = $('#movie_api_id').val();
 
+    // Validate member_card only input alpha
+    $("#member_card").on("input", function(){
+        var regexp = /[^a-zA-Z]/g;
+        if($(this).val().match(regexp)){
+            $(this).val( $(this).val().replace(regexp,'') );
+        }
+    });
+
     // show icon load when ajax start 
     $(document).ajaxStart(function(){
         $(".ajax-loader").css("display", "block");
