@@ -408,11 +408,12 @@ li.btn-guest-wth117 {
     color: red;
     margin-top: 7px;
 }
-#modal-popup button, .modal-body p{
+#modal-popup button{
     font-family: 'SairaSemiCondensed-Medium';
 }
 #modal-popup .modal-body p{
     color: black;
+    font-family: 'Montserrat-Medium';
 }
 #confirm .tab-header a{
     font-family: 'Montserrat-Medium';
