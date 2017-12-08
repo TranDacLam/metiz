@@ -59,6 +59,7 @@ a{
 }
 .buttons-set button.button{
 	float: left;
+	font-size: 14px;
 }
 .contacts-index-index .buttons-set{
 	margin-left: 46%;

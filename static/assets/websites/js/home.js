@@ -72,11 +72,4 @@ $(document).ready(function() {
     }
     $('.tabs-format-metiz').toggleOwl(' #movie-tab-1 .owl-carousel', control_owl);
     $('.tabs-format-metiz').toggleOwl('.owl-carousel.style2', control_owl);
-
-    // Display scroll when boxText > 350 characters
-    var boxText = $("#box").text(); //Get text box for intro promotion
-    var showCharBox = 350;
-    if(boxText.length > showCharBox) {
-        $("#news #box").css("overflow-y", "scroll");
-    }
 });
