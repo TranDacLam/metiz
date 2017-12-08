@@ -1,5 +1,7 @@
 .vnpayment,
-.vnpayment label, input, select, textarea{
+.vnpayment label, input, select, textarea,
+.payment-return .panel-body,
+.payment-return .back-link a{
     font-family: "Montserrat", sans-serif;
 }
 .vnpayment .page-title h2, .vnpayment .btn-default,
@@ -90,8 +92,7 @@
     line-height: 1.8;
 }
 .payment-return .row .col-sm-3{
-    font-family: "SairaSemiCondensed-Media", sans-serif;
-    font-weight: bold;
+    font-family: "Montserrat-Medium", sans-serif;
 }
 .vnpayment input,.vnpayment textarea{
     padding-left: 16px;
