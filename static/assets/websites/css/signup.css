@@ -2,7 +2,10 @@
     font-family: "Montserrat", sans-serif;
 }
 .account-wrap button{
-    font-family: "SairaSemiCondensed-Bold", sans-serif;
+    font-family: "SairaSemiCondensed-Medium", sans-serif;
+}
+.account-tabs .toggle-tabs li span a {
+	font-family: "Montserrat-Medium", sans-serif;
 }
 #myTabContent ul, #myTabContent li, #myTabContent ol{
     float:none;
@@ -79,7 +82,7 @@
 	font-weight: bold;
 } 
 li.login-wth90 {
-	width: 90px;
+	width: 110px;
 }
 .btn-login:hover{
 	background-color: #ff4900;
