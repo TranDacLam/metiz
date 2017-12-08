@@ -238,3 +238,17 @@
 .profile-custom ul.post-detail-metiz{
     float: none;
 }
+@media only screen 
+  and (min-width: 480px) 
+  and (max-width: 767px)
+  and (orientation: landscape) { 
+    .top-row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .top-row > div {
+      float: left;
+      width: 50%;
+    }
+}

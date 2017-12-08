@@ -117,6 +117,21 @@ ul.errorlist li, .error{
     color: red;
     font-weight: 500;
 }
+input::placeholder {
+    font-size: 12px;
+}
+::-webkit-input-placeholder { /* Chrome */
+  font-size: 12px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size: 12px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-size: 12px;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  font-size: 12px;
+}
 @media only screen and (max-width: 736px){
     .main-container{
         margin-top: 0px;

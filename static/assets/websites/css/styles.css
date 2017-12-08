@@ -464,6 +464,10 @@ textarea {
   font-size: 15px;
   line-height: 18px;;
 }
+input, select, textarea {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+}
 
 a {
   color: #e71a0f;
