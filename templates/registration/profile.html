@@ -2,14 +2,21 @@
 {% load i18n %}
 {% block title %}Hồ sơ{% endblock title %}
 
+{% block extrastylesheet %}
+    <!-- datepiker for signup, profile -->
+    <link href="{{ STATIC_URL }}assets/css/dateBox/jtsage-datebox.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/profile.css" media="all" />
+{% endblock %}
+
 {% block extrascript %}
-<!-- profile -->
+    <!-- datepiker for signup, profile -->
+    <script src="{{ STATIC_URL }}assets/js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}assets/js/dateBox/jtsage-datebox.min.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}assets/js/dateBox/messages-datebox.js" type="text/javascript"></script>
+    <!-- profile -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/profile.js"></script>
 {% endblock %}
 
-{% block extrastylesheet %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/profile.css" media="all" />
-{% endblock %}
 
 {% block container_class%}col2-left-layout{% endblock%}
 
@@ -54,7 +61,7 @@
                         <div class="col-sm-12">
                             <div class="row">
                                 <div class="top-row">
-                                    <div class="col-sm-6 form-group">
+                                    <div class="col-xs-6 form-group">
                                     <label for="full_name">{% trans "Full Name" %}</label>
                                     <div class="inline">
                                         <input type="text" name="full_name" id="full_name" value="{%if full_name %}{{ full_name }}{% endif %}" title="User Name" placeholder="Nhập Họ Tên Ở Đây" class="input-text validate-mobile required-entry form-control" /> 
@@ -63,7 +70,7 @@
                                         {% endif %}
                                     </div>
                                     </div>
-                                    <div class="col-sm-6 form-group">
+                                    <div class="col-xs-6 form-group">
                                     <label>{% trans "Gender" %}</label>
                                     <div class="form-check form-check-inline">
                                       <label class="form-check-label">
@@ -77,7 +84,7 @@
 
                             <div class="row">
                                 <div class='top-row'>
-                                    <div class="col-sm-6 form-group form-birthday">
+                                    <div class="col-xs-6 form-group form-birthday">
                                         <label>{% trans "Birth Date" %}</label>
                                         <div class="inline">
                                             <input type="text" name="birth_date" id="birth_date" value="{% if form.errors %}{{ birth_date }}{% elif birth_date %}{{ birth_date | date:'d-m-Y' }}{% endif %}" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control">                
@@ -86,7 +93,7 @@
                                             {% endif %}
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 form-group">
+                                    <div class="col-xs-6 form-group">
                                         <label>{% trans "Phone" %}</label>
                                         <div class="inline">
                                             <div class="country-code">+84</div>
@@ -101,7 +108,7 @@
 
                             <div class="row">
                                 <div class="top-row">
-                                    <div class="col-sm-6 form-group">
+                                    <div class="col-xs-6 form-group">
                                         <label>{% trans "Email"%}</label>
                                         <div class="inline">
                                             <input type="text" id="email" value="{{ email }}" name="email" placeholder="{% trans 'Enter Email Here..' %}" class="form-control" disabled>
@@ -110,7 +117,7 @@
                                             {% endif %}
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 form-group">
+                                    <div class="col-xs-6 form-group">
                                         <label>{% trans "Personal ID" %}</label>
                                         <div class="inline">
                                             <input type="text" name="personal_id" value="{% if personal_id %}{{ personal_id }}{% endif %}" id="personal_id" placeholder="{% trans 'Enter Personal ID Here..' %}" class="form-control">
@@ -124,7 +131,7 @@
 
                             <div class="row">
                                 <div class="top-row">
-                                    <div class="col-sm-6 form-group">
+                                    <div class="col-xs-6 form-group">
                                         <label>{% trans "City"%}</label>
                                         <div class="inline">
                                             <input type="hidden" id="id_city" value="{{ city }}">
@@ -136,7 +143,7 @@
                                             {% endif %}
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 form-group">
+                                    <div class="col-xs-6 form-group">
                                         <label>{% trans "District"%}</label>
                                          <div class="inline">
                                             <input type="hidden" id="id_district" value="{{ district }}">
@@ -152,7 +159,7 @@
                             </div>
                             <div class="row">
                                 <div class="top-row">
-                                    <div class="col-sm-12 form-group">
+                                    <div class="col-xs-12 form-group">
                                         <label>{% trans "Address" %}</label>
                                         <div class="inline">
                                             <textarea name="address" id="address" placeholder="{% trans 'Enter Address Here..' %}" rows="3" class="form-control">{% if address %}{{ address }} {% endif %}</textarea>

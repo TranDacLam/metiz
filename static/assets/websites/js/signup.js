@@ -283,7 +283,7 @@ $(document).ready(function() {
         $('.list-city').on('change', function(event) {
             event.preventDefault();
             var name_city= $('.list-city').val();
-            $('.list-city option').remove();
+            $('.list-city option').not(":disabled").remove();
             $('.list-district option').not(":disabled").remove();
             $('.list-district option').attr('selected', 'selected');
             selectDistrict(list_city, name_city);

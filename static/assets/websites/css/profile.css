@@ -80,6 +80,9 @@
     padding-top: 0px;
     font-family: "Montserrat", sans-serif;
 }
+#profile-validate select{
+    width: 265px;
+}
 @media only screen and (min-width : 481px) and (max-width : 768px) {
     .profile-custom{
         padding: 0 20px 0 20px;
@@ -178,6 +181,9 @@
     }
     .metiz-edit-btn.buttons-set button.button{
         margin-right: 20px;
+    }
+    #profile-validate .form-group{
+        width: 100%;
     }
 }
 @media only screen and (max-width : 375px) {
