@@ -243,6 +243,9 @@ ul ~ label{
 #myTabContent .ui-datebox-flipcenter.ui-overlay-shadow{
 	top: -21px !important;
 }
+.ui-datebox-gridheader h4,.ui-datebox-cal-pickers fieldset .input-sm {
+    font-family: "Montserrat", sans-serif;
+}
 @media screen and (max-width: 320px){
 	#birth_date_valid {
 		left: -2px;

@@ -162,7 +162,7 @@
                                             <div class="inline">
                                                 <input type="hidden" id="id_city" value="{{ city }}">
                                                 <select class="form-control list-city" name="city" id="city" tabindex=9>
-                                                    <option value="" disabled selected>{% trans "Choose City" %}</option>
+                                                    <option disabled selected>{% trans "Choose City" %}</option>
                                                 </select>
                                                 {% if form.errors.city %}
                                                     {{form.errors.city}}
