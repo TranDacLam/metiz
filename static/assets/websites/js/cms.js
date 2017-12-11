@@ -55,6 +55,9 @@ $(document).ready(function() {
             $('.title-about-metiz').html('<h1>'+ response.name +'</h1>');
             $('.content-seperator').html('<p>'+ response.content +'</p>');
 
+            // When complete ajax, callback function
+            changeArrowQuestion();
+
             // popup mutil image "Goi Thieu Metiz" when use ajax
             $('.popup-gallery').magnificPopup({
                 delegate: 'img',
@@ -80,4 +83,21 @@ $(document).ready(function() {
             alert("error");
         })
     });
+
+    changeArrowQuestion();
 });
+
+// Change arrow down/up when click question
+function changeArrowQuestion(){
+    $('.question-toggle').on('click', function(){
+        $('.question-toggle').find('i').removeClass('fa-chevron-circle-up, fa-chevron-circle-down');
+        $('.question-toggle').find('i').addClass('fa-chevron-circle-down');
+        if($(this).hasClass('collapsed')){
+            $(this).find('i').removeClass('fa-chevron-circle-down');
+            $(this).find('i').addClass('fa-chevron-circle-up');
+        }else{
+            $(this).find('i').removeClass('fa-chevron-circle-up');
+            $(this).find('i').addClass('fa-chevron-circle-down');
+        }
+    });
+}

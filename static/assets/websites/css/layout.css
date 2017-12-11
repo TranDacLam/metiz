@@ -117,6 +117,9 @@ ul.errorlist li, .error{
     color: red;
     font-weight: 500;
 }
+.custom-time-out a{
+    color: #337ab7;
+}
 input::placeholder {
     font-size: 12px;
 }
