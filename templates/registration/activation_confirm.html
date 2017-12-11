@@ -2,6 +2,12 @@
 {% load i18n %}
 {% block title %}Kích Hoạt Tài Khoản{% endblock title %}
 
+{% block extrastylesheet %} 
+    <!-- Using css of password reset -->
+    <!-- Because the same template information -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/password_reset.css" media="all" />
+{% endblock %}
+
 {% block main_content %}
 <div class="main">
     <div class="col-main">
@@ -10,42 +16,70 @@
             <!-- Active account : {{ success }} -->
             {% if has_account %}
                 <div class="contain-confirm">
-                    <div class="col-md-12 page-title">
-                        <h1 >KÍCH HOẠT THẤT BẠI!</h1>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="font-size-16">Lấy làm tiếc! Bạn đang đăng nhập với một tài khoản khác. Vui lòng đăng xuất trước khi nhấp vào liên kết kích hoạt.</p>
-                    </div>
+                    <div class="col-main pass-reset-done">
+                        <div class="form-forgot-pass">
+                            <div class="form-change-pass">
+                                <h2>Kích hoạt thất bại</h2>
+                                <div class='clearfix'></div>
+                                <div class="note-forgot-pass note-pass-reset-done">
+                                    <p>
+                                       Lấy làm tiếc! Bạn đang đăng nhập với một tài khoản khác. Vui lòng đăng xuất trước khi nhấp vào liên kết kích hoạt.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
                 </div>
             {% endif %}
             {% if active %}
                 <div class="contain-confirm">
-                    <div class="col-md-12 page-title">
-                        <h1 >TÀI KHOẢN CỦA BẠN ĐÃ ĐƯỢC KÍCH HOẠT!</h1>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="font-size-16">Lấy làm tiếc! Liên kết đã được kích hoạt.</p>
-                    </div>
+                    <div class="col-main pass-reset-done">
+                        <div class="form-forgot-pass">
+                            <div class="form-change-pass">
+                                <h2>Tài khoản của bạn đã được kích hoạt</h2>
+                                <div class='clearfix'></div>
+                                <div class="note-forgot-pass note-pass-reset-done">
+                                    <p>
+                                       Lấy làm tiếc! Liên kết đã được kích hoạt.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
                 </div>
             {% endif %}
             {% if expired %}
                 <div class="contain-confirm">
-                    <div class="col-md-12 page-title">
-                        <h1 >LIÊN KẾT ĐÃ HẾT HẠN!</h1>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="font-size-16">Lấy làm tiếc! Liên kết kích hoạt đã hết hạn. Vui lòng đăng ký lại để nhận một liên kết kích hoạt mới.</p>
-                    </div>
+                    <div class="col-main pass-reset-done">
+                        <div class="form-forgot-pass">
+                            <div class="form-change-pass">
+                                <h2>Liên kết đã hết hạn</h2>
+                                <div class='clearfix'></div>
+                                <div class="note-forgot-pass note-pass-reset-done">
+                                    <p>
+                                       Lấy làm tiếc! Liên kết kích hoạt đã hết hạn. Vui lòng đăng ký lại để nhận một liên kết kích hoạt mới.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
                 </div>
             {% endif %}
             {% if success %}
                 <div class="contain-confirm">
-                    <div class="col-md-12 page-title">
-                        <h1 >BẠN ĐÃ ĐƯỢC XÁC NHẬN!</h1>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="font-size-16">Xin chúc mừng! Tài khoản của bạn đã được kích hoạt thành công. <span class="back-link">Quay lại trang chủ<a href="/"> tại đây</a>.</span></p>
-                    </div>
+                    <div class="col-main pass-reset-done">
+                        <div class="form-forgot-pass">
+                            <div class="form-change-pass">
+                                <h2>Bạn đã được xác nhận</h2>
+                                <div class='clearfix'></div>
+                                <div class="note-forgot-pass note-pass-reset-done">
+                                    <p>
+                                       Xin chúc mừng! Tài khoản của bạn đã được kích hoạt thành công.Quay lại trang chủ<a href="/"> tại đây</a>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
                 </div>
             </div>
             {% endif %}

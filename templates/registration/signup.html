@@ -123,21 +123,21 @@
 
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
-                                            <label>{% trans "Email"%}</label>
+                                            <label>{% trans "Personal ID" %}</label>
                                             <div class="inline">
-                                                <input type="text" id="email" name="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" tabindex=5
-                                                value="{% if email %}{{ email }}{% endif %}">
-                                                {% if form.errors.email %}
-                                                    {{form.errors.email}}
+                                                <input type="text" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Personal ID Here' %}" class="form-control" tabindex=5 pattern='\d' value="{% if personal_id %}{{ personal_id }}{% endif %}" pattern="\d*">
+                                                {% if form.errors.personal_id %}
+                                                    {{form.errors.personal_id}}
                                                 {% endif %}
                                             </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
-                                            <label>{% trans "Personal ID" %}</label>
+                                            <label>{% trans "Email"%}</label>
                                             <div class="inline">
-                                                <input type="text" name="personal_id" id="personal_id" placeholder="{% trans 'Enter Personal ID Here' %}" class="form-control" tabindex=6 pattern='\d' value="{% if personal_id %}{{ personal_id }}{% endif %}" pattern="\d*">
-                                                {% if form.errors.personal_id %}
-                                                    {{form.errors.personal_id}}
+                                                <input type="text" id="email" name="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" tabindex=6
+                                                value="{% if email %}{{ email }}{% endif %}">
+                                                {% if form.errors.email %}
+                                                    {{form.errors.email}}
                                                 {% endif %}
                                             </div>
                                         </div>
