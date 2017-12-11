@@ -13,9 +13,17 @@
 .postDetail {
 	font-family: "Montserrat", sans-serif;
 }
-
+.postDetail img {
+	max-width:100% !important;
+	height: 300px !important; 
+}
 @media only screen and (max-width: 767px) {
 	.postTitle{
 		text-align: center;
+	}
+}
+@media only screen and (max-width: 414px) {
+	.postDetail img {
+		height: 300px !important; 
 	}
 }
