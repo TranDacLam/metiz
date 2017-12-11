@@ -72,7 +72,7 @@ def deploy():
                 run('pip install -r ../requirements.txt')
                 run('python manage.py collectstatic --noinput')
                 run('python manage.py migrate')
-                sudo('systemctl restart uwsgi_metiz_uat')
+                # sudo('systemctl restart uwsgi_metiz_uat')
                 # sudo('su -s /bin/bash www-data -c "%s;%s" '%(env.activate,"uwsgi --reload %s"%PROCESS_ID[ENV]))
 
 
