@@ -137,7 +137,9 @@ ul.errorlist li, .error{
     color: red;
     font-weight: 500;
 }
-
+.custom-time-out a{
+    color: #337ab7;
+}
 @media only screen and (max-width: 736px){
     .main-container{
         margin-top: 0px;

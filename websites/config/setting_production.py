@@ -5,18 +5,18 @@ DEBUG = False
 
 DATABASES = {
     'default': {
-        'NAME': 'helio_web',
+        'NAME': 'metiz_cinema_db',
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
         'PORT': 3306,
-        'USER': 'helio',
-        'PASSWORD': 'admin@helio.vn'
+        'USER': 'admin_metiz',
+        'PASSWORD': 'Admin@Met1z.vn'
     }
 
 }
 
 # Default Email Contact
-DEFAULT_TO_ADMIN_EMAIL = "thaophan@vooc.vn"
+DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
 
 # VNPAY CONFIG
 VNPAY_RETURN_URL = 'http://metiz.vn/payment_return'  # get from config
