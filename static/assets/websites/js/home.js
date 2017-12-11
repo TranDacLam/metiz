@@ -72,5 +72,4 @@ $(document).ready(function() {
     }
     $('.tabs-format-metiz').toggleOwl(' #movie-tab-1 .owl-carousel', control_owl);
     $('.tabs-format-metiz').toggleOwl('.owl-carousel.style2', control_owl);
-
 });

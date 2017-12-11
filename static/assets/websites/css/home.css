@@ -157,6 +157,7 @@
     padding: 40px;
     margin-top: 20px;
     border: 2px solid #c8c6be;
+    overflow-y: scroll;
 }
 #news #box p{
     font-family: 'Montserrat-Light', sans-serif;

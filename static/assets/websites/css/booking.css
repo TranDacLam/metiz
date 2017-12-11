@@ -230,6 +230,9 @@ div.seatCharts-seat.available.seat-ld {
 #btn_add_card {
     font-family: 'SairaSemiCondensed-Medium';
     text-transform: uppercase;
+    background-color: #7e8eaa;
+    color: #ffffff;
+    font-weight: bold;
 }
 #seat-map:focus{
     outline: none;

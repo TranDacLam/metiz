@@ -1,6 +1,6 @@
 from fabric.api import *
 
-ENV = 'uat' # Choices ['uat','production','development']
+ENV = 'production' # Choices ['uat','production','development']
 #ENV = 'production'
 SERVERS = {
     'development': '172.16.12.10',
@@ -28,13 +28,13 @@ PASSWORDS = {
 VIRTUAL_ENVS = {
     'development': 'source /home/adminvn/envs_root/metiz_env/bin/activate',
     'uat': 'source /home/ubuntu/envs_root/metiz_uat_env/bin/activate',
-    'production': 'source /home/ubuntu/envs_root/metiz_uat_env/bin/activate'
+    'production': 'source /home/ubuntu/envs_root/metiz_env//bin/activate'
 }
 
 PATHS = {
     'development': '/home/adminvn/sites/metiz',
     'uat': '/home/ubuntu/projects/metiz',
-    'production': '/home/ubuntu/projects/metiz'
+    'production': '/home/ubuntu/projects/production/metiz'
 }
 
 PROCESS_ID = {
@@ -72,7 +72,7 @@ def deploy():
                 run('pip install -r ../requirements.txt')
                 run('python manage.py collectstatic --noinput')
                 run('python manage.py migrate')
-                sudo('systemctl restart uwsgi_metiz_uat')
+                # sudo('systemctl restart uwsgi_metiz_uat')
                 # sudo('su -s /bin/bash www-data -c "%s;%s" '%(env.activate,"uwsgi --reload %s"%PROCESS_ID[ENV]))
 
 
