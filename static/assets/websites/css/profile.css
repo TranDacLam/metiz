@@ -39,6 +39,10 @@
 .metiz-changepass{
     display: none;
 }
+.list-city, .list-district{
+    width: 265px;
+    padding: 0px 5px;
+}
 #profile-validate textarea{
     width: 265px;
 }
