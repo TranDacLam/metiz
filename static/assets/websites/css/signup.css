@@ -71,6 +71,7 @@
 .list-city, .list-district{
 	width: 265px;
 	padding: 0px 5px;
+	font-size: 15px;
 }
 .form-control.error{
 	color: #555;
@@ -143,6 +144,7 @@ ul ~ label{
 .form-address #address{
 	width: 265px;
 	max-height: 70px;
+	font-size: 15px;
 }
 #myTabContent button[type=submit]{
 	text-transform: uppercase;
