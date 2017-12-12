@@ -338,6 +338,7 @@ def payment_return(request):
             barcode = booking_order.barcode
         except BookingInfomation.DoesNotExist, e:
             print "Error BookingInfomation DoesNotExist : %s" % e
+            pass
 
         if vnp.validate_response(settings.VNPAY_HASH_SECRET_KEY):
             if vnp_ResponseCode == "00":
