@@ -297,8 +297,11 @@ def payment_ipn(request):
                         cancel_seats(booking_order.seats.split(
                             ","), booking_order.id_server)
 
+                    booking_order.order_status = 'Error'
+                    booking_order.save()
+
                     result = JsonResponse(
-                        {'RspCode': vnp_ResponseCode, 'Message': 'Confirm Error'})
+                        {'RspCode': '00', 'Message': 'Confirm Error'})
 
             except BookingInfomation.DoesNotExist, e:
                 print "Error BookingInfomation DoesNotExist : %s" % e
