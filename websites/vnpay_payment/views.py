@@ -169,13 +169,13 @@ def payment(request):
 
             # Remove session and store order in database and verify order id
             # unsuccessfull, clear seats
-            
+
             if movies_session and working_id in movies_session:
                 del request.session['movies'][working_id]
 
             # Store order infomation with status is pendding
-            booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session[
-                                              "phone"], email=request.session["email"], seats=seats_choice, barcode=barcode,
+            booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
+                                              email=request.session.get("email", ""), seats=seats_choice, barcode=barcode,
                                               id_server=id_server, order_status="pendding")
 
             if not request.user.is_anonymous():
@@ -283,8 +283,8 @@ def payment_ipn(request):
 
                     # Send Email
                     if booking_order.email:
-                        send_mail_booking(request.is_secure(), booking_order.email, request.session[
-                                          "full_name"], booking_order.barcode, booking_order.order_desc)
+                        send_mail_booking(request.is_secure(), booking_order.email, request.session.get(
+                            "full_name", ""), booking_order.barcode, booking_order.order_desc)
 
                     # Return VNPAY: Merchant update success
                     result = JsonResponse(
@@ -332,6 +332,13 @@ def payment_return(request):
         vnp_PayDate = inputData['vnp_PayDate']
         vnp_BankCode = inputData['vnp_BankCode']
         vnp_CardType = inputData['vnp_CardType']
+        barcode = None
+        try:
+            booking_order = BookingInfomation.objects.get(order_id=order_id)
+            barcode = booking_order.barcode
+        except BookingInfomation.DoesNotExist, e:
+            print "Error BookingInfomation DoesNotExist : %s" % e
+            pass
 
         if vnp.validate_response(settings.VNPAY_HASH_SECRET_KEY):
             if vnp_ResponseCode == "00":
@@ -341,7 +348,8 @@ def payment_return(request):
                                                                                       "amount": amount,
                                                                                       "order_desc": order_desc,
                                                                                       "vnp_TransactionNo": vnp_TransactionNo,
-                                                                                      "vnp_ResponseCode": vnp_ResponseCode})
+                                                                                      "vnp_ResponseCode": vnp_ResponseCode,
+                                                                                      "barcode": barcode})
             else:
 
                 return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán",
@@ -349,12 +357,13 @@ def payment_return(request):
                                                                                       "amount": amount,
                                                                                       "order_desc": order_desc,
                                                                                       "vnp_TransactionNo": vnp_TransactionNo,
-                                                                                      "vnp_ResponseCode": vnp_ResponseCode})
+                                                                                      "vnp_ResponseCode": vnp_ResponseCode,
+                                                                                      "barcode": barcode})
         else:
             return render(request, "websites/vnpay_payment/payment_return.html",
                           {"title": "Kết quả thanh toán", "result": "Lỗi", "order_id": order_id, "amount": amount,
                            "order_desc": order_desc, "vnp_TransactionNo": vnp_TransactionNo,
-                           "vnp_ResponseCode": vnp_ResponseCode, "msg": "Sai checksum"})
+                           "vnp_ResponseCode": vnp_ResponseCode, "msg": "Sai checksum", "barcode": barcode})
     else:
         return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán", "result": ""})
 

@@ -263,7 +263,7 @@ ul.dropdown-menu>li>a:hover{
 @media only screen and (max-width: 767px) {
 	.header-info{
 	    position: absolute;
-	    z-index: 40000;
+	    z-index: 300;
 	    right: 0;
 	    top: 46px;
 	}
