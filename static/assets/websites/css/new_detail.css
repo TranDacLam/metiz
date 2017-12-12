@@ -14,7 +14,7 @@
 	font-family: "Montserrat", sans-serif;
 }
 .postDetail img {
-	max-width:100% !important;
+	width:100% !important;
 	height: 300px !important; 
 }
 @media only screen and (max-width: 767px) {
