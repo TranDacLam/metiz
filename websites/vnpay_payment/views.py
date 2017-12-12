@@ -169,13 +169,13 @@ def payment(request):
 
             # Remove session and store order in database and verify order id
             # unsuccessfull, clear seats
-            
+
             if movies_session and working_id in movies_session:
                 del request.session['movies'][working_id]
 
             # Store order infomation with status is pendding
-            booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session[
-                                              "phone"], email=request.session["email"], seats=seats_choice, barcode=barcode,
+            booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
+                                              email=request.session.get("email", ""), seats=seats_choice, barcode=barcode,
                                               id_server=id_server, order_status="pendding")
 
             if not request.user.is_anonymous():
@@ -283,8 +283,8 @@ def payment_ipn(request):
 
                     # Send Email
                     if booking_order.email:
-                        send_mail_booking(request.is_secure(), booking_order.email, request.session[
-                                          "full_name"], booking_order.barcode, booking_order.order_desc)
+                        send_mail_booking(request.is_secure(), booking_order.email, request.session.get(
+                            "full_name", ""), booking_order.barcode, booking_order.order_desc)
 
                     # Return VNPAY: Merchant update success
                     result = JsonResponse(
@@ -334,7 +334,7 @@ def payment_return(request):
         vnp_CardType = inputData['vnp_CardType']
         barcode = None
         try:
-            booking_order = BookingInfomation.objects.get(order_id= order_id)
+            booking_order = BookingInfomation.objects.get(order_id=order_id)
             barcode = booking_order.barcode
         except BookingInfomation.DoesNotExist, e:
             print "Error BookingInfomation DoesNotExist : %s" % e
