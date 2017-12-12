@@ -332,6 +332,12 @@ def payment_return(request):
         vnp_PayDate = inputData['vnp_PayDate']
         vnp_BankCode = inputData['vnp_BankCode']
         vnp_CardType = inputData['vnp_CardType']
+        barcode = None
+        try:
+            booking_order = BookingInfomation.objects.get(order_id= order_id)
+            barcode = booking_order.barcode
+        except BookingInfomation.DoesNotExist, e:
+            print "Error BookingInfomation DoesNotExist : %s" % e
 
         if vnp.validate_response(settings.VNPAY_HASH_SECRET_KEY):
             if vnp_ResponseCode == "00":
@@ -341,7 +347,8 @@ def payment_return(request):
                                                                                       "amount": amount,
                                                                                       "order_desc": order_desc,
                                                                                       "vnp_TransactionNo": vnp_TransactionNo,
-                                                                                      "vnp_ResponseCode": vnp_ResponseCode})
+                                                                                      "vnp_ResponseCode": vnp_ResponseCode,
+                                                                                      "barcode": barcode})
             else:
 
                 return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán",
@@ -349,12 +356,13 @@ def payment_return(request):
                                                                                       "amount": amount,
                                                                                       "order_desc": order_desc,
                                                                                       "vnp_TransactionNo": vnp_TransactionNo,
-                                                                                      "vnp_ResponseCode": vnp_ResponseCode})
+                                                                                      "vnp_ResponseCode": vnp_ResponseCode,
+                                                                                      "barcode": barcode})
         else:
             return render(request, "websites/vnpay_payment/payment_return.html",
                           {"title": "Kết quả thanh toán", "result": "Lỗi", "order_id": order_id, "amount": amount,
                            "order_desc": order_desc, "vnp_TransactionNo": vnp_TransactionNo,
-                           "vnp_ResponseCode": vnp_ResponseCode, "msg": "Sai checksum"})
+                           "vnp_ResponseCode": vnp_ResponseCode, "msg": "Sai checksum", "barcode": barcode})
     else:
         return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán", "result": ""})
 
