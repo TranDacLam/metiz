@@ -98,7 +98,7 @@
 /*Customize image display in description film*/
 
 div#film-detail-tab-1.tab-pane.fade.in.active img {
-	max-width: 100% !important;
+	width: 100% !important;
 	height:500px !important;
 }
 
