@@ -234,6 +234,14 @@ div.seatCharts-seat.available.seat-ld {
     background-color: #7e8eaa;
     color: #ffffff;
     font-weight: bold;
+    float: left;
+}
+#btn_add_card:hover {
+    background-color: #ff4900;
+    color: #ffffff;
+}
+.modal-footer {
+    border-top: none;
 }
 #seat-map:focus{
     outline: none;

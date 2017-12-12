@@ -21,7 +21,7 @@
                         Mã đặt vé:
                     </div>
                     <div class="col-xs-7 col-sm-9">
-                        {{ order_id }}
+                        {% if barcode %}{{barcode}}{% endif %}
                     </div>
                 </div>
                 <div class="row">

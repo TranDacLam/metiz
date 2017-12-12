@@ -55,6 +55,9 @@
 	border-radius:3px;
 	margin-bottom:15px;
 }
+.review-block hr:last-child{
+  display: none;
+}
 .review-block-name{
 	font-size:14px;
 	margin:10px 0;
@@ -92,6 +95,13 @@
 .custom-fiml-detail .product-shop>div>label{
     width: 100px;
 }
+/*Customize image display in description film*/
+
+div#film-detail-tab-1.tab-pane.fade.in.active img {
+	width: 100% !important;
+	height:500px !important;
+}
+
 @media only screen and (min-width: 771px) {
 	.rating-block{
 		height: 187px;
@@ -250,6 +260,9 @@ ul.metiz-film-detail-tabs {
 	}
 	.name-new-offer {
 		font-size: 12px;
+	}
+	div#film-detail-tab-1.tab-pane.fade.in.active img {
+	   height:300px !important;
 	}
 }
 @media screen and (max-width: 400px) {

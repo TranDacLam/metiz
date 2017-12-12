@@ -39,8 +39,14 @@
 .metiz-changepass{
     display: none;
 }
+.list-city, .list-district{
+    width: 265px;
+    padding: 0px 5px;
+    font-size: 15px;
+}
 #profile-validate textarea{
     width: 265px;
+    font-size: 15px;
 }
 .post-detail-metiz li .pull-right{
     margin-top: 3px;
@@ -55,6 +61,9 @@
 }
 .profile-custom #phone {
     padding-left: 40px;
+}
+.buttons-set button.button {
+    font-size: 14px;
 }
 /* because dateBox lirbrary change height form-group */
 .profile-custom .form-birthday{
