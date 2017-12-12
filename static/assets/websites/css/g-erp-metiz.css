@@ -1490,6 +1490,7 @@
 	.catalog-category-view .col-main {
 		float: left;
 		padding: 0px 10px;
+		width: 100%;
 	}
 	.catalog-category-view .page-title {
 		float: left;
@@ -3210,6 +3211,16 @@
 		margin-right: 2% !important;
 	}
 }
+@media only screen and (max-width: 736px) {
+	.col-left-detail-content-new-offer {
+		width: 40% !important;
+		margin-top: 10px;
+	}
+	.col-right-detail-content-new-offer {
+		width: 50% !important;
+		margin-top: 10px;
+	}
+}
 
 @media only screen and (max-width: 600px){
 	.home-title h2.title-new-offer-vn {
@@ -3236,11 +3247,6 @@
 	.col-left-detail-content-new-offer {
 		width: 100% !important;
 		margin-top: 10px;
-	}
-	.col-left-detail-content-new-offer img{
-		width:100% !important;
-		height:auto;
-		max-width:none;
 	}
 	.col-right-detail-content-new-offer {
 		width: 100% !important;
