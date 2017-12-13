@@ -108,6 +108,7 @@ a{
 }
 #contactForm textarea#message{
 	height: 95px;
+	padding: 0 8px;
 }
 .address-contact-metiz-block .phone-number{
 	color: #f07469;

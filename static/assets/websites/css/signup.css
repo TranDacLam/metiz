@@ -46,7 +46,7 @@
 	text-indent: -9999px;
 }
 #myTabContent label.error {
-	font-family: 'SairaSemiCondensed-Regular';
+	font-family: "Montserrat", sans-serif;
 	color: red;
 	padding: 0px;
 	margin: 0px;
@@ -72,6 +72,7 @@
 	width: 265px;
 	padding: 0px 5px;
 	font-size: 15px;
+	text-indent: 1px;
 }
 .form-control.error{
 	color: #555;
@@ -145,6 +146,7 @@ ul ~ label{
 	width: 265px;
 	max-height: 70px;
 	font-size: 15px;
+	padding: 0 8px;
 }
 #myTabContent button[type=submit]{
 	text-transform: uppercase;
