@@ -62,7 +62,6 @@ input::placeholder {
 }
 ul.errorlist li, .error{
     font-size: 13px;
-    margin-top: 5px;
     color: red;
 }
 .content-confirm{

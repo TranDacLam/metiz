@@ -2433,11 +2433,8 @@
 		width:20%;
 		margin-left:30px;
 		color:#e71a0f;
-	}
-	
-	
-	
-	
+		font-family: "Montserrat", sans-serif;
+	}	
 }
 @media only screen and (min-width: 319px){
 	.customer-account-forgotpassword .col-main{
