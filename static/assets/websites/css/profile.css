@@ -75,40 +75,12 @@
     float:none;
 }
 /*Customize reponsive modal date of birth */
-span.closer.glyphicon.glyphicon-remove.pull-left {
-    float: right !important;
-}
-.ui-datebox-flipcontent div {
-    height: 145px;
-}
-.ui-datebox-flipcontent {
-    height: 117px;
-}
-.ui-datebox-controls {
-    padding-top: 35px;
-}
-.ui-datebox-flipcenter.ui-overlay-shadow{
-    top: -21px !important;
-}
-.ui-datebox-gridheader h4 {
-    font-family: "Montserrat", sans-serif;
-}
 .ui-datebox-cal-pickers fieldset .input-sm:first-child{
     width: 57%!important;
 }
-.ui-datebox-cal-pickers fieldset .input-sm {
-    padding-top: 0px;
+.ui-datebox-header h4, .ui-datebox-gridheader h4, 
+.modal-title, a.btn.btn-sm.btn-default, .ui-datebox-flipcontent li{
     font-family: "Montserrat", sans-serif;
-}
-.ui-datebox-header h4 {
-    font-family: "Montserrat", sans-serif;
-    padding-top: 5px;
-}
-.modal-title, a.btn.btn-sm.btn-default, .ui-datebox-flipcontent li {
-    font-family: "Montserrat", sans-serif;
-}
-#profile-validate select{
-    width: 265px;
 }
 @media only screen and (min-width : 481px) and (max-width : 768px) {
     .profile-custom{
