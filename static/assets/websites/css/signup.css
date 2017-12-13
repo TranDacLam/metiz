@@ -191,3 +191,38 @@ ul ~ label{
 		padding: 10px 0 0 ;
 	}
 }
+.ui-datebox-gridheader h4,.ui-datebox-cal-pickers fieldset .input-sm {
+    font-family: "Montserrat", sans-serif;
+}
+@media screen and (max-width: 320px){
+	#birth_date_valid {
+		left: -2px;
+	}
+    #myTabContent #create{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .account-wrap{
+        padding: 0;
+    }
+}
+@media only screen 
+  and (min-width: 375px) 
+  and (max-width: 736px)
+  and (orientation: landscape) { 
+    .top-row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .top-row > div {
+      float: left;
+      width: 50%;
+    }
+    #signup_form .rsp-address {
+        width: 100%;
+    }
+    .form-address #address{
+        width: 43%;
+    }
+}
