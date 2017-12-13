@@ -313,10 +313,8 @@ ul.metiz-movie-tabs {
     opacity: 1;
 }
 .widget-static-block img{
-    height: 129px;
-    width: auto;
-    padding-left: 36px;
-    padding-right: 36px;
+    height: 135px;
+    width: 100%;
     display: block;
     margin: 0 auto;
     max-width: 1142px;
@@ -482,6 +480,9 @@ ul.metiz-movie-tabs {
     }
     #news div.row{
         margin: 2px;
+    }
+    .widget-static-block img{
+        height: 100px;
     }
 }
 
@@ -703,6 +704,9 @@ ul.metiz-movie-tabs {
         padding: 2px 9px 2px 9px;
         width: 52px;
     }
+    .widget-static-block img{
+        height: 60px;
+    }
 }
 @media screen and (max-width: 380px) {
     .slideshow-containe-movier .poster-film .product-img {
@@ -814,5 +818,8 @@ ul.metiz-movie-tabs {
     }
     #news .box-new{
         padding: 0px 6px;
+    }
+    .widget-static-block img {
+        height: 45px;
     }
 }
