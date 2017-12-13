@@ -112,9 +112,6 @@ ul.dropdown-menu>li>a:hover{
 .blog-updating a{
 	cursor: pointer;
 }
-.header-info-rsp{
-	display: none;
-}
 @media only screen and (min-width: 771px){
 	#header {
 		height: 70px;
@@ -366,9 +363,6 @@ ul.dropdown-menu>li>a:hover{
     }
 	#header-nav .menu-ul-first li{
         margin-right: 0;
-    }
-    .header-info-rsp{
-    	display: block;
     }
     .header-info-rsp, .header-info-rsp a{
     	font-family: "SairaSemiCondensed-Regular", sans-serif;
