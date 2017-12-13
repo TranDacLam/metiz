@@ -84,7 +84,7 @@
   margin-bottom: 15px; 
 }
 #xzoom-default{
-	width: 181px;
+	width: 195px;
 }
 .col-main >div.custom-fiml-detail{
 	padding-top: 40px;
@@ -103,6 +103,9 @@ div#film-detail-tab-1.tab-pane.fade.in.active img {
 }
 .movie-rated-web .std{
 	text-transform: uppercase;
+}
+.custom-fiml-detail .product-image{
+	width: 195px;
 }
 @media only screen and (min-width: 771px) {
 	.rating-block{
@@ -208,7 +211,7 @@ ul.metiz-film-detail-tabs {
 	    z-index: 3;
 	}
 	.product-view .product-image img{
-		height: 235px;
+		height: 265px;
 		width: 180px;
 	}
 }
@@ -234,7 +237,9 @@ ul.metiz-film-detail-tabs {
 		width: 230px;
 		height: 230px;
 	}
-
+	.custom-fiml-detail .product-image{
+        width: 100%;
+    }
 }
 @media screen and (max-width: 667px) {
 	.poster-small-new-offer {
@@ -290,6 +295,9 @@ ul.metiz-film-detail-tabs {
 	.review-custom .review-block-date{
 		width: 65%;
     	float: left
+	}
+	.review-custom .col-xs-8{
+		width: 100%;
 	}
 }
 @media screen and (max-width: 400px) {
