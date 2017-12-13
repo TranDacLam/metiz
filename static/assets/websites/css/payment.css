@@ -8,6 +8,13 @@
 .vnpayment #create_form button{
     font-family: "SairaSemiCondensed-Bold", sans-serif;
 }
+select#language.form-control, 
+select#bank_code.form-control, 
+select#order_type.form-control {
+    font-size: 15px;
+    padding: 0 5px;
+    text-indent: 1px;
+}
 @media only screen and (min-width: 340px){
     .vnpayment{
         padding: 0 20px 50px 20px;
@@ -95,7 +102,8 @@
     font-family: "Montserrat-Medium", sans-serif;
 }
 .vnpayment input,.vnpayment textarea{
-    padding-left: 16px;
+    font-size: 15px;
+    padding: 0 8px;
 }
 .col-main{
     float: none;

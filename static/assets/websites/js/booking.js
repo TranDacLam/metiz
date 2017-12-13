@@ -21,6 +21,16 @@ $(document).ready(function() {
         }
     });
 
+    //fix background scroll in modals on mobile
+    if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
+        // back scroll when close popup member card
+        $('#member_card_modal').on('hide.bs.modal', function() {
+            $('html, body').animate({
+                scrollTop: $(".name-movie-booking").offset().top
+            }, 10);
+        });
+    }
+
     // show icon load when ajax start 
     $(document).ajaxStart(function(){
         $(".ajax-loader").css("display", "block");

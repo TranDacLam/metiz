@@ -43,10 +43,12 @@
     width: 265px;
     padding: 0px 5px;
     font-size: 15px;
+    text-indent: 1px;
 }
 #profile-validate textarea{
     width: 265px;
     font-size: 15px;
+    padding: 0 8px;
 }
 .post-detail-metiz li .pull-right{
     margin-top: 3px;

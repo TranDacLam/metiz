@@ -185,6 +185,9 @@ ul.metiz-film-detail-tabs {
 .custom-fiml-detail .product-shop label{
 	font-family: "Montserrat-Medium", sans-serif;
 }
+.product-img-box .product-image img{
+	height: 281px;
+}
 @media only screen and (max-width: 768px) {
 	.review-custom{
 		width: 94%;

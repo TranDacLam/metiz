@@ -149,6 +149,7 @@ span.seatCharts-legendDescription {
     color: #231f20;
     padding: 0px 0 0 26px;
     background-position-y: 3px;
+    background-position-x: 3px;
 }
 .step-2-navigator .btn-continue {
     background-image: url('/static/assets/websites/images/btn_total_next02.png');
@@ -157,7 +158,7 @@ span.seatCharts-legendDescription {
     color: #231f20;
     padding: 0px 28px 0 0;
     background-position-y: 3px;
-    background-position-x: 52px;
+    background-position-x: 56px;
 }
 .step-2-navigator .btn-changeschedule:hover,
 .step-2-navigator .btn-continue:hover{
@@ -255,6 +256,9 @@ div.seatCharts-seat.available.seat-ld {
     .main-container{
         scroll-direction: horizontal;
     }
+    body.modal-open {
+        position: fixed;
+    }
 }
 @media only screen 
 and (min-width: 568px) 
@@ -273,6 +277,18 @@ and (orientation: landscape){
     div.seatCharts-seat.unavailable {
         background: url('../../websites/images/Seat_booked.png') -4px -3px;
         cursor: not-allowed;
+    }
+    #member_card_modal .modal-dialog{
+        margin: auto;
+    }
+    #member_card_modal .modal-content{
+        margin: 5% auto;
+        padding: 0 20px;
+    }
+}
+@media only screen and (width: 568px){
+    #member_card_modal .modal-content{
+        margin: auto;
     }
 }
 @media only screen and (max-width: 480px) {
@@ -327,6 +343,9 @@ and (orientation: landscape){
     }
     #seat-map .front{
         font-size: 12px;
+    }
+    #member_card_modal .modal-content{
+        width: 100%;
     }
 }
 @media only screen and (max-width: 375px){
