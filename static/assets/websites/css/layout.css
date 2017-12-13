@@ -114,6 +114,7 @@ ul.errorlist li, .error{
 .custom-time-out p{
     color: red;
     text-align: center;
+    font-family: "Montserrat", sans-serif;
 }
 .custom-time-out button{
     float:right;
