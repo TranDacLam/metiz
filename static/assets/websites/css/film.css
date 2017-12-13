@@ -101,7 +101,9 @@ div#film-detail-tab-1.tab-pane.fade.in.active img {
 	width: 100% !important;
 	height:500px !important;
 }
-
+.movie-rated-web .std{
+	text-transform: uppercase;
+}
 @media only screen and (min-width: 771px) {
 	.rating-block{
 		height: 187px;
@@ -185,6 +187,9 @@ ul.metiz-film-detail-tabs {
 .custom-fiml-detail .product-shop label{
 	font-family: "Montserrat-Medium", sans-serif;
 }
+.product-img-box .product-image img{
+	height: 281px;
+}
 @media only screen and (max-width: 768px) {
 	.review-custom{
 		width: 94%;
@@ -263,6 +268,28 @@ ul.metiz-film-detail-tabs {
 	}
 	div#film-detail-tab-1.tab-pane.fade.in.active img {
 	   height:300px !important;
+	}
+	.review-custom .review-block{
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.review-custom .review-info{
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	.review-custom .review-info>img{
+		float: left;
+    	margin-right: 15px;
+	}
+	.review-custom .review-block-name{
+		width: 65%;
+    	float: left;
+    	margin-top: 0;
+    	margin-bottom: 5px;
+	}
+	.review-custom .review-block-date{
+		width: 65%;
+    	float: left
 	}
 }
 @media screen and (max-width: 400px) {
@@ -344,4 +371,13 @@ ul.metiz-film-detail-tabs {
 }
 .movie-technology-icons a span{
 	margin-left: 0;
+}
+@media screen and (max-width: 320px) {
+	.img-rounded {
+    	width: 50px;
+    	height: 50px;
+	}
+	.review-custom .review-info>img{
+		margin-right: 8px;
+	}
 }

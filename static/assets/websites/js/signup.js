@@ -221,6 +221,12 @@ $(document).ready(function() {
             useButton: false,
             useHeader: true,
             defaultValue: date_today,
+            beforeOpenCallback: function(){
+                $('body').css('overflow-y','hidden');
+            },
+            closeCallback: function(){
+                $('body').css('overflow-y','scroll');
+            }
         });
     }
     $('#birth_date').attr("readonly", false);

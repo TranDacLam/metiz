@@ -225,7 +225,7 @@
 									<div class="review-block">
 									{% for item in comments %}
 										<div class="row">
-											<div class="col-sm-3">
+											<div class="col-xs-4 col-sm-3 review-info">
 												{% if item.avatar %}
 													<img src="{{MEDIA_URL}}{{item.avatar}}" class="img-rounded">
 												{% else %}
@@ -234,7 +234,7 @@
 												<div class="review-block-name"><a href="#">{{item.full_name}}</a></div>
 												<div class="review-block-date">{{item.date_post | date:'d-m-Y'}}<br/>{{ item.date_post | timesince }} trước</div>
 											</div>
-											<div class="col-sm-9">
+											<div class="col-xs-8 col-sm-9">
 												<div class="review-block-rate">
 													<input class="rating rating-loading" value="{{item.rating}}" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-readonly="true">
 												</div>

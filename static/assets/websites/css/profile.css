@@ -118,6 +118,7 @@
     .block-account{
         float: none;
     }
+
 }
 .block-account .block-content ul{
     width: 80%;
@@ -179,11 +180,11 @@
     .my-account .page-title{
         width: 85.5%;
     }
-    .modal-open {
-        position: fixed;
-    }
 }
 @media only screen and (max-width : 414px) {
+     #jtdb-0 .modal-content {
+        width: auto;
+    }
     .my-account .page-title{
         width: 68.5%;
     }

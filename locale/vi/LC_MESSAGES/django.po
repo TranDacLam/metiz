@@ -246,7 +246,7 @@ msgstr "Xin chao"
 
 #: templates/websites/booking/email/booking_notification.html:118
 msgid "mail.booking.code"
-msgstr "Ve cua quy khach da duoc xac nhan. Ma ve"
+msgstr "Ban da dat ve thanh cong tai Metiz Cinema. Ma dat ve"
 
 #: templates/websites/booking/email/booking_notification.html:130
 msgid "mail.booking.footer1"
