@@ -229,23 +229,30 @@ ul ~ label{
 	}
 }
 /*Customize reponsive modal date of birth */
-#myTabContent span.closer.glyphicon.glyphicon-remove.pull-left {
+span.closer.glyphicon.glyphicon-remove.pull-left {
 	float: right !important;
 }
-#myTabContent .ui-datebox-flipcontent div {
+.ui-datebox-flipcontent div {
 	height: 145px;
 }
-#myTabContent .ui-datebox-flipcontent {
+.ui-datebox-flipcontent {
 	height: 117px;
 }
-#myTabContent .ui-datebox-controls {
+.ui-datebox-controls {
 	padding-top: 35px;
 }
-#myTabContent .ui-datebox-flipcenter.ui-overlay-shadow{
+.ui-datebox-flipcenter.ui-overlay-shadow{
 	top: -21px !important;
 }
 .ui-datebox-gridheader h4,.ui-datebox-cal-pickers fieldset .input-sm {
     font-family: "Montserrat", sans-serif;
+}
+.ui-datebox-header h4 {
+	font-family: "Montserrat", sans-serif;
+	padding-top: 5px;
+}
+.modal-title, a.btn.btn-sm.btn-default, .ui-datebox-flipcontent li {
+	font-family: "Montserrat", sans-serif;
 }
 @media screen and (max-width: 320px){
 	#birth_date_valid {
