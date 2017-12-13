@@ -112,6 +112,9 @@ ul.dropdown-menu>li>a:hover{
 .blog-updating a{
 	cursor: pointer;
 }
+.header-info-rsp{
+	display: none;
+}
 @media only screen and (min-width: 771px){
 	#header {
 		height: 70px;
@@ -262,16 +265,7 @@ ul.dropdown-menu>li>a:hover{
 /* Navbar change */
 @media only screen and (max-width: 767px) {
 	.header-info{
-	    position: absolute;
-	    z-index: 300;
-	    right: 0;
-	    top: 46px;
-	}
-	.header-info .header-phone{
-		display:block;
-	}
-	.header-info .header-top-time{
-		display:block;
+	    display: none;
 	}
 	.header-phone{
 		margin: 0px;
@@ -291,7 +285,7 @@ ul.dropdown-menu>li>a:hover{
     	position: relative;
     	width:100px;
     	margin: 0 auto;
-    	padding-bottom: 12px;
+    	padding-bottom: 0;
 	}
 
 	.logo-medium img{
@@ -353,7 +347,7 @@ ul.dropdown-menu>li>a:hover{
 		border-bottom: 1px solid #7e8eaa;
 	}
 	.skip-links {
-	    margin-top: 10px;
+	    margin-top: 0;
 	}
 	.navbar-nav li.responsive-user-header,
 	.navbar-nav li.hover-user-header{
@@ -372,6 +366,20 @@ ul.dropdown-menu>li>a:hover{
     }
 	#header-nav .menu-ul-first li{
         margin-right: 0;
+    }
+    .header-info-rsp{
+    	display: block;
+    }
+    .header-info-rsp, .header-info-rsp a{
+    	font-family: "SairaSemiCondensed-Regular", sans-serif;
+    	color: #fff;
+    	font-size: 14px;
+    	text-transform: uppercase;
+    	float: right;
+    }
+    .time-header-rsp{
+    	padding-top: 3px;
+    	padding-bottom: 3px;
     }
 }
 @media only screen 
@@ -394,9 +402,6 @@ and (orientation: landscape){
 @media only screen and (max-width: 480px){
 	.header-container{
 		padding: 0px 10px 0px 0px;
-	}
-	.header-info .header-top-time{
-		display:block;
 	}
 	.header-phone{
 		height: 21px;
@@ -432,9 +437,6 @@ and (orientation: landscape){
 	#select-language li a span{
 		padding-top: 8px;
 	}
-	.header-info{
-		display: block;
-	}
 	.main-container {
     	margin-top: 95px;
 	}
@@ -442,8 +444,11 @@ and (orientation: landscape){
 		height: 77px;
 	}
 	.logo-small {
-	    left: 40%;
+	    left: 0;
 	    /* margin-top:-12px; */
+	}
+	.logo-small img{
+		margin: auto;
 	}
 	.skip-links {
 	    margin-top: 3px;
@@ -463,5 +468,16 @@ and (orientation: landscape){
 	.navbar-nav li.dropdown>a{
 		margin-left: 0px;
     	margin-right: 0px;
+	}
+	.navbar-header a.logo{
+		width: 100%;
+	}
+	.header-info-rsp, .header-info-rsp a{
+    	font-size: 10px;
+    	line-height: 15px;
+    }
+    .time-header-rsp {
+    	padding-top: 0px;
+    	padding-bottom: 0px;
 	}
 }
