@@ -291,6 +291,9 @@ ul.metiz-film-detail-tabs {
 		width: 65%;
     	float: left
 	}
+	.review-custom .col-xs-8{
+		width: 100%;
+	}
 }
 @media screen and (max-width: 400px) {
 	.product-view .nav-tabs>li>span{
