@@ -221,12 +221,6 @@ $(document).ready(function() {
             useButton: false,
             useHeader: true,
             defaultValue: date_today,
-            beforeOpenCallback: function(){
-                $('body').css('overflow-y','hidden');
-            },
-            closeCallback: function(){
-                $('body').css('overflow-y','scroll');
-            }
         });
     }
     $('#birth_date').attr("readonly", false);
@@ -401,3 +395,12 @@ var onloadCallback = function ()
         'callback' : focusWhatever
     });
 };
+
+// Press key tab open popup calendar
+// Close popup calender when tab press another
+$(document).keydown(function(objEvent) {
+    if (objEvent.keyCode == 9) {  //tab pressed
+        $("#myTabContent .ui-datebox-container").css("display","none");
+    }
+})
+
