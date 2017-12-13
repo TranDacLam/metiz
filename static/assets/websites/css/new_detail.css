@@ -13,6 +13,20 @@
 .postDetail {
 	font-family: "Montserrat", sans-serif;
 }
+.img-square {
+	position: relative;
+	width: 100%;
+}
+.img-square:after {
+   content: "";
+   display: block;
+   padding-bottom: 100%;
+}
+.square-content img {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+}
 .postDetail img {
 	width:100% !important;
 	height: 300px !important; 

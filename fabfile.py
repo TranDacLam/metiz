@@ -1,6 +1,6 @@
 from fabric.api import *
 
-ENV = 'production' # Choices ['uat','production','development']
+ENV = 'development' # Choices ['uat','production','development']
 #ENV = 'production'
 SERVERS = {
     'development': '172.16.12.10',
@@ -72,8 +72,13 @@ def deploy():
                 run('pip install -r ../requirements.txt')
                 run('python manage.py collectstatic --noinput')
                 run('python manage.py migrate')
-                # sudo('systemctl restart uwsgi_metiz_uat')
-                # sudo('su -s /bin/bash www-data -c "%s;%s" '%(env.activate,"uwsgi --reload %s"%PROCESS_ID[ENV]))
+
+                if ENV == "development":
+                    sudo('su -s /bin/bash www-data -c "%s;%s" '%(env.activate,"uwsgi --reload %s"%PROCESS_ID[ENV]))
+                elif ENV == 'uat':
+                    sudo('systemctl restart uwsgi_metiz_uat')
+                elif ENV == 'production':
+                    sudo('systemctl restart uwsgi_metiz')
 
 
         

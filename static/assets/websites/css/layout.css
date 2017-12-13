@@ -62,7 +62,6 @@ input::placeholder {
 }
 ul.errorlist li, .error{
     font-size: 13px;
-    margin-top: 5px;
     color: red;
 }
 .content-confirm{
@@ -132,7 +131,7 @@ ul.errorlist li, .error{
     line-height: 30px;
 }
 .captcha-error{
-    font-family: "SairaSemiCondensed-Medium", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 13px;
     color: red;
     font-weight: 500;
