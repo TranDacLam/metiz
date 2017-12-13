@@ -6,6 +6,10 @@
 .contact-metiz .theater-name h2{
 	font-family: "Montserrat", sans-serif;
 }
+.contact-metiz .theater-name h2,
+.contact-metiz .contact-media-sale h3{
+	font-family: "SairaSemiCondensed-Medium", sans-serif;
+}
 .buttons-set input{
 	display:none !important;
 }
