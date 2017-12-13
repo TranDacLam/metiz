@@ -1,6 +1,6 @@
 $(document).ready(function() {
     function getDate(applyDate){
-        return applyDate.replace(/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/g, 'Ngày $3 tháng $2 năm $1');
+        return applyDate.replace(/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/g, '$3/$2/$1');
     }
 
     // *** LOAD MORE ***
@@ -13,12 +13,15 @@ $(document).ready(function() {
                                 +'<div class="content-new-offer">'
                                    +'<div class="colum-left-new-offer">'
                                         +'<div class="poster-small-new-offer">'
-                                            +'<img alt="" src="/media/'+ newoffer.image +'">'
+                                            +'<div class="crop-square">'
+                                                +'<img alt="" src="/media/'+ newoffer.image +'">'
+                                            +'</div>'
                                             +'<div class="colum-right-new-offer">'
                                                 +'<div class="format-new-offer release-day-new-offer">'
-                                                    +'<h3 class="glyphicon glyphicon-calendar">'
-                                                    +'<h4>'+ getDate(newoffer.apply_date) +'</h4></h3>'
+                                                    +'<h4>'+ getDate(newoffer.apply_date) 
+                                                    +' - '+ check_end_date(newoffer) +'</h4>'
                                                 +'</div>'
+                                                +'<h2 class="product-name">'+ newoffer.name +'</h2>'
                                             +'</div>'
                                         +'</div>'
                                    +'</div>'
@@ -27,6 +30,14 @@ $(document).ready(function() {
                         +'</div>'
                     +'</a>'
                 +'</li>';
+    }
+
+    // Check time end_date of new 
+    function check_end_date(newoffer){
+        if(newoffer.end_date){
+            return getDate(newoffer.end_date);
+        }
+        return "Áp Dụng Liên Tục";
     }
 
     // Check list news condition if < 12 remove button load more

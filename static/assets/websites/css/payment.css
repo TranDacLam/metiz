@@ -1,5 +1,19 @@
+.vnpayment,
+.vnpayment label, input, select, textarea,
+.payment-return .panel-body,
+.payment-return .back-link a{
+    font-family: "Montserrat", sans-serif;
+}
+.vnpayment .page-title h2, .vnpayment .btn-default,
 .vnpayment #create_form button{
-        font-family: "SairaSemiCondensed-Bold", sans-serif;
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
+}
+select#language.form-control, 
+select#bank_code.form-control, 
+select#order_type.form-control {
+    font-size: 15px;
+    padding: 0 5px;
+    text-indent: 1px;
 }
 @media only screen and (min-width: 340px){
     .vnpayment{
@@ -7,6 +21,11 @@
     }
     .vnpayment .btn-default {
         margin: 0 10px 0 10px;
+    }
+}
+@media only screen and (min-width: 736px){
+    .vnpayment .btn-default {
+        margin-right: 55px;
     }
 }
 @media only screen and (min-width: 1024px){
@@ -80,9 +99,52 @@
     line-height: 1.8;
 }
 .payment-return .row .col-sm-3{
-    font-family: "SairaSemiCondensed-Media", sans-serif;
-    font-weight: bold;
+    font-family: "Montserrat-Medium", sans-serif;
 }
 .vnpayment input,.vnpayment textarea{
-    padding-left: 16px;
+    font-size: 15px;
+    padding: 0 8px;
+}
+.col-main{
+    float: none;
+    margin: 0 auto;
+}
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
+    .responsive-payment{
+        width: 50%;
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+@media only screen 
+and (width: 568px) 
+and (orientation: landscape){
+    .vnpayment .form-control{
+        width: 232px;
+    }
+}
+@media only screen and (max-width: 414px){
+    .payment-return .row{
+        border-bottom: 1px solid;
+        padding-bottom: 10px;
+    }
+    .vnpayment .form-control{
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 360px){
+    #payment_form{
+        margin-left: 15px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .vnpayment .g-recaptcha iframe, .g-recaptcha>div{
+        margin-left: -9px;
+    }
 }

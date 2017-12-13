@@ -1,12 +1,12 @@
 
-<div class="header-language-background">
-    <div class="header-container">
-        <div class="header-language-right">
-            <div class="header-career">
-                Hotline: 1900 6017
+<div class="header-info">
+    <div class="header-container container">
+        <div class="header-right">
+            <div class="header-phone">
+                Hotline:<a href="tel:19006017">1900 6017</a>
             </div>
-            <div class="header-top-account">
-                <div class="account-header-wrapper">
+            <div class="header-top-time">
+                <div class="time-header">
                     Giờ mở cửa: 8:00 - 22:00
                 </div>
             </div>
@@ -15,7 +15,7 @@
 </div>
 
 <header id="header" class="page-header">
-    <div class="page-header-container">
+    <div class="page-header-container container">
         <a class="logo logo-large" href="{% url 'home'%}">
             <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="large" />
         </a>
@@ -23,111 +23,93 @@
         <!-- Navigation -->
         <div id="header-nav">
             <nav class="navbar">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="logo logo-small text-center " href="{% url 'home'%}">
-                            <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="" />
-                        </a>
-                        <a class="logo-medium" href="{% url 'home'%}">
-                            <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="center-block" />
-                        </a>
-                        <div class="skip-links">
-                            <button id="menu-btn" class=" skip-link skip-nav navbar-toggle" data-toggle="collapse" data-target="#menuNavbar" aria-expanded="false">
-                                <span class="icon-nav glyphicon glyphicon-align-justify"></span>
-                                <span class="label">Menu</span>
-                            </button>
+                <div class="navbar-header">
+                    <a class="logo logo-small text-center " href="{% url 'home'%}">
+                        <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="" />
+                    </a>
+                    <a class="logo-medium" href="{% url 'home'%}">
+                        <img src="{{ STATIC_URL }}assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png" alt="Metiz Cinemas" class="center-block" />
+                    </a>
+                    <div class="skip-links">
+                        <button id="menu-btn" class=" skip-link skip-nav navbar-toggle" data-toggle="collapse" data-target="#menuNavbar" aria-expanded="false">
+                            <span class="icon-nav glyphicon glyphicon-align-justify"></span>
+                            <span class="label">Menu</span>
+                        </button>
 
-                            <button id="login-btn" class=" skip-link skip-account navbar-toggle" data-toggle="collapse" data-target="#loginNavbar" aria-expanded="false">
-                                <span class="icon-nav glyphicon glyphicon-user"></span>
-                                {% if user.is_authenticated %}
-                                    <!-- <span class="label">Hồ sơ/ Đăng xuất</span> -->
-                                    <span class="label">
-                                        {% if user.full_name %}  
-                                            {{user.full_name}}
-                                        {%else%}  
-                                            {{user.email}}
-                                        {%endif%}
-                                    </span>
-                                {% else %}
-                                    <span class="label">Đăng nhập/ Đăng ký</span>
-                                {% endif %}
-                            </button>
-                            
-                        </div>
-                    </div>
-                    <div class="collapse navbar-collapse" id='loginNavbar'>
-                        <ul class="nav navbar-nav">
+                        <button id="login-btn" class=" skip-link skip-account navbar-toggle" data-toggle="collapse" data-target="#loginNavbar" aria-expanded="false">
+                            <span class="icon-nav glyphicon glyphicon-user"></span>
                             {% if user.is_authenticated %}
-                                <li class="dropdown"><a class="dropdown-toggle" href="{% url 'profile'%}">Hồ sơ</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" href="{% url 'logout'%}">Đăng xuất</a></li>
+                                <!-- <span class="label">Hồ sơ/ Đăng xuất</span> -->
+                                <span class="label">
+                                    {% if user.full_name %}  
+                                        {{user.full_name}}
+                                    {%else%}  
+                                        {{user.email}}
+                                    {%endif%}
+                                </span>
                             {% else %}
-                                <li class="dropdown"><a class="dropdown-toggle" href="{% url 'login'%}">Đăng nhập</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" href="{% url 'register'%}">Đăng ký</a></li>
+                                <span class="label">Đăng nhập/ Đăng ký</span>
                             {% endif %}
-                        </ul>
-                    </div>
-                    <div class="collapse navbar-collapse collapse-custom" id="menuNavbar">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="#modal-popup" data-date-select="" data-all-movie="true" class="open-popup-link dropdown-toggle popup-movie-schedule" >Lịch chiếu</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="id-menu-movie" >Phim </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li ><a href="{% url 'showing'%}">Phim Đang Chiếu</a></li>
-                                    <li ><a href="{% url 'comingsoon'%}">Phim Sắp Chiếu</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" href="{% url 'news'%}">Khuyến mãi</a>
-                            </li>
-                            <!-- pending -->
-                            <!-- <li class="dropdown">
-                                <a class="dropdown-toggle" href="#">BLOG PHIM</a>
-                            </li> -->
-                            <li class="dropdown responsive-user-header">
-                                <a>|</a>
-                            </li>
-                            {% if user.is_authenticated %}
-                                <li class="dropdown hover-user-header">
-                                    <a href="{% url 'profile'%}" >
-                                        {% if user.full_name %}  
-                                            {{user.full_name|truncatechars:15}}
-                                        {% else %}  
-                                            {{user.email|truncatechars:15}}
-                                        {% endif %}
-                                        <span>/</span>
-                                    </a>
-                                </li>
-                                <li class="dropdown hover-user-header custom-user-header">
-                                    <a href="{% url 'logout'%}" >Đăng xuất</a>
-                                </li>
-                            {% else %}
-                                <li class="dropdown hover-user-header">
-                                    <a href="{% url 'login'%}" >Đăng Nhập <span>/</span></a>
-                                </li>
-                                <li class="dropdown hover-user-header custom-user-header">
-                                    <a href="{% url 'register'%}" >Đăng Ký</a>
-                                </li>
-                            {% endif %}
-
-                        </ul>
+                        </button>
+                        
                     </div>
                 </div>
+                <div class="collapse navbar-collapse" id='loginNavbar'>
+                    <ul class="nav navbar-nav">
+                        {% if user.is_authenticated %}
+                            <li class="dropdown"><a class="dropdown-toggle" href="{% url 'profile'%}">Hồ sơ</a></li>
+                            <li class="dropdown"><a class="dropdown-toggle" href="{% url 'logout'%}">Đăng xuất</a></li>
+                        {% else %}
+                            <li class="dropdown"><a class="dropdown-toggle" href="{% url 'login'%}">Đăng nhập</a></li>
+                            <li class="dropdown"><a class="dropdown-toggle" href="{% url 'register'%}">Đăng ký</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse collapse-custom" id="menuNavbar">
+                    <ul class="nav navbar-nav menu-ul-first">
+                        <li class="dropdown">
+                            <a href="#modal-popup" data-date-select="" data-all-movie="true" class="open-popup-link dropdown-toggle popup-movie-schedule" >Lịch chiếu</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="id-menu-movie" >Phim </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ><a href="{% url 'showing'%}">Phim Đang Chiếu</a></li>
+                                <li ><a href="{% url 'comingsoon'%}">Phim Sắp Chiếu</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="{% url 'news'%}">Khuyến mãi</a>
+                        </li>
+                        <!-- pending -->
+                        <li class="dropdown blog-updating">
+                            <a class="dropdown-toggle">BLOG PHIM</a>
+                        </li>
+                        
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                            <li class="dropdown hover-user-header">
+                                <a href="{% url 'profile'%}" > 
+                                    <span class="name-user-header">{{user.full_name|truncatechars:20}} <span>/</span></span>
+                                    <span class="responsive-name-user">{{user.full_name|truncatechars:10}} <span>/</span></span>
+                                </a>
+                            </li>
+                            <li class="dropdown hover-user-header custom-user-header">
+                                <a href="{% url 'logout'%}" >Đăng xuất</a>
+                            </li>
+                        {% else %}
+                            <li class="dropdown hover-user-header">
+                                <a href="{% url 'login'%}" >Đăng Nhập <span>/</span></a>
+                            </li>
+                            <li class="dropdown hover-user-header custom-user-header">
+                                <a href="{% url 'register'%}" >Đăng Ký</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </nav>
-        </div>
-         
-        <!-- Account -->
-        <div id="header-account" class="skip-content">
-            <div class="links">
-                <ul>
-                    <li class="first"><a href="#" title="Tài khoản">Tài khoản</a></li>
-                    <li><a href="#" title="Giỏ hàng" class="top-link-cart">Giỏ hàng</a></li>
-                    <li><a href="#" title="Thanh toán" class="top-link-checkout">Thanh toán</a></li>
-                    <li><a href="#/" title="Đăng ký">Đăng ký</a></li>
-                    <li class=" last"><a href="#" title="Đăng nhập">Đăng nhập</a></li>
-                </ul>
-            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
+
 </header>

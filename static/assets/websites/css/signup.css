@@ -1,3 +1,12 @@
+.account-wrap, .account-wrap label{
+    font-family: "Montserrat", sans-serif;
+}
+.account-wrap button{
+    font-family: "SairaSemiCondensed-Medium", sans-serif;
+}
+.account-tabs .toggle-tabs li span a {
+	font-family: "Montserrat-Medium", sans-serif;
+}
 #myTabContent ul, #myTabContent li, #myTabContent ol{
     float:none;
 }
@@ -24,22 +33,27 @@
 #myTabContent .input-group{
 	display:inline;
 }
-#myTabContent #birth_date-error{
-	visibility:hidden;
+#myTabContent #birth_date_valid{
+	display:none;
+	margin-top: 6px;
 }
+
 #myTabContent label.valid {
 	width: 20px;
-	height: 20px;
+	height: 12px;
 	background: url(../images/valid.png) center center no-repeat;
 	display: inline-block;
 	text-indent: -9999px;
 }
 #myTabContent label.error {
-	font-family: 'SairaSemiCondensed-Regular';
+	font-family: "Montserrat", sans-serif;
 	color: red;
-	padding: 5px 0 0;
-	margin-top: 2px;
-	
+	padding: 0px;
+	margin: 0px;
+}
+/* hide valid of validate jquery */
+#myTabContent .input-group .valid#birth_date-error{
+	display:none!important;
 }
 #signup_form .form-inline {
     display: block;
@@ -57,6 +71,8 @@
 .list-city, .list-district{
 	width: 265px;
 	padding: 0px 5px;
+	font-size: 15px;
+	text-indent: 1px;
 }
 .form-control.error{
 	color: #555;
@@ -66,6 +82,9 @@
 	background-color: #7e8eaa;
 	color: #ffffff;
 	font-weight: bold;
+} 
+li.login-wth90 {
+	width: 110px;
 }
 .btn-login:hover{
 	background-color: #ff4900;
@@ -124,15 +143,17 @@ ul ~ label{
 	display:none;
 }
 .form-address #address{
-	width: 100%;
+	width: 265px;
 	max-height: 70px;
+	font-size: 15px;
+	padding: 0 8px;
 }
 #myTabContent button[type=submit]{
 	text-transform: uppercase;
 	margin: 5px 0 0 0;
 }
 #myTabContent .country-code{
-	color: #bfbfbf;
+	color: #555;
 	position: absolute;
     top: 30px;
     left: 23px;
@@ -152,37 +173,53 @@ ul ~ label{
 #myTabContent input[type=number] {
 	-moz-appearance: textfield;
 }
-@media  only screen and (max-width: 767px){
-	.form-address #address{
-		width: 265px;
-	}
+.col-main{
+    float: none;
+    margin: 0 auto;
 }
 /* Portrait and Landscape */
 @media only screen and (max-width: 768px) {
-
-
 	#myTabContent button[type=submit] {
 		margin: 15px 0 10px;
 	}
 }
+@media  only screen and (max-width: 767px){
+	.form-address #address{
+		width: 265px;
+	}
+	#signup_form .form-group{
+		width:50%;
+		float:left;
+	}
+    #signup_form .inline input.form-control, 
+    #signup_form .inline select,
+    #myTabContent .input-group #birth_date,
+    .form-address #address{
+        width: 90%;
+    }
+    #signup_form .rsp-rules{
+        width: 100%;
+    }
+}
 @media  only screen and (max-width: 480px){
+	#signup_form .form-group{
+		width:100%;
+		float:none;
+	}
+	#birth_date_valid {
+		position: relative;
+		float: right;
+		bottom: 30px;
+		left: -8px;
+	}
 	#jtdb-0 .modal-content{
         width: auto;
     }
-	#signup_form .inline input.form-control,#signup_form .inline select {
-		width: 90%;
-	}
 	#myTabContent .input-group {
-        display: inline;
+        display: inline-block;
     }
-	#myTabContent .input-group #birth_date{
-		width: 90%;
-	}
 	#signup_form .signup_fields{
 		padding: 0px;
-	}
-	.form-address #address{
-		width: 250px;
 	}
 	#myTabContent button[type=submit] {
 		margin: 15px 0 0;
@@ -191,9 +228,11 @@ ul ~ label{
 		padding: 10px 0 0 ;
 	}
 }
+
 .ui-datebox-gridheader h4,.ui-datebox-cal-pickers fieldset .input-sm {
     font-family: "Montserrat", sans-serif;
 }
+
 @media screen and (max-width: 320px){
 	#birth_date_valid {
 		left: -2px;

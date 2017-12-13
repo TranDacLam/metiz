@@ -15,15 +15,32 @@ $(document).ready(function() {
 
     //fix background scroll in modals on mobile
     if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
+        $('#modal-popup .modal').on('shown.bs.modal', function() {
+            $('body').css('overflow', 'hidden');
+            $('.mfp-ready').attr('style', 'overflow-y:hidden');
+        });
+        $('#modal-popup .modal').on('hide.bs.modal', function() {
+            $('body').css('overflow', 'scroll');
+            $('.mfp-ready').attr('style', 'overflow-y:auto');
+        });
+         // active popup
+        $('.open-popup-link').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            enableEscapeKey: false,
+            fixedContentPos: true,
+            //prevent background scroll
+            callbacks: {
+                open: function() {
+                    $('body').css('overflow', 'hidden');
+                },
+                close: function() {
+                    $('body').css('overflow', 'auto');
+                },
+            }
+        });
 
-        if (navigator.userAgent.match(/iPhone|iPod|iPad|/i)){
-            $('#modal-popup .modal').on('shown.bs.modal', function() {
-                $('body').css('overflow', 'hidden');
-            });
-            $('#modal-popup .modal').on('hide.bs.modal', function() {
-                $('body').css('overflow', 'scroll');
-            });
-        }
+    }else{
         // active popup
         $('.open-popup-link').magnificPopup({
             type: 'inline',
@@ -31,15 +48,9 @@ $(document).ready(function() {
             enableEscapeKey: false,
             fixedContentPos: true,
         });
-    }else{
-        // active popup
-        $('.open-popup-link').magnificPopup({
-            type: 'inline',
-            midClick: true,
-            enableEscapeKey: false,
-        });
     }
     
+
 
     // Validate guest_form, update_form
     // Validate and handle member_form by ajax
@@ -52,9 +63,10 @@ $(document).ready(function() {
             'phone': 'Số điện thoại không hợp lệ',
             'minlength_2': 'Nhập ít nhất 2 kí tự',
             'minlength_6': 'Nhập ít nhất 6 kí tự',
-            'minlength_8': 'Nhập ít nhất 8 kí tự',
+            'minlength_8': 'Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.',
             'email': 'Email không hợp lệ',
-            'number': 'Nhập các chữ số',
+            'rangelength_1_70': 'Họ và tên chứa ít nhất 1 kí tự và nhiều nhất 70 kí tự',
+            'number': 'Vui lòng chỉ nhập các chữ số',
             'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
             'validatePassword': 'Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.',
             'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',
@@ -67,6 +79,7 @@ $(document).ready(function() {
             'minlength_6': 'Please enter at least 6 characters',
             'minlength_8': 'Please enter at least 8 characters',
             'email': 'Please enter a valid email address',
+            'rangelength_1_70': 'Please enter a value between 1 and 70 characters long',
             'number': 'Please enter a valid number',
             'equalTo': "Password don't same. Please enter again",
             'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
@@ -74,26 +87,64 @@ $(document).ready(function() {
         }
     }
 
+    // Can enter 0 number at the end or middle but not at the beginning.
+    // Check the first characters and remove if it equal == 0
+    // Then replace input with new value
+    // use modal, profile, register
+    
+    //Prevent to enter 0(zero) number at the second character
+    $('.textPhone').on('keydown',function(event){
+        var caretPos = this.selectionStart;
+        var keyCode = event.which || event.keyCode;
+        var isZero = keyCode == 48 || keyCode == 96;
+        var valPhone = $(this).val();
+        if (caretPos < 2 && valPhone.startsWith("0") && isZero) {
+            return false;
+        } 
+    });
+    // Call event Paste 
+     $('.textPhone').bind('paste', function(e) {
+        var pasteText = e.originalEvent.clipboardData.getData('Text');
+        $(this).val(removeBeforePhoneNumber(pasteText)); 
+        return false;
+    });
+    $('.textPhone').on('blur',function(event){ 
+        var valPhone = $(this).val();
+        $(this).val(removeBeforePhoneNumber(valPhone));
+    });
+
+    
+    // validate phone only number
+    // Form Update modal schedule
+    var selectorPhone_update_form = $("#update_form input[name=phone]");
+    // Form Guest modal schedule
+    var selectorPhone_guest_form = $("#guest_form input[name=phone]");
+    // Call back validOnlyNumber layout.js 
+    validOnlyNumber(selectorPhone_update_form, selectorPhone_update_form.val());
+    validOnlyNumber(selectorPhone_guest_form, selectorPhone_guest_form.val());
+
     //validate guest form, update form
     function validateForm(form) {
         $(form).validate({
             rules: {
                 name: {
                     required: true,
-                    minlength: 2
+                    rangelength: [1, 70],
                 },
                 email: {
-                    email: true
+                    email: true,
                 },
                 phone: {
                     required: true,
                     validatePhone: true,
+                    number: true,
+                    minlength: 9,
                 },
             },
             messages: {
                 name: {
                     required: message.required,
-                    minlength: message.minlength_2
+                    rangelength: message.rangelength_1_70,
                 },
                 email: {
                     email: message.email
@@ -101,6 +152,8 @@ $(document).ready(function() {
                 phone: {
                     required: message.required,
                     validatePhone: message.phone,
+                    number: message.number,
+                    minlength: message.phone,
                 }
             }
         });
@@ -129,7 +182,7 @@ $(document).ready(function() {
             },
             password: {
                 required: message.required,
-                minlength: message.minlength_8,
+                minlength: message.validatePassword,
             }
         },
         submitHandler: function(form) {
@@ -143,13 +196,14 @@ $(document).ready(function() {
                     // Get value member form
                     var id_showtime = $('#member_form input[name=id_showtime]').val();
                     var id_server = $('#member_form input[name=id_server]').val();
+                    var movie_api_id = $('#member_form input[name=movie_api_id]').val();
                     var id_movie_name = $('#member_form input[name=id_movie_name]').val();
                     var id_movie_time = $('#member_form input[name=id_movie_time]').val();
                     var id_movie_date_active = $('#member_form input[name=id_movie_date_active]').val();
 
                     window.location.href = '/booking?id_showtime=' + id_showtime + '&id_server=' + id_server +
                         '&id_movie_name=' + id_movie_name + '&id_movie_time=' + id_movie_time +
-                        '&id_movie_date_active=' + id_movie_date_active;
+                        '&id_movie_date_active=' + id_movie_date_active + '&movie_api_id=' + movie_api_id;
                 })
                 .fail(function(data) {
                     if (data.responseJSON.code == 400) {
@@ -172,6 +226,7 @@ $(document).ready(function() {
         message.validatePassword
     );
 
+    // use for modal, signup, profile
     $.validator.addMethod(
         "validatePhone",
         function(value, element) {
@@ -224,6 +279,7 @@ $(document).ready(function() {
                 '<a href="#" >' +
                 '<input type="hidden" name="id_showtime" value="' + value.id_showtime + '">' +
                 '<input type="hidden" name="id_movie_name" value="' + shedule.movie_name + '">' +
+                '<input type="hidden" name="movie_api_id" value="' + movie_api_id + '">' +
                 '<span class="time">' +
                 value.time + '<span class="time-end">' + endTime + '</span>' +
                 '</span>' +
@@ -268,7 +324,7 @@ $(document).ready(function() {
             movie_api_id = $(this).attr("data-movie-api-id");
         }
 
-        if ($(this).attr("data-all-movie") || $(this).attr("data-date-seat")) {
+        if ($(this).attr("data-all-movie")) {
             movie_api_id = null;
         }
 
@@ -277,6 +333,14 @@ $(document).ready(function() {
             var date_seat = $(this).attr("data-date-seat");
             $('.days-popup [data-date-select = ' + date_seat + ']').addClass('active-date');
             var date_query = date_seat;
+            // get movie api id from booking
+            var get_movie_api = $('.booking-details #movie_api_id').val();
+            movie_api_id = null;
+            if(get_movie_api != 'null' && get_movie_api != 'undefined'){
+                movie_api_id = $('.booking-details #movie_api_id').val()
+            }
+            //set data for Month
+            $('#center-month').text($('.days-popup li.active-date').children('.hide-month').text());
         } else {
             // get date time on page popup
             if ($(this).attr("data-date-select")) {
@@ -298,6 +362,7 @@ $(document).ready(function() {
             "cinema_id": id_server // get cinema_id from hidden field in popup movie schedule
         }
 
+
         $.ajax({
                 url: "/movie/show/times",
                 type: 'get',
@@ -312,7 +377,6 @@ $(document).ready(function() {
                     if (value.lst_times.length > 0) {
                         html += listFilm(value);
                     }
-                    console.log(value);
                 });
                 $('.list-schedule').html(html);
                 getValue();
@@ -326,48 +390,53 @@ $(document).ready(function() {
                 $('.msg-result-js').html(msgResult("Error schedule film!", "danger"));
             });
     });
-
     function getValue() {
-        $('.sold-out a').click(function(event) {
-            event.preventDefault();
-            var id_showtime = $(this).children('input[name=id_showtime]').val();
-            var id_movie_name = $(this).children('input[name=id_movie_name]').val();
-            var id_movie_time = $(this).children('span[class=time]').text();
+
+        function showPopup(element){
+
+            var id_showtime = element.children('input[name=id_showtime]').val();
+            var id_movie_name = element.children('input[name=id_movie_name]').val();
+            var movie_api_id = element.children('input[name=movie_api_id]').val();
+            var id_movie_time = element.children('span[class=time]').text();
             var id_server = $('.list-cinema .active').attr('data-id-server');
 
             $('.modal input[name=id_server]').val(id_server);
             $('.modal input[name=id_showtime]').val(id_showtime);
+            $('.modal input[name=movie_api_id]').val(movie_api_id);
             $('.modal input[name=id_movie_name]').val(id_movie_name);
             $('.modal input[name=id_movie_time]').val(id_movie_time);
             $('.modal input[name=id_movie_date_active]').val($("li.active-date").attr("data-date-select"));
 
             //set content for modal #warnning or skip
-            var rated = $(this).parents('.lot-table').attr('data-rated');
+            var rated = element.parents('.lot-table').attr('data-rated');
             // ingore null or p
             if (rated == 'null' || rated == 'p') {
-
                 $('#btn-skip').click();
-
             } else {
                 content = JSON.parse($('#rated').text());
-                for (i = 0; i < content.length; i++) {
-                    if (content[i].name == rated) {
-                        $('#warning #content-warnning').text(content[i].description);
-                        break;
-                    }
-                }
+                $('#warning #content-warnning').text(content[rated]);
                 $('#warning').modal('show');
             }
-        });
-    }
+        }
 
-    // $.each(content, function(index, data) {
-    //     $.each(data, function(name, description) {
-    //         if (name == content) {
-    //             $('#warning #content-warnning').text(description);
-    //         }
-    //     });
-    // });
+        /* change background for schedule firm on mobile */
+        if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
+            $('.sold-out a').on('click', function(event) {
+                $(this).addClass('mobile-schedule');
+                showPopup($(this));
+            });
+            $('#modal-popup .modal').on('hide.bs.modal', function() {
+                $('.sold-out a').removeClass('mobile-schedule');
+            });
+        }else{
+            $('.sold-out a').click(function(event) {
+                event.preventDefault();
+                showPopup($(this));
+            });
+        }
+        
+    }
+    
     //checkbox for form guest
     $('#agree_term').on('click', function() {
         if ($('#agree_term').prop("checked")) {
@@ -381,4 +450,6 @@ $(document).ready(function() {
     $("#modal-popup input[type=number]").on("keydown", function(e) {
         return e.keyCode == 69 ? false : true;
     });
+
+
 });

@@ -35,9 +35,9 @@ def call_api_seats(id_showtime, id_server=1):
     return result
 
 
-def call_api_post_booking(full_name, phone, email, seats_choice, id_server=1, url="/postBooking"):
+def call_api_post_booking(full_name, phone, email, seats_choice, id_server=1, card_member=None, url="/postBooking"):
     try:
-        """ Call API get new seats of show time """
+        """ Call API post booking or booking for member """
         url_booking = settings.BASE_URL_CINESTAR + url
         
         data_binding = {
@@ -45,10 +45,13 @@ def call_api_post_booking(full_name, phone, email, seats_choice, id_server=1, ur
             "id_server": id_server,
             "phone": phone,
             "list_seats": str(seats_choice),
-            "full_name": str(full_name),
+            "full_name": str(full_name).replace("<", "").replace(">", "").replace("&", "").replace("'", "").replace('\\', ""),
             "email": email
 
         }
+
+        if card_member:
+            data_binding["account"] = card_member
 
         cxt = Context(data_binding)
         """ bind data to html template """
@@ -74,7 +77,7 @@ def call_api_post_booking(full_name, phone, email, seats_choice, id_server=1, ur
 def call_api_booking_confirm(barcode, id_server=1, status=1):
     try:
         """ 
-            Call API confirm booking payment success
+            Call API confirm booking when payment success
             - status parameter : 1 is payment done, 2 cancel payment
         """
         url_confirm = settings.BASE_URL_CINESTAR + "/putBookingConfirm"
@@ -103,8 +106,7 @@ def call_api_booking_confirm(barcode, id_server=1, status=1):
 def call_api_cancel_seat(seat_id, id_server=1):
     try:
         """ 
-            Call API confirm booking payment success
-            - status parameter : 1 is payment done, 2 cancel payment
+            Call API cancel seats when payment error
         """
         url_cancel = settings.BASE_URL_CINESTAR + "/putSeatChoose"
         values = {

@@ -16,7 +16,7 @@ class BookingInfomation(DateTimeModel):
     # movie = models.ForeignKey("core.Movie", related_name='movie_booking_rel')
     order_id = models.CharField(_('Order ID'), max_length=100)
     amount = models.FloatField(_('Amount'))
-    phone = models.IntegerField(_('Phone'), null=True, blank=True)
+    phone = models.CharField(_('Phone'), null=True, blank=True, max_length=255)
     email = models.CharField(_('Email'), max_length=100, null=True, blank=True)
     seats = models.TextField(_('Seats'))
     barcode = models.CharField(max_length=100, null=True, blank=True)

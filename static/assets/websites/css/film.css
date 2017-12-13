@@ -17,9 +17,12 @@
 	color: black;
 }
 .sr-only { 
-	margin-left: 5px;
+	margin-left: -12px;
 	overflow: visible;
 	clip: auto; 
+}
+.sr-only.percent0 {
+	display: none;
 }
 .rating-container .clear-rating {
 	display: none;
@@ -52,6 +55,9 @@
 	border-radius:3px;
 	margin-bottom:15px;
 }
+.review-block hr:last-child{
+  display: none;
+}
 .review-block-name{
 	font-size:14px;
 	margin:10px 0;
@@ -71,11 +77,32 @@
 .review-block-description{
 	font-size:15px;
 }
+.xzoom { 
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;  
+  margin-bottom: 15px; 
+}
 #xzoom-default{
 	width: 181px;
 }
 .col-main >div.custom-fiml-detail{
 	padding-top: 40px;
+}
+.custom-fiml-detail .product-shop div.std{
+    display: -webkit-box;
+}
+.custom-fiml-detail .product-shop>div>label{
+    width: 100px;
+}
+/*Customize image display in description film*/
+
+div#film-detail-tab-1.tab-pane.fade.in.active img {
+	width: 100% !important;
+	height:500px !important;
+}
+.movie-rated-web .std{
+	text-transform: uppercase;
 }
 @media only screen and (min-width: 771px) {
 	.rating-block{
@@ -97,16 +124,17 @@ ul.metiz-film-detail-tabs {
     border-bottom: none;
 }
 .product-view .nav-tabs>li>span{
-	padding: 5px 25px 5px 25px;
+	font-family: "SairaSemiCondensed-SemiBold", sans-serif;
+	padding: 10px 25px 10px 25px;
 	border: 1.5px solid #0e1d2f;
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0);
 	color: #0e1d2f;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 	cursor: pointer;
 	float: left;
-	width: 135px
+	width: 120px
 }
 .product-view .nav-tabs>li>span:hover {	
 	border: 1.5px solid #ff5400;
@@ -117,7 +145,7 @@ ul.metiz-film-detail-tabs {
 .product-view .nav-tabs>li.active>span{
 	color: #ffffff;
 	background-color: #ff5400;
-	border: 2px solid #ff5400;
+	border: 1.5px solid #ff5400;
 	font-weight: bold;
 }
 .product-view .nav-tabs>li:first-child, .product-view .nav-tabs>li:nth-child(2){
@@ -129,17 +157,18 @@ ul.metiz-film-detail-tabs {
 .booking-ticket-bot .button, 
 .product-shop .button,
 .product-name-reponsive .button{
-	padding: 5px 10px 5px 10px;
+	padding: 10px 23px 10px 23px;
 	border-radius: 25px;
-    border: 3px solid #0e1d2f;
+    border: 1.5px solid #0e1d2f;
     font-weight: bold;
     background: #0e1d2f;
+    margin-top: -10px;
 }
 .booking-ticket-bot .button:hover, 
 .product-shop .button:hover,
 .product-name-reponsive .button:hover{
 	background: #ff5400;
-	border: 3px solid #ff5400;
+	border: 1.5px solid #ff5400;
 }
 .movie-detail-fb-booking li{
 	padding-top: 3px;
@@ -153,14 +182,25 @@ ul.metiz-film-detail-tabs {
     font-family: 'SairaSemiCondensed-Bold';
 }
 .custom-fiml-detail{
-	font-family: "Montserrat-Light", sans-serif;
+	font-family: "Montserrat", sans-serif;
 }
 .custom-fiml-detail .product-shop label{
 	font-family: "Montserrat-Medium", sans-serif;
 }
+.product-img-box .product-image img{
+	height: 281px;
+}
 @media only screen and (max-width: 768px) {
 	.review-custom{
 		width: 94%;
+	}
+	.booking-ticket-bot .button, 
+	.product-shop .button, 
+	.product-name-reponsive .button{
+		font-size: 16px;
+	} 
+	.poster-small-new-offer {
+		padding: 10px;
 	}
 }
 @media only screen and (max-width: 771px) {
@@ -173,10 +213,6 @@ ul.metiz-film-detail-tabs {
 	}
 }
 @media only screen and (max-width: 710px){
-	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
-	    height: 151px;
-	    width: 187px;
-	}
 	.format-new-offer h4{
 		font-size: 12px;
 	}
@@ -193,32 +229,67 @@ ul.metiz-film-detail-tabs {
 		margin-top: 20px;
 	}
 }
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 736px) {
+	.poster-small-new-offer {
+		width: 230px;
+		height: 230px;
+	}
+
+}
+@media screen and (max-width: 667px) {
+	.poster-small-new-offer {
+		width: 180px;
+		height: 180px;
+	}
+}
+@media screen and (max-width: 414px) {
  	.product-name-reponsive .button, .booking-ticket-bot .button{
-		padding: 2px 5px 2px 5px;
-		border-radius: 15px;
-		border: 2px solid #0e1d2f;
-	    font-size: 10px;
-	    margin-top: 5px;
+		padding: 5px 13px 5px 13px;
+		border-radius: 16px;
+		border: 1.5px solid #0e1d2f;
+	    font-size: 13px;
+	    margin-top: -5px;
 	}
 	.product-name-reponsive .button:hover{
 		border: 2px solid #ff5400;
 	}
 	.product-view .nav-tabs>li>span{
 		width: 117px;
-		font-size: 12px;
+		font-size: 16px;
 	}
 	.colum-right-new-offer{
 		margin-left: 0;
-	}
-	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
-	    height: 146px;
 	}
 	.news-custom .load-more{
 		margin-left: 0px;
 	}
 	.name-new-offer {
 		font-size: 12px;
+	}
+	div#film-detail-tab-1.tab-pane.fade.in.active img {
+	   height:300px !important;
+	}
+	.review-custom .review-block{
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.review-custom .review-info{
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	.review-custom .review-info>img{
+		float: left;
+    	margin-right: 15px;
+	}
+	.review-custom .review-block-name{
+		width: 65%;
+    	float: left;
+    	margin-top: 0;
+    	margin-bottom: 5px;
+	}
+	.review-custom .review-block-date{
+		width: 65%;
+    	float: left
 	}
 }
 @media screen and (max-width: 400px) {
@@ -232,8 +303,12 @@ ul.metiz-film-detail-tabs {
 	}
 }
 @media screen and (max-width: 360px) {
-	.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
-	    height: 121px;
+	.poster-small-new-offer {
+		width: 150px;
+		height: 150px;
+	}
+	.colum-right-new-offer h2.product-name {
+		font-size: 12px;
 	}
 	.format-new-offer h4{
 		font-size: 10px;
@@ -241,10 +316,13 @@ ul.metiz-film-detail-tabs {
 	.format-new-offer h3{
 		font-size: 16px;
 	}
-}
-@media screen and (max-width: 360px) {
 	.news-custom .load-more{
 		width: 112px;
+	}
+	.product-name-reponsive .button, 
+	.booking-ticket-bot .button{
+		padding: 5px 8px 5px 8px;
+	    font-size: 12px;
 	}
 }
 .movie-rating .std{
@@ -293,4 +371,13 @@ ul.metiz-film-detail-tabs {
 }
 .movie-technology-icons a span{
 	margin-left: 0;
+}
+@media screen and (max-width: 320px) {
+	.img-rounded {
+    	width: 50px;
+    	height: 50px;
+	}
+	.review-custom .review-info>img{
+		margin-right: 8px;
+	}
 }

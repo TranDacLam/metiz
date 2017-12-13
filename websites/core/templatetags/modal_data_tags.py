@@ -75,4 +75,5 @@ def get_cinema_cites():
 @register.simple_tag
 def get_rated():
     rated = Rated.objects.values('name', 'description')
-    return json.dumps(list(rated))
+    data = {item['name'] : item['description'] for item in rated }
+    return json.dumps(data)

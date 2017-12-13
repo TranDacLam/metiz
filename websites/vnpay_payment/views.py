@@ -110,7 +110,7 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
         metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
                               email], data_binding)
     except Exception, e:
-        print "Error se , ", e
+        print "Error send_mail_booking : ", e
 
 
 def cancel_seats(seats_choice, id_server):
@@ -169,13 +169,13 @@ def payment(request):
 
             # Remove session and store order in database and verify order id
             # unsuccessfull, clear seats
-            
+
             if movies_session and working_id in movies_session:
                 del request.session['movies'][working_id]
 
             # Store order infomation with status is pendding
-            booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session[
-                                              "phone"], email=request.session["email"], seats=seats_choice, barcode=barcode,
+            booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
+                                              email=request.session.get("email", ""), seats=seats_choice, barcode=barcode,
                                               id_server=id_server, order_status="pendding")
 
             if not request.user.is_anonymous():
@@ -199,21 +199,22 @@ def payment(request):
                            "order_desc": request.POST["order_desc"] if 'order_desc' in request.POST["order_desc"] else None})
     else:
         total_payment = request.GET.get('totalPayment', 0)
-        total_seats = request.GET.get('totalSeat', 0)
         seats = request.GET.get('seats', "")
         working_id = request.GET.get('working_id', "")
         barcode = request.GET.get('barcode', "")
         seats_choice = request.GET.get('seats_choice', "")
         id_server = request.GET.get('id_server', 1)
         id_showtime = request.GET.get('id_showtime', "")
+        movie_api_id = request.GET.get('movie_api_id', "")
         id_movie_name = request.GET.get('id_movie_name', "")
         id_movie_time = request.GET.get('id_movie_time', "")
         id_movie_date_active = request.GET.get('id_movie_date_active', "")
 
         return render(request, "websites/vnpay_payment/payment.html",
-                      {"title": "Thanh toán", "total_payment": total_payment, "seats": seats, "total_seats": total_seats,
+                      {"title": "Thanh toán", "total_payment": total_payment, "seats": seats,
                        "working_id": working_id, "barcode": barcode, "seats_choice": seats_choice, "id_server": id_server, "id_showtime": id_showtime,
-                       "id_movie_name": id_movie_name, "id_movie_time": id_movie_time, "id_movie_date_active": id_movie_date_active})
+                       "id_movie_name": id_movie_name, "id_movie_time": id_movie_time, "id_movie_date_active": id_movie_date_active,
+                       "movie_api_id": movie_api_id})
 
 
 def payment_ipn(request):
@@ -275,15 +276,15 @@ def payment_ipn(request):
                     booking_order.order_status = "done"
                     booking_order.save()
 
-                    content_sms = """DAT VE THANH CONG. Ve cua quy khach da duoc xac nhan: Ma: %s, """ % booking_order.barcode
+                    content_sms = """Ban da dat ve thanh cong tai Metiz Cinema. Ma dat ve: %s, """ % booking_order.barcode
                     content_sms += str(booking_order.order_desc.replace("\r\n", ""))
                     # Send SMS for user
                     send_sms(booking_order.phone, content_sms)
 
                     # Send Email
                     if booking_order.email:
-                        send_mail_booking(request.is_secure(), booking_order.email, request.session[
-                                          "full_name"], booking_order.barcode, booking_order.order_desc)
+                        send_mail_booking(request.is_secure(), booking_order.email, request.session.get(
+                            "full_name", ""), booking_order.barcode, booking_order.order_desc)
 
                     # Return VNPAY: Merchant update success
                     result = JsonResponse(
@@ -296,8 +297,11 @@ def payment_ipn(request):
                         cancel_seats(booking_order.seats.split(
                             ","), booking_order.id_server)
 
+                    booking_order.order_status = 'Error'
+                    booking_order.save()
+
                     result = JsonResponse(
-                        {'RspCode': vnp_ResponseCode, 'Message': 'Confirm Error'})
+                        {'RspCode': '00', 'Message': 'Confirm Error'})
 
             except BookingInfomation.DoesNotExist, e:
                 print "Error BookingInfomation DoesNotExist : %s" % e
@@ -328,6 +332,13 @@ def payment_return(request):
         vnp_PayDate = inputData['vnp_PayDate']
         vnp_BankCode = inputData['vnp_BankCode']
         vnp_CardType = inputData['vnp_CardType']
+        barcode = None
+        try:
+            booking_order = BookingInfomation.objects.get(order_id=order_id)
+            barcode = booking_order.barcode
+        except BookingInfomation.DoesNotExist, e:
+            print "Error BookingInfomation DoesNotExist : %s" % e
+            pass
 
         if vnp.validate_response(settings.VNPAY_HASH_SECRET_KEY):
             if vnp_ResponseCode == "00":
@@ -337,7 +348,8 @@ def payment_return(request):
                                                                                       "amount": amount,
                                                                                       "order_desc": order_desc,
                                                                                       "vnp_TransactionNo": vnp_TransactionNo,
-                                                                                      "vnp_ResponseCode": vnp_ResponseCode})
+                                                                                      "vnp_ResponseCode": vnp_ResponseCode,
+                                                                                      "barcode": barcode})
             else:
 
                 return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán",
@@ -345,12 +357,13 @@ def payment_return(request):
                                                                                       "amount": amount,
                                                                                       "order_desc": order_desc,
                                                                                       "vnp_TransactionNo": vnp_TransactionNo,
-                                                                                      "vnp_ResponseCode": vnp_ResponseCode})
+                                                                                      "vnp_ResponseCode": vnp_ResponseCode,
+                                                                                      "barcode": barcode})
         else:
             return render(request, "websites/vnpay_payment/payment_return.html",
                           {"title": "Kết quả thanh toán", "result": "Lỗi", "order_id": order_id, "amount": amount,
                            "order_desc": order_desc, "vnp_TransactionNo": vnp_TransactionNo,
-                           "vnp_ResponseCode": vnp_ResponseCode, "msg": "Sai checksum"})
+                           "vnp_ResponseCode": vnp_ResponseCode, "msg": "Sai checksum", "barcode": barcode})
     else:
         return render(request, "websites/vnpay_payment/payment_return.html", {"title": "Kết quả thanh toán", "result": ""})
 

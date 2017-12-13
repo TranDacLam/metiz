@@ -1,3 +1,11 @@
+.title-contact-metiz h1, .contact-metiz .buttons-set button.button{
+	font-family: "SairaSemiCondensed-Medium", sans-serif;
+}
+.contact-metiz label,
+.contact-customer-service,
+.contact-metiz .theater-name h2{
+	font-family: "Montserrat", sans-serif;
+}
 .buttons-set input{
 	display:none !important;
 }
@@ -37,7 +45,6 @@ a{
 	color: #f07469;
 }
 .contact-customer-service{
-	font-family: "SairaSemiCondensed-Medium", sans-serif;
 	color: #636363; 
 	padding-bottom: 4px; 
 	border-bottom: 1px solid #636363; 
@@ -47,14 +54,12 @@ a{
 	width: 100%; 
 	margin: 20px 0px 10px;
 }
-.contact-metiz .theater-name h2 {
-	font-family: "SairaSemiCondensed-Medium", sans-serif;
-}
 #contactForm  textarea#message{
 	width: 265px;		
 }
 .buttons-set button.button{
 	float: left;
+	font-size: 14px;
 }
 .contacts-index-index .buttons-set{
 	margin-left: 46%;
@@ -73,9 +78,19 @@ a{
 #contactForm  textarea#message{
 	width: 289px;
 }
+#contactForm #message::-webkit-input-placeholder {
+    font-size: 12px;
+}
+#contactForm #message{
+	padding-top: 0px;
+}
 .contact-metiz .buttons-set button:hover{
 	background-color: #ff5400;
-	border: 2px solid #ff5400;
+	border: 1.5px solid #ff5400;
+}
+.g-recaptcha iframe{
+	width: 293px;
+	border: 1px solid #d3d3d3;
 }
 #contactForm .fieldset .legend + .required{
 	margin-bottom: 15px;
@@ -92,7 +107,15 @@ a{
     margin-bottom: -50px;
 }
 #contactForm textarea#message{
-	height: 98px;
+	height: 95px;
+	padding: 0 8px;
+}
+.address-contact-metiz-block .phone-number{
+	color: #f07469;
+}
+.address-contact-metiz-block .phone-number:hover {
+    color: #23527c;
+    text-decoration: underline;
 }
 @media screen and (max-width: 768px) {
 	.content-form-contact-metiz{
@@ -107,8 +130,14 @@ a{
 	#contactForm .fieldset .legend + .required{
 		margin-right: 37px;
 	}
+	.show-address-contact-metiz{
+		margin-left: 12px;
+	}
 }
-@media screen and (max-width: 767px) {
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape) {
 	#contactForm .fieldset .legend + .required{
 		margin-right: 5px;
 	}
@@ -116,24 +145,34 @@ a{
 		text-align: center;
 	}
 	.show-address-contact-metiz{
-		width: 98%;
+		width: 44%;
 	}
 	.content-form-contact-metiz{
 		float: left;
-		width: 98%;
-		margin-top: 10px; 
+		width: 52%;
 	}
-	.show-address-contact-metiz{
-		border-right: none;
-	}
-	.content-form-contact-metiz #contactForm{
-		border-left: none;
-	}
-}
-@media screen and (max-width: 420px) {
 	.content-form-contact-metiz #contactForm{
 		padding-left: 10px;
 	}
+	#contactForm ul.form-list{
+		float: none;
+	}
+}
+@media screen and (max-width: 568px){
+	.content-form-contact-metiz #contactForm{
+		padding-left: 0px;
+	}
+	#contactForm input[type=email], 
+	#contactForm input[type=tel], 
+	#contactForm input[type=text], 
+	#contactForm  textarea#message{
+		width: 256px;
+	}
+	.show-address-contact-metiz{
+		width: 40%;
+	}
+}
+@media screen and (max-width: 414px) {
 	#contactForm input[type=email], 
 	#contactForm input[type=tel], 
 	#contactForm input[type=text],
@@ -148,14 +187,33 @@ a{
 	}
 	.content-form-contact-metiz #contactForm{
 		padding-left: 29px;
+		margin-top: 15px;
+		border-left: none;
+	}
+	.content-form-contact-metiz,
+	.show-address-contact-metiz{
+		width: 90%;
+	}
+	.show-address-contact-metiz{
+		margin-left: 45px;
+	}
+	.content-form-contact-metiz{
+		float: left;
+		width: 98%;
+	}
+	.contact-metiz{
+		width: 99%;
 	}
 }
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 375px) {
 	.content-form-contact-metiz #contactForm{
 		padding-left: 7px;
 	}
 	#contactForm .fieldset .legend + .required{
 		margin-right: 22px;
+	}
+	.show-address-contact-metiz {
+	    margin-left: 23px;
 	}
 }
 @media screen and (max-width: 320px){
@@ -167,6 +225,9 @@ a{
 	}
 	.contacts-index-index .buttons-set{
 		margin-left: 125px;
+	}
+	#contactForm ul.form-list{
+		width: 100%;
 	}
 }
 .content-form-contact-metiz .error{

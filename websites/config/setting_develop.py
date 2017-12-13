@@ -35,3 +35,6 @@ SMS_KEY_IV = "154dxc1scfzzad21"
 SMS_URL = "http://ws.ctnet.vn/servicectnet.asmx?op=sendsms"
 
 FB_APP_ID = '1761455193886139'
+
+RECAPTCHA_PUBLIC_KEY = '6LdK2joUAAAAAPAQD6SA-lTh3gR0J6B9RXPpGDDe'
+RECAPTCHA_PRIVATE_KEY = '6LdK2joUAAAAALA1kD-Bom5iUOrn31oNiZs4n7wu'

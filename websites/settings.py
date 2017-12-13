@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # 'core.apps.CoreConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'captcha',
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',
@@ -84,6 +85,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.i18n',
                 'main.context_processors.get_app_fb_id',
+                'main.context_processors.get_app_recaptcha_key',
             ],
         },
     },
@@ -238,11 +240,16 @@ LOGIN_URL='/'
 # Set timeout for choice seats
 TIME_SEAT_DELAY = 5
 
+# Config Google reCaptcha
+NOCAPTCHA = True
+
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:
         from config.setting_develop import *
     elif 'UAT' in os.environ and os.environ['UAT']:
         from config.setting_uat import *
+    elif 'PRODUCTION' in os.environ and os.environ['PRODUCTION']:
+        from config.setting_production import *
     else:
         from config.setting_local import *
     

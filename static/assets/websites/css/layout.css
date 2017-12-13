@@ -1,5 +1,26 @@
+/*==== Begin input placeholder===*/
+/*Edit font-size placeholder */
+/*Use all page with input placeholder tags*/
+input::placeholder {
+    font-size: 12px;
+}
+::-webkit-input-placeholder { /* Chrome */
+  font-size: 12px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size: 12px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-size: 12px;
+  color: #a0a0a0;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  font-size: 12px;
+  color: #a0a0a0;
+}
+/*==== End input placeholder===*/
 .page-detail {
-	background: #f1eee9;
+	background: #fff;
 }
 .page-detail .page-title{
 	padding-top: 40px;
@@ -41,7 +62,6 @@
 }
 ul.errorlist li, .error{
     font-size: 13px;
-    margin-top: 5px;
     color: red;
 }
 .content-confirm{
@@ -64,7 +84,6 @@ ul.errorlist li, .error{
 .content-confirm .page-title{
     float: left;
     width: 100%;
-    border-bottom: 2px solid #ff5400;
     padding-left: 0;
     margin-bottom: 30px;
 }
@@ -83,12 +102,6 @@ ul.errorlist li, .error{
 .load-more:focus, .load-more:active:focus{
     outline: none;
 }
-@media screen and (max-width: 420px) {
-    .load-more{
-        width: 150px;
-        margin-left: 0;
-    }
-}
 .page-title-timeout{
     width: 100%;
     border-bottom: 2px solid #ff5400;
@@ -101,6 +114,7 @@ ul.errorlist li, .error{
 .custom-time-out p{
     color: red;
     text-align: center;
+    font-family: "Montserrat", sans-serif;
 }
 .custom-time-out button{
     float:right;
@@ -116,4 +130,35 @@ ul.errorlist li, .error{
 }
 .form-control{
     line-height: 30px;
+}
+.captcha-error{
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    color: red;
+    font-weight: 500;
+}
+.custom-time-out a{
+    color: #337ab7;
+}
+@media only screen and (max-width: 736px){
+    .main-container{
+        margin-top: 0px;
+    }
+}
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
+    .page-header{
+        height: 192px;
+    }
+}
+@media screen and (max-width: 414px) {
+    .page-header{
+        height: 143px;
+    }
+    .load-more{
+        width: 150px;
+        margin-left: 0;
+    }
 }

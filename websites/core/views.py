@@ -178,7 +178,7 @@ def news(request):
             news_json = []
             for item in news_page.object_list:
                 news_json.append({"id": item.id, "image": str(
-                    item.image), "apply_date": item.apply_date})
+                    item.image), "apply_date": item.apply_date, "name": item.name, "end_date": item.end_date})
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
 
@@ -356,4 +356,20 @@ def contacts(request):
         return render(request, 'websites/contacts.html', {"forms": contact_form})
     except Exception as e:
         print "Error action contacts : ", e
+        return HttpResponse(status=500)
+
+
+def blog_film(request):
+    try:
+        return render(request, 'websites/blog_film.html')
+    except Exception as e:
+        print "Error action blog_film : ", e
+        return HttpResponse(status=500)
+
+
+def blog_film_detail(request):
+    try:
+        return render(request, 'websites/blog_film_detail.html')
+    except Exception as e:
+        print "Error action blog_film_detail : ", e
         return HttpResponse(status=500)

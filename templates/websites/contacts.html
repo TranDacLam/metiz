@@ -4,12 +4,14 @@
 
 {% block title %}Liên hệ{% endblock title %}
 
-{% block extrascript %}
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/contacts.js"></script>
+{% block extrastylesheet %}
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/contacts.css" media="all" />
 {% endblock %}
 
-{% block extrastylesheet %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/contacts.css" media="all" />
+{% block extrascript %}
+<!-- Captcha use contact, payment, signup -->
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/contacts.js"></script>
 {% endblock %}
 
 {% block container_class %}col2-left-layout{% endblock %}
@@ -36,13 +38,15 @@ contacts-index-index
 					<div class="address-contact-metiz-block-content">
 						<div class="address-contact-metiz">
 							<div class="add-contact-metiz">
-								<p>Hotline: 1111 1111</p>
-								<p>Email: <a href="#">contacts@vooc.vn</a></p>
+								<span>Hotline: </span>
+								<a class="phone-number" href="tel://1111 1111">1111 1111</a>
+								<p>Email: <a href="mailto:contact@metiz.vn">contact@metiz.vn</a></p>
 							</div>
 							<div class="contact-media-sale">
 								<h3>LIÊN HỆ QUẢNG CÁO & HỢP TÁC</h3>
-								<p>Hotline: 0981005390</p>
-								<p>Email:&nbsp;<a href="#">contacts@vooc.vn</a></p>
+								<span>Số Điện Thoại: </span>
+								<a class="phone-number" href="tel://0981005390">0981005390</a>
+								<p>Email:&nbsp;<a href="mailto:contact@metiz.vn">contact@metiz.vn</a></p>
 							</div>
 						</div>
 					</div>
@@ -56,9 +60,9 @@ contacts-index-index
 						<div class="col-md-6">
 							<li class="fields">
 								<div class="field">
-									<label for="name">Tên</label>
+									<label for="name">Họ Tên</label>
 									<div class="input-box">
-										<input name="name" id="name" title="Tên" value="" class="input-text required-entry" type="text" />
+										<input name="name" id="name" title=" Họ Tên" value="" class="input-text required-entry form-control" type="text" placeholder="Nhập  Họ Tên Ở Đây" />
 									</div>
 									{% if forms.name.errors %}
 	                                    {{forms.name.errors}}
@@ -69,7 +73,7 @@ contacts-index-index
 								<div class="field">
 									<label for="email">Email</label>
 									<div class="input-box">
-										<input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
+										<input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email form-control" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Nhập Email Ở Đây" />
 									</div>
 									{% if forms.email.errors %}
 	                                    {{forms.email.errors}}
@@ -78,9 +82,9 @@ contacts-index-index
 							</li>
 							<li>
 								<div class="field">
-									<label for="phone">Điện thoại</label>
+									<label for="phone">Số Điện Thoại</label>
 									<div class="input-box">
-										<input name="phone" id="phone" title="Điện thoại" value="" class="input-text" type="text" />
+										<input name="phone" id="phone" title="Số Điện thoại" value="" class="input-text form-control" type="text" placeholder="Nhập Số Điện Thoại Ở Đây" />
 									</div>
 									{% if forms.phone.errors %}
 	                                    {{forms.phone.errors}}
@@ -90,13 +94,20 @@ contacts-index-index
 						</div>
 						<div class="col-md-6">
 							<li class="wide">
-								<label for="message">Nội dung cần liên hệ</label>
+								<label for="message">Nội Dung Cần Liên Hệ</label>
 								<div class="input-box">
-									<textarea name="message" id="message" title="Nội dung cần liên hệ" class="required-entry input-text" cols="5" rows="5"></textarea>
+									<textarea name="message" id="message" title="Nội dung cần liên hệ" class="required-entry input-text form-control" cols="5" rows="5" placeholder="Nhập Nội Dung Ở Đây"></textarea>
 								</div>
 								{% if forms.message.errors %}
 	                                {{forms.message.errors}}
 	                            {% endif %}
+							</li>
+							<li class="">
+								<label>Captcha</label>
+								<div class="input-box">
+									<div id="re-captcha" class="g-recaptcha" ></div>
+								</div>
+								<span class="captcha-error"></span>
 							</li>
 						</div>
 					</ul>

@@ -3,9 +3,13 @@
 {% block title %}Thanh Toán{% endblock title %}
 
 {% block extrastylesheet %}
+ <!-- Payment and payment_return -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/payment.css" media="all" />
 {% endblock %}
 
 {% block extrascript %}
+    <!-- Captcha use contact, payment, signup -->
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     <script src="{{ STATIC_URL }}assets/websites/js/vnpayment.js"></script>
 {% endblock %}
 
@@ -21,72 +25,83 @@
         <div class="exceeds-time">Lưu ý: Thời gian giao dịch cho phép tối đa là 5 phút. Hết thời gian quy định giao dịch này sẽ bị hủy.</div>
         <div class="table-responsive">
             <form action="{% url 'payment' %}" id="payment_form" method="post">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6 responsive-payment">
                     <div class="form-group">
-                        <label for="language">Loại hàng hóa </label>
+                        <label for="language">Loại Hàng Hóa </label>
                         <select name="order_type" id="order_type" class="form-control">
-                            <option value="190001">Mua vé xem phim</option>
+                            <option value="190001">Mua Vé Xem Phim</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="order_id">Mã hóa đơn</label>
+                        <label for="order_id">Mã Hóa Đơn</label>
                         <input class="form-control" id="order_id"
                                name="order_id" type="text" value="{% now 'YmdHis' %}"  readonly />
                     </div>
                     <div class="form-group">
-                        <label for="amount">Số tiền</label>
+                        <label for="amount">Số Tiền</label>
                         <input class="form-control" id="amount-text"
                                name="amount-text" type="text" value="{{ total_payment }}" {% if  total_payment > 0 %} readonly {% endif %}/>
                         <input type="hidden" name="amount" id="amount" value="{{ total_payment }}"/>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6 responsive-payment">
                     <div class="form-group">
-                        <label for="bank_code">Ngân hàng</label>
+                        <label for="bank_code">Ngân Hàng</label>
                         <select name="bank_code" id="bank_code" class="form-control">
-                            <option value="">Không chọn</option>
-                            <option value="NCB"> Ngân hàng Quốc Dân</option>
-                            <option value="AGRIBANK"> Ngân hàng Agribank</option>
-                            <option value="SCB"> Ngân hàng Thương Mại Cổ Phần Sài Gòn</option>
-                            <option value="SACOMBANK">Ngân hàng SacomBank</option>
-                            <option value="EXIMBANK"> Ngân hàng EximBank</option>
-                            <option value="MSBANK"> Ngân hàng MSBANK</option>
-                            <option value="NAMABANK"> Ngân hàng Nam Á</option>
-                            <option value="VNMART"> Vi điện tử VnMart</option>
-                            <option value="VIETINBANK">Ngân hàng Vietinbank</option>
-                            <option value="VIETCOMBANK"> Ngân hàng Vietcombank</option>
-                            <option value="HDBANK">Ngân hàng HDBank</option>
-                            <option value="DONGABANK"> Ngân hàng Đông Á</option>
-                            <option value="TPBANK"> Ngân hàng Tiên Phong</option>
-                            <option value="OJB"> Ngân hàng Đại Dương</option>
-                            <option value="BIDV"> Ngân hàng BIDV</option>
-                            <option value="TECHCOMBANK"> Ngân hàng Techcombank</option>
-                            <option value="VPBANK"> Ngân hàng VPBank</option>
-                            <option value="MBBANK"> Ngân hàng MBBank</option>
-                            <option value="ACB"> Ngân hàng ACB</option>
+                            <option value="">Không Chọn</option>
+                            <option value="NCB"> Ngân Hàng Quốc Dân</option>
+                            <option value="AGRIBANK"> Ngân Hàng Agribank</option>
+                            <option value="SCB"> Ngân Hàng Thương Mại Cổ Phần Sài Gòn</option>
+                            <option value="SACOMBANK">Ngân Hàng SacomBank</option>
+                            <option value="EXIMBANK"> Ngân Hàng EximBank</option>
+                            <option value="MSBANK"> Ngân Hàng MSBANK</option>
+                            <option value="NAMABANK"> Ngân Hàng Nam Á</option>
+                            <option value="VNMART"> Vi Điện Tử VnMart</option>
+                            <option value="VIETINBANK">Ngân Hàng Vietinbank</option>
+                            <option value="VIETCOMBANK"> Ngân Hàng Vietcombank</option>
+                            <option value="HDBANK">Ngân Hàng HDBank</option>
+                            <option value="DONGABANK"> Ngân Hàng Đông Á</option>
+                            <option value="TPBANK"> Ngân Hàng Tiên Phong</option>
+                            <option value="OJB"> Ngân Hàng Đại Dương</option>
+                            <option value="BIDV"> Ngân Hàng BIDV</option>
+                            <option value="TECHCOMBANK"> Ngân Hàng Techcombank</option>
+                            <option value="VPBANK"> Ngân Hàng VPBank</option>
+                            <option value="MBBANK"> Ngân Hàng MBBank</option>
+                            <option value="ACB"> Ngân Hàng ACB</option>
                             <option value="OCB"> Ngân Hàng TMCP Phương Đông Việt Nam</option>
                             <option value="IVB"> Ngân Hàng INDOVINA</option>
-                            <option value="VISA"> Thanh toán qua VISA/MASTER</option>
+                            <option value="VISA"> Thanh Toán Qua VISA/MASTER</option>
+                            <option value="ABBANK"> Ngân hàng TMCP An Bình</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="language">Ngôn ngữ</label>
+                        <label for="language">Ngôn Ngữ</label>
                         <select name="language" id="language" class="form-control">
                             <option value="vn">Tiếng Việt</option>
                             <option value="en">English</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="order_desc">Nội dung thanh toán</label>
-                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2" readonly>{% if not order_desc %}Phim: {{ id_movie_name }}, Ngày: {{ id_movie_date_active }}, Thời gian: {{ id_movie_time }}, Số ghế: {{ total_seats }}, Ghế: {{ seats }}, Rạp: Metiz Cinema.{% else %}{{ order_desc }}{% endif %}</textarea>
+                        <label for="order_desc">Nội Dung Thanh Toán</label>
+                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2" readonly>{% if not order_desc %}Phim: {{ id_movie_name }}, Suat chieu: {{ id_movie_time }}, Ngay: {{ id_movie_date_active }}, Ghe: {{ seats }}, Rap: Metiz Cinema.{% else %}{{ order_desc }}{% endif %}</textarea>
                     </div>
                 </div>
-                <div class="text-center">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="amount">Captcha</label>
+                        <div class="input-box">
+                            <div id="re-captcha" class="g-recaptcha" ></div>
+                        </div>
+                        <span class="captcha-error"></span>
+                    </div>
+                </div>
+                <div class="text-center col-xs-12">
                     <input type="hidden" id="working_id" name="working_id" value="{{working_id}}" >
                     <input type="hidden" id="barcode" name="barcode" value="{{barcode}}" >
                     <input type="hidden" id="seats_choice" name="seats_choice" value="{{seats_choice}}" >
                     <input type="hidden" id="id_server" name="id_server" value="{{id_server}}" >
                     <input type="hidden" id="id_showtime" name="id_showtime" value="{{id_showtime}}" >
+                    <input type="hidden" id="movie_api_id" name="movie_api_id" value="{{movie_api_id}}" >
                     <input type="hidden" id="id_movie_name" name="id_movie_name" value="{{id_movie_name}}" >
                     <input type="hidden" id="id_movie_time" name="id_movie_time" value="{{id_movie_time}}" >
                     <input type="hidden" id="id_movie_date_active" name="id_movie_date_active" value="{{id_movie_date_active}}" >

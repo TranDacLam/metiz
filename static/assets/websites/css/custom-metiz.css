@@ -1,7 +1,7 @@
 a:hover,a:focus{
     outline:none;
 }
-.header-language-right {
+.header-right {
     text-align: right;
     display: inline-block;
     width: 100%;
@@ -14,26 +14,26 @@ a:hover,a:focus{
     color: #636363;
     text-align: center;
 }
-.header-language-right .links li, .header-language-right > p, .header-language-right > div {
+.header-right .links li, .header-right > p, .header-right > div {
     display: inline-block;
 }
-.header-language-background, .header-language-background a {
+.header-info, .header-info a {
     color: #fff;
     font-size: 14px;
 }
-.header-language-background a:hover{
+.header-info a:hover{
     text-decoration:none;
 }
-.header-career,.header-top-account{
+.header-phone,.header-top-time{
     padding-top:5px;
 }
-.header-career{
+.header-phone{
     margin-right:15px;
 }
 .logout-msg{
     margin:0 10px;
 }
-.header-language-background .welcome-msg{
+.header-info .welcome-msg{
     float:none;
 }
 .welcome-msg{
@@ -2194,7 +2194,7 @@ li.film-lists:hover .play-button, li.film-lists:hover .play-trailer-empty{
 .slideshow-containe-movier .poster-film {
     margin-right: 6.6px;
     text-align: center;
-    width: 240px;
+    width: 260px;
     position: relative !important;
     float:none;
 }
@@ -2579,12 +2579,12 @@ li.film-lists:hover .play-button, li.film-lists:hover .play-trailer-empty{
     display:block;
 }
 .feature_slide_show .poster-film:hover .play-button{
-    background: url(../images/icon_play.png) no-repeat 77px 130px rgba(255, 84, 0, 0.8);
-    height: 355px;
+    background: url(../images/icon_play.png) no-repeat 87px 142px rgba(255, 84, 0, 0.8);
+    height: 385px;
     left: 0;
     position: absolute;
     top: 0;
-    width: 240px;
+    width: 260px;
     text-indent: -99999px;
     display: block;
     cursor: pointer;
@@ -3856,7 +3856,6 @@ ul,ol,li{
     float: right;
     min-height: 150px;
     width: 70%;
-    margin-top: -18px;
 }
 .contact-metiz .theater-name h2 {
     text-transform: uppercase;
@@ -4963,7 +4962,6 @@ table .text p.deluxe{
     margin-top:7px;
 }
 .movie-technology-icons a span{
-    background-image: url("../images/bg-cgv/movie-icon.png");
     display: inline-block;
     float: left;
     height: 45px;
@@ -5009,7 +5007,6 @@ table .text p.deluxe{
     display: block;
     height: 45px;
     width: 68px;
-    background-image: url("../images/bg-cgv/movie-icon.png");
 }
 span.movie-rating-detail.p{
     background-position: -711px 0px;
@@ -5129,9 +5126,24 @@ span.movie-rating-detail.c18{
     float: left;
     width: 100%;
 }
-.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img {
+
+/*.cate-new-offer li .product-poster .fun-new-offer .content-new-offer .poster-small-new-offer img{
     height: 225px;
     width: 225px;
+}*/
+.poster-small-new-offer {
+  width: 225px;
+  height: 225px;
+}
+.crop-square {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.crop-square img {
+  max-width: 100%;
+  min-height: 100%;
+  margin: auto;
 }
 .cate-new-offer.products-grid--max-4-col > li:nth-child(4n) {
     margin-right:0px;
@@ -5140,7 +5152,11 @@ span.movie-rating-detail.c18{
     float: left;
     width: 100%;
 }
-
+.colum-right-new-offer h2.product-name{
+    color: #0e1d2f;
+    font-size: 15px;
+}
+ 
 .format-new-offer {
     width: 100%;
     margin-top: 5px;
@@ -5180,10 +5196,7 @@ span.movie-rating-detail.c18{
     width: 37%;
     margin-top: 20px;
 }
-.col-left-detail-content-new-offer img {
-    width: 300px;
-    height: 300px;
-}
+
 .col-right-detail-content-new-offer {
     float: right;
     width: 60%;
@@ -5600,9 +5613,6 @@ span.movie-rating-detail.c18{
     
 }
 @media only screen  and (min-width: 320px) and (max-width: 480px){
-    .col-left-detail-content-new-offer img{
-        max-width:100%;
-    }
     .col-left-first{
         float:left;
         width:100%;
@@ -5745,7 +5755,7 @@ span.movie-rating-detail.c18{
         margin-left:0px !important
     }
     .account-wrap{
-        padding:0px 10px !important;
+        padding:0px 10px;
     }
     .customer-account-login .col2-set .col-1{
         padding-right:0px;
@@ -5772,7 +5782,6 @@ span.movie-rating-detail.c18{
     .about-image-metiz li{
         border: 1px solid;
         margin: 10px 4px;
-        box-shadow: 3px 3px 3px #333;
         border-radius: 3px;
     }
     .cms-page-view .std.content-cms-about-us{
@@ -5853,7 +5862,6 @@ span.movie-rating-detail.c18{
     .about-image-metiz li{
         border: 1px solid;
         margin: 10px 4px;
-        box-shadow: 3px 3px 3px #333;
         border-radius: 3px;
     }
     .cms-page-view .std.content-cms-about-us{
@@ -5942,7 +5950,6 @@ span.movie-rating-detail.c18{
     .about-image-metiz li{
         border: 1px solid;
         margin: 10px 4px;
-        box-shadow: 3px 3px 3px #333;
         border-radius: 3px;
     }
     .cms-page-view .std.content-cms-about-us{
@@ -5951,25 +5958,6 @@ span.movie-rating-detail.c18{
     /*payment*/
     
 }
- 
-@media only screen and (min-width: 481px) and (max-width: 640px){
-    .col-left-detail-content-new-offer img{
-        max-width:100%;
-    }
-    
-}
-
-@media only screen and (min-width: 641px) and (max-width: 770px){
-    .col-left-detail-content-new-offer img{
-        max-width:100%;
-    }
-}
-@media handheld and (max-width: 770px){
-    .col-left-detail-content-new-offer img{
-        max-width:100%;
-    }
-}
-
 /* ======================================  CMS PAGE ABOUT =========================================== */
 .cms-page-view .std{
     padding: 0;

@@ -1,3 +1,15 @@
+.booking-custom, .booking-custom .booking-details p{
+    font-family: "Montserrat", sans-serif;
+}
+.booking-custom>div>h2{
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
+}
+.booking-details .seatCharts-legend{
+    font-size: 12px;
+}
+.booking-custom .step-2-navigator a{
+    font-family: "SairaSemiCondensed-Light", sans-serif;
+}
 .front{
     margin: 5px 32px 45px 32px;
     background-image: repeating-linear-gradient(50deg, #E3E3E3 0px, #E3E3E3 3px,
@@ -16,11 +28,14 @@
 }
 .booking-details p{
     line-height:26px;
-    font-size:16px;
+    font-size:15px;
     font-family: "SairaSemiCondensed-Medium", sans-serif
 }
 .booking-details p span{
     color:#666
+}
+#member_card_modal .modal-header {
+    border-bottom-color: #ff4000;
 }
 div.seatCharts-cell {
     color: #182C4E;
@@ -31,30 +46,28 @@ div.seatCharts-cell {
     float: left;
     text-align: center;
     outline: none;
-    font-size: 13px;
+    font-size: 11px;
 }
 div.seatCharts-seat {
-    color: #fff;
+    color: #777;
     cursor: pointer;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius: 5px;
 }
 div.seatCharts-row {
     height: 35px;
 }
 div.seatCharts-seat.available {
-    background-color: #B9DEA0;
+    border: 2px solid #c9c2b5;
+    background-color: rgba(255, 255, 255, 0);
 }
 div.seatCharts-seat.focused {
     background-color: #76B474;
     border: none;
 }
 div.seatCharts-seat.selected {
-    background-color: #E6CAC4;
+    background-color: #72ba14;
 }
 div.seatCharts-seat.unavailable {
-    background-color: #472B34;
+    background: url('../../websites/images/Seat_booked.png');
     cursor: not-allowed;
 }
 div.seatCharts-container {
@@ -134,7 +147,7 @@ span.seatCharts-legendDescription {
     background-repeat: no-repeat;
     font-weight: bold;
     color: #231f20;
-    padding: 0px 0 0 26px;
+    padding: 0px 0 0 28px;
     background-position-y: 3px;
 }
 .step-2-navigator .btn-continue {
@@ -144,7 +157,7 @@ span.seatCharts-legendDescription {
     color: #231f20;
     padding: 0px 28px 0 0;
     background-position-y: 3px;
-    background-position-x: 52px;
+    background-position-x: 100%;
 }
 .step-2-navigator .btn-changeschedule:hover,
 .step-2-navigator .btn-continue:hover{
@@ -154,98 +167,40 @@ span.seatCharts-legendDescription {
     display:table;
     margin:0px auto 0px auto;
 }
-.ajax-loader{
-    margin: 0px; 
-    padding: 0px; 
-    position: fixed; 
-    right: 0px; 
-    top: 0px; 
+#seat-map{
+    min-height: 250px;
+}
+.ajax-loader{ 
+    position: absolute; 
+    right: 0; 
+    top: 50%; 
     width: 100%; 
-    height: 100%; 
+    height: 100%;
     background-color: rgb(102, 102, 102, 0.28); 
     z-index: 30001; 
     opacity: 0.8; 
 }
-.ajax-loader>p{
-    position: absolute; 
-    top: 40%; 
-    left: 44%;
+.ajax-loader img{
+    margin: 0 auto;
 }
 div.seatCharts-space{
     height: 100%;
 }
-@media only screen and (max-width: 1366px){
-    .ajax-loader>p{
-        left: 42%;
-    }
-}
-@media only screen and (max-width: 1024px){
-    .ajax-loader>p{
-        top: 30%; 
-        left: 40.5%;
-    }
-}
-@media only screen and (max-width: 768px){
-    .booking-details{
-        margin-left: 10%;
-    }
-    div.seatCharts-container{
-        border-right: none;
-    }
-    .main-container{
-        scroll-direction: horizontal;
-    }
-    .ajax-loader>p{
-        top: 44%; 
-        left: 49%;
-    }
-}
-@media only screen and (max-width: 600px){
-    .ajax-loader>p{
-        top: 55%; 
-        left: 46.5%;
-    }
-}
-@media only screen and (max-width: 414px){
-    .ajax-loader>p{
-        top: 45%; 
-        left: 45%;
-    }
-    div.seatCharts-space {
-        height: auto;
-    }
-}
-@media (min-width: 376px) and (max-width: 414px) {
-    .seatCharts-row div:nth-child(9n+11) {
-        margin-left: 34px;
-    }
-}
-@media (min-width: 321px) and (max-width: 375px) {
-    .seatCharts-row div:nth-child(7n+9) {
-        margin-left: 34px;
-    }
-}
-@media only screen and (max-width: 320px){
-    .ajax-loader>p{
-        top: 50%; 
-        left: 44%;
-    }
-    .seatCharts-row div:nth-child(5n+7) {
-        margin-left: 34px;
-    }
-}
 div.seatCharts-seat.available.seat-vip {
-    background-color: #e96107;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid #ffc000;
 }
 div.seatCharts-seat.available.seat-couple {
-    background-color: #e40a8b;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid #ec008c;
 }
 div.seatCharts-seat.available.seat-ld {
-    background-color: #83399a;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid #83399a;
 }
 .booking-refresh {
     margin-top: 220px;
-    margin-left: 8px;
+    margin-left: 4px;
 }
 .booking-details .booking-refresh a{
     color: #241d1e;
@@ -260,4 +215,159 @@ div.seatCharts-seat.available.seat-ld {
 }
 .clear-both {
     clear: both;
+}
+/*Modal member card info*/
+#member_card_modal .member-card-footer {
+    text-align: right;
+}
+#member_card_modal .modal-body p.member-card-info {
+    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+#member_card_modal label {
+    font-family: 'Montserrat', sans-serif;
+}
+#btn_add_card {
+    font-family: 'SairaSemiCondensed-Medium';
+    text-transform: uppercase;
+    background-color: #7e8eaa;
+    color: #ffffff;
+    font-weight: bold;
+    float: left;
+}
+#btn_add_card:hover {
+    background-color: #ff4900;
+    color: #ffffff;
+}
+.modal-footer {
+    border-top: none;
+}
+#seat-map:focus{
+    outline: none;
+}
+@media only screen and (max-width: 768px){
+    .booking-details{
+        margin-left: 4%;
+    }
+    div.seatCharts-container{
+        border-right: none;
+    }
+    .main-container{
+        scroll-direction: horizontal;
+    }
+    body.modal-open {
+        position: fixed;
+    }
+}
+@media only screen 
+and (min-width: 568px) 
+and (max-width: 736px) 
+and (orientation: landscape){
+    div.seatCharts-cell {
+        height: 18px;
+        width: 18px;
+        line-height: 15px;
+        margin: 2px;
+        font-size: 8px;
+    }
+    .booking-refresh {
+        margin-left: 0px;
+    }
+    div.seatCharts-seat.unavailable {
+        background: url('../../websites/images/Seat_booked.png') -4px -3px;
+        cursor: not-allowed;
+    }
+    #member_card_modal .modal-dialog{
+        margin: auto;
+    }
+    #member_card_modal .modal-content{
+        margin: 5% auto;
+        padding: 0 20px;
+    }
+}
+@media only screen and (width: 568px){
+    #member_card_modal .modal-content{
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 480px) {
+    div.seatCharts-cell{
+        height: 12px;
+        width: 12px;
+        line-height: 12px;
+        margin: 1px;
+        font-size: 6px;
+    }
+    div.seatCharts-row{
+        height: 22px;
+    }
+    div.seatCharts-seat{
+        border-radius: 2px;
+    }
+    div.seatCharts-container{
+        padding: 0px;
+    }
+    #seat-map{
+        margin-bottom: 25px;
+    }
+    ul.seatCharts-legendList .seatCharts-legendItem{
+        height: 35px;
+    }
+    ul.seatCharts-legendList li>.seatCharts-seat{
+        margin-top: 9px;
+    }
+}
+@media only screen and (max-width: 414px){
+    div.seatCharts-space {
+        height: auto;
+    }
+    .booking-refresh {
+        margin-top: 163px;
+    }
+    div.seatCharts-seat.unavailable {
+        background: url(../../websites/images/Seat_booked.png) -6px -6px;
+        cursor: not-allowed;
+    }
+    div.seatCharts-seat.available {
+        border: 1px solid #c9c2b5;
+    }
+    div.seatCharts-seat.available.seat-vip {
+        border: 1px solid #ffc000;
+    }
+    div.seatCharts-seat.available.seat-couple {
+        border: 1px solid #ec008c;
+    }
+    div.seatCharts-seat.available.seat-ld {
+        border: 1px solid #83399a;
+    }
+    #seat-map .front{
+        font-size: 12px;
+    }
+    #member_card_modal .modal-content{
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 375px){
+    div.seatCharts-cell {
+        height: 11px;
+        width: 11px;
+        line-height: 10px;
+        font-size: 5px;
+    }
+    div.seatCharts-seat.unavailable {
+        background: url(../../websites/images/Seat_booked.png) -7.1px -7.4px;
+        cursor: not-allowed;
+    }
+}
+@media only screen and (max-width: 320px){
+    div.seatCharts-cell {
+        height: 8px;
+        width: 8px;
+        line-height: 8px;
+        font-size: 4px;
+    }
+    div.seatCharts-seat.unavailable {
+        background: url(../../websites/images/Seat_booked.png) -8.2px -8.4px;
+        cursor: not-allowed;
+    }
 }

@@ -13,4 +13,6 @@ urlpatterns = [
     url(r'^technology/$', views.get_technology, name='get_technology'),
     url(r'^posts/$', views.get_post, name='get_cms'),
     url(r'^contacts/$', views.contacts, name='contacts'),
+    url(r'^blog/$', views.blog_film, name='blog_film'),
+    url(r'^blog/detail$', views.blog_film_detail, name='blog_film_detail'),
 ]

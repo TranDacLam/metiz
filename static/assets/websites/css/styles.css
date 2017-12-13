@@ -464,6 +464,10 @@ textarea {
   font-size: 15px;
   line-height: 18px;;
 }
+input, select, textarea {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+}
 
 a {
   color: #e71a0f;
@@ -2559,7 +2563,7 @@ textarea {
   font-size: 15px;
 }
 .input-text:focus {
-  border: 1px solid #e71a0f;
+  border: 1px solid #66afe9;
 }
 
 .input-text.validation-failed {
@@ -2585,9 +2589,12 @@ input[type=search],
 input[type=number],
 input[type=password],
 input[type=tel],
-input[type=text] {
+input[type=text],
+select, textarea {
   width: 365px;
   max-width: 100%;
+  font-size: 15px;
+
 }
 
 /* Only show on iPhones (not iPads or any other device) */
@@ -2599,7 +2606,7 @@ input[type=text] {
   input[type=tel],
   input[type=text],
   select {
-    font-size: 16px;
+    font-size: 15px;
     /* Prevent from zooming on focus */
   }
 }
@@ -3107,20 +3114,20 @@ body {
 /* ============================================ *
  * Language switcher + welcome message
  * ============================================ */
-.header-language-background {
+.header-info {
   height: 70px;
   text-transform: uppercase;
 }
-.header-language-background:after {
+.header-info:after {
   content: '';
   display: table;
   clear: both;
 }
-.header-language-background .form-language,
-.header-language-background .currency-switcher {
+.header-info .form-language,
+.header-info .currency-switcher {
   float: left;
 }
-.header-language-background .welcome-msg {
+.header-info .welcome-msg {
   float: right;
 }
 

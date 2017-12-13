@@ -5,7 +5,7 @@ ENV = 'development' # Choices ['uat','production','development']
 SERVERS = {
     'development': '172.16.12.10',
     'uat': '103.95.197.103',
-    'production' : '49.156.53.49'
+    'production' : '103.95.197.103'
 }
 BRANCH = {
     'development': 'develop',
@@ -15,33 +15,32 @@ BRANCH = {
 
 USERS = {
     'development': 'adminvn',
-    # 'uat': 'thangv',
-    'production': 'thangv',
-    'api': 'thangv'
+    'production': 'ubuntu',
+    'uat': 'ubuntu'
 }
 
 PASSWORDS = {
     'development': 'Abc@123',
     'uat': 'ThangNguyen@@123',
-    'production': 'develop@vooc.vn'
+    'production': 'ThangNguyen@@123'
 }
 
 VIRTUAL_ENVS = {
     'development': 'source /home/adminvn/envs_root/metiz_env/bin/activate',
     'uat': 'source /home/ubuntu/envs_root/metiz_uat_env/bin/activate',
-    'production': 'source /home/thangv/envs/helio_web_env/bin/activate'
+    'production': 'source /home/ubuntu/envs_root/metiz_env//bin/activate'
 }
 
 PATHS = {
     'development': '/home/adminvn/sites/metiz',
     'uat': '/home/ubuntu/projects/metiz',
-    'production': '/home/thangv/projects/helio_web/'
+    'production': '/home/ubuntu/projects/production/metiz'
 }
 
 PROCESS_ID = {
     'development': '/tmp/metiz_web.pid',
     'uat': '/tmp/metiz_uat_web.pid',
-    'production': '/tmp/helio_web.pid'
+    'production': '/tmp/metiz_web.pid'
 }
 
 env.hosts = [SERVERS[ENV]]
@@ -73,8 +72,13 @@ def deploy():
                 run('pip install -r ../requirements.txt')
                 run('python manage.py collectstatic --noinput')
                 run('python manage.py migrate')
-                # sudo('systemctl restart uwsgi_helio')
-                sudo('su -s /bin/bash www-data -c "%s;%s" '%(env.activate,"uwsgi --reload %s"%PROCESS_ID[ENV]))
+
+                if ENV == "development":
+                    sudo('su -s /bin/bash www-data -c "%s;%s" '%(env.activate,"uwsgi --reload %s"%PROCESS_ID[ENV]))
+                elif ENV == 'uat':
+                    sudo('systemctl restart uwsgi_metiz_uat')
+                elif ENV == 'production':
+                    sudo('systemctl restart uwsgi_metiz')
 
 
         

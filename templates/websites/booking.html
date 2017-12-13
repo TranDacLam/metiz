@@ -8,6 +8,8 @@
 {% endblock %}
 
 {% block extrascript %}
+    <!-- booking -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.seat-charts.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/booking.js"></script>
 {% endblock %}
 
@@ -22,12 +24,17 @@
         <div class="row">
             <div id="seat-map" class="col-md-8 col-md-offset-1 col-xs-12">
                 <div class="front">MÀN HÌNH</div>
+                <div class="ajax-loader">
+                    <img src="{{ STATIC_URL }}assets/websites/images/ajax-loader.gif" class="img-responsive" />
+                </div>
             </div>
             <div class="booking-details col-md-3 col-xs-12">
                 <!-- get id_server -->
                 <input type="hidden" name="id_server" id="id_server" value="{{id_server}}"> 
                 <!-- get id showtime -->
                 <input type="hidden" name="id_showtime" id="id_showtime" value="{{id_showtime}}">
+                <!-- get id movie api -->
+                <input type="hidden" name="movie_api_id" id="movie_api_id" value="{{movie_api_id}}">
                 <p>Phim: <span class="name-movie-booking"> {{ id_movie_name }}</span></p>
                 <p>Ngày: <span class="date-movie-booking">{{ id_movie_date_active }}</span></p>
                 <p>Thời gian: <span class="time-movie-booking">{{ id_movie_time }}</span></p>
@@ -52,7 +59,32 @@
         </section>
     </div>
 </div>
-<div class="ajax-loader">
-    <p><img src="{{ STATIC_URL }}assets/websites/images/ajax-loader.gif" class="img-responsive" /></p>
-</div>
+
+<!-- Modal Add Member Card -->
+<div class="modal" id="member_card_modal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h2 class="modal-title">Thêm thẻ thành viên</h2>
+            </div>
+            <div class="modal-body">
+                <div>
+                     <p class="member-card-info"><i>Quý khách nhập thẻ thành viên để nhận điểm thưởng. Nếu chưa có vui lòng để trống hoặc liên hệ với trực tiếp với quầy để tạo mới.</i></p>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>{% trans 'Member Card' %}</label>
+                        <input type="text" name="member_card" id="member_card" placeholder="{% trans 'Enter Member Card Here' %}" class="form-control">
+                        <label class="form-error" for="member_card" id='member_card-error'></label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer member-card-footer">
+              <button id="btn_add_card" type="button" class="btn btn-login" data-dismiss="modal" data-toggle='modal'>Tiếp tục</button>
+            </div>
+        </div>
+    </div>
+    </div>
 {% endblock%}

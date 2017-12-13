@@ -11,6 +11,25 @@ function guid() {
 $(document).ready(function() {
     var id_server = $('#id_server').val();
     var id_showtime = $('#id_showtime').val();
+    var movie_api_id = $('#movie_api_id').val();
+
+    // Validate member_card only input alpha
+    $("#member_card").on("input", function(){
+        var regexp = /[^a-zA-Z0-9]/g;
+        if($(this).val().match(regexp)){
+            $(this).val( $(this).val().replace(regexp,'') );
+        }
+    });
+
+    //fix background scroll in modals on mobile
+    if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
+        // back scroll when close popup member card
+        $('#member_card_modal').on('hide.bs.modal', function() {
+            $('html, body').animate({
+                scrollTop: $(".name-movie-booking").offset().top
+            }, 10);
+        });
+    }
 
     // show icon load when ajax start 
     $(document).ajaxStart(function(){
@@ -19,13 +38,6 @@ $(document).ready(function() {
     // hidden icon load when ajax complete
     $(document).ajaxComplete(function(){
         $(".ajax-loader").css("display", "none");
-    });
-
-    // disable key space when select seat
-    $('.seatCharts-cell').keydown(function(e) {
-        if(e.which === 32){
-            return false;
-        }
     });
 
     // variable setTimeout
@@ -47,6 +59,18 @@ $(document).ready(function() {
         // Check List seat 
         if(response.List && response.List.length > 0){
             bookingSeat(response.List);
+
+            // disable select seat when keydown key space
+            // Step 1: Turn off keydown (key space), override event keydown (key space) in library seat-charts.
+            // Step 2: Turn on keydown and handle event prevenDefault
+            $("#seat-map .seatCharts-row div.seatCharts-seat.seatCharts-cell.available").off("keydown");
+            $("#seat-map .seatCharts-row div.seatCharts-seat.seatCharts-cell.available").on("keydown", function(e){
+                if (e.which == 32) {
+                    e.preventDefault();
+                }        
+            });
+            // Disable forcus outside  area choice seat 
+            $('#seat-map').unbind("focus");
         }else{
             // show message when List seat empty, setTimeout 10s back home
             displayMsg();
@@ -77,6 +101,7 @@ $(document).ready(function() {
         var $cart = $('#selected-seats'), //Sitting Area
         $counter = $('#counter'), //Votes
         $total = $('#total'); //Total money
+        var maximumSeat = 8; // choice seat maximum is 8 seat
 
         var sameStr = '';
         var iArr = -1;
@@ -210,16 +235,17 @@ $(document).ready(function() {
             legend : { //Definition legend
                 node : $('#legend'),
                 items : [
-                    [ 'a', 'unavailable', 'Ghế đã có người đặt'],
+                    [ 'a', 'unavailable', 'Ghế đã đặt'],
                     [ 'a', 'selected', 'Ghế đang chọn'],
-                    [ 'a', 'available',   'Ghế trống' ],
+                    [ 'a', 'available',   'Ghế thường' ],
                     [ 'v', 'available',   'Ghế VIP' ],
                     [ 'c', 'available',   'Ghế couple' ],
                     [ 'l', 'available',   'Ghế cao cấp' ]
                 ]
             },
             click: function () { //Click event
-                if (this.status() == 'available') { //optional seat
+                // Check status and maximum seat choice
+                if (this.status() == 'available' && sc.find('selected').length < maximumSeat) { //optional seat
                     $('<li>'+this.settings.label+'</li>')
                     // $('<li>'+(this.settings.character)+''+this.settings.label+'</li>')
                         .attr('id', 'cart-item-'+this.settings.id)
@@ -249,6 +275,11 @@ $(document).ready(function() {
                 } else if (this.status() == 'unavailable') { //sold
                     return 'unavailable';
                 } else {
+                    // check maximum seat result message
+                    if(sc.find('selected').length >= maximumSeat ){
+                        displayMsg();
+                        $('.msg-result-js').html(msgResult("Vui lòng chỉ chọn tối đa 8 ghế.", "warning"));
+                    }
                     return this.style();
                 }
             }
@@ -256,9 +287,6 @@ $(document).ready(function() {
 
         //sold seat
         sc.get(arrStatus).status('unavailable');
-
-        var seatPayment = [];
-        var seats_choice = [];
 
         // Trim name seat
         function strimNameSeat(str){
@@ -272,46 +300,48 @@ $(document).ready(function() {
 
         // Get ID, NAME seat selected. [{"ID": "1", "NAME": "A03"}]
         function getSeatSelected(){
-            seatSelected = new Array();
+            var seatSelected = new Array();
             var seats =  sc.find('selected').seats;
             for(i=0;i<seats.length; i++){
-                seats_choice.push(seats[i].settings.id);
                 seatSelected.push(JSON.stringify({
                     'ID': seats[i].settings.id,
                     'NAME': strimNameSeat(seats[i].settings.label)
                 }));
-
-                seatPayment.push(strimNameSeat(seats[i].settings.label));
             }
-            // Sort by name seat
-            seatPayment.sort();
-            
             return seatSelected;
         }
-
-
-
-        // redirect payment with total and seat
+        // click booking next button.
         $('#btnNextBooking').on('click',function(){
-            var totalPayment = recalculateTotal(sc);
-            var lst_seats = getSeatSelected();
-            var totalSeat = seatPayment.length;
-            var id_movie_name = $('.name-movie-booking').text();
-            var id_movie_time = $('.time-movie-booking').text().replace('~', '-');
-            var id_movie_date_active = $('.btn-changeschedule').attr('data-date-seat');
-
+            // get length Seat selected
+            var totalSeat = getSeatSelected().length;
             // check user selected seat?
             if(totalSeat < 1){
                 displayMsg();
                 $('.msg-result-js').html(msgResult("Bạn chưa chọn ghế!", "warning"));
                 return false;
+            } else {
+                $('#member_card_modal').modal('show');
             }
+            
+        });
+        // Click add Card button
+        $('#btn_add_card').on('click',function(){
+            var totalPayment = recalculateTotal(sc);
+            var id_movie_time = $('.time-movie-booking').text().replace('~', '-');
+            var id_movie_date_active = $('.date-movie-booking').text();
+            // Translate string, toUpperCase first letter of string, substring if string > 20 character
+            var id_movie_name = firstLeterCase(translateVI($('.name-movie-booking').text())).substring(0, 25);
+
+            // get id, name seat selected
+            var seatSelected = getSeatSelected();
+
             var working_id = guid();
             data = {
                 "id_showtime": id_showtime,
                 "id_server": id_server,
-                "lst_seats": "["+ lst_seats.toString() +"]",
-                "working_id": working_id
+                "lst_seats": "["+ seatSelected.toString() +"]",
+                "working_id": working_id,
+                "member_card": $("#member_card").val()
             }
             $.ajax({
                 url: "/verify/seats",
@@ -323,11 +353,17 @@ $(document).ready(function() {
             })
             .done(function(response) {
                 var barcode = response.BARCODE
-                window.location.href = '/payment?totalPayment='+ totalPayment +'&totalSeat='+ totalSeat 
+                // get array id seat selected
+                var seats_choice = seatSelected.map(item => JSON.parse(item).ID);
+                // get array name seat selected va sort by name
+                var seatPayment = seatSelected.map(item => JSON.parse(item).NAME).sort();
+
+                window.location.href = '/payment?totalPayment='+ totalPayment
                 +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
                 + '&id_movie_time='+id_movie_time + '&id_movie_date_active='+id_movie_date_active
                 + '&working_id='+working_id + '&barcode='+ barcode 
-                + '&seats_choice='+seats_choice + '&id_server=' +id_server + '&id_showtime=' +id_showtime;
+                + '&seats_choice='+seats_choice + '&id_server=' +id_server + '&id_showtime=' +id_showtime
+                + '&movie_api_id=' +movie_api_id;
             })
             .fail(function(error) {
                 displayMsg();
@@ -348,7 +384,7 @@ $(document).ready(function() {
     $('.date-movie-booking').text(getDate());
     function getDate(){
         var date_shedule = $('.date-movie-booking').text();
-        return date_shedule.replace(/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/g, '$3 - $2 - $1');
+        return date_shedule.replace(/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/g, '$3-$2-$1');
     }
 });
 //sum total money
@@ -358,4 +394,30 @@ function recalculateTotal(sc) {
         total += this.data().price;
     });
     return total;
+}
+
+
+// translate unikey
+function translateVI(str) {  
+    str= str.toLowerCase();  
+    str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");  
+    str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");  
+    str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i");  
+    str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");  
+    str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");  
+    str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");  
+    str= str.replace(/đ/g,"d");  
+    return str;  
+}
+
+// toUpperCase first leter of string
+function firstLeterCase(str){
+    str = str.toLowerCase();
+    var array = str.split(' ');
+    for(var c = 0; c < array.length; c++){
+        if(array[c][0] != null){
+            array[c] = array[c][0].toUpperCase() + array[c].substring(1);
+        }
+    }
+    return array.join('');
 }

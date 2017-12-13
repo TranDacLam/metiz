@@ -18,6 +18,11 @@ from django.contrib import admin
 import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.admin.sites import AdminSite
+from main import forms
+
+# Register Admin Login Form (Custom)
+AdminSite.login_form = forms.SecureAdminLoginForm
 
 
 handler404 = 'main.views.custom_404'
