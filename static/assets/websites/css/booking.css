@@ -147,9 +147,8 @@ span.seatCharts-legendDescription {
     background-repeat: no-repeat;
     font-weight: bold;
     color: #231f20;
-    padding: 0px 0 0 26px;
+    padding: 0px 0 0 28px;
     background-position-y: 3px;
-    background-position-x: 3px;
 }
 .step-2-navigator .btn-continue {
     background-image: url('/static/assets/websites/images/btn_total_next02.png');

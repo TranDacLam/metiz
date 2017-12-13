@@ -228,23 +228,9 @@ ul ~ label{
 		padding: 10px 0 0 ;
 	}
 }
-/*Customize reponsive modal date of birth */
-#myTabContent span.closer.glyphicon.glyphicon-remove.pull-left {
-	float: right !important;
-}
-#myTabContent .ui-datebox-flipcontent div {
-	height: 145px;
-}
-#myTabContent .ui-datebox-flipcontent {
-	height: 117px;
-}
-#myTabContent .ui-datebox-controls {
-	padding-top: 35px;
-}
-#myTabContent .ui-datebox-flipcenter.ui-overlay-shadow{
-	top: -21px !important;
-}
-.ui-datebox-gridheader h4,.ui-datebox-cal-pickers fieldset .input-sm {
+/*Edit font for popup birtday*/
+.ui-datebox-header h4, .ui-datebox-gridheader h4, 
+.modal-title, a.btn.btn-sm.btn-default, .ui-datebox-flipcontent li{
     font-family: "Montserrat", sans-serif;
 }
 @media screen and (max-width: 320px){
