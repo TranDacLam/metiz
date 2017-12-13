@@ -157,7 +157,7 @@ span.seatCharts-legendDescription {
     color: #231f20;
     padding: 0px 28px 0 0;
     background-position-y: 3px;
-    background-position-x: 52px;
+    background-position-x: 100%;
 }
 .step-2-navigator .btn-changeschedule:hover,
 .step-2-navigator .btn-continue:hover{

@@ -5197,11 +5197,6 @@ span.movie-rating-detail.c18{
     margin-top: 20px;
 }
 
-.col-left-detail-content-new-offer img{
-    width: 300px;
-    height: 300px;
-}
-
 .col-right-detail-content-new-offer {
     float: right;
     width: 60%;
@@ -5618,10 +5613,6 @@ span.movie-rating-detail.c18{
     
 }
 @media only screen  and (min-width: 320px) and (max-width: 480px){
-    .col-left-detail-content-new-offer img{
-        width:374px;
-        height:374px;
-    }
     .col-left-first{
         float:left;
         width:100%;
@@ -5797,25 +5788,6 @@ span.movie-rating-detail.c18{
         padding:0;
     }
 }
-@media only screen  and (max-width: 375px) {
-    .col-left-detail-content-new-offer img{
-        width:335px;
-        height: 335px;
-    }
-}
-@media only screen  and (max-width: 360px) {
-    .col-left-detail-content-new-offer img{
-        width:320px;
-        height: 320px;
-    }
-}
-
-@media only screen  and (max-width: 320px) {
-    .col-left-detail-content-new-offer img{
-        width:280px;
-        height: 280px;
-    }
-}
 @media only screen and (max-width: 640px) and (min-width:481px){
     
     /* schedule page */
@@ -5986,27 +5958,6 @@ span.movie-rating-detail.c18{
     /*payment*/
     
 }
- 
-@media only screen and (min-width: 481px) and (max-width: 640px){
-    .col-left-detail-content-new-offer img{
-        width:213px;
-        height: 213px;
-    }
-    
-}
-
-@media only screen and (min-width: 641px) and (max-width: 770px){
-    .col-left-detail-content-new-offer img{
-        width:271px;
-        height: 271px;
-    }
-}
-@media handheld and (max-width: 770px){
-    .col-left-detail-content-new-offer img{
-        max-width:100%;
-    }
-}
-
 /* ======================================  CMS PAGE ABOUT =========================================== */
 .cms-page-view .std{
     padding: 0;

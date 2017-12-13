@@ -22,15 +22,16 @@
 			<div class="postContent">
 				<div class="detail-content-new-offer">
 					<div class="col-left-detail-content-new-offer">
-						<ul>
-							<li> <img alt="" src="{{MEDIA_URL}}{{new.image}}"> </li>
-							<br>
-							<!-- Button like and share Facebook  -->
-							<li class="button-like-share">
-								<div class="fb-like fb_iframe_widget" data-href="http://{{ request.get_host }}{% url 'new_detail' new.id %}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
-					            </div>
-							</li>
-						</ul>
+						<div class="img-square">
+							<div class="square-content">
+								<img alt="" src="{{MEDIA_URL}}{{new.image}}"> 
+							</div>
+						</div>
+						<!-- Button like and share Facebook  -->
+						<div class="button-like-share">
+							<div class="fb-like fb_iframe_widget" data-href="http://{{ request.get_host }}{% url 'new_detail' new.id %}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
+					        </div>
+						</div>
 					</div>
 					<div class="col-right-detail-content-new-offer">
 						<div class="social-detail-content-new-offer">
