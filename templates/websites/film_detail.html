@@ -7,7 +7,7 @@
 	<!-- Start FB share properties  -->
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{{film_detail.name}}" />
-	<meta property="og:description" content="Film Detail" />
+	<meta property="og:description" content="{{ film_detail.description | safe}}" />
 	<!-- End FB share properties  -->
 {% endblock %}
 
