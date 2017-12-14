@@ -16,7 +16,12 @@ $(document).ready(function() {
     //fix background scroll in modals on mobile
     if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
         $('#confirm').on('show.bs.modal', function() {
+            $("body").addClass("fixIOSposition");
             $.magnificPopup.close(); 
+        });
+
+        $('#confirm').on('hide.bs.modal', function() {
+            $("body").removeClass("fixIOSposition");
         });
     }
     $('.open-popup-link').magnificPopup({

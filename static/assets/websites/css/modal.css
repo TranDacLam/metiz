@@ -1,7 +1,10 @@
 body.modal-open {
   height: 100%;
-  position: fixed;
-  
+  /*position: fixed;*/
+
+}
+.fixIOSposition{
+    position: fixed;
 }
 
 #confirm { 
