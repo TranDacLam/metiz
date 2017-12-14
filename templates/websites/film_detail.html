@@ -3,6 +3,14 @@
 {% load modal_data_tags %}
 {% block title %}{{film_detail.name}}{% endblock title %}
 
+{% block metacontent %}
+	<!-- Start FB share properties  -->
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="{{film_detail.name}}" />
+	<meta property="og:description" content='Khởi chiếu từ ngày {{film_detail.release_date | date:"d-m-Y"}} đến ngày {{film_detail.end_date | date:"d-m-Y"}}' />
+	<!-- End FB share properties  -->
+{% endblock %}
+
 {% block extrastylesheet %}
 <!-- film detail -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/star-rating.min.css" media="all" />

@@ -388,4 +388,7 @@ ul.metiz-film-detail-tabs {
 	.review-custom .review-info>img{
 		margin-right: 8px;
 	}
+	.rating-desc .text-right{
+		width: 27%;
+	}
 }
