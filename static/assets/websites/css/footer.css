@@ -146,9 +146,16 @@ footer .fb-custom{
 	padding-left: 30px;
 	padding-right: 0px;
 }
+footer .copyright-footer{
+	text-align: right;
+	padding-right: 0;
+}
 @media only screen and (max-width: 768px) {
 	footer .content-3 p{
 		text-align:center;
+	}
+	footer p.copyright-footer{
+		text-align: right;
 	}
 	#logo-footer{
 		margin: 0 auto;
@@ -185,6 +192,9 @@ footer .fb-custom{
 	}
 	footer #content-map iframe {
 		padding-right: 15px;
+	}
+	footer p.copyright-footer{
+		text-align: center;
 	}
 }
 @media only screen and (max-width: 414px){

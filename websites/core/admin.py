@@ -125,7 +125,7 @@ class MovieForm(forms.ModelForm):
         release_date = self.cleaned_data.get('release_date')
         if release_date and end_date < release_date:
             raise forms.ValidationError(
-                _("End date must be greater than release date."))
+                _("Ngày kết thúc phải lớn hơn ngày khởi chiếu."))
         return end_date
 
 
@@ -140,7 +140,23 @@ class MovieAdmin(admin.ModelAdmin):
 admin.site.register(Movie, MovieAdmin)
 
 
+class NewOfferForm(forms.ModelForm):
+
+    class Meta:
+        model = NewOffer
+        fields = '__all__'
+
+    def clean_end_date(self):
+        end_date = self.cleaned_data.get('end_date')
+        apply_date = self.cleaned_data.get('apply_date')
+        if end_date and end_date < apply_date:
+            raise forms.ValidationError(
+                _("Ngày kết thúc phải lớn hơn ngày áp dụng."))
+        return end_date
+
+        
 class NewOfferAdmin(admin.ModelAdmin):
+    form = NewOfferForm
     list_display = ('name', 'apply_date', 'modified')
     exclude = ('movies',)
     formfield_overrides = {
