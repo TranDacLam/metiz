@@ -371,4 +371,7 @@ and (orientation: landscape){
         background: url(../../websites/images/Seat_booked.png) -8.2px -8.4px;
         cursor: not-allowed;
     }
+    .booking-custom .back-and-forward a{
+        font-size: 12px;
+    }
 }
