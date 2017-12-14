@@ -1,3 +1,20 @@
+body.modal-open {
+  height: 100%;
+  position: fixed;
+  
+}
+
+#confirm { 
+    top:0;
+  height: inherit; 
+  min-height: 100%; 
+}
+
+.modal { 
+  min-height: 100%; 
+  -webkit-overflow-scrolling: auto;
+}
+
 #modal-popup #update_form,
 #modal-popup #update_form label,
 #modal-popup #member_form,

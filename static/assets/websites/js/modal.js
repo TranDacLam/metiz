@@ -15,42 +15,16 @@ $(document).ready(function() {
 
     //fix background scroll in modals on mobile
     if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
-        $('#modal-popup .modal').on('shown.bs.modal', function() {
-            $('body').css('overflow', 'hidden');
-            $('.mfp-ready').attr('style', 'overflow-y:hidden');
-        });
-        $('#modal-popup .modal').on('hide.bs.modal', function() {
-            $('body').css('overflow', 'scroll');
-            $('.mfp-ready').attr('style', 'overflow-y:auto');
-        });
-        
-         // active popup
-        $('.open-popup-link').magnificPopup({
-            type: 'inline',
-            midClick: true,
-            enableEscapeKey: false,
-            fixedContentPos: true,
-            //prevent background scroll
-            callbacks: {
-                open: function() {
-                    $('body').css('overflow', 'hidden');
-                },
-                close: function() {
-                    $('body').css('overflow', 'auto');
-                },
-            }
-        });
-
-    }else{
-        // active popup
-        $('.open-popup-link').magnificPopup({
-            type: 'inline',
-            midClick: true,
-            enableEscapeKey: false,
-            fixedContentPos: true,
+        $('#confirm').on('show.bs.modal', function() {
+            $.magnificPopup.close(); 
         });
     }
-    
+    $('.open-popup-link').magnificPopup({
+        type: 'inline',
+        midClick: true,
+        enableEscapeKey: false,
+        fixedContentPos: true,
+    });
 
 
     // Validate guest_form, update_form
@@ -409,6 +383,7 @@ $(document).ready(function() {
             //set content for modal #warnning or skip
             var rated = element.parents('.lot-table').attr('data-rated');
             $('#confirm').on('show.bs.modal', function() {
+                $('#confirm').css("overflow-y","auto");
                 // remove tabindex of magnifix popup trigger for input confirm form
                 $(".mfp-ready").attr("tabindex", "");
 
