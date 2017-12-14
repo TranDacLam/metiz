@@ -1,3 +1,23 @@
+body.modal-open {
+  height: 100%;
+  /*position: fixed;*/
+
+}
+.fixIOSposition{
+    position: fixed;
+}
+
+#confirm { 
+    top:0;
+  height: inherit; 
+  min-height: 100%; 
+}
+
+.modal { 
+  min-height: 100%; 
+  -webkit-overflow-scrolling: auto;
+}
+
 #modal-popup #update_form,
 #modal-popup #update_form label,
 #modal-popup #member_form,
@@ -412,7 +432,7 @@ li.btn-guest-wth117 {
 #modal-popup button{
     font-family: 'SairaSemiCondensed-Medium';
 }
-#modal-popup .modal-body p{
+#warning .modal-body p{
     color: black;
     font-family: 'Montserrat-Medium';
 }
@@ -478,12 +498,17 @@ li.btn-guest-wth117 {
 .modal form button {
     text-transform: uppercase;
 }
-#modal-popup .btn-login{
+#warning .btn-login, #confirm .btn-login{
     background-color: #7e8eaa;
     color: #ffffff;
     font-weight: bold;
+    font-family: 'SairaSemiCondensed-Medium';
 } 
-#modal-popup .btn-login:hover{
+#confirm .btn-login:hover{
+    background-color: #ff4900;
+    color: #ffffff;
+}
+#warning .btn-login:hover{
     background-color: #ff4900;
     color: #ffffff;
 }
