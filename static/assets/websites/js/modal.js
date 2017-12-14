@@ -112,7 +112,12 @@ $(document).ready(function() {
                     rangelength: [1, 70],
                 },
                 email: {
-                    email: true,
+                    email:{
+                        depends:function(){
+                            $(this).val($.trim($(this).val()));
+                            return true;
+                        }
+                    },
                 },
                 phone: {
                     required: true,
@@ -146,7 +151,12 @@ $(document).ready(function() {
     $('#member_form').validate({
         rules: {
             email: {
-                required: true,
+                required: {
+                    depends:function(){
+                        $(this).val($.trim($(this).val()));
+                        return true;
+                    }
+                },
                 email: true
             },
             password: {
