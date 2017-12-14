@@ -479,7 +479,7 @@ li.btn-guest-wth117 {
     color: red;
     margin-bottom: 10px;
 }
-#guest .country-code{
+#confirm .country-code{
     color: #555;
     position: absolute;
     top: 30px;
@@ -487,10 +487,10 @@ li.btn-guest-wth117 {
     padding-right: 4px;
     border-right: 1px solid #cccccc
 }
-#guest #phone{
+#confirm #phone{
     padding-left: 40px;
 }
-#guest .form-phone{
+#confirm .form-phone{
     position: relative;
 }
 .modal .modal-dialog button.close{
