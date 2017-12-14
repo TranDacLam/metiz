@@ -125,7 +125,7 @@ class MovieForm(forms.ModelForm):
         release_date = self.cleaned_data.get('release_date')
         if release_date and end_date < release_date:
             raise forms.ValidationError(
-                _("End date must be greater than release date."))
+                _("Ngày kết thúc phải lớn hơn ngày khởi chiếu."))
         return end_date
 
 
@@ -151,7 +151,7 @@ class NewOfferForm(forms.ModelForm):
         apply_date = self.cleaned_data.get('apply_date')
         if end_date and end_date < apply_date:
             raise forms.ValidationError(
-                _("End date must be greater than apply date."))
+                _("Ngày kết thúc phải lớn hơn ngày áp dụng."))
         return end_date
 
         
