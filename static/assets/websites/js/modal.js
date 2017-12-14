@@ -5,8 +5,8 @@ $(document).ready(function() {
         var key = e.which;
         if (key == 27) {
             e.preventDefault();
-            if ($('#modal-popup .modal').hasClass('in')) {
-                $('#modal-popup .modal').modal('hide');
+            if ($('.modal-schedule').hasClass('in')) {
+                $('.modal-schedule').modal('hide');
             } else {
                 $.magnificPopup.close();
             }
@@ -15,41 +15,21 @@ $(document).ready(function() {
 
     //fix background scroll in modals on mobile
     if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
-        $('#modal-popup .modal').on('shown.bs.modal', function() {
-            $('body').css('overflow', 'hidden');
-            $('.mfp-ready').attr('style', 'overflow-y:hidden');
-        });
-        $('#modal-popup .modal').on('hide.bs.modal', function() {
-            $('body').css('overflow', 'scroll');
-            $('.mfp-ready').attr('style', 'overflow-y:auto');
-        });
-         // active popup
-        $('.open-popup-link').magnificPopup({
-            type: 'inline',
-            midClick: true,
-            enableEscapeKey: false,
-            fixedContentPos: true,
-            //prevent background scroll
-            callbacks: {
-                open: function() {
-                    $('body').css('overflow', 'hidden');
-                },
-                close: function() {
-                    $('body').css('overflow', 'auto');
-                },
-            }
+        $('#confirm').on('show.bs.modal', function() {
+            $("body").addClass("fixIOSposition");
+            $.magnificPopup.close(); 
         });
 
-    }else{
-        // active popup
-        $('.open-popup-link').magnificPopup({
-            type: 'inline',
-            midClick: true,
-            enableEscapeKey: false,
-            fixedContentPos: true,
+        $('#confirm').on('hide.bs.modal', function() {
+            $("body").removeClass("fixIOSposition");
         });
     }
-    
+    $('.open-popup-link').magnificPopup({
+        type: 'inline',
+        midClick: true,
+        enableEscapeKey: false,
+        fixedContentPos: true,
+    });
 
 
     // Validate guest_form, update_form
@@ -274,7 +254,6 @@ $(document).ready(function() {
                 hour -= 24;
             }
             var endTime = '~' + hour + ':' + minute;
-
             htmlShedule += '<li class="sold-out">' +
                 '<a href="#" >' +
                 '<input type="hidden" name="id_showtime" value="' + value.id_showtime + '">' +
@@ -311,7 +290,6 @@ $(document).ready(function() {
     var movie_api_id;
 
     $(document).on('click', '.popup-movie-schedule', function() {
-
 
         //set data for Month
         $('#center-month').text($(this).children('.hide-month').text());
@@ -409,9 +387,28 @@ $(document).ready(function() {
 
             //set content for modal #warnning or skip
             var rated = element.parents('.lot-table').attr('data-rated');
+            $('#confirm').on('show.bs.modal', function() {
+                $('#confirm').css("overflow-y","auto");
+                // remove tabindex of magnifix popup trigger for input confirm form
+                $(".mfp-ready").attr("tabindex", "");
+                if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
+                // When device focus input set overflow hidden using fix focus moving
+                    $('#confirm input').on("focus", function(){
+                        $('#confirm').css("position", "fixed");
+                        $("#confirm").css("overflow", "hidden");    
+                    });
+
+                    // when input out focus then accept user scroll popup
+                    $('#confirm input').on("focusout", function(){
+                        $("#confirm").css("overflow", "auto");    
+                    });
+                    // set scroll to tocuh
+                    $("#confirm").css("-webkit-overflow-scrolling", "touch !important");
+                }
+            });
             // ingore null or p
             if (rated == 'null' || rated == 'p') {
-                $('#btn-skip').click();
+                $('#confirm').modal('show');
             } else {
                 content = JSON.parse($('#rated').text());
                 $('#warning #content-warnning').text(content[rated]);
@@ -425,8 +422,9 @@ $(document).ready(function() {
                 $(this).addClass('mobile-schedule');
                 showPopup($(this));
             });
-            $('#modal-popup .modal').on('hide.bs.modal', function() {
+            $('#confirm').on('hide.bs.modal', function() {
                 $('.sold-out a').removeClass('mobile-schedule');
+
             });
         }else{
             $('.sold-out a').click(function(event) {
@@ -436,6 +434,7 @@ $(document).ready(function() {
         }
         
     }
+    
     
     //checkbox for form guest
     $('#agree_term').on('click', function() {
