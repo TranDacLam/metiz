@@ -7,6 +7,9 @@
 #guest .guest-policy, #guest .agree_term{
     font-family: "Montserrat", sans-serif;
 }
+#guest .guest-policy{
+    text-align: justify;
+}
 #modal-popup .col-xs-8 h3{
     color: black;
     margin-left: 40px;
@@ -486,6 +489,9 @@ li.btn-guest-wth117 {
 #modal-popup .btn-login:hover{
     background-color: #ff4900;
     color: #ffffff;
+}
+#confirm .nav-tabs{
+    border: none;
 }
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
