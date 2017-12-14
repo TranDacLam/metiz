@@ -422,7 +422,11 @@ $(document).ready(function() {
                 $(this).addClass('mobile-schedule');
                 showPopup($(this));
             });
-            $('#confirm').on('hide.bs.modal', function() {
+            $('.modal-schedule').on('hide.bs.modal', function() {
+                $('.sold-out a').removeClass('mobile-schedule');
+
+            });
+            $('.modal-schedule').on('hide.bs.modal', function() {
                 $('.sold-out a').removeClass('mobile-schedule');
 
             });
