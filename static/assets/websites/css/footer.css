@@ -190,6 +190,9 @@ footer .copyright-footer{
 		padding-left: 15px;
 		padding-right: 15px;
 	}
+	footer #content-map iframe {
+		padding-right: 15px;
+	}
 	footer p.copyright-footer{
 		text-align: center;
 	}
