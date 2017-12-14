@@ -29,6 +29,7 @@ body.modal-open {
 }
 #guest .guest-policy{
     text-align: justify;
+    border: 1px solid #c9c2b5;
 }
 #modal-popup .col-xs-8 h3{
     color: black;
@@ -461,7 +462,7 @@ li.btn-guest-wth117 {
 }
 .modal label.form-error,.modal label.error{
     font-weight: 500;
-    font-family: 'SairaSemiCondensed-Regular';
+    font-family: "Montserrat", sans-serif;
     font-size: 13px;
     color:red;
 }

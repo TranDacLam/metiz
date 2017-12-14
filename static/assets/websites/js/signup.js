@@ -77,10 +77,15 @@ $(document).ready(function() {
                 minlength:9,
 			},
 
-			email:{
-				required: true,
-				email: true
-			},
+			email: {
+                required: {
+                    depends:function(){
+                        $(this).val($.trim($(this).val()));
+                        return true;
+                    }
+                },
+                email: true
+            },
 			password1:{
 				required: true,
 				minlength: 8,
@@ -144,10 +149,15 @@ $(document).ready(function() {
 
 	$('#login_form').validate({
 		rules:{
-			email:{
-				required: true,
-				email: true
-			},
+			email: {
+                required: {
+                    depends:function(){
+                        $(this).val($.trim($(this).val()));
+                        return true;
+                    }
+                },
+                email: true
+            },
 			password:{
 				required: true,
 				minlength: 8,
