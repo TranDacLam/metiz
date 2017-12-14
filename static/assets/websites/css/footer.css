@@ -136,6 +136,7 @@ footer .content-3 p{
 footer #content-map iframe{
 	height: 550px;
 	border: 0;
+	padding-right: 0px;
 }
 footer .content-1 .map .pull-left{
 	padding-left: 0px;
