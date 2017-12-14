@@ -183,6 +183,9 @@ footer .fb-custom{
 		padding-left: 15px;
 		padding-right: 15px;
 	}
+	footer #content-map iframe {
+		padding-right: 15px;
+	}
 }
 @media only screen and (max-width: 414px){
 	footer #content-map iframe{
