@@ -307,3 +307,10 @@ $(document).ready(function() {
         });
     }
 });
+// Press key tab open popup calendar
+// Close popup calender when tab press another
+$(document).keydown(function(objEvent) {
+    if (objEvent.keyCode == 9) {  //tab pressed
+        $(".profile-custom .ui-datebox-container").css("display","none");
+    }
+})
