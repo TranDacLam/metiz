@@ -18,6 +18,7 @@
     <META HTTP-EQUIV="Content-language" CONTENT="vi">
     <!-- Set FB app id -->
     <meta property="fb:app_id" content="{{FB_APP_ID}}"/>
+    {% block metacontent %}{% endblock %}
 
     <link href="{{ STATIC_URL }}assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/magnific-popup.css" media="all" />
@@ -42,7 +43,6 @@
     {% block extrastylesheet %}{% endblock %}
 
     <title>{% block title %}{% endblock title %}</title>
-    {% block metacontent %}{% endblock %}
 
     <!-- Get key captcha and id FB -->
     <script type="text/javascript">
