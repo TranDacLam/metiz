@@ -5,8 +5,8 @@ $(document).ready(function() {
         var key = e.which;
         if (key == 27) {
             e.preventDefault();
-            if ($('#modal-popup .modal').hasClass('in')) {
-                $('#modal-popup .modal').modal('hide');
+            if ($('.modal-schedule').hasClass('in')) {
+                $('.modal-schedule').modal('hide');
             } else {
                 $.magnificPopup.close();
             }
@@ -391,20 +391,20 @@ $(document).ready(function() {
                 $('#confirm').css("overflow-y","auto");
                 // remove tabindex of magnifix popup trigger for input confirm form
                 $(".mfp-ready").attr("tabindex", "");
-
+                if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
                 // When device focus input set overflow hidden using fix focus moving
-                $('#confirm input').on("focus", function(){
-                    $('#confirm').css("position", "fixed");
-                    $("#confirm").css("overflow", "hidden");    
-                });
+                    $('#confirm input').on("focus", function(){
+                        $('#confirm').css("position", "fixed");
+                        $("#confirm").css("overflow", "hidden");    
+                    });
 
-                // when input out focus then accept user scroll popup
-                $('#confirm input').on("focusout", function(){
-                    $("#confirm").css("overflow", "auto");    
-                });
-                // set scroll to tocuh
-                $("#confirm").css("-webkit-overflow-scrolling", "touch !important");
-                
+                    // when input out focus then accept user scroll popup
+                    $('#confirm input').on("focusout", function(){
+                        $("#confirm").css("overflow", "auto");    
+                    });
+                    // set scroll to tocuh
+                    $("#confirm").css("-webkit-overflow-scrolling", "touch !important");
+                }
             });
             // ingore null or p
             if (rated == 'null' || rated == 'p') {
