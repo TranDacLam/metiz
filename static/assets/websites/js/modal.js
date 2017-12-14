@@ -400,7 +400,8 @@ $(document).ready(function() {
             $('#confirm').on('show.bs.modal', function() {
                 $('#confirm').css("overflow-y","auto");
                 // remove tabindex of magnifix popup trigger for input confirm form
-                $(".mfp-ready").attr("tabindex", "");
+                $(".mfp-ready").removeAttr("tabindex");
+                $(".mfp-ready").css("overflow-y","hidden");
                 if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
                 // When device focus input set overflow hidden using fix focus moving
                     $('#confirm input').on("focus", function(){
