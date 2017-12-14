@@ -3,6 +3,15 @@
 
 {% block title %}{{new.name}}{% endblock title %}
 
+{% block metacontent %}
+	<!-- Start FB share properties  -->
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="{{new.name}}" />
+	<meta property="og:description" content="{{ new.name }}" />
+	<meta property="og:image" content="{{MEDIA_URL}}{{new.image}}" />
+	<!-- End FB share properties  -->
+{% endblock %}
+
 {% block extrastylesheet %}
 	 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/new_detail.css" media="all" />
 {% endblock %}
