@@ -17,7 +17,6 @@ body.modal-open {
   min-height: 100%; 
   -webkit-overflow-scrolling: auto;
 }
-
 #modal-popup #update_form,
 #modal-popup #update_form label,
 #modal-popup #member_form,
@@ -519,6 +518,9 @@ li.btn-guest-wth117 {
 #confirm .nav-tabs{
     border: none;
 }
+#confirm label, input{
+    font-family: "Montserrat", sans-serif;
+}
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
         width: 66px;
@@ -617,6 +619,9 @@ li.btn-guest-wth117 {
 @media only screen and (max-width: 414px){
     #modal-popup .modal-dialog {
         width: 90%;
+    }
+    #confirm .modal-content{
+        width: 92%;
     }
 }
 @media only screen and (max-width: 320px){
