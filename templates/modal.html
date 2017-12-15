@@ -1,20 +1,18 @@
-{% load modal_data_tags %}
-{% load i18n %}
+{% load modal_data_tags %} {% load i18n %}
 <input type="hidden" value="">
 <div id="modal-popup" class="white-popup mfp-hide">
     <div class="div-login">
         <div class="top">
-            Lịch chiếu 
+            Lịch chiếu
         </div>
         <div class="container hide-area">
             <div class="col-xs-12 row city">
                 <h3>{% trans 'Select City' %}</h3>
                 <div class="list-item clearfix">
                     <ul>
-                    {% get_cites as all_cites %}
-                    {% for city in all_cites.data %}
+                        {% get_cites as all_cites %} {% for city in all_cites.data %}
                         <li class="active"><a data-toggle='tab' href="#{{city}}" data='{{city}}'>{{city}}</a></li>
-                    {% endfor %}
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -28,26 +26,25 @@
                     </div>
                 </div>
             </div>
-           {% get_rated as rated %}
+            {% get_rated as rated %}
             <p id='rated'>{{ rated }}</p>
         </div>
         <div class="popup-booking">
             <section class="section-lightpink">
                 <h3 class="title">{% trans 'Select date play' %}</h3>
                 <div class="calendar-popup ">
-                    <div class="month" >
-                       <strong id="center-month"></strong>
+                    <div class="month">
+                        <strong id="center-month"></strong>
                     </div>
                     <div class="row">
                         <ul class="days-popup" id="play-date-slider">
-                        {% get_date_showing as list_date_present %}
-                        {% for item in list_date_present %}
+                            {% get_date_showing as list_date_present %} {% for item in list_date_present %}
                             <li class="available popup-movie-schedule" data-date-select="{{item|date:'Y-m-d'}}">
                                 <div class="hide-month">{{ item|date:'M'}}</div>
                                 <div class="dayofweek">{{ item|date:'D'}}</div>
                                 <span class="badge">{{ item|date:'d' }}</span>
                             </li>
-                        {% endfor %}
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -60,175 +57,164 @@
                             <div class="list-schedule">
                                 <!-- schedule film-->
                             </div>
-                         </div>
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
-    <!-- button to skip warnning modal -->
-    <button type="button" id="btn-skip" data-dismiss="modal" data-toggle='modal' 
-                  data-target='{% if user.is_authenticated %}#profile {% else %}#confirm {% endif %}'></button>
+</div>
 
-     <!-- Modal warning -->
-    <div class="modal" id="warning" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h2 class="modal-title">Cảnh báo</h2>
-                </div>
-                <div class="modal-body">
-                    <p id='content-warnning'></p>
-                </div>
-                <div class="modal-footer warning-footer">
-                  <button type="button" class="btn btn-login" data-dismiss="modal" data-toggle='modal' 
-                  data-target='{% if user.is_authenticated %}#profile {% else %}#confirm {% endif %}'>Tôi đồng ý</button>
-                </div>
+<!-- Modal warning -->
+<div class="modal modal-schedule" id="warning" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title">Cảnh báo</h2>
+            </div>
+            <div class="modal-body">
+                <p id='content-warnning'></p>
+            </div>
+            <div class="modal-footer warning-footer">
+                <button type="button" class="btn btn-login" data-dismiss="modal" data-toggle='modal' data-target='#confirm'>Tôi đồng ý</button>
             </div>
         </div>
     </div>
-
-    <!-- modal confirm -->
-    <div class="modal fade" id="confirm" data-toggle="modal" role="dialog" data-keyboard="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <ul class="nav nav-tabs tab-header">
-                        <li class="active"><a data-toggle="tab" href="#member">Đăng nhập</a></li>
-                        <li class="btn-guest-wth117"><a data-toggle="tab" href="#guest">Khách</a></li>
-                    </ul>
-                </div>
-                <div class="modal-body">
-                    <div class="tab-content">
-                        <!-- MEMBER -->
-                        <div id="member" class="tab-pane fade in active">
-                            <div class="row">
-                                <form class="signin" id='member_form' method="post" action="">
-                                    {% csrf_token %}
-                                    <div class="col-sm-12">
-                                        <div id="error"></div>
-                                        <input type="hidden" name="id_server" id="id_server">
-                                        <input type="hidden" name="id_showtime" id="id_showtime">
-                                        <input type="hidden" name="movie_api_id" id="movie_api_id">
-                                        <input type="hidden" name="id_movie_name" id="id_movie_name">
-                                        <input type="hidden" name="id_movie_time" id="id_movie_time">
-                                        <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
-                                        <div class="form-group">
-                                            <label>{% trans "Email" %}</label>
-                                            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
-                                            <label class="form-error" for="email" id='email-error'></label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>{% trans "Password"%}</label>
-                                            <input type="password" name="password" id="password" class="form-control"  placeholder="{% trans 'Enter Password Here' %}">
-                                            <label class="form-error" for="password" id='password-error'></label>
-                                        </div>
-                                        <button type="submit" class="btn btn-login">{% trans 'Login' %}</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- GUEST -->
-                        <div id="guest" class="tab-pane fade">
-                            <textarea class="guest-policy" rows="8" cols="5" contenteditable="true" readonly>
-    ĐIỀU KIỆN VÀ ĐIỀU KHOẢN KHI ĐẶT VÉ:
-    Xin vui lòng đọc các điều khoản sau cẩn thận trước khi sử dụng dịch vụ thanh toán trực tuyến. Với việc truy cập vào phần này của website, bạn đã đồng ý với các điều khoản sử dụng của chúng tôi. Các điều khoản này có thể thay đổi theo thời 
-                            </textarea>
-
-                            <div class="row checkbox-term">
-                                <input name="agree_term" id="agree_term" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox"> 
-                                <label class="agree_term" for="agree_term">Tôi đã đọc, hiểu và đồng ý với các điều khoản.</label>
-                            </div>
-                            <div class="row">
-                                <form class='form-popup' id='guest_form' method="post" action="{% url 'booking' %}">
-                                    {% csrf_token %}
+</div>
+<!-- modal confirm -->
+<div class="modal fade modal-schedule" id="confirm" data-toggle="modal" role="dialog" data-keyboard="false">
+    {% if not user.is_authenticated %}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <ul class="nav nav-tabs tab-header">
+                    <li class="active"><a data-toggle="tab" href="#member">Đăng nhập</a></li>
+                    <li class="btn-guest-wth117"><a data-toggle="tab" href="#guest">Khách</a></li>
+                </ul>
+            </div>
+            <div class="modal-body">
+                <div class="tab-content">
+                    <!-- MEMBER -->
+                    <div id="member" class="tab-pane fade in active">
+                        <div class="row form-user-info">
+                            <form class="signin" id='member_form' method="post" action="">
+                                {% csrf_token %}
+                                <div class="col-sm-12">
+                                    <div id="error"></div>
                                     <input type="hidden" name="id_server" id="id_server">
                                     <input type="hidden" name="id_showtime" id="id_showtime">
                                     <input type="hidden" name="movie_api_id" id="movie_api_id">
                                     <input type="hidden" name="id_movie_name" id="id_movie_name">
                                     <input type="hidden" name="id_movie_time" id="id_movie_time">
                                     <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
-
-                                    <div class="col-sm-12">
-                                        <div id="error"></div>
-                                         <div class="form-group">
-                                            <label>{% trans "Full Name" %}</label>
-                                            <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" value="{{request.session.full_name}}">
-                                            <label class="form-error" for="name" id='name-error'></label>
-                                        </div>
-                                        <div class="form-group form-phone">
-                                            <label>{% trans "Phone" %}</label>
-                                            <div class="country-code">+84</div>
-                                            <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{{request.session.phone}}"  pattern="\d*">
-                                            <label  class="form-error" for="phone" id='phone-error'></label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>{% trans "Email" %}</label>
-                                            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{% if request.session.email %}{{request.session.email}}{% endif %}">
-                                            <label  class="form-error" for="email" id='email-error'></label>
-                                        </div>
-                                        <button type="submit" id="submit" class="btn btn-login submit" disabled>Đặt vé</button>
+                                    <div class="form-group">
+                                        <label>{% trans "Email" %}</label>
+                                        <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
+                                        <label class="form-error" for="email" id='email-error'></label>
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="form-group">
+                                        <label>{% trans "Password"%}</label>
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="{% trans 'Enter Password Here' %}">
+                                        <label class="form-error" for="password" id='password-error'></label>
+                                    </div>
+                                    <button type="submit" class="btn btn-login">{% trans 'Login' %}</button>
+                                </div>
+                            </form>
                         </div>
-                        
-                    </div>   
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- modal update profile -->
-    <div class="modal fade" id="profile" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h2 class="modal-title">Xác nhận thông tin</h2>
-                </div>
-                <div class="modal-body">
-                    <p>Xác nhận thông tin sau đây là của bạn</p>
-                    <div class="row">
-                        <form class='form-popup' id='update_form'  method="post" action="{% url 'booking' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="id_server" id="id_server">
-                            <input type="hidden" name="id_showtime" id="id_showtime">
-                            <input type="hidden" name="movie_api_id" id="movie_api_id">
-                            <input type="hidden" name="id_movie_name" id="id_movie_name">
-                            <input type="hidden" name="id_movie_time" id="id_movie_time">
-                            <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
-                            
-                            <div class="col-sm-12">
-                                <div id="error"></div>
-                                 <div class="form-group">
-                                    <label>{% trans "Full Name" %}</label>
-                                    <input type="text" name="name" id="name" class="form-control"  placeholder="{% trans 'Enter Full Name Here' %}" 
-                                    value="{{user.full_name}}">
-                                    <label  class="form-error" for="name" id='name-error'></label>
+                    </div>
+                    <!-- GUEST -->
+                    <div id="guest" class="tab-pane fade">
+                        <textarea class="guest-policy" rows="8" cols="5" contenteditable="true" readonly>
+    ĐIỀU KIỆN VÀ ĐIỀU KHOẢN KHI ĐẶT VÉ:
+    - Tính năng đặt vé trực tuyến trên chỉ dành cho thành viên Metiz Cinema. 
+    - Tất cả các phim tại Metiz Cinema đều được mở bán vé trực tuyến trước ngày công chiếu chính thức. Nếu bạn muốn mua vé suất chiếu chưa được hiển thị trên website, vui lòng liên hệ Hotline.....(NI).... để được tư vấn. 
+    - Trước khi tiến thành các bước thanh toán, Quý khách vui lòng kiểm tra kỹ các thông tin về rạp chiếu, tên phim, số ghế, giờ chiếu và số tiền. Sau khi xác nhận thông tin đặt vé, quý khách bấm vào ô “Thanh toán” để thực hiện giao dịch. Mã xác nhận đặt vé của Quý khách sẽ được gửi về số điện thoại và Email (theo đăng kí thông tin thành viên). 
+                        </textarea>
+                        <div class="row checkbox-term">
+                            <input name="agree_term" id="agree_term" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox">
+                            <label class="agree_term" for="agree_term">Tôi đã đọc, hiểu và đồng ý với các điều khoản.</label>
+                        </div>
+                        <div class="row form-user-info">
+                            <form class='form-popup' id='guest_form' method="post" action="{% url 'booking' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="id_server" id="id_server">
+                                <input type="hidden" name="id_showtime" id="id_showtime">
+                                <input type="hidden" name="movie_api_id" id="movie_api_id">
+                                <input type="hidden" name="id_movie_name" id="id_movie_name">
+                                <input type="hidden" name="id_movie_time" id="id_movie_time">
+                                <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
+                                <div class="col-sm-12 ">
+                                    <div id="error"></div>
+                                    <div class="form-group">
+                                        <label>{% trans "Full Name" %}</label>
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="{% trans 'Enter Full Name Here' %}" value="{{request.session.full_name}}">
+                                        <label class="form-error" for="name" id='name-error'></label>
+                                    </div>
+                                    <div class="form-group form-phone">
+                                        <label>{% trans "Phone" %}</label>
+                                        <div class="country-code">+84</div>
+                                        <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{{request.session.phone}}" pattern="\d*">
+                                        <label class="form-error" for="phone" id='phone-error'></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{% trans "Email" %}</label>
+                                        <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{% if request.session.email %}{{request.session.email}}{% endif %}">
+                                        <label class="form-error" for="email" id='email-error'></label>
+                                    </div>
+                                    <button type="submit" id="submit" class="btn btn-login submit" disabled>Đặt vé</button>
                                 </div>
-                                <div class="form-group form-phone">
-                                    <label>{% trans "Phone" %}</label>
-                                    <div class="country-code">+84</div>
-                                    <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" 
-                                    value="{{user.phone}}">
-                                    <label  class="form-error" for="phone" id='phone-error'></label>
-                                </div>
-                                <div class="form-group">
-                                    <label>{% trans "Email" %}</label>
-                                    <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" 
-                                    value='{{user.email}}'>
-                                    <label  class="form-error" for="email" id='email-error'></label>
-                                </div>
-                                <button type="submit" id='update' class="btn btn-login submit">Xác nhận</button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% else %}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title">Xác nhận thông tin</h2>
+            </div>
+            <div class="modal-body">
+                <p>Xác nhận thông tin sau đây là của bạn</p>
+                <div class="row form-user-info">
+                    <form class='form-popup' id='update_form' method="post" action="{% url 'booking' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="id_server" id="id_server">
+                        <input type="hidden" name="id_showtime" id="id_showtime">
+                        <input type="hidden" name="movie_api_id" id="movie_api_id">
+                        <input type="hidden" name="id_movie_name" id="id_movie_name">
+                        <input type="hidden" name="id_movie_time" id="id_movie_time">
+                        <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
+                        <div class="col-sm-12 ">
+                            <div id="error"></div>
+                            <div class="form-group">
+                                <label>{% trans "Full Name" %}</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="{% trans 'Enter Full Name Here' %}" value="{{user.full_name}}">
+                                <label class="form-error" for="name" id='name-error'></label>
+                            </div>
+                            <div class="form-group form-phone">
+                                <label>{% trans "Phone" %}</label>
+                                <div class="country-code">+84</div>
+                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{{user.phone}}">
+                                <label class="form-error" for="phone" id='phone-error'></label>
+                            </div>
+                            <div class="form-group">
+                                <label>{% trans "Email" %}</label>
+                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value='{{user.email}}'>
+                                <label class="form-error" for="email" id='email-error'></label>
+                            </div>
+                            <button type="submit" id='update' class="btn btn-login submit">Xác nhận</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </div>

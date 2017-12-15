@@ -230,7 +230,7 @@ ul ~ label{
 }
 /*Edit font for popup birtday*/
 .ui-datebox-header h4, .ui-datebox-gridheader h4, 
-.modal-title, a.btn.btn-sm.btn-default, .ui-datebox-flipcontent li{
+#myTabContent .modal-title, a.btn.btn-sm.btn-default, .ui-datebox-flipcontent li{
     font-family: "Montserrat", sans-serif;
 }
 @media screen and (max-width: 320px){

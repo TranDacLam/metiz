@@ -136,6 +136,7 @@ footer .content-3 p{
 footer #content-map iframe{
 	height: 550px;
 	border: 0;
+	padding-right: 0px;
 }
 footer .content-1 .map .pull-left{
 	padding-left: 0px;
@@ -187,6 +188,9 @@ footer .copyright-footer{
 	}
 	footer .fb-custom{
 		padding-left: 15px;
+		padding-right: 15px;
+	}
+	footer #content-map iframe {
 		padding-right: 15px;
 	}
 	footer p.copyright-footer{

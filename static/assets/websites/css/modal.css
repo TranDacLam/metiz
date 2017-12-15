@@ -1,3 +1,22 @@
+body.modal-open {
+  height: 100%;
+  /*position: fixed;*/
+
+}
+.fixIOSposition{
+    position: fixed;
+}
+
+#confirm { 
+    top:0;
+  height: inherit; 
+  min-height: 100%; 
+}
+
+.modal { 
+  min-height: 100%; 
+  -webkit-overflow-scrolling: auto;
+}
 #modal-popup #update_form,
 #modal-popup #update_form label,
 #modal-popup #member_form,
@@ -6,6 +25,10 @@
 #modal-popup #guest_form label,
 #guest .guest-policy, #guest .agree_term{
     font-family: "Montserrat", sans-serif;
+}
+#guest .guest-policy{
+    text-align: justify;
+    border: 1px solid #c9c2b5;
 }
 #modal-popup .col-xs-8 h3{
     color: black;
@@ -412,7 +435,7 @@ li.btn-guest-wth117 {
 #modal-popup button{
     font-family: 'SairaSemiCondensed-Medium';
 }
-#modal-popup .modal-body p{
+#warning .modal-body p{
     color: black;
     font-family: 'Montserrat-Medium';
 }
@@ -438,7 +461,7 @@ li.btn-guest-wth117 {
 }
 .modal label.form-error,.modal label.error{
     font-weight: 500;
-    font-family: 'SairaSemiCondensed-Regular';
+    font-family: "Montserrat", sans-serif;
     font-size: 13px;
     color:red;
 }
@@ -456,7 +479,7 @@ li.btn-guest-wth117 {
     color: red;
     margin-bottom: 10px;
 }
-#modal-popup .country-code{
+#confirm .country-code{
     color: #555;
     position: absolute;
     top: 30px;
@@ -464,10 +487,10 @@ li.btn-guest-wth117 {
     padding-right: 4px;
     border-right: 1px solid #cccccc
 }
-#modal-popup #phone{
+#confirm #phone{
     padding-left: 40px;
 }
-#modal-popup .form-phone{
+#confirm .form-phone{
     position: relative;
 }
 .modal .modal-dialog button.close{
@@ -478,14 +501,25 @@ li.btn-guest-wth117 {
 .modal form button {
     text-transform: uppercase;
 }
-#modal-popup .btn-login{
+#warning .btn-login, #confirm .btn-login{
     background-color: #7e8eaa;
     color: #ffffff;
     font-weight: bold;
+    font-family: 'SairaSemiCondensed-Medium';
 } 
-#modal-popup .btn-login:hover{
+#confirm .btn-login:hover{
     background-color: #ff4900;
     color: #ffffff;
+}
+#warning .btn-login:hover{
+    background-color: #ff4900;
+    color: #ffffff;
+}
+#confirm .nav-tabs{
+    border: none;
+}
+#confirm label, input{
+    font-family: "Montserrat", sans-serif;
 }
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
@@ -585,6 +619,9 @@ li.btn-guest-wth117 {
 @media only screen and (max-width: 414px){
     #modal-popup .modal-dialog {
         width: 90%;
+    }
+    #confirm .modal-content{
+        width: 92%;
     }
 }
 @media only screen and (max-width: 320px){
