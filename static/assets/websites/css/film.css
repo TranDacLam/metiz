@@ -16,12 +16,7 @@
 	background-color: #e71a0f;
 	color: black;
 }
-.sr-only { 
-	margin-left: -12px;
-	overflow: visible;
-	clip: auto; 
-}
-.sr-only.percent0 {
+.percent0 {
 	display: none;
 }
 .rating-container .clear-rating {
