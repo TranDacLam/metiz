@@ -191,8 +191,8 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 
 # Config outgoing email
 EMAIL_BACKEND = "main.email_backend.DKIMBackend"
-DEFAULT_TO_ADMIN_EMAIL = "contact@helio.vn"
-DEFAULT_FROM_EMAIL = "no-reply@helio.vn"
+DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
+DEFAULT_FROM_EMAIL = "no-reply@metiz.vn"
 # EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 EMAIL_HOST = 'mail.helio.vn'
 EMAIL_HOST_USER = 'no-reply@helio.vn'

@@ -1,0 +1,9 @@
+settup dkim for django email backend : (example metiz)
+install packages : pydkim, dnspython
+
+
+
+#####
+git clone https://github.com/rthalley/dnspython
+cd dnspython/
+python setup.py install
