@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.sites.models import Site
+from django.contrib.sites.shortcuts import get_current_site
 from django.conf import settings
 from django import forms
 from core.models import Contact
@@ -44,7 +45,8 @@ class ContactForm(forms.Form):
                     "phone": phone,
                     "subject": _subject,
                     "message": message,
-                    'logo_url': logo_url
+                    'logo_url': logo_url,
+                    'site': get_current_site(self.request),
 
                 }
 

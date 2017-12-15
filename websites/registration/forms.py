@@ -6,6 +6,7 @@ from django.contrib.sites.models import Site
 from django.contrib.auth import login
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.contrib.sites.shortcuts import get_current_site
 import datetime
 import random
 import sha
@@ -13,6 +14,7 @@ from core.custom_models import User
 import messages as msg
 import metiz_email
 from django.utils import timezone
+
 
 
 class LoginForm(forms.Form):
@@ -103,7 +105,8 @@ class MetizSignupForm(UserCreationForm):
                     'full_name': user.full_name,
                     'email': user.email,
                     'URL_LOGO': logo_url,
-                    'activate_url': url_activate
+                    'activate_url': url_activate,
+                    'site': get_current_site(self.request),
                 }
                 # Send email activation link
                 metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [

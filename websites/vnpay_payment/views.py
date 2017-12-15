@@ -6,6 +6,7 @@ from django.core.serializers import json
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.sites.shortcuts import get_current_site
 from django.utils import timezone
 from django.contrib.sites.models import Site
 from forms import PaymentForm
@@ -103,7 +104,8 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
             'full_name': full_name,
             'URL_LOGO': logo_url,
             'barcode': barcode,
-            'content': content
+            'content': content,
+            'site': get_current_site(self.request),
         }
         # Send email activation link
         metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
