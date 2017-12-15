@@ -90,6 +90,7 @@ class MetizSignupForm(UserCreationForm):
                 user.save()
 
                 message_html = "registration/email/metiz_account_created_confirm.html"
+                message_txt = "registration/email/metiz_account_created_confirm.txt"
                 subject = _(
                     "[Metiz] You've been created an account - Click to Verify!")
 
@@ -108,7 +109,7 @@ class MetizSignupForm(UserCreationForm):
                     'site': str(Site.objects.get_current())
                 }
                 # Send email activation link
-                metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
+                metiz_email.send_mail(subject, message_txt, message_html, settings.DEFAULT_FROM_EMAIL, [
                                       user.email], data_binding)
             return user
 
