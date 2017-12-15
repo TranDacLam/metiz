@@ -21,6 +21,7 @@ $(document).ready(function() {
     // If Browser is IE then remove placeholder
     if (GetIEVersion() > 0){
         $(':input').removeAttr('placeholder');
+        $(':textarea').removeAttr('placeholder');
     }
 
     
