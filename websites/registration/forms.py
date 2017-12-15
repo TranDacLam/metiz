@@ -96,7 +96,7 @@ class MetizSignupForm(UserCreationForm):
                 protocol = 'http://'
                 if self.request.is_secure():
                     protocol = 'https://'
-                logo_url = '/static/websites/images/Metiz_logo/METIZ_LOGO_WEB.png'
+                logo_url = '/static/assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png'
                 url_activate = self.request.build_absolute_uri(
                     reverse('confirm-activation', kwargs={'activation_key': activation_key}))
                 data_binding = {

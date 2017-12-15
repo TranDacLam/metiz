@@ -97,7 +97,7 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
         protocol = 'http://'
         if is_secure:
             protocol = 'https://'
-        logo_url = '/static/websites/images/Metiz_logo/METIZ_LOGO_WEB.png'
+        logo_url = '/static/assets/websites/images/Metiz_logo/METIZ_LOGO_WEB.png'
         data_binding = {
             "protocol": protocol,
             'full_name': full_name,
