@@ -99,7 +99,7 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
             protocol = 'https://'
         logo_url = protocol + \
             str(Site.objects.get_current()) + \
-            '/static/websites/img/logo.png'
+            '/static/websites/images/Metiz_logo/METIZ_LOGO_WEB.png'
         data_binding = {
             'full_name': full_name,
             'URL_LOGO': logo_url,

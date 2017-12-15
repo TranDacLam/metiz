@@ -35,7 +35,7 @@ class ContactForm(forms.Form):
                     protocol = 'https://'
                 logo_url = protocol + \
                     str(Site.objects.get_current()) + \
-                    '/static/websites/img/logo.png'
+                    '/static/websites/images/Metiz_logo/METIZ_LOGO_WEB.png'
 
                 _subject = _("[Metiz] Hỗ trợ khách hàng")
 
