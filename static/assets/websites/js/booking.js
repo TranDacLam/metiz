@@ -353,10 +353,17 @@ $(document).ready(function() {
             })
             .done(function(response) {
                 var barcode = response.BARCODE
-                // get array id seat selected
-                var seats_choice = seatSelected.map(item => JSON.parse(item).ID);
+
+                // get array ID and NAME seat selected
                 // get array name seat selected va sort by name
-                var seatPayment = seatSelected.map(item => JSON.parse(item).NAME).sort();
+                var seats_choice =[];
+                var seatPayment = [];
+                for(i=0; i<seatSelected.length; i++){
+                    seats_choice.push(JSON.parse(seatSelected[i]).ID);
+                    seatPayment.push(JSON.parse(seatSelected[i]).NAME);
+                }
+                // Sort array seatPayment
+                seatPayment.sort();
 
                 window.location.href = '/payment?totalPayment='+ totalPayment
                 +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
