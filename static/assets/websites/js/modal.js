@@ -417,6 +417,12 @@ $(document).ready(function() {
                     $("#confirm").css("-webkit-overflow-scrolling", "touch !important");
                 }
             });
+
+            // Set attr style when hide modal confirm
+            $('#confirm').on('hide.bs.modal', function() {
+                $(".mfp-ready").attr("style","overflow-x: hidden; overflow-y: auto;");
+            });
+
             // ingore null or p
             if (rated == 'null' || rated == 'p') {
                 $('#confirm').modal('show');
