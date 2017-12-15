@@ -33,13 +33,12 @@ class ContactForm(forms.Form):
                 protocol = 'http://'
                 if is_secure:
                     protocol = 'https://'
-                logo_url = protocol + \
-                    str(Site.objects.get_current()) + \
-                    '/static/websites/images/Metiz_logo/METIZ_LOGO_WEB.png'
+                logo_url = '/static/websites/images/Metiz_logo/METIZ_LOGO_WEB.png'
 
                 _subject = _("[Metiz] Hỗ trợ khách hàng")
 
                 data_render = {
+                    "protocol": protocol,
                     "name": name,
                     "email": email,
                     "phone": phone,
