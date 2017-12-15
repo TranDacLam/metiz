@@ -190,6 +190,7 @@ CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
 # Config outgoing email
+EMAIL_BACKEND = "main.email_backend.DKIMBackend"
 DEFAULT_TO_ADMIN_EMAIL = "contact@helio.vn"
 DEFAULT_FROM_EMAIL = "no-reply@helio.vn"
 # EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
@@ -198,6 +199,11 @@ EMAIL_HOST_USER = 'no-reply@helio.vn'
 EMAIL_HOST_PASSWORD = 'N0reply!@#'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+# Config DKIM
+DKIM_SELECTOR = "metiz_dkim"
+DKIM_DOMAIN = "metiz.vn"
+DKIM_PRIVATE_KEY = "/home/ubuntu/opendkim/metiz_dkim.private"
 
 # HERE FORMATING AS shown in:
 # LIST: https://docs.djangoproject.com/en/dev/ref/templates/builtins/#date
