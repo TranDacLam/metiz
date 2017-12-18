@@ -94,10 +94,10 @@ class MetizSignupForm(UserCreationForm):
                 subject = _(
                     "[Metiz] You've been created an account - Click to Verify!")
 
-                protocol = 'http://'
+                protocol = 'http'
                 if self.request.is_secure():
-                    protocol = 'https://'
-                logo_url = '/static//assets/websites/images/logo_bottom.png'
+                    protocol = 'https'
+                logo_url = '/static/assets/websites/images/logo_bottom.png'
                 url_activate = self.request.build_absolute_uri(
                     reverse('confirm-activation', kwargs={'activation_key': activation_key}))
                 data_binding = {
