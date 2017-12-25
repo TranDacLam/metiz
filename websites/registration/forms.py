@@ -91,7 +91,7 @@ class MetizSignupForm(UserCreationForm):
             else: 
                 raise forms.ValidationError(msg.INACTIVE, code='invalid')
 
-        return cleaned_data
+        return email
 
     def create_activation_key(self, email):
         activation_key = None
