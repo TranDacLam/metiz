@@ -86,9 +86,7 @@ class MetizSignupForm(UserCreationForm):
         user = USER_MODEL.objects.filter(email=email.strip())
         # Check user exist in system
         if len(user) > 0:
-            if user[0].is_active:
-                raise forms.ValidationError(_("User with this email already exists."), code='invalid')
-            else: 
+            if not user[0].is_active:
                 raise forms.ValidationError(msg.INACTIVE, code='invalid')
 
         return email
