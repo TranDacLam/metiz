@@ -148,6 +148,9 @@ USE_TZ = True
 
 SITE_ID = 1
 
+#Set key activation expires is 7 days
+KEY_ACTIVATION_EXPIRES = 7
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

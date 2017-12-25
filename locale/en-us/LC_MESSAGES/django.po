@@ -560,3 +560,8 @@ msgstr ""
 #: websites/vnpay_payment/views.py:92
 msgid "[Metiz] Booking Movie Tickets Successful !"
 msgstr ""
+
+#: websites/registration/views.py:234
+msgid ""
+"Send Mail Successfully. Please Check Your Email and Active Account."
+msgstr ""

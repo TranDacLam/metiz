@@ -28,4 +28,5 @@ urlpatterns = [
     # url(r'^password_change/done$', password_change_done,
     # kwargs={'template_name': 'registration/password_change_done.html'},
     # name="password_change_done"),
+    url(r'^resend_activation$', views.resend_activation, name='resend_activation'),
 ]
