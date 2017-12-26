@@ -562,6 +562,9 @@ msgid "[Metiz] Booking Movie Tickets Successful !"
 msgstr ""
 
 #: websites/registration/views.py:234
-msgid ""
-"Send Mail Successfully. Please Check Your Email and Active Account."
+msgid "Send Mail Successfully. Please Check Your Email and Active Account."
 msgstr ""
+
+#: websites/registration/views.py:244
+msgid "User is active. Please login again."
+msgstr "Gửi mail thành công . Vui lòng kiểm tra email và kích hoạt tài khoản."

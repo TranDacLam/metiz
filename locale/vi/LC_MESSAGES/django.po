@@ -655,6 +655,9 @@ msgstr "[Metiz] Đặt Vé Phim Thành Công"
 #~ msgstr "Đăng Ký"
 
 #: websites/registration/views.py:234
-msgid ""
-"Send Mail Successfully. Please Check Your Email and Active Account."
+msgid "Send Mail Successfully. Please Check Your Email and Active Account."
+msgstr "Gửi mail thành công . Vui lòng kiểm tra email và kích hoạt tài khoản."
+
+#: websites/registration/views.py:244
+msgid "User is active. Please login again."
 msgstr "Gửi mail thành công . Vui lòng kiểm tra email và kích hoạt tài khoản."

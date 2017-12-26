@@ -233,7 +233,7 @@ def resend_activation(request):
             if user:
                 # User have confirm link before then return flag active
                 if  user.is_active:
-                    return render(request, 'registration/activation_confirm.html', {'active': True})
+                    return render(request, 'registration/resend_activation.html', {'err': msg.EMAIL_NOT_EXIST, 'email': user_email})
 
                 # Replace activation key and reset key expires is default (7 days)
                 key_expires = timezone.now() + datetime.timedelta(settings.KEY_ACTIVATION_EXPIRES)
