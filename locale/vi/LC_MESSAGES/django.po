@@ -660,4 +660,4 @@ msgstr "Gửi mail thành công . Vui lòng kiểm tra email và kích hoạt t�
 
 #: websites/registration/views.py:244
 msgid "User is active. Please login again."
-msgstr "Gửi mail thành công . Vui lòng kiểm tra email và kích hoạt tài khoản."
+msgstr "Email này đã được kích hoạt với tài khoản khác. Vui lòng nhập lại."
