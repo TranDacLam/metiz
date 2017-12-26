@@ -1,6 +1,21 @@
 .account-wrap, .account-wrap label{
     font-family: "Montserrat", sans-serif;
 }
+p.member-card-info {
+	font-family: "Montserrat", sans-serif;
+}
+.modal-header {
+	border-bottom: 1px solid #ff4000;
+}
+.modal-footer {
+	border-top: none;
+}
+button#btn_cancel_popup {
+	text-transform: uppercase;
+	background-color: #7e8eaa;
+    font-weight: bold;
+    font-family: 'SairaSemiCondensed-Medium';
+}
 .account-wrap button{
     font-family: "SairaSemiCondensed-Medium", sans-serif;
 }
