@@ -33,7 +33,7 @@ $(document).ready(function() {
     // FB init function
     FB.init({
         appId: fbAppId,
-        version: 'v2.9',
+        version: 'v2.11',
         cookie     : true,
         xfbml      : true
     });
