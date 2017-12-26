@@ -389,7 +389,7 @@ $(document).ready(function() {
 	}
 
     //Check if form error have contain errorr user inactive then show popup resend activation
-    $(".error-div .errorlist li, .email-div .errorlist li").each(function( index ) {
+    $(".tab-pane.active .error-div .errorlist li, .tab-pane.active .email-div .errorlist li").each(function( index ) {
         var errText = $( this ).text();
         var errUserInactive = $( '.error-user-inactive' ).text();
         if(errText === errUserInactive) {
