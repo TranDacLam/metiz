@@ -30,7 +30,7 @@
                         <p class="form-instructions">Vui lòng nhập địa chỉ email của bạn vào ô bên dưới. Bạn sẽ nhận được một liên kết để kích hoạt tài khoản.</p>
                         <ul class="form-list">
                             <li>
-                                <div class="input-box">
+                                <div class="input-box resend-activation-box">
                                 {% csrf_token %}
                                 <p class="resend-activation-p"><label for="id_email">Email:</label> 
                                     <input id="id_email" maxlength="254" name="email" type="email" required="" placeholder="Nhập Email Ở Đây" value="{{email}}">
@@ -45,7 +45,6 @@
                     <div class="buttons-set">
                         <button type="submit" title="Gửi đi" class="button"><span><span>Gửi đi</span></span></button>
                     </div>
-                    <p class="back-link back-link-hidden"><a href="#">&nbsp;</p>
                 </form>
             </div>
         </div>
