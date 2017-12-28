@@ -12,6 +12,8 @@ from itertools import chain
 from django.core.urlresolvers import reverse
 import itertools
 from core.forms import ContactForm
+from hitcount.models import HitCount
+from hitcount.views import HitCountMixin
 
 # NOTES : View SQL Query using : print connection.queries
 
@@ -361,8 +363,11 @@ def contacts(request):
 
 def blog_film(request):
     try:
-        # Get all blogs film by Id
-        blogs = Blog.objects.filter(is_draft=False).order_by('created')
+        # # Get all blogs film by Id order by view
+        # blogs = Blog.objects.order_by("-hit_count_generic__hits")
+
+        # Get all blogs film by Id order by created
+        blogs = Blog.objects.filter(is_draft=False).order_by('-created')
         return render(request, 'websites/blog_film.html', {'list_blogs': blogs})
 
     except Exception as e:
@@ -372,13 +377,28 @@ def blog_film(request):
 
 def blog_film_detail(request, id):
     try:
+        # init view counter is 0
+        view_counter = 0
+
         # get blog detail by id
         blog = Blog.objects.get(pk=id)
+
+        if blog:
+            # get hit count of blog objects
+            view_counter =  blog.hit_count.hits
+
+            # count a hit and get the response
+            hit_count_response = HitCountMixin.hit_count(request, blog.hit_count)
+
+            # if response.hit_counted is True then hit count success
+            if hit_count_response.hit_counted:
+                hits = hits + 1
         
         # get blog detail by id
         related_blogs = Blog.objects.filter(is_draft=False).order_by('created')[:4]
 
-        return render(request, 'websites/blog_film_detail.html', {'blog': blog, 'related_blogs': related_blogs})
+        return render(request, 'websites/blog_film_detail.html', 
+                     {'blog': blog, 'related_blogs': related_blogs, 'view_counter': view_counter})
     except Exception as e:
         print "Error action blog_film_detail : ", e
         return HttpResponse(status=500)
