@@ -19,6 +19,11 @@
 .blog-detail-custom .blog-detail-content{
     margin: 20px 0;
 }
+.blog-detail-custom .blog-detail-title p, 
+.blog-detail-custom .blog-detail-decs p,
+.blog-detail-custom .blog-detail-content p {
+    font-family: "Montserrat", sans-serif;
+}
 .blog-detail-footer{
     margin: 50px 0;
 }
@@ -29,7 +34,34 @@
 .blog-detail-footer img{
     width: 100%;
 }
-
+/*==== Related Post =====*/
+.related-blog {
+    margin-top:10px;
+}
+.related-blog-title {
+    border-bottom:  1px solid #ccc;
+}
+h3.title {
+    text-transform: uppercase;
+}
+.area-image-relate {
+    padding: 10px;
+}
+.area-image-relate img {
+    width: 100%;
+    height: 180px;
+}
+.caption {
+    padding-top: 10px;
+}
+.caption h5 {
+    text-align: center;
+    font-family: "SairaSemiCondensed-Regular", sans-serif;
+    font-size: 15px;
+}
+a:link {
+    text-decoration: none;
+}
 @media only screen and (max-width: 1024px){
 
 }
