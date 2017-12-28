@@ -199,7 +199,19 @@ $(document).ready(function() {
                 }
                 number++;
             });
-            mapArr[i] = mapRow.join('');
+            // Check seat is couple
+            if(objSeat[i].type_seat[0] == "c"){
+                var seatMaxCouple;
+                // max seat - number seat couple in 1 row. 1 seat couple = 2 seat empty  
+                seatMaxCouple = seatMax - objSeat[i].type_seat.length;
+                
+                // Get arr seat form 0 - max seat couple
+                var mapRowCouple = mapRow.splice(0,seatMaxCouple);
+                mapArr[i] = mapRowCouple.join('');
+            }else{
+                mapArr[i] = mapRow.join('');
+            }
+            
         }
 
         var sc = $('#seat-map').seatCharts({
@@ -239,8 +251,8 @@ $(document).ready(function() {
                     [ 'a', 'selected', 'Ghế đang chọn'],
                     [ 'a', 'available',   'Ghế thường' ],
                     [ 'v', 'available',   'Ghế VIP' ],
-                    [ 'c', 'available',   'Ghế couple' ],
-                    [ 'l', 'available',   'Ghế cao cấp' ]
+                    [ 'l', 'available',   'Ghế cao cấp' ],
+                    [ 'c', 'available',   'Ghế couple' ]
                 ]
             },
             click: function () { //Click event
