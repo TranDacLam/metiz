@@ -235,3 +235,15 @@ class Contact(DateTimeModel):
 
     def __str__(self):
         return '%s' % (self.name)
+
+
+@python_2_unicode_compatible
+class Blog(DateTimeModel):
+    name = models.CharField(_("Name"), max_length=255)
+    description = models.CharField(_("Description"), max_length=255)
+    image = models.ImageField(_("Image"), max_length=1000, upload_to="blogs")
+    content = models.TextField(_("Content"))
+    is_draft = models.BooleanField(default=False)
+
+    def __str__(self):
+        return '%s' % (self.name)

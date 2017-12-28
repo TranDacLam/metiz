@@ -4962,6 +4962,8 @@ table .text p.deluxe{
     margin-top:7px;
 }
 .movie-technology-icons a span{
+    /* Wating icon Metiz */
+    /*background-image: url("../images/movie-icon.png");*/
     display: inline-block;
     float: left;
     height: 45px;

@@ -361,15 +361,24 @@ def contacts(request):
 
 def blog_film(request):
     try:
-        return render(request, 'websites/blog_film.html')
+        # Get all blogs film by Id
+        blogs = Blog.objects.filter(is_draft=False).order_by('created')
+        return render(request, 'websites/blog_film.html', {'list_blogs': blogs})
+
     except Exception as e:
         print "Error action blog_film : ", e
         return HttpResponse(status=500)
 
 
-def blog_film_detail(request):
+def blog_film_detail(request, id):
     try:
-        return render(request, 'websites/blog_film_detail.html')
+        # get blog detail by id
+        blog = Blog.objects.get(pk=id)
+        
+        # get blog detail by id
+        related_blogs = Blog.objects.filter(is_draft=False).order_by('created')[:4]
+
+        return render(request, 'websites/blog_film_detail.html', {'blog': blog, 'related_blogs': related_blogs})
     except Exception as e:
         print "Error action blog_film_detail : ", e
         return HttpResponse(status=500)
