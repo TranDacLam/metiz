@@ -221,3 +221,11 @@ admin.site.register(Post, PostAdmin)
 class SlideShowAdmin(admin.ModelAdmin):
     pass
 admin.site.register(SlideShow, SlideShowAdmin)
+
+
+class BlogAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget()},
+    }
+    pass
+admin.site.register(Blog, BlogAdmin)
