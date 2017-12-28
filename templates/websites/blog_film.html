@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block extrascript %}
+    <script src="{{ STATIC_URL }}assets/websites/js/blog_film.js" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
 
 {% block container_class%}col1-layout{% endblock%}
@@ -18,129 +19,39 @@
         <div class="blog-title">
             <h1>BLOG PHIM</h1>
         </div>
+        <div class='col-md-12'>
+            <div class="filter-blog">
+                <label for="filter"><strong>Sắp xếp theo:</strong></label>
+                <select class="select-filter" id="blog-filter">
+                    <option value="getNewBlog">Bài viết mới nhất</option>
+                    <option value="getMoreBlog">Xem nhiều nhất</option>
+                </select>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
         <div class="row blog-content">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            {% for list_blog in list_blogs %}
+            <div class=" col-md-3 col-lg-4 col-sm-4">
+                <div class=".blog-item-image">
                 <div class="blog-item">
-                    <p><a href="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/58fb72a629687f66cf270552/59f2eeb5ec212dabf8159780/1509103829159/20171027-DSCF1504.jpg?format=750w" /></a></p>
-                    <p><a href="#" class="blog-name">Ninh Eating uống rượu gì cho "xinh"?</a></p>
-                    <p class="blog-decs">Cùng Ninh Eating tìm hiểu về một loại rượu rất nối tiếng của Hàn Quốc, giá vừa phải, chất lượng ngon mà đặc biệt là . . .</p>
-                    <div class="blog-read-more">
-                        <a href="{% url 'blog_film_detail'%}">
-                            <span>Đọc thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+                    <p><a href="{% url 'blog_film_detail' list_blog.id %}"><img class="img-responsive" src="{{MEDIA_URL}}{{list_blog.image}}" /></a></p>
+                    <p><a href="{% url 'blog_film_detail' list_blog.id %}" class="blog-name">{{list_blog.name|truncatechars:90}}</a></p>
+                    <p class="blog-decs">{{list_blog.description|truncatechars:190}}</p>
+                    <div class="clearfix"></div>
+                    <p class="blog-read-more">
+                        <a href="{% url 'blog_film_detail' list_blog.id %}">
+                            <span>Xem thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
                         </a>
-                    </div>
+                    </p>
                 </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <div class="blog-item">
-                    <p><a href="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/58fb72a629687f66cf270552/59a05d869f8dceb78046c6ab/1507226192795/IMG_5799.jpg?format=750w" /></a></p>
-                    <p><a href="#" class="blog-name">Gà nước dừa, bạn đã thử chưa?</a></p>
-                    <p class="blog-decs">Cùng Ninh Eating tìm hiểu về một loại rượu rất nối tiếng của Hàn Quốc, giá vừa phải, chất lượng ngon mà đặc biệt là . . .</p>
-                    <div class="blog-read-more">
-                        <a href="#">
-                            <span>Đọc thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                    </div>
-                </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <div class="blog-item">
-                    <p><a href="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/58fb72a629687f66cf270552/5995c81746c3c47a269d9345/1503862200777/batch_IMG_5063.jpg?format=750w" /></a></p>
-                    <p><a href="#" class="blog-name">Có gì hay ở Cocobay Đà Nẵng?</a></p>
-                    <p class="blog-decs">Cùng Ninh Eating tìm hiểu về một loại rượu rất nối tiếng của Hàn Quốc, giá vừa phải, chất lượng ngon mà đặc biệt là . . .</p>
-                    <div class="blog-read-more">
-                        <a href="#">
-                            <span>Đọc thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <div class="blog-item">
-                    <p><a href="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/58fb72a629687f66cf270552/59f2eeb5ec212dabf8159780/1509103829159/20171027-DSCF1504.jpg?format=750w" /></a></p>
-                    <p><a href="#" class="blog-name">Sôi động đậy những ngày Sài Gòn</a></p>
-                    <p class="blog-decs">Cùng Ninh Eating tìm hiểu về một loại rượu rất nối tiếng của Hàn Quốc, giá vừa phải, chất lượng ngon mà đặc biệt là . . .</p>
-                    <div class="blog-read-more">
-                        <a href="#">
-                            <span>Đọc thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                 <div class="blog-item">
-                    <p><a href="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/58fb72a629687f66cf270552/59a05d869f8dceb78046c6ab/1507226192795/IMG_5799.jpg?format=750w" /></a></p>
-                    <p><a href="#" class="blog-name">Risemount Resort Đà Nẵng - Một thoáng xanh lạ lùng lạ lùng</a></p>
-                    <p class="blog-decs">Cùng Ninh Eating tìm hiểu về một loại rượu rất nối tiếng của Hàn Quốc, giá vừa phải, chất lượng ngon mà đặc biệt là . . .</p>
-                    <div class="blog-read-more">
-                        <a href="#">
-                            <span>Đọc thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <div class="blog-item">
-                    <p><a href="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/58fb72a629687f66cf270552/5995c81746c3c47a269d9345/1503862200777/batch_IMG_5063.jpg?format=750w" /></a></p>
-                    <p><a href="#" class="blog-name">Có gì hay ở Cocobay Đà Nẵng?</a></p>
-                    <p class="blog-decs">Cùng Ninh Eating tìm hiểu về một loại rượu rất nối tiếng của Hàn Quốc, giá vừa phải, chất lượng ngon mà đặc biệt là . . .</p>
-                    <div class="blog-read-more">
-                        <a href="#">
-                            <span>Đọc thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <div class="blog-item">
-                    <p><a href="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/58fb72a629687f66cf270552/59f2eeb5ec212dabf8159780/1509103829159/20171027-DSCF1504.jpg?format=750w" /></a></p>
-                    <p><a href="#" class="blog-name">Sôi động đậy những ngày Sài Gòn</a></p>
-                    <p class="blog-decs">Cùng Ninh Eating tìm hiểu về một loại rượu rất nối tiếng của Hàn Quốc, giá vừa phải, chất lượng ngon mà đặc biệt là . . .</p>
-                    <div class="blog-read-more">
-                        <a href="#">
-                            <span>Đọc thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                 <div class="blog-item">
-                    <p><a href="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/58fb72a629687f66cf270552/59a05d869f8dceb78046c6ab/1507226192795/IMG_5799.jpg?format=750w" /></a></p>
-                    <p><a href="#" class="blog-name">Risemount Resort Đà Nẵng - Một thoáng xanh lạ lùng lạ lùng lạ lùng</a></p>
-                    <p class="blog-decs">Cùng Ninh Eating tìm hiểu về một loại rượu rất nối tiếng của Hàn Quốc, giá vừa phải, chất lượng ngon mà đặc biệt là . . .</p>
-                    <div class="blog-read-more">
-                        <a href="#">
-                            <span>Đọc thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <div class="blog-item">
-                    <p><a href="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/58fb72a629687f66cf270552/59f2eeb5ec212dabf8159780/1509103829159/20171027-DSCF1504.jpg?format=750w" /></a></p>
-                    <p><a href="#" class="blog-name">Sôi động đậy những ngày Sài Gòn</a></p>
-                    <p class="blog-decs">Cùng Ninh Eating tìm hiểu về một loại rượu rất nối tiếng của Hàn Quốc, giá vừa phải, chất lượng ngon mà đặc biệt là . . .</p>
-                    <div class="blog-read-more">
-                        <a href="#">
-                            <span>Đọc thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-        <div class="row blog-footer">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 title-blog-footer">
-                "ĐỂ BIẾT NIỀM VUI, PHẢI BIẾT CHIA SẺ.
-                HẠNH PHÚC SINH RA TỪ HAI THỨ ĐÓ."
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <a href="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/t/59f319f78e7b0f2fb06d8ab3/1509104146666/cover+chiec+bung+doi+.png?format=1500w" alt=""></a>
-            </div>
-        </div>
+        <div class="text-center"><button id="load-more-blogs" class="btn btn-primary load-more" data-page="2" data-count-news="">XEM THÊM</button></div>
     </div> 
+
 </div>
 {% endblock%}

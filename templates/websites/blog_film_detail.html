@@ -16,43 +16,20 @@
 <div class="main-blog">
     <div class="container blog-detail-custom">
         <div class="blog-detail-title">
-            <h1>Có gì hay ở Cocobay Đà Nẵng? | Ninh Travel</h1>
+            <h1>{{ blog.name }}</h1>
         </div>
         <div class="blog-detail-decs">
-            <p>Hai mươi ba mùa hè trôi qua, thú thật chưa năm nào mình đi du lịch Đà Nẵng nhiều như năm nay. Từ tháng 6 đến giờ mỗi tháng một chuyến, cảm giác như tung bay ở Đà Nẵng thoả thích lắm rồi.. Ấy vậy mà thành phố này vẫn còn nhiều “vị” cần nếm thử lắm, nếm tê cả lưỡi vẫn không hết. Mà chuyến đi lần này mình nếm vị gì vậy? Là Cocobay.</p><br>
+            <p>{{ blog.description }}</p><br>
         </div>
         <div class="text-center">
             <div class="blog-detail-image">
-                <img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/t/59d639fbbebafbe0830f9ea6/1507213826525/anigif.gif?format=1500w" />
+                <img class="img-responsive" src="{{MEDIA_URL}}{{blog.image}}" />
             </div>
         </div>
         <div class="blog-detail-content">
-            <p>Nếu hỏi mọi người đã biết đến cái tên Cocobay nhiều chưa thì câu trả lời chắc chắn là rồi, bởi ai cũng đã hơn một lần nghe văng vẳng thanh âm “Gọi em là cô-cô, gọi anh là cô-cô” nhỉ? Được quảng cáo trên báo đài vô tuyến từ lâu lắm rồi, nhưng cũng chỉ biết Cocobay gắn liền với câu sờ-lô-gần: “Điểm đến giải trí của thế giới” thôi chứ cũng không biết đầu cua tai nheo ở đó có cái gì.</p>
-
-            <p>Hên quá dịp này có cái hẹn gặp mặt anh tài ở Đà Nẵng cùng các chị các em trong đoàn in-phờ-lu-ừn-xờ (từ hồi đi Mã Lai tháng 4 vừa qua) nên Ninh đã có dịp trải nghiệm tại Cocobay. Cũng phải thú thật chuyến đi này mình được mở mang tầm mắt theo kiểu... bị mờ mắt bởi những mối quan hệ bạn bè và những cuộc vui bóng bay ngợp trời… nên để bình tĩnh nhớ lại những khoảnh khắc nên thơ trữ tình sợ hơi khó. Tuy vậy, để điểm lại một vài vệt sáng thì mình sẵn sàng. </p>
-
-            <p>Nào nào bà con cô bác ngồi xuống đây xem một đoạn clip ngắn trước khi nghe nam thanh niên tên Ninh tâm sự về những trải nghiệm thú vị ở Cocobay nhé!</p>
-            <p>Tại tổ hợp Cocobay có rất nhiều dự án khách sạn từ 3 sao đến 5 sao, tuy nhiên thời điểm mình đến mới chỉ có khách sạn Bisou và Muze đã được hoàn thiện và đi vào hoạt động chính thức. Và mình thì ở Bisou.</p>
-
-            <p>Điều mình ấn tượng lớn nhất ở đây là khách sạn Bisou không quá to nhưng số lượng phòng thì khá nhiều bởi thiết kế khách sạn thông minh không thể tưởng tượng nổi (không biết các bạn thế nào chứ mình chưa gặp kiểu thiết kế phòng này bao giờ). Để biết về điều thông minh đó là gì, các bạn cứ truy cập vào clip Quẩy tại Cocobay Đà Nẵng của chị Trinh Phạm để xem từ 0s33 trở đi nhé! Chỉ duy nhất có một thứ mình rất lăn tăn trong phòng, đó là... cái ghế bập bênh. Trời ơi cũng không hiểu lắm vì sao lại đặt cái ghế màu đỏ nổi bần bật ở góc phòng khách luôn ý. Xuýt xoa cái miệng chứ đang buổi tối ngồi xem tivi thấy cái ghế nó động đậy thì thôi cũng lạy (huhu tại mình yếu bóng vía lắm nên hay tưởng tượng). Được cái bù lại là chiếc giường rất êm, lò xo đàn hồi rất tốt. Mấy ngày ở Cocobay toàn đi hôm về khuya, mệt rã rời xong thả mình lên chiếc giường như vậy ngủ một mạch đến sáng bao phê.</p>
-
-            <p>Mà thật ra lần này đến Cocobay mình không quá đề cao việc "ở" lắm vì đây là thiên đường giải trí ... chơi bời mới là quan trọng nên với mình khách sạn Bisou khá ổn.</p>
+            {{blog.content | safe}}
         </div>
-
-        <div class="row blog-detail-footer">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 title-blog-detail-footer">
-                "ĐỂ BIẾT NIỀM VUI, PHẢI BIẾT CHIA SẺ.
-                HẠNH PHÚC SINH RA TỪ HAI THỨ ĐÓ."
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <a hre="#"><img src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/t/59f319f78e7b0f2fb06d8ab3/1509104146666/cover+chiec+bung+doi+.png?format=1500w" alt=""></a>
-            </div>
-        </div>
-        <div class="fb-share-button" data-href="http://{{ request.get_host }}{% url 'blog_film_detail'%}" data-layout="button_count">
+        <div class="fb-share-button" data-href="http://{{ request.get_host }}{% url 'blog_film_detail' blog.id%}" data-layout="button_count">
         </div>
     </div> 
     <div class="container related-blog">
@@ -60,38 +37,18 @@
             <h3 class="title"> <strong>Bài viết</strong> liên quan</h3>
         </div>
         <div class='row'>
-            <div class="col-md-3 area-image-relate">
-                <a href="#">
-                    <img class='img-responsive' src="https://beebom-redkapmedia.netdna-ssl.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg" />
-                    <div class='caption'>
-                        <h5>[Review] Lôi Báo: Tác Phẩm Mới Đáng Xem Của Victor Vũ"[Review]</h5>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 area-image-relate">
-                <a href="#">
-                    <img class='img-responsive' src="https://www.w3schools.com/css/trolltunga.jpg" />
-                    <div class='caption'>
-                        <h5>[Review] Lôi Báo: Tác Phẩm Mới Đáng Xem Của Victor Vũ"[Review]</h5>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 area-image-relate">
-                <a href="#">
-                    <img class='img-responsive' src="https://static1.squarespace.com/static/58fb718cc534a56ca61a26cb/58fb72a629687f66cf270552/59f2eeb5ec212dabf8159780/1509103829159/20171027-DSCF1504.jpg?format=750w" />
-                    <div class='caption'>
-                        <h5>[Review] Lôi Báo: Tác Phẩm Mới Đáng Xem Của Victor Vũ"[Review]</h5>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 area-image-relate">
-                <a href="#">
-                    <img class='img-responsive' src="https://static.pexels.com/photos/248797/pexels-photo-248797.jpeg" />
-                    <div class='caption'>
-                        <h5>[Review]</h5>
-                    </div>
-                </a>
-            </div>
+            {% if related_blogs %}
+            {% for related_blog in related_blogs %}
+                <div class="col-md-3 area-image-relate">
+                    <a href="{% url 'blog_film_detail' related_blog.id%}">
+                        <img class='img-responsive' src="{{MEDIA_URL}}{{related_blog.image}}" />
+                        <div class='caption'>
+                            <h5>{{ related_blog.name }}</h5>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 </div>
