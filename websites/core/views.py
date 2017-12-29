@@ -392,7 +392,7 @@ def blog_film_detail(request, id):
 
             # if response.hit_counted is True then hit count success
             if hit_count_response.hit_counted:
-                hits = hits + 1
+                view_counter = view_counter + 1
         
         # get blog detail by id
         related_blogs = Blog.objects.filter(is_draft=False).order_by('created')[:4]
