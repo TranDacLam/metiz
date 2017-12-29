@@ -109,9 +109,7 @@ ul.dropdown-menu>li>a:hover{
 	font-family: "SairaSemiCondensed-Regular", sans-serif;
 	text-decoration: none;
 }
-.blog-updating a{
-	cursor: pointer;
-}
+
 @media only screen and (min-width: 771px){
 	#header {
 		height: 70px;
