@@ -6,7 +6,9 @@
 {% block extrastylesheet %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/blog_film.css" media="all" />
 {% endblock %}
-
+{% block extrascript %}
+    <script src="{{ STATIC_URL }}assets/websites/js/blog_film.js" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
 {% block container_class%}col1-layout{% endblock%}
 
 {% block main_content%}
@@ -28,7 +30,7 @@
         {% if list_blogs %}
         <article class="row blog-content" data-category="getNewBlog">
             {% for list_blog in list_blogs %}
-            <div class=" col-md-3 col-lg-4 col-sm-4">
+            <div class=" col-md-4 col-lg-4 col-sm-4">
                 <div class="blog-item-image">
                     <div class="blog-item">
                         <p><a href="{% url 'blog_film_detail' list_blog.id %}"><img class="img-responsive" src="{{MEDIA_URL}}{{list_blog.image}}" /></a></p>
@@ -46,7 +48,7 @@
             </div>
             {% if forloop.counter|divisibleby:"3" %}
         </article>
-            <article class="row blog-content">
+            <article class="row blog-content" data-category="getNewBlog">
             {% endif %}
         {% endfor %}
             </article>
@@ -54,7 +56,5 @@
         {% endif %}
     </div>
 </div>
-{% block extrascript %}
-    <script src="{{ STATIC_URL }}assets/websites/js/blog_film.js" type="text/javascript" charset="utf-8"></script>
-{% endblock %}
+
 {% endblock%}
