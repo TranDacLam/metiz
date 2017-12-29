@@ -14,6 +14,7 @@ import itertools
 from core.forms import ContactForm
 from hitcount.models import HitCount
 from hitcount.views import HitCountMixin
+from django.template.loader import render_to_string
 
 # NOTES : View SQL Query using : print connection.queries
 
@@ -363,11 +364,21 @@ def contacts(request):
 
 def blog_film(request):
     try:
-        # # Get all blogs film by Id order by view
-        # blogs = Blog.objects.order_by("-hit_count_generic__hits")
 
         # Get all blogs film by Id order by created
-        blogs = Blog.objects.filter(is_draft=False).order_by('-created')
+        blogs = Blog.objects.filter(is_draft=False)
+
+        if request.method == "POST":
+            # get order by column
+            order_colunm = request.POST.get('order_column','-created')
+            # get data order by column
+            blogs = blogs.order_by(order_colunm)
+            
+            return render(request, 'websites/ajax/list_blog_film.html', {'list_blogs': blogs})
+
+        # Default order by created
+        blogs = blogs.order_by('-created')
+
         return render(request, 'websites/blog_film.html', {'list_blogs': blogs})
 
     except Exception as e:
