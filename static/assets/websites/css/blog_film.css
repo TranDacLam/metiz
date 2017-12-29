@@ -8,32 +8,38 @@
 .blog-title h1{
     text-align: center;
     font-size: 22px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
-.blog-content img{
+.blog-item-image {
+    position: relative;
+    width: 100%;
+}
+.blog-item-image:after {
+  content :"";
+  display:block;
+  padding-top: 2%;
+}
+.blog-item img {
     width: 100%;
     height: 233px;
 }
-.blog-content>div{
-    margin-bottom: 15px;
-}
 .blog-content .blog-name{
-    color: #333;
-    text-decoration: none;
-    font-size: 18px;
+    color: #0e1d2f;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
 }
-.blog-content .blog-name:hover{
-    color: #ff5400;
+.blog-item a{
+    text-decoration: none;
 }
 .blog-content .blog-decs{
-    font-weight: 400;
-    font-style: normal;
-    font-size: 12px;
-    letter-spacing: .06em;
-    line-height: 1.6em;
+    line-height: 1.4;
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 0;
     text-transform: none;
-    color: #7a7a7a;
-    text-align: left;
+    font-family: "SairaSemiCondensed-Regular", sans-serif;
 }
 .blog-content .blog-read-more a{
     font-weight: 400;
@@ -47,6 +53,9 @@
 .blog-content .blog-read-more a:hover{
     color: #ff5400;
 }
+.blog-item {
+    margin-bottom: 30px;
+}
 .blog-footer{
     margin: 50px 0;
 }
@@ -58,48 +67,42 @@
     width: 100%;
 }
 .blog-item .blog-read-more{
-    position: absolute;
-    bottom: 10px;
+    margin-top: 10px;
 }
-.blog-item {
-    min-height: 360px;
+.blog-item .blog-read-more span {
+    font-weight: bold;
+}
+.filter-blog {
+    float: right;
+}
+select.select-filter {
+    width: 200px;
+    background: transparent;
+    padding: 5px;
+    margin: 20px 0;
+}
+.filter-blog label {
+    font-family: "Montserrat", sans-serif; 
 }
 @media only screen and (max-width: 1024px){
 
 }
 @media only screen and (max-width: 768px){
-    .blog-content img {
-        height: 170px;
-    }
-    .blog-item{
-        min-height: 340px;
-    }
+
 }
 @media only screen and (max-width: 736px){
-    .blog-content img {
-        height: 155px;
-    }
-    .title-blog-footer{
-        width: 100%;
-    }
+
 }
 @media only screen and (max-width: 414px){
-    .blog-content>div{
-        width: 50%;
-    }
-    .blog-content img {
-        height: 130px;
-    }
-    .blog-title h1{
-        margin-bottom: 40px;
-    }
+
 }
 @media only screen and (max-width: 375px){
-
     
 }
 @media only screen and (max-width: 320px){
-    .blog-content img {
-        height: 100px;
+    select.select-filter {
+        width: 100%;
+        padding: 5px 10px;
     }
+
 }
