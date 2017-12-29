@@ -46,6 +46,8 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
+                     <!-- if the the forloop counter is divisible by 3, 
+                        close the <article> tag and open a new one  -->
                     {% if forloop.counter|divisibleby:"3" %}
                         </article><article class="row blog-content" data-category="getNewBlog">
                     {% endif %}
