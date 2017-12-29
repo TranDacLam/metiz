@@ -5,7 +5,7 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST",
 			url: "/blog/",
-			data: {'filter': filter},
+			data: {'order_column': filter},
 			success: function(data) {
 				console.log($(".blog-custom>article").html(data));
 			}
