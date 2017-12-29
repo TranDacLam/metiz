@@ -17,7 +17,7 @@
 .blog-item-image:after {
   content :"";
   display:block;
-  padding-top: 20%;
+  padding-top: 2%;
 }
 .blog-item img {
     width: 100%;
@@ -100,5 +100,9 @@ select.select-filter {
     
 }
 @media only screen and (max-width: 320px){
+    select.select-filter {
+        width: 100%;
+        padding: 5px 10px;
+    }
 
 }
