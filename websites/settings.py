@@ -268,10 +268,10 @@ TIME_SEAT_DELAY = 5
 NOCAPTCHA = True
 
 # congig hitcount
-HITCOUNT_KEEP_HIT_ACTIVE = {'seconds': 30}
+HITCOUNT_KEEP_HIT_ACTIVE = {'seconds': 10}
 HITCOUNT_HITS_PER_IP_LIMIT = 0  # unlimited
 HITCOUNT_EXCLUDE_USER_GROUP = ()  # not used
-HITCOUNT_KEEP_HIT_IN_DATABASE = {'seconds': 30}
+HITCOUNT_KEEP_HIT_IN_DATABASE = {'days': 1}
 
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:

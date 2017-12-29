@@ -568,3 +568,7 @@ msgstr ""
 #: websites/registration/views.py:244
 msgid "User is active. Please login again."
 msgstr "Gửi mail thành công . Vui lòng kiểm tra email và kích hoạt tài khoản."
+
+#: core/models.py:257
+msgid "Blog Film"
+msgstr ""

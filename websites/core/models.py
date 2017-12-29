@@ -252,3 +252,7 @@ class Blog(DateTimeModel, HitCountMixin):
 
     def __str__(self):
         return '%s' % (self.name)
+
+    class Meta:
+        verbose_name = _('Blog Film')
+        verbose_name_plural = _('Blog Film')

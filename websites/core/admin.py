@@ -10,7 +10,15 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from core import widgets
+from hitcount.models import HitCount, HitCountMixin
+from hitcount.admin import *
 
+""" Start hide hitcount group on admin site """
+admin.site.unregister(Hit)
+admin.site.unregister(HitCount)
+admin.site.unregister(BlacklistUserAgent)
+admin.site.unregister(BlacklistIP)
+""" End hide hitcount group on admin site """
 
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
