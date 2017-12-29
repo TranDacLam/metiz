@@ -365,25 +365,16 @@ def contacts(request):
 def blog_film(request):
     try:
 
-        page_items = request.GET.get('page_items', 9)
-        page_number = request.GET.get('page', 1)
-
-        # Defalt sort by created
-        order_colunm = '-created'
+        page_items = request.POST.get('page_items', 9)
+        page_number = request.POST.get('page', 1)
+        order_colunm = request.POST.get('order_column','-created')
 
         # Get all blogs film by Id order by created
-        blogs = Blog.objects.filter(is_draft=False)
+        blogs = Blog.objects.filter(is_draft=False).order_by(order_colunm)
 
         # Pagination QuerySet With Defalt Page is 9 Items
         paginator = Paginator(blogs, page_items)
 
-        if request.method == "POST":
-            # get order by column
-            order_colunm = request.POST.get('order_column','-created')
-        
-        # get data order by column
-        blogs = blogs.order_by(order_colunm)
-        
         try:
             blog_page = paginator.page(int(page_number))
         except PageNotAnInteger:
@@ -394,7 +385,7 @@ def blog_film(request):
             # results.
             return JsonResponse({"message": _("Page Number Not Found.")}, status=400)
 
-        if request.method == "POST" or request.is_ajax():
+        if request.method == "POST":
             # convert object models to json
             # Ajax reuqest with page, render page and return to client
             return render(request, 'websites/ajax/list_blog_film.html', {'list_blogs': blog_page.object_list})
