@@ -10,8 +10,8 @@
     margin-bottom: 30px;
 }
 .blog-detail-content img, .blog-detail-image img {
-    width: 100% !important;
-    height: 350px !important;
+    width: 80% !important;
+    margin: 0 auto;
 }
 .blog-detail-custom .blog-detail-content{
     margin: 20px 0;
@@ -82,7 +82,12 @@ a:link {
 @media only screen and (max-width: 1024px){
 
 }
+/*Sreen phone, tablet*/
 @media only screen and (max-width: 768px){
+  .blog-detail-content img, .blog-detail-image img {
+    width: 100% !important;
+    margin: 0 auto;
+}
 
 }
 @media only screen and (max-width: 736px){
@@ -99,6 +104,7 @@ a:link {
 @media only screen and (max-width: 320px){
     
 }
+/*Screen phone landscape*/
 @media only screen and (max-width: 767px) 
 and (min-width: 480px) 
 and (orientation: landscape) {

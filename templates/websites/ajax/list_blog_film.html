@@ -3,8 +3,8 @@
         <div class="blog-item-image">
             <div class="blog-item">
                 <p><a href="{% url 'blog_film_detail' list_blog.id %}"><img class="img-responsive" src="{{MEDIA_URL}}{{list_blog.image}}" /></a></p>
-                <p><a href="{% url 'blog_film_detail' list_blog.id %}" class="blog-name">{{list_blog.name|truncatechars:90}}</a></p>
-                <p class="blog-decs">{{list_blog.description|truncatechars:190}}</p>
+                <p><a href="{% url 'blog_film_detail' list_blog.id %}" class="blog-name">{{list_blog.name|truncatechars:87}}</a></p>
+                <p class="blog-decs">{{list_blog.description|truncatechars:160}}</p>
                 <div class="clearfix"></div>
                 <p class="blog-read-more">
                     <a href="{% url 'blog_film_detail' list_blog.id %}">
