@@ -55,6 +55,7 @@
 }
 .blog-item {
     margin-bottom: 30px;
+    min-height: 400px;
 }
 .blog-footer{
     margin: 50px 0;
@@ -97,7 +98,13 @@ select.select-filter {
 
 }
 @media only screen and (max-width: 375px){
-    
+
+}
+@media only screen and (max-width: 767px) and (min-width: 480px) and (orientation: landscape) {
+    .blog-content > div {
+        float: left;
+        width: 50%;
+    }
 }
 @media only screen and (max-width: 320px){
     select.select-filter {
