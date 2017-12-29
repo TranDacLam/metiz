@@ -365,21 +365,41 @@ def contacts(request):
 def blog_film(request):
     try:
 
+        page_items = request.GET.get('page_items', 9)
+        page_number = request.GET.get('page', 1)
+
+        # Defalt sort by created
+        order_colunm = '-created'
+
         # Get all blogs film by Id order by created
         blogs = Blog.objects.filter(is_draft=False)
+
+        # Pagination QuerySet With Defalt Page is 9 Items
+        paginator = Paginator(blogs, page_items)
 
         if request.method == "POST":
             # get order by column
             order_colunm = request.POST.get('order_column','-created')
-            # get data order by column
-            blogs = blogs.order_by(order_colunm)
-            
-            return render(request, 'websites/ajax/list_blog_film.html', {'list_blogs': blogs})
+        
+        # get data order by column
+        blogs = blogs.order_by(order_colunm)
+        
+        try:
+            blog_page = paginator.page(int(page_number))
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            return JsonResponse({"message": _("Page Number Not Type Integer.")}, status=400)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of
+            # results.
+            return JsonResponse({"message": _("Page Number Not Found.")}, status=400)
 
-        # Default order by created
-        blogs = blogs.order_by('-created')
+        if request.method == "POST" or request.is_ajax():
+            # convert object models to json
+            # Ajax reuqest with page, render page and return to client
+            return render(request, 'websites/ajax/list_blog_film.html', {'list_blogs': blog_page.object_list})
 
-        return render(request, 'websites/blog_film.html', {'list_blogs': blogs})
+        return render(request, 'websites/blog_film.html', {'list_blogs': blog_page.object_list,'total_page': paginator.num_pages})
 
     except Exception as e:
         print "Error action blog_film : ", e
