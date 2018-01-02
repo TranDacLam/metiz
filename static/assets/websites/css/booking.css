@@ -200,6 +200,12 @@ div.seatCharts-seat.available.seat-couple {
     border: 2px solid #ec008c;
     width: 56px;
 }
+div.seatCharts-seat.unavailable.seat-couple{
+    background: url('../../websites/images/Seat_booked.png') 17px -1px no-repeat;
+    background-color: #e2ddd5;
+    border: none;
+    width: 56px;
+}
 div.seatCharts-seat.available.seat-ld {
     background-color: rgba(255, 255, 255, 0);
     border: 2px solid #83399a;
@@ -251,6 +257,15 @@ div.seatCharts-seat.available.seat-ld {
 #seat-map:focus{
     outline: none;
 }
+@media only screen and (max-width: 1024px){
+    .col-md-offset-1#seat-map{
+        margin-left: 0;
+        width: 100%;
+    }
+    .booking-details{
+        width: 100%;
+    }
+}
 @media only screen and (max-width: 768px){
     .booking-details{
         margin-left: 4%;
@@ -295,6 +310,11 @@ and (orientation: landscape){
     }
     div.seatCharts-seat.seat-couple.focused,
     div.seatCharts-seat.seat-couple.selected{
+        width: 40px;
+    }
+    div.seatCharts-seat.unavailable.seat-couple{
+        background: url('../../websites/images/Seat_booked.png') 9px -4px no-repeat;
+        background-color: #e2ddd5;
         width: 40px;
     }
 }
@@ -366,6 +386,11 @@ and (orientation: landscape){
     div.seatCharts-seat.seat-couple.selected{
         width: 26px;
     }
+    div.seatCharts-seat.unavailable.seat-couple{
+        background: url('../../websites/images/Seat_booked.png') 1px -7px no-repeat;
+        background-color: #e2ddd5;
+        width: 26px;
+    }
 }
 @media only screen and (max-width: 375px){
     div.seatCharts-cell {
@@ -383,6 +408,9 @@ and (orientation: landscape){
     }
     div.seatCharts-seat.seat-couple.focused,
     div.seatCharts-seat.seat-couple.selected{
+        width: 24px;
+    }
+    div.seatCharts-seat.unavailable.seat-couple{
         width: 24px;
     }
 }
@@ -405,6 +433,11 @@ and (orientation: landscape){
     }
     div.seatCharts-seat.seat-couple.focused,
     div.seatCharts-seat.seat-couple.selected{
+        width: 18px;
+    }
+    div.seatCharts-seat.unavailable.seat-couple{
+        background: url('../../websites/images/Seat_booked.png') -3px -8px no-repeat;
+        background-color: #e2ddd5;
         width: 18px;
     }
 }
