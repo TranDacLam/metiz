@@ -30,8 +30,11 @@
     font-weight: bold;
     font-family: "SairaSemiCondensed-Bold", sans-serif;
 }
-.blog-item a{
+.blog-item a {
     text-decoration: none;
+}
+.blog-item p{
+    color: #0e1d2f;
 }
 .blog-content .blog-decs{
     line-height: 1.4;

@@ -1,4 +1,16 @@
 $(document).ready(function() {
+
+	// Ajax when user load page with select box = "-hit_count_generic__hits"
+	if($('select#blog-filter').val() == "-hit_count_generic__hits"){
+		$.ajax({
+			type: "POST",
+			url: "/blog/",
+			data: {'order_column': $('select#blog-filter').val()},
+			success: function(data) {
+				$(".blog-custom>article").html(data);
+			}
+		});
+	}
     //Filter News
 	$('select#blog-filter').change(function() {
 		var filter = $(this).val();
