@@ -31,7 +31,7 @@
             <article class="row blog-content" data-category="-created">
                 {% include 'websites/ajax/list_blog_film.html' %} 
             </article>
-            <div class="text-center"><button id="load-more-blogs" class="btn btn-primary load-more" data-page="2" data-count-news="">XEM THÊM</button></div>
+            <div class="text-center"><button id="load-more-blogs" class="btn btn-primary load-more" data-page="2" data-total-page="{{total_page}}" data-count-news="">XEM THÊM</button></div>
         {% endif %}
     </div>
 </div>
