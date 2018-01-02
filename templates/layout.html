@@ -51,6 +51,15 @@
         var fbAppId = '{{FB_APP_ID}}';
         var recaptchaKey = '{{RECAPTCHA_PUBLIC_KEY}}';
     </script>
+    
+    <!-- Google Analytics -->
+    <script>
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga('create', 'UA-111809144-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
 
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery-3.2.1.min.js" ></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/bootstrap.min.js"></script>
