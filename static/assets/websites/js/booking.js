@@ -166,6 +166,12 @@ $(document).ready(function() {
                                 'id': objBooking[i].ID,
                             }]
                 };
+
+                // Check first seat and set coordinates X first for every name seat
+                if(parseInt(objBooking[i].NAME.substring(1,3)) == 1){
+                    objSeat[iArr].coordinates_x = objBooking[i].X;
+                }
+
             }
 
             // array with status
@@ -296,6 +302,19 @@ $(document).ready(function() {
                 }
             }
         });
+
+        // Check coordinates X seat, If seat couple exist then compare coordinates X seat other
+        // If different, insert Before seat couple first 1 div at row last
+        for(k=0; k < (objSeat.length - 1); k++){
+            if(objSeat[k].coordinates_x && objSeat[objSeat.length - 1].coordinates_x){
+                if((objSeat[k].coordinates_x != objSeat[objSeat.length - 1].coordinates_x) && 
+                    (objSeat[objSeat.length - 1].type_seat[0] == "c")){
+                    $("<div class='seatCharts-cell seatCharts-space'></div>").insertBefore(".seatCharts-row:last .seat-couple:first");
+                    $('.seatCharts-row:last .seatCharts-space:last').remove();
+                    break;
+                }
+            }
+        }
 
         //sold seat
         sc.get(arrStatus).status('unavailable');
