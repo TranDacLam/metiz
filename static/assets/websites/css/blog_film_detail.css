@@ -12,6 +12,7 @@
 .blog-detail-content img, .blog-detail-image img {
     width: 80% !important;
     margin: 0 auto;
+    height: auto !important;
 }
 .blog-detail-custom .blog-detail-content{
     margin: 20px 0;
@@ -75,6 +76,10 @@ h3.title {
     text-align: center;
     font-family: "SairaSemiCondensed-Regular", sans-serif;
     font-size: 15px;
+}
+.blogs-related {
+  display: flex;
+  flex-wrap: wrap;
 }
 a:link {
     text-decoration: none;
