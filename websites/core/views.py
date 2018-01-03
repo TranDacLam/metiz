@@ -371,7 +371,7 @@ def blog_film(request):
         order_colunm = request.POST.get('order_column','-created')
 
         # Get all blogs film by Id order by created
-        blogs = Blog.objects.filter(is_draft=False).order_by(order_colunm)
+        blogs = Blog.objects.filter(is_draft=False).order_by(order_colunm, '-id')
 
         # Pagination QuerySet With Defalt Page is 9 Items
         paginator = Paginator(blogs, page_items)
