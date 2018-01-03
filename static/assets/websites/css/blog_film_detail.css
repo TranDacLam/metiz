@@ -77,10 +77,6 @@ h3.title {
     font-family: "SairaSemiCondensed-Regular", sans-serif;
     font-size: 15px;
 }
-.blogs-related {
-  display: flex;
-  flex-wrap: wrap;
-}
 a:link {
     text-decoration: none;
 }
@@ -113,6 +109,10 @@ a:link {
 @media only screen and (max-width: 767px) 
 and (min-width: 480px) 
 and (orientation: landscape) {
+  .blogs-related {
+    display: flex;
+    flex-wrap: wrap;
+  }
   .row > div {
       float: left;
       width: 50%;
