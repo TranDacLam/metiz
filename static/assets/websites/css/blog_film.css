@@ -93,6 +93,10 @@ select.select-filter {
     font-family: "Montserrat", sans-serif; 
 }
 @media only screen and (max-width: 1024px){
+    .load-more:hover {
+        border: none;
+        background: #7e8eaa;
+    }
 
 }
 @media only screen and (max-width: 768px){
