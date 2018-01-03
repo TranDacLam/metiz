@@ -43,6 +43,7 @@ $(document).ready(function() {
 			type: 'POST',
 			data: {
 				'page': page,
+				'order_column': $('select#blog-filter').val()
 			},
 			crossDomain:false,
 			context: this,
