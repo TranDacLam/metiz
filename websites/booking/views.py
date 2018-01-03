@@ -79,8 +79,9 @@ def build_show_time_json(current_date, item, result, movies_info, obj_movie=None
             obj_movie = movies_info.filter(
                 movie_api_id=item["MOVIE_ID"])
 
+        # obj_movie[0].name.split(':')[0] to get vietnames film names
         result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
-            "MOVIE_ID"], "movie_name": obj_movie[0].name if obj_movie else item["MOVIE_NAME_VN"],
+            "MOVIE_ID"], "movie_name": obj_movie[0].name.split(':')[0] if obj_movie else item["MOVIE_NAME_VN"],
             "rated": obj_movie[0].rated.name if obj_movie else None, "time_running": obj_movie[0].time_running if obj_movie else 0}
 
     # Check time showing greater than currnet hour
