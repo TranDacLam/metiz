@@ -15,6 +15,7 @@ from core.forms import ContactForm
 from hitcount.models import HitCount
 from hitcount.views import HitCountMixin
 from django.template.loader import render_to_string
+from django.db.models import Q
 
 # NOTES : View SQL Query using : print connection.queries
 
@@ -401,6 +402,7 @@ def blog_film_detail(request, id):
     try:
         # init view counter is 0
         view_counter = 0
+        related_blogs = []
 
         # get blog detail by id
         blog = Blog.objects.get(pk=id)
@@ -416,8 +418,8 @@ def blog_film_detail(request, id):
             if hit_count_response.hit_counted:
                 view_counter = view_counter + 1
         
-        # get blog detail by id
-        related_blogs = Blog.objects.filter(is_draft=False).order_by('created')[:4]
+            # get blog detail by id
+            related_blogs = Blog.objects.filter(~Q(id=blog.id), is_draft=False).order_by('created')[:4]
 
         return render(request, 'websites/blog_film_detail.html', 
                      {'blog': blog, 'related_blogs': related_blogs, 'view_counter': view_counter})
