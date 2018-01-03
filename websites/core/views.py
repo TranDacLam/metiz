@@ -419,7 +419,7 @@ def blog_film_detail(request, id):
                 view_counter = view_counter + 1
         
             # get blog detail by id
-            related_blogs = Blog.objects.filter(~Q(id=blog.id), is_draft=False).order_by('created')[:4]
+            related_blogs = Blog.objects.filter(~Q(id=blog.id), is_draft=False).order_by('-created')[:4]
 
         return render(request, 'websites/blog_film_detail.html', 
                      {'blog': blog, 'related_blogs': related_blogs, 'view_counter': view_counter})
