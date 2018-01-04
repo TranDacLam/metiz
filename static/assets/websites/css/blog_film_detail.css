@@ -19,8 +19,11 @@
 }
 .blog-detail-custom .blog-detail-title p, 
 .blog-detail-custom .blog-detail-decs p,
-.blog-detail-custom .blog-detail-content p {
-    font-family: "Montserrat", sans-serif;
+.blog-detail-custom .blog-detail-content p,
+.blog-detail-custom {
+    font-family: "Montserrat-Light", sans-serif;
+    line-height: 22px;
+    text-align: justify;
 }
 .blog-detail-footer{
     margin: 50px 0;
@@ -73,8 +76,7 @@ h3.title {
     padding-top: 10px;
 }
 .caption h5 {
-    text-align: center;
-    font-family: "SairaSemiCondensed-Regular", sans-serif;
+    font-family: "Montserrat-Medium", sans-serif;
     font-size: 15px;
 }
 .blogs-related {

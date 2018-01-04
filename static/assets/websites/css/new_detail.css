@@ -11,7 +11,9 @@
 	padding: 20px 0;
 }
 .postDetail {
-	font-family: "Montserrat", sans-serif;
+	font-family: "Montserrat-Light", sans-serif;
+    line-height: 22px;
+    text-align: justify;
 }
 .img-square {
 	position: relative;

@@ -2,7 +2,7 @@
 .profile-custom #profile-validate label,
 .profile-custom #change-pass-validate,
 .profile-custom #change-pass-validate label{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
 }
 .profile-custom #profile-validate button{
     font-family: "SairaSemiCondensed-Bold", sans-serif;
@@ -80,7 +80,7 @@
 }
 .ui-datebox-header h4, .ui-datebox-gridheader h4, 
 .modal-title, a.btn.btn-sm.btn-default, .ui-datebox-flipcontent li{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
 }
 @media only screen and (min-width : 481px) and (max-width : 768px) {
     .profile-custom{

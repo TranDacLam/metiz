@@ -2,7 +2,7 @@
 .vnpayment label, input, select, textarea,
 .payment-return .panel-body,
 .payment-return .back-link a{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
 }
 .vnpayment .page-title h2, .vnpayment .btn-default,
 .vnpayment #create_form button{

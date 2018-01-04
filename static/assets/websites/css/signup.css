@@ -1,8 +1,8 @@
 .account-wrap, .account-wrap label{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
 }
 p.member-card-info {
-	font-family: "Montserrat", sans-serif;
+	font-family: "Montserrat-Light", sans-serif;
 }
 .modal-header {
 	border-bottom: 1px solid #ff4000;
@@ -61,7 +61,7 @@ button#btn_cancel_popup {
 	text-indent: -9999px;
 }
 #myTabContent label.error {
-	font-family: "Montserrat", sans-serif;
+	font-family: "Montserrat-Light", sans-serif;
 	color: red;
 	padding: 0px;
 	margin: 0px;
@@ -246,7 +246,7 @@ ul ~ label{
 /*Edit font for popup birtday*/
 .ui-datebox-header h4, .ui-datebox-gridheader h4, 
 #myTabContent .modal-title, a.btn.btn-sm.btn-default, .ui-datebox-flipcontent li{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
 }
 @media screen and (max-width: 320px){
 	#birth_date_valid {

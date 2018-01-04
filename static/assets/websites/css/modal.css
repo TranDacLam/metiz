@@ -24,7 +24,7 @@ body.modal-open {
 #modal-popup #guest_form,
 #modal-popup #guest_form label,
 #guest .guest-policy, #guest .agree_term{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
 }
 #guest .guest-policy{
     border: 1px solid #c9c2b5;
@@ -460,7 +460,7 @@ li.btn-guest-wth117 {
 }
 .modal label.form-error,.modal label.error{
     font-weight: 500;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
     font-size: 13px;
     color:red;
 }
@@ -518,7 +518,7 @@ li.btn-guest-wth117 {
     border: none;
 }
 #confirm label, input{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
 }
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
