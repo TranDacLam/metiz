@@ -1,4 +1,8 @@
 $(document).ready(function() {
+
+	// Call ajax load page when back on brower
+	loadAjaxBlog();
+	
 	// Paginator page for blog
 	// check total page let remove button load more
 	var total_page = parseInt($('.load-more').attr('data-total-page'));
@@ -6,9 +10,6 @@ $(document).ready(function() {
 	if(parseInt($('.load-more').attr('data-page')) > total_page){
 		$('.blog-custom>.text-center button').hide();
 	}
-
-	// Set filter default is created( fix bugs back on browser)
-	$('select#blog-filter').val('-created');
 
     //Filter News
 	$('select#blog-filter').change(function() {
