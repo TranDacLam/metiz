@@ -105,7 +105,7 @@ a:link {
 @media only screen and (max-width: 320px){
     
 }
-/*Screen phone landscape*/
+/*Screen Iphone landscape*/
 @media only screen and (max-width: 767px) 
 and (min-width: 480px) 
 and (orientation: landscape) {
@@ -117,4 +117,18 @@ and (orientation: landscape) {
       float: left;
       width: 50%;
   }
+}
+/*Screen ipad, nokia, microsoft, galaxy*/
+@media only screen 
+and (min-width : 767px) 
+and (max-width: 1024px) {
+  .blogs-related {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .row > div {
+      float: left;
+      width: 50%;
+  }
+
 }
