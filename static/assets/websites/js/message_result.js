@@ -11,6 +11,7 @@ function msgResult(message, type){
                         + message
                    +'</button>'
                 +'</li>'
+                +'button'
             +'</ul>';
 }
 

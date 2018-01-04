@@ -29,12 +29,9 @@ $(document).ready(function() {
         }
     }); 
     $.ajaxSetup({ cache: false });
-    
-    // FB init function
-    FB.init({
-        appId: fbAppId,
-        version: 'v2.9',
-        cookie     : true,
-        xfbml      : true
-    });
+
+    // Set data-href of comment fb to transale comment Fb to vietnames
+    if( $('.fb-comments').length ) {
+        $('.fb-comments').attr('data-href', document.URL);
+    }
 });

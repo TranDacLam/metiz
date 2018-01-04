@@ -27,7 +27,6 @@ body.modal-open {
     font-family: "Montserrat", sans-serif;
 }
 #guest .guest-policy{
-    text-align: justify;
     border: 1px solid #c9c2b5;
 }
 #modal-popup .col-xs-8 h3{

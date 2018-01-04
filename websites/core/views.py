@@ -12,6 +12,10 @@ from itertools import chain
 from django.core.urlresolvers import reverse
 import itertools
 from core.forms import ContactForm
+from hitcount.models import HitCount
+from hitcount.views import HitCountMixin
+from django.template.loader import render_to_string
+from django.db.models import Q
 
 # NOTES : View SQL Query using : print connection.queries
 
@@ -361,15 +365,64 @@ def contacts(request):
 
 def blog_film(request):
     try:
-        return render(request, 'websites/blog_film.html')
+
+        page_items = request.POST.get('page_items', 9)
+        page_number = request.POST.get('page', 1)
+        order_colunm = request.POST.get('order_column','-created')
+
+        # Get all blogs film by Id order by created
+        blogs = Blog.objects.filter(is_draft=False).order_by(order_colunm, '-id')
+
+        # Pagination QuerySet With Defalt Page is 9 Items
+        paginator = Paginator(blogs, page_items)
+
+        try:
+            blog_page = paginator.page(int(page_number))
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            return JsonResponse({"message": _("Page Number Not Type Integer.")}, status=400)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of
+            # results.
+            return JsonResponse({"message": _("Page Number Not Found.")}, status=400)
+
+        if request.method == "POST":
+            # convert object models to json
+            # Ajax reuqest with page, render page and return to client
+            return render(request, 'websites/ajax/list_blog_film.html', {'list_blogs': blog_page.object_list})
+
+        return render(request, 'websites/blog_film.html', {'list_blogs': blog_page.object_list,'total_page': paginator.num_pages})
+
     except Exception as e:
         print "Error action blog_film : ", e
         return HttpResponse(status=500)
 
 
-def blog_film_detail(request):
+def blog_film_detail(request, id):
     try:
-        return render(request, 'websites/blog_film_detail.html')
+        # init view counter is 0
+        view_counter = 0
+        related_blogs = []
+
+        # get blog detail by id
+        blog = Blog.objects.get(pk=id)
+
+        if blog:
+            # get hit count of blog objects
+            view_counter =  blog.hit_count.hits
+
+            # count a hit and get the response
+            hit_count_response = HitCountMixin.hit_count(request, blog.hit_count)
+
+            # if response.hit_counted is True then hit count success
+            if hit_count_response.hit_counted:
+                view_counter = view_counter + 1
+        
+            # get blog detail by id
+            related_blogs = Blog.objects.filter(~Q(id=blog.id), is_draft=False).order_by('-created')[:4]
+
+        return render(request, 'websites/blog_film_detail.html', 
+                     {'blog': blog, 'related_blogs': related_blogs, 'view_counter': view_counter})
     except Exception as e:
         print "Error action blog_film_detail : ", e
         return HttpResponse(status=500)

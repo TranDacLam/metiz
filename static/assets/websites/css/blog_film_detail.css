@@ -9,31 +9,90 @@
     text-align: center;
     margin-bottom: 30px;
 }
-.blog-detail-custom .blog-detail-image{
-    width: 60%;
-    margin:auto;
-}
-.blog-detail-custom .blog-detail-image img{
-    width: 100%;
+.blog-detail-content img, .blog-detail-image img {
+    width: 80% !important;
+    margin: 0 auto;
+    height: auto !important;
 }
 .blog-detail-custom .blog-detail-content{
     margin: 20px 0;
 }
+.blog-detail-custom .blog-detail-title p, 
+.blog-detail-custom .blog-detail-decs p,
+.blog-detail-custom .blog-detail-content p {
+    font-family: "Montserrat", sans-serif;
+}
 .blog-detail-footer{
     margin: 50px 0;
-}
-.blog-detail-footer .title-blog-detail-footer{
-    margin-bottom: 30px;
-    text-align: center;
 }
 .blog-detail-footer img{
     width: 100%;
 }
-
+/*==== Related Post =====*/
+.related-blog {
+    margin-top:10px;
+}
+.related-blog-title {
+    border-bottom:  1px solid #ccc;
+}
+/*==== Button hit count ====*/
+.hit-count-button {
+  margin-left:10px;
+  background-color: #4267b2;
+  display: inline-block;
+  padding: 1px;
+  border-radius: 3px;
+}
+.hit-count-button span.view-count,
+.hit-count-button span.view-count-name {
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  vertical-align: middle;
+  font-size: 11px;
+}
+.hit-count-button span.view-count {
+  padding-right: 4px;
+  font-weight: normal;
+}
+.hit-count-button span.view-count-name {
+  padding-left: 4px;
+  padding-right: 2px;
+  font-weight: bold;
+}
+h3.title {
+    text-transform: uppercase;
+}
+.area-image-relate {
+    padding: 10px;
+}
+.area-image-relate img {
+    width: 100%;
+    height: 180px;
+}
+.caption {
+    padding-top: 10px;
+}
+.caption h5 {
+    text-align: center;
+    font-family: "SairaSemiCondensed-Regular", sans-serif;
+    font-size: 15px;
+}
+.blogs-related {
+  display: flex;
+  flex-wrap: wrap;
+}
+a:link {
+    text-decoration: none;
+}
 @media only screen and (max-width: 1024px){
 
 }
+/*Sreen phone, tablet*/
 @media only screen and (max-width: 768px){
+  .blog-detail-content img, .blog-detail-image img {
+    width: 100% !important;
+    margin: 0 auto;
+}
 
 }
 @media only screen and (max-width: 736px){
@@ -49,4 +108,13 @@
 }
 @media only screen and (max-width: 320px){
     
+}
+/*Screen phone landscape*/
+@media only screen and (max-width: 767px) 
+and (min-width: 480px) 
+and (orientation: landscape) {
+  .row > div {
+      float: left;
+      width: 50%;
+  }
 }

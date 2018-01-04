@@ -8,6 +8,8 @@ from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
+import messages as msg
 
 
 def logout(request):
@@ -49,6 +51,9 @@ def login(request):
                     return redirect(reverse('home'))
                 else:
                     result['errors'] = login_form.errors
+
+        print result
+
 
         return render(request, 'registration/signup.html', result)
     except Exception, e:
@@ -94,6 +99,8 @@ def register_user(request, **kwargs):
                     'password2'] if 'password2' in request.POST else None
                 context['is_signup'] = True
                 context['form'] = register_form
+
+                print register_form.errors
                 return render(request, 'registration/signup.html', context)
 
         return render(request, 'registration/signup.html',
@@ -202,4 +209,47 @@ def update_profile(request):
         return render(request, "registration/profile.html", context)
     except Exception, e:
         print "Error update_profile : ", e
+        return HttpResponse(status=500)
+
+def resend_activation(request):
+    try:
+        print "Resend Activation Function"
+        # user is active then redirect to home page
+        if request.user.is_active:
+            return redirect(reverse('home'))
+        register_form = MetizSignupForm(request=request)
+        if request.method == 'POST':
+            register_form = MetizSignupForm(request.POST, request=request)
+
+            user_email = register_form['email'].value()
+            user = None
+
+            # If email dont register account then return page with error not exist
+            try:
+                user = User.objects.get(email=user_email.strip())
+            except ObjectDoesNotExist, e:
+                return render(request, 'registration/resend_activation.html', {'err': msg.EMAIL_NOT_EXIST, 'email': user_email})
+
+            if user:
+                # User have confirm link before then return flag active
+                if  user.is_active:
+                    return render(request, 'registration/resend_activation.html', {'err': msg.USER_ACTIVE, 'email': user_email})
+
+                # Replace activation key and reset key expires is default (7 days)
+                key_expires = timezone.now() + datetime.timedelta(settings.KEY_ACTIVATION_EXPIRES)
+                user.activation_key = register_form.create_activation_key(user.email)
+                user.key_expires = key_expires
+                user.save()
+
+                # Resend Email to active account
+                register_form.send_activation_mail(user.full_name, user.email, user.activation_key)
+
+                # Resend success then return success message and redirect to home page
+                messages.success(request, _('Send Mail Successfully. Please Check Your Email and Active Account.'))
+                return redirect(reverse('home'))
+
+        return render(request, 'registration/resend_activation.html')
+
+    except Exception, e:
+        print "Error resend_activation : ", e
         return HttpResponse(status=500)

@@ -94,10 +94,10 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
         message_html = "websites/booking/email/booking_notification.html"
         subject = _("[Metiz] Booking Movie Tickets Successful !")
 
-        protocol = 'http://'
+        protocol = 'http'
         if is_secure:
-            protocol = 'https://'
-        logo_url = '/static//assets/websites/images/logo_bottom.png'
+            protocol = 'https'
+        logo_url = '/static/assets/websites/images/logo_bottom.png'
         data_binding = {
             "protocol": protocol,
             'full_name': full_name,

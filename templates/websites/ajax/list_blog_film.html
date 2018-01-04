@@ -1,0 +1,18 @@
+{% for blog in list_blogs %}
+    <div class=" col-md-4 col-lg-4 col-sm-4">
+        <div class="blog-item-image">
+            <div class="blog-item">
+                <a href="{% url 'blog_film_detail' blog.id %}">
+                    <p><img class="img-responsive" src="{{MEDIA_URL}}{{blog.image}}" /></p>
+                    <p class="blog-name">{{ blog.name|truncatechars:87 }}</p>
+                    <p class="blog-decs">{{ blog.description|truncatechars:160 }}</p>
+                    <div class="clearfix"></div>
+                    <p class="blog-read-more">
+                        <span>Xem thêm <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+                    </p>
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+{% endfor %}

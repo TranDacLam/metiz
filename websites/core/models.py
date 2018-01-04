@@ -6,6 +6,8 @@ from django.utils.encoding import python_2_unicode_compatible
 from core.custom_models import *
 import datetime
 
+from django.contrib.contenttypes.fields import GenericRelation
+from hitcount.models import HitCount, HitCountMixin
 
 class DateTimeModel(models.Model):
     """
@@ -235,3 +237,22 @@ class Contact(DateTimeModel):
 
     def __str__(self):
         return '%s' % (self.name)
+
+
+@python_2_unicode_compatible
+class Blog(DateTimeModel, HitCountMixin):
+    name = models.CharField(_("Name"), max_length=255)
+    description = models.CharField(_("Description"), max_length=255)
+    image = models.ImageField(_("Image"), max_length=1000, upload_to="blogs")
+    content = models.TextField(_("Content"))
+    is_draft = models.BooleanField(default=False)
+    hit_count_generic = GenericRelation(
+        HitCount, object_id_field='object_pk',
+        related_query_name='hit_count_generic_relation')
+
+    def __str__(self):
+        return '%s' % (self.name)
+
+    class Meta:
+        verbose_name = _('Blog Film')
+        verbose_name_plural = _('Blog Film')

@@ -32,11 +32,12 @@
                 </ul>
                 
                 <div id="myTabContent" class="tab-content">
-                    <!-- ======================== SIGN IN ===================-->
+                    <div class="error-user-inactive hidden">{% trans "Your account not active. Please check email and active account." %}</div>
+                    <!-- ======================== LOG IN ===================-->
                     <div class="tab-pane in col-lg-12 well {% if is_login %} active {% endif %}" id="login">
                         <form class="signin" id="login_form" method="post" action="{% url 'login' %}">
                             {% csrf_token %}
-                            <div class="row">
+                            <div class="row error-div">
                                 {% if errors %}
                                     {% for key, error in errors.items %}
                                     <div class="alert-login col-md-6">
@@ -131,7 +132,7 @@
                                                 {% endif %}
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 form-group">
+                                        <div class="col-sm-6 form-group email-div">
                                             <label>{% trans "Email"%}</label>
                                             <div class="inline">
                                                 <input type="text" id="email" name="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" tabindex=6
@@ -232,4 +233,26 @@
             </div>
         </div>
     </div>
-    {% endblock %}
+</div>
+<!-- Modal Resend Actiavtion -->
+<div class="modal" id="resend_activation_modal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close close-popup" data-dismiss="modal">&times;</button>
+              <h2 class="modal-title">Kích hoạt tài khoản</h2>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p class="member-card-info"><i>Tài khoản của quý khách chưa được kích hoạt.</i></p>
+                    <p class="member-card-info">Với trường hợp không nhận được mail, bạn click <a href="{% url 'resend_activation'%}">tại đây</a> để gửi lại mã kích hoạt.</p>
+                </div>
+            </div>
+            <div class="modal-footer member-card-footer">
+              <button id="btn_cancel_popup" type="button" class="btn btn-login" data-dismiss="modal" data-toggle='modal'>Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

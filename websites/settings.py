@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',
+    'hitcount',
 ]
 
 MIDDLEWARE = [
@@ -148,6 +149,9 @@ USE_TZ = True
 
 SITE_ID = 1
 
+#Set key activation expires is 7 days
+KEY_ACTIVATION_EXPIRES = 7
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -192,7 +196,7 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 # Config outgoing email
 EMAIL_BACKEND = "main.email_backend.DKIMBackend"
 DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
-DEFAULT_FROM_EMAIL = "no-reply@metiz.vn"
+DEFAULT_FROM_EMAIL = "Metiz Cinema Service <no-reply@metiz.vn>"
 # EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 EMAIL_HOST = 'mail.helio.vn'
 EMAIL_HOST_USER = 'no-reply@metiz.vn'
@@ -262,6 +266,12 @@ TIME_SEAT_DELAY = 5
 
 # Config Google reCaptcha
 NOCAPTCHA = True
+
+# congig hitcount
+HITCOUNT_KEEP_HIT_ACTIVE = {'minutes': 15}
+HITCOUNT_HITS_PER_IP_LIMIT = 0  # unlimited
+HITCOUNT_EXCLUDE_USER_GROUP = ()  # not used
+HITCOUNT_KEEP_HIT_IN_DATABASE = {'minutes': 15}
 
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:

@@ -653,3 +653,15 @@ msgstr "[Metiz] Đặt Vé Phim Thành Công"
 
 #~ msgid "Register"
 #~ msgstr "Đăng Ký"
+
+#: websites/registration/views.py:234
+msgid "Send Mail Successfully. Please Check Your Email and Active Account."
+msgstr "Gửi mail thành công . Vui lòng kiểm tra email và kích hoạt tài khoản."
+
+#: websites/registration/views.py:244
+msgid "User is active. Please login again."
+msgstr "Email này đã được kích hoạt với tài khoản khác. Vui lòng nhập lại."
+
+#: core/models.py:257
+msgid "Blog Film"
+msgstr "Blog Phim"

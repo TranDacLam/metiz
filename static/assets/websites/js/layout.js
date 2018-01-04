@@ -11,13 +11,6 @@ $(document).ready(function() {
         // submit once return true
         return true;    
     });
-
-    // Message updating Blog phim on Menu
-    $('.blog-updating').on('click', function(){
-        displayMsg();
-        $('.msg-result-js').html(msgResult("Chức năng đang được cập nhật. Mời bạn quay lại vào lúc khác", "info"));
-    });
-
     // If Browser is IE then remove placeholder
     if (GetIEVersion() > 0){
         $(':input').removeAttr('placeholder');

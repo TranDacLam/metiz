@@ -77,40 +77,73 @@ class MetizSignupForm(UserCreationForm):
         exclude = ['is_staff', 'is_active', 'date_joined', 'modified',
                    'token_last_expired', 'activation_key', 'key_expires', 'password']
 
+
+    def clean_email(self):
+        cleaned_data = super(MetizSignupForm, self).clean()
+        email = cleaned_data.get("email")
+
+        USER_MODEL = get_user_model()
+        user = USER_MODEL.objects.filter(email=email.strip())
+        # Check user exist in system
+        if len(user) > 0:
+            if not user[0].is_active:
+                raise forms.ValidationError(msg.INACTIVE, code='invalid')
+
+        return email
+
+    def create_activation_key(self, email):
+        activation_key = None
+        try:
+            salt = sha.new(str(random.random())).hexdigest()[:5]
+            activation_key = sha.new(salt + email).hexdigest()
+        except Exception, e:
+            print 'Save Form Error ', e
+            raise Exception('Internal Server Error.')
+        return activation_key
+
+
+    def send_activation_mail(self, full_name, email, activation_key):
+        try:
+            
+            message_html = "registration/email/metiz_account_created_confirm.html"
+            message_txt = "registration/email/metiz_account_created_confirm.txt"
+            subject = _(
+                "[Metiz] You've been created an account - Click to Verify!")
+
+            protocol = 'http'
+            if self.request.is_secure():
+                protocol = 'https'
+            logo_url = '/static/assets/websites/images/logo_bottom.png'
+            url_activate = self.request.build_absolute_uri(
+                reverse('confirm-activation', kwargs={'activation_key': activation_key}))
+            data_binding = {
+                "protocol": protocol,
+                'full_name': full_name,
+                'email': email,
+                'URL_LOGO': logo_url,
+                'activate_url': url_activate,
+                'site': str(Site.objects.get_current())
+            }
+            # Send email activation link
+            metiz_email.send_mail(subject, message_txt, message_html, settings.DEFAULT_FROM_EMAIL, [
+                                  email], data_binding)
+
+        except Exception, e:
+            print 'Save Form Error ', e
+            raise Exception('Internal Server Error.')
+
     def save(self, commit=True):
         # call save function of super
         user = super(MetizSignupForm, self).save(commit=False)
         try:
             if commit:
-                salt = sha.new(str(random.random())).hexdigest()[:5]
-                activation_key = sha.new(salt + user.email).hexdigest()
-                key_expires = timezone.now() + datetime.timedelta(30)
-                user.activation_key = activation_key
+                key_expires = timezone.now() + datetime.timedelta(settings.KEY_ACTIVATION_EXPIRES)
+                user.activation_key = self.create_activation_key(user.email)
                 user.key_expires = key_expires
                 user.save()
 
-                message_html = "registration/email/metiz_account_created_confirm.html"
-                message_txt = "registration/email/metiz_account_created_confirm.txt"
-                subject = _(
-                    "[Metiz] You've been created an account - Click to Verify!")
+                self.send_activation_mail(user.full_name, user.email, user.activation_key)
 
-                protocol = 'http://'
-                if self.request.is_secure():
-                    protocol = 'https://'
-                logo_url = '/static//assets/websites/images/logo_bottom.png'
-                url_activate = self.request.build_absolute_uri(
-                    reverse('confirm-activation', kwargs={'activation_key': activation_key}))
-                data_binding = {
-                    "protocol": protocol,
-                    'full_name': user.full_name,
-                    'email': user.email,
-                    'URL_LOGO': logo_url,
-                    'activate_url': url_activate,
-                    'site': str(Site.objects.get_current())
-                }
-                # Send email activation link
-                metiz_email.send_mail(subject, message_txt, message_html, settings.DEFAULT_FROM_EMAIL, [
-                                      user.email], data_binding)
             return user
 
         except Exception, e:

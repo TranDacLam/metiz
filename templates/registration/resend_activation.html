@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+
+{% block title %}Kích hoạt tài khoản{% endblock title %} 
+
+{% block container_class %}col1-layout {% endblock %}
+
+{% block extrastylesheet %} 
+    <!-- password reset form, done, complete, comfirm -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/password_reset.css" media="all" />
+{% endblock %}
+
+{% block extrascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/password_reset.js"></script>
+{% endblock %}
+
+{% block body_class %}
+  customer-account-forgotpassword
+{% endblock %}
+
+{% block main_content %}
+<div class="main">            
+    <div class="col-main pass-reset-form">
+        <div class="form-forgot-pass">
+            <div class="form-change-pass">
+                <h2>Kích hoạt tài khoản</h2>
+                <form action="" method="post" id="form-validate" class="form-validate resend-activation-form">
+                    <div class="fieldset">          
+                        <p class="form-instructions">Vui lòng nhập địa chỉ email của bạn vào ô bên dưới. Bạn sẽ nhận được một liên kết để kích hoạt tài khoản.</p>
+                        <ul class="form-list">
+                            <li>
+                                <div class="input-box resend-activation-box">
+                                {% csrf_token %}
+                                <p class="resend-activation-p"><label for="id_email">Email:</label> 
+                                    <input id="id_email" maxlength="254" name="email" type="email" required="" placeholder="Nhập Email Ở Đây" value="{{email}}">
+                                    {% if err %}
+                                        <label id="id_email-error" class="error" for="id_email">{{err}}</label>
+                                    {% endif %}
+                                </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="buttons-set">
+                        <button type="submit" title="Gửi đi" class="button"><span><span>Gửi đi</span></span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

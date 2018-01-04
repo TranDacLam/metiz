@@ -388,6 +388,19 @@ $(document).ready(function() {
 		});
 	}
 
+    //Check if form error have contain errorr user inactive then show popup resend activation
+    $(".tab-pane.active .error-div .errorlist li, .tab-pane.active .email-div .errorlist li").each(function( index ) {
+        var errText = $( this ).text();
+        var errUserInactive = $( '.error-user-inactive' ).text();
+        if(errText === errUserInactive) {
+            $("#resend_activation_modal").show();
+        }
+    });
+
+    // Close popup when click cancel button or close button
+    $("#btn_cancel_popup, .close-popup").click(function() {
+        $("#resend_activation_modal").hide();
+    });
 });
 
 // load recaptcha 

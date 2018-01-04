@@ -30,10 +30,10 @@ class ContactForm(forms.Form):
 
                 message_html = "websites/email/contact_email.html"
 
-                protocol = 'http://'
+                protocol = 'http'
                 if is_secure:
-                    protocol = 'https://'
-                logo_url = '/static//assets/websites/images/logo_bottom.png'
+                    protocol = 'https'
+                logo_url = '/static/assets/websites/images/logo_bottom.png'
 
                 _subject = _("[Metiz] Hỗ trợ khách hàng")
 
