@@ -365,33 +365,32 @@ def contacts(request):
 
 def blog_film(request):
     try:
-
-        page_items = request.POST.get('page_items', 9)
-        page_number = request.POST.get('page', 1)
-        order_colunm = request.POST.get('order_column','-created')
-
-        # Get all blogs film by Id order by created
-        blogs = Blog.objects.filter(is_draft=False).order_by(order_colunm, '-id')
-
-        # Pagination QuerySet With Defalt Page is 9 Items
-        paginator = Paginator(blogs, page_items)
-
-        try:
-            blog_page = paginator.page(int(page_number))
-        except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
-            return JsonResponse({"message": _("Page Number Not Type Integer.")}, status=400)
-        except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of
-            # results.
-            return JsonResponse({"message": _("Page Number Not Found.")}, status=400)
-
         if request.method == "POST":
-            # convert object models to json
-            # Ajax reuqest with page, render page and return to client
-            return render(request, 'websites/ajax/list_blog_film.html', {'list_blogs': blog_page.object_list})
+            page_items = request.POST.get('page_items', 9)
+            page_number = request.POST.get('page', 1)
+            order_colunm = request.POST.get('order_column','-created')
 
-        return render(request, 'websites/blog_film.html', {'list_blogs': blog_page.object_list,'total_page': paginator.num_pages})
+            # Get all blogs film by Id order by created
+            blogs = Blog.objects.filter(is_draft=False).order_by(order_colunm, '-id')
+
+            # Pagination QuerySet With Defalt Page is 9 Items
+            paginator = Paginator(blogs, page_items)
+
+            try:
+                blog_page = paginator.page(int(page_number))
+            except PageNotAnInteger:
+                # If page is not an integer, deliver first page.
+                return JsonResponse({"message": _("Page Number Not Type Integer.")}, status=400)
+            except EmptyPage:
+                # If page is out of range (e.g. 9999), deliver last page of
+                # results.
+                return JsonResponse({"message": _("Page Number Not Found.")}, status=400)
+            
+                # convert object models to json
+                # Ajax reuqest with page, render page and return to client
+            return render(request, 'websites/ajax/list_blog_film.html', {'list_blogs': blog_page.object_list, 'total_page': paginator.num_pages})
+
+        return render(request, 'websites/blog_film.html')
 
     except Exception as e:
         print "Error action blog_film : ", e

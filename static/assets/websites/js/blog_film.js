@@ -1,19 +1,14 @@
 $(document).ready(function() {
 
-	// Call ajax load page when back on brower
+	// Call ajax load page
 	loadAjaxBlog();
-	
-	// Paginator page for blog
-	// check total page let remove button load more
-	var total_page = parseInt($('.load-more').attr('data-total-page'));
-	
-	if(parseInt($('.load-more').attr('data-page')) > total_page){
-		$('.blog-custom>.text-center button').hide();
-	}
 
     //Filter News
 	$('select#blog-filter').change(function() {
+		// When user choose select box return default data-page =2
 		$("#load-more-blogs").attr('data-page', 2);
+		// check total page let remove button load more
+		var total_page = parseInt($('.load-more').attr('data-total-page'));
 		if(parseInt($('.load-more').attr('data-page')) <= total_page){
 			$('.blog-custom>.text-center button').show();
 		}
@@ -25,13 +20,21 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST",
 			url: "/blog/",
-			data: {'order_column': filter},
+			data: {
+				'order_column': filter
+			},
 			success: function(data) {
 				$(".blog-custom>article").html(data);
 			},
-			error: function(){
-				alert("error");
-			}
+			error: function(error){
+				$('.blog-custom>.text-center button').hide();
+				displayMsg();
+				if(error.status == 400){
+	        		$('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
+				}else{
+					$('.msg-result-js').html(msgResult("Error load more movie", "danger"));
+				}
+				}
 		});
 	}
 
@@ -39,6 +42,8 @@ $(document).ready(function() {
 		e.preventDefault();
 		$(this).prop('disabled', true);
 		var page = parseInt($(this).attr('data-page'));
+		// Check totla page to paginator
+		var total_page = parseInt($('.load-more').attr('data-total-page'));
 		$.ajax({
 			url: "/blog/",
 			type: 'POST',
@@ -50,6 +55,7 @@ $(document).ready(function() {
 			context: this,
 		})
 		.done(function(response) {
+
 			$('.blog-custom>article').append(response);
 			// Check total page let remove button load more
 			if(page >= total_page){
