@@ -47,7 +47,8 @@
   margin-left:10px;
   background-color: #4267b2;
   display: inline-block;
-  padding: 1px;
+  padding: 1px 0 2px 0;
+  line-height: 100%;
   border-radius: 3px;
 }
 .hit-count-button span.view-count,
@@ -81,7 +82,7 @@ h3.title {
     padding-top: 10px;
 }
 .caption h5 {
-    font-family: "Montserrat-Medium", sans-serif;
+    font-family: "SairaSemiCondensed-Medium", sans-serif;
     font-size: 15px;
 }
 a:link {
