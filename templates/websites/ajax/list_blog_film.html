@@ -17,8 +17,6 @@
             </div>
         </div>
     {% endfor %}
+    <!-- Assigning value data-total-page -->
+    <input id="data-total-page" type="hidden" class="hidden" value="{{ total_page }}">
 {% endif %}
-<!-- Assigning value data-total-page -->
-<script type="text/javascript">
-    $('#load-more-blogs').attr('data-total-page', '{{ total_page }}');
-</script>

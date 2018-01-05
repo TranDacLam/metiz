@@ -7,11 +7,8 @@ $(document).ready(function() {
 	$('select#blog-filter').change(function() {
 		// When user choose select box return default data-page =2
 		$("#load-more-blogs").attr('data-page', 2);
-		// check total page let remove button load more
-		var total_page = parseInt($('.load-more').attr('data-total-page'));
-		if(parseInt($('.load-more').attr('data-page')) <= total_page){
-			$('.blog-custom>.text-center button').show();
-		}
+		// Remove total page element before call ajax. 
+		$('#data-total-page').remove();
 		loadAjaxBlog();
 	});
 	// Create function load Ajax
@@ -27,10 +24,12 @@ $(document).ready(function() {
 				$(".blog-custom>article").html(data);
 				// paginator for total-page < 9 page
 				// hide button load-more
-				var total_page = parseInt($('.load-more').attr('data-total-page'));
+				var total_page = parseInt($('#data-total-page').val());
 				var page = parseInt($("#load-more-blogs").attr('data-page'));
 				if(page > total_page){
-						$('.blog-custom>.text-center button').hide();
+					$('.blog-custom>.text-center button').hide();
+				} else {
+					$('.blog-custom>.text-center button').show();
 				}
 			},
 			error: function(error){
@@ -50,7 +49,7 @@ $(document).ready(function() {
 		$(this).prop('disabled', true);
 		var page = parseInt($(this).attr('data-page'));
 		// Check totla page to paginator
-		var total_page = parseInt($('.load-more').attr('data-total-page'));
+		var total_page = parseInt($('#data-total-page').val());
 		$.ajax({
 			url: "/blog/",
 			type: 'POST',
