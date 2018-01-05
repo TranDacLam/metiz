@@ -25,6 +25,13 @@ $(document).ready(function() {
 			},
 			success: function(data) {
 				$(".blog-custom>article").html(data);
+				// paginator for total-page < 9 page
+				// hide button load-more
+				var total_page = parseInt($('.load-more').attr('data-total-page'));
+				var page = parseInt($("#load-more-blogs").attr('data-page'));
+				if(page > total_page){
+						$('.blog-custom>.text-center button').hide();
+				}
 			},
 			error: function(error){
 				$('.blog-custom>.text-center button').hide();
