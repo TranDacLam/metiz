@@ -114,7 +114,7 @@ ul.errorlist li, .error{
 .custom-time-out p{
     color: red;
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
 }
 .custom-time-out button{
     float:right;
@@ -132,7 +132,7 @@ ul.errorlist li, .error{
     line-height: 30px;
 }
 .captcha-error{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
     font-size: 13px;
     color: red;
     font-weight: 500;

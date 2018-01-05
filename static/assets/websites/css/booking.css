@@ -1,5 +1,5 @@
 .booking-custom, .booking-custom .booking-details p{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
 }
 .booking-custom>div>h2{
     font-family: "SairaSemiCondensed-Bold", sans-serif;
@@ -234,10 +234,10 @@ div.seatCharts-seat.available.seat-ld {
 }
 #member_card_modal .modal-body p.member-card-info {
     margin-bottom: 30px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat-Light', sans-serif;
 }
 #member_card_modal label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat-Light', sans-serif;
 }
 #btn_add_card {
     font-family: 'SairaSemiCondensed-Medium';

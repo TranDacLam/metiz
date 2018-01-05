@@ -32,7 +32,7 @@
     text-transform: uppercase;
     font-size: 15px;
     font-weight: bold;
-    font-family: "SairaSemiCondensed-Bold", sans-serif;
+    font-family: "Montserrat-Medium", sans-serif;
 }
 .blog-item a {
     text-decoration: none;
@@ -46,7 +46,7 @@
     font-weight: normal;
     margin-bottom: 0;
     text-transform: none;
-    font-family: "SairaSemiCondensed-Regular", sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
 }
 .blog-content .blog-read-more a{
     font-weight: 400;
@@ -79,6 +79,7 @@
 }
 .blog-item .blog-read-more span {
     font-weight: bold;
+    font-family: "Montserrat-Light", sans-serif;
 }
 .filter-blog {
     float: right;
@@ -90,7 +91,11 @@ select.select-filter {
     margin: 20px 0;
 }
 .filter-blog label {
-    font-family: "Montserrat", sans-serif; 
+    font-family: "Montserrat-Medium", sans-serif; 
+}
+.blog-custom input, .blog-custom select, .blog-custom textarea{
+    font-family: "Montserrat-Light", sans-serif;
+    line-height: 22px;
 }
 @media only screen and (max-width: 1024px){
     .load-more:hover {
