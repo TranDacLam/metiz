@@ -17,22 +17,20 @@
         <div class="blog-title">
             <h1>BLOG PHIM</h1>
         </div>
-        {% if list_blogs %}
-            <div class='col-md-12'>
-                <div class="filter-blog">
-                    <label for="filter"><strong>Sắp xếp theo:</strong></label>
-                    <select class="select-filter" id="blog-filter">
-                        <option value="-created">Bài viết mới nhất</option>
-                        <option value="-hit_count_generic__hits">Xem nhiều nhất</option>
-                    </select>
-                </div>
+        <div class='col-md-12'>
+            <div class="filter-blog">
+                <label for="filter"><strong>Sắp xếp theo:</strong></label>
+                <select class="select-filter" id="blog-filter">
+                    <option value="-created">Bài viết mới nhất</option>
+                    <option value="-hit_count_generic__hits">Xem nhiều nhất</option>
+                </select>
             </div>
-            <div class="clearfix"></div>
-            <article class="row blog-content">
-                {% include 'websites/ajax/list_blog_film.html' %} 
-            </article>
-            <div class="text-center"><button id="load-more-blogs" class="btn btn-primary load-more" data-page="2" data-total-page="{{total_page}}" data-count-news="">XEM THÊM</button></div>
-        {% endif %}
+        </div>
+        <div class="clearfix"></div>
+        <article class="row blog-content">
+            {% include 'websites/ajax/list_blog_film.html' %} 
+        </article>
+        <div class="text-center"><button id="load-more-blogs" class="btn btn-primary load-more" data-page="2" data-total-page="" data-count-news="">XEM THÊM</button></div> 
     </div>
 </div>
 {% endblock%}
