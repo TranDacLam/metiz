@@ -45,7 +45,7 @@
             <div class='row blogs-related'>
                 {% if related_blogs %}
                 {% for related_blog in related_blogs %}
-                    <div class="col-md-3 area-image-relate">
+                    <div class="col-md-3 col-sm-6 col-xs-12 area-image-relate">
                         <a href="{% url 'blog_film_detail' related_blog.id%}">
                             <img class='img-responsive' src="{{MEDIA_URL}}{{related_blog.image}}" />
                             <div class='caption'>
