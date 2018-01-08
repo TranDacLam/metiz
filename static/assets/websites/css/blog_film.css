@@ -81,6 +81,9 @@
     font-weight: bold;
     font-family: "Montserrat-Light", sans-serif;
 }
+.blog-item .blog-read-more span:hover {
+    color: #ff5400;
+}
 .filter-blog {
     float: right;
 }
