@@ -1,13 +1,14 @@
 {% extends "layout.html" %}
 {% load i18n %}
 
-{% block title %}Blog Phim{% endblock title %}
+{% block title %}{{blog.name}}{% endblock title %}
 
 {% block metacontent %}
     <!-- Start FB share properties  -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{blog.name}}" />
-    <meta property="og:description" content='{{ blog.description }}' />
+    <meta property="og:description" content="{{ blog.description|truncatechars:160 }}" />
+
     <!-- End FB share properties  -->
 {% endblock %}
 
