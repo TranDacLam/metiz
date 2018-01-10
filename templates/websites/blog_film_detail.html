@@ -8,6 +8,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{blog.name}}" />
     <meta property="og:description" content="{{ blog.description }}" />
+    <meta property="og:image" content="http://{{ request.get_host }}{{MEDIA_URL}}{{blog.image}}"/>
 
     <!-- End FB share properties  -->
 {% endblock %}
