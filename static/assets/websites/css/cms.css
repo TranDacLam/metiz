@@ -1,3 +1,8 @@
+.content-seperator b,
+.content-seperator strong {
+    font-family: "Montserrat-Medium", sans-serif;
+}
+
 .content-seperator{
     font-family: "Montserrat-Light", sans-serif;
     line-height: 22px;
