@@ -16,6 +16,8 @@ DATABASES = {
 }
 
 # Default Email Contact
+SYSTEM_ADMIN_CINEMA_EMAIL = ""
+SYSTEM_ADMIN_CINEMA_PHONE = ""
 DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
 
 # VNPAY CONFIG

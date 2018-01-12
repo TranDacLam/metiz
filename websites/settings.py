@@ -194,6 +194,8 @@ CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
 # Config outgoing email
+SYSTEM_ADMIN_CINEMA_EMAIL = ""
+SYSTEM_ADMIN_CINEMA_PHONE = ""
 EMAIL_BACKEND = "main.email_backend.DKIMBackend"
 DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
 DEFAULT_FROM_EMAIL = "Metiz Cinema Service <no-reply@metiz.vn>"

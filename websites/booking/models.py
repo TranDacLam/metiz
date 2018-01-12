@@ -24,6 +24,8 @@ class BookingInfomation(DateTimeModel):
     id_server = models.IntegerField(default=1)
     order_status = models.CharField(max_length=50, choices=TYPE, default="pendding")
     barcode_confirm = models.CharField(max_length=100, null=True, blank=True)
+    desc_transaction = models.CharField(max_length=500, null=True, blank=True)
+    retry_ipn = models.IntegerField(default=0)
 
 class MovieSync(DateTimeModel):
     TYPE = (

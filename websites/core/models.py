@@ -256,3 +256,12 @@ class Blog(DateTimeModel, HitCountMixin):
     class Meta:
         verbose_name = _('Blog Film')
         verbose_name_plural = _('Blog Film')
+
+
+@python_2_unicode_compatible
+class AdminInfo(DateTimeModel):
+    email = models.EmailField(max_length=50)
+    phone = models.CharField(max_length=20, null=True, blank=True)
+    
+    def __str__(self):
+        return '%s' % (self.name)
