@@ -60,12 +60,12 @@ div.seatCharts-seat.available {
     background-color: rgba(255, 255, 255, 0);
 }
 div.seatCharts-seat.focused {
-    background-color: #76B474;
+    background-color: #72ba14;
     border: none;
 }
 div.seatCharts-seat.seat-couple.focused,
 div.seatCharts-seat.seat-couple.selected{
-    background-color: #76B474;
+    background-color: #72ba14;
     width: 56px;
 }
 div.seatCharts-seat.selected {
