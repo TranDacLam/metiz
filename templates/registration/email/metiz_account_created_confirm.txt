@@ -3,6 +3,6 @@
 {% trans "account.created.content1" %} metiz.vn {% trans "account.created.content2" %} {{ email }}. {% trans "account.created.content3" %}.
 {% trans "account.created.active" %}
 {% trans "account.created.content4" %}!
-{% trans "mail.register.footer1" %} 0905 383 135 {% trans "mail.register.footer2" %}
+{% trans "mail.register.footer1" %} 0236 3630 555 {% trans "mail.register.footer2" %}
 {% trans "mail.register.footer3" %}
 {% trans "mail.register.footer4" %}
