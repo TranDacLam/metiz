@@ -325,8 +325,8 @@ def payment_ipn(request):
                         send_sms(booking_order.phone, error_sms)
 
                         content_error = """Lỗi: Đã trừ tiền của khách hàng nhưng không thể xuất vé phim. 
-                                            Vui Lòng kiểm tra hoá đơn : %s .Để hoàn tiền hoặc xử lý vé cho khách hàng. 
-                                            Thông tin khách hàng. Phone: 0%s, email: %s"""%(booking_order.order_id, booking_order.phone, booking_order.email)
+                                            Vui Lòng kiểm tra hoá đơn : %s để hoàn tiền hoặc xử lý vé cho khách hàng. 
+                                            Thông tin khách hàng: Phone: 0%s, Email: %s"""%(booking_order.order_id, booking_order.phone, booking_order.email)
                         # Send email notification for admin transaction error
                         print "### email_admin_cinema ",email_admin_cinema
                         if email_admin_cinema:
