@@ -286,23 +286,20 @@ def payment_ipn(request):
                     # ReCall confirm booking three times when booking confirm error
                     recall = 1
                     error_comfirm = True
-                    # status_confirm = result_confirm["SUCCESS"]
-                    status_confirm = 'false'
-
-                    # if result_confirm["SUCCESS"] == 'false':
+                    status_confirm = result_confirm["SUCCESS"]
                     
                     while status_confirm == 'false' and recall <= 3:
+                        # recall api confirm booking
                         result_confirm = api.call_api_booking_confirm(
                              booking_order.barcode, id_server)
+                        # update new status of api
                         status_confirm = result_confirm["SUCCESS"]
-                        # if recall == 2:
-                        #     status_confirm = result_confirm["SUCCESS"]
                         error_comfirm = False if status_confirm == 'true' else True
                         recall +=1
                             
                     if error_comfirm:
                         # update number retry ipn
-                        booking_order.order_status = 'cancel'
+                        booking_order.order_status = 'confirm_error'
                         booking_order.desc_transaction = "Payment success but confirm booking error"
                         booking_order.save()
                         
@@ -362,7 +359,7 @@ def payment_ipn(request):
                         cancel_seats(booking_order.seats.split(
                             ","), booking_order.id_server)
 
-                    booking_order.order_status = 'Error'
+                    booking_order.order_status = 'payment_error'
                     booking_order.save()
 
                     result = JsonResponse(
