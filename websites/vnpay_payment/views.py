@@ -283,43 +283,59 @@ def payment_ipn(request):
                         booking_order.barcode, id_server)
 
                     # Handle Confirm Booking Error
-                    if result_confirm["SUCCESS"] == 'false':
-                    # if True:
+                    # ReCall confirm booking three times when booking confirm error
+                    recall = 1
+                    error_comfirm = True
+                    # status_confirm = result_confirm["SUCCESS"]
+                    status_confirm = 'false'
+
+                    # if result_confirm["SUCCESS"] == 'false':
+                    if True:
+                        while status_confirm == 'false' and recall <= 3:
+                            result_confirm = api.call_api_booking_confirm(
+                                 booking_order.barcode, id_server)
+                            status_confirm = result_confirm["SUCCESS"]
+                            # if recall == 2:
+                            #     status_confirm = result_confirm["SUCCESS"]
+                            error_comfirm = False if status_confirm == 'true' else True
+                            recall +=1
+                            
+                    if error_comfirm:
                         # update number retry ipn
                         booking_order.order_status = 'cancel'
                         booking_order.desc_transaction = "Payment success but confirm booking error"
-                        booking_order.retry_ipn += 1
                         booking_order.save()
                         
-                        # VNPay retry call order_id payment success 10 times. if barcode of order_id cannot confirm then send sms for client and admin transaction error.
-                        if booking_order.retry_ipn == 9 :
-                            # Payment Error: cancel seats chooice and return for
-                            # vnpayment
-                            if booking_order.seats:
-                                cancel_seats(booking_order.seats.split(
-                                    ","), booking_order.id_server)
+                        
+                        # Payment Error: cancel seats chooice and return for
+                        # vnpayment
+                        if booking_order.seats:
+                            cancel_seats(booking_order.seats.split(
+                                ","), booking_order.id_server)
 
-                            # Get information admin metiz cinema
-                            email_admin_cinema = settings.SYSTEM_ADMIN_CINEMA_EMAIL
-                            phone_admin = settings.SYSTEM_ADMIN_CINEMA_PHONE
+                        # Get information admin metiz cinema
+                        email_admin_cinema = settings.SYSTEM_ADMIN_CINEMA_EMAIL
+                        phone_admin = settings.SYSTEM_ADMIN_CINEMA_PHONE
 
-                            admin_info = AdminInfo.objects.all()
-                            if admin_info:
-                                email_admin_cinema = admin_info[0].email
-                                phone_admin = admin_info[0].phone
+                        admin_info = AdminInfo.objects.all()
+                        if admin_info:
+                            email_admin_cinema = admin_info[0].email
+                            phone_admin = admin_info[0].phone
 
-                            # send sms for client about transaction booking movie error.
-                            error_sms = """Dat ve khong thanh cong tai Metiz Cinema .Ma dat ve: %s, vui long lien he: %s, neu ban van chua duoc hoan tien""" %(booking_order.barcode, phone_admin)
-                            # Send SMS notification for user transaction error
-                            send_sms(booking_order.phone, error_sms)
+                        # send sms for client about transaction booking movie error.
+                        error_sms = """Dat ve khong thanh cong tai Metiz Cinema .Ma dat ve: %s, vui long lien he: %s, neu ban van chua duoc hoan tien""" %(booking_order.barcode, phone_admin)
+                        # Send SMS notification for user transaction error
+                        send_sms(booking_order.phone, error_sms)
 
-                            content_error = """Lỗi: Đã trừ tiền của khách hàng nhưng không thể xuất vé phim. 
-                                                Vui Lòng kiểm tra hoá đơn : %s .Để hoàn tiền hoặc xử lý vé cho khách hàng. 
-                                                Thông tin khách hàng. Phone: 0%s, email: %s"""%(booking_order.order_id, booking_order.phone, booking_order.email)
-                            # Send email notification for admin transaction error
+                        content_error = """Lỗi: Đã trừ tiền của khách hàng nhưng không thể xuất vé phim. 
+                                            Vui Lòng kiểm tra hoá đơn : %s .Để hoàn tiền hoặc xử lý vé cho khách hàng. 
+                                            Thông tin khách hàng. Phone: 0%s, email: %s"""%(booking_order.order_id, booking_order.phone, booking_order.email)
+                        # Send email notification for admin transaction error
+                        print "### email_admin_cinema ",email_admin_cinema
+                        if email_admin_cinema:
                             send_mail_booking_error(request.is_secure(), email_admin_cinema, booking_order.barcode, content_error)
                             
-                        return JsonResponse({'RspCode': '99', 'Message': 'Process Booking Movie Error'})
+                        return JsonResponse({'RspCode': '02', 'Message': 'Process Confirm Booking Movie Error'})
 
                     # Handle Confirm Booking Success and send sms or email
                     booking_order.order_status = "done"
