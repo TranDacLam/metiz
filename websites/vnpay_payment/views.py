@@ -290,15 +290,15 @@ def payment_ipn(request):
                     status_confirm = 'false'
 
                     # if result_confirm["SUCCESS"] == 'false':
-                    if True:
-                        while status_confirm == 'false' and recall <= 3:
-                            result_confirm = api.call_api_booking_confirm(
-                                 booking_order.barcode, id_server)
-                            status_confirm = result_confirm["SUCCESS"]
-                            # if recall == 2:
-                            #     status_confirm = result_confirm["SUCCESS"]
-                            error_comfirm = False if status_confirm == 'true' else True
-                            recall +=1
+                    
+                    while status_confirm == 'false' and recall <= 3:
+                        result_confirm = api.call_api_booking_confirm(
+                             booking_order.barcode, id_server)
+                        status_confirm = result_confirm["SUCCESS"]
+                        # if recall == 2:
+                        #     status_confirm = result_confirm["SUCCESS"]
+                        error_comfirm = False if status_confirm == 'true' else True
+                        recall +=1
                             
                     if error_comfirm:
                         # update number retry ipn
