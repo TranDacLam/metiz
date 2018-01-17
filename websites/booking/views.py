@@ -368,9 +368,6 @@ def booking_info_report(request):
             start = int(request.POST.get("start"))
             # End index = start index + length
             end = start + int(request.POST.get("length"))
-            # If not page 0 then start = start+1
-            if start > 0:
-                start += 1
 
             # Get data booking information
             booking_info_list = booking_info_data(request)
