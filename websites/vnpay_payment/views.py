@@ -283,19 +283,22 @@ def payment_ipn(request):
                     # booking order
                     result_confirm = api.call_api_booking_confirm(
                         booking_order.barcode, id_server)
-
+                    
+                    print "#### Confirm Booking Information: Barcode : %s, status: %s"%(booking_order.barcode, result_confirm)
                     # Handle Confirm Booking Error
                     # ReCall confirm booking three times when booking confirm error
                     recall = 1
-                    error_comfirm = True
-                    status_confirm = result_confirm["SUCCESS"]
+                    status_confirm = result_confirm["SUCCESS"].lower()
+                    error_comfirm = False if status_confirm == 'true' else True
                     
                     while status_confirm == 'false' and recall <= 3:
                         # recall api confirm booking
                         result_confirm = api.call_api_booking_confirm(
                              booking_order.barcode, id_server)
+                        
+                        print "#### Confirm Booking Information %s : Barcode : %s, status: %s "%(booking_order.barcode, recall, result_confirm) 
                         # update new status of api
-                        status_confirm = result_confirm["SUCCESS"]
+                        status_confirm = result_confirm["SUCCESS"].lower()
                         error_comfirm = False if status_confirm == 'true' else True
                         recall +=1
                             
