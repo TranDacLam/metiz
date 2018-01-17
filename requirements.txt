@@ -10,3 +10,4 @@ requests
 pycrypto
 django-recaptcha
 django-hitcount
+XlsxWriter
