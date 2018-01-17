@@ -4,18 +4,24 @@ from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
-from booking.models import MovieSync
+from booking.models import MovieSync, BookingInfomation
 from booking.forms import BookingForm
 from booking import api
 import json
 import ast
-from datetime import timedelta
+from datetime import timedelta, datetime, time
 from core.models import Movie
+
+# Export to excel
+import os
+import xlsxwriter
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 
 
 def get_booking(request):
     try:
-        """ Action render page booking for user selected chair, 
+        """ Action render page booking for user selected chair,
             this action support for two action get and post
         """
         if request.method == 'POST':
@@ -86,8 +92,9 @@ def build_show_time_json(current_date, item, result, movies_info, obj_movie=None
 
     # Check time showing greater than currnet hour
     if item["DATE"] == current_date.strftime("%d/%m/%Y"):
-        current_time = ((current_date.hour) * 60 + current_date.minute)
-        time_show = (int(item["TIME"].split(':')[0]) * 60 + int(item["TIME"].split(':')[1]))
+        current_time = (current_date.hour) * 60 + current_date.minute
+        time_show = (int(item["TIME"].split(':')[0])) * \
+            60 + int(int(item["TIME"].split(':')[1]))
         # compare hour and minute
         if time_show >= current_time:
             result[item["MOVIE_ID"]]["lst_times"].append(
@@ -175,7 +182,7 @@ def get_seats(request):
 
 def check_seats(request):
     try:
-        """ 
+        """
             Action verify seats have been selected before
             - step 1 : verify if seat aready selected then response error
             - step 2 : Seats no have selected then post booking for user
@@ -206,7 +213,7 @@ def check_seats(request):
                     return JsonResponse({"code": 400, "message": _("These chairs have been selected : %s" % seat_has_selected)}, status=400)
                 else:
                     # init url api without member card
-                    url="/postBooking"
+                    url = "/postBooking"
                     # Call Booking Seats
                     full_name = request.session.get("full_name", "")
                     phone = request.session.get("phone", "")
@@ -214,7 +221,7 @@ def check_seats(request):
                     # Get Information of user and building data for api update
                     # status of seats
                     member_card = request.POST.get('member_card')
-                    #Change api url when card member is not null
+                    # Change api url when card member is not null
                     if member_card:
                         url = "/postBookingMember"
 
@@ -230,8 +237,8 @@ def check_seats(request):
                     current_store = request.session.get("movies", {})
                     working_id = request.POST["working_id"]
                     if working_id in current_store:
-                        """ 
-                            If session exist working_id then append new seat item into session: 
+                        """
+                            If session exist working_id then append new seat item into session:
                             Algorithm :
                              - Cancel seats old in workingid and add new seats choice
                         """
@@ -304,3 +311,216 @@ def clear_seeats(request):
     except Exception, e:
         print "Error clear_seeats : %s ", e
         pass
+
+
+""" START BOOKING INFORMATION REPORT """
+
+
+def booking_info_data(request):
+    try:
+        booking_info_list = BookingInfomation.objects.extra(select={"created_format": "DATE_FORMAT(created, '%%d/%%m/%%Y')"}).values(
+            'order_id', 'order_desc', 'order_status', 'desc_transaction', 'barcode_confirm', 'amount', 'email', 'phone', 'created_format')
+
+        # Get Parameter From POST request
+        order_id = request.POST.get("order_id", "1")
+        order_status = request.POST.get("order_status", "")
+        email = request.POST.get("email", "")
+        phone = request.POST.get("phone", "")
+        barcode = request.POST.get("barcode", "")
+        date_from = request.POST.get("date_from", "")
+        date_to = request.POST.get("date_to", "")
+
+        kwargs = {}
+
+        # If paramter is not null then append condition to query
+        if order_id:
+            kwargs['order_id'] = order_id
+        if order_status:
+            kwargs['order_status'] = order_status
+        if email:
+            kwargs['email'] = email
+        if phone:
+            kwargs['phone'] = phone
+        if barcode:
+            kwargs['barcode_confirm'] = barcode
+        if date_from:
+            kwargs['created__gte'] = datetime.combine(datetime.strptime(date_from, "%d/%m/%Y").date(), time.min)
+        if date_to:
+            kwargs['created__lte'] = datetime.combine(datetime.strptime(date_to, "%d/%m/%Y").date(), time.max)
+        if kwargs:
+            booking_info_list = booking_info_list.filter(**kwargs)
+
+        return booking_info_list
+
+    except DatabaseError, e:
+        print "ERROR Connect DB: ", e
+        raise Exception(
+            "Connect DB Error .Please contact administrator.")
+
+
+@login_required(login_url='/admin/login/')
+@permission_required('is_superuser', login_url='/admin/login/')
+def booking_info_report(request):
+    try:
+        if request.method == "POST":
+            result = {}
+            # Get start index
+            start = int(request.POST.get("start"))
+            # End index = start index + length
+            end = start + int(request.POST.get("length"))
+            # If not page 0 then start = start+1
+            if start > 0:
+                start += 1
+
+            # Get data booking information
+            booking_info_list = booking_info_data(request)
+
+            # Get total items result
+            total_items = len(list(booking_info_list.values('order_id')))
+
+            # Get Booking information from start to end
+            booking_info_list = booking_info_list[start:end]
+
+            result["data"] = list(booking_info_list)
+            result["recordsTotal"] = total_items
+            result["recordsFiltered"] = total_items
+
+            return HttpResponse(
+                json.dumps(result),
+                content_type="application/json"
+            )
+    except Exception, e:
+        print "Error booking_info_report : %s ", e
+        pass
+
+    return render(request, "websites/booking/booking_info_report.html")
+
+
+@login_required(login_url='/admin/login/')
+@permission_required('is_superuser', login_url='/admin/login/')
+def booking_info_export_to_excel(request):
+
+    try:
+        if request.method == 'POST':
+            # Get total items result
+            booking_info_list = booking_info_data(request)
+
+            print datetime.now()
+
+            if booking_info_list:
+                excel_file_name = "BookingInformationReport.xlsx"
+
+                # Export to excel
+                write_to_excel(excel_file_name, booking_info_list)
+                return HttpResponse(
+                    json.dumps(
+                        {"uri": '/media/excel/' + excel_file_name}),
+                    content_type="application/json"
+                )
+        return HttpResponse(
+            json.dumps({"uri": '#'}),
+            content_type="application/json"
+        )
+    except Exception, e:
+        print "Error booking_info_report : %s ", e
+        pass
+
+
+"""
+    Get root folder path.
+"""
+
+
+def get_root_folder():
+    BASE_DIR = os.path.dirname(os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))))
+    ROOT_FOLDER = os.path.join(BASE_DIR, "public/media", "excel")
+    if not os.path.isdir(ROOT_FOLDER):
+        os.makedirs(ROOT_FOLDER)
+    return ROOT_FOLDER
+
+
+"""
+    Write Data to excel file
+"""
+
+
+def write_to_excel(file_name, booking_list):
+
+    try:
+
+        # Get folder contain excel file
+        ROOT_FOLDER = get_root_folder()
+
+        # create workbook
+        workbook = xlsxwriter.Workbook(
+            os.path.join(ROOT_FOLDER, file_name))
+
+        worksheet = workbook.add_worksheet()
+
+        title = "Booking Information"
+        # header format
+        header_format = workbook.add_format({
+            'bold': 1,
+            'border': 1,
+            'align': 'center',
+            'valign': 'vcenter',
+            'fg_color': '#739abb',
+            'font_color': '#ffffff'})
+        # merge format
+        merge_format = workbook.add_format({
+            'bold': 1,
+            'border': 1,
+            'align': 'center',
+            'valign': 'vcenter',
+            'fg_color': '#ffffff'})
+        # ceate money format in worksheet
+        money_format = workbook.add_format({'num_format': '#,##0'})
+        cell_format = workbook.add_format({'text_wrap': True, 'valign': 'top'})
+
+        worksheet.merge_range('A1:I1', title, merge_format)
+
+        # set header of excel
+        worksheet.write('A2', 'Order ID', header_format)
+        worksheet.write('B2', 'Order Description', header_format)
+        worksheet.write('C2', 'Order Status', header_format)
+        worksheet.write('D2', 'Order Transaction', header_format)
+        worksheet.write('E2', 'Barcode', header_format)
+        worksheet.write('F2', 'Amount', header_format)
+        worksheet.write('G2', 'Email', header_format)
+        worksheet.write('H2', 'Phone', header_format)
+        worksheet.write('I2', 'Create Date', header_format)
+
+        # set width of cell
+        worksheet.set_column(0, 0, 17)
+        worksheet.set_column(1, 1, 35)
+        worksheet.set_column(2, 2, 13)
+        worksheet.set_column(3, 3, 20)
+        worksheet.set_column(4, 4, 10)
+        worksheet.set_column(5, 5, 15)
+        worksheet.set_column(6, 6, 25)
+        worksheet.set_column(7, 8, 15)
+        worksheet.set_row(0, 40)
+        worksheet.set_row(1, 30)
+
+        # fill Data to excel
+        if booking_list:
+            row = 2
+            for booking in booking_list:
+                worksheet.write(row, 0, booking["order_id"])
+                worksheet.write(row, 1, booking["order_desc"], cell_format)
+                worksheet.write(row, 2, booking["order_status"])
+                worksheet.write(row, 3, booking["desc_transaction"])
+                worksheet.write(row, 4, booking["barcode_confirm"])
+                worksheet.write(row, 5, booking["amount"], money_format)
+                worksheet.write(row, 6, booking["email"])
+                worksheet.write(row, 7, booking["phone"])
+                worksheet.write(row, 8, booking["created_format"])
+                row += 1
+
+        workbook.close()
+
+    except Exception, e:
+        print "Error write_to_excel : %s ", e
+        pass
+""" END BOOKING INFORMATION REPORT """
