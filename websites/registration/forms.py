@@ -122,7 +122,8 @@ class MetizSignupForm(UserCreationForm):
                 'email': email,
                 'URL_LOGO': logo_url,
                 'activate_url': url_activate,
-                'site': str(Site.objects.get_current())
+                'site': str(Site.objects.get_current()),
+                'HOT_LINE': settings.HOT_LINE
             }
             # Send email activation link
             metiz_email.send_mail(subject, message_txt, message_html, settings.DEFAULT_FROM_EMAIL, [
