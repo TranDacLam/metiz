@@ -104,7 +104,8 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
             'URL_LOGO': logo_url,
             'barcode': barcode,
             'content': content,
-            'site': str(Site.objects.get_current())
+            'site': str(Site.objects.get_current()),
+            'HOT_LINE': settings.HOT_LINE
         }
         # Send email booking success
         metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
@@ -126,7 +127,8 @@ def send_mail_booking_error(is_secure, email, barcode, content):
             'URL_LOGO': logo_url,
             'barcode': barcode,
             'content': content,
-            'site': str(Site.objects.get_current())
+            'site': str(Site.objects.get_current()),
+            'HOT_LINE': settings.HOT_LINE
         }
         # Send email transaction booking moive order error
         metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
