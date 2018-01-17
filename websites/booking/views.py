@@ -86,8 +86,8 @@ def build_show_time_json(current_date, item, result, movies_info, obj_movie=None
 
     # Check time showing greater than currnet hour
     if item["DATE"] == current_date.strftime("%d/%m/%Y"):
-        current_time = ((current_date.hour) * 60 + current_date.minute) - 15
-        time_show = (int(item["TIME"].split(':')[0])) * 60 + int(int(item["TIME"].split(':')[1]))
+        current_time = ((current_date.hour) * 60 + current_date.minute)
+        time_show = (int(item["TIME"].split(':')[0]) * 60 + int(item["TIME"].split(':')[1]))
         # compare hour and minute
         if time_show >= current_time:
             result[item["MOVIE_ID"]]["lst_times"].append(
