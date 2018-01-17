@@ -145,7 +145,7 @@ USE_I18N = True
 
 USE_L10N = True
 # Set USE_TZ is False. Fix bugs RuntimeWarning 
-USE_TZ = False
+USE_TZ = True
 
 SITE_ID = 1
 
