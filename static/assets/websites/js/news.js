@@ -40,16 +40,16 @@ $(document).ready(function() {
         return "Áp Dụng Liên Tục";
     }
 
-    // Check list news condition if < 12 remove button load more
+    // Check list news condition if data-page > coutNew remove button load more
     var coutNew = parseInt($('.load-more').attr('data-count-news'));
-    if(coutNew < 12){
+    if(parseInt($('.load-more').attr('data-page')) > coutNew){
         $('.news-custom>.text-center button').remove();
     }
-
     $('#load-more-news').on('click', function(e){
         e.preventDefault();
         $(this).prop('disabled', true);
         var page = parseInt($(this).attr('data-page'));
+        console.log(page);
         $.ajax({
             url: '/news/',
             type: 'get',

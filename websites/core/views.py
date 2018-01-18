@@ -166,6 +166,7 @@ def news(request):
         # merge 3 list by order future, present and past
         list_news = list(chain(list_news_future, list_news_present))
 
+
         # Pagination QuerySet With Defalt Page is 12 Items
         paginator_news = Paginator(list_news, page_items)
         try:
@@ -188,7 +189,7 @@ def news(request):
 
             return JsonResponse({"data": news_json, "total_page": paginator_news.num_pages}, safe=False)
 
-        return render(request, 'websites/news.html', {'list_news': news_page.object_list, "total_item": len(news_page.object_list)})
+        return render(request, 'websites/news.html', {'list_news': news_page.object_list, 'total_page': paginator_news.num_pages})
     except Exception, e:
         print "Error: %s" % e
         return HttpResponse(status=500)
