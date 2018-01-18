@@ -319,7 +319,7 @@ def clear_seeats(request):
 def booking_info_data(request):
     try:
         booking_info_list = BookingInfomation.objects.extra(select={"created_format": "DATE_FORMAT(created, '%%d/%%m/%%Y')"}).values(
-            'order_id', 'order_desc', 'order_status', 'desc_transaction', 'barcode_confirm', 'amount', 'email', 'phone', 'created_format')
+            'order_id', 'order_desc', 'order_status', 'desc_transaction', 'barcode', 'amount', 'email', 'phone', 'created_format')
 
         # Get Parameter From POST request
         order_id = request.POST.get("order_id", "1")
@@ -342,7 +342,7 @@ def booking_info_data(request):
         if phone:
             kwargs['phone'] = phone
         if barcode:
-            kwargs['barcode_confirm'] = barcode
+            kwargs['barcode'] = barcode
         if date_from:
             kwargs['created__gte'] = datetime.combine(datetime.strptime(date_from, "%d/%m/%Y").date(), time.min)
         if date_to:
@@ -508,7 +508,7 @@ def write_to_excel(file_name, booking_list):
                 worksheet.write(row, 1, booking["order_desc"], cell_format)
                 worksheet.write(row, 2, booking["order_status"])
                 worksheet.write(row, 3, booking["desc_transaction"])
-                worksheet.write(row, 4, booking["barcode_confirm"])
+                worksheet.write(row, 4, booking["barcode"])
                 worksheet.write(row, 5, booking["amount"], money_format)
                 worksheet.write(row, 6, booking["email"])
                 worksheet.write(row, 7, booking["phone"])

@@ -39,7 +39,7 @@ function bookingInfoDatataleFunction() {
 	        }, {
 	            data: "desc_transaction"
 	        }, {
-	            data: "barcode_confirm"
+	            data: "barcode"
 	        }, {
 	            data: "amount"
 	        }, {
