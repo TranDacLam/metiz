@@ -402,8 +402,6 @@ def booking_info_export_to_excel(request):
             # Get total items result
             booking_info_list = booking_info_data(request)
 
-            print datetime.now()
-
             if booking_info_list:
                 excel_file_name = "BookingInformationReport.xlsx"
 

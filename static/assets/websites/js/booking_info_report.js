@@ -135,9 +135,7 @@ $(document).ready(function() {
     	$.ajax({
 			url: '/booking-info-export-to-excel/',
 			type: 'POST',
-			data: function (parameters) {
-	            parameters = dataParams; 
-            },
+			data: dataParams,
 			success: function (data) {
 				$(".dl-excel").attr("href", data.uri)[0].click();  
 			},
