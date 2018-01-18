@@ -49,7 +49,6 @@ $(document).ready(function() {
         e.preventDefault();
         $(this).prop('disabled', true);
         var page = parseInt($(this).attr('data-page'));
-        console.log(page);
         $.ajax({
             url: '/news/',
             type: 'get',
@@ -61,10 +60,9 @@ $(document).ready(function() {
         })
         .done(function(response) {
             // Check total page let remove button load more
-            if(page >= response.total_page){
+            if(page >= coutNew){
                 $('.news-custom>.text-center button').remove();
             }
-            
             // increase the value page +1
             $(this).attr('data-page',page + 1);
             var html = '';
