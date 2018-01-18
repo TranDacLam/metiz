@@ -21,7 +21,11 @@ function bookingInfoDatataleFunction() {
 		            parameters.order_status = $("#id_order_status").val();
 		            parameters.barcode =  $("#id_barcode").val();
 		            parameters.email = $("#id_email").val();
-		            parameters.phone = $("#id_phone").val();
+		            var phone_val = $("#id_phone").val();
+		            if (phone_val.charAt(0) == 0) {
+		            	phone_val = phone_val.substring(1);
+		            }
+		            parameters.phone = phone_val;
 		            parameters.date_from =  $("#id_date_from").val();
 		            parameters.date_to = $("#id_date_to").val();
 		            dataParams = parameters;

@@ -468,7 +468,8 @@ def write_to_excel(file_name, booking_list):
             'border': 1,
             'align': 'center',
             'valign': 'vcenter',
-            'fg_color': '#ffffff'})
+            'fg_color': '#ffffff',
+            'font_size': 24})
         # ceate money format in worksheet
         money_format = workbook.add_format({'num_format': '#,##0'})
         cell_format = workbook.add_format({'text_wrap': True, 'valign': 'top'})
@@ -484,7 +485,7 @@ def write_to_excel(file_name, booking_list):
         worksheet.write('F2', 'Amount', header_format)
         worksheet.write('G2', 'Email', header_format)
         worksheet.write('H2', 'Phone', header_format)
-        worksheet.write('I2', 'Create Date', header_format)
+        worksheet.write('I2', 'Created Date', header_format)
 
         # set width of cell
         worksheet.set_column(0, 0, 17)
