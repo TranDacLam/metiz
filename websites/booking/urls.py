@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^verify/seats$', views.check_seats, name='verify-seats'),
     url(r'^clear/seats$', views.clear_seeats, name='clear-seats'),
     url(r'^timeout/booking$', views.time_out_booking, name='time-out-booking'),
+    url(r'^booking-info-report/$', views.booking_info_report, name='booking-info-report'),
+    url(r'^booking-info-export-to-excel/$', views.booking_info_export_to_excel, name='booking-info-export-to-excel'),
 ]

@@ -13,6 +13,8 @@ DATABASES = {
     }
 }
 # Default Email Contact
+SYSTEM_ADMIN_CINEMA_EMAIL = "thaophan@vooc.vn"
+SYSTEM_ADMIN_CINEMA_PHONE = "0905242259"
 DEFAULT_TO_ADMIN_EMAIL = "thaophan@vooc.vn"
 
 # VNPAY CONFIG
@@ -27,9 +29,9 @@ CINESTAR_SERECT_KEY = 'df733de5b7394530835a2d61ce20e220'
 BASE_URL_CINESTAR = 'http://kingproserver.ddns.net:8085/demo.asmx'
 
 # SMS Config
-SMS_BRAND = "HelioCenter"
-SMS_USER = "heliocenter"
-SMS_PASSWORD = "truyenthonghelio"
+SMS_BRAND = "MetizCinema"
+SMS_USER = "metizcinema"
+SMS_PASSWORD = "metizcinema123"
 SMS_KEY = "VNFPT123BLUESEA1"
 SMS_KEY_IV = "154dxc1scfzzad21"
 SMS_URL = "http://ws.ctnet.vn/servicectnet.asmx?op=sendsms"

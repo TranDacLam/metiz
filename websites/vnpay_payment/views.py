@@ -19,6 +19,7 @@ import ast
 import requests
 import random
 import base64
+from core.models import AdminInfo
 
 
 def data_encrypt_cbc(data):
@@ -88,7 +89,6 @@ def send_sms(phone, content):
         pass
         return None
 
-
 def send_mail_booking(is_secure, email, full_name, barcode, content):
     try:
         message_html = "websites/booking/email/booking_notification.html"
@@ -104,9 +104,33 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
             'URL_LOGO': logo_url,
             'barcode': barcode,
             'content': content,
-            'site': str(Site.objects.get_current())
+            'site': str(Site.objects.get_current()),
+            'HOT_LINE': settings.HOT_LINE
         }
-        # Send email activation link
+        # Send email booking success
+        metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
+                              email], data_binding)
+    except Exception, e:
+        print "Error send_mail_booking : ", e
+
+def send_mail_booking_error(is_secure, email, barcode, content):
+    try:
+        message_html = "websites/booking/email/booking_error.html"
+        subject = _("[Metiz] Booking Movie Tickets Transaction Error !")
+
+        protocol = 'http'
+        if is_secure:
+            protocol = 'https'
+        logo_url = '/static/assets/websites/images/logo_bottom.png'
+        data_binding = {
+            "protocol": protocol,
+            'URL_LOGO': logo_url,
+            'barcode': barcode,
+            'content': content,
+            'site': str(Site.objects.get_current()),
+            'HOT_LINE': settings.HOT_LINE
+        }
+        # Send email transaction booking moive order error
         metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
                               email], data_binding)
     except Exception, e:
@@ -259,18 +283,61 @@ def payment_ipn(request):
                     # booking order
                     result_confirm = api.call_api_booking_confirm(
                         booking_order.barcode, id_server)
-
+                    
+                    print "#### Confirm Booking Information: Barcode : %s, status: %s"%(booking_order.barcode, result_confirm)
                     # Handle Confirm Booking Error
-                    if result_confirm["SUCCESS"] == 'false':
+                    # ReCall confirm booking three times when booking confirm error
+                    recall = 1
+                    status_confirm = result_confirm["SUCCESS"].lower()
+                    error_comfirm = False if status_confirm == 'true' else True
+                    
+                    while status_confirm == 'false' and recall <= 3:
+                        # recall api confirm booking
+                        result_confirm = api.call_api_booking_confirm(
+                             booking_order.barcode, id_server)
+                        
+                        print "#### Confirm Booking Information %s : Barcode : %s, status: %s "%(booking_order.barcode, recall, result_confirm) 
+                        # update new status of api
+                        status_confirm = result_confirm["SUCCESS"].lower()
+                        error_comfirm = False if status_confirm == 'true' else True
+                        recall +=1
+                            
+                    if error_comfirm:
+                        # update number retry ipn
+                        booking_order.order_status = 'confirm_error'
+                        booking_order.desc_transaction = "Payment success but confirm booking error"
+                        booking_order.save()
+                        
+                        
                         # Payment Error: cancel seats chooice and return for
                         # vnpayment
                         if booking_order.seats:
                             cancel_seats(booking_order.seats.split(
                                 ","), booking_order.id_server)
 
-                        booking_order.order_status = 'cancel'
-                        booking_order.save()
-                        return JsonResponse({'RspCode': '99', 'Message': 'Process Booking Movie Error'})
+                        # Get information admin metiz cinema
+                        email_admin_cinema = settings.SYSTEM_ADMIN_CINEMA_EMAIL
+                        phone_admin = settings.SYSTEM_ADMIN_CINEMA_PHONE
+
+                        admin_info = AdminInfo.objects.all()
+                        if admin_info:
+                            email_admin_cinema = admin_info[0].email
+                            phone_admin = admin_info[0].phone
+
+                        # send sms for client about transaction booking movie error.
+                        error_sms = """Dat ve khong thanh cong tai Metiz Cinema .Ma dat ve: %s, vui long lien he: %s, neu ban van chua duoc hoan tien""" %(booking_order.barcode, phone_admin)
+                        # Send SMS notification for user transaction error
+                        send_sms(booking_order.phone, error_sms)
+
+                        content_error = """Lỗi: Đã trừ tiền của khách hàng nhưng không thể xuất vé phim. 
+                                            Vui Lòng kiểm tra hoá đơn : %s để hoàn tiền hoặc xử lý vé cho khách hàng. 
+                                            Thông tin khách hàng: Phone: 0%s, Email: %s"""%(booking_order.order_id, booking_order.phone, booking_order.email)
+                        # Send email notification for admin transaction error
+                        print "### email_admin_cinema ",email_admin_cinema
+                        if email_admin_cinema:
+                            send_mail_booking_error(request.is_secure(), email_admin_cinema, booking_order.barcode, content_error)
+                            
+                        return JsonResponse({'RspCode': '02', 'Message': 'Process Confirm Booking Movie Error'})
 
                     # Handle Confirm Booking Success and send sms or email
                     booking_order.order_status = "done"
@@ -297,7 +364,7 @@ def payment_ipn(request):
                         cancel_seats(booking_order.seats.split(
                             ","), booking_order.id_server)
 
-                    booking_order.order_status = 'Error'
+                    booking_order.order_status = 'payment_error'
                     booking_order.save()
 
                     result = JsonResponse(

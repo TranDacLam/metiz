@@ -144,7 +144,7 @@ TIME_ZONE = 'Asia/Saigon'
 USE_I18N = True
 
 USE_L10N = True
-
+# Set USE_TZ is False. Fix bugs RuntimeWarning 
 USE_TZ = True
 
 SITE_ID = 1
@@ -193,7 +193,10 @@ CKEDITOR_CONFIGS = {
 CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
+HOT_LINE = "0236 3630 689"
 # Config outgoing email
+SYSTEM_ADMIN_CINEMA_EMAIL = ""
+SYSTEM_ADMIN_CINEMA_PHONE = ""
 EMAIL_BACKEND = "main.email_backend.DKIMBackend"
 DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
 DEFAULT_FROM_EMAIL = "Metiz Cinema Service <no-reply@metiz.vn>"

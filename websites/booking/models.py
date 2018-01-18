@@ -8,8 +8,11 @@ from django.utils.translation import ugettext_lazy as _
 class BookingInfomation(DateTimeModel):
     TYPE = (
         ('cancel', 'Cancel'),
+        ('confirm_error', 'Confirm Error'),
+        ('payment_error', 'Payment Error'),
         ('pendding', 'Pendding'),
         ('done', 'Done')
+        
     )
     user = models.ForeignKey(
         "core.User", related_name='user_booking_rel', null=True, blank=True)
@@ -24,6 +27,8 @@ class BookingInfomation(DateTimeModel):
     id_server = models.IntegerField(default=1)
     order_status = models.CharField(max_length=50, choices=TYPE, default="pendding")
     barcode_confirm = models.CharField(max_length=100, null=True, blank=True)
+    desc_transaction = models.CharField(max_length=500, null=True, blank=True)
+    retry_ipn = models.IntegerField(default=0)
 
 class MovieSync(DateTimeModel):
     TYPE = (

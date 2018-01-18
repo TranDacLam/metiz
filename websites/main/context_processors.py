@@ -17,3 +17,11 @@ def get_app_recaptcha_key(request):
     except:
         pass
     return {'RECAPTCHA_PUBLIC_KEY': RECAPTCHA_PUBLIC_KEY}
+
+def get_app_fb_id(request):
+    HOT_LINE = ''
+    try:
+        HOT_LINE = settings.HOT_LINE
+    except:
+        pass
+    return {'HOT_LINE': HOT_LINE}

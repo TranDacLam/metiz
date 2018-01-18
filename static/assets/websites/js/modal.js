@@ -367,7 +367,7 @@ $(document).ready(function() {
                     }
                 });
                 $('.list-schedule').html(html);
-                getValue();
+                trigger_click_showtime();
                 if ($('.list-schedule').text() == '') {
                     $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lịch Chiếu Nào. Vui Lòng Chọn Ngày Khác.<p/>');
                 }
@@ -378,7 +378,24 @@ $(document).ready(function() {
                 $('.msg-result-js').html(msgResult("Error schedule film!", "danger"));
             });
     });
-    function getValue() {
+    function trigger_click_showtime() {
+        // Validate Time Remain before 15 minutes. verify when date selected equal current date
+        function validate_time_remain(element){
+            var time_remain = 15;
+            var date_now = new Date();
+            // get current date selected and time of movie show
+            var date_selected = new Date($('.popup-movie-schedule.active-date').attr('data-date-select'));
+            var start_time = element.children('.time').text().split('~')[0];
+            
+            // get show time sub 15 minute check show time greate than equal curren time then allow booking
+            var time_show = (start_time.split(":")[0] * 60 + parseInt(start_time.split(":")[1])) - time_remain;
+            var current_time = date_now.getHours() * 60 + date_now.getMinutes() ;
+            
+            if(new Date().setHours(0,0,0,0) == date_selected.setHours(0,0,0,0) &&  time_show >= current_time){
+                return true;
+            }
+            return false;
+        }
 
         function showPopup(element){
 
@@ -437,7 +454,9 @@ $(document).ready(function() {
         if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
             $('.sold-out a').on('click', function(event) {
                 $(this).addClass('mobile-schedule');
-                showPopup($(this));
+                if(validate_time_remain($(this))){
+                    showPopup($(this));
+                }
             });
             $('.modal-schedule').on('hide.bs.modal', function() {
                 $('.sold-out a').removeClass('mobile-schedule');
@@ -450,7 +469,10 @@ $(document).ready(function() {
         }else{
             $('.sold-out a').click(function(event) {
                 event.preventDefault();
-                showPopup($(this));
+                if(validate_time_remain($(this))){
+                    showPopup($(this));    
+                }
+                
             });
         }
         

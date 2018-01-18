@@ -16,6 +16,8 @@ DATABASES = {
 }
 
 # Default Email Contact
+SYSTEM_ADMIN_CINEMA_EMAIL = ""
+SYSTEM_ADMIN_CINEMA_PHONE = ""
 DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
 
 # VNPAY CONFIG
@@ -31,9 +33,9 @@ CINESTAR_SERECT_KEY = '5ba90f1cc2d540edbb01e3ffc85bc7f2'
 BASE_URL_CINESTAR = 'http://113.176.107.20:8080/helio.asmx'
 
 # SMS Config
-SMS_BRAND = "HelioCenter"
-SMS_USER = "heliocenter"
-SMS_PASSWORD = "truyenthonghelio"
+SMS_BRAND = "MetizCinema"
+SMS_USER = "metizcinema"
+SMS_PASSWORD = "metizcinema123"
 SMS_KEY = "VNFPT123BLUESEA1"
 SMS_KEY_IV = "154dxc1scfzzad21"
 SMS_URL = "http://ws.ctnet.vn/servicectnet.asmx?op=sendsms"
