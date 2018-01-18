@@ -41,7 +41,8 @@ function bookingInfoDatataleFunction() {
 	        }, {
 	            data: "barcode"
 	        }, {
-	            data: "amount"
+	            data: "amount",
+	             render: $.fn.dataTable.render.number( ',' )
 	        }, {
 	            data: "email"
 	        }, {
