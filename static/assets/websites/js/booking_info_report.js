@@ -17,11 +17,11 @@ function bookingInfoDatataleFunction() {
 	            url: '/booking-info-report/',
 	            type: 'POST',
 	            data: function (parameters) {
-	            	parameters.order_id = $("#id_order_id").val();
+	            	parameters.order_id = $("#id_order_id").val().trim();
 		            parameters.order_status = $("#id_order_status").val();
-		            parameters.barcode =  $("#id_barcode").val();
-		            parameters.email = $("#id_email").val();
-		            var phone_val = $("#id_phone").val();
+		            parameters.barcode =  $("#id_barcode").val().trim();
+		            parameters.email = $("#id_email").val().trim();
+		            var phone_val = $("#id_phone").val().trim();
 		            if (phone_val.charAt(0) == 0) {
 		            	phone_val = phone_val.substring(1);
 		            }
@@ -123,7 +123,9 @@ $(document).ready(function() {
     });
 
     // Init form validation
-    $.validate({})
+    $.validate({
+	    modules : 'sanitize'
+	 });
 
   	/*load data when init page*/
 	bookingInfoDatataleFunction();
