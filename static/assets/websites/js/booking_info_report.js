@@ -26,8 +26,8 @@ function bookingInfoDatataleFunction() {
 		            	phone_val = phone_val.substring(1);
 		            }
 		            parameters.phone = phone_val;
-		            parameters.date_from =  $("#id_date_from").val();
-		            parameters.date_to = $("#id_date_to").val();
+		            parameters.date_from =  $("#id_date_from").val().trim();
+		            parameters.date_to = $("#id_date_to").val().trim();
 		            dataParams = parameters;
 	            },
 		        error : function(jqXHR, textStatus, errorThrown) {
