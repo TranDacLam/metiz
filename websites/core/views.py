@@ -166,6 +166,7 @@ def news(request):
         # merge 3 list by order future, present and past
         list_news = list(chain(list_news_future, list_news_present))
 
+
         # Pagination QuerySet With Defalt Page is 12 Items
         paginator_news = Paginator(list_news, page_items)
         try:
@@ -180,15 +181,16 @@ def news(request):
 
         if request.is_ajax():
             news_json = []
+            print news_json
             for item in news_page.object_list:
                 news_json.append({"id": item.id, "image": str(
                     item.image), "apply_date": item.apply_date, "name": item.name, "end_date": item.end_date})
             # convert object models to json
             # Ajax reuqest with page, db get data other with limit and offset
 
-            return JsonResponse({"data": news_json, "total_page": paginator_news.num_pages}, safe=False)
+            return JsonResponse({"data": news_json}, safe=False)
 
-        return render(request, 'websites/news.html', {'list_news': news_page.object_list, "total_item": len(news_page.object_list)})
+        return render(request, 'websites/news.html', {'list_news': news_page.object_list, 'total_page': paginator_news.num_pages})
     except Exception, e:
         print "Error: %s" % e
         return HttpResponse(status=500)

@@ -40,12 +40,11 @@ $(document).ready(function() {
         return "Áp Dụng Liên Tục";
     }
 
-    // Check list news condition if < 12 remove button load more
+    // Check list news condition if data-page > coutNew remove button load more
     var coutNew = parseInt($('.load-more').attr('data-count-news'));
-    if(coutNew < 12){
+    if(parseInt($('.load-more').attr('data-page')) > coutNew){
         $('.news-custom>.text-center button').remove();
     }
-
     $('#load-more-news').on('click', function(e){
         e.preventDefault();
         $(this).prop('disabled', true);
@@ -61,10 +60,9 @@ $(document).ready(function() {
         })
         .done(function(response) {
             // Check total page let remove button load more
-            if(page >= response.total_page){
+            if(page >= coutNew){
                 $('.news-custom>.text-center button').remove();
             }
-            
             // increase the value page +1
             $(this).attr('data-page',page + 1);
             var html = '';
