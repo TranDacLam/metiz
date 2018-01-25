@@ -46,7 +46,9 @@ function bookingInfoDatataleFunction() {
 	            data: "barcode"
 	        }, {
 	            data: "amount",
-	             render: $.fn.dataTable.render.number( ',' )
+	            render: $.fn.dataTable.render.number( ',' )
+	        },{
+	            data: "full_name"
 	        }, {
 	            data: "email"
 	        }, {

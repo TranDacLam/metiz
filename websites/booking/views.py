@@ -318,9 +318,8 @@ def clear_seeats(request):
 
 def booking_info_data(request):
     try:
-        booking_info_list = BookingInfomation.objects.extra(select={"created_format": "DATE_FORMAT(created, '%%d/%%m/%%Y')"}).values(
-            'order_id', 'order_desc', 'order_status', 'desc_transaction', 'barcode', 'amount', 'email', 'phone', 'created_format')
-
+        booking_info_list = BookingInfomation.objects.extra(select={"created_format": "DATE_FORMAT(created, '%%d/%%m/%%Y %%H:%%m:%%S')"})
+        
         # Get Parameter From POST request
         order_id = request.POST.get("order_id", "1")
         order_status = request.POST.get("order_status", "")
@@ -358,6 +357,24 @@ def booking_info_data(request):
             "Connect DB Error .Please contact administrator.")
 
 
+def booking_info_data_mapping(booking_info_list):
+    booking_info_results = []
+    if booking_info_list:
+        for booking_info in booking_info_list:
+            info = {}
+            info['order_id'] = booking_info.order_id
+            info['order_desc'] = booking_info.order_desc
+            info['order_status'] = booking_info.order_status
+            info['desc_transaction'] = booking_info.desc_transaction
+            info['barcode'] = booking_info.barcode
+            info['amount'] = int(booking_info.amount)
+            info['email'] = booking_info.email
+            info['phone'] = booking_info.phone
+            info['created_format'] = booking_info.created_format
+            info['full_name'] = '' if booking_info.user is None else booking_info.user.full_name
+            booking_info_results.append(info)
+    return booking_info_results
+
 @login_required(login_url='/admin/login/')
 @permission_required('is_superuser', login_url='/admin/login/')
 def booking_info_report(request):
@@ -373,12 +390,12 @@ def booking_info_report(request):
             booking_info_list = booking_info_data(request)
 
             # Get total items result
-            total_items = len(list(booking_info_list.values('order_id')))
+            total_items = len(booking_info_list)
 
             # Get Booking information from start to end
             booking_info_list = booking_info_list[start:end]
 
-            result["data"] = list(booking_info_list)
+            result["data"] = booking_info_data_mapping(booking_info_list)
             result["recordsTotal"] = total_items
             result["recordsFiltered"] = total_items
 
@@ -404,9 +421,9 @@ def booking_info_export_to_excel(request):
 
             if booking_info_list:
                 excel_file_name = "BookingInformationReport.xlsx"
-
+                booking_info_result = booking_info_data_mapping(booking_info_list)
                 # Export to excel
-                write_to_excel(excel_file_name, booking_info_list)
+                write_to_excel(excel_file_name, booking_info_result)
                 return HttpResponse(
                     json.dumps(
                         {"uri": '/media/excel/' + excel_file_name}),
@@ -474,7 +491,7 @@ def write_to_excel(file_name, booking_list):
         money_format = workbook.add_format({'num_format': '#,##0'})
         cell_format = workbook.add_format({'text_wrap': True, 'valign': 'top'})
 
-        worksheet.merge_range('A1:I1', title, merge_format)
+        worksheet.merge_range('A1:J1', title, merge_format)
 
         # set header of excel
         worksheet.write('A2', 'Order ID', header_format)
@@ -483,9 +500,10 @@ def write_to_excel(file_name, booking_list):
         worksheet.write('D2', 'Order Transaction', header_format)
         worksheet.write('E2', 'Barcode', header_format)
         worksheet.write('F2', 'Amount', header_format)
-        worksheet.write('G2', 'Email', header_format)
-        worksheet.write('H2', 'Phone', header_format)
-        worksheet.write('I2', 'Created Date', header_format)
+        worksheet.write('G2', 'Full Name', header_format)
+        worksheet.write('H2', 'Email', header_format)
+        worksheet.write('I2', 'Phone', header_format)
+        worksheet.write('J2', 'Created Date', header_format)
 
         # set width of cell
         worksheet.set_column(0, 0, 17)
@@ -494,8 +512,10 @@ def write_to_excel(file_name, booking_list):
         worksheet.set_column(3, 3, 20)
         worksheet.set_column(4, 4, 10)
         worksheet.set_column(5, 5, 15)
-        worksheet.set_column(6, 6, 25)
-        worksheet.set_column(7, 8, 15)
+        worksheet.set_column(6, 6, 20)
+        worksheet.set_column(7, 7, 25)
+        worksheet.set_column(8, 8, 15)
+        worksheet.set_column(9, 9, 20)
         worksheet.set_row(0, 40)
         worksheet.set_row(1, 30)
 
@@ -509,9 +529,10 @@ def write_to_excel(file_name, booking_list):
                 worksheet.write(row, 3, booking["desc_transaction"])
                 worksheet.write(row, 4, booking["barcode"])
                 worksheet.write(row, 5, booking["amount"], money_format)
-                worksheet.write(row, 6, booking["email"])
-                worksheet.write(row, 7, booking["phone"])
-                worksheet.write(row, 8, booking["created_format"])
+                worksheet.write(row, 6, booking["full_name"])
+                worksheet.write(row, 7, booking["email"])
+                worksheet.write(row, 8, booking["phone"])
+                worksheet.write(row, 9, booking["created_format"])
                 row += 1
 
         workbook.close()
