@@ -176,7 +176,7 @@ and (orientation: landscape) {
 		width: 40%;
 	}
 }
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 480px) {
 	#contactForm input[type=email], 
 	#contactForm input[type=tel], 
 	#contactForm input[type=text],
