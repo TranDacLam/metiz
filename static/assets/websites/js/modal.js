@@ -391,7 +391,7 @@ $(document).ready(function() {
             var time_show = (start_time.split(":")[0] * 60 + parseInt(start_time.split(":")[1])) - time_remain;
             var current_time = date_now.getHours() * 60 + date_now.getMinutes() ;
             
-            if(new Date().setHours(0,0,0,0) == date_selected.setHours(0,0,0,0) &&  time_show >= current_time){
+            if(new Date().setHours(0,0,0,0) < date_selected.setHours(0,0,0,0) || time_show >= current_time){
                 return true;
             }
             return false;
