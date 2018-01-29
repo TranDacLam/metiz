@@ -109,7 +109,14 @@ ul.dropdown-menu>li>a:hover{
 	font-family: "SairaSemiCondensed-Regular", sans-serif;
 	text-decoration: none;
 }
-
+@media only screen and (min-width: 1024px){
+	.header-info {
+	    height: 58px;
+	}
+	.header-container.container{
+	    padding-top: 28px;
+    }
+}
 @media only screen and (min-width: 771px){
 	#header {
 		height: 70px;
