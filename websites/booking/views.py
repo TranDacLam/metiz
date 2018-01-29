@@ -318,7 +318,7 @@ def clear_seeats(request):
 
 def booking_info_data(request):
     try:
-        booking_info_list = BookingInfomation.objects.extra(select={"created_format": "DATE_FORMAT(created, '%%d/%%m/%%Y %%H:%%m:%%S')"})
+        booking_info_list = BookingInfomation.objects.all()
         
         # Get Parameter From POST request
         order_id = request.POST.get("order_id", "1")
@@ -370,7 +370,7 @@ def booking_info_data_mapping(booking_info_list):
             info['amount'] = int(booking_info.amount)
             info['email'] = booking_info.email
             info['phone'] = booking_info.phone
-            info['created_format'] = booking_info.created_format
+            info['created_format'] = timezone.localtime(booking_info.created).strftime('%d/%m/%Y %H:%M')
             info['full_name'] = '' if booking_info.user is None else booking_info.user.full_name
             booking_info_results.append(info)
     return booking_info_results
