@@ -132,7 +132,7 @@ def send_mail_booking_error(is_secure, email, barcode, content):
         }
         # Send email transaction booking moive order error
         metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
-                              email], data_binding)
+                              email], data_binding, {} , (), None, settings.BOOKING_ERROR_CC_EMAIL)
     except Exception, e:
         print "Error send_mail_booking : ", e
 
