@@ -1,2 +1,70 @@
-@import url("https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz");
-@import url("https://fonts.googleapis.com/css?family=Cabin");
+
+@font-face {
+    font-family: 'SairaSemiCondensed-Black';
+    src: url('../../fonts/Saira_Semi_Condensed/SairaSemiCondensed-Black.ttf') format('truetype');
+    font-weight: bold;
+  	font-style: normal;
+}
+@font-face {
+    font-family: 'SairaSemiCondensed-Bold';
+    src: url('../../fonts/Saira_Semi_Condensed/SairaSemiCondensed-Bold.ttf') format('truetype');
+    font-weight: normal;
+  	font-style: normal;
+}
+@font-face {
+    font-family: 'SairaSemiCondensed-ExtraBold';
+    src: url('../../fonts/Saira_Semi_Condensed/SairaSemiCondensed-ExtraBold.ttf') format('truetype');
+    font-weight: normal;
+  	font-style: normal;
+}
+@font-face {
+    font-family: 'SairaSemiCondensed-ExtraLight';
+    src: url('../../fonts/Saira_Semi_Condensed/SairaSemiCondensed-ExtraLight.ttf') format('truetype');
+    font-weight: normal;
+  	font-style: normal;
+}
+@font-face {
+    font-family: 'SairaSemiCondensed-Light';
+    src: url('../../fonts/Saira_Semi_Condensed/SairaSemiCondensed-Light.ttf') format('truetype');
+    font-weight: normal;
+  	font-style: normal;
+}
+@font-face {
+    font-family: 'SairaSemiCondensed-Medium';
+    src: url('../../fonts/Saira_Semi_Condensed/SairaSemiCondensed-Medium.ttf') format('truetype');
+    font-weight: normal;
+  	font-style: normal;
+}
+@font-face {
+    font-family: 'SairaSemiCondensed-Regular';
+    src: url('../../fonts/Saira_Semi_Condensed/SairaSemiCondensed-Regular.ttf') format('truetype');
+    font-weight: bold;
+  	font-style: normal;
+}
+@font-face {
+    font-family: 'SairaSemiCondensed-SemiBold';
+    src: url('../../fonts/Saira_Semi_Condensed/SairaSemiCondensed-SemiBold.ttf') format('truetype');
+    font-weight: bold;
+  	font-style: normal;
+}
+@font-face {
+    font-family: 'SairaSemiCondensed-Thin';
+    src: url('../../fonts/Saira_Semi_Condensed/SairaSemiCondensed-Thin.ttf') format('truetype');
+    font-weight: bold;
+  	font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url('../../fonts/Montserrat/Montserrat-Light.ttf') format('truetype');
+    font-weight: bold;
+  	font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('../../fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
+    font-weight: bold;
+  	font-style: normal;
+}
+
+
+
