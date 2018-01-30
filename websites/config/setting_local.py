@@ -13,7 +13,8 @@ DATABASES = {
     }
 }
 # Default Email Contact
-DEFAULT_TO_ADMIN_EMAIL = "thaophan@vooc.vn"
+SYSTEM_ADMIN_CINEMA_EMAIL = "thaophan@vooc.vn, diemnguyen@vooc.vn"
+SYSTEM_ADMIN_CINEMA_EMAIL_CC = "diemnt.pnv@gmail.com, diemnguyen.2t@gmail.com"
 
 # VNPAY CONFIG
 VNPAY_RETURN_URL = 'http://metiz.dht:8000/payment_return'  # get from config
@@ -38,5 +39,3 @@ FB_APP_ID = '1761455193886139'
 
 RECAPTCHA_PUBLIC_KEY = '6LfP2zoUAAAAAGhMBQuEguqc6ZV7JHIUdGuOGFJ0'
 RECAPTCHA_PRIVATE_KEY = '6LfP2zoUAAAAACZmN3tAOOVCCE0U5BZeCtpTRAki'
-
-BOOKING_ERROR_CC_EMAIL = "diemnguyen@vooc.vn, thaophan@vooc.vn"
