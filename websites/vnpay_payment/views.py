@@ -335,10 +335,10 @@ def payment_ipn(request):
 
                             # If email to is exist then set for email_admin. else get value from setting
                             if email_admin['to']:
-                                email_admin_cinema = email_admin[to]
+                                email_admin_cinema = email_admin['to']
                             # If email cc is exist then set for email_admin. else get value from setting
                             if email_admin['cc']:
-                                email_admin_cinema_cc = email_admin[to]
+                                email_admin_cinema_cc = email_admin['cc']
 
                         
 
