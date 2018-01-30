@@ -440,8 +440,8 @@ $(document).ready(function() {
                 $(".mfp-ready").attr("style","overflow-x: hidden; overflow-y: auto;");
             });
 
-            // ingore null or p
-            if (rated == 'null' || rated == 'p') {
+            // ingore null, p, P
+            if (rated == 'null' || rated == 'p'|| rated == 'P') {
                 $('#confirm').modal('show');
             } else {
                 content = JSON.parse($('#rated').text());
