@@ -185,7 +185,7 @@ CKEDITOR_CONFIGS = {
                'embed',
             ]
         ),
-        'font_names': "Yanone Kaffeesatz; Cabin",
+        'font_names': "SairaSemiCondensed-Regular; SairaSemiCondensed-Medium; Montserrat-Light; Montserrat-Medium",
         'contentsCss': ','.join(['/static/assets/websites/css/custom_admin.css']),
         'allowedContent': True
     },
@@ -200,6 +200,7 @@ SYSTEM_ADMIN_CINEMA_PHONE = ""
 EMAIL_BACKEND = "main.email_backend.DKIMBackend"
 DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
 DEFAULT_FROM_EMAIL = "Metiz Cinema Service <no-reply@metiz.vn>"
+BOOKING_ERROR_CC_EMAIL = "ngochang@khoiphat.vn,khaivo@metiz.vn,vietthang@khoiphat.vn,nguyenhien@helio.vn"
 # EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 EMAIL_HOST = 'mail.helio.vn'
 EMAIL_HOST_USER = 'no-reply@metiz.vn'
