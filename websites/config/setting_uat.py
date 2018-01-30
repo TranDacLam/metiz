@@ -14,7 +14,8 @@ DATABASES = {
 }
 
 # Default Email Contact
-SYSTEM_ADMIN_CINEMA_EMAIL = "thaophan@vooc.vn"
+SYSTEM_ADMIN_CINEMA_EMAIL = "thaophan@vooc.vn, diemnguyen@vooc.vn"
+SYSTEM_ADMIN_CINEMA_EMAIL_CC = ["diemnt.pnv@gmail.com", "diemnguyen.2t@gmail.com"]
 SYSTEM_ADMIN_CINEMA_PHONE = "0905242259"
 DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
 
@@ -42,5 +43,3 @@ FB_APP_ID = '1934835640066419'
 
 RECAPTCHA_PUBLIC_KEY = '6LfW2zoUAAAAAANgpuK2Yw5-z7P8S6TeODY2qNsS'
 RECAPTCHA_PRIVATE_KEY = '6LfW2zoUAAAAANhdyvbJnq9Hg4jxOFKFR3T2yU9A'
-
-BOOKING_ERROR_CC_EMAIL = "diemnguyen@vooc.vn, thaophan@vooc.vn"

@@ -12,14 +12,15 @@ import os
 def send_mail_plantext(subject, message_plain, email_from, email_to, obj_model):
     """ Inherit send mail of django """
     if not message_plain:
-        raise ValueError(_("Either message_plain or message_html should be not None"))
+        raise ValueError(
+            _("Either message_plain or message_html should be not None"))
 
     if not email_from:
         email_from = settings.DEFAULT_FROM_EMAIL
 
     """ initial data using bind value to template """
     current_site = Site.objects.get_current()
-    data = { 'current_site':current_site, 'obj': obj_model }
+    data = {'current_site': current_site, 'obj': obj_model}
     cxt = Context(data)
 
     """ bind data to template """
@@ -27,11 +28,11 @@ def send_mail_plantext(subject, message_plain, email_from, email_to, obj_model):
 
     """ send email """
     send_mail_sy(subject, text_content, email_from,
-    email_to, fail_silently=False)
+                 email_to, fail_silently=False)
 
 
 def send_mail(subject, message_plain, message_html, email_from, email_to,
-              data_binding, custom_headers={}, attachments=(), att_files=None):
+              data_binding, custom_headers={}, attachments=(), att_files=None, email_cc=None):
     """
     Build the email as a multipart message containing
     a multipart alternative for text (plain, HTML) plus
@@ -42,7 +43,8 @@ def send_mail(subject, message_plain, message_html, email_from, email_to,
             raise ValueError(_("Either message_html should be not None"))
 
         if not message_plain:
-            path_html = os.path.join(settings.BASE_DIR + '/templates/', message_html)
+            path_html = os.path.join(
+                settings.BASE_DIR + '/templates/', message_html)
             message_plain = html2text(open(path_html).read())
 
         if not email_from:
@@ -64,6 +66,9 @@ def send_mail(subject, message_plain, message_html, email_from, email_to,
         message['from_email'] = email_from
         message['to'] = email_to
         
+        if email_cc:
+            message['cc'] = email_cc
+
         if custom_headers:
             message['headers'] = custom_headers
 
@@ -78,7 +83,8 @@ def send_mail(subject, message_plain, message_html, email_from, email_to,
 
         if att_files:
             for f in att_files:
-                msg.attach(att_files[f].name, att_files[f].read(), att_files[f].content_type)
+                msg.attach(att_files[f].name, att_files[
+                           f].read(), att_files[f].content_type)
 
         if message_html:
             msg.attach_alternative(html_content, "text/html")

@@ -195,12 +195,12 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 
 HOT_LINE = "0236 3630 689"
 # Config outgoing email
-SYSTEM_ADMIN_CINEMA_EMAIL = ""
+SYSTEM_ADMIN_CINEMA_EMAIL = "ngochang@khoiphat.vn, khaivo@metiz.vn"
+SYSTEM_ADMIN_CINEMA_EMAIL_CC = ["vietthang@khoiphat.vn", "nguyenhien@helio.vn"]
 SYSTEM_ADMIN_CINEMA_PHONE = ""
 EMAIL_BACKEND = "main.email_backend.DKIMBackend"
 DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
 DEFAULT_FROM_EMAIL = "Metiz Cinema Service <no-reply@metiz.vn>"
-BOOKING_ERROR_CC_EMAIL = "ngochang@khoiphat.vn,khaivo@metiz.vn,vietthang@khoiphat.vn,nguyenhien@helio.vn"
 # EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 EMAIL_HOST = 'mail.helio.vn'
 EMAIL_HOST_USER = 'no-reply@metiz.vn'

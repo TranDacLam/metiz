@@ -113,7 +113,7 @@ def send_mail_booking(is_secure, email, full_name, barcode, content):
     except Exception, e:
         print "Error send_mail_booking : ", e
 
-def send_mail_booking_error(is_secure, email, barcode, content):
+def send_mail_booking_error(is_secure, email, email_cc, barcode, content):
     try:
         message_html = "websites/booking/email/booking_error.html"
         subject = _("[Metiz] Booking Movie Tickets Transaction Error !")
@@ -132,7 +132,7 @@ def send_mail_booking_error(is_secure, email, barcode, content):
         }
         # Send email transaction booking moive order error
         metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
-                              email], data_binding, {} , (), None, settings.BOOKING_ERROR_CC_EMAIL)
+                              email], data_binding, {} , (), None, email_cc)
     except Exception, e:
         print "Error send_mail_booking : ", e
 
@@ -317,12 +317,27 @@ def payment_ipn(request):
 
                         # Get information admin metiz cinema
                         email_admin_cinema = settings.SYSTEM_ADMIN_CINEMA_EMAIL
+                        email_admin_cinema_cc = settings.SYSTEM_ADMIN_CINEMA_EMAIL_CC
                         phone_admin = settings.SYSTEM_ADMIN_CINEMA_PHONE
 
                         admin_info = AdminInfo.objects.all()
                         if admin_info:
-                            email_admin_cinema = admin_info[0].email
+                            # Set phone of first row
                             phone_admin = admin_info[0].phone
+
+                            # Get admin info of email to
+                            admin_info_to = AdminInfo.objects.filter(email_type='to')
+                            if admin_info_to:
+                                # Get string of list email to
+                                email_admin_cinema = ', '.join(list(admin_info_to.values_list('email', flat=True)))
+
+                            # Get admin info of email cc
+                            admin_info_cc = AdminInfo.objects.filter(email_type='cc')
+                            if admin_info_cc: 
+                                # Get list email cc
+                                email_admin_cinema_cc = list(admin_info_cc.values_list('email', flat=True))
+
+                        
 
                         # send sms for client about transaction booking movie error.
                         error_sms = """Dat ve khong thanh cong tai Metiz Cinema .Ma dat ve: %s, vui long lien he: %s, neu ban van chua duoc hoan tien""" %(booking_order.barcode, phone_admin)
@@ -335,7 +350,7 @@ def payment_ipn(request):
                         # Send email notification for admin transaction error
                         print "### email_admin_cinema ",email_admin_cinema
                         if email_admin_cinema:
-                            send_mail_booking_error(request.is_secure(), email_admin_cinema, booking_order.barcode, content_error)
+                            send_mail_booking_error(request.is_secure(), email_admin_cinema, email_admin_cinema_cc, booking_order.barcode, content_error)
                             
                         return JsonResponse({'RspCode': '02', 'Message': 'Process Confirm Booking Movie Error'})
 
