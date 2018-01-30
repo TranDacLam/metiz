@@ -325,20 +325,17 @@ def payment_ipn(request):
                             # Set phone of first row
                             phone_admin = admin_info[0].phone
 
-                            # Get email by type (to, cc)
-                            email_admin = {}
-                            for item in admin_info:
-                                if item.email_type in email_admin:
-                                    email_admin[item.email_type] += ", " + item.email
-                                else:
-                                    email_admin[item.email_type] = item.email
+                            # Get admin info of email to
+                            admin_info_to = AdminInfo.objects.filter(email_type='to')
+                            if admin_info_to:
+                                # Get string of list email to
+                                email_admin_cinema = ', '.join(list(admin_info_to.values_list('email', flat=True)))
 
-                            # If email to is exist then set for email_admin. else get value from setting
-                            if email_admin['to']:
-                                email_admin_cinema = email_admin['to']
-                            # If email cc is exist then set for email_admin. else get value from setting
-                            if email_admin['cc']:
-                                email_admin_cinema_cc = email_admin['cc']
+                            # Get admin info of email cc
+                            admin_info_cc = AdminInfo.objects.filter(email_type='cc')
+                            if admin_info_cc: 
+                                # Get list email cc
+                                email_admin_cinema_cc = list(admin_info_cc.values_list('email', flat=True))
 
                         
 

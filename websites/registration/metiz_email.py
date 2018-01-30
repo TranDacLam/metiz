@@ -65,6 +65,7 @@ def send_mail(subject, message_plain, message_html, email_from, email_to,
         message['body'] = text_content
         message['from_email'] = email_from
         message['to'] = email_to
+        
         if email_cc:
             message['cc'] = email_cc
 

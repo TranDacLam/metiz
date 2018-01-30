@@ -14,7 +14,7 @@ DATABASES = {
 }
 # Default Email Contact
 SYSTEM_ADMIN_CINEMA_EMAIL = "thaophan@vooc.vn, diemnguyen@vooc.vn"
-SYSTEM_ADMIN_CINEMA_EMAIL_CC = "diemnt.pnv@gmail.com, diemnguyen.2t@gmail.com"
+SYSTEM_ADMIN_CINEMA_EMAIL_CC = ["diemnt.pnv@gmail.com", "diemnguyen.2t@gmail.com"]
 
 # VNPAY CONFIG
 VNPAY_RETURN_URL = 'http://metiz.dht:8000/payment_return'  # get from config
