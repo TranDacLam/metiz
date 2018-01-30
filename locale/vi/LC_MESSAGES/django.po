@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-12 09:49+0700\n"
+"POT-Creation-Date: 2018-01-30 11:32+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr "Chọn ngày chiếu"
 #: templates/modal.html:114 templates/modal.html:163 templates/modal.html:208
 #: templates/registration/profile.html:112
 #: templates/registration/signup.html:52 templates/registration/signup.html:136
-#: websites/booking/models.py:20
+#: websites/booking/models.py:23
 msgid "Email"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgstr "Nhập Họ Tên Ở Đây"
 
 #: templates/modal.html:157 templates/modal.html:202
 #: templates/registration/profile.html:97
-#: templates/registration/signup.html:126 websites/booking/models.py:19
+#: templates/registration/signup.html:126 websites/booking/models.py:22
 msgid "Phone"
 msgstr "Số Điện Thoại"
 
@@ -139,6 +139,7 @@ msgstr "để được hỗ trợ."
 #: templates/registration/email/metiz_account_created_confirm.txt:7
 #: templates/websites/booking/email/booking_error.html:134
 #: templates/websites/booking/email/booking_notification.html:134
+#: templates/websites/email/voucher_email.html:128
 msgid "mail.register.footer3"
 msgstr "Trân Trọng Cảm Ơn,"
 
@@ -146,6 +147,7 @@ msgstr "Trân Trọng Cảm Ơn,"
 #: templates/registration/email/metiz_account_created_confirm.txt:8
 #: templates/websites/booking/email/booking_error.html:136
 #: templates/websites/booking/email/booking_notification.html:136
+#: templates/websites/email/voucher_email.html:130
 msgid "mail.register.footer4"
 msgstr "Đội Ngũ Hỗ Trợ Metiz Cinema."
 
@@ -282,11 +284,6 @@ msgstr "Thẻ Thành Viên"
 msgid "Enter Member Card Here"
 msgstr "Nhập Thẻ Thành Viên Ở Đây"
 
-#: templates/websites/booking/email/booking_error.html:115
-#: templates/websites/booking/email/booking_notification.html:115
-msgid "mail.booking.hello"
-msgstr "Xin chao"
-
 #: templates/websites/booking/email/booking_error.html:118
 msgid "mail.booking.error.code"
 msgstr "Đã Có Lỗi Khi Xuất Vé. Mã đặt vé"
@@ -300,6 +297,11 @@ msgstr "Nếu gặp sự cố, vui lòng gọi "
 #: templates/websites/booking/email/booking_notification.html:130
 msgid "mail.booking.footer2"
 msgstr "để được hỗ trợ."
+
+#: templates/websites/booking/email/booking_notification.html:115
+#: templates/websites/email/voucher_email.html:115
+msgid "mail.booking.hello"
+msgstr "Xin chao"
 
 #: templates/websites/booking/email/booking_notification.html:118
 msgid "mail.booking.code"
@@ -321,6 +323,10 @@ msgstr "Địa chỉ email người dùng"
 msgid "mail.contact.phone"
 msgstr "Số điện thoại"
 
+#: templates/websites/email/voucher_email.html:118"
+msgid "mail.voucher.code"
+msgstr ""
+
 #: websites/booking/api.py:31 websites/booking/api.py:70
 #: websites/booking/api.py:99 websites/booking/api.py:126
 msgid "Handle data error."
@@ -331,55 +337,55 @@ msgstr "Xử lý dử liệu bị lỗi."
 msgid "Internal Server Error. Cannot Post Booking."
 msgstr "Máy chủ bị lỗi. Không thể booking."
 
-#: websites/booking/models.py:17
+#: websites/booking/models.py:20
 msgid "Order ID"
 msgstr "Mã Hoá Đơn"
 
-#: websites/booking/models.py:18
+#: websites/booking/models.py:21
 msgid "Amount"
 msgstr ""
 
-#: websites/booking/models.py:21
+#: websites/booking/models.py:24
 msgid "Seats"
 msgstr "Số Ghế"
 
-#: websites/booking/models.py:23 websites/core/models.py:50
+#: websites/booking/models.py:26 websites/core/models.py:50
 #: websites/core/models.py:107 websites/core/models.py:245
 msgid "Description"
 msgstr "Mô Tả"
 
-#: websites/booking/models.py:41
+#: websites/booking/models.py:44
 msgid "Date Showing"
 msgstr "Ngày Tham Gia"
 
-#: websites/booking/views.py:149 websites/booking/views.py:170
-#: websites/booking/views.py:257 websites/booking/views.py:276
+#: websites/booking/views.py:159 websites/booking/views.py:180
+#: websites/booking/views.py:267 websites/booking/views.py:286
 #: websites/registration/views.py:48
 msgid "Internal Server Error. Please contact administrator."
 msgstr "Máy chủ bị lỗi. Vui lòng liên hệ quản trị viên."
 
-#: websites/booking/views.py:164
+#: websites/booking/views.py:174
 msgid "Fields id_showtime and id_server is required."
 msgstr "Trường id_showtime và id_server là bắt buộc."
 
-#: websites/booking/views.py:184
+#: websites/booking/views.py:194
 msgid "Fields lst_seats and id_showtime, working_id is required."
 msgstr "trường lst_seats và id_showtime và working_id là bắt buộc."
 
-#: websites/booking/views.py:203
+#: websites/booking/views.py:213
 #, python-format
 msgid "These chairs have been selected : %s"
 msgstr "Những ghế này đã được chọn : %s"
 
-#: websites/booking/views.py:223
+#: websites/booking/views.py:233
 msgid "Cannot Booking Seats. Please Contact Administrator."
 msgstr "Không thể đặt ghế. Vui lòng liên hệ quản trị viên."
 
-#: websites/booking/views.py:265
+#: websites/booking/views.py:275
 msgid "Fields barcode is required."
 msgstr "Trường barcode là bắt buộc."
 
-#: websites/booking/views.py:283
+#: websites/booking/views.py:293
 msgid "Fields working_id is required."
 msgstr "Trường working_id là bắt buộc."
 
@@ -619,16 +625,16 @@ msgid "Blog Film"
 msgstr "Blog Phim"
 
 #: websites/core/views.py:51 websites/core/views.py:95
-#: websites/core/views.py:175 websites/core/views.py:383
+#: websites/core/views.py:176 websites/core/views.py:385
 msgid "Page Number Not Type Integer."
 msgstr "Số trang không phải là kiểu số."
 
 #: websites/core/views.py:55 websites/core/views.py:99
-#: websites/core/views.py:179 websites/core/views.py:387
+#: websites/core/views.py:180 websites/core/views.py:389
 msgid "Page Number Not Found."
 msgstr "Số trang không tìm thấy."
 
-#: websites/core/views.py:358
+#: websites/core/views.py:360
 msgid "Send Contact Successfully."
 msgstr "Gửi liên hệ thành công."
 
@@ -644,15 +650,15 @@ msgstr "Email đã được sử dụng."
 msgid "[Metiz] You've been created an account - Click to Verify!"
 msgstr "[Metiz] Kích Hoạt Tài Khoản!"
 
-#: websites/registration/forms.py:175
+#: websites/registration/forms.py:176
 msgid "This phone is already in use."
 msgstr "Số điện thoại đã được sử dụng."
 
-#: websites/registration/forms.py:205
+#: websites/registration/forms.py:206
 msgid "The old password fields did not match."
 msgstr "Mật khẩu cũ không đúng. Vui lòng nhập lại."
 
-#: websites/registration/forms.py:213
+#: websites/registration/forms.py:214
 msgid "The two password fields did not match."
 msgstr "Mật khẩu mới không trùng khớp. Vui lòng nhập lại."
 
@@ -701,10 +707,11 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: websites/vnpay_payment/views.py:96
+#: websites/vnpay_payment/views.py:95
 msgid "[Metiz] Booking Movie Tickets Successful !"
 msgstr "[Metiz] Đặt Vé Phim Thành Công"
 
+#: websites/vnpay_payment/views.py:119
 msgid "[Metiz] Booking Movie Tickets Transaction Error !"
 msgstr "[Metiz] Đặt Vé Phim Bị Lỗi"
 
