@@ -318,7 +318,7 @@ def clear_seeats(request):
 
 def booking_info_data(request):
     try:
-        booking_info_list = BookingInfomation.objects.all()
+        booking_info_list = BookingInfomation.objects.all().order_by('-created')
         
         # Get Parameter From POST request
         order_id = request.POST.get("order_id", "1")
