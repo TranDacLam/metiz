@@ -9,6 +9,7 @@ import datetime
 from django.contrib.contenttypes.fields import GenericRelation
 from hitcount.models import HitCount, HitCountMixin
 
+
 class DateTimeModel(models.Model):
     """
     Abstract model that is used for the model using created and modified fields
@@ -108,7 +109,8 @@ class Movie(DateTimeModel):
     trailer = models.CharField(_("Trailer"), max_length=500)
     priority = models.IntegerField(_("Priority"), null=True, blank=True)
     is_draft = models.BooleanField(default=False)
-    movie_api_id = models.CharField(_("Movie API ID"), max_length=100, default='00000000')
+    movie_api_id = models.CharField(
+        _("Movie API ID"), max_length=100, default='00000000')
 
     def __str__(self):
         return '%s' % (self.name)
@@ -129,7 +131,7 @@ class Comment(DateTimeModel):
     )
     full_name = models.CharField(_("Full Name"), max_length=100)
     avatar = models.ImageField(_("Avatar"),
-        max_length=500, upload_to="comment_avatar", null=True, blank=True)
+                               max_length=500, upload_to="comment_avatar", null=True, blank=True)
     review = models.TextField(_("Review"))
     rating = models.IntegerField(_("Rating"), default=5, choices=STAR)
     date_post = models.DateTimeField(_("Date Post"))
@@ -176,13 +178,17 @@ class NewOffer(DateTimeModel):
     )
 
     name = models.CharField(_("Name"), max_length=255)
-    image = models.ImageField(_("Image"), max_length=255, upload_to="new_offer")
+    image = models.ImageField(
+        _("Image"), max_length=255, upload_to="new_offer")
     content = models.TextField(_("Content"), null=True, blank=True)
     condition = models.TextField(_("Condition"), null=True, blank=True)
-    apply_for = models.CharField(_("Apply For"), max_length=50, default='all', choices=GENDER)
+    apply_for = models.CharField(
+        _("Apply For"), max_length=50, default='all', choices=GENDER)
     priority = models.IntegerField(_("Priority"), null=True, blank=True)
-    apply_date = models.DateField(_("Apply Date"), default=datetime.date.today, editable=True)
-    end_date = models.DateField(_("End Date"), default=datetime.date.today, editable=True, null=True, blank=True)
+    apply_date = models.DateField(
+        _("Apply Date"), default=datetime.date.today, editable=True)
+    end_date = models.DateField(
+        _("End Date"), default=datetime.date.today, editable=True, null=True, blank=True)
     movies = models.ManyToManyField('Movie', blank=True)
 
     def __str__(self):
@@ -215,7 +221,8 @@ class Post(DateTimeModel):
 
 @python_2_unicode_compatible
 class SlideShow(DateTimeModel):
-    image = models.ImageField(_("Image"), max_length=255, upload_to="slide_home")
+    image = models.ImageField(
+        _("Image"), max_length=255, upload_to="slide_home")
     priority = models.IntegerField(_("Priority"), null=True, blank=True)
     sub_url = models.CharField(_("Sub Url"), max_length=1000)
     is_draft = models.BooleanField(default=False)
@@ -260,8 +267,30 @@ class Blog(DateTimeModel, HitCountMixin):
 
 @python_2_unicode_compatible
 class AdminInfo(DateTimeModel):
+    GENDER = (
+        ('to', 'To'),
+        ('cc', 'cc')
+    )
     email = models.EmailField(max_length=50)
     phone = models.CharField(max_length=20, null=True, blank=True)
-    
+    email_type = models.CharField(
+        _("Email Type"), max_length=50, default='to', choices=GENDER)
+
     def __str__(self):
         return '%s' % (self.name)
+
+
+@python_2_unicode_compatible
+class Voucher(DateTimeModel):
+    STATUS = (
+        (None, 'Not Linked'),
+        ('linked', 'Linked'),
+        ('received', 'Received')
+    )
+    voucher_code = models.EmailField(max_length=10, unique=True)
+    user = models.ForeignKey(
+        "User", related_name='user_voucher_rel', null=True, blank=True)
+    status = models.CharField(max_length=50, null=True, blank=True)
+
+    def __str__(self):
+        return '%s' % (self.voucher_code)

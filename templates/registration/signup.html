@@ -30,12 +30,11 @@
                     <li class="{% if is_login %} active {% endif %}"><span><a href="#login" data-toggle="tab">Đăng nhập</a></span></li>
                     <li class="{% if is_signup %} active {% endif %} login-wth90"><span><a href="#create" data-toggle="tab">Đăng ký</a></span></li>
                 </ul>
-                
                 <div id="myTabContent" class="tab-content">
                     <div class="error-user-inactive hidden">{% trans "Your account not active. Please check email and active account." %}</div>
                     <!-- ======================== LOG IN ===================-->
                     <div class="tab-pane in col-lg-12 well {% if is_login %} active {% endif %}" id="login">
-                        <form class="signin" id="login_form" method="post" action="{% url 'login' %}">
+                        <form class="signin" id="login_form" method="post" action="{% if next_page %} /login/?next={{next_page}} {% else %} {% url 'login' %}{% endif %}">
                             {% csrf_token %}
                             <div class="row error-div">
                                 {% if errors %}

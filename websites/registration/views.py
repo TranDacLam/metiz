@@ -24,8 +24,11 @@ def logout(request):
 def login(request):
     """ Action Login """
     try:
+        # Get nex page in url 
+        next_page = request.GET.get('next', '')
+
         # create flag is login using active tab in page html
-        result = {'is_login': True}
+        result = {'is_login': True, 'next_page': next_page}
         # user is active then redirect to home page
         if request.user.is_active:
             return redirect(reverse('home'))
@@ -48,6 +51,8 @@ def login(request):
                     return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
             else:
                 if login_form.is_valid():
+                    if next_page:
+                        return redirect(next_page)
                     return redirect(reverse('home'))
                 else:
                     result['errors'] = login_form.errors
@@ -64,12 +69,15 @@ def register_user(request, **kwargs):
     """ Action Register User """
     # Init MetizSignupForm for get action
     try:
+        # Get nex page in url 
+        next_page = request.GET.get('next', '')
+
         register_form = MetizSignupForm(request=request)
         if request.method == 'POST':
             register_form = MetizSignupForm(request.POST, request=request)
             # check MetizSignupForm is valid then save user to db
-            if register_form.is_valid():
-                register_form.save()
+            if True:
+                # register_form.save()
                 messages.success(request, _('Register Account Successfully. Please Check Your Email and Active Account.'))
                 return redirect(reverse('home'))
             else:
@@ -104,7 +112,7 @@ def register_user(request, **kwargs):
                 return render(request, 'registration/signup.html', context)
 
         return render(request, 'registration/signup.html',
-                      {'register_form': register_form, 'is_signup': True})
+                      {'register_form': register_form, 'is_signup': True, 'next_page': next_page})
     except Exception, e:
         print "Error action register_user : %s" % e
         return HttpResponse(status=500)

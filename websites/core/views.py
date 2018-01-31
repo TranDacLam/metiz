@@ -16,6 +16,10 @@ from hitcount.models import HitCount
 from hitcount.views import HitCountMixin
 from django.template.loader import render_to_string
 from django.db.models import Q
+from django.contrib.sites.models import Site
+from registration import metiz_email
+from random import randint
+from django.contrib.auth.decorators import login_required
 
 # NOTES : View SQL Query using : print connection.queries
 
@@ -166,7 +170,6 @@ def news(request):
         # merge 3 list by order future, present and past
         list_news = list(chain(list_news_future, list_news_present))
 
-
         # Pagination QuerySet With Defalt Page is 12 Items
         paginator_news = Paginator(list_news, page_items)
         try:
@@ -291,8 +294,9 @@ def home(request):
         news = NewOffer.objects.all().order_by('priority').extra(
             select={'priority_null': 'priority is null'})
 
-        top_news = news.extra(order_by=['priority_null', 'priority', '-created'])[:5]
-        
+        top_news = news.extra(
+            order_by=['priority_null', 'priority', '-created'])[:5]
+
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
 
@@ -370,10 +374,11 @@ def blog_film(request):
         if request.method == "POST":
             page_items = request.POST.get('page_items', 9)
             page_number = request.POST.get('page', 1)
-            order_colunm = request.POST.get('order_column','-created')
+            order_colunm = request.POST.get('order_column', '-created')
 
             # Get all blogs film by Id order by created
-            blogs = Blog.objects.filter(is_draft=False).order_by(order_colunm, '-id')
+            blogs = Blog.objects.filter(
+                is_draft=False).order_by(order_colunm, '-id')
 
             # Pagination QuerySet With Defalt Page is 9 Items
             paginator = Paginator(blogs, page_items)
@@ -387,7 +392,7 @@ def blog_film(request):
                 # If page is out of range (e.g. 9999), deliver last page of
                 # results.
                 return JsonResponse({"message": _("Page Number Not Found.")}, status=400)
-            
+
                 # convert object models to json
                 # Ajax reuqest with page, render page and return to client
             return render(request, 'websites/ajax/list_blog_film.html', {'list_blogs': blog_page.object_list, 'total_page': paginator.num_pages})
@@ -410,20 +415,92 @@ def blog_film_detail(request, id):
 
         if blog:
             # get hit count of blog objects
-            view_counter =  blog.hit_count.hits
+            view_counter = blog.hit_count.hits
 
             # count a hit and get the response
-            hit_count_response = HitCountMixin.hit_count(request, blog.hit_count)
+            hit_count_response = HitCountMixin.hit_count(
+                request, blog.hit_count)
 
             # if response.hit_counted is True then hit count success
             if hit_count_response.hit_counted:
                 view_counter = view_counter + 1
-        
-            # get blog detail by id
-            related_blogs = Blog.objects.filter(~Q(id=blog.id), is_draft=False).order_by('-created')[:4]
 
-        return render(request, 'websites/blog_film_detail.html', 
-                     {'blog': blog, 'related_blogs': related_blogs, 'view_counter': view_counter})
+            # get blog detail by id
+            related_blogs = Blog.objects.filter(
+                ~Q(id=blog.id), is_draft=False).order_by('-created')[:4]
+
+        return render(request, 'websites/blog_film_detail.html',
+                      {'blog': blog, 'related_blogs': related_blogs, 'view_counter': view_counter})
     except Exception as e:
         print "Error action blog_film_detail : ", e
         return HttpResponse(status=500)
+
+""" 10000 VOUCHER FREE """
+
+
+def voucher(request):
+    try:
+        if request.method == "POST":
+            if not request.user.is_anonymous():
+                user = request.user
+                # Get voucher by current user login
+                voucher_by_user = Voucher.objects.filter(user=user)
+                # Check user have got voucher
+                if voucher_by_user.exists():
+                    return JsonResponse({'code': voucher_by_user.get().voucher_code})
+
+                # Get list voucher free
+                voucher_list = Voucher.objects.filter(
+                    ~Q(status__in=('linked', 'received')))
+                # Get size of voucher list
+                count = voucher_list.count()
+
+                # Check out of voucher code
+                if count == 0:
+                    return JsonResponse({'message': _('Out of voucher code')})
+
+                # Get voucher code by random
+                voucher = voucher_list[randint(0, count - 1)]
+
+                if voucher:
+                    voucher.user = user
+                    voucher.status = 'linked'
+                    voucher.save()
+
+                    send_mail_voucher(
+                        request.is_secure(), user.email, user.full_name, voucher.voucher_code)
+                    return JsonResponse({'code': voucher.voucher_code})
+
+            else:
+                return JsonResponse({'message': 'Please login to received voucher'})
+
+        return render(request, 'websites/voucher.html')
+    except Exception as e:
+        print "Error action voucher : ", e
+        return HttpResponse(status=500)
+
+"""Send mail to user"""
+
+
+def send_mail_voucher(is_secure, email, full_name, barcode):
+    try:
+        message_html = "websites/email/voucher_email.html"
+        subject = _("[Metiz] Voucher Code !")
+
+        protocol = 'http'
+        if is_secure:
+            protocol = 'https'
+        logo_url = '/static/assets/websites/images/logo_bottom.png'
+        data_binding = {
+            "protocol": protocol,
+            'full_name': full_name,
+            'URL_LOGO': logo_url,
+            'barcode': barcode,
+            'site': str(Site.objects.get_current()),
+            'HOT_LINE': settings.HOT_LINE
+        }
+        # Send email booking success
+        metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
+                              email], data_binding)
+    except Exception, e:
+        print "Error send_mail_booking : ", e

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-30 11:32+0700\n"
+"POT-Creation-Date: 2018-01-30 17:26+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,7 +75,7 @@ msgstr "Đăng Nhập"
 
 #: templates/modal.html:152 templates/modal.html:197
 #: templates/registration/profile.html:65 templates/registration/signup.html:83
-#: websites/core/models.py:130
+#: websites/core/models.py:132
 msgid "Full Name"
 msgstr "Họ Tên"
 
@@ -276,11 +276,11 @@ msgstr "Nhập Lại Mật Khẩu"
 msgid "Enter Address Here"
 msgstr "Nhập Địa Chỉ Ở Đây"
 
-#: templates/websites/booking.html:78
+#: templates/websites/booking.html:78 templates/websites/voucher.html:53
 msgid "Member Card"
 msgstr "Thẻ Thành Viên"
 
-#: templates/websites/booking.html:79
+#: templates/websites/booking.html:79 templates/websites/voucher.html:54
 msgid "Enter Member Card Here"
 msgstr "Nhập Thẻ Thành Viên Ở Đây"
 
@@ -323,9 +323,9 @@ msgstr "Địa chỉ email người dùng"
 msgid "mail.contact.phone"
 msgstr "Số điện thoại"
 
-#: templates/websites/email/voucher_email.html:118"
+#: templates/websites/email/voucher_email.html:118
 msgid "mail.voucher.code"
-msgstr ""
+msgstr "Mã khuyến mãi của bạn: "
 
 #: websites/booking/api.py:31 websites/booking/api.py:70
 #: websites/booking/api.py:99 websites/booking/api.py:126
@@ -349,8 +349,8 @@ msgstr ""
 msgid "Seats"
 msgstr "Số Ghế"
 
-#: websites/booking/models.py:26 websites/core/models.py:50
-#: websites/core/models.py:107 websites/core/models.py:245
+#: websites/booking/models.py:26 websites/core/models.py:51
+#: websites/core/models.py:108 websites/core/models.py:252
 msgid "Description"
 msgstr "Mô Tả"
 
@@ -423,7 +423,7 @@ msgstr "Xác Định Tài Khoẳn Được Kích Hoạt Hay Chưa."
 msgid "Date Joined"
 msgstr "Ngày Tham Gia"
 
-#: websites/core/custom_models.py:76 websites/core/models.py:19
+#: websites/core/custom_models.py:76 websites/core/models.py:20
 msgid "Modified Date"
 msgstr "Ngày Thay Đổi"
 
@@ -435,208 +435,222 @@ msgstr "Phải Nhập Kiểu Số."
 msgid "[Metiz] Hỗ trợ khách hàng"
 msgstr ""
 
-#: websites/core/models.py:16
+#: websites/core/models.py:17
 msgid "Created Date"
 msgstr "Ngày Tạo"
 
-#: websites/core/models.py:34 websites/core/models.py:179
-#: websites/core/models.py:218 websites/core/models.py:246
+#: websites/core/models.py:35 websites/core/models.py:182
+#: websites/core/models.py:225 websites/core/models.py:253
 msgid "Image"
 msgstr "Hình Ảnh"
 
-#: websites/core/models.py:35 websites/core/models.py:220
+#: websites/core/models.py:36 websites/core/models.py:227
 msgid "Sub Url"
 msgstr "Đường Dẫn Tương Đối"
 
-#: websites/core/models.py:36
+#: websites/core/models.py:37
 msgid "Is Show"
 msgstr "Cho Phép Hiển Thị"
 
-#: websites/core/models.py:37
+#: websites/core/models.py:38
 msgid "Position"
 msgstr "Vị Trí"
 
-#: websites/core/models.py:43
+#: websites/core/models.py:44
 msgid "Banner"
 msgstr ""
 
-#: websites/core/models.py:49 websites/core/models.py:160
-#: websites/core/models.py:178 websites/core/models.py:198
-#: websites/core/models.py:244
+#: websites/core/models.py:50 websites/core/models.py:162
+#: websites/core/models.py:180 websites/core/models.py:204
+#: websites/core/models.py:251
 msgid "Name"
 msgstr "Tên"
 
-#: websites/core/models.py:56
+#: websites/core/models.py:57
 msgid "Rated"
 msgstr ""
 
-#: websites/core/models.py:61
+#: websites/core/models.py:62
 msgid "Name Genre"
 msgstr "Thể Loại Phim"
 
-#: websites/core/models.py:67
+#: websites/core/models.py:68
 msgid "Genre"
 msgstr "Thể Loại"
 
-#: websites/core/models.py:68
+#: websites/core/models.py:69
 msgid "Genres"
 msgstr "Thể Loại"
 
-#: websites/core/models.py:83
+#: websites/core/models.py:84
 msgid "Type Name"
 msgstr "Tên Công Nghệ"
 
-#: websites/core/models.py:89
+#: websites/core/models.py:90
 msgid "Movie Type"
 msgstr "Công Nghệ Phim"
 
-#: websites/core/models.py:90
+#: websites/core/models.py:91
 msgid "Movie Types"
 msgstr "Công Nghệ Phim"
 
-#: websites/core/models.py:95
+#: websites/core/models.py:96
 msgid "Movie Name"
 msgstr "Tên Phim"
 
-#: websites/core/models.py:97
+#: websites/core/models.py:98
 msgid "Poster"
 msgstr ""
 
-#: websites/core/models.py:98
+#: websites/core/models.py:99
 msgid "Director"
 msgstr "Đạo Diển"
 
-#: websites/core/models.py:99
+#: websites/core/models.py:100
 msgid "Cast"
 msgstr "Diển Viên"
 
-#: websites/core/models.py:100
+#: websites/core/models.py:101
 msgid "Time Running"
 msgstr "Thời Lượng"
 
-#: websites/core/models.py:101
+#: websites/core/models.py:102
 msgid "Release Date"
 msgstr "Khởi Chiếu"
 
-#: websites/core/models.py:102 websites/core/models.py:185
+#: websites/core/models.py:103 websites/core/models.py:191
 msgid "End Date"
 msgstr "Ngày Kết Thúc"
 
-#: websites/core/models.py:106
+#: websites/core/models.py:107
 msgid "Language"
 msgstr "Ngôn Ngữ"
 
-#: websites/core/models.py:108
+#: websites/core/models.py:109
 msgid "Trailer"
 msgstr ""
 
-#: websites/core/models.py:109 websites/core/models.py:183
-#: websites/core/models.py:219
+#: websites/core/models.py:110 websites/core/models.py:187
+#: websites/core/models.py:226
 msgid "Priority"
 msgstr "Độ Ưu Tiên"
 
-#: websites/core/models.py:111
+#: websites/core/models.py:113
 msgid "Movie API ID"
 msgstr ""
 
-#: websites/core/models.py:117
+#: websites/core/models.py:119
 msgid "Movie"
 msgstr "Phim"
 
-#: websites/core/models.py:118
+#: websites/core/models.py:120
 msgid "Movies"
 msgstr "Phim"
 
-#: websites/core/models.py:131
+#: websites/core/models.py:133
 msgid "Avatar"
 msgstr ""
 
-#: websites/core/models.py:133
+#: websites/core/models.py:135
 msgid "Review"
 msgstr "Đánh Giá"
 
-#: websites/core/models.py:134
+#: websites/core/models.py:136
 msgid "Rating"
 msgstr "Xếp Hạng"
 
-#: websites/core/models.py:135
+#: websites/core/models.py:137
 msgid "Date Post"
 msgstr "Ngày Đăng"
 
-#: websites/core/models.py:142
+#: websites/core/models.py:144
 msgid "Comment"
 msgstr "Bình Luận"
 
-#: websites/core/models.py:143
+#: websites/core/models.py:145
 msgid "Comments"
 msgstr "Bình Luận"
 
-#: websites/core/models.py:161 websites/core/models.py:180
-#: websites/core/models.py:199 websites/core/models.py:247
+#: websites/core/models.py:163 websites/core/models.py:183
+#: websites/core/models.py:205 websites/core/models.py:254
 msgid "Content"
 msgstr "Nội Dung"
 
-#: websites/core/models.py:167
+#: websites/core/models.py:169
 msgid "Cenima Technology"
 msgstr "Công Nghệ Rạp Phim"
 
-#: websites/core/models.py:168
+#: websites/core/models.py:170
 msgid "Cenima Technologys"
 msgstr "Công Nghệ Rạp Phim"
 
-#: websites/core/models.py:181
+#: websites/core/models.py:184
 msgid "Condition"
 msgstr "Điều Kiện"
 
-#: websites/core/models.py:182
+#: websites/core/models.py:186
 msgid "Apply For"
 msgstr "Áp Dụng Cho"
 
-#: websites/core/models.py:184
+#: websites/core/models.py:189
 msgid "Apply Date"
 msgstr "Ngày Áp Dụng"
 
-#: websites/core/models.py:192
+#: websites/core/models.py:198
 msgid "New Offer"
 msgstr "Tin Mới và Ưu Đãi"
 
-#: websites/core/models.py:193
+#: websites/core/models.py:199
 msgid "New Offers"
 msgstr "Tin Mới và Ưu Đãi"
 
-#: websites/core/models.py:200
+#: websites/core/models.py:206
 msgid "Key Query"
 msgstr ""
 
-#: websites/core/models.py:212
+#: websites/core/models.py:218
 msgid "Post"
 msgstr "Bài Viết"
 
-#: websites/core/models.py:213
+#: websites/core/models.py:219
 msgid "Posts"
 msgstr "Bài Viết"
 
-#: websites/core/models.py:227
+#: websites/core/models.py:234
 msgid "Slide Show"
 msgstr ""
 
-#: websites/core/models.py:257 websites/core/models.py:258
+#: websites/core/models.py:264 websites/core/models.py:265
 msgid "Blog Film"
 msgstr "Blog Phim"
 
-#: websites/core/views.py:51 websites/core/views.py:95
-#: websites/core/views.py:176 websites/core/views.py:385
+#: websites/core/models.py:277
+#, fuzzy
+#| msgid "Movie Type"
+msgid "Email Type"
+msgstr "Công Nghệ Phim"
+
+#: websites/core/views.py:53 websites/core/views.py:97
+#: websites/core/views.py:178 websites/core/views.py:387
 msgid "Page Number Not Type Integer."
 msgstr "Số trang không phải là kiểu số."
 
-#: websites/core/views.py:55 websites/core/views.py:99
-#: websites/core/views.py:180 websites/core/views.py:389
+#: websites/core/views.py:57 websites/core/views.py:101
+#: websites/core/views.py:182 websites/core/views.py:391
 msgid "Page Number Not Found."
 msgstr "Số trang không tìm thấy."
 
-#: websites/core/views.py:360
+#: websites/core/views.py:362
 msgid "Send Contact Successfully."
 msgstr "Gửi liên hệ thành công."
+
+#: websites/core/views.py:441
+msgid "The user received the promotion code"
+msgstr "Mỗi Account/1 email chỉ được get code 1 lần duy nhất."
+
+#: websites/core/views.py:469
+msgid "[Metiz] Voucher Code !"
+msgstr "[Metiz] Mã Khuyến Mãi !"
 
 #: websites/registration/forms.py:68
 msgid "User with this phone already exists."
@@ -674,11 +688,11 @@ msgstr "Mật khẩu của bạn sai. Hãy nhập lại."
 msgid "User is active. Please login again."
 msgstr "Email này đã được kích hoạt với tài khoản khác. Vui lòng nhập lại."
 
-#: websites/registration/metiz_email.py:15
+#: websites/registration/metiz_email.py:16
 msgid "Either message_plain or message_html should be not None"
 msgstr ""
 
-#: websites/registration/metiz_email.py:42
+#: websites/registration/metiz_email.py:43
 msgid "Either message_html should be not None"
 msgstr ""
 

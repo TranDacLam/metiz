@@ -29,9 +29,4 @@ $(document).ready(function() {
         }
     }); 
     $.ajaxSetup({ cache: false });
-
-    // Set data-href of comment fb to transale comment Fb to vietnames
-    if( $('.fb-comments').length ) {
-        $('.fb-comments').attr('data-href', document.URL);
-    }
 });

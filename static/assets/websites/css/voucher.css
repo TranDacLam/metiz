@@ -1,0 +1,92 @@
+p {
+    font-family: "Montserrat-Light", sans-serif;
+    line-height: 22px;
+    text-align: justify;
+}
+p.title {
+    font-family: "SairaSemiCondensed-Medium", sans-serif;
+    color: #ff5400;
+    text-transform: uppercase;
+    font-size: 22px;
+}
+.voucher-custom {
+	padding: 35px 0 50px 0;
+	margin-top: 25px;
+}
+.p-img img {
+	width: 70%;
+	margin: 40px auto;
+}
+
+img#code_img {
+	margin: 0 auto;
+}
+
+.code-group.input-group {
+	width: 80%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.code-group.input-group input#code_str {
+	height: 50px;
+    background: #fff1db;
+    font-size: 26px;
+    font-weight: bold;
+    border: 2px dashed #ff5400;
+    border-right: 0px;
+    font-family: "Montserrat-Medium", sans-serif;
+    font-weight: bold;
+}
+
+.code-group.input-group .input-group-addon {
+	background: #ff5400;
+    font-size: 22px;
+    cursor: pointer;
+    font-family: "SairaSemiCondensed-Medium", sans-serif;
+    color: #fff;
+}
+
+.code-group.input-group .input-group-addon .btn-copy-text {
+	padding-right: 5px;
+}
+
+
+.p-btn {
+	text-align: right;
+}
+#btn_get_voucher {
+	position: relative;
+    color: #444;
+    background: linear-gradient(315deg, rgba(0, 0, 0, 0.06) 10%, transparent 15%, transparent 35%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.06) 60%, transparent 65%, transparent 85%, rgba(0, 0, 0, 0.06) 90%) repeat scroll 0 0/6px 6px transparent;
+    padding: 11px 31px 11px 125px;
+    font-size: 20px;
+    border: 2px solid #DDD;
+    cursor: pointer;
+    height: 50px;
+    margin: 10px 0 15px;
+}
+.get-code {
+	position: absolute;
+    left: -2px;
+    top: -2px;
+    background: #ff5400;
+    color: #FFF;
+    padding: 16px 15px 16px 74px;
+    transition: all 0.5s ease;
+    text-transform: uppercase;
+}
+.get-code:after {
+	content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-left: 44px solid #ff5400;
+    position: absolute;
+    right: -44px;
+    top: 0;
+}
+.get-code:hover {
+    padding-right: 0px;
+}
