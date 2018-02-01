@@ -441,8 +441,8 @@ def blog_film_detail(request, id):
 def voucher(request):
     try:
         if request.method == "POST":
-            # Set deadline to get voucher
-            deadline =  datetime(2018, 2, 1, 16, 00, 00, 00000)
+            # Set deadline to get voucher 17:00 14/02/2017
+            deadline =  datetime(2018, 2, 14, 17, 00, 00, 00000)
             # Check time get voucher valid
             if datetime.now() > deadline:
                 return JsonResponse({'message': _('voucher time out')})
