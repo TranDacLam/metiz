@@ -9,6 +9,9 @@ p.title {
     text-transform: uppercase;
     font-size: 22px;
 }
+.modal-header {
+    border-bottom: 1px solid #ff5400;
+}
 .voucher-custom {
 	padding: 35px 0 50px 0;
 	margin-top: 25px;
@@ -20,6 +23,7 @@ p.title {
 
 img#code_img {
 	margin: 0 auto;
+    max-width: 100%;
 }
 
 .code-group.input-group {
@@ -89,4 +93,16 @@ img#code_img {
 }
 .get-code:hover {
     padding-right: 0px;
+}
+
+@media only screen and (max-width : 768px) {
+    .code-group.input-group {
+        width: 100%;
+    }
+    .code-group.input-group input#code_str {
+        font-size: 20px;
+    }
+    .code-group.input-group .input-group-addon {
+        font-size: 15px;
+    }
 }
