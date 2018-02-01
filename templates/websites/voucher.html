@@ -31,14 +31,18 @@
 		   	<p class="p-img"><img alt="" src="{{ STATIC_URL }}assets/websites/images/voucher_img.jpg"></p>
 
 		   	{% if user.is_authenticated %}
-			    <p>Mã code nhận vé xem phim miễn phí </p>
-
-		    	<p class="p-btn"><button id="btn_get_voucher">
-		    		<span class="code-text" rel="nofollow">METIZ</span>
-		    		<span class="get-code">Lấy mã</span>
-		    	</button></p>
+			    <div class="col-sm-8">
+			    	<p>Mã code nhận vé xem phim miễn phí </p>
+			    	<p>Mã code được sử dụng để xem các phim Việt miễn phí tại rạp Metiz Cinema từ ngày 09/02/2018 – 14/02/2018.</p>
+			    </div>
+			    <div class="col-sm-4 text-xs-center">
+		    		<button id="btn_get_voucher" class="pull-right">
+			    		<span class="code-text" rel="nofollow">METIZ</span>
+			    		<span class="get-code">Lấy mã</span>
+		    		</button>
+		    	</div>
 				<!-- <button id="btn_get_voucher"><img src="{{ STATIC_URL }}assets/websites/images/voucher_btn.png"></button> -->
-				<p>Mã code được sử dụng để xem các phim Việt miễn phí tại rạp Metiz Cinema từ ngày 09/02/2018 – 14/02/2018.</p>
+				
 			{% else %}
 			    <p>Hãy <a href="/register/?next=/voucher/">đăng ký tài khoản tại đây</a> để được nhận vé miễn phí nhé.</p>
 			{% endif %}

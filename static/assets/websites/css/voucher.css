@@ -68,7 +68,7 @@ img#code_img {
     border: 2px solid #DDD;
     cursor: pointer;
     height: 50px;
-    margin: 10px 0 15px;
+    margin: 5px 0 15px;
 }
 .get-code {
 	position: absolute;
@@ -104,5 +104,11 @@ img#code_img {
     }
     .code-group.input-group .input-group-addon {
         font-size: 15px;
+    }
+    .text-xs-center {
+        text-align: center;
+    }
+    #btn_get_voucher.pull-right {
+        float: none !important;
     }
 }
