@@ -472,7 +472,7 @@ def voucher(request):
                     return JsonResponse({'code': voucher.voucher_code})
 
             else:
-                return JsonResponse({'message': 'Please login to received voucher'})
+                return JsonResponse({'message': _('Please login to received voucher')})
 
         return render(request, 'websites/voucher.html')
     except Exception as e:
