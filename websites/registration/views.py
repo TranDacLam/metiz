@@ -76,8 +76,8 @@ def register_user(request, **kwargs):
         if request.method == 'POST':
             register_form = MetizSignupForm(request.POST, request=request)
             # check MetizSignupForm is valid then save user to db
-            if True:
-                # register_form.save()
+            if register_form.is_valid():
+                register_form.save()
                 messages.success(request, _('Register Account Successfully. Please Check Your Email and Active Account.'))
                 return redirect(reverse('home'))
             else:
