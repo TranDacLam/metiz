@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-01 14:20+0700\n"
+"POT-Creation-Date: 2018-02-01 15:38+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -643,15 +643,19 @@ msgstr ""
 msgid "Send Contact Successfully."
 msgstr ""
 
-#: websites/core/views.py:460
+#: websites/core/views.py:444
+msgid "voucher time out"
+msgstr ""
+
+#: websites/core/views.py:463
 msgid "Out of voucher code"
 msgstr ""
 
-#: websites/core/views.py:475
+#: websites/core/views.py:478
 msgid "Please login to received voucher"
 msgstr ""
 
-#: websites/core/views.py:488
+#: websites/core/views.py:491
 msgid "[Metiz] Voucher Code !"
 msgstr ""
 

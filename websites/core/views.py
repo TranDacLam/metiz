@@ -441,11 +441,17 @@ def blog_film_detail(request, id):
 def voucher(request):
     try:
         if request.method == "POST":
+            # Set deadline to get voucher
+            deadline =  datetime(2018, 2, 1, 16, 00, 00, 00000)
+            # Check time get voucher valid
+            if datetime.now() > deadline:
+                return JsonResponse({'message': _('voucher time out')})
+
             if not request.user.is_anonymous():
                 user = request.user
                 # Get voucher by current user login
                 voucher_by_user = Voucher.objects.filter(user=user)
-                
+
                 # Check user have got voucher
                 if voucher_by_user.exists():
                     return JsonResponse({'code': voucher_by_user.get().voucher_code})
