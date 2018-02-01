@@ -445,6 +445,7 @@ def voucher(request):
                 user = request.user
                 # Get voucher by current user login
                 voucher_by_user = Voucher.objects.filter(user=user)
+                
                 # Check user have got voucher
                 if voucher_by_user.exists():
                     return JsonResponse({'code': voucher_by_user.get().voucher_code})

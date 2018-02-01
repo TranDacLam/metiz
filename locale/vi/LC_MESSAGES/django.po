@@ -645,8 +645,6 @@ msgid "Send Contact Successfully."
 msgstr "Gửi liên hệ thành công."
 
 #: websites/core/views.py:460
-#, fuzzy
-#| msgid "mail.voucher.code"
 msgid "Out of voucher code"
 msgstr "Mã khuyến mãi đã hết"
 
