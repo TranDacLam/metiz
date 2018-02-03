@@ -17,7 +17,7 @@ p.title {
 	margin-top: 25px;
 }
 .p-img img {
-	width: 70%;
+	width: 65%;
 	margin: 40px auto;
 }
 
@@ -42,7 +42,19 @@ img#code_img {
     font-family: "Montserrat-Medium", sans-serif;
     font-weight: bold;
 }
-
+.area-voucher-content {
+    padding: 10px 15px;
+}
+.area-voucher-code  {
+    padding: 18px 50px;
+}
+.area-voucher-content, .area-voucher-code {    
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+}
+.button-like-share {
+    padding-top: 10px;
+}
 .code-group.input-group .input-group-addon {
 	background: #ff5400;
     font-size: 22px;
@@ -98,7 +110,12 @@ img#code_img {
 .modal-open {
     overflow: hidden;
 }
+@media only screen and (min-width: 771px) {
+    .voucher-custom {
+        width: 980px;
+    }
 
+}
 @media only screen and (max-width : 768px) {
     .code-group.input-group {
         width: 100%;

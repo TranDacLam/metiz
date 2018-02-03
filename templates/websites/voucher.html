@@ -31,21 +31,22 @@
 		   	<p class="p-img"><img alt="" src="{{ STATIC_URL }}assets/websites/images/voucher_img.jpg"></p>
 
 		   	{% if user.is_authenticated %}
-			    <div class="col-sm-8">
-			    	<p>Mã code nhận vé xem phim miễn phí </p>
-			    	<p>Mã code được sử dụng để xem các phim Việt miễn phí tại rạp Metiz Cinema từ ngày 09/02/2018 – 14/02/2018.</p>
-			    </div>
-			    <div class="col-sm-4 text-xs-center">
-		    		<button id="btn_get_voucher" class="pull-right">
-			    		<span class="code-text" rel="nofollow">METIZ</span>
-			    		<span class="get-code">Lấy mã</span>
-		    		</button>
+		    	<div class="col-sm-8 area-voucher-content">
+		    		<p>Mã code nhận vé xem phim miễn phí </p>
+		    		<p>Mã code được sử dụng để xem các phim Việt miễn phí tại rạp Metiz Cinema từ ngày 09/02/2018 – 14/02/2018.</p>
 		    	</div>
+		    	<div class="col-sm-4 text-xs-center area-voucher-code">
+	    			<button id="btn_get_voucher" class="pull-right">
+		    			<span class="code-text" rel="nofollow">METIZ</span>
+		    			<span class="get-code">Lấy mã</span>
+	    			</button>
+	    		</div>
 				<!-- <button id="btn_get_voucher"><img src="{{ STATIC_URL }}assets/websites/images/voucher_btn.png"></button> -->
 				
 			{% else %}
 			    <p>Hãy <a href="/register/?next=/voucher/">đăng ký tài khoản tại đây</a> để được nhận vé miễn phí nhé.</p>
 			{% endif %}
+			<div class="clearfix"></div>
 			<div class="button-like-share">
 				<div class="fb-like fb_iframe_widget" data-href="http://{{ request.get_host }}{% url 'voucher'%}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
 		        </div>
