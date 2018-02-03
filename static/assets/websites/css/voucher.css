@@ -52,7 +52,7 @@ img#code_img {
     padding: 10px 15px;
 }
 .area-voucher-code  {
-    padding: 18px 50px;
+    padding: 12px 50px;
 }
 .area-voucher-content, .area-voucher-code {    
     border: 1px solid #ccc;
@@ -86,7 +86,7 @@ img#code_img {
     border: 2px solid #DDD;
     cursor: pointer;
     height: 50px;
-    margin: 5px 0 15px;
+    margin: 5px 0 5px;
 }
 .get-code {
 	position: absolute;
