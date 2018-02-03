@@ -115,6 +115,7 @@ img#code_img {
 
 .modal-open {
     overflow: hidden;
+    position: fixed;
 }
 @media only screen and (min-width: 771px) {
     .voucher-custom {
