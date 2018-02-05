@@ -463,7 +463,7 @@ def voucher(request):
                 count = voucher_list.count()
 
                 # Check out of voucher code
-                if count == 0:
+                if count == 500:
                     return JsonResponse({'message': _('Out of voucher code')})
 
                 # Get voucher code by random
