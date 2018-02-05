@@ -129,7 +129,7 @@ msgstr "Cảm ơn bạn và chào mừng bạn đến với Metiz!"
 #: templates/registration/email/metiz_account_created_confirm.html:133
 #: templates/registration/email/metiz_account_created_confirm.txt:6
 msgid "mail.register.footer1"
-msgstr "Nếu tài khoản của bạn bị lỗi hoặc không thể truy cập, vui lòng gọi "
+msgstr "Email này được gởi tự động. Vui lòng không trả lời (reply) email này. Nếu tài khoản của bạn bị lỗi hoặc không thể truy cập, vui lòng gọi "
 
 #: templates/registration/email/metiz_account_created_confirm.html:133
 #: templates/registration/email/metiz_account_created_confirm.txt:6
