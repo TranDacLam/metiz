@@ -481,7 +481,8 @@ def voucher(request):
             else:
                 return JsonResponse({'message': _('Please login to received voucher')})
 
-        return render(request, 'websites/voucher.html')
+        number_voucher = Voucher.objects.filter(status="linked").count()
+        return render(request, 'websites/voucher.html', {"number_voucher": number_voucher})
     except Exception as e:
         print "Error action voucher : ", e
         return HttpResponse(status=500)
