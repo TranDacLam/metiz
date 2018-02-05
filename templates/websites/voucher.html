@@ -38,7 +38,7 @@
 		    		<p class="text-content-title">Click LẤY MÃ để nhận vé xem phim miễn phí  </p>
 		    		<p class="text-content">Hạn sử dụng: 09.02 – 14.02.2018</p>
                     {% if number_voucher %}
-                        <p class="text-content">{{number_voucher}} Đã Sử Dụng</p>
+                        <p class="text-voucher">{{number_voucher}} Vouchers đã sử dụng</p>
                     {% endif %}
                     
 		    	</div>
@@ -46,6 +46,9 @@
 	    			<button id="btn_get_voucher" class="pull-right">
 		    			<span class="code-text" rel="nofollow">METIZ</span>
 		    			<span class="get-code">Lấy mã</span>
+                        {% if number_voucher %}
+                            <p class="text-content"></p>
+                        {% endif %}
 	    			</button>
 	    		</div>
 				<!-- <button id="btn_get_voucher"><img src="{{ STATIC_URL }}assets/websites/images/voucher_btn.png"></button> -->
