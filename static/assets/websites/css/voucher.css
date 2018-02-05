@@ -52,7 +52,7 @@ img#code_img {
     padding: 10px 15px;
 }
 .area-voucher-code  {
-    padding: 12px 50px;
+    padding: 25px 50px;
     min-height: 118px;
 }
 .area-voucher-content, .area-voucher-code {    
@@ -79,7 +79,6 @@ img#code_img {
 	text-align: right;
 }
 #btn_get_voucher {
-    margin-top: 20px;
 	position: relative;
     color: #444;
     background: linear-gradient(315deg, rgba(0, 0, 0, 0.06) 10%, transparent 15%, transparent 35%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.06) 60%, transparent 65%, transparent 85%, rgba(0, 0, 0, 0.06) 90%) repeat scroll 0 0/6px 6px transparent;
