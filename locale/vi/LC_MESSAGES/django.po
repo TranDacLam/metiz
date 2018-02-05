@@ -292,7 +292,7 @@ msgstr "Đã Có Lỗi Khi Xuất Vé. Mã đặt vé"
 #: templates/websites/booking/email/booking_error.html:130
 #: templates/websites/booking/email/booking_notification.html:130
 msgid "mail.booking.footer1"
-msgstr "Nếu gặp sự cố, vui lòng gọi "
+msgstr "Email này được gởi tự động. Vui lòng không trả lời (reply) email này. Nếu gặp sự cố, vui lòng gọi "
 
 #: templates/websites/booking/email/booking_error.html:130
 #: templates/websites/booking/email/booking_notification.html:130
