@@ -55,7 +55,8 @@ img#code_img {
     padding: 25px 50px;
     min-height: 118px;
 }
-.area-voucher-content, .area-voucher-code {    
+.area-voucher-content, .area-voucher-code {
+    min-height: 118px;
     border: 1px solid #ccc;
     box-shadow: 0 0 5px #ccc;
 }
