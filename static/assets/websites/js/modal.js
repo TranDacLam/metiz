@@ -384,7 +384,7 @@ $(document).ready(function() {
         /* hardcode for film free for vouchers */
         function check_movie_free(element) {
             /* List Film Free */
-            var lst_movie_id_free = ['82a348f6-9cb2-43ae-a738-70aae0ff569d', '160809e0-6d8c-422d-888f-7d9253fc2490', '9a95f59b-acdf-4c13-a454-8cf5df170580']
+            var lst_movie_id_free = ['3d3e64f6-a6b6-42fa-8b47-405844e37516', '160809e0-6d8c-422d-888f-7d9253fc2490', '9a95f59b-acdf-4c13-a454-8cf5df170580'];
             // Get movie id selected
             var movie_id = element.children('input[name=id_movie_id]').val();
      
