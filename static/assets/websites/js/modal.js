@@ -267,6 +267,7 @@ $(document).ready(function() {
             htmlShedule += '<li class="sold-out">' +
                 '<a href="#" >' +
                 '<input type="hidden" name="id_showtime" value="' + value.id_showtime + '">' +
+                '<input type="hidden" name="id_movie_id" value="' + shedule.movie_id + '">' +
                 '<input type="hidden" name="id_movie_name" value="' + shedule.movie_name + '">' +
                 '<input type="hidden" name="movie_api_id" value="' + movie_api_id + '">' +
                 '<span class="time">' +
@@ -379,18 +380,26 @@ $(document).ready(function() {
             });
     });
     function trigger_click_showtime() {
+
+        /* hardcode for film free for vouchers */
+        function check_movie_free(element) {
+            /* List Film Free */
+            var lst_movie_id_free = ['82a348f6-9cb2-43ae-a738-70aae0ff569d', '160809e0-6d8c-422d-888f-7d9253fc2490', '9a95f59b-acdf-4c13-a454-8cf5df170580']
+            // Get movie id selected
+            var movie_id = element.children('input[name=id_movie_id]').val();
+     
+            if ($.inArray(movie_id, lst_film_free) >= 0){
+                return true;
+            }
+            return false;
+        }
+
         // Validate Time Remain before 15 minutes. verify when date selected equal current date
         function validate_time_remain(element){
             var time_remain = 15;
             var date_now = new Date();
             // get current date selected and time of movie show
             var date_selected = new Date($('.popup-movie-schedule.active-date').attr('data-date-select'));
-            var lst_date_free = ["2018-02-09", "2018-02-10", "2018-02-11", "2018-02-12", "2018-02-13", "2018-02-14"];
-            
-            // hardcode for film free for vouchers
-            if ($.inArray($('.popup-movie-schedule.active-date').attr('data-date-select'), arr) >= 0){
-                return false;
-            }
 
             var start_time = element.children('.time').text().split('~')[0];
             
@@ -461,7 +470,7 @@ $(document).ready(function() {
         if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
             $('.sold-out a').on('click', function(event) {
                 $(this).addClass('mobile-schedule');
-                if(validate_time_remain($(this))){
+                if(check_movie_free($(this)) == false || validate_time_remain($(this))){
                     showPopup($(this));
                 }
             });
@@ -476,8 +485,8 @@ $(document).ready(function() {
         }else{
             $('.sold-out a').click(function(event) {
                 event.preventDefault();
-                if(validate_time_remain($(this))){
-                    showPopup($(this));    
+                if(check_movie_free($(this)) == false || validate_time_remain($(this))){
+                    showPopup($(this));
                 }
                 
             });
