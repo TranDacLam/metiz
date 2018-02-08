@@ -388,7 +388,7 @@ $(document).ready(function() {
             // Get movie id selected
             var movie_id = element.children('input[name=id_movie_id]').val();
      
-            if ($.inArray(movie_id, lst_film_free) >= 0){
+            if ($.inArray(movie_id, lst_movie_id_free) >= 0){
                 return true;
             }
             return false;
