@@ -385,6 +385,13 @@ $(document).ready(function() {
             var date_now = new Date();
             // get current date selected and time of movie show
             var date_selected = new Date($('.popup-movie-schedule.active-date').attr('data-date-select'));
+            var lst_date_free = ["2018-02-09", "2018-02-10", "2018-02-11", "2018-02-12", "2018-02-13", "2018-02-14"];
+            
+            // hardcode for film free for vouchers
+            if ($.inArray($('.popup-movie-schedule.active-date').attr('data-date-select'), arr) >= 0){
+                return false;
+            }
+
             var start_time = element.children('.time').text().split('~')[0];
             
             // get show time sub 15 minute check show time greate than equal curren time then allow booking
