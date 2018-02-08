@@ -387,8 +387,8 @@ $(document).ready(function() {
             var lst_movie_id_free = ['3d3e64f6-a6b6-42fa-8b47-405844e37516', '160809e0-6d8c-422d-888f-7d9253fc2490', '9a95f59b-acdf-4c13-a454-8cf5df170580'];
             // Get movie id selected
             var movie_id = element.children('input[name=id_movie_id]').val();
-     
-            if ($.inArray(movie_id, lst_movie_id_free) >= 0){
+        
+            if ($.inArray(movie_id, lst_movie_id_free) > -1){
                 return true;
             }
             return false;
@@ -470,7 +470,7 @@ $(document).ready(function() {
         if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
             $('.sold-out a').on('click', function(event) {
                 $(this).addClass('mobile-schedule');
-                if(check_movie_free($(this)) == false || validate_time_remain($(this))){
+                if(check_movie_free($(this)) == false && validate_time_remain($(this))){
                     showPopup($(this));
                 }
             });
@@ -485,7 +485,7 @@ $(document).ready(function() {
         }else{
             $('.sold-out a').click(function(event) {
                 event.preventDefault();
-                if(check_movie_free($(this)) == false || validate_time_remain($(this))){
+                if(check_movie_free($(this)) == false && validate_time_remain($(this))){
                     showPopup($(this));
                 }
                 
