@@ -17,6 +17,7 @@ import os
 import xlsxwriter
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
+import os
 
 
 def get_booking(request):
@@ -546,3 +547,16 @@ def write_to_excel(file_name, booking_list):
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
 """ END BOOKING INFORMATION REPORT """
+
+@login_required(login_url='/admin/login/')
+@permission_required('is_superuser', login_url='/admin/login/')
+def movies_synchronize(request):
+    try:
+        if request.method == "POST":
+            os.system("fab synchronize")
+            return JsonResponse({"message": "Success Synchronize movies."}, status=200)
+        else:
+            return render(request, 'websites/booking/movies_synchronize.html')
+    except Exception, e:
+        print "Error Action movies_synchronize : ",e
+        return JsonResponse({"message": "Cannot synchronize movies. Please contact administrator "}, status=500)

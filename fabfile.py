@@ -1,6 +1,14 @@
 from fabric.api import *
 
+import os 
+
 ENV = 'development' # Choices ['uat','production','development']
+
+if 'DEVELOP' in os.environ and os.environ['DEVELOP']:
+    print "CURRENT environ ",os.environ['DEVELOP']
+    ENV = 'uat'
+
+
 #ENV = 'production'
 SERVERS = {
     'development': '172.16.12.10',
@@ -43,6 +51,11 @@ PROCESS_ID = {
     'production': '/tmp/metiz_web.pid'
 }
 
+CRON_MOVIE = {
+    'uat': 'bash /home/ubuntu/projects/metiz/websites/config/cronjobs/script_cron_movies.sh',
+    'production': 'bash /home/ubuntu/projects/metiz/websites/config/cronjobs/production/script_cron_movies.sh'
+}
+
 env.hosts = [SERVERS[ENV]]
 env.user = USERS[ENV]
 env.password = PASSWORDS[ENV]
@@ -79,6 +92,16 @@ def deploy():
                     sudo('systemctl restart uwsgi_metiz_uat')
                 elif ENV == 'production':
                     sudo('systemctl restart uwsgi_metiz')
+
+def synchronize():
+    with cd(PROJECT_PATH):
+        with cd('websites'):
+            with prefix(env.activate):
+                run('python manage.py sync_movie')
+
+
+def synchronize_test():
+    run("ls -al")
 
 
         

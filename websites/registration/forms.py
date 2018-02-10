@@ -96,6 +96,8 @@ class MetizSignupForm(UserCreationForm):
         try:
             salt = sha.new(str(random.random())).hexdigest()[:5]
             activation_key = sha.new(salt + email).hexdigest()
+            print "##### Current User Register : ", email
+            print "##### Current Activation Key : ", activation_key
         except Exception, e:
             print 'Save Form Error ', e
             raise Exception('Internal Server Error.')
