@@ -5,7 +5,7 @@ from models import *
 from datetime import *
 from django.db.models import Avg, Sum, Count
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, Http404
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from itertools import chain
@@ -20,6 +20,7 @@ from django.contrib.sites.models import Site
 from registration import metiz_email
 from random import randint
 from django.contrib.auth.decorators import login_required
+
 
 # NOTES : View SQL Query using : print connection.queries
 
@@ -67,7 +68,8 @@ def showing(request):
                                                            'title': "Phim Đang Chiếu"})
     except Exception, e:
         print "Error action showing: ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def coming_soon(request):
@@ -111,7 +113,8 @@ def coming_soon(request):
                                                            'title': "Phim Sắp Chiếu"})
     except Exception, e:
         print "Error action : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def film_detail(request, id):
@@ -139,10 +142,11 @@ def film_detail(request, id):
 
     except Movie.DoesNotExist, e:
         print "Error Movie : %s" % e
-        return HttpResponse(status=404)
+        raise Http404()
     except Exception, e:
         print "Error: ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def news(request):
@@ -196,7 +200,8 @@ def news(request):
         return render(request, 'websites/news.html', {'list_news': news_page.object_list, 'total_page': paginator_news.num_pages})
     except Exception, e:
         print "Error: %s" % e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def new_detail(request, id):
@@ -206,10 +211,11 @@ def new_detail(request, id):
         return render(request, 'websites/new_detail.html', {'new': new})
     except NewOffer.DoesNotExist, e:
         print "Error action new_detail : %s" % e
-        return HttpResponse(status=404)
+        raise Http404()
     except Exception, e:
         print "Error action new_detail : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def get_technology(request):
@@ -244,7 +250,8 @@ def technology_detail(request, name):
         return render(request, 'websites/cinema_technology.html', {'technology': technology, 'allTechnology': allTechnology})
     except Exception, e:
         print "Error action technology_detail : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def home(request):
@@ -296,7 +303,7 @@ def home(request):
 
         top_news = news.extra(
             order_by=['priority_null', 'priority', '-created'])[:5]
-
+        
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
 
@@ -316,7 +323,8 @@ def home(request):
 
     except Exception, e:
         print "Error action home : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def get_post(request):
@@ -342,10 +350,11 @@ def get_post(request):
         return render(request, 'websites/cms.html', {'item': item})
     except Post.DoesNotExist, e:
         print "Error get_post : id or key_query does not exist"
-        return HttpResponse(status=404)
+        raise Http404()
     except Exception, e:
         print "Error action get_post : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def contacts(request):
@@ -366,7 +375,8 @@ def contacts(request):
         return render(request, 'websites/contacts.html', {"forms": contact_form})
     except Exception as e:
         print "Error action contacts : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def blog_film(request):
@@ -401,7 +411,8 @@ def blog_film(request):
 
     except Exception as e:
         print "Error action blog_film : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def blog_film_detail(request, id):
@@ -433,7 +444,8 @@ def blog_film_detail(request, id):
                       {'blog': blog, 'related_blogs': related_blogs, 'view_counter': view_counter})
     except Exception as e:
         print "Error action blog_film_detail : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 """ 10000 VOUCHER FREE """
 
@@ -485,7 +497,8 @@ def voucher(request):
         return render(request, 'websites/voucher.html', {"number_voucher": number_voucher})
     except Exception as e:
         print "Error action voucher : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 """Send mail to user"""
 

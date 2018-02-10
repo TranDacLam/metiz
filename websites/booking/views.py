@@ -62,7 +62,8 @@ def get_booking(request):
                                                              "movie_api_id": movie_api_id})
     except Exception, e:
         print "Error get_booking : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def time_out_booking(request):
@@ -71,7 +72,8 @@ def time_out_booking(request):
         return render(request, 'websites/time_out_booking.html')
     except Exception, e:
         print "Error time out booking : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def build_show_time_json(current_date, item, result, movies_info, obj_movie=None):
@@ -405,7 +407,8 @@ def booking_info_report(request):
             )
     except Exception, e:
         print "Error booking_info_report : %s ", e
-        pass
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
     return render(request, "websites/booking/booking_info_report.html")
 
@@ -435,7 +438,8 @@ def booking_info_export_to_excel(request):
         )
     except Exception, e:
         print "Error booking_info_report : %s ", e
-        pass
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 """
@@ -539,5 +543,6 @@ def write_to_excel(file_name, booking_list):
 
     except Exception, e:
         print "Error write_to_excel : %s ", e
-        pass
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 """ END BOOKING INFORMATION REPORT """

@@ -18,7 +18,9 @@ def logout(request):
         auth_logout(request)
         return redirect(reverse('home'))
     except Exception, e:
-        return HttpResponse(status=500)
+        print "Error Action Logout ",e
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def login(request):
@@ -62,7 +64,9 @@ def login(request):
 
         return render(request, 'registration/signup.html', result)
     except Exception, e:
-        return HttpResponse(status=500)
+        print "Error Action Login : ",e
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def register_user(request, **kwargs):
@@ -115,7 +119,8 @@ def register_user(request, **kwargs):
                       {'register_form': register_form, 'is_signup': True, 'next_page': next_page})
     except Exception, e:
         print "Error action register_user : %s" % e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 def confirm_activation(request, activation_key):
@@ -129,8 +134,12 @@ def confirm_activation(request, activation_key):
             return render(request, 'registration/activation_confirm.html', {'has_account': True})
 
         # Check activation key is valid
-        user_account = get_object_or_404(User,
+        try:
+            user_account = get_object_or_404(User,
                                          activation_key=activation_key)
+        except Exception:
+            print "User Query activation_key does not exist."
+            return render(request, 'registration/activation_confirm.html', {'key_wrong': True})
 
         # User have confirm link before then return flag active
         if user_account.is_active:
@@ -151,7 +160,8 @@ def confirm_activation(request, activation_key):
 
     except Exception, e:
         print "Error action confirm_activation : %s" % e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 @login_required(login_url='/login/')
@@ -170,7 +180,8 @@ def change_password(request):
         return render(request, 'registration/change_password.html', {'form': form})
     except Exception, e:
         print "error", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 
 @login_required(login_url='/login/')
@@ -217,7 +228,8 @@ def update_profile(request):
         return render(request, "registration/profile.html", context)
     except Exception, e:
         print "Error update_profile : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
 
 def resend_activation(request):
     try:
@@ -260,4 +272,5 @@ def resend_activation(request):
 
     except Exception, e:
         print "Error resend_activation : ", e
-        return HttpResponse(status=500)
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
