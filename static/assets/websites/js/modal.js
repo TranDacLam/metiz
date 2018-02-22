@@ -364,7 +364,10 @@ $(document).ready(function() {
                 var html = '';
                 $.each(response, function(key, value) {
                     if (value.lst_times.length > 0) {
-                        html += listFilm(value);
+                        // check movie id is movie id test
+                        if (document.domain !== "metiz.vn" || movieIdTest !== value.movie_id ) {
+                            html += listFilm(value);
+                        }
                     }
                 });
                 $('.list-schedule').html(html);
@@ -470,8 +473,11 @@ $(document).ready(function() {
         if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
             $('.sold-out a').on('click', function(event) {
                 //Start Hack code Maintenance
-                $('#alert_maintenance').modal('show');
-                return;
+                var movie_id = $(this).children('input[name=id_movie_id]').val();
+                if ( movie_id !== movieIdTest ) {
+                    $('#alert_maintenance').modal('show');
+                    return;
+                }
                 //End Hack code Maintenance
 
                 $(this).addClass('mobile-schedule');
@@ -490,9 +496,13 @@ $(document).ready(function() {
         }else{
             $('.sold-out a').click(function(event) {
                 event.preventDefault();
+
                 //Start Hack code Maintenance
-                $('#alert_maintenance').modal('show');
-                return;
+                var movie_id = $(this).children('input[name=id_movie_id]').val();
+                if (movie_id !== movieIdTest) {
+                    $('#alert_maintenance').modal('show');
+                    return;
+                }
                 //End Hack code Maintenance
                 
                 if(check_movie_free($(this)) == false && validate_time_remain($(this))){

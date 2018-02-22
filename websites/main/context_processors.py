@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.template import Context
 
 
 def get_app_fb_id(request):
@@ -25,3 +26,12 @@ def get_app_fb_id(request):
     except:
         pass
     return {'HOT_LINE': HOT_LINE}
+
+def get_movie_id_test(request):
+    MOVIE_ID_TEST = ''
+    try:
+        MOVIE_ID_TEST = settings.MOVIE_ID_TEST
+    except:
+        pass
+
+    return {'MOVIE_ID_TEST': MOVIE_ID_TEST}

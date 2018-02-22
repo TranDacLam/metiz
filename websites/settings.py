@@ -87,6 +87,7 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'main.context_processors.get_app_fb_id',
                 'main.context_processors.get_app_recaptcha_key',
+                'main.context_processors.get_movie_id_test',
             ],
         },
     },
@@ -207,6 +208,8 @@ EMAIL_HOST_USER = 'no-reply@metiz.vn'
 EMAIL_HOST_PASSWORD = 'N0reply!@#'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+MOVIE_ID_TEST = '58653e48-fc6f-419f-9b15-bbf737e45946'
 
 # Config DKIM
 DKIM_SELECTOR = "metiz_dkim"
