@@ -469,6 +469,11 @@ $(document).ready(function() {
         /* change background for schedule firm on mobile */
         if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
             $('.sold-out a').on('click', function(event) {
+                //Start Hack code Maintenance
+                $('#alert_maintenance').modal('show');
+                return;
+                //End Hack code Maintenance
+
                 $(this).addClass('mobile-schedule');
                 if(check_movie_free($(this)) == false && validate_time_remain($(this))){
                     showPopup($(this));
@@ -485,6 +490,11 @@ $(document).ready(function() {
         }else{
             $('.sold-out a').click(function(event) {
                 event.preventDefault();
+                //Start Hack code Maintenance
+                $('#alert_maintenance').modal('show');
+                return;
+                //End Hack code Maintenance
+                
                 if(check_movie_free($(this)) == false && validate_time_remain($(this))){
                     showPopup($(this));
                 }
