@@ -3,7 +3,10 @@ var bookingInfoDatatale;
 
 function bookingInfoDatataleFunction() {
 
-	$('select[multiple]').multiselect();
+	$('select[multiple]').multiselect({
+		nonSelectedText: 'ALL', 
+		numberDisplayed: 4
+	});
 
 	if($("#booking_info_table").hasClass('dataTable')) {
 		bookingInfoDatatale.ajax.reload();

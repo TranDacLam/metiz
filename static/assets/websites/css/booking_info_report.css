@@ -3,6 +3,7 @@ h1 {
 	margin-bottom: 50px;
 }
 .multiple-custom .btn-group,
+.multiple-custom .multiselect-container.dropdown-menu,
 .multiple-custom button.multiselect.dropdown-toggle.btn.btn-default {
 	width: 100%;
 	text-align: left;
