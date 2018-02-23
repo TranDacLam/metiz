@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 def check_user_booking_exist(f):
     def wrap(request, *args, **kwargs):
             # this check the session if phone key exist, if not it will redirect to login page
-            if 'phone' not in request.session.keys():
+            if request.method == 'GET' and 'phone' not in request.session.keys():
                 return redirect(reverse('login'))
             return f(request, *args, **kwargs)
     wrap.__doc__=f.__doc__
