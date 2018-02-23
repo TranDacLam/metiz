@@ -2,6 +2,9 @@ var dataParams;
 var bookingInfoDatatale;
 
 function bookingInfoDatataleFunction() {
+
+	$('select[multiple]').multiselect();
+
 	if($("#booking_info_table").hasClass('dataTable')) {
 		bookingInfoDatatale.ajax.reload();
 	} else {

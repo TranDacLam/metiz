@@ -1,9 +1,11 @@
 {% extends "layout_report.html" %}
 {% block meta_title %}Booking Information Report{% endblock %}
 {% block extrastylesheet %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
 	<link href="{{ STATIC_URL }}assets/websites/css/booking_info_report.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block extrascript %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js" charset="utf-8"></script>
     <script src="{{ STATIC_URL }}assets/websites/js/booking_info_report.js" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
 
@@ -38,8 +40,8 @@
 								<div class="col-md-2 align-right">
 	                				<label for="id_order_status">Order Status</label>
 	                			</div>
-								<div class="col-md-4">
-                					<select id="id_order_status" name="order_status" class="form-control">
+								<div class="col-md-4 multiple-custom">
+                					<select id="id_order_status" multiple name="order_status" class="form-control">
                 						<option value="">All</option>
                 						<option value="pendding">Pending</option>
 										<option value="cancel">Cancel</option>

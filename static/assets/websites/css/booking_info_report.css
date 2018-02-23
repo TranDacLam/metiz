@@ -2,6 +2,18 @@ h1 {
 	text-align: center;
 	margin-bottom: 50px;
 }
+.multiple-custom .btn-group,
+.multiple-custom button.multiselect.dropdown-toggle.btn.btn-default {
+	width: 100%;
+	text-align: left;
+}
+.multiple-custom .btn .caret {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    font-size: 41px;
+}
+
 #search-btn {
 	margin-left: 10px;
 }
