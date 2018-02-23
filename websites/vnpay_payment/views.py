@@ -20,6 +20,7 @@ import requests
 import random
 import base64
 from core.models import AdminInfo
+from core.decorator import *
 
 
 def data_encrypt_cbc(data):
@@ -141,7 +142,7 @@ def cancel_seats(seats_choice, id_server):
     for seat in seats_choice:
         api.call_api_cancel_seat(seat, id_server=id_server)
 
-
+@check_user_booking_exist
 def payment(request):
     if request.method == 'POST':
         # Process input data and build url payment

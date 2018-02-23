@@ -18,8 +18,9 @@ import xlsxwriter
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 import os
+from core.decorator import *
 
-
+@check_user_booking_exist
 def get_booking(request):
     try:
         """ Action render page booking for user selected chair,
