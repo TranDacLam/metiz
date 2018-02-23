@@ -20,7 +20,6 @@ from django.contrib.auth.decorators import permission_required
 import os
 from core.decorator import *
 
-# @check_user_booking_exist
 def get_booking(request):
     try:
         """ Action render page booking for user selected chair,
@@ -183,7 +182,7 @@ def get_seats(request):
         print "Error get_seats : %s" % e
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 
-
+@check_user_booking_exist
 def check_seats(request):
     try:
         """
