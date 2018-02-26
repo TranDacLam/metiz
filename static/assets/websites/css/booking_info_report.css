@@ -14,7 +14,14 @@ h1 {
     top: 14px;
     font-size: 41px;
 }
+.multiple-custom .multiselect-all {
+	text-transform: capitalize;
+}
 
+.multiple-custom .checkbox input[type=checkbox], 
+.multiple-custom .checkbox-inline input[type=checkbox]{
+    margin-top: 4px;
+}
 #search-btn {
 	margin-left: 10px;
 }
