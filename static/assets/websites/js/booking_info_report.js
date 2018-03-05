@@ -2,6 +2,15 @@ var dataParams;
 var bookingInfoDatatale;
 
 function bookingInfoDatataleFunction() {
+
+	$('select[multiple]').multiselect({
+		numberDisplayed: 4, 
+		includeSelectAllOption: true,
+		allSelectedText: 'All',
+		nonSelectedText: 'None',
+		selectAllText: 'All'
+	});
+
 	if($("#booking_info_table").hasClass('dataTable')) {
 		bookingInfoDatatale.ajax.reload();
 	} else {

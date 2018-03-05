@@ -18,8 +18,9 @@ import xlsxwriter
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 import os
+from core.decorator import *
 
-
+@check_user_booking_exist
 def get_booking(request):
     try:
         """ Action render page booking for user selected chair,
@@ -332,12 +333,14 @@ def booking_info_data(request):
         
         # Get Parameter From POST request
         order_id = request.POST.get("order_id", "1")
-        order_status = request.POST.get("order_status", "")
+        order_status = request.POST.getlist("order_status[]", [])
         email = request.POST.get("email", "")
         phone = request.POST.get("phone", "")
         barcode = request.POST.get("barcode", "")
         date_from = request.POST.get("date_from", "")
         date_to = request.POST.get("date_to", "")
+
+        print "order_status", order_status
 
         kwargs = {}
 
@@ -345,7 +348,7 @@ def booking_info_data(request):
         if order_id:
             kwargs['order_id'] = order_id
         if order_status:
-            kwargs['order_status'] = order_status
+            kwargs['order_status__in'] = order_status
         if email:
             kwargs['email'] = email
         if phone:
