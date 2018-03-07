@@ -44,6 +44,7 @@ $(document).ready(function() {
     var control_owl = {
         margin: 10,
         dots: false,
+        loop:true,
         autoplay:true,
         autoplayTimeout:1000,
         autoplayHoverPause:true,
