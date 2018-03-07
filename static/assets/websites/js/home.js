@@ -44,6 +44,9 @@ $(document).ready(function() {
     var control_owl = {
         margin: 10,
         dots: false,
+        autoplay:true,
+        autoplayTimeout:1000,
+        autoplayHoverPause:true,
         nav: true,
         navText: ["<img src='static/assets/websites/images/left-arrow.png'>","<img src='static/assets/websites/images/right-arrow.png'>"],
         navClass: ['lSPrev','lSNext'],
