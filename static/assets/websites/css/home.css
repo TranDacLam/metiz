@@ -286,6 +286,7 @@ ul.metiz-movie-tabs {
     display: block;    
     height: 64px;
     background-image: url('/static/assets/websites/images/left-arrow.png');
+    background-size: 100%;
     cursor: pointer;
     position: absolute;
     z-index: 3;
@@ -300,6 +301,7 @@ ul.metiz-movie-tabs {
     display: block;
     height: 64px;
     background-image: url('/static/assets/websites/images/right-arrow.png');
+    background-size: 100%;
     cursor: pointer;
     position: absolute;
     z-index: 3;
