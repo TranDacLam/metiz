@@ -29,6 +29,12 @@ $(document).ready(function() {
         midClick: true,
         enableEscapeKey: false,
         fixedContentPos: true,
+        callbacks: {
+            close: function(){
+                // Reset movie name highlight
+                $("#movie_name_highlight_id").val("");
+            }
+        }
     });
 
 
@@ -480,10 +486,6 @@ $(document).ready(function() {
                 if(check_movie_free($(this)) == false && validate_time_remain($(this))){
                     showPopup($(this));
                 }
-            });
-            $('.modal-schedule').on('hide.bs.modal', function() {
-                $('.sold-out a').removeClass('mobile-schedule');
-
             });
             $('.modal-schedule').on('hide.bs.modal', function() {
                 $('.sold-out a').removeClass('mobile-schedule');
