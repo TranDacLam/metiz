@@ -21,7 +21,7 @@
 			</div>
 			<div class="metiz-movie-info">
 
-				<span class="metiz-info-bold">{{value.time_running}} Phút | <span class="rated-{{value.rated.name}}">{{value.rated.name}}</span></span>
+				<span class="metiz-info-bold">{% if value.time_running %} {{value.time_running}} Phút {% if value.rated %} | {% endif %} {% endif %} <span class="rated-{{value.rated.name}}">{{value.rated.name}}</span></span>
 
 			</div>
 			<div class="metiz-movie-info">

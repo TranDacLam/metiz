@@ -347,6 +347,12 @@ ul.metiz-movie-tabs {
     }
 }
 @media only screen and (max-width: 1024px){
+    .owl-nav .lSPrev,
+    .owl-nav .lSNext,
+    .slideshow-container .prev-arrow,
+    .slideshow-container .next-arrow {
+        display: none;
+    }
     .slideshow-containe-movier .poster-film .product-img {
         height: 340px;
         width: 222px;
