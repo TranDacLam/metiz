@@ -468,13 +468,13 @@ $(document).ready(function() {
         /* change background for schedule firm on mobile */
         if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
             $('.sold-out a').on('click', function(event) {
-                //Start Hack code Maintenance
-                var movie_id = $(this).children('input[name=id_movie_id]').val();
-                if ( movie_id !== movieIdTest ) {
-                    $('#alert_maintenance').modal('show');
-                    return;
-                }
-                //End Hack code Maintenance
+                // //Start Hack code Maintenance
+                // var movie_id = $(this).children('input[name=id_movie_id]').val();
+                // if ( movie_id !== movieIdTest ) {
+                //     $('#alert_maintenance').modal('show');
+                //     return;
+                // }
+                // //End Hack code Maintenance
 
                 $(this).addClass('mobile-schedule');
                 if(check_movie_free($(this)) == false && validate_time_remain($(this))){
@@ -493,13 +493,13 @@ $(document).ready(function() {
             $('.sold-out a').click(function(event) {
                 event.preventDefault();
 
-                //Start Hack code Maintenance
-                var movie_id = $(this).children('input[name=id_movie_id]').val();
-                if (movie_id !== movieIdTest) {
-                    $('#alert_maintenance').modal('show');
-                    return;
-                }
-                //End Hack code Maintenance
+                // //Start Hack code Maintenance
+                // var movie_id = $(this).children('input[name=id_movie_id]').val();
+                // if (movie_id !== movieIdTest) {
+                //     $('#alert_maintenance').modal('show');
+                //     return;
+                // }
+                // //End Hack code Maintenance
                 
                 if(check_movie_free($(this)) == false && validate_time_remain($(this))){
                     showPopup($(this));
