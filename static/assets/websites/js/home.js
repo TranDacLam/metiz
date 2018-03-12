@@ -75,6 +75,22 @@ $(document).ready(function() {
             }
         }
     }
+
     $('.tabs-format-metiz').toggleOwl(' #movie-tab-1 .owl-carousel', control_owl);
     $('.tabs-format-metiz').toggleOwl('.owl-carousel.style2', control_owl);
+
+    /* 
+        fix bug auto play not working when reactive tab
+        step1: when leave tab then stop autoplay
+        step2: when comeback to tab then play autoplay
+    */
+    document.addEventListener("visibilitychange", function() {
+        if (document.hidden){
+            $('#movie-tab-1 .owl-carousel').trigger('stop.owl.autoplay');
+            $('.owl-carousel.style2').trigger('stop.owl.autoplay');
+        } else {
+            $('#movie-tab-1 .owl-carousel').trigger('play.owl.autoplay',[1000]);
+            $('.owl-carousel.style2').trigger('play.owl.autoplay',[1000]);
+        }
+    });
 });
