@@ -274,8 +274,8 @@ def home(request):
             - order by name
             *Note: in alogilm query movie add extra field priority_null and append priority is null to end list
         """
-        movie_showings = Movie.objects.filter(
-            release_date__lte=datetime.now(), end_date__gte=datetime.now(), is_draft=False).order_by('priority').extra(
+        movie_showings = Movie.objects.filter(Q(end_date__isnull=True) | Q(end_date__gte=datetime.now()),
+                                              release_date__lte=datetime.now(), is_draft=False).order_by('priority').extra(
             select={'priority_null': 'priority is null'})
 
         list_showing = movie_showings.extra(

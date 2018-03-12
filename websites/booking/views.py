@@ -118,7 +118,7 @@ def get_movie_show_time(request):
         date = request.GET.get('date', current_date.date())
         # cinema_id is equal id_server
         cinema_id = request.GET.get('cinema_id', 1)
-        movie_api_id = request.GET.get('movie_api_id', None)
+        # movie_api_id = request.GET.get('movie_api_id', None)
 
         result = {}
         data_movie = MovieSync.objects.filter(
@@ -141,20 +141,20 @@ def get_movie_show_time(request):
             # showing
             # get movie object if movie_api_id not empty
             obj_movie = None
-            if movie_api_id:
-                obj_movie = movies_info.filter(
-                    movie_api_id=movie_api_id.strip())
+            # if movie_api_id:
+            #     obj_movie = movies_info.filter(
+            #         movie_api_id=movie_api_id.strip())
 
             for item in show_times["List"]:
                 # Get Showtime movie by id
-                if movie_api_id:
-                    # Get Movie Name by movie api id
-                    if item["MOVIE_ID"].strip() == movie_api_id.strip():
-                        build_show_time_json(
-                            current_date, item, result, movies_info, obj_movie)
-                else:
-                    build_show_time_json(
-                        current_date, item, result, movies_info)
+                # if movie_api_id:
+                #     # Get Movie Name by movie api id
+                #     if item["MOVIE_ID"].strip() == movie_api_id.strip():
+                #         build_show_time_json(
+                #             current_date, item, result, movies_info, obj_movie)
+                # else:
+                build_show_time_json(
+                    current_date, item, result, movies_info)
 
         return JsonResponse(result)
 
