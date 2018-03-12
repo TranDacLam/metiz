@@ -217,6 +217,9 @@ body.modal-open {
     margin-top: 20px;
     color: black;
 }
+.popup-booking .movie-time-line-box .movie-name.highlight {
+    color: #f55404;
+}
 /* slide */
 .section-lightpink {
     background-color: #F9F6EC;

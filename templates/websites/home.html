@@ -85,17 +85,11 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                         <h3>
                                             <a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name|truncatechars:21}}</a>
                                         </h3>
-                                        <h4>{{item.time_running}} Phút | <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></h4>
+                                        <h4>{% if item.time_running %} {{item.time_running}} Phút | {% endif %} <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></h4>
                                         <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
-                                        <!-- {% verify_showtime_by_id 1 item.movie_api_id as is_book_able %}
-                                        {% if is_book_able %}
-                                            <button href="#modal-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
-                                        {% endif %} -->
-                                       <!--  <button href="#modal-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
- -->
                                         <a href="#modal-popup" data-date-select="" data-all-movie="true" class="button open-popup-link popup-movie-schedule" data-movie-name="{{ item.name }}">Đặt vé</a>
 
                                     </div>
@@ -118,15 +112,12 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                         <h3>
                                             <a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name|truncatechars:21}}</a>
                                         </h3>
-                                        <h4>{{item.time_running}} Phút | <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></h4>
+                                        <h4>{% if item.time_running %} {{item.time_running}} Phút | {% endif %} <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></h4>
                                         <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
-                                        {% verify_showtime_by_id 1 item.movie_api_id as is_book_able %}
-                                        {% if is_book_able %}
-                                            <button href="#modal-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</button>
-                                        {% endif %}
+                                        <a href="#modal-popup" data-date-select="" data-all-movie="true" class="button open-popup-link popup-movie-schedule" data-movie-name="{{ item.name }}">Đặt vé</a>
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                             <span><span>Play</span></span>

@@ -42,12 +42,9 @@
 			<div class="product-essential">
 				<div class="product-name-reponsive">
 					<div class="col-left"><h1>{{film_detail.name}}</h1></div>
-					{% verify_showtime_by_id 1 film_detail.movie_api_id as is_book_able %}
-					{% if is_book_able %}
-						<div class="col-right">
-							<button href="#modal-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ film_detail.movie_api_id }}">Đặt vé</button>
-						</div>
-					{% endif %}
+					<div class="col-right">
+						<a href="#modal-popup" data-date-select="" data-all-movie="true" class="button open-popup-link popup-movie-schedule" data-movie-name="{{ film_detail.name }}">Đặt vé</a>
+					</div>
 				</div>
 				
 				<div class="product-img-box">
@@ -69,11 +66,9 @@
 				<div class="product-shop">
 					<div class="product-name">
 						<div class="col-md-10"><span class="h1">{{film_detail.name}}</span></div>
-						{% if is_book_able %}
-							<div class="col-md-2">
-								<button href="#modal-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ film_detail.movie_api_id }}">Đặt vé</button>
-							</div>
-						{% endif %}
+						<div class="col-md-2">
+							<a href="#modal-popup" data-date-select="" data-all-movie="true" class="button open-popup-link popup-movie-schedule" data-movie-name="{{ film_detail.name }}">Đặt vé</a>
+						</div>
 					</div>
 					
 					<!-- Build test -->
@@ -259,11 +254,9 @@
 					</div>
 				</div>
 			</div>
-			{% if is_book_able %}
-				<div class="text-center booking-ticket-bot">
-					<button href="#modal-popup" type="button" title="Đặt vé" class="button open-popup-link popup-movie-schedule" data-movie-api-id="{{ film_detail.movie_api_id }}">Đặt vé</button>
-				</div>
-			{% endif %}
+			<div class="text-center booking-ticket-bot">
+				<a href="#modal-popup" data-date-select="" data-all-movie="true" class="button open-popup-link popup-movie-schedule" data-movie-name="{{ film_detail.name }}">Đặt vé</a>
+			</div>
 		</div>
 	</div>
 </div>

@@ -287,8 +287,11 @@ $(document).ready(function() {
 
     // list movie 
     function listFilm(film) {
+        var movie_name_highlight = $("#movie_name_highlight_id").val();
+        var class_item = movie_name_highlight.indexOf(film.movie_name) > -1 ? "movie-name highlight" : "movie-name"
+
         return '<div class="movie-time-line-box clearfix" data-control="movie-code">' +
-            '<h3 class="movie-name '+ film.movie_name +'">' + film.movie_name + '</h3>' +
+            '<h3 class="'+ class_item +'">' + film.movie_name + '</h3>' +
             '<div class="lot-table clearfix" data-rated="' + film.rated + '" >' +
             '<ul class="list-inline list-unstyled theater_time">' +
             listShedule(film) +
@@ -296,9 +299,6 @@ $(document).ready(function() {
             ' </div>' +
             ' </div>';
     }
-
-
-    // var movie_api_id;
 
     $(document).on('click', '.popup-movie-schedule', function() {
 
@@ -308,15 +308,11 @@ $(document).ready(function() {
 
         var id_server = $('.list-cinema .active').attr('data-id-server');
 
-        var movie_name_highlight = "";
-        // get movie api id at booking ticket every film
+        // get movie name every film
         if ($(this).attr("data-movie-name")) {
-            movie_name_highlight = $(this).attr("data-movie-name");
+            $("#movie_name_highlight_id").val($(this).attr("data-movie-name"));
         }
 
-        // if ($(this).attr("data-all-movie")) {
-        //     movie_api_id = null;
-        // }
 
         // get date time at page booking 
         if ($(this).attr("data-date-seat")) {
@@ -325,10 +321,6 @@ $(document).ready(function() {
             var date_query = date_seat;
             // get movie api id from booking
             var get_movie_api = $('.booking-details #movie_api_id').val();
-            // movie_api_id = null;
-            // if(get_movie_api != 'null' && get_movie_api != 'undefined'){
-            //     movie_api_id = $('.booking-details #movie_api_id').val()
-            // }
             //set data for Month
             $('#center-month').text($('.days-popup li.active-date').children('.hide-month').text());
         } else {
@@ -348,7 +340,6 @@ $(document).ready(function() {
         // cinema_id is equal id_server
         data = {
             "date": date_query,
-            // "movie_api_id": movie_api_id,
             "cinema_id": id_server // get cinema_id from hidden field in popup movie schedule
         }
 
