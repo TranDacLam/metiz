@@ -131,7 +131,7 @@ class MovieForm(forms.ModelForm):
     def clean_end_date(self):
         end_date = self.cleaned_data.get('end_date')
         release_date = self.cleaned_data.get('release_date')
-        if release_date and end_date < release_date:
+        if end_date and end_date < release_date:
             raise forms.ValidationError(
                 _("Ngày kết thúc phải lớn hơn ngày khởi chiếu."))
         return end_date

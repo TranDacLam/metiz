@@ -39,8 +39,7 @@ def showing(request):
         page_items = request.GET.get('page_items', 12)
         page_number = request.GET.get('page', 1)
 
-        movie_showings = Movie.objects.filter(
-            release_date__lte=datetime.now(), end_date__gte=datetime.now(), is_draft=False).order_by('priority').extra(
+        movie_showings = Movie.objects.filter(Q(end_date__isnull=True) | Q(end_date__gte=datetime.now()), release_date__lte=datetime.now(), is_draft=False).order_by('priority').extra(
             select={'priority_null': 'priority is null'})
 
         list_data_showing = movie_showings.extra(
@@ -303,7 +302,7 @@ def home(request):
 
         top_news = news.extra(
             order_by=['priority_null', 'priority', '-created'])[:5]
-        
+
         # slide banner home page
         data_slide = SlideShow.objects.filter(is_draft=False)
 
@@ -454,7 +453,7 @@ def voucher(request):
     try:
         if request.method == "POST":
             # Set deadline to get voucher 17:00 14/02/2017
-            deadline =  datetime(2018, 2, 14, 17, 00, 00, 00000)
+            deadline = datetime(2018, 2, 14, 17, 00, 00, 00000)
             # Check time get voucher valid
             if datetime.now() > deadline:
                 return JsonResponse({'message': _('voucher time out')})
