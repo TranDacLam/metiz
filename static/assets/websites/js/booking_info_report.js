@@ -22,7 +22,7 @@ function bookingInfoDatataleFunction() {
 	        "bFilter": false,
 	        "bSort" : false,
 	        "pagingType": "input",
-	        ajax: {
+	        "ajax": {
 	            url: '/booking-info-report/',
 	            type: 'POST',
 	            data: function (parameters) {
@@ -43,27 +43,37 @@ function bookingInfoDatataleFunction() {
 		            alert("Error: " + textStatus + ": " + errorThrown);
 		        }
 	        },
-	        columns: [{
-	            data: "order_id"
+	        "columns": [{
+	            "data": "order_id",
+	            "width": "12%"
 	        }, {
-	            data: "order_desc"
+	            "data": "order_desc",
+	            "width": "14%"
 	        }, {
-	            data: "order_status"
+	            "data": "order_status",
+	            "width": "5%"
 	        }, {
-	            data: "desc_transaction"
+	            "data": "desc_transaction",
+	            "width": "10%"
 	        }, {
-	            data: "barcode"
+	            "data": "barcode",
+	            "width": "8%"
 	        }, {
-	            data: "amount",
-	            render: $.fn.dataTable.render.number( ',' )
+	            "data": "amount",
+	            "width": "6%",
+	            "render": $.fn.dataTable.render.number( ',' )
 	        },{
-	            data: "full_name"
+	            "data": "full_name",
+	            "width": "10%"
 	        }, {
-	            data: "email"
+	            "data": "email",
+	            "width": "19%"
 	        }, {
-	            data: "phone"
+	            "data": "phone",
+	            "width": "9%"
 	        }, {
-	            data: "created_format"
+	            "data": "created_format",
+	            "width": "7%"
 	        }],
 	        columnDefs: [{
 				"className": "dt-right", 
