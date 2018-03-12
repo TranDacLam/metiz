@@ -368,6 +368,10 @@ $(document).ready(function() {
                     $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lịch Chiếu Nào. Vui Lòng Chọn Ngày Khác.<p/>');
                 }
 
+                if($(".movie-name.highlight").length) {
+                    $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').animate({
+                    scrollTop: $(".movie-name.highlight").offset().top}, 'slow');
+                }
             })
             .fail(function() {
                 displayMsg();
