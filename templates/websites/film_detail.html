@@ -95,7 +95,7 @@
 					</div>
 					<div class="movie-actress movie-info">
 						<label>Thời lượng: </label>
-						<div class="std">{{film_detail.time_running}} phút</div>
+						<div class="std">{% if film_detail.time_running %} {{film_detail.time_running}} phút{% endif %}</div>
 					</div>
 					<div class="movie-language movie-info">
 						<label>Ngôn ngữ: </label>
