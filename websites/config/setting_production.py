@@ -16,7 +16,7 @@ DATABASES = {
 }
 
 # Default Email Contact
-SYSTEM_ADMIN_CINEMA_EMAIL = "ngochang@khoiphat.vn, khaivo@metiz.vn"
+SYSTEM_ADMIN_CINEMA_EMAIL = "ngochang@khoiphat.vn, khaivo@metiz.vn, lamnguyen@helio.vn"
 SYSTEM_ADMIN_CINEMA_EMAIL_CC = ["vietthang@khoiphat.vn", "nguyenhien@helio.vn"]
 SYSTEM_ADMIN_CINEMA_PHONE = ""
 DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
