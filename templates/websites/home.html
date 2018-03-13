@@ -85,7 +85,7 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                         <h3>
                                             <a href="{% url 'film_detail' item.id %}" title="{{item.name}}">{{item.name|truncatechars:21}}</a>
                                         </h3>
-                                        <h4>{% if item.time_running %} {{item.time_running}} Phút | {% endif %} <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></h4>
+                                        <h4>{% if item.time_running %} {{item.time_running}} Phút {% if item.rated %} | {% endif %} {% endif %} <span class="rated-{{item.rated.name}}">{{item.rated.name}}</span></h4>
                                         <h4>KHỞI CHIẾU {{item.release_date | date:"d-m-Y"}}</h4>
                                     </div>
                                     <div class="detail-pay-film">

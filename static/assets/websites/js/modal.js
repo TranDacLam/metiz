@@ -375,8 +375,10 @@ $(document).ready(function() {
                 }
 
                 if($(".movie-name.highlight").length) {
+                    var child_offset =  $(".movie-name.highlight").offset().top;
+                    var parent_offset = $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').offset().top;
                     $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').animate({
-                    scrollTop: $(".movie-name.highlight").offset().top}, 'slow');
+                    scrollTop: child_offset-parent_offset}, 'slow');
                 }
             })
             .fail(function() {
