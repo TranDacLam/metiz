@@ -93,4 +93,10 @@ $(document).ready(function() {
             $('.owl-carousel.style2').trigger('play.owl.autoplay',[1000]);
         }
     });
+
+    $('#movie-tab-1 .owl-carousel, .owl-carousel.style2').mouseout(function() {
+        $(this).trigger('play.owl.autoplay',[1000]);
+    }).mouseover(function() {
+        $(this).trigger('stop.owl.autoplay');
+    });
 });
