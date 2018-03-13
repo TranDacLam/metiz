@@ -378,7 +378,7 @@ $(document).ready(function() {
                     var child_offset =  $(".movie-name.highlight").offset().top;
                     var parent_offset = $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').offset().top;
                     $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').animate({
-                    scrollTop: child_offset-parent_offset}, 'slow');
+                    scrollTop: child_offset-parent_offset-20}, 'slow');
                 }
             })
             .fail(function() {
