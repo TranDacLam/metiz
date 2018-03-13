@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% load i18n %}
+{% load modal_data_tags %}
 {% block title %}Thanh Toán{% endblock title %}
 
 {% block extrastylesheet %}
@@ -35,7 +36,7 @@
                     <div class="form-group">
                         <label for="order_id">Mã Hóa Đơn</label>
                         <input class="form-control" id="order_id"
-                               name="order_id" type="text" value="{% now 'YmdHis' %}"  readonly />
+                               name="order_id" type="text" value="{% get_unique_datetime %}"  readonly />
                     </div>
                     <div class="form-group">
                         <label for="amount">Số Tiền</label>

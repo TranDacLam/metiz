@@ -5,6 +5,8 @@ from django.utils import timezone
 from core.models import Movie, Rated
 from booking.models import MovieSync
 import json
+import datetime
+import time
 register = template.Library()
 
 
@@ -77,3 +79,8 @@ def get_rated():
     rated = Rated.objects.values('name', 'description')
     data = {item['name'] : item['description'] for item in rated }
     return json.dumps(data)
+
+@register.simple_tag
+def get_unique_datetime():
+    unique_time = time.mktime(datetime.datetime.now().timetuple())*1e3 + datetime.datetime.now().microsecond/1e3
+    return int(unique_time)
