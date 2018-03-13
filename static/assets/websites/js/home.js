@@ -94,9 +94,9 @@ $(document).ready(function() {
         }
     });
 
-    $('#movie-tab-1 .owl-carousel, .owl-carousel.style2').on('mouseenter touchstart', function(){ 
+    $('#movie-tab-1 .owl-carousel, .owl-carousel.style2').mouseleave(function() {
         $(this).trigger('play.owl.autoplay',[1000]);
-    }).on('mouseleave touchend', function(){
+    }).mouseover(function() {
         $(this).trigger('stop.owl.autoplay');
     });
 });
