@@ -293,8 +293,8 @@ $(document).ready(function() {
 
     // list movie 
     function listFilm(film) {
-        var movie_name_highlight = $("#movie_name_highlight_id").val();
-        var class_item = movie_name_highlight.indexOf(film.movie_name) > -1 ? "movie-name highlight" : "movie-name"
+        var movie_name_highlight = $("#movie_name_highlight_id").val().toLowerCase();
+        var class_item = movie_name_highlight.indexOf(film.movie_name.toLowerCase()) > -1 ? "movie-name highlight" : "movie-name"
 
         return '<div class="movie-time-line-box clearfix" data-control="movie-code">' +
             '<h3 class="'+ class_item +'">' + film.movie_name + '</h3>' +

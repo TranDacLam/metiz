@@ -90,9 +90,9 @@ class Command(BaseCommand):
             - Get Movie Showing
         """
         try:
-            # current_date = timezone.localtime(
-            #     timezone.now())
-            current_date = datetime(2018, 2, 6)
+            current_date = timezone.localtime(
+                timezone.now())
+            # current_date = datetime(2018, 2, 6)
             end_date = current_date + timedelta(days=6)
             step_date = timedelta(days=1)
             print "Sync Movie By Date : ",current_date
