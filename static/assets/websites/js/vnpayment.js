@@ -22,7 +22,7 @@ function endSession() {
 $(document).ready(function() {
     // detect redirect page only ecept button submit form and change showtime
     $('body a').click(function(evt){    
-       if(evt.target.id == "btn-payment-seats" || $(evt.target).hasClass("popup-movie-schedule") || evt.target.id == "id-menu-member" || evt.target.id == "id-menu-movie"){
+       if(evt.target.id == "btn-payment-seats" || $(evt.target).hasClass("open-popup-link") || $(evt.target).hasClass("popup-movie-schedule") || evt.target.id == "id-menu-member" || evt.target.id == "id-menu-movie"){
           return;
        }else{
             endSession();

@@ -328,9 +328,9 @@ body.modal-open {
 .current .days-popup{
     border: 2px solid #000000;
 }
-.time .time-end{
+/*.time .time-end{
     display:none;
-}
+}*/
 .list-inline a {
     text-decoration: none;
     transition: color 300ms linear;
@@ -341,9 +341,9 @@ body.modal-open {
     font-size: 18px;
     font-weight: bold;
 }
-.list-inline li:hover .time-end{
+/*.list-inline li:hover .time-end{
     display: inline;
-}
+}*/
 .list-inline li:hover .time{
     border-color: #ff5400;
     font-size: 16px;

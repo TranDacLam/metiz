@@ -30,9 +30,13 @@ $(document).ready(function() {
         enableEscapeKey: false,
         fixedContentPos: true,
         callbacks: {
-            close: function(){
+            beforeOpen: function() {
+                // Load data before popup open
+                getDataPopupMovieSchedule(this.st.el);
+            },
+            close: function() {
                 // Reset movie name highlight
-                $("#movie_name_highlight_id").val("");
+                // $("#movie_name_highlight_id").val("");
             }
         }
     });
@@ -276,9 +280,7 @@ $(document).ready(function() {
                 '<input type="hidden" name="id_movie_id" value="' + shedule.movie_id + '">' +
                 '<input type="hidden" name="id_movie_name" value="' + shedule.movie_name + '">' +
                 '<input type="hidden" name="movie_api_id" value="' + movie_api_id + '">' +
-                '<span class="time">' +
-                value.time + '<span class="time-end">' + endTime + '</span>' +
-                '</span>' +
+                '<span class="time">' + value.time +'</span>' +
                 '<span class="ppnum">Phòng chiếu</span>' +
                 '<span class="ppnum">' + value.room_name + '</span>' // room chiếu phim
                 +
@@ -293,11 +295,11 @@ $(document).ready(function() {
 
     // list movie 
     function listFilm(film) {
-        var movie_name_highlight = $("#movie_name_highlight_id").val().toLowerCase();
-        var class_item = movie_name_highlight.indexOf(film.movie_name.toLowerCase()) > -1 ? "movie-name highlight" : "movie-name"
+        // var movie_name_highlight = $("#movie_name_highlight_id").val().toLowerCase();
+        // var class_item = movie_name_highlight.indexOf(film.movie_name.toLowerCase()) > -1 ? "movie-name highlight" : "movie-name"
 
         return '<div class="movie-time-line-box clearfix" data-control="movie-code">' +
-            '<h3 class="'+ class_item +'">' + film.movie_name + '</h3>' +
+            '<h3 class="movie-name">' + film.movie_name + '</h3>' +
             '<div class="lot-table clearfix" data-rated="' + film.rated + '" >' +
             '<ul class="list-inline list-unstyled theater_time">' +
             listShedule(film) +
@@ -305,24 +307,29 @@ $(document).ready(function() {
             ' </div>' +
             ' </div>';
     }
-
+    
     $(document).on('click', '.popup-movie-schedule', function() {
+        getDataPopupMovieSchedule(this);
+    })
+
+    // Call server get data
+    function getDataPopupMovieSchedule(element) {
 
         //set data for Month
-        $('#center-month').text($(this).children('.hide-month').text());
+        $('#center-month').text($(element).children('.hide-month').text());
         $('.days-popup li').removeClass('active-date');
 
         var id_server = $('.list-cinema .active').attr('data-id-server');
 
         // get movie name every film
-        if ($(this).attr("data-movie-name")) {
-            $("#movie_name_highlight_id").val($(this).attr("data-movie-name"));
-        }
+        // if ($(element).attr("data-movie-name")) {
+        //     $("#movie_name_highlight_id").val($(element).attr("data-movie-name"));
+        // }
 
 
         // get date time at page booking 
-        if ($(this).attr("data-date-seat")) {
-            var date_seat = $(this).attr("data-date-seat");
+        if ($(element).attr("data-date-seat")) {
+            var date_seat = $(element).attr("data-date-seat");
             $('.days-popup [data-date-select = ' + date_seat + ']').addClass('active-date');
             var date_query = date_seat;
             // get movie api id from booking
@@ -331,9 +338,9 @@ $(document).ready(function() {
             $('#center-month').text($('.days-popup li.active-date').children('.hide-month').text());
         } else {
             // get date time on page popup
-            if ($(this).attr("data-date-select")) {
-                var date_query = $(this).attr("data-date-select");
-                $(this).addClass('active-date');
+            if ($(element).attr("data-date-select")) {
+                var date_query = $(element).attr("data-date-select");
+                $(element).addClass('active-date');
             } else {
                 var date_query = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
                 $('.days-popup li:first').addClass('active-date');
@@ -351,41 +358,43 @@ $(document).ready(function() {
 
 
         $.ajax({
-                url: "/movie/show/times",
-                type: 'get',
-                data: data,
-                dataType: 'json',
-                crossDomain: false,
-                context: this,
-            })
-            .done(function(response) {
-                var html = '';
-                $.each(response, function(key, value) {
-                    if (value.lst_times.length > 0) {
-                        // check movie id is movie id test
-                        if (document.domain !== "metiz.vn" || movieIdTest !== value.movie_id ) {
-                            html += listFilm(value);
-                        }
+            url: "/movie/show/times",
+            type: 'get',
+            data: data,
+            dataType: 'json',
+            crossDomain: false,
+            context: this,
+        })
+        .done(function(response) {
+            var html = '';
+            $.each(response, function(key, value) {
+                if (value.lst_times.length > 0) {
+                    // check movie id is movie id test
+                    if (document.domain !== "metiz.vn" || movieIdTest !== value.movie_id ) {
+                        html += listFilm(value);
                     }
-                });
-                $('.list-schedule').html(html);
-                trigger_click_showtime();
-                if ($('.list-schedule').text() == '') {
-                    $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lịch Chiếu Nào. Vui Lòng Chọn Ngày Khác.<p/>');
                 }
-
-                if($(".movie-name.highlight").length) {
-                    var child_offset =  $(".movie-name.highlight").offset().top;
-                    var parent_offset = $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').offset().top;
-                    $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').animate({
-                    scrollTop: child_offset-parent_offset-20}, 'slow');
-                }
-            })
-            .fail(function() {
-                displayMsg();
-                $('.msg-result-js').html(msgResult("Error schedule film!", "danger"));
             });
-    });
+            $('.list-schedule').html(html);
+            trigger_click_showtime();
+            if ($('.list-schedule').text() == '') {
+                $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lịch Chiếu Nào. Vui Lòng Chọn Ngày Khác.<p/>');
+            }
+
+            // if($(".movie-name.highlight").length) {
+            //     var child_offset =  $(".movie-name.highlight").offset().top;
+            //     var parent_offset = $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').offset().top;
+            //     $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').animate({
+            //     scrollTop: child_offset-parent_offset-20}, 'slow');
+            // }
+        })
+        .fail(function() {
+            displayMsg();
+            $('.msg-result-js').html(msgResult("Error schedule film!", "danger"));
+        });
+
+    }
+
     function trigger_click_showtime() {
 
         /* hardcode for film free for vouchers */
