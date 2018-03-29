@@ -41,44 +41,54 @@ $(document).ready(function() {
     });
 
     // Carousel slide movie page Home
-    var control_owl = {
-        margin: 10,
-        dots: false,
-        loop:true,
-        autoplay:true,
-        smartSpeed:1000,
-        autoplayTimeout:2000,
-        // autoplayHoverPause:true,
-        nav: true,
-        navText: ["<img width='100%' src='static/assets/websites/images/left-arrow.png'>","<img width='100%' src='static/assets/websites/images/right-arrow.png'>"],
-        navClass: ['lSPrev','lSNext'],
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 2,
-            },
-            421: {
-                autoWidth: true,
-                margin: 5,
-            },
-            767: {
-                items: 3,
-                margin: 5,
-            },
-            992: {
-                items: 4,
-                margin: 20,
-            },
-            1025: {
-                items: 4,
-                margin: 35,
+    function initOwlOption(total_item) {
+        return control_owl = {
+            margin: 10,
+            dots: false,
+            // loop:true,
+            autoplay:true,
+            smartSpeed:1000,
+            autoplayTimeout:2000,
+            // autoplayHoverPause:true,
+            nav: true,
+            navText: ["<img width='100%' src='static/assets/websites/images/left-arrow.png'>","<img width='100%' src='static/assets/websites/images/right-arrow.png'>"],
+            navClass: ['lSPrev','lSNext'],
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 2,
+                    loop: total_item > 2 ? true : false,
+                },
+                421: {
+                    autoWidth: true,
+                    margin: 5,
+                    loop: total_item > 2 ? true : false,
+                },
+                767: {
+                    items: 3,
+                    margin: 5,
+                    loop: total_item > 3 ? true : false,
+                },
+                992: {
+                    items: 4,
+                    margin: 20,
+                    loop: total_item > 4 ? true : false,
+                },
+                1025: {
+                    items: 4,
+                    margin: 35,
+                    loop: total_item > 4 ? true : false,
+                }
             }
         }
     }
 
-    $('.tabs-format-metiz').toggleOwl(' #movie-tab-1 .owl-carousel', control_owl);
-    $('.tabs-format-metiz').toggleOwl('.owl-carousel.style2', control_owl);
-
+    function initOwl(element) {
+        total_item = $(element).children(".item").length;
+        $('.tabs-format-metiz').toggleOwl(element, initOwlOption(total_item));
+    }
+    initOwl('#movie-tab-1 .owl-carousel');
+    initOwl('.owl-carousel.style2');
     /* 
         fix bug auto play not working when reactive tab
         step1: when leave tab then stop autoplay
