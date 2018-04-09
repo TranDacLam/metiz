@@ -343,7 +343,7 @@ def payment_ipn(request):
                         error_comfirm = False if status_confirm == 'true' else True
                         recall +=1
                             
-                    if True:
+                    if error_comfirm:
                         # update number retry ipn
                         booking_order.order_status = 'confirm_error'
                         booking_order.desc_transaction = "Payment success but confirm booking error"
