@@ -11,7 +11,7 @@
 {% block extrascript %}
     <!-- Captcha use contact, payment, signup -->
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
-    <script src="{{ STATIC_URL }}assets/websites/js/vnpayment.js"></script>
+    <script src="{{ STATIC_URL }}assets/websites/js/vnpayment.js?time={% now 'd-m-Y-H:i' %}"></script>
 {% endblock %}
 
 {% block main_content %}
@@ -42,7 +42,8 @@
                         <label for="amount">Số Tiền</label>
                         <input class="form-control" id="amount-text"
                                name="amount-text" type="text" value="{{ total_payment }}" {% if  total_payment > 0 %} readonly {% endif %}/>
-                        <input type="hidden" name="amount" id="amount" value="{{ total_payment }}"/>
+                       {% encrypt_money total_payment as total_pay %}
+                        <input type="hidden" name="amount" id="amount" value="{{ total_pay }}" readonly/>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 responsive-payment">

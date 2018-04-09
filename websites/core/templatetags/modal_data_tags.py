@@ -7,6 +7,7 @@ from booking.models import MovieSync
 import json
 import datetime
 import time
+from vnpay_payment.metiz_cipher import MetizAESCipher
 register = template.Library()
 
 
@@ -26,6 +27,17 @@ def get_movie_name(movie_id):
     except Movie.DoesNotExist, e:
         return None
     except Exception, e:
+        return None
+
+
+@register.simple_tag
+def encrypt_money(total_money):
+    try:
+        cipher = MetizAESCipher()
+        encrypted = cipher.encrypt(str(total_money))
+        return encrypted
+    except Exception, e:
+        print "EXcem  encrypt_money ",e
         return None
 
 

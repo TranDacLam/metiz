@@ -178,9 +178,22 @@ def payment(request):
             return redirect("time-out-booking")
 
         if form.is_valid():
+            # decrypt amount value 
+            try:
+                amount_encrypt = form.cleaned_data['amount']
+                cipher = MetizAESCipher()    
+                amount = cipher.decrypt(amount_encrypt)
+            except Exception, e:
+                "Error Decrypt money ",e
+                return render(request, "websites/vnpay_payment/payment.html",
+                      {"form": form,
+                       "total_payment": amount,
+                       "order_desc": request.POST["order_desc"] if 'order_desc' in request.POST["order_desc"] else None})
+
             order_type = form.cleaned_data['order_type']
             order_id = form.cleaned_data['order_id']
-            amount = form.cleaned_data['amount']
+            
+
             order_desc = form.cleaned_data['order_desc']
             bank_code = form.cleaned_data['bank_code']
             language = form.cleaned_data['language']
@@ -190,7 +203,7 @@ def payment(request):
             vnp.requestData['vnp_Version'] = '2.0.0'
             vnp.requestData['vnp_Command'] = 'pay'
             vnp.requestData['vnp_TmnCode'] = settings.VNPAY_TMN_CODE
-            vnp.requestData['vnp_Amount'] = amount * 100
+            vnp.requestData['vnp_Amount'] = int(amount) * 100
             vnp.requestData['vnp_CurrCode'] = 'VND'
             vnp.requestData['vnp_TxnRef'] = order_id
             vnp.requestData['vnp_OrderInfo'] = order_desc
