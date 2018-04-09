@@ -464,12 +464,36 @@ $(document).ready(function() {
                 // Sort array seatPayment
                 seatPayment.sort();
 
-                window.location.href = '/payment?totalPayment='+ totalPayment
-                +'&seats='+ seatPayment + '&id_movie_name='+id_movie_name
-                + '&id_movie_time='+id_movie_time + '&id_movie_date_active='+id_movie_date_active
-                + '&working_id='+working_id + '&barcode='+ barcode 
-                + '&seats_choice='+seats_choice + '&id_server=' +id_server + '&id_showtime=' +id_showtime
-                + '&movie_api_id=' +movie_api_id;
+                data_form = {
+                        "totalPayment": totalPayment,
+                        "seats": seatPayment,
+                        "id_movie_name": id_movie_name,
+                        "id_movie_time": id_movie_time,
+                        "id_movie_date_active": id_movie_date_active,
+                        "working_id":working_id,
+                        "barcode":barcode,
+                        "seats_choice":seats_choice,
+                        "id_server":id_server,
+                        "id_showtime":id_showtime,
+                        "movie_api_id":movie_api_id
+                    }
+
+                console.log("DATA FORM ",data_form.toString());
+                 $.ajax({
+                    url: "/payment/encrypt/",
+                    type: 'POST',
+                    data: {"data_form": JSON.stringify(data_form)},
+                    dataType: 'json',
+                    crossDomain:false,
+                    context: this,
+                })
+                .done(function(response) {
+                    window.location.href = '/payment?data='+encodeURIComponent(response.data_encode);
+                }).fail(function(error) {
+                    displayMsg();
+                    $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
+                });
+                
             })
             .fail(function(error) {
                 displayMsg();

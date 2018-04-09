@@ -21,6 +21,9 @@ import random
 import base64
 from core.models import AdminInfo
 from core.decorator import *
+from metiz_cipher import MetizAESCipher
+import json
+
 
 
 def data_encrypt_cbc(data):
@@ -40,6 +43,7 @@ def data_encrypt_cbc(data):
     encrypted_text = crypt_object.encrypt(data)
 
     return base64.b64encode(encrypted_text)
+
 
 
 def send_sms(phone, content):
@@ -142,6 +146,22 @@ def cancel_seats(seats_choice, id_server):
     for seat in seats_choice:
         api.call_api_cancel_seat(seat, id_server=id_server)
 
+def encrypt_payment(request):
+    if request.method == 'POST':
+        try:
+            data_form = request.POST.get("data_form", None)
+            print "@@@ data_form",data_form
+            cipher = MetizAESCipher()
+            encrypted = cipher.encrypt(data_form)
+            result = JsonResponse(
+                        {'code': '00', 'Message': 'Process data success', 'data_encode': encrypted})
+        except Exception, e:
+            print "## Error encrypt_payment ",e
+            return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+        
+        return result
+
+
 @check_user_booking_exist
 def payment(request):
     if request.method == 'POST':
@@ -223,17 +243,24 @@ def payment(request):
                            "total_payment": request.POST["amount"] if 'amount' in request.POST["amount"] else None,
                            "order_desc": request.POST["order_desc"] if 'order_desc' in request.POST["order_desc"] else None})
     else:
-        total_payment = request.GET.get('totalPayment', 0)
-        seats = request.GET.get('seats', "")
-        working_id = request.GET.get('working_id', "")
-        barcode = request.GET.get('barcode', "")
-        seats_choice = request.GET.get('seats_choice', "")
-        id_server = request.GET.get('id_server', 1)
-        id_showtime = request.GET.get('id_showtime', "")
-        movie_api_id = request.GET.get('movie_api_id', "")
-        id_movie_name = request.GET.get('id_movie_name', "")
-        id_movie_time = request.GET.get('id_movie_time', "")
-        id_movie_date_active = request.GET.get('id_movie_date_active', "")
+        data_encrypt = request.GET.get('data', 0)
+        
+        # Decrypt data payment form contain : total payment , seats choice ..etc
+        cipher = MetizAESCipher()    
+        decrypted = cipher.decrypt(data_encrypt)
+        data_json = json.loads(decrypted)
+
+        total_payment = data_json['totalPayment'] if 'totalPayment' in data_json else 0
+        seats = data_json['seats'] if 'seats' in data_json else ""
+        working_id = data_json['working_id'] if 'working_id' in data_json else ""
+        barcode = data_json['barcode'] if 'barcode' in data_json else ""
+        seats_choice = data_json['seats_choice'] if 'seats_choice' in data_json else ""
+        id_server = data_json['id_server'] if 'id_server' in data_json else 1
+        id_showtime = data_json['id_showtime'] if 'id_showtime' in data_json else ""
+        movie_api_id = data_json['movie_api_id'] if 'movie_api_id' in data_json else ""
+        id_movie_name = data_json['id_movie_name'] if 'id_movie_name' in data_json else ""
+        id_movie_time = data_json['id_movie_time'] if 'id_movie_time' in data_json else ""
+        id_movie_date_active = data_json['id_movie_date_active'] if 'id_movie_date_active' in data_json else ""
 
         return render(request, "websites/vnpay_payment/payment.html",
                       {"title": "Thanh toán", "total_payment": total_payment, "seats": seats,
