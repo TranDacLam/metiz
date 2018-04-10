@@ -195,6 +195,7 @@ CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
 HOT_LINE = "0236 3630 689"
+VOOC_LEADER_EMAIL = "tiendangdht@gmail.com, thangnguyen@vooc.vn, vietthang@khoiphat.vn"
 # Config outgoing email
 SYSTEM_ADMIN_CINEMA_EMAIL = "ngochang@khoiphat.vn, khaivo@metiz.vn"
 SYSTEM_ADMIN_CINEMA_EMAIL_CC = ["vietthang@khoiphat.vn", "nguyenhien@helio.vn"]

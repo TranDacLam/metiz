@@ -141,6 +141,36 @@ def send_mail_booking_error(is_secure, email, email_cc, barcode, content):
     except Exception, e:
         print "Error send_mail_booking : ", e
 
+def send_mail_amount_not_match(is_secure, email, full_name, barcode, content):
+    try:
+        message_html = "websites/booking/email/warning_amount_payment.html"
+        subject = _("[Metiz] Warning Payment Amount not Match")
+
+        protocol = 'http'
+        if is_secure:
+            protocol = 'https'
+        logo_url = '/static/assets/websites/images/logo_bottom.png'
+        data_binding = {
+            "protocol": protocol,
+            'full_name': full_name,
+            'URL_LOGO': logo_url,
+            'barcode': barcode,
+            'content': content,
+            'site': str(Site.objects.get_current()),
+            'HOT_LINE': settings.HOT_LINE
+        }
+        # Send email booking success
+        metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
+                              email], data_binding)
+    except Exception, e:
+        print "Error send_mail_booking : ", e
+
+def send_email_vooc_leader(is_secure, full_name, barcode, content):
+    try:
+        leader_email = settings.VOOC_LEADER_EMAIL
+        send_mail_amount_not_match(is_secure, leader_email, full_name, barcode, content)
+    except Exception, e:
+        leader_email = "tiendangdht@gmail.com, thangnguyen@vooc.vn"
 
 def cancel_seats(seats_choice, id_server):
     for seat in seats_choice:
@@ -409,6 +439,14 @@ def payment_ipn(request):
                         send_mail_booking(request.is_secure(), booking_order.email, request.session.get(
                             "full_name", ""), booking_order.barcode, booking_order.order_desc)
 
+                    if float(amount)/100 != booking_order.amount:
+                        content_warning = """
+                            Please check warning metiz payment below
+                            Barcode : %s
+                            Payment amount : %s not match with Booking Amount: %s
+
+                        """%(booking_order.barcode, float(amount)/100, booking_order.amount)
+                        send_email_vooc_leader(request.is_secure(), "Vooc Company", booking_order.barcode, content_warning)
                     # Return VNPAY: Merchant update success
                     result = JsonResponse(
                         {'RspCode': '00', 'Message': 'Confirm Success'})
