@@ -207,17 +207,25 @@ def payment(request):
         if not movies_session or (movies_session and working_id not in movies_session):
             return redirect("time-out-booking")
 
+        total_payment_store = movies_session[working_id]["total_money"]
         if form.is_valid():
             # decrypt amount value 
             try:
                 amount_encrypt = form.cleaned_data['amount']
                 cipher = MetizAESCipher()    
                 amount = cipher.decrypt(amount_encrypt)
+                
+                # Verify Money Booking
+                if int(amount) < int(total_payment_store):
+                    print "total_payment_store ",total_payment_store
+                    print "amount ",amount
+                    return redirect("invalid-booking")
+
             except Exception, e:
                 "Error Decrypt money ",e
                 return render(request, "websites/vnpay_payment/payment.html",
                       {"form": form,
-                       "total_payment": amount,
+                       "total_payment": "",
                        "order_desc": request.POST["order_desc"] if 'order_desc' in request.POST["order_desc"] else None})
 
             order_type = form.cleaned_data['order_type']

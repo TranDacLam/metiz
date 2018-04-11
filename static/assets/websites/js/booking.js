@@ -465,7 +465,7 @@ $(document).ready(function() {
                 seatPayment.sort();
 
                 data_form = {
-                        "totalPayment": totalPayment,
+                        "totalPayment": response.total_payment,
                         "seats": seatPayment,
                         "id_movie_name": id_movie_name,
                         "id_movie_time": id_movie_time,

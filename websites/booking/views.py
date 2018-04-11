@@ -77,6 +77,15 @@ def time_out_booking(request):
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
 
+def invalid_booking(request):
+    try:
+        """ Action render page notification invalid money """
+        return render(request, 'websites/invalid_money.html')
+    except Exception, e:
+        print "Error time out booking : ", e
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
+
 
 def build_show_time_json(current_date, item, result, movies_info, obj_movie=None):
     """ Build Data Json For Movie ShowTime """
@@ -204,12 +213,19 @@ def check_seats(request):
             # get list chair of user selected
             seats_choice = ast.literal_eval(request.POST["lst_seats"])
 
+            total_money = 0
+
             if data_seats and data_seats["List"] and seats_choice:
                 seat_has_selected = []
                 # check chairs of a user have been selected before
                 for item in seats_choice:
                     chair = [str(s["NAME"]) for s in data_seats["List"] if s[
                         "ID"] == item["ID"] and s["STATUS"] == "True"]
+
+                    # Calculated total money
+                    total_money += sum(int(s["PRICE"]) for s in data_seats["List"] if s[
+                        "ID"] == item["ID"])
+
                     if chair:
                         seat_has_selected.append(chair[0])
 
@@ -230,16 +246,19 @@ def check_seats(request):
                     if member_card:
                         url = "/postBookingMember"
 
+
                     result = api.call_api_post_booking(
                         full_name, phone, email, seats_choice, id_server, member_card, url)
 
-                    if not result["BARCODE"]:
+
+                    if not result["BARCODE"] or total_money <= 0:
                         print "***** Get Barcode Fail : ", result
                         return JsonResponse({"code": 400, "message": _("Cannot Booking Seats. Please Contact Administrator.")}, status=400)
 
-                    print "***** Information User Booking , Full Name: %s, Member Card: %s, Phone: %s, Email: %s, Barcode: %s"%(full_name, member_card, phone, email, result["BARCODE"])
+                    print "***** Information User Booking , Full Name: %s, Member Card: %s, Phone: %s, Email: %s, Barcode: %s, Money: %s"%(full_name, member_card, phone, email, result["BARCODE"], total_money)
                     # Add Seats into session and set seats expire in five
                     # minute
+                    result["total_payment"] = total_money
                     current_store = request.session.get("movies", {})
                     working_id = request.POST["working_id"]
                     if working_id in current_store:
@@ -259,7 +278,9 @@ def check_seats(request):
                         current_store[working_id][
                             "seats_choice"] = seats_choice
                         current_store[working_id]["time_choice"] = timezone.localtime(timezone.now(
-                        ) + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
+                        ) + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f")
+
+                        current_store[working_id]["total_money"] = total_money
 
                     else:
                         # Add new key as working_id in store movie session
@@ -267,7 +288,8 @@ def check_seats(request):
                         current_store[working_id] = {
                             "time_choice": timezone.localtime(timezone.now() + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
                             "seats_choice": seats_choice,
-                            "barcode": result["BARCODE"]
+                            "barcode": result["BARCODE"],
+                            "total_money": total_money
                         }
                     print "***** Store Booking in Session, Phone: %s, Email: %s, Barcode: %s, Data Store: %s "%(phone, email, result["BARCODE"], current_store)
                     request.session['movies'] = current_store
