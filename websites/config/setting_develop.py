@@ -26,8 +26,8 @@ VNPAY_TMN_CODE = 'HELIOKP1'  # Website ID in VNPAY System, get from config
 VNPAY_HASH_SECRET_KEY = 'YTDBTUZONRERICMBLYIRTRTEJDPCZDFK'  # Secret key for create checksum,get from config
 
 # POS Cinestar config
-CINESTAR_SERECT_KEY = 'df733de5b7394530835a2d61ce20e220'
-BASE_URL_CINESTAR = 'http://kingproserver.ddns.net:8085/demo.asmx'
+CINESTAR_SERECT_KEY = '5ba90f1cc2d540edbb01e3ffc85bc7f2'
+BASE_URL_CINESTAR = 'http://172.16.12.13:8080/helio.asmx'
 
 # SMS Config
 SMS_BRAND = "MetizCinema"
