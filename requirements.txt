@@ -11,3 +11,5 @@ pycrypto
 django-recaptcha
 django-hitcount
 XlsxWriter
+djangorestframework
+djangorestframework-jwt
