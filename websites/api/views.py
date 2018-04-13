@@ -1,5 +1,4 @@
 from django.shortcuts import render
-import mapper
 from booking.models import BookingInfomation
 from datetime import timedelta, datetime, time
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
