@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^verify/seats$', views.check_seats, name='verify-seats'),
     url(r'^clear/seats$', views.clear_seats, name='clear-seats'),
     url(r'^timeout/booking$', views.time_out_booking, name='time-out-booking'),
+    url(r'^invalid/booking$', views.invalid_booking, name='invalid-booking'),
     url(r'^movies/synchronize/$', views.movies_synchronize, name='movies-synchronize'),
 ]

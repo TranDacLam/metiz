@@ -18,6 +18,7 @@ from django.contrib import admin
 import views
 
 urlpatterns = [
+    url(r'^payment/encrypt/$', views.encrypt_payment, name='encrypt-payment'),
     url(r'^payment$', views.payment, name='payment'),
     url(r'^payment_ipn$', views.payment_ipn, name='payment_ipn'),
     url(r'^payment_return$', views.payment_return, name='payment_return'),
