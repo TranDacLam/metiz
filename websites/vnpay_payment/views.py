@@ -203,7 +203,7 @@ def remove_uni(s):
     except Exception, e:
         print "ERROR ",e
         return s
-    return s2
+    return s if not s2 else s2
 
 @check_user_booking_exist
 def payment(request):
@@ -318,7 +318,10 @@ def payment(request):
         seats = remove_uni(str(data_json['seats'])) if 'seats' in data_json else ""
         working_id = data_json['working_id'] if 'working_id' in data_json else ""
         barcode = data_json['barcode'] if 'barcode' in data_json else ""
-        seats_choice = remove_uni(str(data_json['seats_choice'])) if 'seats_choice' in data_json else ""
+        # Handle list seats to string and remove unicode
+        seat_array = ','.join(data_json['seats_choice']) 
+        seats_choice = remove_uni(seat_array) if 'seats_choice' in data_json else ""
+        
         id_server = data_json['id_server'] if 'id_server' in data_json else 1
         id_showtime = data_json['id_showtime'] if 'id_showtime' in data_json else ""
         movie_api_id = data_json['movie_api_id'] if 'movie_api_id' in data_json else ""
