@@ -281,6 +281,8 @@ HITCOUNT_HITS_PER_IP_LIMIT = 0  # unlimited
 HITCOUNT_EXCLUDE_USER_GROUP = ()  # not used
 HITCOUNT_KEEP_HIT_IN_DATABASE = {'minutes': 15}
 
+# Enable debug mode
+DEBUG_CONFIRM_BOOKING = False
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:
         from config.setting_develop import *

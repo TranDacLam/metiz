@@ -196,18 +196,18 @@
                             <div id="error"></div>
                             <div class="form-group">
                                 <label>{% trans "Full Name" %}</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="{% trans 'Enter Full Name Here' %}" value="{{user.full_name}}">
+                                <input type="text" name="name" id="name" class="form-control" placeholder="{% trans 'Enter Full Name Here' %}" value="{% if user.full_name %} {{user.full_name}} {% endif %}">
                                 <label class="form-error" for="name" id='name-error'></label>
                             </div>
                             <div class="form-group form-phone">
                                 <label>{% trans "Phone" %}</label>
                                 <div class="country-code">+84</div>
-                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{{user.phone}}">
+                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{% if user.phone %} {{user.phone}} {% endif %}">
                                 <label class="form-error" for="phone" id='phone-error'></label>
                             </div>
                             <div class="form-group">
                                 <label>{% trans "Email" %}</label>
-                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value='{{user.email}}'>
+                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value='{% if user.email %} {{user.email}} {% endif %}'>
                                 <label class="form-error" for="email" id='email-error'></label>
                             </div>
                             <button type="submit" id='update' class="btn btn-login submit">Xác nhận</button>
