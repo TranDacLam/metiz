@@ -475,10 +475,12 @@ def payment_ipn(request):
                         error_comfirm = False if status_confirm == 'true' else True
                         recall +=1
 
-                    handler_confirm_booking_error(booking_order, error_comfirm, request.is_secure())
                     
                     if settings.DEBUG_CONFIRM_BOOKING:
                         handler_confirm_booking_error(booking_order, True, request.is_secure())
+                    else:
+                        handler_confirm_booking_error(booking_order, error_comfirm, request.is_secure())
+
 
                     # Handle Confirm Booking Success and send sms or email
                     handler_confirm_booking_success(request, booking_order, amount)
