@@ -10,7 +10,5 @@ urlpatterns = [
     url(r'^clear/seats$', views.clear_seats, name='clear-seats'),
     url(r'^timeout/booking$', views.time_out_booking, name='time-out-booking'),
     url(r'^invalid/booking$', views.invalid_booking, name='invalid-booking'),
-    url(r'^booking-info-report/$', views.booking_info_report, name='booking-info-report'),
-    url(r'^booking-info-export-to-excel/$', views.booking_info_export_to_excel, name='booking-info-export-to-excel'),
     url(r'^movies/synchronize/$', views.movies_synchronize, name='movies-synchronize'),
 ]

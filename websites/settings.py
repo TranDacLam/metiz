@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     # 'allauth.account',
     # 'allauth.socialaccount',
     'hitcount',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -283,6 +285,38 @@ HITCOUNT_KEEP_HIT_IN_DATABASE = {'minutes': 15}
 
 # Enable debug mode
 DEBUG_CONFIRM_BOOKING = False
+
+# Config Restful Framework and Rest JWT
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'api.custom_jwt.CustomJSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        
+    ),
+    'UNICODE_JSON': True
+}
+
+JWT_AUTH = {
+    # 'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=1700),
+    'JWT_VERIFY': True,
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'JWT_VERIFY_EXPIRATION': False,
+    'JWT_ALLOW_REFRESH': True,
+}
+
+REST_USE_JWT = True
+
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:
         from config.setting_develop import *
