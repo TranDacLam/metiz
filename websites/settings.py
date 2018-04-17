@@ -284,7 +284,7 @@ HITCOUNT_EXCLUDE_USER_GROUP = ()  # not used
 HITCOUNT_KEEP_HIT_IN_DATABASE = {'minutes': 15}
 
 # Enable debug mode
-DEBUG_CONFIRM_BOOKING = False
+DEBUG_CONFIRM_BOOKING = True
 
 # Config Restful Framework and Rest JWT
 REST_FRAMEWORK = {
