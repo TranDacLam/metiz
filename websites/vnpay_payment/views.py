@@ -217,6 +217,7 @@ def payment(request):
 
         # Verify Session Booking Timeout before redirect to vnpayment
         movies_session = request.session.get("movies", "")
+        print "@@@@@ movies_session ",movies_session
         # if not movies_session or (movies_session and working_id not in movies_session):
         #     return redirect("time-out-booking")
 
@@ -483,7 +484,8 @@ def payment_ipn(request):
 
 
                     # Handle Confirm Booking Success and send sms or email
-                    handler_confirm_booking_success(request, booking_order, amount)
+                    if not error_comfirm:
+                        handler_confirm_booking_success(request, booking_order, amount)
                     
                     # Return VNPAY: Merchant update success
                     result = JsonResponse(
