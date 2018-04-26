@@ -259,6 +259,7 @@ def check_seats(request):
                     # minute
                     result["total_payment"] = total_money
                     current_store = request.session.get("movies", {})
+                    working_id = request.POST["working_id"]
                     current_store[working_id] = {
                             "time_choice": timezone.localtime(timezone.now() + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
                             "seats_choice": seats_choice,
