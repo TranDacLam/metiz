@@ -216,9 +216,9 @@ def payment(request):
         id_server = request.POST.get("id_server", 1)
 
         # Verify Session Booking Timeout before redirect to vnpayment
-        movies_session = request.session.get("movies", "")
-        if not movies_session or (movies_session and working_id not in movies_session):
-            return redirect("time-out-booking")
+        # movies_session = request.session.get("movies", "")
+        # if not movies_session or (movies_session and working_id not in movies_session):
+        #     return redirect("time-out-booking")
 
         total_payment_store = movies_session[working_id]["total_money"]
         if form.is_valid():
