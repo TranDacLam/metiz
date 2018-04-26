@@ -172,9 +172,9 @@ def send_email_vooc_leader(is_secure, full_name, barcode, content):
     except Exception, e:
         leader_email = "tiendangdht@gmail.com, thangnguyen@vooc.vn"
 
-def cancel_seats(seats_choice, id_server):
-    for seat in seats_choice:
-        api.call_api_cancel_seat(seat, id_server=id_server)
+# def cancel_seats(seats_choice, id_server):
+#     for seat in seats_choice:
+#         api.call_api_cancel_seat(seat, id_server=id_server)
 
 def encrypt_payment(request):
     if request.method == 'POST':
@@ -346,9 +346,9 @@ def handler_confirm_booking_error(booking_order, error_comfirm, is_secure):
         
         # Payment Error: cancel seats chooice and return for
         # vnpayment
-        if booking_order.seats:
-            cancel_seats(booking_order.seats.split(
-                ","), booking_order.id_server)
+        # if booking_order.seats:
+        #     cancel_seats(booking_order.seats.split(
+        #         ","), booking_order.id_server)
 
         # Get information admin metiz cinema
         email_admin_cinema = settings.SYSTEM_ADMIN_CINEMA_EMAIL
@@ -492,9 +492,9 @@ def payment_ipn(request):
                     print('Payment Error. Processing Payment Error')
                     # Payment Error: cancel seats chooice and return for
                     # vnpayment
-                    if booking_order.seats:
-                        cancel_seats(booking_order.seats.split(
-                            ","), booking_order.id_server)
+                    # if booking_order.seats:
+                    #     cancel_seats(booking_order.seats.split(
+                    #         ","), booking_order.id_server)
 
                     booking_order.order_status = 'payment_error'
                     booking_order.save()

@@ -249,9 +249,8 @@ def check_seats(request):
 
                     result = api.call_api_post_booking(
                         full_name, phone, email, seats_choice, id_server, member_card, url)
-
-
-                    if not result["BARCODE"] or total_money <= 0:
+                    
+                    if not result["BARCODE"] or str(result["BARCODE"]) == '0' or total_money <= 0:
                         print "***** Get Barcode Fail : ", result
                         return JsonResponse({"code": 400, "message": _("Cannot Booking Seats. Please Contact Administrator.")}, status=400)
 
@@ -259,40 +258,40 @@ def check_seats(request):
                     # Add Seats into session and set seats expire in five
                     # minute
                     result["total_payment"] = total_money
-                    current_store = request.session.get("movies", {})
-                    working_id = request.POST["working_id"]
-                    if working_id in current_store:
-                        """
-                            If session exist working_id then append new seat item into session:
-                            Algorithm :
-                             - Cancel seats old in workingid and add new seats choice
-                        """
-                        print "***** Working_id existing into sessions ", working_id
-                        if current_store[working_id]["seats_choice"]:
-                            for seat_id in current_store[working_id]["seats_choice"]:
-                                print "***** Clear Old Seats of Working_id existing into sessions ", seat_id
-                                api.call_api_cancel_seat(
-                                    seat_id=seat_id, id_server=id_server)
+                    # current_store = request.session.get("movies", {})
+                    # working_id = request.POST["working_id"]
+                    # if working_id in current_store:
+                    #     """
+                    #         If session exist working_id then append new seat item into session:
+                    #         Algorithm :
+                    #          - Cancel seats old in workingid and add new seats choice
+                    #     """
+                    #     print "***** Working_id existing into sessions ", working_id
+                    #     if current_store[working_id]["seats_choice"]:
+                    #         for seat_id in current_store[working_id]["seats_choice"]:
+                    #             print "***** Clear Old Seats of Working_id existing into sessions ", seat_id
+                    #             api.call_api_cancel_seat(
+                    #                 seat_id=seat_id, id_server=id_server)
 
-                        print "***** Append New Seats for Working_id : ", seats_choice
-                        current_store[working_id][
-                            "seats_choice"] = seats_choice
-                        current_store[working_id]["time_choice"] = timezone.localtime(timezone.now(
-                        ) + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f")
+                    #     print "***** Append New Seats for Working_id : ", seats_choice
+                    #     current_store[working_id][
+                    #         "seats_choice"] = seats_choice
+                    #     current_store[working_id]["time_choice"] = timezone.localtime(timezone.now(
+                    #     ) + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f")
 
-                        current_store[working_id]["total_money"] = total_money
+                    #     current_store[working_id]["total_money"] = total_money
 
-                    else:
-                        # Add new key as working_id in store movie session
-                        print "***** Add Working_id in Sessions : %s and list seats : %s  "%(working_id, seats_choice)
-                        current_store[working_id] = {
-                            "time_choice": timezone.localtime(timezone.now() + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
-                            "seats_choice": seats_choice,
-                            "barcode": result["BARCODE"],
-                            "total_money": total_money
-                        }
-                    print "***** Store Booking in Session, Phone: %s, Email: %s, Barcode: %s, Data Store: %s "%(phone, email, result["BARCODE"], current_store)
-                    request.session['movies'] = current_store
+                    # else:
+                    #     # Add new key as working_id in store movie session
+                    #     print "***** Add Working_id in Sessions : %s and list seats : %s  "%(working_id, seats_choice)
+                    #     current_store[working_id] = {
+                    #         "time_choice": timezone.localtime(timezone.now() + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
+                    #         "seats_choice": seats_choice,
+                    #         "barcode": result["BARCODE"],
+                    #         "total_money": total_money
+                    #     }
+                    # print "***** Store Booking in Session, Phone: %s, Email: %s, Barcode: %s, Data Store: %s "%(phone, email, result["BARCODE"], current_store)
+                    # request.session['movies'] = current_store
 
                     return JsonResponse(result)
     except Exception, e:
@@ -319,31 +318,31 @@ def booking_payment(request):
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 
 
-def clear_seats(request):
-    try:
-        if request.method == "POST":
-            if "working_id" not in request.POST:
-                return JsonResponse({"code": 400, "message": _("Fields working_id is required.")}, status=400)
+# def clear_seats(request):
+#     try:
+#         if request.method == "POST":
+#             if "working_id" not in request.POST:
+#                 return JsonResponse({"code": 400, "message": _("Fields working_id is required.")}, status=400)
 
-            id_server = request.POST.get("id_server", 1)
-            working_id = request.POST["working_id"]
-            movie_store = request.session.get("movies", {})
-            # Check Working id exist in session and remove it
-            if movie_store and working_id in movie_store:
-                for seat_id in movie_store[working_id]["seats_choice"]:
-                    print "##### Clear Seat ", seat_id
-                    api.call_api_cancel_seat(
-                        seat_id=seat_id["ID"], id_server=id_server)
-                del movie_store[working_id]
+#             id_server = request.POST.get("id_server", 1)
+#             working_id = request.POST["working_id"]
+#             movie_store = request.session.get("movies", {})
+#             # Check Working id exist in session and remove it
+#             if movie_store and working_id in movie_store:
+#                 for seat_id in movie_store[working_id]["seats_choice"]:
+#                     print "##### Clear Seat ", seat_id
+#                     api.call_api_cancel_seat(
+#                         seat_id=seat_id["ID"], id_server=id_server)
+#                 del movie_store[working_id]
 
-                if movie_store:
-                    request.session["movies"] = movie_store
-                else:
-                    del request.session["movies"]
-            return JsonResponse({"result": True})
-    except Exception, e:
-        print "Error clear_seats : %s ", e
-        pass
+#                 if movie_store:
+#                     request.session["movies"] = movie_store
+#                 else:
+#                     del request.session["movies"]
+#             return JsonResponse({"result": True})
+#     except Exception, e:
+#         print "Error clear_seats : %s ", e
+#         pass
 
 @login_required(login_url='/admin/login/')
 @permission_required('is_superuser', login_url='/admin/login/')

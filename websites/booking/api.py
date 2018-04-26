@@ -103,28 +103,28 @@ def call_api_booking_confirm(barcode, id_server=1, status=1):
     return result
 
 
-def call_api_cancel_seat(seat_id, id_server=1):
-    try:
-        """ 
-            Call API cancel seats when payment error
-        """
-        url_cancel = settings.BASE_URL_CINESTAR + "/putSeatChoose"
-        values = {
-            "id_Seats": seat_id,
-            "id_Server": id_server,
-            "Secret": settings.CINESTAR_SERECT_KEY
-        }
-        request = urllib2.Request(url_cancel, data=urllib.urlencode(values),
-                                  headers={'Content-Type': 'application/x-www-form-urlencoded'})
-        resp = urllib2.urlopen(request)
-        # handle decoding json
-        try:
-            result = json.loads(resp.read())
+# def call_api_cancel_seat(seat_id, id_server=1):
+#     try:
+#         """ 
+#             Call API cancel seats when payment error
+#         """
+#         url_cancel = settings.BASE_URL_CINESTAR + "/putSeatChoose"
+#         values = {
+#             "id_Seats": seat_id,
+#             "id_Server": id_server,
+#             "Secret": settings.CINESTAR_SERECT_KEY
+#         }
+#         request = urllib2.Request(url_cancel, data=urllib.urlencode(values),
+#                                   headers={'Content-Type': 'application/x-www-form-urlencoded'})
+#         resp = urllib2.urlopen(request)
+#         # handle decoding json
+#         try:
+#             result = json.loads(resp.read())
 
-        except ValueError as e:
-            print "Error convert json : %s" % e
-            return {"code": 500, "message": _("Handle data error.")}
-    except Exception, e:
-        print "Error call_api_cancel_seat : %s" % e
-        result = {"errors": _("Internal Server Error. Cannot Post Booking.")}
-    return result
+#         except ValueError as e:
+#             print "Error convert json : %s" % e
+#             return {"code": 500, "message": _("Handle data error.")}
+#     except Exception, e:
+#         print "Error call_api_cancel_seat : %s" % e
+#         result = {"errors": _("Internal Server Error. Cannot Post Booking.")}
+#     return result

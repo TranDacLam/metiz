@@ -1,56 +1,56 @@
 var validNavigation = false;
 
-function endSession() {
-    // Call server clear session
-    var working_id = $("#working_id").val();
-    var id_server = $('.vnpayment #payment_form input[name=id_server]').val();
-    $.ajax({
-        url: "clear/seats",
-        type: 'POST',
-        data: {
-            "working_id": working_id,
-            "id_server": id_server
-        },
-        dataType: 'json',
-        crossDomain:false,
-        context: this,
-        async: false
-    });
-}
+// function endSession() {
+//     // Call server clear session
+//     var working_id = $("#working_id").val();
+//     var id_server = $('.vnpayment #payment_form input[name=id_server]').val();
+//     $.ajax({
+//         url: "clear/seats",
+//         type: 'POST',
+//         data: {
+//             "working_id": working_id,
+//             "id_server": id_server
+//         },
+//         dataType: 'json',
+//         crossDomain:false,
+//         context: this,
+//         async: false
+//     });
+// }
 
 
 $(document).ready(function() {
     // detect redirect page only ecept button submit form and change showtime
-    $('body a').click(function(evt){    
-       if(evt.target.id == "btn-payment-seats" || $(evt.target).hasClass("open-popup-link") || $(evt.target).hasClass("popup-movie-schedule") || evt.target.id == "id-menu-member" || evt.target.id == "id-menu-movie"){
-          return;
-       }else{
-            endSession();
-       }
+    // $('body a').click(function(evt){    
+    //    if(evt.target.id == "btn-payment-seats" || $(evt.target).hasClass("open-popup-link") || $(evt.target).hasClass("popup-movie-schedule") || evt.target.id == "id-menu-member" || evt.target.id == "id-menu-movie"){
+    //       return;
+    //    }else{
+    //         endSession();
+    //    }
         
-    });
+    // });
 
-    window.onload = function () {
-        if (typeof history.pushState === "function") {
-            history.pushState("loadpage", null, null);
-            window.onpopstate = function () {
-                history.pushState('new_loadpage', null, null);
-                // Handle the back (or forward) buttons here
-                // Will NOT handle refresh, use onbeforeunload for this.
-                endSession();
-                var id_showtime = $('#payment_form input[name=id_showtime]').val();
-                var id_server = $('#payment_form input[name=id_server]').val();
-                var movie_api_id = $('#payment_form input[name=movie_api_id]').val();
-                var id_movie_name = $('#payment_form input[name=id_movie_name]').val();
-                var id_movie_time = $('#payment_form input[name=id_movie_time]').val();
-                var id_movie_date_active = getDate($('#payment_form input[name=id_movie_date_active]').val());
+    // window.onload = function () {
+    //     if (typeof history.pushState === "function") {
+    //         history.pushState("loadpage", null, null);
+    //         window.onpopstate = function () {
+    //             history.pushState('new_loadpage', null, null);
+    //             // Handle the back (or forward) buttons here
+    //             // Will NOT handle refresh, use onbeforeunload for this.
+    //             endSession();
+    //             var id_showtime = $('#payment_form input[name=id_showtime]').val();
+    //             var id_server = $('#payment_form input[name=id_server]').val();
+    //             var movie_api_id = $('#payment_form input[name=movie_api_id]').val();
+    //             var id_movie_name = $('#payment_form input[name=id_movie_name]').val();
+    //             var id_movie_time = $('#payment_form input[name=id_movie_time]').val();
+    //             var id_movie_date_active = getDate($('#payment_form input[name=id_movie_date_active]').val());
 
-                window.location.href = '/booking?id_showtime='+ id_showtime + '&id_server='+ id_server
-                            + '&id_movie_name='+ id_movie_name + '&id_movie_time='+ id_movie_time
-                            + '&id_movie_date_active='+ id_movie_date_active + '&movie_api_id='+ movie_api_id;
-            };
-        }
-    }
+    //             window.location.href = '/booking?id_showtime='+ id_showtime + '&id_server='+ id_server
+    //                         + '&id_movie_name='+ id_movie_name + '&id_movie_time='+ id_movie_time
+    //                         + '&id_movie_date_active='+ id_movie_date_active + '&movie_api_id='+ movie_api_id;
+    //         };
+    //     }
+    // }
 
     // Submit form check validate captcha
     $('#payment_form').on('submit', function(e) {
@@ -96,7 +96,7 @@ $(document).ready(function() {
     setTimeout(function(){
         endSession();
         window.location.href = '/timeout/booking'
-    }, 300000);
+    }, 600000);
 
     // format money
     var money_total = $('#payment_form input[name=amount-text]').val();
