@@ -266,6 +266,8 @@ def check_seats(request):
                             "barcode": result["BARCODE"],
                             "total_money": total_money
                         }
+                    request.session['movies'] = current_store
+                    
                     # current_store = request.session.get("movies", {})
                     # working_id = request.POST["working_id"]
                     # if working_id in current_store:
