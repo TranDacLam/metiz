@@ -391,6 +391,10 @@ and (orientation: landscape){
         background-color: #e2ddd5;
         width: 26px;
     }
+    .booking-custom{
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 @media only screen and (max-width: 375px){
     div.seatCharts-cell {
