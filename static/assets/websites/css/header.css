@@ -144,9 +144,11 @@ ul.dropdown-menu>li>a:hover{
 	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
 	    background: none;
 	}
+	.navbar-nav li.dropdown a.dropdown-toggle {
+		padding-bottom: 9px;
+	}
 	.navbar-nav li.dropdown:hover a.dropdown-toggle{
 		color: #ff5400;
-		padding-bottom: 9px;
     	border-bottom: 2px solid #ff5400;
 	}
 	.navbar-nav .dropdown-menu li a{
