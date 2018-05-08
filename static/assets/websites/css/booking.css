@@ -279,6 +279,10 @@ div.seatCharts-seat.available.seat-ld {
     body.modal-open {
         position: fixed;
     }
+    #seat-map, .booking-custom{
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 @media only screen 
 and (min-width: 568px) 
@@ -390,10 +394,6 @@ and (orientation: landscape){
         background: url('../../websites/images/Seat_booked.png') 1px -7px no-repeat;
         background-color: #e2ddd5;
         width: 26px;
-    }
-    .booking-custom{
-        padding-right: 0;
-        padding-left: 0;
     }
 }
 @media only screen and (max-width: 375px){
