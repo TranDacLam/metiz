@@ -28,13 +28,13 @@ $(document).ready(function($) {
 		e.preventDefault();
 		$(this).prop('disabled', true);
 		var page = parseInt($(this).attr('data-page'));
-		if($(this).attr('data-url') == "showing"){
-			url = '/showing/';
-		}else{
-			url = '/comingsoon/';
-		}
+		// if($(this).attr('data-url') == "showing"){
+		// 	url = '/showing/';
+		// }else{
+		// 	url = '/comingsoon/';
+		// }
 		$.ajax({
-			url: url,
+			url: $(this).attr('data-url'),
 			type: 'get',
 			data: {
 				'page': page,

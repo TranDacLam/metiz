@@ -64,7 +64,7 @@ def showing(request):
             return render(request, 'websites/load_movie_render.html', {'list_data_film': movie_page.object_list})
 
         return render(request, 'websites/list_film.html', {'list_data_film': movie_page.object_list, 'total_page': paginator.num_pages,
-                                                           'title': "Phim Đang Chiếu"})
+                                                           'title': "Phim Đang Chiếu", 'url': '/showing/'})
     except Exception, e:
         print "Error action showing: ", e
         raise Exception(
@@ -109,7 +109,7 @@ def coming_soon(request):
             return render(request, 'websites/load_movie_render.html', {'list_data_film': movie_page.object_list})
 
         return render(request, 'websites/list_film.html', {'list_data_film': movie_page.object_list, 'total_page': paginator.num_pages,
-                                                           'title': "Phim Sắp Chiếu"})
+                                                           'title': "Phim Sắp Chiếu", 'url': '/comingsoon/'})
     except Exception, e:
         print "Error action : ", e
         raise Exception(
