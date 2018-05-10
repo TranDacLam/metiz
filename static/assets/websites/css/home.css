@@ -776,6 +776,10 @@ ul.metiz-movie-tabs {
     #news .box-new {
         padding: 0 15px;
     }
+    #news .bg_hover p{
+        padding-top: 13px;
+        font-size: 11px;
+    }
 }
 @media screen and (max-width: 320px) {
     .session-movie .nav-tabs>li.active>span{
