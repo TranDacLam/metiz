@@ -452,16 +452,22 @@ $(document).ready(function() {
                 $(".mfp-ready").removeAttr("tabindex");
                 $(".mfp-ready").css("overflow-y","hidden");
                 if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
-                // When device focus input set overflow hidden using fix focus moving
-                    $('#confirm input').on("focus", function(){
-                        $('#confirm').css("position", "fixed");
-                        $("#confirm").css("overflow", "hidden");    
-                    });
 
-                    // when input out focus then accept user scroll popup
-                    $('#confirm input').on("focusout", function(){
-                        $("#confirm").css("overflow", "auto");    
-                    });
+                    // add attr autocomplete for every input
+                    // *** BUG *** : show suggest when focus input, suggest moving when scroll
+                    $('#confirm input').attr('autocomplete', 'off');
+
+                    // // When device focus input set overflow hidden using fix focus moving
+                    // $('#confirm input').on("focus", function(){
+                    //     $('#confirm').css("position", "fixed");
+                    //     $("#confirm").css("overflow", "hidden");    
+                    // });
+
+                    // // when input out focus then accept user scroll popup
+                    // $('#confirm input').on("focusout", function(){
+                    //     $("#confirm").css("overflow", "auto");    
+                    // });
+
                     // set scroll to tocuh
                     $("#confirm").css("-webkit-overflow-scrolling", "touch !important");
                 }
