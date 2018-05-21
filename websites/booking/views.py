@@ -19,6 +19,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 import os
 from core.decorator import *
+from django.core.management import call_command
+
+
 
 @check_user_booking_exist
 def get_booking(request):
@@ -359,7 +362,7 @@ def booking_payment(request):
 def movies_synchronize(request):
     try:
         if request.method == "POST":
-            os.system("fab synchronize")
+            call_command("sync_movie")
             return JsonResponse({"message": "Success Synchronize movies."}, status=200)
         else:
             return render(request, 'websites/booking/movies_synchronize.html')
