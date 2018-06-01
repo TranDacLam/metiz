@@ -237,3 +237,12 @@ class BlogAdmin(admin.ModelAdmin):
     }
     pass
 admin.site.register(Blog, BlogAdmin)
+
+class FAQCategoryAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(FAQ_Category, FAQCategoryAdmin)
+
+
+class FAQAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(FAQ, FAQAdmin)
