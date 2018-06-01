@@ -14,7 +14,7 @@ def get_booking_info_report(request):
         booking_info_list = BookingInfomation.objects.all().order_by('-created')
 
         # Get Parameter From GET request
-        order_id = request.GET.get("order_id", "1")
+        order_id = request.GET.get("order_id", "")
         order_status = request.GET.getlist("order_status", "")
         email = request.GET.get("email", "")
         phone = request.GET.get("phone", "")
