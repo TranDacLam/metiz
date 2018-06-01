@@ -274,3 +274,21 @@ def resend_activation(request):
         print "Error resend_activation : ", e
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
+
+@login_required(login_url='/login/')
+def info_member_card(request):
+    try:
+        return render(request, 'registration/info_member_card.html')
+    except Exception, e:
+        print "error", e
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
+
+@login_required(login_url='/login/')
+def transaction_history(request):
+    try:
+        return render(request, 'registration/transaction_history.html')
+    except Exception, e:
+        print "error", e
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")

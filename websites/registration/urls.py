@@ -29,4 +29,6 @@ urlpatterns = [
     # kwargs={'template_name': 'registration/password_change_done.html'},
     # name="password_change_done"),
     url(r'^resend_activation$', views.resend_activation, name='resend_activation'),
+    url(r'^profile/member_card/$', views.info_member_card, name='info_member_card'),
+    url(r'^profile/transaction_history/$', views.transaction_history, name='transaction_history'),
 ]

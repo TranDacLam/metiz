@@ -1,0 +1,33 @@
+<div class="col-left sidebar col-left-first">
+    <div class="block block-account">
+        <nav class="navbar navbar-inverse sidebar" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0);">TÀI KHOẢN</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                <ul class="nav navbar-nav post-detail-metiz">
+                    <li id="profile">
+                        <a href="{% url 'profile' %}">Thông tin tài khoản<span class="pull-right hidden-xs showopacity fa fa-user-circle-o"></span></a>
+                    </li>
+                    <li id="change-password">
+                        <a href="{% url 'change_password' %}">Thay đổi mật khẩu<span class="pull-right hidden-xs showopacity fa fa-unlock-alt"></span></a>
+                    </li>
+                    <li id="info-member-card">
+                        <a href="{% url 'info_member_card' %}">Thông tin thẻ thành viên<span class="pull-right hidden-xs showopacity fa fa-id-card"></span></a>
+                    </li>
+                    <li id="transaction-history">
+                        <a href="{% url 'transaction_history' %}">Lịch sử giao dịch online<span class="pull-right hidden-xs showopacity fa fa-history"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

@@ -22,33 +22,10 @@
 
 {% block main_content %}
 <div class="main profile-custom ">
-    <div class="col-left sidebar col-left-first">
-        <div class="block block-account">
-            <nav class="navbar navbar-inverse sidebar" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="javascript:void(0);">TÀI KHOẢN</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                    <ul class="nav navbar-nav post-detail-metiz">
-                        <li class="active">
-                            <a href="{% url 'profile' %}">Thông tin tài khoản<span class="pull-right hidden-xs showopacity fa fa-user-circle-o"></span></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'change_password' %}">Thay đổi mật khẩu<span class="pull-right hidden-xs showopacity fa fa-unlock-alt"></span></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
+    <!-- Start MENU -->
+    {% include 'registration/menu_profile.html' %}
+    <!-- End MENU -->
+
     <div class="col-main">
         <div class="my-account">
             <div class="page-title">
