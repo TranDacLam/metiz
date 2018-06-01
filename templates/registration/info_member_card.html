@@ -3,6 +3,7 @@
 {% block title %}Thông tin thẻ thành viên{% endblock title %}
 
 {% block extrascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/barcode/jquery-barcode.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/info_member_card.js"></script>
 {% endblock %}
 
@@ -18,14 +19,52 @@
     {% include 'registration/menu_profile.html' %}
     <!-- End MENU -->
 
-    <div class="col-main">
+    <div class="col-main info-member-card">
         <div class="my-account">
             <div class="page-title">
-                <h1>Thay đổi mật khẩu</h1>
+                <h1>THÔNG TIN THẺ THÀNH VIÊN</h1>
             </div>
-            <div class="col-lg-12" >
-                <div class="row">
-                    
+            <div class="row info-mc-1">
+                <div class="col-md-12">
+                    <p class="mc-1-des-1">Thông báo: Bạn chưa đăng ký thẻ thành viên hoặc đã có thẻ thanh viên nhưng chưa liên kết với tài khoản.</p>
+                    <p class="mc-1-des-2">Nếu bạn đã có thẻ thành viên, vui lòng nhập vàp mã số thẻ và liên kết với tài khoản để có thể xem và chỉnh sửa thông tin cá nhân.</p>
+                    <form action="" method="POST" class="form-inline">
+                        <div class="form-group">
+                            <label>Mã số Thẻ:</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <button type="submit" class="btn">LIÊN KẾT TÀI KHOẢN</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row info-mc-2">
+                <div class="col-md-12 mc-2-des">
+                    <p><label>Mã thẻ: </label><div id="barcode-member-card"></div> 
+                        <input type="hidden" name="barcode_member_card" value="1234567890129" />
+                    </p>
+                    <p><label>Cấp độ thẻ: </label> Member</p>
+                    <p><label>Điểm tích lũy: </label> 100</p>
+                </div>
+                <div class="col-md-12">
+                    <p><label>Danh mục đổi quà: (OPTIONAL)</label> </p>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Quà tặng</th>
+                                <th>Điểm đổi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Coca Lớn(22oz)</td>
+                                <td>24</td>
+                            </tr>
+                            <tr>
+                                <td>Bắp vừa</td>
+                                <td>32</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
