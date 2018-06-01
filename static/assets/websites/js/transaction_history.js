@@ -6,7 +6,7 @@ $(document).ready(function() {
 		url: "/profile/transaction_history/",
 		type: 'POST',
 		data: {
-			'page': 2
+			'page': 1
 		},
 		crossDomain:false,
 		context: this,
