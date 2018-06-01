@@ -10,7 +10,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 import messages as msg
-
+from api import actions
+import traceback
 
 def logout(request):
     """ Action Login """
@@ -287,8 +288,25 @@ def info_member_card(request):
 @login_required(login_url='/login/')
 def transaction_history(request):
     try:
+        if request.method == 'POST':
+            # Get Parameter From GET request
+            page_items = request.POST.get('page_items', 5)
+            page_number = request.POST.get('page', 1)
+            # Get user id from request
+            user_id = request.user.id
+            # If call from web then add user id to Parameter
+            responses = actions.get_booking_info_data(user_id, page_items, page_number, {'done'})
+            if responses['status'] == 200:
+                results = responses['results']
+                # convert object models to json
+                # Ajax reuqest with page, render page and return to client
+                return render(request, 'websites/ajax/load_transaction_history.html', {'list_transaction': results['data'], 'total_page': results['total_page']})
+
+            # Return data with json
+            return JsonResponse(responses['results'], status=responses["status"])
+              
         return render(request, 'registration/transaction_history.html')
     except Exception, e:
-        print "error", e
+        print "error", traceback.format_exc()
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
