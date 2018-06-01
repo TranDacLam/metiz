@@ -278,7 +278,7 @@ def resend_activation(request):
 @login_required(login_url='/login/')
 def info_member_card(request):
     try:
-        return render(request, 'registration/member_card.html')
+        return render(request, 'registration/info_member_card.html')
     except Exception, e:
         print "error", e
         raise Exception(
