@@ -1,7 +1,10 @@
 $(document).ready(function() {
+
+    // active menu profile
+    $('#profile').addClass('active');
+
     var val_required = 'Trường này là bắt buộc';
     var val_date = 'Nhập ngày theo định dạng dd-mm-yyyy';
-    var valid_pass = "Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.";
 
     // validate phone, persional only number
     var selectorPhone = $("#profile-validate input[name=phone]");
@@ -69,47 +72,6 @@ $(document).ready(function() {
       message.validateDate
     );
 
-    // page change password
-    $.validator.addMethod(
-        "regex",
-         function(value, element) {
-            return this.optional(element) || (value.match(/[a-z]/) && value.match(/[!@#$%^&*()_+A-Z]/) && value.match(/[0-9]/));
-        },
-        valid_pass
-    );
-
-    $("#change-pass-validate").validate({
-        rules: {
-            old_password: { 
-                minlength: 8,
-                required: true,
-                regex: true,
-            }, 
-            new_password: { 
-                minlength: 8,
-                required: true,
-                regex: true,
-            }, 
-             new_password2: { 
-                equalTo: '[name="new_password"]',
-                required: true,
-               }
-        },
-        messages:{
-            old_password: {
-                required: 'Mật khẩu không được để trống.',
-                minlength: valid_pass,
-            },
-            new_password: {
-                required: 'Mật khẩu mới không được để trống.',
-                minlength: valid_pass,
-            },
-            new_password2: { 
-                equalTo:"Hai trường mật khẩu không giống nhau.",
-                required: 'Nhập lại mật khẩu mới không được để trống.',
-            }
-        }
-    });
     // Validate phone number
     // Can enter 0 number at the end or middle but not at the beginning.
     // Check the first characters and remove if it equal == 0
