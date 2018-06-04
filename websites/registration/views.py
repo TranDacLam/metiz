@@ -10,6 +10,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 import messages as msg
+from api import actions
+import traceback
 
 
 def logout(request):
@@ -18,7 +20,7 @@ def logout(request):
         auth_logout(request)
         return redirect(reverse('home'))
     except Exception, e:
-        print "Error Action Logout ",e
+        print "Error Action Logout ", e
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
 
@@ -26,7 +28,7 @@ def logout(request):
 def login(request):
     """ Action Login """
     try:
-        # Get nex page in url 
+        # Get nex page in url
         next_page = request.GET.get('next', '')
 
         # create flag is login using active tab in page html
@@ -46,7 +48,7 @@ def login(request):
                         request.session['phone'] = request.user.phone
                         request.session['email'] = request.user.email
                         return JsonResponse({})
-                        
+
                     return JsonResponse({"code": 400, 'errors': login_form.errors}, status=400)
                 except Exception, e:
                     print "Error action login : ", e
@@ -61,10 +63,9 @@ def login(request):
 
         print result
 
-
         return render(request, 'registration/signup.html', result)
     except Exception, e:
-        print "Error Action Login : ",e
+        print "Error Action Login : ", e
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
 
@@ -73,7 +74,7 @@ def register_user(request, **kwargs):
     """ Action Register User """
     # Init MetizSignupForm for get action
     try:
-        # Get nex page in url 
+        # Get nex page in url
         next_page = request.GET.get('next', '')
 
         register_form = MetizSignupForm(request=request)
@@ -82,7 +83,8 @@ def register_user(request, **kwargs):
             # check MetizSignupForm is valid then save user to db
             if register_form.is_valid():
                 register_form.save()
-                messages.success(request, _('Register Account Successfully. Please Check Your Email and Active Account.'))
+                messages.success(request, _(
+                    'Register Account Successfully. Please Check Your Email and Active Account.'))
                 return redirect(reverse('home'))
             else:
                 # keep data of user input
@@ -136,7 +138,7 @@ def confirm_activation(request, activation_key):
         # Check activation key is valid
         try:
             user_account = get_object_or_404(User,
-                                         activation_key=activation_key)
+                                             activation_key=activation_key)
         except Exception:
             print "User Query activation_key does not exist."
             return render(request, 'registration/activation_confirm.html', {'key_wrong': True})
@@ -231,6 +233,7 @@ def update_profile(request):
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
 
+
 def resend_activation(request):
     try:
         print "Resend Activation Function"
@@ -252,20 +255,23 @@ def resend_activation(request):
 
             if user:
                 # User have confirm link before then return flag active
-                if  user.is_active:
+                if user.is_active:
                     return render(request, 'registration/resend_activation.html', {'err': msg.USER_ACTIVE, 'email': user_email})
 
                 # Replace activation key and reset key expires is default (7 days)
                 key_expires = timezone.now() + datetime.timedelta(settings.KEY_ACTIVATION_EXPIRES)
-                user.activation_key = register_form.create_activation_key(user.email)
+                user.activation_key = register_form.create_activation_key(
+                    user.email)
                 user.key_expires = key_expires
                 user.save()
 
                 # Resend Email to active account
-                register_form.send_activation_mail(user.full_name, user.email, user.activation_key)
+                register_form.send_activation_mail(
+                    user.full_name, user.email, user.activation_key)
 
                 # Resend success then return success message and redirect to home page
-                messages.success(request, _('Send Mail Successfully. Please Check Your Email and Active Account.'))
+                messages.success(request, _(
+                    'Send Mail Successfully. Please Check Your Email and Active Account.'))
                 return redirect(reverse('home'))
 
         return render(request, 'registration/resend_activation.html')
@@ -274,6 +280,7 @@ def resend_activation(request):
         print "Error resend_activation : ", e
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
+
 
 @login_required(login_url='/login/')
 def info_member_card(request):
@@ -284,11 +291,31 @@ def info_member_card(request):
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
 
+
 @login_required(login_url='/login/')
 def transaction_history(request):
     try:
+        if request.method == 'POST':
+            # Get Parameter From GET request
+            page_items = request.POST.get('page_items', 5)
+            page_number = request.POST.get('page', 1)
+            # Get user id from request
+            user_id = request.user.id
+            # If call from web then add user id to Parameter
+            responses = actions.get_booking_info_data(
+                user_id, page_items, page_number, {'done'})
+            if responses['status'] == 200:
+                results = responses['results']
+                # convert object models to json
+                # Ajax reuqest with page, render page and return to client
+                return render(request, 'websites/ajax/load_transaction_history.html',
+                              {'list_transaction': results['data'], 'total_page': results['total_page'], 'total_item': results['recordsTotal']})
+
+            # Return data with json
+            return JsonResponse(responses['results'], status=responses["status"])
+
         return render(request, 'registration/transaction_history.html')
     except Exception, e:
-        print "error", e
+        print "error", traceback.format_exc()
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
