@@ -329,3 +329,17 @@ class LinkCard(models.Model):
 
     def __str__(self):
         return '%s' % (self.user)
+
+
+@python_2_unicode_compatible
+class Home_Ads(DateTimeModel):
+    name = models.CharField(_('Name'), max_length=255, unique=True)
+    image = models.ImageField(_('Image'), max_length=1000, upload_to="home_ads")
+    is_show = models.BooleanField(default=True)
+
+    def __str__(self):
+        return '%s' % (self.name)
+
+    class Meta:
+        verbose_name = _('Home Ads')
+        verbose_name_plural = _('Home Ads')
