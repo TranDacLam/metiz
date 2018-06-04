@@ -70,20 +70,19 @@
             <div class="col2-set content-seperator">
                 {% for faq_group in faq_list %}
                 <h3>{{ faq_group.grouper }}</h3>
-                <div class="panel-group" id="faqAccordion">
+                <div class="panel-group" id="faqAccordion{{faq_group.grouper.id}}">
                     {% for faq in faq_group.list %}
                     <div class="panel panel-default ">
-                        <div class="panel-heading accordion-toggle question-toggle collapsed" data-parent="#faqAccordion" data-target="#question0" data-toggle="collapse">
+                        <div class="panel-heading accordion-toggle question-toggle collapsed" data-parent="#faqAccordion{{faq_group.grouper.id}}" data-target="#question{{faq.id}}" data-toggle="collapse">
                             <h4 class="panel-title">
                                 <a class="ing">
                                     <span class="pull-right more-less fa fa-chevron-circle-down"> </span>
                                     {{ faq.question }}</a>
                             </h4>
                         </div>
-                        <div class="panel-collapse collapse" id="question0" style="height: 0px;">
+                        <div class="panel-collapse collapse" id="question{{faq.id}}">
                             <div class="panel-body">
                                 <h5><span class="label label-primary">Trả lời</span></h5>
-
                                 <p>{{ faq.answer }}</p>
                             </div>
                         </div>

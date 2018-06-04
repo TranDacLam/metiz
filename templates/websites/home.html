@@ -175,15 +175,30 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
 </div>
 
 <!-- Show popup when load page -->
-<div class="modal" id="popup_advertise" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <img src="https://lottecinemavn.com/Lotte/files/fc/fc0109d0-025b-42a3-9424-96d08c2a5e24_640_480.jpg" />
+{% if data_ads %}  
+    <div class="modal" id="popup_advertise" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="slideshow-container">
+                        <!-- Arrow Navigator -->
+                        <div id="jssor_2" >
+                            <div data-u="slides" class="jssor_1_slides">
+                            {% for item in data_ads  %}  
+                                <div>
+                                    <a href="{{item.sub_url}}"><img data-u="image" src="{{ MEDIA_URL }}{{item.image}}" /></a>
+                                    <img data-u="thumb" src="{{ MEDIA_URL }}{{item.image}}" />
+                                </div>
+                            {% endfor %}
+                            </div>
+                            {% include 'arrow_slide.html' %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+{% endif %}
 {% endblock %}

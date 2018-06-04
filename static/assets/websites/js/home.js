@@ -19,6 +19,15 @@ $(document).ready(function() {
         $('#popup_advertise').modal('show');
     });
 
+    // Hide arrow next, pre when quantity image < 2 
+    function hideArrowPopupSlide(){
+        var count_image = $('#popup_advertise #jssor_2 .jssor_1_slides a>img').length;
+        if(count_image < 2){
+            $('.jssora106').css('opacity', 0);
+        }
+    }
+    hideArrowPopupSlide();
+
     // handle tooogle with Owl carousel
     $.fn.extend({
         toggleOwl: function(selector, options, destroy){
