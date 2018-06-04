@@ -205,18 +205,21 @@
     padding-left: 0px;
     padding-right: 0px;
 }
-.transaction-history .info-th-3{
+.transaction-history .btn-load-more{
     margin-top: 50px;
 }
-.transaction-history .info-th-3 button{
+.transaction-history .btn-load-more button{
     font-family: "SairaSemiCondensed-Bold", sans-serif;
     border-radius: 5px;
     background-color: #7e8eaa;
     color: #fff;
 }
-.transaction-history .info-th-3 button:hover{
+.transaction-history .btn-load-more button:hover{
     color: #fff;
     background-color: #ff5400;
+}
+.transaction-history .btn-load-more{
+    display: none;
 }
 
 /* END TRANSACTION HISTORY */
