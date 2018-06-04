@@ -528,7 +528,9 @@ def send_mail_voucher(is_secure, email, full_name, barcode):
 
 def faqs(request):
     try:
-        return render(request, 'websites/faqs.html')
+        faqs = FAQ.objects.all().order_by('category__name', 'question')
+        # print faq_list
+        return render(request, 'websites/faqs.html', {'faqs': faqs})
 
     except Exception as e:
         print "Error action faqs : ", e
