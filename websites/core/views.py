@@ -524,3 +524,13 @@ def send_mail_voucher(is_secure, email, full_name, barcode):
                               email], data_binding)
     except Exception, e:
         print "Error send_mail_booking : ", e
+
+
+def faqs(request):
+    try:
+        return render(request, 'websites/faqs.html')
+
+    except Exception as e:
+        print "Error action faqs : ", e
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")

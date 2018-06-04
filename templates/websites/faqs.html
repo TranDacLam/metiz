@@ -1,0 +1,180 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block title %}Metiz cinema{% endblock title %}
+
+{% block extrascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/faq.js"></script> 
+{% endblock %}
+
+{% block extrastylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/cms.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/faq.css" media="all" />
+{% endblock %}
+
+{% block body_class %}
+    theaters-special-view
+{% endblock %}
+
+{% block container_class%}col2-left-layout{% endblock%}
+{% block main_content %}
+<div class="main faqs">
+    <div class="col-left sidebar col-left-first">
+        <div class=" block-cms-menu">
+            <nav class="navbar navbar-inverse sidebar" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Thông tin về Metiz</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                    <ul class="nav navbar-nav post-detail-metiz">
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_gioi_thieu">GIỚI THIỆU<span class="pull-right hidden-xs showopacity fa fa-th-large"></span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_chung">ĐIỀU KHOẢN CHUNG<span class="pull-right hidden-xs showopacity fa fa-flag-checkered"></span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_giao_dich">ĐIỀU KHOẢN GIAO DỊCH<span class="pull-right hidden-xs showopacity fa fa-handshake-o"></span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_chinh_sach_thanh_toan">CHÍNH SÁCH THANH TOÁN<span class="pull-right hidden-xs showopacity fa fa-usd"></span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_chinh_sach_bao_mat">CHÍNH SÁCH BẢO MẬT<span class="pull-right hidden-xs showopacity fa fa-unlock-alt"></span></a>
+                        </li>
+                        <li class="active">
+                            <a href="{% url 'faqs' %}">CÂU HỎI THƯỜNG GẶP<span class="pull-right hidden-xs showopacity fa fa-question-circle"></span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_tuyen_dung">Tuyển Dụng<span class="pull-right hidden-xs showopacity fa fa-users"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="col-main">
+        <div class="std">
+            <div class="title-about-metiz">
+                <h1>CÂU HỎI THƯỜNG GẶP</h1>
+            </div>
+            <div class="col2-set content-seperator">
+
+                <h3>GIÁ VÉ</h3>
+                <div class="panel-group" id="faqAccordion">
+                    <div class="panel panel-default ">
+                        <div class="panel-heading accordion-toggle question-toggle collapsed" data-parent="#faqAccordion" data-target="#question0" data-toggle="collapse">
+                            <h4 class="panel-title">
+                                <a class="ing">
+                                    <span class="pull-right more-less fa fa-chevron-circle-down"> </span>
+                                    C&oacute; bao nhi&ecirc;u ph&acirc;n loại phim v&agrave; k&yacute; hiệu? </a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse collapse" id="question0" style="height: 0px;">
+                            <div class="panel-body">
+                                <h5><span class="label label-primary">Trả lời</span></h5>
+
+                                <p>Căn cứ Th&ocirc;ng tư số 12/2015/TT-BVHTTDL của Bộ trưởng Bộ Văn h&oacute;a, Thể thao v&agrave; Du lịch c&oacute; hiệu lực thi h&agrave;nh từ ng&agrave;y 01/01/2017, Ti&ecirc;u ch&iacute; ph&acirc;n loại phim theo lứa tuổi được quy định như sau:</p>
+
+                                <p>P: Phim được ph&eacute;p phổ biến rộng r&atilde;i đến mọi đối tượng</p>
+
+                                <p>C13: Phim cấm phổ biến đến kh&aacute;n giả dưới 13 tuổi</p>
+
+                                <p>C16: Phim cấm phổ biến đến kh&aacute;n giả dưới 16 tuổi</p>
+
+                                <p>C18: Phim cấm phổ biến đến kh&aacute;n giả dưới 18 tuổi</p>
+
+                                <p>Kh&aacute;ch h&agrave;ng vui l&ograve;ng chứng thực được độ tuổi ph&ugrave; hợp với phim được ph&acirc;n loại như tr&ecirc;n. <b>Metiz Cinema</b> c&oacute; quyền từ chối việc b&aacute;n v&eacute; hoặc v&agrave;o ph&ograve;ng chiếu nếu kh&aacute;ch h&agrave;ng kh&ocirc;ng tu&acirc;n thủ đ&uacute;ng theo quy định.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default ">
+                        <div class="panel-heading accordion-toggle collapsed question-toggle" data-parent="#faqAccordion" data-target="#question1" data-toggle="collapse">
+                            <h4 class="panel-title">
+                                <a class="ing">
+                                    <span class="pull-right more-less fa fa-chevron-circle-down"> </span>
+                                    Đồ ăn, thức uống từ b&ecirc;n ngo&agrave;i c&oacute; được ph&eacute;p mang v&agrave;o Metiz Cinema kh&ocirc;ng?
+                                </a>
+                            </h4>
+                        </div>
+
+                        <div class="panel-collapse collapse" id="question1" style="height: 0px;">
+                            <div class="panel-body">
+                                <h5><span class="label label-primary">Trả lời</span></h5>
+
+                                <p>Để đảm bảo vệ sinh v&agrave; an to&agrave;n thực phẩm, chỉ thức ăn v&agrave; đồ uống được mua tại <b>Metiz Cinema</b> mới được đem v&agrave;o rạp chiếu phim.</p>
+
+                                <p><b>Metiz Cinema</b> mong bạn sẽ t&ocirc;n trọng quy định n&agrave;y cũng như c&aacute;c quy định chung của ph&ograve;ng chiếu để đảm bảo trải nghiệm xem phim tốt nhất cho bạn v&agrave; những kh&aacute;n giả xung quanh.</p>
+
+                                <p>Movie Gift th&iacute;ch hợp l&agrave;m qu&agrave; tặng người th&acirc;n, bạn b&egrave;, đối t&aacute;c,...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>TICKET VOUCHER</h3>
+                <div class="panel-group" id="faqA2">
+                    <div class="panel panel-default ">
+                        <div class="panel-heading accordion-toggle question-toggle collapsed" data-parent="#faqA2" data-target="#question3" data-toggle="collapse">
+                            <h4 class="panel-title">
+                                <a class="ing">
+                                    <span class="pull-right more-less fa fa-chevron-circle-down"> </span>
+                                    C&oacute; bao nhi&ecirc;u ph&acirc;n loại phim v&agrave; k&yacute; hiệu? </a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse collapse" id="question3" style="height: 0px;">
+                            <div class="panel-body">
+                                <h5><span class="label label-primary">Trả lời</span></h5>
+
+                                <p>Căn cứ Th&ocirc;ng tư số 12/2015/TT-BVHTTDL của Bộ trưởng Bộ Văn h&oacute;a, Thể thao v&agrave; Du lịch c&oacute; hiệu lực thi h&agrave;nh từ ng&agrave;y 01/01/2017, Ti&ecirc;u ch&iacute; ph&acirc;n loại phim theo lứa tuổi được quy định như sau:</p>
+
+                                <p>P: Phim được ph&eacute;p phổ biến rộng r&atilde;i đến mọi đối tượng</p>
+
+                                <p>C13: Phim cấm phổ biến đến kh&aacute;n giả dưới 13 tuổi</p>
+
+                                <p>C16: Phim cấm phổ biến đến kh&aacute;n giả dưới 16 tuổi</p>
+
+                                <p>C18: Phim cấm phổ biến đến kh&aacute;n giả dưới 18 tuổi</p>
+
+                                <p>Kh&aacute;ch h&agrave;ng vui l&ograve;ng chứng thực được độ tuổi ph&ugrave; hợp với phim được ph&acirc;n loại như tr&ecirc;n. <b>Metiz Cinema</b> c&oacute; quyền từ chối việc b&aacute;n v&eacute; hoặc v&agrave;o ph&ograve;ng chiếu nếu kh&aacute;ch h&agrave;ng kh&ocirc;ng tu&acirc;n thủ đ&uacute;ng theo quy định.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default ">
+                        <div class="panel-heading accordion-toggle collapsed question-toggle" data-parent="#faqA2" data-target="#question4" data-toggle="collapse">
+                            <h4 class="panel-title">
+                                <a class="ing">
+                                    <span class="pull-right more-less fa fa-chevron-circle-down"> </span>
+                                    Đồ ăn, thức uống từ b&ecirc;n ngo&agrave;i c&oacute; được ph&eacute;p mang v&agrave;o Metiz Cinema kh&ocirc;ng?
+                                </a>
+                            </h4>
+                        </div>
+
+                        <div class="panel-collapse collapse" id="question4" style="height: 0px;">
+                            <div class="panel-body">
+                                <h5><span class="label label-primary">Trả lời</span></h5>
+
+                                <p>Để đảm bảo vệ sinh v&agrave; an to&agrave;n thực phẩm, chỉ thức ăn v&agrave; đồ uống được mua tại <b>Metiz Cinema</b> mới được đem v&agrave;o rạp chiếu phim.</p>
+
+                                <p><b>Metiz Cinema</b> mong bạn sẽ t&ocirc;n trọng quy định n&agrave;y cũng như c&aacute;c quy định chung của ph&ograve;ng chiếu để đảm bảo trải nghiệm xem phim tốt nhất cho bạn v&agrave; những kh&aacute;n giả xung quanh.</p>
+
+                                <p>Movie Gift th&iacute;ch hợp l&agrave;m qu&agrave; tặng người th&acirc;n, bạn b&egrave;, đối t&aacute;c,...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

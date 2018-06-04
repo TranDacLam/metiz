@@ -44,9 +44,6 @@ nav.sidebar, .main{
     width: 100%;
     height: 401px;
 }
-#faqAccordion{
-    padding-top: 98px;
-}
 .post-detail-metiz li .pull-right{
     margin-top: 3px;
 }
@@ -108,16 +105,13 @@ body.mfp-zoom-out-cur{
         height: 142px;
         border-radius: 3px;
     }
-    #faqAccordion{
-        padding-top: 20px;
-    }
     .content-seperator iframe{
         width: 100%;
         height: 315px;
     }
     #faqAccordion .panel-title a.ing{
         display: inline-block;
-        width: 95%;
+        width: 100%;
     }
     #faqAccordion .panel-title div.pull-right{
         margin-right: -10px;
