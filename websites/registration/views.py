@@ -192,15 +192,20 @@ def update_profile(request):
     try:
         user = request.user
         # init form for case GET action
+        # Get link card by user
+        linkcard = LinkCard.objects.filter(user=user)
+        # if user in link then get first linked
+        card_member = linkcard.first().card_member if linkcard else ''
+        print "card_member", card_member
         user_form = UpdateUserForm(user=user)
         context = {'form': user_form, 'full_name': user.full_name, 'birth_date': user.birth_date,
                    'address': user.address, 'personal_id': user.personal_id, 'gender': user.gender,
-                   'city': user.city, 'district': user.district, 'phone': user.phone, 'email': user.email}
-
-        print LinkCard.objects.filter(user=user)
+                   'city': user.city, 'district': user.district, 'phone': user.phone, 'email': user.email,
+                   'card_member': card_member}
 
         if request.method == 'POST':
             user_form = UpdateUserForm(request.POST, user=user)
+            print request.POST
             if user_form.is_valid():
                 user_form.save()
                 request.session['full_name'] = request.user.full_name
