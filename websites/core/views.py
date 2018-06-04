@@ -314,11 +314,15 @@ def home(request):
         except Post.DoesNotExist, e:
             print "Error Post : %s" % e
             new_offer = None
+
+        data_ads = Home_Ads.objects.filter(is_show=True)
+        print data_ads
         return render(request, 'websites/home.html', {'top_news': top_news, 'list_showing': list_showing,
                                                       'list_coming_soon': list_coming_soon,
                                                       'position_1': position_1[0] if position_1 else None,
                                                       'position_2': position_2[0] if position_2 else None,
-                                                      'data_slide': data_slide, 'new_offer': new_offer})
+                                                      'data_slide': data_slide, 'new_offer': new_offer,
+                                                      'data_ads': data_ads})
 
     except Exception, e:
         print "Error action home : ", e
