@@ -14,6 +14,11 @@ $(document).ready(function() {
 		  });
     });
 
+    // Show popup when load page
+    $(window).on('load',function(){
+        $('#popup_advertise').modal('show');
+    });
+
     // handle tooogle with Owl carousel
     $.fn.extend({
         toggleOwl: function(selector, options, destroy){
