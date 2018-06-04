@@ -80,7 +80,7 @@ jssor_2_slider_init = function() {
    var jssor_1_slider = new $JssorSlider$("jssor_2", jssor_2_options);
 
    /*#region responsive code begin*/
-   var MAX_WIDTH = 640;
+   var MAX_WIDTH = 1240;
    function ScaleSlider() {
       var containerElement = jssor_1_slider.$Elmt.parentNode;
       var containerWidth = containerElement.clientWidth;
