@@ -90,8 +90,9 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
-                                        <a href="#modal-popup" data-date-select="" data-all-movie="true" class="button open-popup-link" data-movie-name="{{ item.name }}">Đặt vé</a>
-
+                                        {% if item.allow_booking %}
+                                            <a href="#modal-popup" data-date-select="" data-all-movie="true" class="button open-popup-link" data-movie-name="{{ item.name }}">Đặt vé</a>
+                                        {% endif %}
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                         <span><span>Play</span></span>
@@ -117,7 +118,9 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                     </div>
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
-                                        <a href="#modal-popup" data-date-select="" data-all-movie="true" class="button open-popup-link" data-movie-name="{{ item.name }}">Đặt vé</a>
+                                        {% if item.allow_booking %}
+                                            <a href="#modal-popup" data-date-select="" data-all-movie="true" class="button open-popup-link" data-movie-name="{{ item.name }}">Đặt vé</a>
+                                        {% endif %}
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                             <span><span>Play</span></span>
