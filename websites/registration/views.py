@@ -12,6 +12,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import messages as msg
 from api import actions
 import traceback
+from core.models import LinkCard
 
 
 def logout(request):
@@ -196,6 +197,8 @@ def update_profile(request):
                    'address': user.address, 'personal_id': user.personal_id, 'gender': user.gender,
                    'city': user.city, 'district': user.district, 'phone': user.phone, 'email': user.email}
 
+        print LinkCard.objects.filter(user=user)
+
         if request.method == 'POST':
             user_form = UpdateUserForm(request.POST, user=user)
             if user_form.is_valid():
@@ -308,8 +311,14 @@ def transaction_history(request):
                 results = responses['results']
                 # convert object models to json
                 # Ajax reuqest with page, render page and return to client
-                return render(request, 'websites/ajax/load_transaction_history.html',
-                              {'list_transaction': results['data'], 'total_page': results['total_page'], 'total_item': results['recordsTotal']})
+                      
+                data = {
+                    'list_transaction': results['data'], 
+                    'total_page': results['total_page'], 
+                    'total_item': results['recordsTotal']
+                }
+                # Return data with json
+                return JsonResponse(data, status=responses["status"])
 
             # Return data with json
             return JsonResponse(responses['results'], status=responses["status"])
