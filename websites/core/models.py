@@ -337,7 +337,7 @@ class Home_Ads(DateTimeModel):
     image = models.ImageField(_('Image'), max_length=1000, upload_to="home_ads")
     is_show = models.BooleanField(_('Is show'), default=False)
     def __str__(self):
-        return '%s' % (self.name)
+        return '%s' % (self.sub_url)
 
     class Meta:
         verbose_name = _('Home Ads')
