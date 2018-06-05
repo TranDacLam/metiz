@@ -280,6 +280,7 @@ $(document).ready(function() {
                 '<input type="hidden" name="id_movie_id" value="' + shedule.movie_id + '">' +
                 '<input type="hidden" name="id_movie_name" value="' + shedule.movie_name + '">' +
                 '<input type="hidden" name="movie_api_id" value="' + movie_api_id + '">' +
+                '<input type="hidden" name="allow_booking" value="' + shedule.allow_booking + '">' +
                 '<span class="time">' + value.time +'</span>' +
                 '<span class="ppnum">Phòng chiếu</span>' +
                 '<span class="ppnum">' + value.room_name + '</span>' // room chiếu phim
@@ -287,7 +288,6 @@ $(document).ready(function() {
                 '<span class="pp-early" title="Suất chiều đầu"></span>' +
                 '</a>' +
                 '</li>';
-            console.log("allow_booking: ", shedule.allow_booking);
 
         });
         return htmlShedule;
@@ -499,6 +499,14 @@ $(document).ready(function() {
                 // }
                 // //End Hack code Maintenance
 
+                // *** Allow booking ***
+                var allow_booking = $(this).children('input[name=allow_booking]').val();
+                if (allow_booking == 'false') {
+                    $('#alert_allow_booking').modal('show');
+                    return;
+                }
+                // *** End Allow booking ***
+
                 $(this).addClass('mobile-schedule');
                 if(check_movie_free($(this)) == false && validate_time_remain($(this))){
                     showPopup($(this));
@@ -519,6 +527,14 @@ $(document).ready(function() {
                 //     return;
                 // }
                 // //End Hack code Maintenance
+
+                // *** Allow booking ***
+                var allow_booking = $(this).children('input[name=allow_booking]').val();
+                if (allow_booking == 'false') {
+                    $('#alert_allow_booking').modal('show');
+                    return;
+                }
+                // *** End Allow booking ***
                 
                 if(check_movie_free($(this)) == false && validate_time_remain($(this))){
                     showPopup($(this));
