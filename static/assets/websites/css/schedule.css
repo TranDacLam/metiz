@@ -1,0 +1,636 @@
+body.modal-open {
+    height: 100%;
+    /*fix page padding right when show modal*/
+    padding-right: 0px !important;
+    overflow: visible;
+}
+.fixIOSposition{
+    position: fixed;
+}
+
+#confirm { 
+    top:0;
+  height: inherit; 
+  min-height: 100%; 
+}
+
+.modal { 
+  min-height: 100%; 
+  -webkit-overflow-scrolling: auto;
+}
+#schedule-film #update_form,
+#schedule-film #update_form label,
+#schedule-film #member_form,
+#schedule-film #member_form label,
+#schedule-film #guest_form,
+#schedule-film #guest_form label,
+#guest .guest-policy, #guest .agree_term{
+    font-family: "Montserrat-Light", sans-serif;
+}
+#guest .guest-policy{
+    border: 1px solid #c9c2b5;
+}
+#schedule-film .col-xs-8 h3{
+    color: black;
+    margin-left: 40px;
+}
+#schedule-film .list-item li {
+    display: inline-block;
+    padding: 0px 1px;
+}
+/* popup background dont scroll in desktop*/
+.modal-open {    
+    overflow: scroll;
+}
+
+.hide-area{
+    display:none;
+}
+#schedule-film .modal-dialog{
+    width: 500px;
+    margin: 0 auto;
+}
+#schedule-film .modal-content{
+    width:100%;
+}
+#schedule-film .mfp-close{
+    opacity: 1;
+    z-index:0;
+}
+#schedule-film .city{
+    margin-top: 15px;
+}
+#schedule-film .list-item a{
+    padding: 10px 37px;
+    color: #48494c;
+}
+#schedule-film .list-item{
+    margin: 20px 0px;
+}
+#schedule-film .list-item a:hover{
+    transition: color 0.5s linear;
+    background-color: #282425;
+    color: #ffffff;
+    text-decoration: none;
+}
+#schedule-film .list-item li.active a{
+    background: url('../images/bullet03.gif') no-repeat 20px;
+    background-color: #ff5400;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 19px;
+    font-family: "SairaSemiCondensed-Medium";
+}
+#schedule-film .list-cinema{
+    margin-bottom: 15px;
+}
+#schedule-film .list-cinema ul{
+}
+#schedule-film .list-cinema li{
+    padding:0px 3px;
+}
+
+#schedule-film .list-cinema a{
+    color: #48494c;
+    padding: 10px 30px;
+    background: #f3f2f5;
+    border-radius: 0px;
+    font-size: 19px;
+    font-family: "SairaSemiCondensed-Medium";
+}
+
+#schedule-film .list-cinema a:hover{
+    text-decoration: none;
+    background-color: #ffffff;
+    border-color: #000000;
+}
+#schedule-film .list-cinema.active ul li a:focus{
+    background: url('../images/bg_ckth.png') no-repeat 10px;
+    text-decoration: none;
+    background-color: #ffffff;
+    border-color: #000000;
+    outline: none;
+    box-shadow:none;
+}
+#schedule-film .list-cinema.active ul li a.active{
+    background: url('../images/bg_ckth.png') no-repeat 10px;
+    text-decoration: none;
+    background-color: #ffffff;
+    border-color: #000000;
+    outline: none;
+    box-shadow:none;
+
+}
+#schedule-film .empty-schedule{
+    text-align: center;
+    font-size: 23px;
+    margin: 30px 0px 50px 0px;
+    line-height: 1.5;
+}
+#schedule-film .form-control{
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#schedule-film .modal.in .modal-dialog,
+#schedule-film .modal.fade .modal-dialog {
+    -webkit-transform: inherit ;
+    -moz-transform: inherit ;
+    -o-transform: inherit ;
+    transform: inherit ;
+}
+#schedule-film input[type=number]::-webkit-inner-spin-button, 
+#schedule-film input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+#schedule-film input[type=number] {
+    -moz-appearance: textfield;
+}
+#schedule-film #btn-skip{
+    display:none;
+}
+.white-popup {
+  position: relative;
+  background: #FFF;
+  width: 100%;
+  max-width: 1310px;
+  margin: 50px 0px;
+}
+.slick-prev:before {
+    content: '';
+    visibility: hidden;
+}
+.slick-next:before {
+     content: '';
+     visibility: hidden;
+}
+.slick-prev img{
+    padding-left: 20px;
+    padding-top: 18px;
+}
+.slick-next img{
+    padding-top: 18px;
+}
+.section-lightpink .row {
+    margin: 2px 0px;
+}
+.div-login {
+    width: 100%;
+    text-align: left;
+}
+.div-login .top {
+    background: #fff;
+    color: #ff5400;
+    padding: 25px 15px;
+    border-bottom: 1px solid #ff5400;
+    width: 100%;
+    height: auto;
+    line-height: 20px;
+    font-size: 24px;
+    font-family: "SairaSemiCondensed-Medium";
+    
+}
+.popup-booking .toggle-tabs{
+    border-bottom: 2px solid #2b2b2b;
+    border-top: 2px solid #2b2b2b;
+    display: inline-block;
+    margin-bottom: 30px;
+    padding: 20px;
+    width: 100%;
+}
+.popup-booking .title{
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    padding-left: 15px;
+}
+.popup-booking .movie-time-line-box {
+    padding-bottom: 30px;
+}
+.popup-booking .movie-time-line-box .movie-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: black;
+}
+.popup-booking .movie-time-line-box .movie-name.highlight {
+    color: #f55404;
+}
+/* slide */
+.section-lightpink {
+    background-color: #F9F6EC;
+    padding: 40px 0px;
+}
+.days-popup{
+    float:none;
+}
+.calendar-popup .days-popup li {
+    margin: 0 10px;
+    position: relative;
+    padding-top: 16px;
+    width: 82px;
+    cursor: pointer;
+    display: inline-block;
+    float: none;
+}
+#schedule-film .month{
+    text-align:center;
+}
+#schedule-film .hide-month{
+    display:none;
+}
+#schedule-film .month strong{
+    font-weight: bold;
+    font-size: 22px;
+}
+#schedule-film .dayofweek{
+    margin-top: 12px;
+    font-size: 18px;
+}
+.calendar-popup .days-popup li .month > strong {
+    font-weight: bold;
+    font-size: 30px;
+    padding-bottom: 0px;
+    font-family: 'SairaSemiCondensed-Medium';
+}
+.calendar-popup .days-popup li .badge {
+    background-color: transparent;
+    color: #C2BDBD;
+    font-size: 14px;
+    padding: 10px 12px;
+}
+#play-date-slider{
+    
+}
+.calendar-popup .days-popup {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    float: right;
+}
+.lot-table {
+    padding-left: 15px;
+    margin-top: 15px;
+}
+.theater_time {
+    overflow: hidden;
+    width: 100%;
+    margin-left: 0;
+}
+.theater_time > li.sold-out {
+    background-color: #ffffff;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.theater_time > li {
+    float: left;
+    width: 115px;
+    margin: 10px 0 0;
+    background: #fff;
+    border: 1px solid #ebeaea;
+    text-align: center;
+    margin-right: -1px;
+    padding-left: 0;
+    padding-right: 0;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    font-family: 'SairaSemiCondensed-Medium';
+}
+
+.theater_time > li a {
+    display: block;
+    color: #000;
+}
+
+.theater_time > li .time {
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 18px;
+}
+.theater_time > li .ppnum {
+    display: block;
+    height: 19px;
+    line-height: 19px;
+    font-size: 14px;
+    font-family: 'SairaSemiCondensed-Regular';
+}
+.toggle-tabs li:hover .days-popup{
+    border: 2px solid #000000;
+}
+.current .days-popup{
+    border: 2px solid #000000;
+}
+/*.time .time-end{
+    display:none;
+}*/
+.list-inline a {
+    text-decoration: none;
+    transition: color 300ms linear;
+}
+.list-inline li:hover a{
+    background-color: #ff5400;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+/*.list-inline li:hover .time-end{
+    display: inline;
+}*/
+.list-inline li:hover .time{
+    border-color: #ff5400;
+    font-size: 16px;
+}
+/* change background for schedule firm on mobile */
+.list-inline li .mobile-schedule{
+    background-color: #ff5400;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+.list-inline li .mobile-schedule .time-end{
+    display: inline;
+}
+.list-inline li .mobile-schedule .time{
+    border-color: #ff5400;
+    font-size: 16px;
+}
+/* .list-inline li:hover .time{
+    display: none;
+} */
+.days-popup li.available .badge {
+    color: #3e3e3e;
+    cursor: pointer;
+    font-size: 16px;
+    height: 36px;
+    width: 39px;
+}
+.days-popup li.active-date .badge {
+    background-color: #ff5400;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 10px 11px;
+    font-size: 16px;
+    height: 36px;
+    width: 39px;
+}
+.active-date{
+    visibility: visible;
+}
+.movieslide{
+    display: none;
+}
+.slick-slide, .slick-slide *{ 
+    outline: none !important;
+}
+#warning .modal-header, #profile .modal-header{
+    border-bottom-color: #ff4000;
+}
+
+.warning-footer{
+    text-align: center;
+    border: 0px;
+}
+.warning-footer .btn{
+    text-transform: uppercase;
+}
+#confirm .modal-header{
+    border-bottom:none;
+}
+#confirm .tab-header{
+    width: 100%;
+}
+#confirm .tab-header li a{
+    color: #ffffff;
+    background: #7e8eaa;
+    text-transform: uppercase;
+    padding: 8px;
+}
+#confirm .tab-header li a:hover{
+    border-color: transparent;
+}
+#confirm .tab-header li.active a{
+    background: #ff4900;
+    color: #ffffff;
+    padding: 8px;  
+}
+li.btn-guest-wth117 {
+    width: 112px;
+    text-align: center;
+}
+#confirm .tab-header li a:focus{
+    background: #ff4900;
+    color: #ffffff;
+}
+.form-error{
+    color: red;
+    margin-top: 7px;
+}
+#schedule-film button{
+    font-family: 'SairaSemiCondensed-Medium';
+}
+#warning .modal-body p{
+    color: black;
+    font-family: 'Montserrat-Medium';
+}
+#confirm .tab-header a{
+    font-family: 'Montserrat-Medium';
+}
+.warning-footer button{
+    font-size: 18px;
+}
+.modal > * {
+    font-weight: 500;
+    font-size: 15px;
+    box-shadow: none;
+    text-shadow: none;
+}
+#schedule-film .modal .form-control{
+    font-size: 15px;
+}
+.modal label{
+    font-weight: 500;
+    font-size: 15px;
+    color: #000000;
+}
+.modal label.form-error,.modal label.error{
+    font-weight: 500;
+    font-family: "Montserrat-Light", sans-serif;
+    font-size: 13px;
+    color:red;
+}
+.modal .btn-login{
+    font-size: 14px;
+}
+.modal .checkbox-term{
+    margin-top: 7px;
+}
+.modal .checkbox-term label{
+    font-size: 15px;
+    font-weight: 500;
+}
+#member #error{
+    color: red;
+    margin-bottom: 10px;
+}
+#confirm .country-code{
+    color: #555;
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    padding-right: 4px;
+    border-right: 1px solid #cccccc
+}
+#confirm #phone{
+    padding-left: 40px;
+}
+#confirm .form-phone{
+    position: relative;
+}
+.modal .modal-dialog button.close{
+    opacity: 1;
+    color: #5d5b5b;
+}
+
+.modal form button {
+    text-transform: uppercase;
+}
+#warning .btn-login, #confirm .btn-login{
+    background-color: #7e8eaa;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'SairaSemiCondensed-Medium';
+} 
+#confirm .btn-login:hover{
+    background-color: #ff4900;
+    color: #ffffff;
+}
+#warning .btn-login:hover{
+    background-color: #ff4900;
+    color: #ffffff;
+}
+#confirm .nav-tabs{
+    border: none;
+}
+#confirm label, input{
+    font-family: "Montserrat-Light", sans-serif;
+}
+@media only screen and (max-width: 1024px){
+    .calendar-popup .days-popup li {
+        width: 66px;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px){
+    #schedule-film .modal-dialog{
+        width: 500px;
+    }
+       
+}
+@media only screen and (max-width: 768px){
+     #schedule-film .modal-dialog{
+        width: 500px;
+    }
+    #myTabContent .input-group {
+        display: table;
+    }
+    .size{
+        margin-left: 16px;
+    }
+    .slick-list.draggable{
+        margin-left: 15px;
+    }
+    .calendar-popup .days-popup li .badge {
+        padding: 8px;
+        width: 50%;
+    }
+    #schedule-film .content-schedule{
+        width: auto;
+    }
+}
+@media only screen and (max-width: 767px){
+    #schedule-film .modal-dialog {
+        width: 60%;
+    }
+    #schedule-film .popup-booking .title,#schedule-film .top{
+        padding-left: 15px;
+    }
+
+    #schedule-film .section-white{
+        /*overflow-y: scroll;*/
+        /*height: 300px;*/
+        
+    }
+    .section-white::-webkit-scrollbar {
+    -webkit-appearance: none;
+    }
+
+    .section-white::-webkit-scrollbar:vertical {
+        width: 12px;
+    }
+
+    .section-white::-webkit-scrollbar:horizontal {
+        height: 12px;
+    }
+
+    .section-white::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, .5);
+        border-radius: 10px;
+        border: 2px solid #ffffff;
+    }
+
+    .section-white::-webkit-scrollbar-track {
+        border-radius: 10px;  
+        background-color: #ffffff; 
+    }
+
+}
+@media only screen and (max-width: 480px){
+    #schedule-film .modal-dialog{
+        width: 70%;
+    }
+    .size {
+        margin-left: -15px;
+    }
+    .slick-list.draggable{
+        margin-left: 31px;
+    }
+    .slick-prev img {
+        padding-left: 32px;
+        padding-top: 18px;
+    }
+    .calendar-popup .days-popup li .badge {
+        padding: 8px;
+        width: 38%;
+    }
+    #confirm .modal-header{
+        padding: 0px;
+    }
+    #confirm .modal-header .tab-header li{
+        width: 110px;
+        font-size: 13px;
+    }
+    .calendar-popup .days-popup li{
+        width: 87px;
+    }
+}
+@media only screen and (max-width: 414px){
+    #schedule-film .modal-dialog {
+        width: 90%;
+    }
+    #confirm .modal-content{
+        width: 92%;
+    }
+}
+@media only screen and (max-width: 320px){
+    .calendar-popup .days-popup li{
+        width: 70px;
+    }
+}

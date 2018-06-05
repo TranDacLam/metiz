@@ -16,6 +16,6 @@ urlpatterns = [
     url(r'^blog/$', views.blog_film, name='blog_film'),
     url(r'^blog/detail/(?P<id>\d+)/$', views.blog_film_detail, name='blog_film_detail'),
 
-
+    url(r'^schedule/$', views.show_schedule, name='show_schedule'),
     url(r'^voucher/$', views.voucher, name='voucher'),
 ]

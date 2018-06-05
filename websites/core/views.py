@@ -524,3 +524,10 @@ def send_mail_voucher(is_secure, email, full_name, barcode):
                               email], data_binding)
     except Exception, e:
         print "Error send_mail_booking : ", e
+
+def show_schedule(request):
+    try:
+        return render(request, 'schedule.html')
+    except Exception, e:
+        print "Error send_mail_booking : ", e
+
