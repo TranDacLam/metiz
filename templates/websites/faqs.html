@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block title %}Metiz cinema{% endblock title %}
+
+{% block extrascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/faq.js"></script> 
+{% endblock %}
+
+{% block extrastylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/cms.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/faq.css" media="all" />
+{% endblock %}
+
+{% block body_class %}
+    theaters-special-view
+{% endblock %}
+
+{% block container_class%}col2-left-layout{% endblock%}
+{% block main_content %}
+<div class="main faqs">
+    <div class="col-left sidebar col-left-first">
+        <div class=" block-cms-menu">
+            <nav class="navbar navbar-inverse sidebar" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Thông tin về Metiz</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                    <ul class="nav navbar-nav post-detail-metiz">
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_gioi_thieu">GIỚI THIỆU<span class="pull-right hidden-xs showopacity fa fa-th-large"></span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_chung">ĐIỀU KHOẢN CHUNG<span class="pull-right hidden-xs showopacity fa fa-flag-checkered"></span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_dieu_khoan_giao_dich">ĐIỀU KHOẢN GIAO DỊCH<span class="pull-right hidden-xs showopacity fa fa-handshake-o"></span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_chinh_sach_thanh_toan">CHÍNH SÁCH THANH TOÁN<span class="pull-right hidden-xs showopacity fa fa-usd"></span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_chinh_sach_bao_mat">CHÍNH SÁCH BẢO MẬT<span class="pull-right hidden-xs showopacity fa fa-unlock-alt"></span></a>
+                        </li>
+                        <li class="active">
+                            <a href="{% url 'faqs' %}">CÂU HỎI THƯỜNG GẶP<span class="pull-right hidden-xs showopacity fa fa-question-circle"></span></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'get_cms' %}?key_query=kq_tuyen_dung">Tuyển Dụng<span class="pull-right hidden-xs showopacity fa fa-users"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="col-main">
+        <div class="std">
+            <div class="title-about-metiz">
+                <h1>CÂU HỎI THƯỜNG GẶP</h1>
+            </div>
+            {% regroup faqs by category as faq_list %}
+            <div class="col2-set content-seperator">
+                {% for faq_group in faq_list %}
+                <h3>{{ faq_group.grouper }}</h3>
+                <div class="panel-group" id="faqAccordion{{faq_group.grouper.id}}">
+                    {% for faq in faq_group.list %}
+                    <div class="panel panel-default ">
+                        <div class="panel-heading accordion-toggle question-toggle collapsed" data-parent="#faqAccordion{{faq_group.grouper.id}}" data-target="#question{{faq.id}}" data-toggle="collapse">
+                            <h4 class="panel-title">
+                                <a class="ing">
+                                    <span class="pull-right more-less fa fa-chevron-circle-down"> </span>
+                                    {{ faq.question }}</a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse collapse" id="question{{faq.id}}">
+                            <div class="panel-body">
+                                <h5><span class="label label-primary">Trả lời</span></h5>
+                                <p>{{ faq.answer }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

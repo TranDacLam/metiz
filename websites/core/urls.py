@@ -18,4 +18,5 @@ urlpatterns = [
 
     url(r'^schedule/$', views.show_schedule, name='show_schedule'),
     url(r'^voucher/$', views.voucher, name='voucher'),
+    url(r'^faqs/$', views.faqs, name='faqs'),
 ]

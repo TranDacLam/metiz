@@ -42,6 +42,12 @@ $(document).ready(function() {
     $('.post-detail-metiz li').click(function(e){
         e.preventDefault();
         post_detail_kq = $(this).attr('data-post-detail');
+        
+        if(post_detail_kq == 'kq_cau_hoi_thuong_gap'){
+            window.location.href = '/faqs';
+            return;
+        }
+
         $.ajax({
             url: '?key_query=' + post_detail_kq,
             type: 'get',

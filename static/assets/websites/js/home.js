@@ -14,6 +14,24 @@ $(document).ready(function() {
 		  });
     });
 
+    // Show popup when load page
+    $(window).on('load',function(){
+        // check session storage 'popup advertise' exist?
+        if(!sessionStorage.getItem('popup_advertise')){
+            sessionStorage.setItem('popup_advertise', 'true');
+            $('#popup_advertise').modal('show');
+        }
+    });
+
+    // Hide arrow next, pre when quantity image < 2 
+    function hideArrowPopupSlide(){
+        var count_image = $('#popup_advertise #jssor_2 .jssor_1_slides a>img').length;
+        if(count_image < 2){
+            $('.jssora106').css('opacity', 0);
+        }
+    }
+    hideArrowPopupSlide();
+
     // handle tooogle with Owl carousel
     $.fn.extend({
         toggleOwl: function(selector, options, destroy){
@@ -108,5 +126,12 @@ $(document).ready(function() {
         $(this).trigger('play.owl.autoplay',[1000]);
     }).mouseover(function() {
         $(this).trigger('stop.owl.autoplay');
+    });
+
+    // turn off play slide film showin and comsoon when show poup adversite 
+    $('#popup_advertise').mouseleave(function() {
+        $('#movie-tab-1 .owl-carousel, .owl-carousel.style2').trigger('play.owl.autoplay',[1000]);
+    }).mouseover(function() {
+        $('#movie-tab-1 .owl-carousel, .owl-carousel.style2').trigger('stop.owl.autoplay');
     });
 });

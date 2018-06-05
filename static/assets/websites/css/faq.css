@@ -1,0 +1,15 @@
+.question-toggle:hover{
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.faqs h3{
+    font-size: 16px;
+    font-family: "Montserrat-Regular", sans-serif;
+}
+.faqs .title-about-metiz h1{
+    margin-bottom: 25px;
+}
+.faqs .content-seperator h3{
+    text-transform: uppercase;
+}

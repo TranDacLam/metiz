@@ -52,6 +52,16 @@
             overflow:hidden;
             visibility:hidden;
         }
+        #jssor_2{
+            position:relative;
+            margin:0 auto;
+            top:0px;
+            left:0px;
+            width:1240px;
+            height:540px;
+            overflow:hidden;
+            visibility:hidden;
+        }
         .jssorl-009-spin{
             position:absolute;
             top:0px;
