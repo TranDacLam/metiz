@@ -478,7 +478,6 @@ $(document).ready(function() {
                         "movie_api_id":movie_api_id
                     }
 
-                console.log("DATA FORM ",data_form.toString());
                  $.ajax({
                     url: "/payment/encrypt/",
                     type: 'POST',

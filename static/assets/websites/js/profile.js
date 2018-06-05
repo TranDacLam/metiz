@@ -106,7 +106,7 @@ $(document).ready(function() {
     var date_month = ("0" + (date_now.getMonth() + 1)).slice(-2);
     var date_today = (date_now.getFullYear() - 5) + "-" + (date_month) + "-" + (date_day);
 
-    $('#birth_date').datebox({
+    $('#birth_date:not(.readonly)').datebox({
             mode: "calbox",
             beforeToday: true,
             useFocus: true,
@@ -137,7 +137,7 @@ $(document).ready(function() {
         });
 
     if( navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)){
-        $('#birth_date').datebox({
+        $('#birth_date:not(.readonly)').datebox({
             mode: "flipbox",
             beforeToday: true,
             useFocus: true,
@@ -152,7 +152,7 @@ $(document).ready(function() {
             }
         });
     }
-    $('#birth_date').attr("readonly", false);
+    $('#birth_date:not(.readonly)').attr("readonly", false);
     // *end*
 
     // CHOOSE CITY AND DISTRICT

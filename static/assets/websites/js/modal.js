@@ -287,7 +287,7 @@ $(document).ready(function() {
                 '<span class="pp-early" title="Suất chiều đầu"></span>' +
                 '</a>' +
                 '</li>';
-
+            console.log("allow_booking: ", shedule.allow_booking);
 
         });
         return htmlShedule;
