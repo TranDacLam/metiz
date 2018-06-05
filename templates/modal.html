@@ -1,7 +1,5 @@
 {% load modal_data_tags %} {% load i18n %}
-<input type="hidden" value="">
-<input id="movie_name_highlight_id" type="hidden" value="">
-<div id="modal-popup" class="white-popup mfp-hide">
+<div id="modal-popup" class="white-popup mfp-hide ">
     <div class="div-login">
         <div class="top">
             Lịch chiếu
@@ -33,7 +31,7 @@
         <div class="popup-booking">
             <section class="section-lightpink">
                 <h3 class="title">{% trans 'Select date play' %}</h3>
-                <div class="calendar-popup ">
+                <div class="calendar-popup">
                     <div class="month">
                         <strong id="center-month"></strong>
                     </div>
@@ -105,21 +103,15 @@
                                 {% csrf_token %}
                                 <div class="col-sm-12">
                                     <div id="error"></div>
-                                    <input type="hidden" name="id_server" id="id_server">
-                                    <input type="hidden" name="id_showtime" id="id_showtime">
-                                    <input type="hidden" name="movie_api_id" id="movie_api_id">
-                                    <input type="hidden" name="id_movie_name" id="id_movie_name">
-                                    <input type="hidden" name="id_movie_time" id="id_movie_time">
-                                    <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
                                     <div class="form-group">
                                         <label>{% trans "Email" %}</label>
-                                        <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
+                                        <input type="text" name="email" id="email_login" placeholder="{% trans 'Enter Email Here' %}" class="form-control">
                                         <label class="form-error" for="email" id='email-error'></label>
                                     </div>
                                     <div class="form-group">
                                         <label>{% trans "Password"%}</label>
                                         <input type="password" name="password" id="password" class="form-control" placeholder="{% trans 'Enter Password Here' %}">
-                                        <label class="form-error" for="password" id='password-error'></label>
+                                        <label class="form-error" fo    r="password" id='password-error'></label>
                                     </div>
                                     <button type="submit" class="btn btn-login">{% trans 'Login' %}</button>
                                 </div>
@@ -138,34 +130,42 @@
                             <input name="agree_term" id="agree_term" required="requierd" class="checkbox validation-passed" autocomplete="off" type="checkbox">
                             <label class="agree_term" for="agree_term">Tôi đã đọc, hiểu và đồng ý với các điều khoản.</label>
                         </div>
+                        {% else %}
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h2 class="modal-title">Xác nhận thông tin</h2>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Xác nhận thông tin sau đây là của bạn</p>
+                        {% endif %}
                         <div class="row form-user-info">
                             <form class='form-popup' id='guest_form' method="post" action="{% url 'booking' %}">
                                 {% csrf_token %}
-                                <input type="hidden" name="id_server" id="id_server">
-                                <input type="hidden" name="id_showtime" id="id_showtime">
-                                <input type="hidden" name="movie_api_id" id="movie_api_id">
-                                <input type="hidden" name="id_movie_name" id="id_movie_name">
-                                <input type="hidden" name="id_movie_time" id="id_movie_time">
-                                <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
                                 <div class="col-sm-12 ">
                                     <div id="error"></div>
                                     <div class="form-group">
                                         <label>{% trans "Full Name" %}</label>
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="{% trans 'Enter Full Name Here' %}" value="{{request.session.full_name}}">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="{% trans 'Enter Full Name Here' %}" value="{% if user.is_authenticated %}{{user.full_name|default_if_none:""}}{% else %}{{request.session.full_name}}{% endif %}">
                                         <label class="form-error" for="name" id='name-error'></label>
                                     </div>
                                     <div class="form-group form-phone">
                                         <label>{% trans "Phone" %}</label>
                                         <div class="country-code">+84</div>
-                                        <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{{request.session.phone}}" pattern="\d*">
+                                        <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{% if user.is_authenticated %}{{user.phone|default_if_none:""}}{% else %}{{request.session.phone}}{% endif %}" pattern="\d*">
                                         <label class="form-error" for="phone" id='phone-error'></label>
                                     </div>
                                     <div class="form-group">
                                         <label>{% trans "Email" %}</label>
-                                        <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{% if request.session.email %}{{request.session.email}}{% endif %}">
+                                        <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{% if user.is_authenticated %}{{user.email|default_if_none:""}}{% else %}{{request.session.email}}{% endif %}">
                                         <label class="form-error" for="email" id='email-error'></label>
                                     </div>
+                                    {% if not user.is_authenticated %}
                                     <button type="submit" id="submit" class="btn btn-login submit" disabled>Đặt vé</button>
+                                    {% else %}
+                                    <button type="submit" id='update' class="btn btn-login submit">Xác nhận</button>
+                                    {% endif %}
                                 </div>
                             </form>
                         </div>
@@ -174,71 +174,6 @@
             </div>
         </div>
     </div>
-    {% else %}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h2 class="modal-title">Xác nhận thông tin</h2>
-            </div>
-            <div class="modal-body">
-                <p>Xác nhận thông tin sau đây là của bạn</p>
-                <div class="row form-user-info">
-                    <form class='form-popup' id='update_form' method="post" action="{% url 'booking' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="id_server" id="id_server">
-                        <input type="hidden" name="id_showtime" id="id_showtime">
-                        <input type="hidden" name="movie_api_id" id="movie_api_id">
-                        <input type="hidden" name="id_movie_name" id="id_movie_name">
-                        <input type="hidden" name="id_movie_time" id="id_movie_time">
-                        <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
-                        <div class="col-sm-12 ">
-                            <div id="error"></div>
-                            <div class="form-group">
-                                <label>{% trans "Full Name" %}</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="{% trans 'Enter Full Name Here' %}" value="{% if user.full_name %} {{user.full_name}} {% endif %}">
-                                <label class="form-error" for="name" id='name-error'></label>
-                            </div>
-                            <div class="form-group form-phone">
-                                <label>{% trans "Phone" %}</label>
-                                <div class="country-code">+84</div>
-                                <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{% if user.phone %}{{user.phone}}{% endif %}">
-                                <label class="form-error" for="phone" id='phone-error'></label>
-                            </div>
-                            <div class="form-group">
-                                <label>{% trans "Email" %}</label>
-                                <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value='{% if user.email %} {{user.email}} {% endif %}'>
-                                <label class="form-error" for="email" id='email-error'></label>
-                            </div>
-                            <button type="submit" id='update' class="btn btn-login submit">Xác nhận</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-</div>
-
-<!-- Hack code Maintenance -->
-<div class="modal" id="alert_maintenance" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h2 class="modal-title">Bảo trì</h2>
-            </div>
-            <div class="modal-body">
-                <p class="member-card-info">Hệ thống đang bảo trì xin quý khách quay lại sau</p>
-            </div>
-            <div class="modal-footer">
-                <button id="btn_add_card" type="button" class="btn btn-login" data-dismiss="modal" data-toggle='modal'>Đóng</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Allow booking -->
 <div class="modal" id="alert_allow_booking" role="dialog">
     <div class="modal-dialog">

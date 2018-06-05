@@ -529,7 +529,6 @@ def send_mail_voucher(is_secure, email, full_name, barcode):
     except Exception, e:
         print "Error send_mail_booking : ", e
 
-
 def faqs(request):
     try:
         faqs = FAQ.objects.all().order_by('category__name', 'question')
@@ -540,3 +539,9 @@ def faqs(request):
         print "Error action faqs : ", e
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
+
+def show_schedule(request):
+    try:
+        return render(request, 'schedule.html')
+    except Exception, e:
+        print "Error show_schedule : ", e
