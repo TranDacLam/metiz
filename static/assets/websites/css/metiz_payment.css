@@ -1,0 +1,17 @@
+.page-title {
+    text-align: center;
+}
+.page-title h1{
+    background: #7e8eaa;
+    padding: 10px;
+    color: #fff;
+    text-transform: uppercase;
+}
+form .metiz-payment-form{
+    border: 10px solid #e4e3e3;
+    padding: 50px;
+}
+.notes{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}

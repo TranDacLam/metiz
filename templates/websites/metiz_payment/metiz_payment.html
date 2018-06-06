@@ -14,15 +14,16 @@
 
 {% block main_content %}
 <div class="main">
+    <div class="page-title">
+        <h1>Thanh Toán</h1>
+    </div>
+
+    <div class="notes col-xs-12">
+        <p>Lưu ý: Thời gian giao dịch cho phép tối đa là 10 phút. Hết thời gian quy định giao dịch này sẽ bị huỹ.</p>
+    </div>
+        
     <form action="{% url 'payment-generate-otp' %}" id="metiz_payment_form" method="post">
         {% csrf_token %}
-        <div class="page-title">
-            <h1>Thanh Toán</h1>
-        </div>
-
-        <div class="notes col-xs-12">
-            <p>Lưu ý: Thời gian giao dịch cho phép tối đa là 10 phút. Hết thời gian quy định giao dịch này sẽ bị huỹ.</p>
-        </div>
 
         <div class="metiz-payment-form col-xs-12">
             <h3>Thanh toán qua thẻ {% if payment_gate == "Metiz_Payment_Card" %} Metiz {% else %} Helio {% endif %}</h3>
