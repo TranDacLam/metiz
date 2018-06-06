@@ -157,7 +157,7 @@ body.modal-open {
   background: #FFF;
   width: 100%;
   max-width: 1310px;
-  margin: 50px 0px;
+  margin: 50px auto;
 }
 .slick-prev:before {
     content: '';
@@ -181,7 +181,7 @@ body.modal-open {
     width: 100%;
     text-align: left;
 }
-.div-login .top {
+.div-login .top-schedule {
     background: #fff;
     color: #ff5400;
     padding: 25px 15px;
@@ -189,9 +189,9 @@ body.modal-open {
     width: 100%;
     height: auto;
     line-height: 20px;
-    font-size: 24px;
+    font-size: 28px;
     font-family: "SairaSemiCondensed-Medium";
-    
+    text-align: center;    
 }
 .popup-booking .toggle-tabs{
     border-bottom: 2px solid #2b2b2b;
@@ -522,6 +522,11 @@ li.btn-guest-wth117 {
 }
 #confirm label, input{
     font-family: "Montserrat-Light", sans-serif;
+}
+#schedule-film.white-popup {
+    max-width:none;
+    margin: 0px auto;
+    padding-top: 30px;
 }
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-popup li {
