@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^', include('booking.urls')),
     url(r'^', include('vnpay_payment.urls')),
     url(r'', include('core.urls')),
+    url(r'', include('internal_payment.urls')),
     url(r'404', views.custom_404, name="404"),
     url(r'500', views.custom_500, name="500"),
     

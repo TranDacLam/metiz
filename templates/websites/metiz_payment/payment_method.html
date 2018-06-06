@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% block title %}Phương Thức Thanh Toán{% endblock title %}
+
+{% block extrastylesheet %}
+ <!-- Payment and payment_return -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/metiz_payment.css" media="all" />
+{% endblock %}
+
+{% block extrascript %}
+    <script src="{{ STATIC_URL }}assets/websites/js/metiz_payment.js"></script>
+{% endblock %}
+
+{% block main_content %}
+<div class="main">
+    <form action="" id="payment_method_form" method="post">
+        {% csrf_token %}
+        <div class="page-title">
+            <h1>Phương Thức Thanh Toán</h1>
+        </div>
+
+        <div class="groups-methods col-xs-12">
+            <label class="radio-inline"><input type="radio" name="payment-gate" value="Metiz_Payment_Card" checked="checked" >Thanh toán bằng thẻ Metiz</label>
+            <label class="radio-inline"><input type="radio" name="payment-gate" value="Helio_Payment_Card">Thanh toán bằng thẻ Helio</label>
+            <label class="radio-inline"><input type="radio" name="payment-gate" value="VNPay">Thanh toán qua Internet Banking/VISA</label>
+        </div>
+
+        <div class="content-booking-details col-xs-12">
+            <fieldset>
+                <legend align="left">Nội Dung Thanh Toán</legend>
+
+                <!-- get id_server -->
+                <div id="form-data" style="display: none;">
+                    {{form}}
+                </div>
+
+
+                <p>Phim: <span class="name-movie-booking"> {{ data_json.barcode }}</span></p>
+                <p>Ngày: <span class="date-movie-booking">{{ data_json.id_movie_date_active }}</span></p>
+                <p>Thời gian: <span class="time-movie-booking">{{ data_json.id_movie_time }}</span></p>
+                <p>Ghế: <span>{{data_json.seats}}</span></p>
+                <p>Số vé: <span id="counter">{{data_json.seat_count}}</span></p>
+                <p>Tổng tiền: <span id="total">{{data_json.total_payment}}</span> VNĐ</p>
+            </fieldset>    
+        </div>
+        
+
+        <button type="submit" class="btn btn-default" id="btn-payment-method">Tiếp Tục</button>
+    </form>
+</div>
+
+{% endblock %}

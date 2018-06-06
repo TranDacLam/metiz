@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load modal_data_tags %}
+{% block title %}Phương Thức Thanh Toán{% endblock title %}
+
+{% block extrastylesheet %}
+ <!-- Payment and payment_return -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/metiz_payment_danger.css" media="all" />
+{% endblock %}
+
+{% block main_content %}
+<div class="main">
+    <div class="alert alert-danger">
+      <strong>Huỷ Giao Dịch.</strong> Giao dịch bị nghi ngờ giả mạo.
+    </div>
+</div>
+
+{% endblock %}

@@ -2,208 +2,24 @@
 import urllib
 from datetime import datetime
 
-from django.core.serializers import json
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
-from django.utils.translation import ugettext_lazy as _
-from django.utils import timezone
-from django.contrib.sites.models import Site
 from forms import PaymentForm
 from vnpay import vnpay
 from django.conf import settings
 from booking.models import BookingInfomation
 from booking import api
-from registration import metiz_email
-from Crypto.Cipher import AES
-import ast
-import requests
-import random
-import base64
-from core.models import AdminInfo
+from booking import booking_handle
 from core.decorator import *
-from metiz_cipher import MetizAESCipher
+from core.metiz_cipher import MetizAESCipher
+from core import metiz_util
 import json
 
-
-
-def data_encrypt_cbc(data):
-    """ encrypt content data with padding """
-    # padding = block_size - (len(data) % block_size)
-    # padding = 16 - (len(data) % 16)
-    # str_with_padding = data + chr(padding)*padding
-    block_size = 16
-    padding = block_size - (len(data) % block_size)
-    data += chr(padding) * padding
-
-    AES.key_size = 128
-
-    crypt_object = AES.new(key=settings.SMS_KEY,
-                           mode=AES.MODE_CBC, IV=settings.SMS_KEY_IV)
-
-    encrypted_text = crypt_object.encrypt(data)
-
-    return base64.b64encode(encrypted_text)
-
-
-
-def send_sms(phone, content):
-    try:
-        if str(phone).startswith("84"):
-            phone_number = str(phone)
-        elif str(phone).startswith("0"):
-            phone_number = "84" + str(phone)[1:]
-        else:
-            phone_number = "84" + str(phone)
-        content_sms = content
-        id_sms = random.randint(0, 999)
-        time_send = timezone.localtime(timezone.now()).strftime("%Y%m%d%H%M%S")
-        brand = settings.SMS_BRAND
-        xml = "<content><ReceiverPhone>%s</ReceiverPhone><Message>%s</Message><RequestID>%s</RequestID><BrandName>%s</BrandName><Senttime>%s</Senttime></content>" % (
-            str(phone_number), str(content_sms), str(id_sms), brand, str(time_send))
-
-        xml_encode = data_encrypt_cbc(xml.replace("\r\n", ""))  # mã hóa
-        user_ctnet = data_encrypt_cbc(settings.SMS_USER)
-        pass_ctnet = data_encrypt_cbc(settings.SMS_PASSWORD)
-
-        soap_request = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-        soap_request += "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
-        soap_request += "<soap:Body>\n"
-        soap_request += "<sendsms xmlns=\"http://tempuri.org/\">\n"
-        soap_request += "<user>%s</user>\n" % user_ctnet
-        soap_request += "<pass>%s</pass>\n" % pass_ctnet
-        soap_request += "<xml>%s</xml>\n" % xml_encode
-        soap_request += "</sendsms>\n"
-        soap_request += "</soap:Body>\n"
-        soap_request += "</soap:Envelope>"
-
-        headers = {
-            "Content-type": "text/xml;charset=\"utf-8\"",
-            "Accept": "text/xml",
-            "Cache-Control": "no-cache",
-            "Pragma": "no-cache",
-            "SOAPAction": "\"http://tempuri.org/sendsms\"",
-            "Content-length": "%s" % len(soap_request),
-        }
-        response = requests.post(
-            settings.SMS_URL, data=soap_request, headers=headers)
-        print "SOAP  Ressponse ", response.content
-        return response.content
-
-    except Exception, e:
-        print "Error send_sms : %s" % e
-        pass
-        return None
-
-def send_mail_booking(is_secure, email, full_name, barcode, content):
-    try:
-        message_html = "websites/booking/email/booking_notification.html"
-        subject = _("[Metiz] Booking Movie Tickets Successful !")
-
-        protocol = 'http'
-        if is_secure:
-            protocol = 'https'
-        logo_url = '/static/assets/websites/images/logo_bottom.png'
-        data_binding = {
-            "protocol": protocol,
-            'full_name': full_name,
-            'URL_LOGO': logo_url,
-            'barcode': barcode,
-            'content': content,
-            'site': str(Site.objects.get_current()),
-            'HOT_LINE': settings.HOT_LINE
-        }
-        # Send email booking success
-        metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
-                              email], data_binding)
-    except Exception, e:
-        print "Error send_mail_booking : ", e
-
-def send_mail_booking_error(is_secure, email, email_cc, barcode, content):
-    try:
-        message_html = "websites/booking/email/booking_error.html"
-        subject = _("[Metiz] Booking Movie Tickets Transaction Error !")
-
-        protocol = 'http'
-        if is_secure:
-            protocol = 'https'
-        logo_url = '/static/assets/websites/images/logo_bottom.png'
-        data_binding = {
-            "protocol": protocol,
-            'URL_LOGO': logo_url,
-            'barcode': barcode,
-            'content': content,
-            'site': str(Site.objects.get_current()),
-            'HOT_LINE': settings.HOT_LINE
-        }
-        # Send email transaction booking moive order error
-        metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
-                              email], data_binding, {} , (), None, email_cc)
-    except Exception, e:
-        print "Error send_mail_booking : ", e
-
-def send_mail_amount_not_match(is_secure, email, full_name, barcode, content):
-    try:
-        message_html = "websites/booking/email/warning_amount_payment.html"
-        subject = _("[Metiz] Warning Payment Amount not Match")
-
-        protocol = 'http'
-        if is_secure:
-            protocol = 'https'
-        logo_url = '/static/assets/websites/images/logo_bottom.png'
-        data_binding = {
-            "protocol": protocol,
-            'full_name': full_name,
-            'URL_LOGO': logo_url,
-            'barcode': barcode,
-            'content': content,
-            'site': str(Site.objects.get_current()),
-            'HOT_LINE': settings.HOT_LINE
-        }
-        # Send email booking success
-        metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
-                              email], data_binding)
-    except Exception, e:
-        print "Error send_mail_booking : ", e
-
-def send_email_vooc_leader(is_secure, full_name, barcode, content):
-    try:
-        leader_email = settings.VOOC_LEADER_EMAIL
-        send_mail_amount_not_match(is_secure, leader_email, full_name, barcode, content)
-    except Exception, e:
-        leader_email = "tiendangdht@gmail.com, thangnguyen@vooc.vn"
 
 # def cancel_seats(seats_choice, id_server):
 #     for seat in seats_choice:
 #         api.call_api_cancel_seat(seat, id_server=id_server)
 
-def encrypt_payment(request):
-    if request.method == 'POST':
-        try:
-            data_form = request.POST.get("data_form", None)
-            print "@@@ data_form",data_form
-            cipher = MetizAESCipher()
-            encrypted = cipher.encrypt(data_form)
-            result = JsonResponse(
-                        {'code': '00', 'Message': 'Process data success', 'data_encode': encrypted})
-        except Exception, e:
-            print "## Error encrypt_payment ",e
-            return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
-        
-        return result
-
-
-def remove_uni(s):
-    """remove the leading unicode designator from a string"""
-    try:
-        s2 = ""
-        if s.startswith("[u'"):
-            s2 = s.replace("u'", "'")
-        elif s.startswith('[u"'):
-            s2 = s.replace('u"', '"')
-    except Exception, e:
-        print "ERROR ",e
-        return s
-    return s if not s2 else s2
 
 @check_user_booking_exist
 def payment(request):
@@ -316,12 +132,12 @@ def payment(request):
         data_json = json.loads(decrypted)
         
         total_payment = data_json['totalPayment'] if 'totalPayment' in data_json else 0
-        seats = remove_uni(str(data_json['seats'])) if 'seats' in data_json else ""
+        seats = metiz_util.remove_uni(str(data_json['seats'])) if 'seats' in data_json else ""
         working_id = data_json['working_id'] if 'working_id' in data_json else ""
         barcode = data_json['barcode'] if 'barcode' in data_json else ""
         # Handle list seats to string and remove unicode
         seat_array = ','.join(data_json['seats_choice']) 
-        seats_choice = remove_uni(seat_array) if 'seats_choice' in data_json else ""
+        seats_choice = metiz_util.remove_uni(seat_array) if 'seats_choice' in data_json else ""
         
         id_server = data_json['id_server'] if 'id_server' in data_json else 1
         id_showtime = data_json['id_showtime'] if 'id_showtime' in data_json else ""
@@ -336,84 +152,6 @@ def payment(request):
                        "id_movie_name": id_movie_name, "id_movie_time": id_movie_time, "id_movie_date_active": id_movie_date_active,
                        "movie_api_id": movie_api_id})
 
-
-def handler_confirm_booking_error(booking_order, error_comfirm, is_secure):
-    if error_comfirm:
-        # update number retry ipn
-        booking_order.order_status = 'confirm_error'
-        booking_order.desc_transaction = "Payment success but confirm booking error"
-        booking_order.save()
-        
-        
-        # Payment Error: cancel seats chooice and return for
-        # vnpayment
-        # if booking_order.seats:
-        #     cancel_seats(booking_order.seats.split(
-        #         ","), booking_order.id_server)
-
-        # Get information admin metiz cinema
-        email_admin_cinema = settings.SYSTEM_ADMIN_CINEMA_EMAIL
-        email_admin_cinema_cc = settings.SYSTEM_ADMIN_CINEMA_EMAIL_CC
-        phone_admin = settings.SYSTEM_ADMIN_CINEMA_PHONE
-
-        admin_info = AdminInfo.objects.all()
-        if admin_info:
-            # Set phone of first row
-            phone_admin = admin_info[0].phone
-
-            # Get admin info of email to
-            admin_info_to = AdminInfo.objects.filter(email_type='to')
-            if admin_info_to:
-                # Get string of list email to
-                email_admin_cinema = ', '.join(list(admin_info_to.values_list('email', flat=True)))
-
-            # Get admin info of email cc
-            admin_info_cc = AdminInfo.objects.filter(email_type='cc')
-            if admin_info_cc: 
-                # Get list email cc
-                email_admin_cinema_cc = list(admin_info_cc.values_list('email', flat=True))
-
-        
-
-        # send sms for client about transaction booking movie error.
-        error_sms = """Dat ve khong thanh cong tai Metiz Cinema .Ma dat ve: %s, vui long lien he: %s, neu ban van chua duoc hoan tien""" %(booking_order.barcode, phone_admin)
-        # Send SMS notification for user transaction error
-        send_sms(booking_order.phone, error_sms)
-
-        content_error = """Lỗi: Đã trừ tiền của khách hàng nhưng không thể xuất vé phim. 
-                            Vui Lòng kiểm tra hoá đơn : %s để hoàn tiền hoặc xử lý vé cho khách hàng. 
-                            Thông tin khách hàng: Phone: 0%s, Email: %s"""%(booking_order.order_id, booking_order.phone, booking_order.email)
-        # Send email notification for admin transaction error
-        print "### email_admin_cinema ",email_admin_cinema
-        if email_admin_cinema:
-            send_mail_booking_error(is_secure, email_admin_cinema, email_admin_cinema_cc, booking_order.barcode, content_error)
-            
-        return JsonResponse({'RspCode': '02', 'Message': 'Process Confirm Booking Movie Error'})
-
-
-def handler_confirm_booking_success(request, booking_order, amount):
-    """ Handle for vnpayemnt ipn call and process booking success"""
-    booking_order.order_status = "done"
-    booking_order.save()
-
-    content_sms = """Ban da dat ve thanh cong tai Metiz Cinema. Ma dat ve: %s, """ % booking_order.barcode
-    content_sms += str(booking_order.order_desc.replace("\r\n", ""))
-    # Send SMS for user
-    send_sms(booking_order.phone, content_sms)
-
-    # Send Email
-    if booking_order.email:
-        send_mail_booking(request.is_secure(), booking_order.email, request.session.get(
-            "full_name", ""), booking_order.barcode, booking_order.order_desc)
-
-    if float(amount)/100 != booking_order.amount:
-        content_warning = """
-            Please check warning metiz payment below
-            Barcode : %s
-            Payment amount : %s not match with Booking Amount: %s
-
-        """%(booking_order.barcode, float(amount)/100, booking_order.amount)
-        send_email_vooc_leader(request.is_secure(), "Vooc Company", booking_order.barcode, content_warning)
 
 def payment_ipn(request):
     """ Process Status Payment """
@@ -451,41 +189,8 @@ def payment_ipn(request):
                     return JsonResponse({'RspCode': '02', 'Message': 'Order Already Update'})
 
                 if vnp_ResponseCode == '00':
-                    print('Payment Success. Processing Booking Confirm')
-                    id_server = booking_order.id_server if booking_order.id_server else 1
-                    # Payment Success update order status and  call api confirm
-                    # booking order
-                    result_confirm = api.call_api_booking_confirm(
-                        booking_order.barcode, id_server)
-                    
-                    print "#### Confirm Booking Information: Barcode : %s, status: %s"%(booking_order.barcode, result_confirm)
-                    # Handle Confirm Booking Error
-                    # ReCall confirm booking three times when booking confirm error
-                    recall = 1
-                    status_confirm = result_confirm["SUCCESS"].lower()
-                    error_comfirm = False if status_confirm == 'true' else True
-                    
-                    while status_confirm == 'false' and recall <= 3:
-                        # recall api confirm booking
-                        result_confirm = api.call_api_booking_confirm(
-                             booking_order.barcode, id_server)
-                        
-                        print "#### Confirm Booking Information %s : Barcode : %s, status: %s "%(booking_order.barcode, recall, result_confirm) 
-                        # update new status of api
-                        status_confirm = result_confirm["SUCCESS"].lower()
-                        error_comfirm = False if status_confirm == 'true' else True
-                        recall +=1
-
-                    
-                    if settings.DEBUG_CONFIRM_BOOKING:
-                        handler_confirm_booking_error(booking_order, True, request.is_secure())
-                    else:
-                        handler_confirm_booking_error(booking_order, error_comfirm, request.is_secure())
-
-
-                    # Handle Confirm Booking Success and send sms or email
-                    if not error_comfirm:
-                        handler_confirm_booking_success(request, booking_order, amount)
+                    # handle confirm booking and send sms , email
+                    booking_handle.process_confirm_booking(request, booking_order, amount)
                     
                     # Return VNPAY: Merchant update success
                     result = JsonResponse(

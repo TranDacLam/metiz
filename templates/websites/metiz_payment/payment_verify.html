@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load modal_data_tags %}
+{% block title %}Phương Thức Thanh Toán{% endblock title %}
+
+{% block extrastylesheet %}
+ <!-- Payment and payment_return -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/metiz_verify.css" media="all" />
+{% endblock %}
+
+{% block extrascript %}
+    <script src="{{ STATIC_URL }}assets/websites/js/metiz_verify.js"></script>
+{% endblock %}
+
+{% block main_content %}
+<div class="main">
+    <form action="{% url 'payment-verify-otp' %}" id="metiz_payment_verify_otp_form" method="post">
+        {% csrf_token %}
+        <div class="page-title">
+            <h1>Thanh Toán</h1>
+        </div>
+
+        <div class="metiz-payment-form col-xs-12">
+            <h3>Thanh toán qua thẻ {% if payment_gate == "Metiz_Payment_Card" %} Metiz {% else %} Helio {% endif %}</h3>
+            <!-- get id_server -->
+            <input type="hidden" id="payment_gate" name="payment_gate" value="{{payment_gate}}" />
+            <input type="hidden" id="order_id" name="order_id" value="{% get_unique_datetime %}"  readonly />
+            <input type="hidden" name="id_server" id="id_server" value="{{id_server}}"> 
+            <input type="hidden" name="working_id" id="working_id" value="{{working_id}}"> 
+            <input type="hidden" name="barcode" id="barcode" value="{{barcode}}"> 
+            <input type="hidden" name="seats_choice" id="seats_choice" value="{{seats_choice}}"> 
+            
+            
+            <!-- get id showtime -->
+            <input type="hidden" name="id_showtime" id="id_showtime" value="{{id_showtime}}">
+            <!-- get id movie api -->
+            <input type="hidden" name="movie_api_id" id="movie_api_id" value="{{movie_api_id}}">
+
+            <input type="hidden" id="order_desc" name="order_desc" value="{{ order_desc }}">
+            <input type="hidden" id="card_barcode" name="card_barcode" value="{{ card_barcode }}">
+            <input type="hidden" id="full_name" name="full_name" value="{{ full_name }}">
+            
+
+            <div class="form-group">
+                <p>Nội dung thanh toán <span class="payment_content_type"> Mua vé xem phim</span></p>
+                <p>Số Tiền <span class="payment_amount">{{amount}}</span></p>
+                <p>Số điện thoại nhận mã OTP <span class="time-movie-booking">{{ phone_hide }}</span></p>
+                <p>Mã xác nhận (OTP) đã được gởi đến điện thoại của quý khách!</p>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" name="code_otp" id="code_otp" class="form-control">
+                <label class="form-code_otp" for="code_otp" id='code_otp_error'></label>
+            </div>
+            
+        </div>
+        
+        {% if error_otp %}
+            <p>{{error_otp}}</p>
+        {% endif %}
+        <button class="btn btn-default" id="btn-payment-r">GỞI LẠI MÃ OTP</button>
+        <button type="submit" class="btn btn-default" id="btn-payment-continute">XÁC THỰC</button>
+        <button class="btn btn-default" id="btn-payment-cancel">HUỶ</button>
+
+    </form>
+</div>
+
+{% endblock %}

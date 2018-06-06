@@ -29,6 +29,9 @@ class BookingInfomation(DateTimeModel):
     barcode_confirm = models.CharField(max_length=100, null=True, blank=True)
     desc_transaction = models.CharField(max_length=500, null=True, blank=True)
     retry_ipn = models.IntegerField(default=0)
+    poster = models.CharField(max_length=500, null=True, blank=True)
+    gate_payment = models.CharField(_('Gate Payment'), max_length=500, null=True, blank=True)
+    card_barcode = models.CharField(_('Card Barcode'), max_length=500, null=True, blank=True)
 
 class MovieSync(DateTimeModel):
     TYPE = (

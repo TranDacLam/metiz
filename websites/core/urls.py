@@ -18,4 +18,5 @@ urlpatterns = [
 
 
     url(r'^voucher/$', views.voucher, name='voucher'),
+    url(r'^payment/encrypt/$', views.encrypt_payment, name='encrypt-payment'),
 ]
