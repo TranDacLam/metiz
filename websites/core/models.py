@@ -111,6 +111,7 @@ class Movie(DateTimeModel):
     is_draft = models.BooleanField(default=False)
     movie_api_id = models.CharField(
         _("Movie API ID"), max_length=100, default='00000000')
+    allow_booking = models.BooleanField(_('Allow Booking Online'), default=True)
 
     def __str__(self):
         return '%s' % (self.name)
@@ -294,3 +295,50 @@ class Voucher(DateTimeModel):
 
     def __str__(self):
         return '%s' % (self.voucher_code)
+
+@python_2_unicode_compatible
+class FAQ_Category(models.Model):
+    name = models.CharField(_('Name'), max_length=255, unique=True)
+    description = models.TextField(_('Description'), null=True, blank=True)
+
+    def __str__(self):
+        return '%s' % (self.name)
+
+    class Meta:
+        verbose_name = _('FAQ Categories')
+        verbose_name_plural = _('FAQ Categories')
+
+@python_2_unicode_compatible
+class FAQ(DateTimeModel):
+    question = models.CharField(_('Question'), max_length=255, unique=True)
+    answer = models.TextField(_('Answer'))
+    category = models.ForeignKey('FAQ_Category', related_name='faq_category_rel',
+                                 on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '%s' % (self.question)
+
+    class Meta:
+        verbose_name = _('FAQ')
+        verbose_name_plural = _('FAQ')
+
+@python_2_unicode_compatible
+class LinkCard(models.Model):
+    user = models.ForeignKey("User", related_name='user_card_rel')
+    card_member = models.CharField("Card Member", max_length=100)
+
+    def __str__(self):
+        return '%s' % (self.user)
+
+
+@python_2_unicode_compatible
+class Home_Ads(DateTimeModel):
+    sub_url = models.CharField(_('Sub url'), max_length=1000)
+    image = models.ImageField(_('Image'), max_length=1000, upload_to="home_ads")
+    is_show = models.BooleanField(_('Is show'), default=False)
+    def __str__(self):
+        return '%s' % (self.sub_url)
+
+    class Meta:
+        verbose_name = _('Home Ads')
+        verbose_name_plural = _('Home Ads')

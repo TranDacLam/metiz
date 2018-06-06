@@ -22,33 +22,10 @@
 
 {% block main_content %}
 <div class="main profile-custom ">
-    <div class="col-left sidebar col-left-first">
-        <div class="block block-account">
-            <nav class="navbar navbar-inverse sidebar" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="javascript:void(0);">TÀI KHOẢN</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                    <ul class="nav navbar-nav post-detail-metiz">
-                        <li class="active">
-                            <a href="{% url 'profile' %}">Thông tin tài khoản<span class="pull-right hidden-xs showopacity fa fa-user-circle-o"></span></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'change_password' %}">Thay đổi mật khẩu<span class="pull-right hidden-xs showopacity fa fa-unlock-alt"></span></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
+    <!-- Start MENU -->
+    {% include 'registration/menu_profile.html' %}
+    <!-- End MENU -->
+
     <div class="col-main">
         <div class="my-account">
             <div class="page-title">
@@ -64,7 +41,7 @@
                                     <div class="col-xs-6 form-group">
                                     <label for="full_name">{% trans "Full Name" %}</label>
                                     <div class="inline">
-                                        <input type="text" name="full_name" id="full_name" value="{%if full_name %}{{ full_name }}{% endif %}" title="User Name" placeholder="Nhập Họ Tên Ở Đây" class="input-text validate-mobile required-entry form-control" /> 
+                                        <input type="text" name="full_name" id="full_name" value="{%if full_name %}{{ full_name }}{% endif %}" title="User Name" placeholder="Nhập Họ Tên Ở Đây" class="input-text validate-mobile required-entry form-control" {% if card_member %}readonly{% endif %}/> 
                                         {% if form.full_name.errors %}
                                             {{form.full_name.errors}}
                                         {% endif %}
@@ -87,7 +64,7 @@
                                     <div class="col-xs-6 form-group form-birthday">
                                         <label>{% trans "Birth Date" %}</label>
                                         <div class="inline">
-                                            <input type="text" name="birth_date" id="birth_date" value="{% if form.errors %}{{ birth_date }}{% elif birth_date %}{{ birth_date | date:'d-m-Y' }}{% endif %}" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control">                
+                                            <input type="text" name="birth_date" id="birth_date" value="{% if form.errors %}{{ birth_date }}{% elif birth_date %}{{ birth_date | date:'d-m-Y' }}{% endif %}" placeholder="{% trans 'Choose Your Birthday..' %}" class="form-control {% if card_member %}readonly{% endif %}" {% if card_member %}readonly{% endif %}>                
                                             {% if form.birth_date.errors %}
                                                 {{form.birth_date.errors}}
                                             {% endif %}
@@ -97,7 +74,7 @@
                                         <label>{% trans "Phone" %}</label>
                                         <div class="inline">
                                             <div class="country-code">+84</div>
-                                            <input type="text" name="phone" value="{% if phone %}{{ phone }}{% endif %}" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control textPhone">
+                                            <input type="text" name="phone" value="{% if phone %}{{ phone }}{% endif %}" id="phone" placeholder="{% trans 'Enter Phone Here..' %}" class="form-control textPhone" {% if card_member %}readonly{% endif %}>
                                             {% if form.phone.errors %}
                                                 {{form.phone.errors}}
                                             {% endif %}
@@ -120,7 +97,7 @@
                                     <div class="col-xs-6 form-group">
                                         <label>{% trans "Personal ID" %}</label>
                                         <div class="inline">
-                                            <input type="text" name="personal_id" value="{% if personal_id %}{{ personal_id }}{% endif %}" id="personal_id" placeholder="{% trans 'Enter Personal ID Here..' %}" class="form-control">
+                                            <input type="text" name="personal_id" value="{% if personal_id %}{{ personal_id }}{% endif %}" id="personal_id" placeholder="{% trans 'Enter Personal ID Here..' %}" class="form-control" {% if card_member %}readonly{% endif %}>
                                             {% if form.personal_id.errors %}
                                                 {{form.personal_id.errors}}
                                             {% endif %}

@@ -1,5 +1,6 @@
 $(document).ready(function() {
-
+    // global variable save info film
+    var info_film = null;
     //close popup by esc key
     $("body").on("keyup", function(e) {
         var key = e.which;
@@ -16,12 +17,12 @@ $(document).ready(function() {
     //fix background scroll in modals on mobile
     if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
         $('#confirm').on('show.bs.modal', function() {
-            $("body").addClass("fixIOSposition");
+            // $("body").addClass("fixIOSposition");
             $.magnificPopup.close(); 
         });
 
         $('#confirm').on('hide.bs.modal', function() {
-            $("body").removeClass("fixIOSposition");
+            // $("body").removeClass("fixIOSposition");
         });
     }
     $('.open-popup-link').magnificPopup({
@@ -31,20 +32,16 @@ $(document).ready(function() {
         fixedContentPos: true,
         callbacks: {
             beforeOpen: function() {
-                // Load data before popup open
+                // Load data before popup open load first time
                 getDataPopupMovieSchedule(this.st.el);
             },
             close: function() {
-                // Reset movie name highlight
-                // $("#movie_name_highlight_id").val("");
             }
         }
     });
 
 
-    // Validate guest_form, update_form
-    // Validate and handle member_form by ajax
-
+    // Validate form
     // message for validate form
     var lang = $('html').attr('lang');
     if (lang == 'vi') {
@@ -102,7 +99,6 @@ $(document).ready(function() {
         var valPhone = $(this).val();
         $(this).val(removeBeforePhoneNumber(valPhone));
     });
-
     
     // validate phone only number
     // Form Update modal schedule
@@ -114,49 +110,55 @@ $(document).ready(function() {
     validOnlyNumber(selectorPhone_guest_form, selectorPhone_guest_form.val());
 
     //validate guest form, update form
-    function validateForm(form) {
-        $(form).validate({
-            rules: {
-                name: {
-                    required: true,
-                    rangelength: [1, 70],
-                },
-                email: {
-                    email:{
-                        depends:function(){
-                            $(this).val($.trim($(this).val()));
-                            return true;
-                        }
-                    },
-                },
-                phone: {
-                    required: true,
-                    validatePhone: true,
-                    number: true,
-                    minlength: 9,
+    $("#guest_form").validate({
+        rules: {
+            name: {
+                required: true,
+                rangelength: [1, 70],
+            },
+            email: {
+                email:{
+                    depends:function(){
+                        $(this).val($.trim($(this).val()));
+                        return true;
+                    }
                 },
             },
-            messages: {
-                name: {
-                    required: message.required,
-                    rangelength: message.rangelength_1_70,
-                },
-                email: {
-                    email: message.email
-                },
-                phone: {
-                    required: message.required,
-                    validatePhone: message.phone,
-                    number: message.number,
-                    minlength: message.phone,
-                }
+            phone: {
+                required: true,
+                validatePhone: true,
+                number: true,
+                minlength: 9,
+            },
+        },
+        messages: {
+            name: {
+                required: message.required,
+                rangelength: message.rangelength_1_70,
+            },
+            email: {
+                email: message.email
+            },
+            phone: {
+                required: message.required,
+                validatePhone: message.phone,
+                number: message.number,
+                minlength: message.phone,
             }
-        });
-    }
-    $('.form-popup').each(function(index, el) {
-        validateForm($(this));
+        },
+        submitHandler: function(form) {
+            // event.preventDefault();
+            // add info_film to form before submit
+            for( var item in info_film){
+                $(form).append($('<input>', {
+                    type: 'hidden',
+                    name: item,
+                    value: info_film[item]}
+                ));
+            };
+            form.submit();
+        }
     });
-
     // validate and handle member form
     $('#member_form').validate({
         rules: {
@@ -193,17 +195,9 @@ $(document).ready(function() {
                     data: $(form).serialize() + "&is_popup_schedule=1",
                 })
                 .done(function(data) {
-                    // Get value member form
-                    var id_showtime = $('#member_form input[name=id_showtime]').val();
-                    var id_server = $('#member_form input[name=id_server]').val();
-                    var movie_api_id = $('#member_form input[name=movie_api_id]').val();
-                    var id_movie_name = $('#member_form input[name=id_movie_name]').val();
-                    var id_movie_time = $('#member_form input[name=id_movie_time]').val();
-                    var id_movie_date_active = $('#member_form input[name=id_movie_date_active]').val();
-
-                    window.location.href = '/booking?id_showtime=' + id_showtime + '&id_server=' + id_server +
-                        '&id_movie_name=' + id_movie_name + '&id_movie_time=' + id_movie_time +
-                        '&id_movie_date_active=' + id_movie_date_active + '&movie_api_id=' + movie_api_id;
+                    window.location.href = '/booking?id_showtime=' + info_film.id_showtime + '&id_server=' + info_film.id_server +
+                        '&id_movie_name=' + info_film.id_movie_name + '&id_movie_time=' + info_film.id_movie_time +
+                        '&id_movie_date_active=' + info_film.id_movie_date_active + '&movie_api_id=' + info_film.movie_api_id;
                 })
                 .fail(function(data) {
                     if (data.responseJSON.code == 400) {
@@ -235,8 +229,6 @@ $(document).ready(function() {
         },
         message.phone
     );
-    
-
 
     // *** POPUP MOVIE SCHEDULE ***
     // Get list movie, show time
@@ -257,7 +249,6 @@ $(document).ready(function() {
     // - function listShedule: list show time of 1 movie
     // - function listFilm: list movie of date selected
 
-
     // list show time of a movie, callback from function listFilm
     function listShedule(shedule) {
         var htmlShedule = '';
@@ -275,11 +266,12 @@ $(document).ready(function() {
             }
             var endTime = '~' + hour + ':' + minute;
             htmlShedule += '<li class="sold-out">' +
-                '<a href="#" >' +
+                '<a href="javascript:void(0);" >' +
                 '<input type="hidden" name="id_showtime" value="' + value.id_showtime + '">' +
                 '<input type="hidden" name="id_movie_id" value="' + shedule.movie_id + '">' +
                 '<input type="hidden" name="id_movie_name" value="' + shedule.movie_name + '">' +
-                '<input type="hidden" name="movie_api_id" value="' + movie_api_id + '">' +
+                '<input type="hidden" name="movie_api_id" value="' + shedule.movie_id + '">' +
+                '<input type="hidden" name="allow_booking" value="' + shedule.allow_booking + '">' +
                 '<span class="time">' + value.time +'</span>' +
                 '<span class="ppnum">Phòng chiếu</span>' +
                 '<span class="ppnum">' + value.room_name + '</span>' // room chiếu phim
@@ -288,15 +280,12 @@ $(document).ready(function() {
                 '</a>' +
                 '</li>';
 
-
         });
         return htmlShedule;
     }
 
     // list movie 
     function listFilm(film) {
-        // var movie_name_highlight = $("#movie_name_highlight_id").val().toLowerCase();
-        // var class_item = movie_name_highlight.indexOf(film.movie_name.toLowerCase()) > -1 ? "movie-name highlight" : "movie-name"
 
         return '<div class="movie-time-line-box clearfix" data-control="movie-code">' +
             '<h3 class="movie-name">' + film.movie_name + '</h3>' +
@@ -307,45 +296,45 @@ $(document).ready(function() {
             ' </div>' +
             ' </div>';
     }
-    
+    // TH1: Click Lịch chiếu
+    // function for modal page and schedule page
     $(document).on('click', '.popup-movie-schedule', function() {
         getDataPopupMovieSchedule(this);
     })
-
     // Call server get data
+    // Function for modal page and schedule page
     function getDataPopupMovieSchedule(element) {
-
+        // get element parent to determine where show data
+        parent = $(element).closest(".white-popup");
         //set data for Month
-        $('#center-month').text($(element).children('.hide-month').text());
-        $('.days-popup li').removeClass('active-date');
-
+        $('#modal-popup #center-month').text($(element).children('.hide-month').text());
+        $('#modal-popup .days-popup li').removeClass('active-date');
         var id_server = $('.list-cinema .active').attr('data-id-server');
 
-        // get movie name every film
-        // if ($(element).attr("data-movie-name")) {
-        //     $("#movie_name_highlight_id").val($(element).attr("data-movie-name"));
-        // }
-
-
+        // Step 2:
+        // - TH2: Click Đổi xuất chiếu (page Booking)
         // get date time at page booking 
         if ($(element).attr("data-date-seat")) {
             var date_seat = $(element).attr("data-date-seat");
-            $('.days-popup [data-date-select = ' + date_seat + ']').addClass('active-date');
+            $('#modal-popup .days-popup [data-date-select = ' + date_seat + ']').addClass('active-date');
             var date_query = date_seat;
             // get movie api id from booking
             var get_movie_api = $('.booking-details #movie_api_id').val();
             //set data for Month
-            $('#center-month').text($('.days-popup li.active-date').children('.hide-month').text());
+            $('#modal-popup #center-month').text($('.days-popup li.active-date').children('.hide-month').text());
         } else {
+            // - TH3: Click đặt vé a movie
             // get date time on page popup
             if ($(element).attr("data-date-select")) {
                 var date_query = $(element).attr("data-date-select");
                 $(element).addClass('active-date');
             } else {
+                // TH1: Click Lịch chiếu (header)
+                parent = $("#modal-popup");
                 var date_query = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
-                $('.days-popup li:first').addClass('active-date');
+                $('#modal-popup .days-popup li:first').addClass('active-date');
                 //set data for Month
-                $('#center-month').text($('.days-popup li:first').children('.hide-month').text());
+                $('#modal-popup #center-month').text($('#modal-popup .days-popup li:first').children('.hide-month').text());
             }
         }
 
@@ -353,9 +342,8 @@ $(document).ready(function() {
         // cinema_id is equal id_server
         data = {
             "date": date_query,
-            "cinema_id": id_server // get cinema_id from hidden field in popup movie schedule
+            "cinema_id": id_server
         }
-
 
         $.ajax({
             url: "/movie/show/times",
@@ -375,18 +363,11 @@ $(document).ready(function() {
                     }
                 }
             });
-            $('.list-schedule').html(html);
-            trigger_click_showtime();
-            if ($('.list-schedule').text() == '') {
-                $('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lịch Chiếu Nào. Vui Lòng Chọn Ngày Khác.<p/>');
+            $(parent).find('.list-schedule').html(html);
+            trigger_click_showtime(parent);
+            if ( $(parent).find('.list-schedule').text() == '') {
+                $(parent).find('.list-schedule').html('<p class="empty-schedule">Ngày Bạn Chọn Hiện Không Có Lịch Chiếu Nào. Vui Lòng Chọn Ngày Khác.<p/>');
             }
-
-            // if($(".movie-name.highlight").length) {
-            //     var child_offset =  $(".movie-name.highlight").offset().top;
-            //     var parent_offset = $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').offset().top;
-            //     $('.mfp-container.mfp-s-ready.mfp-inline-holder, .mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.mfp-ready').animate({
-            //     scrollTop: child_offset-parent_offset-20}, 'slow');
-            // }
         })
         .fail(function() {
             displayMsg();
@@ -394,9 +375,8 @@ $(document).ready(function() {
         });
 
     }
-
-    function trigger_click_showtime() {
-
+    // Function for modal page and schedule page
+    function trigger_click_showtime(parent) {
         /* hardcode for film free for vouchers */
         function check_movie_free(element) {
             /* List Film Free */
@@ -411,12 +391,12 @@ $(document).ready(function() {
         }
 
         // Validate Time Remain before 15 minutes. verify when date selected equal current date
+        // function for modal page and schedule page
         function validate_time_remain(element){
             var time_remain = 15;
             var date_now = new Date();
             // get current date selected and time of movie show
             var date_selected = new Date($('.popup-movie-schedule.active-date').attr('data-date-select'));
-
             var start_time = element.children('.time').text().split('~')[0];
             
             // get show time sub 15 minute check show time greate than equal curren time then allow booking
@@ -428,22 +408,25 @@ $(document).ready(function() {
             }
             return false;
         }
-
-        function showPopup(element){
-
+        function get_info_film(element){
             var id_showtime = element.children('input[name=id_showtime]').val();
             var id_movie_name = element.children('input[name=id_movie_name]').val();
             var movie_api_id = element.children('input[name=movie_api_id]').val();
             var id_movie_time = element.children('span[class=time]').text();
             var id_server = $('.list-cinema .active').attr('data-id-server');
+            var id_movie_date_active = $("li.active-date").attr("data-date-select");
+            return {'id_showtime': id_showtime,
+            'id_movie_name': id_movie_name,
+            'movie_api_id': movie_api_id,
+            'id_movie_time': id_movie_time,
+            'id_server': id_server,
+            'id_movie_date_active': id_movie_date_active};
+            
+        }
 
-            $('.modal input[name=id_server]').val(id_server);
-            $('.modal input[name=id_showtime]').val(id_showtime);
-            $('.modal input[name=movie_api_id]').val(movie_api_id);
-            $('.modal input[name=id_movie_name]').val(id_movie_name);
-            $('.modal input[name=id_movie_time]').val(id_movie_time);
-            $('.modal input[name=id_movie_date_active]').val($("li.active-date").attr("data-date-select"));
-
+        // Show popup warning or confirm
+        function showPopup(element){
+            info_film = get_info_film(element);
             //set content for modal #warnning or skip
             var rated = element.parents('.lot-table').attr('data-rated');
             $('#confirm').on('show.bs.modal', function() {
@@ -457,17 +440,6 @@ $(document).ready(function() {
                     // *** BUG *** : show suggest when focus input, suggest moving when scroll
                     $('#confirm input').attr('autocomplete', 'off');
 
-                    // // When device focus input set overflow hidden using fix focus moving
-                    // $('#confirm input').on("focus", function(){
-                    //     $('#confirm').css("position", "fixed");
-                    //     $("#confirm").css("overflow", "hidden");    
-                    // });
-
-                    // // when input out focus then accept user scroll popup
-                    // $('#confirm input').on("focusout", function(){
-                    //     $("#confirm").css("overflow", "auto");    
-                    // });
-
                     // set scroll to tocuh
                     $("#confirm").css("-webkit-overflow-scrolling", "touch !important");
                 }
@@ -477,8 +449,7 @@ $(document).ready(function() {
             $('#confirm').on('hide.bs.modal', function() {
                 $(".mfp-ready").attr("style","overflow-x: hidden; overflow-y: auto;");
             });
-
-            // ingore null, p, P
+            // Show popup warning or confirm
             if (rated == 'null' || rated == 'p'|| rated == 'P') {
                 $('#confirm').modal('show');
             } else {
@@ -487,18 +458,17 @@ $(document).ready(function() {
                 $('#warning').modal('show');
             }
         }
-
+        // TH2: Click đặt vé a movie
         /* change background for schedule firm on mobile */
         if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
             $('.sold-out a').on('click', function(event) {
-                // //Start Hack code Maintenance
-                // var movie_id = $(this).children('input[name=id_movie_id]').val();
-                // if ( movie_id !== movieIdTest ) {
-                //     $('#alert_maintenance').modal('show');
-                //     return;
-                // }
-                // //End Hack code Maintenance
-
+                // *** Allow booking ***
+                var allow_booking = $(this).children('input[name=allow_booking]').val();
+                if (allow_booking == 'false') {
+                    $('#alert_allow_booking').modal('show');
+                    return;
+                }
+                // *** End Allow booking ***
                 $(this).addClass('mobile-schedule');
                 if(check_movie_free($(this)) == false && validate_time_remain($(this))){
                     showPopup($(this));
@@ -509,33 +479,29 @@ $(document).ready(function() {
 
             });
         }else{
+            // on web
             $('.sold-out a').click(function(event) {
                 event.preventDefault();
-
-                // //Start Hack code Maintenance
-                // var movie_id = $(this).children('input[name=id_movie_id]').val();
-                // if (movie_id !== movieIdTest) {
-                //     $('#alert_maintenance').modal('show');
-                //     return;
-                // }
-                // //End Hack code Maintenance
-                
+                // *** Allow booking ***
+                var allow_booking = $(this).children('input[name=allow_booking]').val();
+                if (allow_booking == 'false') {
+                    $('#alert_allow_booking').modal('show');
+                    return;
+                }
+                // *** End Allow booking ***
                 if(check_movie_free($(this)) == false && validate_time_remain($(this))){
                     showPopup($(this));
                 }
-                
             });
         }
-        
     }
-    
     
     //checkbox for form guest
     $('#agree_term').on('click', function() {
         if ($('#agree_term').prop("checked")) {
-            $('.form-popup button').prop('disabled', false);
+            $('#confirm .form-popup #submit').prop('disabled', false);
         } else {
-            $('.form-popup button').prop('disabled', true);
+            $('#confirm .form-popup #submit').prop('disabled', true);
         }
     });
 
@@ -543,6 +509,4 @@ $(document).ready(function() {
     $("#modal-popup input[type=number]").on("keydown", function(e) {
         return e.keyCode == 69 ? false : true;
     });
-
-
 });

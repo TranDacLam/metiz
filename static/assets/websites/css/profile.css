@@ -135,6 +135,95 @@
 .col-left .navbar-inverse .navbar-brand{
     color: #0e1d2f;
 }
+
+
+/* INFO MEMBER CARD */
+.info-member-card, .info-member-card table {
+    font-family: "Montserrat-Light", sans-serif;
+}
+.info-member-card form button{
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
+    border-radius: 5px;
+    background-color: #7e8eaa;
+    color: #fff;
+}
+.info-member-card form button:hover{
+    color: #fff;
+    background-color: #ff5400;
+}
+.info-member-card form label, .info-member-card form input{
+    margin-right: 20px;
+    font-family: "Montserrat-Regular", sans-serif;
+}
+.info-member-card .info-mc-1, .info-member-card .info-mc-2{
+    width: 86.5%;
+    margin-left: 30px;
+}
+.info-member-card .info-mc-1 .mc-1-des-1{
+    margin-top: 20px;
+}
+.info-member-card .info-mc-1 .mc-1-des-2{
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+.info-member-card .info-mc-2{
+    margin-top: 30px;
+}
+.info-member-card .info-mc-2 .mc-2-des p label{
+    width: 150px;
+    font-family: "Montserrat-Regular", sans-serif;
+}
+.info-member-card .info-mc-2 table th{
+    font-family: "Montserrat-Regular", sans-serif;
+}
+#barcode-member-card{
+    margin: auto;
+}
+/* END INFO MEMBER CARD */
+
+/* TRANSACTION HISTORY */
+
+.transaction-history {
+    font-family: "Montserrat-Light", sans-serif;
+}
+.transaction-history .info-th{
+    width: 86.5%;
+    margin-left: 30px;
+}
+.transaction-history .info-th-1{
+    margin-top: 20px;
+}
+.transaction-history .info-th-2 img{
+    width: 100%;
+}
+.transaction-history .info-th-2 p>label{
+    font-family: "Montserrat-Regular", sans-serif;
+}
+.transaction-history .info-th-2 div.th-1-des,
+.transaction-history .info-th-2 div.th-2-des,
+.transaction-history .info-th-2 div.th-3-des{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.transaction-history .btn-load-more{
+    margin-top: 50px;
+}
+.transaction-history .btn-load-more button{
+    font-family: "SairaSemiCondensed-Bold", sans-serif;
+    border-radius: 5px;
+    background-color: #7e8eaa;
+    color: #fff;
+}
+.transaction-history .btn-load-more button:hover{
+    color: #fff;
+    background-color: #ff5400;
+}
+.transaction-history .btn-load-more{
+    display: none;
+}
+
+/* END TRANSACTION HISTORY */
+
 @media only screen and (max-width: 768px){
     .col-left  .navbar-collapse, .skip-content,
     .profile-custom .navbar-header {
@@ -169,6 +258,20 @@
         width: 85.5%;
     }
 }
+@media only screen and (max-width: 767px){
+    .info-member-card .info-mc-1 .mc-1-des-1 {
+        margin-top: 20px;
+    }
+    .info-member-card .info-mc-1 .mc-1-des-2 {
+        margin-bottom: 0px;
+    }
+    .info-member-card .info-mc-1, .info-member-card .info-mc-2{
+        width: 90.5%;
+    }
+    .transaction-history .info-th{
+        width: 90.5%;
+    }
+}
 @media only screen and (max-width : 414px) {
      #jtdb-0 .modal-content {
         width: auto;
@@ -184,6 +287,15 @@
     }
     #profile-validate .form-group{
         width: 100%;
+    }
+    .info-member-card .info-mc-1, .info-member-card .info-mc-2 {
+        width: 80.5%;
+    }
+    .info-member-card .info-mc-2 .mc-2-des p label {
+        width: 100px;
+    }
+    .transaction-history .info-th{
+        width: 80.5%;
     }
 }
 @media only screen and (max-width : 375px) {

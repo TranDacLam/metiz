@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% load i18n %} 
+
+{% block title %}Metiz Cinema{% endblock title %}
+{% block extrastylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/schedule.css" media="all" />
+{% endblock %}
+{% block extrascript %}
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/schedule.js"></script>
+{% endblock %}
+
+{% block container_class %}col1-layout {% endblock %}
+{%block body_class %}cms-index-index cms-home{% endblock %}
+{% block main_content %}
+{% load modal_data_tags %}
+<div id="schedule-film" class="white-popup ">
+    <div class="div-login">
+        <div class="top-schedule">
+            Lịch chiếu
+        </div>
+        <div class="container hide-area">
+            <div class="col-xs-12 row city">
+                <h3>{% trans 'Select City' %}</h3>
+                <div class="list-item clearfix">
+                    <ul>
+                        {% get_cites as all_cites %} {% for city in all_cites.data %}
+                        <li class="active"><a data-toggle='tab' href="#{{city}}" data='{{city}}'>{{city}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 row cinema ">
+                <h3>{% trans 'Select Cinema' %}</h3>
+                <div class="tab-content">
+                    <div class="list-cinema active clearfix tab-pane " id="id_cinema_detail">
+                        <ul class="">
+                            <li><a class="btn active" href="#" data-id-server="1">Metiz Cinema</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% get_rated as rated %}
+            <p id='rated'>{{ rated }}</p>
+        </div>
+        <div class="popup-booking">
+            <section class="section-lightpink">
+                <!-- <h3 class="title">{% trans 'Select date play' %}</h3> -->
+                <div class="calendar-popup ">
+                    <div class="month">
+                        <strong id="center-month"></strong>
+                    </div>
+                    <div class="row">
+                        <ul class="days-popup" id="play-date-slider">
+                            {% get_date_showing as list_date_present %} {% for item in list_date_present %}
+                            <li class="available popup-movie-schedule" data-date-select="{{item|date:'Y-m-d'}}">
+                                <div class="hide-month">{{ item|date:'M'}}</div>
+                                <div class="dayofweek">{{ item|date:'D'}}</div>
+                                <span class="badge">{{ item|date:'d' }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <h3 class="container title">Chọn lịch chiếu</h3>
+            <section class="container section-white">
+                <div class="container content-schedule">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="list-schedule">
+                                <!-- schedule film-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
