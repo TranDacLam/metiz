@@ -271,8 +271,8 @@ NUMBER_GROUPING = 3
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL='/'
 
-# Set timeout for choice seats
-TIME_SEAT_DELAY = 5
+# Set timeout for choice seats into session
+TIME_SEAT_DELAY = 10
 
 # Config Google reCaptcha
 NOCAPTCHA = True
@@ -306,6 +306,8 @@ REST_FRAMEWORK = {
     ),
     'UNICODE_JSON': True
 }
+
+AUTH_PREFIX = "Bearer "
 
 JWT_AUTH = {
     # 'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=1700),

@@ -5,7 +5,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import JsonResponse, HttpResponse
 import serializers
 import json
-
+import requests
+from django.conf import settings
+import traceback
+from django.utils.translation import ugettext_lazy as _
 # Create your views here.
 
 
@@ -85,5 +88,69 @@ def get_booking_info_data(user_id=None, page_items=0, page_number=1, order_statu
 
     except Exception, e:
         print "Error booking_info_report : %s ", e
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
+
+def get_card_member_infomation_data(card_member):
+    print "Get Card member information data"
+    data_response = {
+        "status": 200
+    }
+    try:
+
+        if not card_member:
+            data_response["status"] = 400
+            data_response["results"] = {"code": 400, "message": _("Card member is required."), "fields": "card_member"}
+            return data_response
+
+        params = {
+            "card_member": card_member
+        }
+        # Add authorization to request header
+        headers = {
+            'Authorization': settings.POS_API_AUTH_HEADER
+        }
+        # Get link call api 
+        gift_claiming_points_api_url = '{}card_member/information/'.format(
+            settings.BASE_URL_POS_API)
+
+        # Call POS get card member infomation
+        response = requests.get(gift_claiming_points_api_url, params=params, headers=headers)
+
+        # Handle invalid authorization
+        if response.status_code == 401:
+            print "POS reponse status code 401", response.text
+            data_response["status"] = 500
+            data_response["results"] = {"code": 500, "message": _("Call API Unauthorized."), "fields": ""}
+            return data_response
+
+        # Handle pos server errors
+        if response.status_code != 200 and response.status_code != 400:
+            print "POS reponse status code not 200", response.text
+            data_response["status"] = 500
+            data_response["results"] = {"code": 500, "message": _("Call API error."), "fields": ""}
+            return data_response
+
+        # Success
+        # Get data from pos api reponse
+        result = response.json()
+
+        # Return error from pos api
+        if response.status_code == 400:
+            data_response["status"] = 400
+            data_response["results"] = result["message"]
+            return data_response
+
+        data_response["results"] = result
+        return data_response
+
+    except requests.Timeout:
+        print "Request POS time out "
+        data_response["status"] = 500
+        data_response["results"] = {"code": 500, "message": _("API connection timeout."), "fields": ""}
+        return data_response
+
+    except Exception, e:
+        print('get_card_member_infomation: %s', traceback.format_exc())
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
