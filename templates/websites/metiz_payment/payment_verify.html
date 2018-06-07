@@ -15,7 +15,7 @@
 {% block main_content %}
 <div class="main metiz_verify">
     <div class="page-title">
-        <h1>Thanh Toán</h1>
+        <h1>Xác Nhận Thanh Toán</h1>
     </div>
     <form action="{% url 'payment-verify-otp' %}" id="metiz_payment_verify_otp_form" method="post">
         {% csrf_token %}
