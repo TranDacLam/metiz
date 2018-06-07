@@ -487,7 +487,7 @@ $(document).ready(function() {
                     context: this,
                 })
                 .done(function(response) {
-                    window.location.href = '/payment?data='+encodeURIComponent(response.data_encode);
+                    window.location.href = '/payment/method?data='+encodeURIComponent(response.data_encode);
                 }).fail(function(error) {
                     displayMsg();
                     $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));

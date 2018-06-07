@@ -20,6 +20,7 @@ from django.contrib.sites.models import Site
 from registration import metiz_email
 from random import randint
 from django.contrib.auth.decorators import login_required
+from core.metiz_cipher import MetizAESCipher
 
 
 # NOTES : View SQL Query using : print connection.queries
@@ -528,6 +529,26 @@ def send_mail_voucher(is_secure, email, full_name, barcode):
                               email], data_binding)
     except Exception, e:
         print "Error send_mail_booking : ", e
+
+
+"""
+    Author: TienDang
+    Description: Action Encrypt Data Payment
+"""
+def encrypt_payment(request):
+    if request.method == 'POST':
+        try:
+            data_form = request.POST.get("data_form", None)
+            cipher = MetizAESCipher()
+            encrypted = cipher.encrypt(data_form)
+            result = JsonResponse(
+                        {'code': '00', 'Message': 'Process data success', 'data_encode': encrypted})
+        except Exception, e:
+            print "## Error encrypt_payment ",e
+            return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+        
+        return result
+
 
 def faqs(request):
     try:

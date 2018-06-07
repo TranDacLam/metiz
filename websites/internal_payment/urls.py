@@ -14,13 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
 import views
 
 urlpatterns = [
-    url(r'^payment$', views.payment, name='payment'),
-    url(r'^payment_ipn$', views.payment_ipn, name='payment_ipn'),
-    url(r'^payment_return$', views.payment_return, name='payment_return'),
-    url(r'^query$', views.query, name='query'),
-    url(r'^refund$', views.refund, name='refund'),
+    url(r'^payment/method/$', views.metiz_payment_methods, name='metiz-payment-methods'),
+    url(r'^invalid/payment$', views.invalid_payment, name='invalid-payment'),
+    url(r'^payment/otp/$', views.generate_otp, name='payment-generate-otp'),
+    url(r'^payment/otp/verify/$', views.verify_otp_for_user, name='payment-verify-otp'),
+    
+    # url(r'^payment_ipn$', views.payment_ipn, name='payment_ipn'),
+    # url(r'^payment_return$', views.payment_return, name='payment_return'),
+    # url(r'^query$', views.query, name='query'),
+    # url(r'^refund$', views.refund, name='refund'),
 ]

@@ -35,6 +35,11 @@
                 <input type="hidden" name="id_showtime" id="id_showtime" value="{{id_showtime}}">
                 <!-- get id movie api -->
                 <input type="hidden" name="movie_api_id" id="movie_api_id" value="{{movie_api_id}}">
+                {% if movie.poster %}
+                <div class="poster-film row col-md-12">
+                    <img id="poster" src="{{ MEDIA_URL }}{{movie.poster}}" alt="{{ id_movie_name }}">
+                </div>
+                {% endif %}
                 <p>Phim: <span class="name-movie-booking"> {{ id_movie_name }}</span></p>
                 <p>Ngày: <span class="date-movie-booking">{{ id_movie_date_active }}</span></p>
                 <p>Thời gian: <span class="time-movie-booking">{{ id_movie_time }}</span></p>

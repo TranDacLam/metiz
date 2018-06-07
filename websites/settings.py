@@ -202,7 +202,7 @@ VOOC_LEADER_EMAIL = "tiendangdht@gmail.com, thangnguyen@vooc.vn, vietthang@khoip
 SYSTEM_ADMIN_CINEMA_EMAIL = "ngochang@khoiphat.vn, khaivo@metiz.vn"
 SYSTEM_ADMIN_CINEMA_EMAIL_CC = ["vietthang@khoiphat.vn", "nguyenhien@helio.vn"]
 SYSTEM_ADMIN_CINEMA_PHONE = ""
-EMAIL_BACKEND = "main.email_backend.DKIMBackend"
+# EMAIL_BACKEND = "main.email_backend.DKIMBackend"
 DEFAULT_TO_ADMIN_EMAIL = "contact@metiz.vn"
 DEFAULT_FROM_EMAIL = "Metiz Cinema Service <no-reply@metiz.vn>"
 # EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
@@ -215,23 +215,23 @@ EMAIL_USE_TLS = True
 MOVIE_ID_TEST = '58653e48-fc6f-419f-9b15-bbf737e45946'
 
 # Config DKIM
-DKIM_SELECTOR = "metiz_dkim"
-DKIM_DOMAIN = "metiz.vn"
-DKIM_PRIVATE_KEY = """-----BEGIN RSA PRIVATE KEY-----
-MIICXQIBAAKBgQC1jD/O9VRWvwqeEnxnSGrhh7BYqaGMGn94i48yMBvVc7XfT7eC
-5J1Cf/iV0NRwe4EJiRm62VF56TJcl050HunKtVisgFOuT6qWLbceKL5/+PAumag0
-HrUdw3Vm89qRyNJrwLNtUkgBC1rvcuWvRTSmMukQCPaPG1KoI7eEg79YBQIDAQAB
-AoGBAIbB0eNHCxFQwQrQYfMwN9WsKGPHlhgu2wuZW/M+7ookV42o2GiaVXi1EMnz
-tpy/r+pqD+U3xlidljpQPXXINHR4qgX0SdwgqLnItiDhTqwI71X7Hi+JI4LWUkav
-HZL96OwzIeJKvkZfAkujOj+Ep3BLKmnv6SBkn/t0HUFKGscJAkEA3uhcP30Lri6p
-VByuPZZlY2IzQ3P5yyTkaPFTNuPWO5RZKls31pZ3Q8VPGjRHD17cF/+RBXfr1ECX
-xM6BEUw5dwJBANCAAMb4YFS7LZ+6BmBtwwoHHAEGMB7mtU6+O6mo2NBhyz+Y0INt
-KW1GvOnzCYMQCltv79nEleFtscAVfs27mWMCQCOlJJtCc8u2yn0Y2QQgOLZbzbbL
-pPZHP/9IF/Z/GJMOdfPAAn3eMdQ0iSG3mmVq1edAhwBI3P1kFuDx5NHPTqECQQCI
-Bwr6xO7sONYyQEaKwPGfaDYAAQ6CCpi9T+VS8iLKCRN2YXegVybQ8Xas13AcPunS
-7/u2wsfaNBvkquF4zezrAkBvCJfeZMr2oiXsw8P3dGkSkGs9BkJetAdtzVn7VjF4
-Eq/hPY3tgE5GI/V4OPczdJP6hoG1uynU2SKbKMJ2rAJz
------END RSA PRIVATE KEY-----"""
+# DKIM_SELECTOR = "metiz_dkim"
+# DKIM_DOMAIN = "metiz.vn"
+# DKIM_PRIVATE_KEY = """-----BEGIN RSA PRIVATE KEY-----
+# MIICXQIBAAKBgQC1jD/O9VRWvwqeEnxnSGrhh7BYqaGMGn94i48yMBvVc7XfT7eC
+# 5J1Cf/iV0NRwe4EJiRm62VF56TJcl050HunKtVisgFOuT6qWLbceKL5/+PAumag0
+# HrUdw3Vm89qRyNJrwLNtUkgBC1rvcuWvRTSmMukQCPaPG1KoI7eEg79YBQIDAQAB
+# AoGBAIbB0eNHCxFQwQrQYfMwN9WsKGPHlhgu2wuZW/M+7ookV42o2GiaVXi1EMnz
+# tpy/r+pqD+U3xlidljpQPXXINHR4qgX0SdwgqLnItiDhTqwI71X7Hi+JI4LWUkav
+# HZL96OwzIeJKvkZfAkujOj+Ep3BLKmnv6SBkn/t0HUFKGscJAkEA3uhcP30Lri6p
+# VByuPZZlY2IzQ3P5yyTkaPFTNuPWO5RZKls31pZ3Q8VPGjRHD17cF/+RBXfr1ECX
+# xM6BEUw5dwJBANCAAMb4YFS7LZ+6BmBtwwoHHAEGMB7mtU6+O6mo2NBhyz+Y0INt
+# KW1GvOnzCYMQCltv79nEleFtscAVfs27mWMCQCOlJJtCc8u2yn0Y2QQgOLZbzbbL
+# pPZHP/9IF/Z/GJMOdfPAAn3eMdQ0iSG3mmVq1edAhwBI3P1kFuDx5NHPTqECQQCI
+# Bwr6xO7sONYyQEaKwPGfaDYAAQ6CCpi9T+VS8iLKCRN2YXegVybQ8Xas13AcPunS
+# 7/u2wsfaNBvkquF4zezrAkBvCJfeZMr2oiXsw8P3dGkSkGs9BkJetAdtzVn7VjF4
+# Eq/hPY3tgE5GI/V4OPczdJP6hoG1uynU2SKbKMJ2rAJz
+# -----END RSA PRIVATE KEY-----"""
 
 # HERE FORMATING AS shown in:
 # LIST: https://docs.djangoproject.com/en/dev/ref/templates/builtins/#date
@@ -318,6 +318,9 @@ JWT_AUTH = {
 }
 
 REST_USE_JWT = True
+
+# Time interval for OTP
+TIME_OTP = 60
 
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:

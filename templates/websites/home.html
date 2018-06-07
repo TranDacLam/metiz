@@ -178,7 +178,6 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
 </div>
 
 <!-- Show popup when load page -->
-{% if data_ads %}  
     <div class="modal" id="popup_advertise" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
@@ -190,7 +189,7 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                         <div id="jssor_2" >
                             <div data-u="slides" class="jssor_1_slides">
                             {% for item in data_ads  %}  
-                                <div>
+                                <div class="image_home_ads"  >
                                     <a href="{{item.sub_url}}"><img data-u="image" src="{{ MEDIA_URL }}{{item.image}}" /></a>
                                     <img data-u="thumb" src="{{ MEDIA_URL }}{{item.image}}" />
                                 </div>
@@ -203,5 +202,4 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
             </div>
         </div>
     </div>
-{% endif %}
 {% endblock %}

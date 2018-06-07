@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, Http404
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
@@ -47,10 +47,12 @@ def get_booking(request):
                 id_movie_date_active = form.cleaned_data[
                     'id_movie_date_active']
                 print('*******booking******')
+                movie = Movie.objects.get( movie_api_id = movie_api_id )
                 return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_server": id_server,
                                                                  "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
                                                                  "id_movie_date_active": id_movie_date_active,
-                                                                 "movie_api_id": movie_api_id})
+                                                                 "movie_api_id": movie_api_id,
+                                                                 "movie": movie})
             else:
                 return render(request, 'websites/booking.html')
         else:
@@ -61,10 +63,15 @@ def get_booking(request):
             id_movie_name = request.GET.get('id_movie_name', "")
             id_movie_time = request.GET.get('id_movie_time', "")
             id_movie_date_active = request.GET.get('id_movie_date_active', "")
+            movie = Movie.objects.get( movie_api_id = movie_api_id )
             return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_server": id_server,
                                                              "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
                                                              "id_movie_date_active": id_movie_date_active,
-                                                             "movie_api_id": movie_api_id})
+                                                             "movie_api_id": movie_api_id,
+                                                             "movie": movie})
+    except Movie.DoesNotExist, e:
+        print "Error get_booking : %s" % e
+        raise Http404()
     except Exception, e:
         print "Error get_booking : ", e
         raise Exception(

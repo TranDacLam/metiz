@@ -217,6 +217,14 @@ div.seatCharts-seat.available.seat-ld {
 .booking-details .booking-refresh a{
     color: #241d1e;
 } 
+.booking-details #poster{
+    width: 100%;
+    min-height: 130px;
+}
+.booking-details .poster-film{
+    padding-left: 0px;
+    margin-bottom: 10px;
+}
 .booking-refresh a:hover{
     color: #B13026;
     text-decoration: none;
@@ -266,9 +274,28 @@ div.seatCharts-seat.available.seat-ld {
         width: 100%;
     }
 }
+@media only screen and (max-width: 992px){
+    .ajax-loader {
+        top: 20%;
+        height: 270px;
+    }
+    #seat-map {
+        min-height: 350px;
+    }
+}
 @media only screen and (max-width: 768px){
     .booking-details{
         margin-left: 4%;
+    }
+    #seat-map {
+        min-height: 350px;
+    }
+    .ajax-loader {
+        top: 20%;
+        height: 270px;
+    }
+    .booking-details .poster-film{
+        padding-right: 50px;
     }
     div.seatCharts-container{
         border-right: none;

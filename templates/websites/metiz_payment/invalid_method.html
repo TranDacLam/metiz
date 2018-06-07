@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% load i18n %}
+
+{% block title %}Số Tiền Giao Dịch Không Hợp Lệ{% endblock title %} 
+
+{% block container_class %}col1-layout {% endblock %}
+
+{% block extrascript %}
+{% endblock %}
+
+{% block main_content %}
+<div class="main">            
+    <div class="col-main pass-reset-done">
+        <div class="form-forgot-pass">
+            <div class="form-change-pass">
+                <h2>Thông báo</h2>
+                <div class='clearfix'></div>
+                <div class="note-forgot-pass note-pass-reset-done">
+                    <div class="custom-time-out">
+                        <p>Giao dịch không hợp lệ. Xin vui lòng đặt vé lại <a href="#modal-popup" class="back-booking open-popup-link" data-all-movie="true"> tại đây </a>. Cảm ơn!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
