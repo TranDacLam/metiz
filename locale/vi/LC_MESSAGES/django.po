@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 15:20+0700\n"
+"POT-Creation-Date: 2018-06-07 16:12+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,15 +47,13 @@ msgid "Select date play"
 msgstr "Chọn ngày chiếu"
 
 #: templates/modal.html:107 templates/modal.html:160
-#: templates/registration/profile.html:89
-#: templates/registration/signup.html:51
+#: templates/registration/profile.html:89 templates/registration/signup.html:51
 #: templates/registration/signup.html:135 websites/booking/models.py:23
 msgid "Email"
 msgstr ""
 
 #: templates/modal.html:108 templates/modal.html:161
-#: templates/registration/signup.html:52
-#: templates/registration/signup.html:137
+#: templates/registration/signup.html:52 templates/registration/signup.html:137
 msgid "Enter Email Here"
 msgstr "Nhập Email Ở Đây"
 
@@ -80,6 +78,7 @@ msgid "Full Name"
 msgstr "Họ Tên"
 
 #: templates/modal.html:150 templates/registration/signup.html:84
+#: templates/websites/metiz_payment/metiz_payment.html:53
 msgid "Enter Full Name Here"
 msgstr "Nhập Họ Tên Ở Đây"
 
@@ -181,18 +180,15 @@ msgstr ""
 msgid "Metiz Account Password Reset."
 msgstr "Metiz Lấy lại mật khẩu"
 
-#: templates/registration/profile.html:51
-#: templates/registration/signup.html:91
+#: templates/registration/profile.html:51 templates/registration/signup.html:91
 msgid "Gender"
 msgstr "Giới Tính"
 
-#: templates/registration/profile.html:54
-#: templates/registration/signup.html:94
+#: templates/registration/profile.html:54 templates/registration/signup.html:94
 msgid "Male"
 msgstr "Nam"
 
-#: templates/registration/profile.html:55
-#: templates/registration/signup.html:95
+#: templates/registration/profile.html:55 templates/registration/signup.html:95
 msgid "Female"
 msgstr "Nữ"
 
@@ -281,11 +277,11 @@ msgstr "Nhập Lại Mật Khẩu"
 msgid "Enter Address Here"
 msgstr "Nhập Địa Chỉ Ở Đây"
 
-#: templates/websites/booking.html:78
+#: templates/websites/booking.html:83
 msgid "Member Card"
 msgstr "Thẻ Thành Viên"
 
-#: templates/websites/booking.html:79
+#: templates/websites/booking.html:84
 msgid "Enter Member Card Here"
 msgstr "Nhập Thẻ Thành Viên Ở Đây"
 
@@ -336,9 +332,54 @@ msgstr "Số điện thoại"
 msgid "mail.voucher.code"
 msgstr "Mã khuyến mãi của bạn: "
 
+#: templates/websites/metiz_payment/metiz_payment.html:48
+#, fuzzy
+#| msgid "Enter Member Card Here"
+msgid "Enter Card Barcode Here"
+msgstr "Nhập Thẻ Thành Viên Ở Đây"
+
+#: websites/api/actions.py:103 websites/api/views.py:117
+#: websites/api/views.py:156
+#, fuzzy
+#| msgid "Fields barcode is required."
+msgid "Card member is required."
+msgstr "Mã thẻ là bắt buộc."
+
+#: websites/api/actions.py:124 websites/api/views.py:69
+msgid "Call API Unauthorized."
+msgstr ""
+
+#: websites/api/actions.py:131 websites/api/views.py:74
+#, fuzzy
+#| msgid "Handle data error."
+msgid "Call API error."
+msgstr "Xử lý dử liệu bị lỗi."
+
+#: websites/api/actions.py:150 websites/api/views.py:91
+msgid "API connection timeout."
+msgstr ""
+
 #: websites/api/custom_jwt.py:21 websites/api/custom_jwt.py:24
 msgid "Invalid token."
 msgstr ""
+
+#: websites/api/views.py:150
+msgid "User have linked."
+msgstr ""
+
+#: websites/api/views.py:169
+#, fuzzy
+#| msgid "Page Number Not Found."
+msgid "Card member not found."
+msgstr "Mã thẻ không tìm thấy."
+
+#: websites/api/views.py:173
+msgid "Invalid Value."
+msgstr ""
+
+#: websites/api/views.py:183
+msgid "Phone not match."
+msgstr "Số điện thoại không khớp."
 
 #: websites/booking/api.py:31 websites/booking/api.py:70
 #: websites/booking/api.py:99
@@ -348,6 +389,18 @@ msgstr "Xử lý dử liệu bị lỗi."
 #: websites/booking/api.py:73 websites/booking/api.py:102
 msgid "Internal Server Error. Cannot Post Booking."
 msgstr "Máy chủ bị lỗi. Không thể booking."
+
+#: websites/booking/booking_handle.py:15
+msgid "[Metiz] Booking Movie Tickets Successful !"
+msgstr "[Metiz] Đặt Vé Phim Thành Công"
+
+#: websites/booking/booking_handle.py:39
+msgid "[Metiz] Booking Movie Tickets Transaction Error !"
+msgstr "[Metiz] Đặt Vé Phim Bị Lỗi"
+
+#: websites/booking/booking_handle.py:62
+msgid "[Metiz] Warning Payment Amount not Match"
+msgstr ""
 
 #: websites/booking/models.py:20
 msgid "Order ID"
@@ -367,34 +420,42 @@ msgstr "Số Ghế"
 msgid "Description"
 msgstr "Mô Tả"
 
-#: websites/booking/models.py:44
+#: websites/booking/models.py:33
+msgid "Gate Payment"
+msgstr ""
+
+#: websites/booking/models.py:34
+msgid "Card Barcode"
+msgstr ""
+
+#: websites/booking/models.py:47
 msgid "Date Showing"
 msgstr "Ngày Tham Gia"
 
-#: websites/booking/views.py:176 websites/booking/views.py:197
-#: websites/booking/views.py:313 websites/booking/views.py:332
-#: websites/registration/views.py:56 websites/vnpay_payment/views.py:190
+#: websites/booking/views.py:183 websites/booking/views.py:204
+#: websites/booking/views.py:320 websites/booking/views.py:339
+#: websites/core/views.py:548 websites/registration/views.py:56
 msgid "Internal Server Error. Please contact administrator."
 msgstr "Máy chủ bị lỗi. Vui lòng liên hệ quản trị viên."
 
-#: websites/booking/views.py:191
+#: websites/booking/views.py:198
 msgid "Fields id_showtime and id_server is required."
 msgstr "Trường id_showtime và id_server là bắt buộc."
 
-#: websites/booking/views.py:211
+#: websites/booking/views.py:218
 msgid "Fields lst_seats and id_showtime, working_id is required."
 msgstr "trường lst_seats và id_showtime và working_id là bắt buộc."
 
-#: websites/booking/views.py:237
+#: websites/booking/views.py:244
 #, python-format
 msgid "These chairs have been selected : %s"
 msgstr "Những ghế này đã được chọn : %s"
 
-#: websites/booking/views.py:259
+#: websites/booking/views.py:266
 msgid "Cannot Booking Seats. Please Contact Administrator."
 msgstr "Không thể đặt ghế. Vui lòng liên hệ quản trị viên."
 
-#: websites/booking/views.py:321
+#: websites/booking/views.py:328
 msgid "Fields barcode is required."
 msgstr "Trường barcode là bắt buộc."
 
@@ -676,33 +737,33 @@ msgstr ""
 msgid "Home Ads"
 msgstr ""
 
-#: websites/core/views.py:55 websites/core/views.py:100
-#: websites/core/views.py:182 websites/core/views.py:403
+#: websites/core/views.py:56 websites/core/views.py:101
+#: websites/core/views.py:183 websites/core/views.py:404
 msgid "Page Number Not Type Integer."
 msgstr "Số trang không phải là kiểu số."
 
-#: websites/core/views.py:59 websites/core/views.py:104
-#: websites/core/views.py:186 websites/core/views.py:407
+#: websites/core/views.py:60 websites/core/views.py:105
+#: websites/core/views.py:187 websites/core/views.py:408
 msgid "Page Number Not Found."
 msgstr "Số trang không tìm thấy."
 
-#: websites/core/views.py:376
+#: websites/core/views.py:377
 msgid "Send Contact Successfully."
 msgstr "Gửi liên hệ thành công."
 
-#: websites/core/views.py:463
+#: websites/core/views.py:464
 msgid "voucher time out"
 msgstr "Hết thời gian lấy mã"
 
-#: websites/core/views.py:482
+#: websites/core/views.py:483
 msgid "Out of voucher code"
 msgstr "Mã khuyến mãi đã hết"
 
-#: websites/core/views.py:497
+#: websites/core/views.py:498
 msgid "Please login to received voucher"
 msgstr "Vui lòng đăng nhập để nhận mã khuyến mãi"
 
-#: websites/core/views.py:512
+#: websites/core/views.py:513
 msgid "[Metiz] Voucher Code !"
 msgstr "[Metiz] Mã Khuyến Mãi !"
 
@@ -773,18 +834,6 @@ msgstr ""
 
 #: websites/settings.py:136
 msgid "English"
-msgstr ""
-
-#: websites/vnpay_payment/views.py:100
-msgid "[Metiz] Booking Movie Tickets Successful !"
-msgstr "[Metiz] Đặt Vé Phim Thành Công"
-
-#: websites/vnpay_payment/views.py:124
-msgid "[Metiz] Booking Movie Tickets Transaction Error !"
-msgstr "[Metiz] Đặt Vé Phim Bị Lỗi"
-
-#: websites/vnpay_payment/views.py:147
-msgid "[Metiz] Warning Payment Amount not Match"
 msgstr ""
 
 #~ msgid "Fields working_id is required."
