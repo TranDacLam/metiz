@@ -184,6 +184,7 @@ def generate_otp(request):
 
                 # Begin generate otp
                 code_otp = metiz_otp.opt_user()
+                print "### OTP generate ",code_otp
                 if code_otp["code_otp"] == "000000":
                     data_payment["card_error"] = _("System Error. Please Contact Administrator.")
                     return render(request, "websites/metiz_payment/metiz_payment.html", data_payment)

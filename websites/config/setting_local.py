@@ -9,7 +9,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': 3306,
         'USER': 'root',
-        'PASSWORD': 'root'
+        'PASSWORD': ''
     }
 }
 # Default Email Contact
@@ -25,7 +25,7 @@ VNPAY_HASH_SECRET_KEY = 'YTDBTUZONRERICMBLYIRTRTEJDPCZDFK'  # Secret key for cre
 
 # POS Cinestar config
 CINESTAR_SERECT_KEY = '5ba90f1cc2d540edbb01e3ffc85bc7f2'
-BASE_URL_CINESTAR = 'http://172.16.12.13:8080/helio.asmx'
+BASE_URL_CINESTAR = 'http://172.16.12.13:8080/Helio.asmx'
 
 # SMS Config
 SMS_BRAND = "MetizCinema"
@@ -42,9 +42,13 @@ RECAPTCHA_PRIVATE_KEY = '6LfP2zoUAAAAACZmN3tAOOVCCE0U5BZeCtpTRAki'
 
 MOVIE_ID_TEST = 'd8147d70-ee34-4a44-af46-36956f636fa9'
 
-
 # POS API config
 AUTH_PREFIX = "Bearer "
 BASE_URL_POS_API = "http://127.0.0.1:8009/api/"
 POS_API_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRpZW1uZ3V5ZW5Adm9vYy52biIsIm9yaWdfaWF0IjoxNTI4MTY5NjU5LCJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRpZW1uZ3V5ZW5Adm9vYy52biIsImV4cCI6MTUyODE2OTk1OX0.lA1TK_OAQSMN-wpXK4ej0lCchbEC8eqNZaHswFrvsTo"
 POS_API_AUTH_HEADER = AUTH_PREFIX + POS_API_TOKEN
+
+HELIO_API_DMZ_URL = "http://localhost:9000"
+DMZ_API_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQHZvb2Mudm4iLCJvcmlnX2lhdCI6MTUyNzA2NzYyMCwidXNlcl9pZCI6MSwiZW1haWwiOiJhZG1pbkB2b29jLnZuIiwiZXhwIjoxNTI3MDY3OTIwfQ.uRt_Qr-HbktkmvUqCkvh2gOYcW5HJ5vFHQGJogvakGw"
+
+TIME_SEAT_DELAY = 5
