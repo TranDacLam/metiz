@@ -13,19 +13,19 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="main">
+<div class="main metiz_payment">
     <div class="page-title">
         <h1>Thanh Toán</h1>
     </div>
 
-    <div class="notes col-xs-12">
-        <p>Lưu ý: Thời gian giao dịch cho phép tối đa là 10 phút. Hết thời gian quy định giao dịch này sẽ bị huỹ.</p>
+    <div class="notes">
+        <p><strong>Lưu ý</strong>: Thời gian giao dịch cho phép tối đa là 10 phút. Hết thời gian quy định giao dịch này sẽ bị huỹ.</p>
     </div>
         
     <form action="{% url 'payment-generate-otp' %}" id="metiz_payment_form" method="post">
         {% csrf_token %}
 
-        <div class="metiz-payment-form col-xs-12">
+        <div class="metiz-payment-form col-xs-12 col-md-7">
             <h3>Thanh toán qua thẻ {% if payment_gate == "Metiz_Payment_Card" %} Metiz {% else %} Helio {% endif %}</h3>
             <!-- get id_server -->
             <input type="hidden" id="payment_gate" name="payment_gate" value="{{payment_gate}}" />
@@ -53,14 +53,14 @@
                 <input type="text" name="full_name" id="full_name" class="form-control" placeholder="{% trans 'Enter Full Name Here' %}">
                 <label class="form-error" for="full_name" id='name-error'></label>
             </div>
-            
-        </div>
-        {% if card_error %}
-            <p>{{card_error}}</p>
-        {% endif %}
-        <button class="btn btn-default" id="btn-payment-continute">XÁC THỰC</button>
-        <button class="btn btn-default" id="btn-payment-cancel">HUỶ</button>
+            {% if card_error %}
+                <p class="msg_error">{{card_error}}</p>
+            {% endif %}
 
+            <p><button class="btn" id="btn-payment-continute">XÁC THỰC</button></p>
+            <p class="or_center-button"><span>Hoặc</span></p>
+            <p><button class="btn" id="btn-payment-cancel">HUỶ</button></p>
+        </div>
     </form>
 </div>
 
