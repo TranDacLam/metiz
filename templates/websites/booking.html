@@ -35,9 +35,9 @@
                 <input type="hidden" name="id_showtime" id="id_showtime" value="{{id_showtime}}">
                 <!-- get id movie api -->
                 <input type="hidden" name="movie_api_id" id="movie_api_id" value="{{movie_api_id}}">
-                {% if movie.poster %}
+                {% if poster %}
                 <div class="poster-film row col-md-12">
-                    <img id="poster" src="{{ MEDIA_URL }}{{movie.poster}}" alt="{{ id_movie_name }}">
+                    <img id="poster" src="{{ MEDIA_URL }}{{poster}}" alt="{{ id_movie_name }}">
                 </div>
                 {% endif %}
                 <p>Phim: <span class="name-movie-booking"> {{ id_movie_name }}</span></p>
