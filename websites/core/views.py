@@ -40,11 +40,11 @@ def showing(request):
         page_items = request.GET.get('page_items', 12)
         page_number = request.GET.get('page', 1)
 
-        movie_showings = Movie.objects.filter(Q(end_date__isnull=True) | Q(end_date__gte=datetime.now()), release_date__lte=datetime.now(), is_draft=False).order_by('priority').extra(
+        movie_showings = Movie.objects.filter(Q(end_date__isnull=True) | Q(end_date__gte=datetime.now()), release_date__lte=datetime.now(), is_draft=False).extra(
             select={'priority_null': 'priority is null'})
 
         list_data_showing = movie_showings.extra(
-            order_by=['priority_null', '-release_date', 'name'])
+            order_by=['priority_null', 'priority', '-release_date', 'name'])
 
         # Pagination QuerySet With Defalt Page is 12 Items
 
@@ -276,12 +276,11 @@ def home(request):
             *Note: in alogilm query movie add extra field priority_null and append priority is null to end list
         """
         movie_showings = Movie.objects.filter(Q(end_date__isnull=True) | Q(end_date__gte=datetime.now()),
-                                              release_date__lte=datetime.now(), is_draft=False).order_by('priority').extra(
+                                              release_date__lte=datetime.now(), is_draft=False).extra(
             select={'priority_null': 'priority is null'})
 
         list_showing = movie_showings.extra(
             order_by=['priority_null', 'priority', '-release_date', 'name'])
-
         """ 
             Comming Soon Follow Condition:
             - get movie with release date greater than current day

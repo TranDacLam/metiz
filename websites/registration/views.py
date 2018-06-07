@@ -293,7 +293,20 @@ def resend_activation(request):
 @login_required(login_url='/login/')
 def info_member_card(request):
     try:
-        return render(request, 'registration/info_member_card.html')
+        user = request.user
+        # Get link card by user
+        linkcard = LinkCard.objects.filter(user=user)
+        # if user in link then get first linked
+        card_member = linkcard.first().card_member if linkcard else ''
+
+        results = {}
+
+        if card_member:
+            # Call action get data response
+            responses = actions.get_card_member_infomation_data(card_member)
+            results = responses['results']
+
+        return render(request, 'registration/info_member_card.html', {"card_info": results})
     except Exception, e:
         print "error", e
         raise Exception(
