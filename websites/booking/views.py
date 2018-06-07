@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
+from django.db.models import Q
 from django.http import HttpResponse, JsonResponse, Http404
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
-from booking.models import MovieSync, BookingInfomation
+from booking.models import BookingInfomation
 from booking.forms import BookingForm
 from booking import api
 import json
@@ -138,21 +139,18 @@ def get_movie_show_time(request):
         date = request.GET.get('date', current_date.date())
         # cinema_id is equal id_server
         cinema_id = request.GET.get('cinema_id', 1)
-        # movie_api_id = request.GET.get('movie_api_id', None)
+        movie_api_id = request.GET.get('movie_api_id', None)
 
         result = {}
-        data_movie = MovieSync.objects.filter(
-            name="showtime_current", date_show=date, cinema_id=cinema_id)
-
+        
+        # call api to server king_pos get movie by date
+        show_times = api.get_show_times(date)
         """ Check query set and get first item """
-        if data_movie:
+        if show_times:
             # Validate convert data to json
             try:
-                show_string = json.loads(data_movie[0].data)
-                show_times = ast.literal_eval(show_string)
-
                 # get all movies
-                movies_info = Movie.objects.filter(end_date__gte=date)
+                movies_info = Movie.objects.filter(Q(end_date__gte=date) | Q(end_date__isnull=True))
             except ValueError as e:
                 print "Error get_movie_show_time convert json : %s" % e
                 return JsonResponse({})
@@ -161,20 +159,20 @@ def get_movie_show_time(request):
             # showing
             # get movie object if movie_api_id not empty
             obj_movie = None
-            # if movie_api_id:
-            #     obj_movie = movies_info.filter(
-            #         movie_api_id=movie_api_id.strip())
+            if movie_api_id:
+                obj_movie = movies_info.filter(
+                    movie_api_id=movie_api_id.strip())
 
             for item in show_times["List"]:
                 # Get Showtime movie by id
-                # if movie_api_id:
-                #     # Get Movie Name by movie api id
-                #     if item["MOVIE_ID"].strip() == movie_api_id.strip():
-                #         build_show_time_json(
-                #             current_date, item, result, movies_info, obj_movie)
-                # else:
-                build_show_time_json(
-                    current_date, item, result, movies_info)
+                if movie_api_id:
+                    # Get Movie Name by movie api id
+                    if item["MOVIE_ID"].strip() == movie_api_id.strip():
+                        build_show_time_json(
+                            current_date, item, result, movies_info, obj_movie)
+                else:
+                    build_show_time_json(
+                        current_date, item, result, movies_info)
 
         return JsonResponse(result)
 
