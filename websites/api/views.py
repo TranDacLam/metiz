@@ -38,3 +38,108 @@ def get_booking_info_report(request):
         print "Error booking_info_report : %s ", traceback.format_exc()
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
+
+
+"""
+    Get gift claiming points
+"""
+
+
+@api_view(['GET'])
+def get_gift_claiming_points(request):
+    print "Get gift claiming points"
+    try:
+        headers = {
+            'Authorization': settings.POS_API_AUTH_HEADER
+        }
+        gift_claiming_points_api_url = '{}gift/claiming_points/'.format(
+            settings.BASE_URL_POS_API)
+
+        # Call POS get card member infomation
+        response = requests.get(gift_claiming_points_api_url, headers=headers)
+
+        if response.status_code == 401:
+            print "POS reponse status code 401", response.text
+            error = {"code": 500, "message": _(
+                "Call API Unauthorized."), "fields": ""}
+            return Response(error, status=500)
+        if response.status_code != 200 and response.status_code != 400:
+            print "POS reponse status code not 200", response.text
+            error = {"code": 500, "message": _(
+                "Call API error."), "fields": ""}
+            return Response(error, status=500)
+
+        # Get data from pos api reponse
+        result = response.json()
+
+        # Translate error message when code is 400
+        if response.status_code == 400:
+            result["message"] = _(result["message"])
+            return Response(result, status=response.status_code)
+
+        # Call success
+        return Response(result, status=200)
+
+    except requests.Timeout:
+        print "Request POS time out "
+        error = {"code": 500, "message": _(
+                "API connection timeout."), "fields": ""}
+        return Response(error, status=500)
+
+    except Exception, e:
+        print('get_gift_claiming_points: %s', traceback.format_exc())
+        error = {"code": 500, "message": "%s" % e, "fields": ""}
+        return Response(error, status=500)
+
+
+"""
+    Get Card member information
+"""
+
+
+@api_view(['GET'])
+def get_card_member_infomation(request):
+    print "Get Card member information"
+    try:
+        headers = {
+            'Authorization': settings.POS_API_AUTH_HEADER
+        }
+        gift_claiming_points_api_url = '{}card_member/information/'.format(
+            settings.BASE_URL_POS_API)
+
+        # Call POS get card member infomation
+        response = requests.get(gift_claiming_points_api_url, headers=headers)
+
+        if response.status_code == 401:
+            print "POS reponse status code 401", response.text
+            error = {"code": 500, "message": _(
+                "Call API Unauthorized."), "fields": ""}
+            return Response(error, status=500)
+        if response.status_code != 200 and response.status_code != 400:
+            print "POS reponse status code not 200", response.text
+            error = {"code": 500, "message": _(
+                "Call API error."), "fields": ""}
+            return Response(error, status=500)
+
+        # Get data from pos api reponse
+        result = response.json()
+
+        # Translate error message when code is 400
+        if response.status_code == 400:
+            result["message"] = _(result["message"])
+            return Response(result, status=response.status_code)
+
+        # Call success
+        return Response(result, status=200)
+
+    except requests.Timeout:
+        print "Request POS time out "
+        error = {"code": 500, "message": _(
+                "API connection timeout."), "fields": ""}
+        return Response(error, status=500)
+
+    except Exception, e:
+        print('get_card_member_infomation: %s', traceback.format_exc())
+        error = {"code": 500, "message": "%s" % e, "fields": ""}
+        return Response(error, status=500)
+

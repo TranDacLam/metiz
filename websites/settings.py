@@ -307,6 +307,8 @@ REST_FRAMEWORK = {
     'UNICODE_JSON': True
 }
 
+AUTH_PREFIX = "Bearer "
+
 JWT_AUTH = {
     # 'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=1700),
     'JWT_VERIFY': True,
