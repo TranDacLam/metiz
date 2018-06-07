@@ -97,36 +97,6 @@ def get_gift_claiming_points(request):
         return Response(error, status=500)
 
 
-"""
-    Get Card member information
-"""
-
-
-@api_view(['GET'])
-def get_card_member_infomation(request):
-    print "Get Card member information"
-    try:
-        user = request.user
-        # Get link card by user
-        linkcard = LinkCard.objects.filter(user=user)
-        # if user in link then get first linked
-        card_member = linkcard.first().card_member if linkcard else ''
-
-        if not card_member:
-            error = {"code": 400, "message": _(
-                "Card member is required."), "fields": "card_member"}
-            return Response(error, status=400)
-
-        # Call action get data response
-        responses = actions.get_card_member_infomation_data(card_member)
-
-        # Return data with json
-        return JsonResponse(responses['results'], status=responses["status"])
-
-    except Exception, e:
-        print('get_card_member_infomation: %s', traceback.format_exc())
-        error = {"code": 500, "message": "%s" % e, "fields": ""}
-        return Response(error, status=500)
 
 """
     Get Card member information
