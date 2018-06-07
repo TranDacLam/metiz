@@ -5,7 +5,7 @@
 
 {% block extrastylesheet %}
  <!-- Payment and payment_return -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/metiz_verify.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/metiz_payment.css" media="all" />
 {% endblock %}
 
 {% block extrascript %}
@@ -13,12 +13,12 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="main">
+<div class="main metiz_verify">
+    <div class="page-title">
+        <h1>Thanh Toán</h1>
+    </div>
     <form action="{% url 'payment-verify-otp' %}" id="metiz_payment_verify_otp_form" method="post">
         {% csrf_token %}
-        <div class="page-title">
-            <h1>Thanh Toán</h1>
-        </div>
 
         <div class="metiz-payment-form col-xs-12">
             <h3>Thanh toán qua thẻ {% if payment_gate == "Metiz_Payment_Card" %} Metiz {% else %} Helio {% endif %}</h3>
@@ -41,27 +41,26 @@
             <input type="hidden" id="full_name" name="full_name" value="{{ full_name }}">
             
 
-            <div class="form-group">
-                <p>Nội dung thanh toán <span class="payment_content_type"> Mua vé xem phim</span></p>
-                <p>Số Tiền <span class="payment_amount">{{amount}}</span></p>
-                <p>Số điện thoại nhận mã OTP <span class="time-movie-booking">{{ phone_hide }}</span></p>
+            <div class="form-group info_metiz_verify">
+                <p><label>Nội dung thanh toán</label> <span class="payment_content_type"> Mua vé xem phim</span></p>
+                <p><label>Số Tiền</label> <span class="payment_amount"> {{amount}}</span></p>
+                <p><label>Số điện thoại nhận mã OTP</label> <span class="time-movie-booking"> {{ phone_hide }}</span></p>
                 <p>Mã xác nhận (OTP) đã được gởi đến điện thoại của quý khách!</p>
             </div>
             
-            <div class="form-group">
+            <div class="form-group input_metiz_verify">
                 <input type="text" name="code_otp" id="code_otp" class="form-control">
                 <label class="form-code_otp" for="code_otp" id='code_otp_error'></label>
             </div>
-            
+            {% if error_otp %}
+                <p class="msg_error">{{error_otp}}</p>
+            {% endif %}
+            <div class="btn-metiz-verify">
+                <button class="btn" id="btn-payment-r">GỞI LẠI MÃ OTP</button>
+                <button type="submit" class="btn" id="btn-payment-continute">XÁC THỰC</button>
+                <button class="btn" id="btn-payment-cancel">HUỶ</button>
+            </div>
         </div>
-        
-        {% if error_otp %}
-            <p>{{error_otp}}</p>
-        {% endif %}
-        <button class="btn btn-default" id="btn-payment-r">GỞI LẠI MÃ OTP</button>
-        <button type="submit" class="btn btn-default" id="btn-payment-continute">XÁC THỰC</button>
-        <button class="btn btn-default" id="btn-payment-cancel">HUỶ</button>
-
     </form>
 </div>
 
