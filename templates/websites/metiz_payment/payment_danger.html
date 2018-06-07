@@ -3,20 +3,20 @@
 {% load modal_data_tags %}
 {% block title %}Phương Thức Thanh Toán{% endblock title %}
 
+{% block extrastylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/metiz_payment.css" media="all" />
+{% endblock %}
+
 {% block container_class %}col1-layout {% endblock %}
 
 {% block main_content %}
-<div class="main">            
-    <div class="col-main pass-reset-done">
-        <div class="form-forgot-pass">
-            <div class="form-change-pass">
-                <h2>Thông báo</h2>
-                <div class='clearfix'></div>
-                <div class="note-forgot-pass note-pass-reset-done">
-                    <div class="custom-time-out">
-                        <p><p><strong>Huỷ Giao Dịch.</strong> Giao dịch bị nghi ngờ giả mạo.</p></p>
-                    </div>
-                </div>
+<div class="main payment_danger">            
+    <div class="col-main">
+        <div class="metiz_payment_panel">
+            <h2>Thông báo</h2>
+            <div class='clearfix'></div>
+            <div class="note_metiz_payment">
+                <p><strong>Huỷ Giao Dịch.</strong> Giao dịch bị nghi ngờ giả mạo.</p>
             </div>
         </div>
     </div>
