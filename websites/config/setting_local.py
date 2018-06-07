@@ -9,7 +9,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': 3306,
         'USER': 'root',
-        'PASSWORD': 'root'
+        'PASSWORD': ''
     }
 }
 # Default Email Contact
@@ -24,8 +24,8 @@ VNPAY_TMN_CODE = 'HELIOKP1'  # Website ID in VNPAY System, get from config
 VNPAY_HASH_SECRET_KEY = 'YTDBTUZONRERICMBLYIRTRTEJDPCZDFK'  # Secret key for create checksum,get from config
 
 # POS Cinestar config
-CINESTAR_SERECT_KEY = 'df733de5b7394530835a2d61ce20e220'
-BASE_URL_CINESTAR = 'http://kingproserver.ddns.net:8085/demo.asmx'
+CINESTAR_SERECT_KEY = '5ba90f1cc2d540edbb01e3ffc85bc7f2'
+BASE_URL_CINESTAR = 'http://172.16.12.13:8080/Helio.asmx'
 
 # SMS Config
 SMS_BRAND = "MetizCinema"
@@ -41,3 +41,8 @@ RECAPTCHA_PUBLIC_KEY = '6LfP2zoUAAAAAGhMBQuEguqc6ZV7JHIUdGuOGFJ0'
 RECAPTCHA_PRIVATE_KEY = '6LfP2zoUAAAAACZmN3tAOOVCCE0U5BZeCtpTRAki'
 
 MOVIE_ID_TEST = 'd8147d70-ee34-4a44-af46-36956f636fa9'
+
+HELIO_API_DMZ_URL = "http://localhost:9000"
+DMZ_API_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQHZvb2Mudm4iLCJvcmlnX2lhdCI6MTUyNzA2NzYyMCwidXNlcl9pZCI6MSwiZW1haWwiOiJhZG1pbkB2b29jLnZuIiwiZXhwIjoxNTI3MDY3OTIwfQ.uRt_Qr-HbktkmvUqCkvh2gOYcW5HJ5vFHQGJogvakGw"
+
+TIME_SEAT_DELAY = 5
