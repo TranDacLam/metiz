@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import render, redirect
 from django.conf import settings
 from decimal import Decimal, ROUND_HALF_UP
@@ -11,7 +12,7 @@ from core import metiz_util, metiz_sms
 from forms import MetizOTPForm
 from booking import api, booking_handle
 from booking.models import BookingInfomation
-
+import msg_global
 
 """
     Author : TienDang
@@ -97,12 +98,15 @@ def metiz_payment_methods(request):
                                 """%(data_json["id_movie_name"], data_json["id_movie_time"], data_json["id_movie_date_active"], data_json["seats"])
         return render(request, "websites/metiz_payment/metiz_payment.html", data_json)
 
+
+"""
+    Author: TienDang
+"""
 def check_amount_and_timeout(movies_session, working_id, result):
     try:
         # Verify Session Booking Timeout before process otp
         print "movies_session ",movies_session
         if not movies_session or (movies_session and working_id not in movies_session):
-            print "### DEBUG 1"
             return redirect("time-out-booking")
 
         total_payment_store = movies_session[working_id]["total_money"]
@@ -115,16 +119,16 @@ def check_amount_and_timeout(movies_session, working_id, result):
         result['total_payment_store'] = total_payment_store
         # Verify Money Booking
         if int(amount) < int(total_payment_store):
-            print "### MONEY "
             return redirect("invalid-booking")
 
         return True
     except (KeyError, TypeError), e:
-        print "### DEBUG 2"
         return redirect("time-out-booking")
 
 
-
+"""
+    Author: TienDang
+"""
 def generate_otp(request):
     """ 
         Action Generate OTP for User using Metiz or Helio Payment Card 
@@ -134,7 +138,6 @@ def generate_otp(request):
         
     """
     try:
-        print "request.POST ",request.POST
         working_id = request.POST.get("working_id", None)
         movies_session = request.session.get("movies", "")
         # set output variable for funtion check working_id
@@ -144,7 +147,7 @@ def generate_otp(request):
 
         result_check = check_amount_and_timeout(movies_session, working_id, money_store_dict)
 
-        print "#### AMOUNT ",money_store_dict
+        
         if not money_store_dict["amount_ticket"]:
             return result_check
 
@@ -152,7 +155,7 @@ def generate_otp(request):
         form_otp = MetizOTPForm(request.POST)
         # init data cache for page
         data_payment = request.POST.dict()
-        print "### OTP FORM ",form_otp.is_valid()
+        
         if form_otp.is_valid():
             card_barcode = form_otp.cleaned_data["card_barcode"]
 
@@ -182,20 +185,21 @@ def generate_otp(request):
                 # Begin generate otp
                 code_otp = metiz_otp.opt_user()
                 if code_otp["code_otp"] == "000000":
-                    data_payment["card_error"] = "System API Error. Please Contact Administrator."
+                    data_payment["card_error"] = _("System Error. Please Contact Administrator.")
                     return render(request, "websites/metiz_payment/metiz_payment.html", data_payment)
 
                 request.session["movies"][working_id]['secret_key_otp'] = code_otp["secret_key_otp"]
-                print "### OTP FOR USER ",code_otp
-                print "cap nhat session ",request.session["movies"][working_id]
-
+                request.session["movies"][working_id]['phone_send_otp'] = phone_number
+                
+                
                 # Begin send SMS OTP for User
-                sms_otp = """Quy khach dang thuc hien giao dich mua ve tai Metiz Cinema voi so tien la: %s. Ma xac nhan : %s""" %(money_store_dict["amount_ticket"], str(code_otp["code_otp"]))
+                sms_otp = msg_global.MSG_SMS_OTP%(money_store_dict["amount_ticket"], str(code_otp["code_otp"]))
                 metiz_sms.send_sms(phone_number, sms_otp)
 
                 # hidden phone suggest for user
                 phone_hide = phone_number[:3] + 'xxxx' + phone_number[-3:]
                 data_payment['phone_hide'] = phone_hide
+                data_payment['amount'] = money_store_dict["amount_ticket"] + money_store_dict["amount_fb"]
                 return render(request, "websites/metiz_payment/payment_verify.html", data_payment)
             except urllib2.HTTPError, e:
                 
@@ -206,12 +210,12 @@ def generate_otp(request):
                 return render(request, "websites/metiz_payment/metiz_payment.html", data_payment)
             except ValueError as e:
                 print "Errors Parse Json Verify Card : ", e
-                data_payment["card_error"] = "System API Error. Please Contact Administrator."
+                data_payment["card_error"] = _("System Error. Please Contact Administrator.")
                 return render(request, "websites/metiz_payment/metiz_payment.html", data_payment)
             
         else:
             if 'card_barcode' in form_otp.errors:
-                data_payment["card_error"] = "Card Barcode is required and must be number."
+                data_payment["card_error"] = _("Card Barcode is required and must be number.")
                 return render(request, "websites/metiz_payment/metiz_payment.html", data_payment)
 
             return render(request, "websites/metiz_payment/payment_danger.html")
@@ -221,12 +225,15 @@ def generate_otp(request):
         print traceback.format_exc()
         print "Errors generate_otp : ", e
         error = {
-            "code": 500, "message": "System API Error. Please Contact Administrator."
+            "code": 500, "message": _("System Error. Please Contact Administrator.")
         }
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
 
 
+"""
+    Author: TienDang
+"""
 def verify_otp_for_user(request):
     """ 
         Action Generate OTP for User using Metiz or Helio Payment Card 
@@ -236,7 +243,6 @@ def verify_otp_for_user(request):
 
     """
     try:
-        print "request.POST ",request.POST
         code_otp = request.POST.get("code_otp", None)
         # Append data for form using detect request hacking
         form_otp = MetizOTPForm(request.POST)
@@ -259,12 +265,11 @@ def verify_otp_for_user(request):
 
         amount = money_store_dict["amount_ticket"]
         
-        print "### OTP FORM ",form_otp.is_valid()
         if form_otp.is_valid():
             # Verify OTP
             secret_key_otp = movies_session[working_id]["secret_key_otp"]
             result_verify_otp =  metiz_otp.verify_otp_user(secret_key_otp, str(code_otp))
-            print "result_verify_otp ",result_verify_otp
+            
             if not result_verify_otp['status']:
                 data_payment['error_otp'] = result_verify_otp['message']
                 return render(request, "websites/metiz_payment/payment_verify.html", data_payment)
@@ -351,3 +356,33 @@ def verify_otp_for_user(request):
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
 
+
+"""
+    Author: TienDang
+    Description: Action re-generate otp and reSend OTP for user
+"""
+def resend_otp(request):
+    try:
+        working_id = request.POST.get("working_id", None)
+        
+        movies_session = request.session.get("movies", "")
+        # Verify Session Booking Timeout before process otp
+        if not movies_session or (movies_session and working_id not in movies_session):
+            return JsonResponse({"code": 403, "message":_("Transaction Timeout")}, status=400)
+
+        code_otp_resend = metiz_otp.opt_user()
+        if code_otp_resend["code_otp"] == "000000":
+            return JsonResponse({"code": 400, "message":_("Cannot reSend OTP. Please contact administrator.")}, status=400)
+
+
+        request.session["movies"][working_id]['secret_key_otp'] = code_otp_resend["secret_key_otp"]
+        phone_number = request.session["movies"][working_id]["phone_send_otp"]
+
+        # Begin reSend OTP for User
+        sms_otp = msg_global.MSG_SMS_OTP%(request.session["movies"][working_id]['total_money'], str(code_otp_resend["code_otp"]))
+        metiz_sms.send_sms(phone_number, sms_otp)
+
+        return JsonResponse({"code": 200, "message": _("reSend OTP Success.")}, status=500)
+    except Exception,e:
+        print "Error resend_otp : %s" % e
+        return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
