@@ -28,12 +28,44 @@
 .metiz-movies .product-cate{
 	font-size: 13px;
 }
+/*image priority*/
+.film-lists .priority.position-1{
+    background: url(../images/ribbon-film-final.png) no-repeat scroll 0px 0px transparent;
+}
+.film-lists .priority.position-2{
+    background: url(../images/ribbon-film-final.png) no-repeat scroll 50% 0px transparent;
+} 
+.film-lists .priority.position-3{
+    background: url(../images/ribbon-film-final.png) no-repeat scroll 104% 0px transparent;
+}
+.film-lists .priority.position-1, 
+.film-lists .priority.position-2, 
+.film-lists .priority.position-3{
+    position: absolute;
+    right: -10%;
+    top: -17px;
+    height: 65px;
+    width: 18%;
+    background-size: 298%;
+}
+@media screen and (max-width: 768px) {
+	/*Responsive poster film*/
+	.products-grid--max-4-col > li.film-lists {
+	    width: 29%;
+	    margin-right: 4%;
+	}
+}
 @media screen and (max-width: 736px) {
 	.category-now-showing .page-title h1{
 		font-size: 25px;
 	}
 }
 @media screen and (max-width: 420px) {
+	/*Responsive poster film*/
+	.products-grid--max-4-col > li.film-lists {
+	    width: 46%;
+	    margin-right: 4%;
+	}
  	.add-to-links .button{
 		padding: 2px 5px 2px 5px;
 		border-radius: 15px;

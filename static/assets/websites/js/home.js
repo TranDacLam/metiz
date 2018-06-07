@@ -79,12 +79,12 @@ $(document).ready(function() {
                 },
                 421: {
                     autoWidth: true,
-                    margin: 5,
+                    margin: 20,
                     loop: total_item > 2 ? true : false,
                 },
                 767: {
                     items: 3,
-                    margin: 5,
+                    margin: 20,
                     loop: total_item > 3 ? true : false,
                 },
                 992: {

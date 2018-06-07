@@ -80,6 +80,9 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                         <ul class="feature_slide_show owl-carousel">
                             {% for item in list_showing %}
                                 <li class="poster-film film-lists item">
+                                    {% if item.priority %}
+                                        <div class="priority position-{{item.priority}}"></div>
+                                    {% endif %}
                                     <img class="product-img" src="{{ MEDIA_URL }}{{item.poster}}" alt="{{item.name}}" />
                                     <div class="info-movie-home">
                                         <h3>
