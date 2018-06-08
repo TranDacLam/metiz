@@ -24,19 +24,21 @@
             <div class="page-title">
                 <h1>THÔNG TIN THẺ THÀNH VIÊN</h1>
             </div>
+            {% if not card_info %}
             <div class="row info-mc-1">
                 <div class="col-md-12">
                     <p class="mc-1-des-1">Thông báo: Bạn chưa đăng ký thẻ thành viên hoặc đã có thẻ thanh viên nhưng chưa liên kết với tài khoản.</p>
                     <p class="mc-1-des-2">Nếu bạn đã có thẻ thành viên, vui lòng nhập vàp mã số thẻ và liên kết với tài khoản để có thể xem và chỉnh sửa thông tin cá nhân.</p>
-                    <form action="" method="POST" class="form-inline">
+                    <form action="" method="POST" class="form-inline" id="form-member-card">
                         <div class="form-group">
                             <label>Mã số Thẻ:</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="card_member">
                         </div>
-                        <button type="submit" class="btn">LIÊN KẾT TÀI KHOẢN</button>
+                        <button id="btn-link-card" class="btn">LIÊN KẾT TÀI KHOẢN</button>
                     </form>
                 </div>
             </div>
+            {% else %}
             <div class="row info-mc-2">
                 <div class="col-md-12 mc-2-des">
                     <p><label>Mã thẻ: </label><div id="barcode-member-card"></div> 
@@ -67,6 +69,7 @@
                     </table>
                 </div>
             </div>
+            {% endif %}
         </div>
         <div class="col-left sidebar"></div>
     </div>
