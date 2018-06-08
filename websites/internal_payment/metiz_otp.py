@@ -30,17 +30,17 @@ def verify_otp_user(secret_key_otp, code_otp):
         code_generate = totp.at(datetime.datetime.now())
 
         # Check otp input macthing with otp generate
-        print "secret_key_otp ",secret_key_otp
-        print "code_generate OTP ",code_generate
-        if str(code_generate) != code_otp:
-            result["message"] = "OTP wrong."
-            return result
+        # print "secret_key_otp ",secret_key_otp
+        # print "code_generate OTP ",code_generate
+        # if str(code_generate) != code_otp:
+        #     result["message"] = "OTP wrong."
+        #     return result
         
         # verify OTP check time expired
         verify_time_otp = totp.verify(code_otp, datetime.datetime.now())
-
+        print "### Verify OTP Timeout"
         if not verify_time_otp:
-            result["message"] = "OTP expired."
+            result["message"] = "OTP wrong or expired."
         
         result["status"] = verify_time_otp
         return result
