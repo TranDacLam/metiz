@@ -1,9 +1,36 @@
 $(document).ready(function() {
-    $('#btn-reSend-otp').prop('disabled', true);
+
+    function checkOtpReSend(){
+        if(sessionStorage.getItem('number_verify')){
+            // get number_verify from sessionStorage
+            var number_verify = parseInt(sessionStorage.getItem('number_verify'));
+            // if number_verify > 3 then undisabled else disabled button reSend otp
+            if(number_verify > 3){
+                $('#btn-reSend-otp').prop('disabled', false);
+            }else{
+                $('#btn-reSend-otp').prop('disabled', true);
+            }
+        }else{
+            // set number_verify = 1, disable button reSend otp
+            sessionStorage.setItem('number_verify', 1);
+            $('#btn-reSend-otp').prop('disabled', true);
+        }
+    }
+
+    checkOtpReSend();
+
+    // Event click, + 1 number_verify
+    $('#btn-payment-continute').click(function(e){
+        var number_verify_event = parseInt(sessionStorage.getItem('number_verify'));
+        number_verify_event += 1;
+        sessionStorage.setItem('number_verify', number_verify_event);
+    });
+
     $('#btn-reSend-otp').click(function(e){
-        console.log("CLICK ReSend", );
-        
         e.preventDefault();
+
+        // set number_verify = 1, disable button reSend otp
+        sessionStorage.setItem('number_verify', 1);
         
         var working_id = $("#working_id").val();
         
@@ -17,12 +44,10 @@ $(document).ready(function() {
         })
         .done(function(response) {
             $('#btn-reSend-otp').prop('disabled', true);
+            number_verify = 0;
             
         })
         .fail(function(response) {
-
-            console.log("response ",response);
-            console.log("response ",response.responseJSON.message);
             if(response.responseJSON.code == 403){
                 window.location.href = '/timeout/booking/';
             }
