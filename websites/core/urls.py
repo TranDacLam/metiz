@@ -8,6 +8,7 @@ urlpatterns = [
 	url(r'^comingsoon/$', views.coming_soon, name='comingsoon'),
 	url(r'^film/detail/(?P<id>\d+)/$', views.film_detail, name='film_detail'),
 	url(r'^news/$', views.news, name='news'),
+    url(r'^news/(?P<apply_for>\w+)/$', views.news, name='news_apply_for'),
     url(r'^new/detail/(?P<id>\d+)/$', views.new_detail, name='new_detail'),
     url(r'^cinema/technology/(?P<name>[-\w]+)/$', views.technology_detail, name='technology_detail'),
     url(r'^technology/$', views.get_technology, name='get_technology'),

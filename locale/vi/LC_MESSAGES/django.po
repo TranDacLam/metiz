@@ -333,14 +333,10 @@ msgid "mail.voucher.code"
 msgstr "Mã khuyến mãi của bạn: "
 
 #: templates/websites/metiz_payment/metiz_payment.html:48
-#, fuzzy
-#| msgid "Enter Member Card Here"
 msgid "Enter Card Barcode Here"
-msgstr "Nhập Thẻ Thành Viên Ở Đây"
+msgstr "Nhập Mã Thẻ Ở Đây"
 
 #: websites/api/actions.py:103 websites/api/views.py:119
-#, fuzzy
-#| msgid "Fields barcode is required."
 msgid "Card member is required."
 msgstr "Mã thẻ là bắt buộc."
 
@@ -349,8 +345,6 @@ msgid "Call API Unauthorized."
 msgstr ""
 
 #: websites/api/actions.py:131 websites/api/views.py:74
-#, fuzzy
-#| msgid "Handle data error."
 msgid "Call API error."
 msgstr "Xử lý dử liệu bị lỗi."
 
@@ -371,8 +365,6 @@ msgid "User have linked."
 msgstr "Tài khoản đã được liên kết."
 
 #: websites/api/views.py:145
-#, fuzzy
-#| msgid "Page Number Not Found."
 msgid "Card member not found."
 msgstr "Mã thẻ không tìm thấy."
 
@@ -705,8 +697,6 @@ msgid "Blog Film"
 msgstr "Blog Phim"
 
 #: websites/core/models.py:278
-#, fuzzy
-#| msgid "Movie Type"
 msgid "Email Type"
 msgstr "Công Nghệ Phim"
 
@@ -715,8 +705,6 @@ msgid "FAQ Categories"
 msgstr "Danh mục Câu Hỏi Thường Gặp"
 
 #: websites/core/models.py:313
-#, fuzzy
-#| msgid "Description"
 msgid "Question"
 msgstr "Câu hỏi"
 
@@ -729,8 +717,6 @@ msgid "FAQ"
 msgstr "Câu Hỏi Thường Gặp"
 
 #: websites/core/models.py:336
-#, fuzzy
-#| msgid "Sub Url"
 msgid "Sub url"
 msgstr "Đường Dẫn Tương Đối"
 
@@ -775,30 +761,24 @@ msgstr "[Metiz] Mã Khuyến Mãi !"
 #: websites/internal_payment/views.py:189
 #: websites/internal_payment/views.py:214
 #: websites/internal_payment/views.py:229
-#, fuzzy
-#| msgid "Internal Server Error. Please contact administrator."
 msgid "System Error. Please Contact Administrator."
 msgstr "Máy chủ bị lỗi. Vui lòng liên hệ quản trị viên."
 
 #: websites/internal_payment/views.py:219
 msgid "Card Barcode is required and must be number."
-msgstr ""
+msgstr "Mã thẻ không được bỏ trống và phải là kiểu số."
 
 #: websites/internal_payment/views.py:372
 msgid "Transaction Timeout"
-msgstr ""
+msgstr "Giao dịch hết hạn."
 
 #: websites/internal_payment/views.py:376
-#, fuzzy
-#| msgid "Cannot Booking Seats. Please Contact Administrator."
 msgid "Cannot reSend OTP. Please contact administrator."
-msgstr "Không thể đặt ghế. Vui lòng liên hệ quản trị viên."
+msgstr "Không thể gởi lại mã OTP. Vui lòng liên hệ quản trị viên."
 
 #: websites/internal_payment/views.py:386
-#, fuzzy
-#| msgid "Send Contact Successfully."
 msgid "reSend OTP Success."
-msgstr "Gửi liên hệ thành công."
+msgstr "Gửi lại OTP thành công."
 
 #: websites/registration/forms.py:68
 msgid "User with this phone already exists."

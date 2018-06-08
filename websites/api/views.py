@@ -135,11 +135,10 @@ def card_member_link(request):
         # Call action get data response
         responses = actions.get_card_member_infomation_data(card_member)
     
+        results = responses['results']
         if responses["status"] != 200:
             # Return data with json
             return JsonResponse(results, status=responses["status"])
-
-        results = responses['results']
 
         if not results:
             error = {"code": 400, "message": _("Card member not found."), "fields": ""}

@@ -2,8 +2,7 @@ $(document).ready(function() {
     // active menu profile
     $('#info-member-card').addClass('active');
 
-    setBarcode();
-
+    // barde code use barcode jquery
     function setBarcode(){
         var settings = {
             output: 'css',
@@ -22,6 +21,10 @@ $(document).ready(function() {
         );
     }
 
+    setBarcode();
+
+
+    // Get gift
     $.ajax({
         url: '/api/gift/claiming_points/',
         type: 'GET',
@@ -30,22 +33,47 @@ $(document).ready(function() {
         context: this,
     })
     .done(function(response) {
-        console.log("claiming_points", response);
+        var html = '';
+        // set list gift into html
+        if(response.length > 0){
+            $.each(response, function(key, value) {
+                html += '<tr>'
+                            + '<td>'+ value.name +'</td>'
+                            + '<td>'+ value.point +'</td>'
+                        + '</tr>';
+            });
+        }else{
+            html += '<tr class="text-center">'
+                        + '<td colspan="2">Chưa có mục đổi quà nào</td>'
+                    + '</tr> ';
+        }
         
+        // append list html
+        $('.info-member-card .info-mc-2 table tbody').append(html);
     })
     .fail(function(error) {
-        console.log(error);
+        displayMsg();
+        if(error.status == 400){
+            $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
+        }else{
+            $('.msg-result-js').html(msgResult("Lỗi danh mục đổi quà.", "danger"));
+        }
     })
 
+    // Event click submit form link card
     $('#btn-link-card').click(function(){
+        // disable button 
         $(this).prop('disabled', true);
+        // get card member
         var card_member = $("#form-member-card input[name=card_member]").val();
+        var index_card = card_member.indexOf("*");
+        var card_member_sub = card_member.substring(0, index_card);
 
         $.ajax({
             url: '/api/card_member/link/',
             type: 'POST',
             data: JSON.stringify({
-                "card_member": card_member
+                "card_member": card_member_sub
             }),
             headers: { 
                 'Content-Type': 'application/json'
@@ -55,18 +83,21 @@ $(document).ready(function() {
             context: this
         })
         .done(function(response) {
-            console.log(response);
-            $(this).prop('disabled', false);
-            location.reload();
+            // show message success
+            displayMsg();
+            $('.msg-result-js').html(msgResult('Liên kết thẻ thành công.', "success"));
+            // reload page after 2s
+            setTimeout(function(){ 
+                location.reload();
+            }, 2000);
         })
         .fail(function(error) {
             $(this).prop('disabled', false);
-            console.log(error);
             displayMsg();
             if(error.status == 400){
                 $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
             }else{
-                $('.msg-result-js').html(msgResult("Error link card", "danger"));
+                $('.msg-result-js').html(msgResult("Lỗi liên kết thẻ thành viên.", "danger"));
             }
         })
     });
