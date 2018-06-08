@@ -50,7 +50,7 @@ $(document).ready(function() {
         $(this).prop('disabled', true);
         var page = parseInt($(this).attr('data-page'));
         $.ajax({
-            url: '/news/',
+            url: window.location.pathname,
             type: 'get',
             data: {
                 'page': page,

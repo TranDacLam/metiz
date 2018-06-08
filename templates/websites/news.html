@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
 {% load i18n %}
 
-{% block title %}Khuyến mãi & Ưu đãi{% endblock title %}
+{% block title %}
+	{% if request.get_full_path == '/news/' %}
+		Khuyến mãi & Ưu đãi
+	{% else %}
+		Quyền lợi
+	{% endif %}
+{% endblock %}
 
 {% block extrastylesheet %}
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film.css" media="all" />
@@ -20,7 +26,13 @@
  <div class="main">            
     <div class="col-main product-view">
 	    <div class="cate-new-offer">
-			<h1 class="text-center">KHUYẾN MÃI & ƯU ĐÃI</h1>
+			<h1 class="text-center">
+				{% if request.get_full_path == '/news/' %}
+					KHUYẾN MÃI & ƯU ĐÃI
+				{% else %}
+					QUYỀN LỢI
+				{% endif %}
+			</h1>
 		</div>
 		{% if list_news %}
 		<div class="product-collateral news-custom">
