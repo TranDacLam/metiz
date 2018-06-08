@@ -66,12 +66,13 @@ $(document).ready(function() {
         $(this).prop('disabled', true);
         // get card member
         var card_member = $("#form-member-card input[name=card_member]").val();
+        var card_member_replace = card_member.replace("*", "");
 
         $.ajax({
             url: '/api/card_member/link/',
             type: 'POST',
             data: JSON.stringify({
-                "card_member": card_member
+                "card_member": card_member_replace
             }),
             headers: { 
                 'Content-Type': 'application/json'
