@@ -98,7 +98,13 @@
                         <li class="dropdown blog-updating">
                             <a class="dropdown-toggle" href="{% url 'blog_film'%}">BLOG PHIM</a>
                         </li>
-                        
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="id-menu-movie" >Thành viên</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ><a href="{% if user.is_authenticated %}{% url 'profile'%}{% else %}{% url 'login'%} {% endif %}">Tài khoản Metiz</a></li>
+                                <li ><a href="{% url 'news_apply_for' 'member' %}">Quyền lợi</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         {% if user.is_authenticated %}

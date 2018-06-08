@@ -149,7 +149,7 @@ def film_detail(request, id):
             "ERROR : Internal Server Error .Please contact administrator.")
 
 
-def news(request):
+def news(request, apply_for=None):
     try:
         """ 
             New and Offer for Furute then order by priority and apply_date ascending
@@ -160,9 +160,12 @@ def news(request):
 
         page_items = request.GET.get('page_items', 12)
         page_number = request.GET.get('page', 1)
-
-        # get news all
-        news = NewOffer.objects.all()
+        
+        if apply_for:
+            news = NewOffer.objects.filter( apply_for=apply_for )
+        else:
+            # get news all
+            news = NewOffer.objects.all()
 
         list_news_future = news.filter(apply_date__gt=datetime.now()).order_by(
             'apply_date', 'created')
