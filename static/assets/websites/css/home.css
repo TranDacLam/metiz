@@ -290,7 +290,7 @@ ul.metiz-movie-tabs {
     cursor: pointer;
     position: absolute;
     z-index: 3;
-    margin-top: -16px;
+    margin-top: 15px;
     opacity: 0.5;
     -webkit-transition: opacity 0.35s linear 0s;
     transition: opacity 0.35s linear 0s;
@@ -305,7 +305,7 @@ ul.metiz-movie-tabs {
     cursor: pointer;
     position: absolute;
     z-index: 3;
-    margin-top: -16px;
+    margin-top: 15px;
     opacity: 0.5;
     -webkit-transition: opacity 0.35s linear 0s;
     transition: opacity 0.35s linear 0s;
@@ -627,8 +627,8 @@ li.film-lists .priority.position-3{
         margin: 8% auto;
     }
     #popup_advertise .close {
-        top: 38px;
-        right: 7px;
+        top: 28px;
+        right: 3px;
     }
     #popup_advertise .jssor_1_slides{
         height: 360px;
@@ -740,8 +740,8 @@ li.film-lists .priority.position-3{
         margin: 50% auto;
     }
     #popup_advertise .close {
-        top: 36px;
-        right: 1px;
+        top: 26px;
+        right: 2px;
     }
 }
 @media screen and (max-width: 420px) {
