@@ -15,7 +15,6 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from core.models import *
 from dateutil.parser import parse
-from django.db.models import Q
 
 @api_view(['GET'])
 def get_booking_info_report(request):
@@ -120,11 +119,17 @@ def card_member_link(request):
                 "Card member is required."), "fields": "card_member"}
             return Response(error, status=400)
 
-        user = request.user
-        linkcard = LinkCard.objects.filter(Q(user=user) | Q(card_member=card_member))
+        linkcard = LinkCard.objects.filter(card_member=card_member)
         if linkcard:
             error = {"code": 400, "message": _(
-                "User or Card member have linked."), "fields": ""}
+                "Card member have linked."), "fields": ""}
+            return Response(error, status=400)
+
+        user = request.user
+        linkcard = LinkCard.objects.filter(user=user)
+        if linkcard:
+            error = {"code": 400, "message": _(
+                "User have linked."), "fields": ""}
             return Response(error, status=400)
 
         # Call action get data response
