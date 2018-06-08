@@ -13,7 +13,7 @@ $(document).ready(function() {
                         + '<p><label>Chi phí: </label> '+ item.amount +'</p>'
                     + '</div>'
                     + '<div class="col-md-5 th-2-des">'
-                     +   '<img src="'+ STATIC_URL + (item.image ? item.image : 'assets/images/default.jpg') +'" alt="'+ item.order_id +'"/>'
+                     +   '<img src="'+ (item.poster ? MEDIA_URL + item.poster : STATIC_URL + 'assets/images/default.jpg') +'" alt="'+ item.order_id +'"/>'
                     + '</div>'
                    +  '<div class="col-md-12 th-3-des"><hr/></div>'
                 + '</div>';
