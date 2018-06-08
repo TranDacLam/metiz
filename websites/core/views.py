@@ -165,7 +165,7 @@ def news(request, apply_for=None):
             news = NewOffer.objects.filter( apply_for=apply_for )
         else:
             # get news all
-            news = NewOffer.objects.all()
+            news = NewOffer.objects.filter( apply_for= 'all' )
 
         list_news_future = news.filter(apply_date__gt=datetime.now()).order_by(
             'apply_date', 'created')
