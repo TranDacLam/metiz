@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 16:12+0700\n"
+"POT-Creation-Date: 2018-06-08 09:40+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -333,8 +333,7 @@ msgstr ""
 msgid "Enter Card Barcode Here"
 msgstr ""
 
-#: websites/api/actions.py:103 websites/api/views.py:117
-#: websites/api/views.py:156
+#: websites/api/actions.py:103 websites/api/views.py:119
 msgid "Card member is required."
 msgstr ""
 
@@ -354,28 +353,33 @@ msgstr ""
 msgid "Invalid token."
 msgstr ""
 
-#: websites/api/views.py:150
+#: websites/api/views.py:125
+msgid "Card member have linked."
+msgstr ""
+
+#: websites/api/views.py:132
 msgid "User have linked."
 msgstr ""
 
-#: websites/api/views.py:169
+#: websites/api/views.py:145
 msgid "Card member not found."
 msgstr ""
 
-#: websites/api/views.py:173
+#: websites/api/views.py:149
 msgid "Invalid Value."
 msgstr ""
 
-#: websites/api/views.py:183
+#: websites/api/views.py:164
 msgid "Phone not match."
 msgstr ""
 
 #: websites/booking/api.py:31 websites/booking/api.py:70
-#: websites/booking/api.py:99
+#: websites/booking/api.py:99 websites/booking/api.py:136
 msgid "Handle data error."
 msgstr ""
 
 #: websites/booking/api.py:73 websites/booking/api.py:102
+#: websites/booking/api.py:139
 msgid "Internal Server Error. Cannot Post Booking."
 msgstr ""
 
@@ -421,30 +425,31 @@ msgstr ""
 msgid "Date Showing"
 msgstr ""
 
-#: websites/booking/views.py:183 websites/booking/views.py:204
-#: websites/booking/views.py:320 websites/booking/views.py:339
-#: websites/core/views.py:548 websites/registration/views.py:56
+#: websites/booking/views.py:184 websites/booking/views.py:205
+#: websites/booking/views.py:321 websites/booking/views.py:340
+#: websites/core/views.py:547 websites/internal_payment/views.py:389
+#: websites/registration/views.py:56
 msgid "Internal Server Error. Please contact administrator."
 msgstr ""
 
-#: websites/booking/views.py:198
+#: websites/booking/views.py:199
 msgid "Fields id_showtime and id_server is required."
 msgstr ""
 
-#: websites/booking/views.py:218
+#: websites/booking/views.py:219
 msgid "Fields lst_seats and id_showtime, working_id is required."
 msgstr ""
 
-#: websites/booking/views.py:244
+#: websites/booking/views.py:245
 #, python-format
 msgid "These chairs have been selected : %s"
 msgstr ""
 
-#: websites/booking/views.py:266
+#: websites/booking/views.py:267
 msgid "Cannot Booking Seats. Please Contact Administrator."
 msgstr ""
 
-#: websites/booking/views.py:328
+#: websites/booking/views.py:329
 msgid "Fields barcode is required."
 msgstr ""
 
@@ -721,33 +726,55 @@ msgid "Home Ads"
 msgstr ""
 
 #: websites/core/views.py:56 websites/core/views.py:101
-#: websites/core/views.py:183 websites/core/views.py:404
+#: websites/core/views.py:183 websites/core/views.py:403
 msgid "Page Number Not Type Integer."
 msgstr ""
 
 #: websites/core/views.py:60 websites/core/views.py:105
-#: websites/core/views.py:187 websites/core/views.py:408
+#: websites/core/views.py:187 websites/core/views.py:407
 msgid "Page Number Not Found."
 msgstr ""
 
-#: websites/core/views.py:377
+#: websites/core/views.py:376
 msgid "Send Contact Successfully."
 msgstr ""
 
-#: websites/core/views.py:464
+#: websites/core/views.py:463
 msgid "voucher time out"
 msgstr ""
 
-#: websites/core/views.py:483
+#: websites/core/views.py:482
 msgid "Out of voucher code"
 msgstr ""
 
-#: websites/core/views.py:498
+#: websites/core/views.py:497
 msgid "Please login to received voucher"
 msgstr ""
 
-#: websites/core/views.py:513
+#: websites/core/views.py:512
 msgid "[Metiz] Voucher Code !"
+msgstr ""
+
+#: websites/internal_payment/views.py:189
+#: websites/internal_payment/views.py:214
+#: websites/internal_payment/views.py:229
+msgid "System Error. Please Contact Administrator."
+msgstr ""
+
+#: websites/internal_payment/views.py:219
+msgid "Card Barcode is required and must be number."
+msgstr ""
+
+#: websites/internal_payment/views.py:372
+msgid "Transaction Timeout"
+msgstr ""
+
+#: websites/internal_payment/views.py:376
+msgid "Cannot reSend OTP. Please contact administrator."
+msgstr ""
+
+#: websites/internal_payment/views.py:386
+msgid "reSend OTP Success."
 msgstr ""
 
 #: websites/registration/forms.py:68

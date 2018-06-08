@@ -113,17 +113,23 @@ def card_member_link(request):
             3. Get pos data by card member
             4. Check phone is match  
         """
+        card_member = request.data.get('card_member', '')
+        if not card_member:
+            error = {"code": 400, "message": _(
+                "Card member is required."), "fields": "card_member"}
+            return Response(error, status=400)
+
+        linkcard = LinkCard.objects.filter(card_member=card_member)
+        if linkcard:
+            error = {"code": 400, "message": _(
+                "Card member have linked."), "fields": ""}
+            return Response(error, status=400)
+
         user = request.user
         linkcard = LinkCard.objects.filter(user=user)
         if linkcard:
             error = {"code": 400, "message": _(
                 "User have linked."), "fields": ""}
-            return Response(error, status=400)
-
-        card_member = request.data.get('card_member', '')
-        if not card_member:
-            error = {"code": 400, "message": _(
-                "Card member is required."), "fields": "card_member"}
             return Response(error, status=400)
 
         # Call action get data response
@@ -144,10 +150,16 @@ def card_member_link(request):
             return Response(error, status=400)
 
         if results['phone'][1:] ==  user.phone:
+            linkcard = LinkCard()
+            linkcard.user = user
+            linkcard.card_member = card_member
+            linkcard.save()
+
             user.full_name = results['name'] if results['name'] else user.full_name
             user.birth_date = parse(results['birthday']) if results['birthday'] else user.birth_date
             user.personal_id = results['personal_id'] if results['personal_id'] else user.personal_id
             user.save()
+            results['card_member'] = card_member
             return Response(results, status=200)
         
         error = {"code": 400, "message": _("Phone not match."), "fields": ""}
