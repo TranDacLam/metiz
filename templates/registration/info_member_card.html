@@ -42,10 +42,10 @@
             <div class="row info-mc-2">
                 <div class="col-md-12 mc-2-des">
                     <p><label>Mã thẻ: </label><div id="barcode-member-card"></div> 
-                        <input type="hidden" name="barcode_member_card" value="1234567890129" />
+                        <input type="hidden" name="barcode_member_card" value="{{card_info.card_member}}" />
                     </p>
-                    <p><label>Cấp độ thẻ: </label> Member</p>
-                    <p><label>Điểm tích lũy: </label> 100</p>
+                    <p><label>Cấp độ thẻ: </label> {{card_info.level}}</p>
+                    <p><label>Điểm tích lũy: </label> {{card_info.point}}</p>
                 </div>
                 <div class="col-md-12">
                     <p><label>Danh mục đổi quà: (OPTIONAL)</label> </p>

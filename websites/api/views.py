@@ -159,6 +159,7 @@ def card_member_link(request):
             user.birth_date = parse(results['birthday']) if results['birthday'] else user.birth_date
             user.personal_id = results['personal_id'] if results['personal_id'] else user.personal_id
             user.save()
+            results['card_member'] = card_member
             return Response(results, status=200)
         
         error = {"code": 400, "message": _("Phone not match."), "fields": ""}

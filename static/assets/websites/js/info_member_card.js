@@ -44,10 +44,15 @@ $(document).ready(function() {
         $.ajax({
             url: '/api/card_member/link/',
             type: 'POST',
-            data: {"card_member": card_member},
+            data: JSON.stringify({
+                "card_member": card_member
+            }),
+            headers: { 
+                'Content-Type': 'application/json'
+            },
             dataType: 'json',
             crossDomain:false,
-            context: this,
+            context: this
         })
         .done(function(response) {
             console.log(response);
