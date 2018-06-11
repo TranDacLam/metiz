@@ -40,6 +40,8 @@ def metiz_payment_methods(request):
     cipher = MetizAESCipher()    
     decrypted = cipher.decrypt(data_encrypt)
     data_json = json.loads(decrypted)
+
+    print "data_json::::::::", data_json
     
     # Check data and set default if empty and remove special unicode for seats
     total_payment = data_json['totalPayment'] if 'totalPayment' in data_json else 0
@@ -130,6 +132,9 @@ def check_amount_and_timeout(movies_session, working_id, result):
     Author: TienDang
 """
 def generate_otp(request):
+    print "generate_otp"
+
+
     """ 
         Action Generate OTP for User using Metiz or Helio Payment Card 
         Step 1 : Verify Card Error is : 00 - Payment Success, 01 - Not enough money, 02 - Card is suspended, 03 - Card is replaced, 04 - Card is not exist, 05 - Other Error
@@ -236,6 +241,8 @@ def generate_otp(request):
     Author: TienDang
 """
 def verify_otp_for_user(request):
+    print "verify_otp_for_user:::::"
+
     """ 
         Action Generate OTP for User using Metiz or Helio Payment Card 
         Step 1 : Verify session with working_id expired and amount
@@ -281,10 +288,12 @@ def verify_otp_for_user(request):
             barcode = form_otp.cleaned_data["barcode"]
             card_barcode = form_otp.cleaned_data["card_barcode"]
             id_server  = form_otp.cleaned_data["id_server"]
+            movie_poster = form_otp.cleaned_data["movie_poster"]
+
             # Store order infomation with status is pendding
             booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
                                               email=request.session.get("email", ""), seats=seats_choice, barcode=barcode, card_barcode=card_barcode,
-                                              id_server=id_server, order_status="pendding")
+                                              id_server=id_server, order_status="pendding", poster=movie_poster)
 
             if not request.user.is_anonymous():
                 booking_order.user = request.user
@@ -350,7 +359,7 @@ def verify_otp_for_user(request):
     except Exception as e:
         import traceback
         print traceback.format_exc()
-        print "Errors generate_otp : ", e
+        print "Errors verify_otp_for_user : ", e
         error = {
             "code": 500, "message": "System API Error. Please Contact Administrator."
         }

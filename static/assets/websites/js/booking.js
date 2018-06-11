@@ -431,6 +431,8 @@ $(document).ready(function() {
             // Translate string, toUpperCase first letter of string, substring if string > 20 character
             var id_movie_name = firstLeterCase(translateVI($('.name-movie-booking').text())).substring(0, 25);
 
+            var movie_poster = $('.movie-poster-class').val();
+
             // get id, name seat selected
             var seatSelected = getSeatSelected();
 
@@ -475,7 +477,8 @@ $(document).ready(function() {
                         "seats_choice":seats_choice,
                         "id_server":id_server,
                         "id_showtime":id_showtime,
-                        "movie_api_id":movie_api_id
+                        "movie_api_id":movie_api_id,
+                        "movie_poster": movie_poster
                     }
 
                  $.ajax({

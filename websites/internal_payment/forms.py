@@ -27,6 +27,7 @@ class MetizOTPForm(forms.Form):
     card_barcode = forms.IntegerField(required=True)
     full_name = forms.CharField(max_length=500, required=False)
     payment_gate = forms.CharField(max_length=200, required=True)
+    movie_poster = forms.CharField(max_length=500, required=False)
 
     
 
