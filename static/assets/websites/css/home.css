@@ -389,13 +389,13 @@ ul.metiz-movie-tabs {
 }
 /*image priority*/
 li.film-lists .priority.position-1{
-    background: url(../images/ribbon-film-final.png) no-repeat scroll 0px 0px transparent;
+    background: url(../images/position_1.png) no-repeat scroll 0px 0px transparent;
 } 
 li.film-lists .priority.position-2{
-    background: url(../images/ribbon-film-final.png) no-repeat scroll 50% 0px transparent;
-} 
+    background: url(../images/position_2.png) no-repeat scroll 0px 0px transparent;
+}
 li.film-lists .priority.position-3{
-    background: url(../images/ribbon-film-final.png) no-repeat scroll 104% 0px transparent;
+    background: url(../images/position_3.png) no-repeat scroll 0px 0px transparent;
 }
 li.film-lists .priority.position-1, 
 li.film-lists .priority.position-2, 
@@ -403,9 +403,9 @@ li.film-lists .priority.position-3{
     position: absolute;
     right: -10%;
     top: -17px;
-    height: 65px;
+    height: 75px;
     width: 18%;
-    background-size: 298%;
+    background-size: 90%;
 }
 @media screen and (min-width: 767px) {
     .session-movie .nav-tabs>li.last>span{
@@ -429,7 +429,7 @@ li.film-lists .priority.position-3{
     .feature_slide_show li .priority.position-1,
     .feature_slide_show li .priority.position-2, 
     .feature_slide_show li .priority.position-3 {
-        right: 0%;
+        right: -2%;
     }
     .owl-nav .lSPrev,
     .owl-nav .lSNext,
@@ -542,7 +542,12 @@ li.film-lists .priority.position-3{
     }
 }
 @media screen and (max-width: 768px) {
-
+    .feature_slide_show li .priority.position-1,
+    .feature_slide_show li .priority.position-2, 
+    .feature_slide_show li .priority.position-3 {
+        right: -1%;
+        background-size: 85%;
+    }
     #news #box{
         height:170px;
         width: 349px;
@@ -583,6 +588,12 @@ li.film-lists .priority.position-3{
 }
 
 @media screen and (max-width: 767px) {
+    .feature_slide_show li .priority.position-1,
+    .feature_slide_show li .priority.position-2, 
+    .feature_slide_show li .priority.position-3 {
+        right: -11%;
+        background-size: 90%;
+    }
 	#news img{
 		height:300px;
 		width:300px;
@@ -828,6 +839,11 @@ li.film-lists .priority.position-3{
     }
 }
 @media screen and (max-width: 380px) {
+    li.film-lists .priority.position-1, 
+    li.film-lists .priority.position-2, 
+    li.film-lists .priority.position-3{
+        top: -10px;
+    }
     .slideshow-containe-movier .poster-film .product-img {
         height: 221px;
         width: 144px;

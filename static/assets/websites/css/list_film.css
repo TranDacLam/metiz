@@ -30,23 +30,23 @@
 }
 /*image priority*/
 .film-lists .priority.position-1{
-    background: url(../images/ribbon-film-final.png) no-repeat scroll 0px 0px transparent;
+    background: url(../images/position_1.png) no-repeat scroll 0px 0px transparent;
 }
 .film-lists .priority.position-2{
-    background: url(../images/ribbon-film-final.png) no-repeat scroll 50% 0px transparent;
+    background: url(../images/position_2.png) no-repeat scroll 0% 0px transparent;
 } 
 .film-lists .priority.position-3{
-    background: url(../images/ribbon-film-final.png) no-repeat scroll 104% 0px transparent;
+    background: url(../images/position_3.png) no-repeat scroll 0% 0px transparent;
 }
 .film-lists .priority.position-1, 
 .film-lists .priority.position-2, 
 .film-lists .priority.position-3{
     position: absolute;
-    right: -10%;
+    right: -7%;
     top: -17px;
-    height: 65px;
+    height: 66px;
     width: 18%;
-    background-size: 298%;
+    background-size: 100%;
 }
 @media screen and (max-width: 768px) {
 	/*Responsive poster film*/
