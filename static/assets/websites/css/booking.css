@@ -217,8 +217,8 @@ div.seatCharts-seat.available.seat-ld {
     color: #241d1e;
 } 
 .booking-details #poster{
-    width: 100%;
-    min-height: 130px;
+    height: 281px;
+    width: 195px;
 }
 .booking-details .poster-film{
     padding-left: 0px;
@@ -272,6 +272,9 @@ div.seatCharts-seat.available.seat-ld {
     .booking-details{
         width: 100%;
     }
+    .booking-details #poster {
+        margin: 0px auto;
+    }
 }
 @media only screen and (max-width: 992px){
     .ajax-loader {
@@ -287,7 +290,7 @@ div.seatCharts-seat.available.seat-ld {
         margin-left: 4%;
     }
     #seat-map {
-        min-height: 350px;
+        min-height: 300px;
     }
     .ajax-loader {
         top: 20%;
