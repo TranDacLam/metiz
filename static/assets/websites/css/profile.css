@@ -146,6 +146,7 @@
     border-radius: 5px;
     background-color: #7e8eaa;
     color: #fff;
+    margin-top: 20px;
 }
 .info-member-card form button:hover{
     color: #fff;
@@ -178,6 +179,9 @@
 }
 #barcode-member-card{
     margin: auto;
+}
+#form-member-card{
+    display: block;
 }
 /* END INFO MEMBER CARD */
 
@@ -270,6 +274,12 @@
     }
     .transaction-history .info-th{
         width: 90.5%;
+    }
+    .info-member-card form button{
+        margin-top: 0;
+    }
+    .info-member-card #form-member-card .form-group{
+        margin-bottom: 0px;
     }
 }
 @media only screen and (max-width : 414px) {
