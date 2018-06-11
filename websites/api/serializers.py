@@ -17,4 +17,4 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookingInfomation
         fields = ('order_id', 'order_desc', 'order_status', 'desc_transaction',
-                  'barcode', 'amount', 'email', 'phone', 'created', 'user')
+                  'barcode', 'amount', 'email', 'phone', 'created', 'user', 'poster')

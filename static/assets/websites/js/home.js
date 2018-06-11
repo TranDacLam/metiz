@@ -16,9 +16,8 @@ $(document).ready(function() {
 
     // Show popup when load page
     $(window).on('load',function(){
-        // check session storage 'popup advertise' exist?
-        if(!sessionStorage.getItem('popup_advertise') && $(".image_home_ads").length > 0){
-            sessionStorage.setItem('popup_advertise', 'true');
+        // check image exist?
+        if($(".image_home_ads").length > 0){
             $('#popup_advertise').modal('show');
         }
     });
