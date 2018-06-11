@@ -146,7 +146,7 @@
     border-radius: 5px;
     background-color: #7e8eaa;
     color: #fff;
-    margin-top: 20px;
+    margin-top: -3px;
 }
 .info-member-card form button:hover{
     color: #fff;
@@ -180,9 +180,16 @@
 #barcode-member-card{
     margin: auto;
 }
-#form-member-card{
-    display: block;
+#form-member-card, #form-member-card .form-group{
+    width: 100%;
 }
+#form-member-card .div-input{
+    padding-left: 0;
+}
+#form-member-card label.error{
+    margin-left: 102px;
+}
+
 /* END INFO MEMBER CARD */
 
 /* TRANSACTION HISTORY */
@@ -275,11 +282,21 @@
     .transaction-history .info-th{
         width: 90.5%;
     }
-    .info-member-card form button{
-        margin-top: 0;
-    }
     .info-member-card #form-member-card .form-group{
         margin-bottom: 0px;
+    }
+    #form-member-card, #form-member-card input{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    #form-member-card .div-btn{
+        text-align: center;
+    }
+    .info-member-card form label, .info-member-card form input{
+        margin-right: 0px;
+    }
+    #form-member-card label.error {
+        margin-left: 83px;
     }
 }
 @media only screen and (max-width : 414px) {
@@ -306,6 +323,16 @@
     }
     .transaction-history .info-th{
         width: 80.5%;
+    }
+    #form-member-card .div-btn, #form-member-card .div-input, 
+    #form-member-card .div-input input{
+        width: 100%;
+    }
+    #form-member-card label.error{
+        margin-left: 0;
+    }
+    #form-member-card .div-btn{
+        margin-top: 15px;
     }
 }
 @media only screen and (max-width : 375px) {

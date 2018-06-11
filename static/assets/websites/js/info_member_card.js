@@ -107,7 +107,8 @@ $(document).ready(function() {
                 $(this).prop('disabled', false);
                 displayMsg();
                 if(error.status == 400){
-                    $('.msg-result-js').html(msgResult(error.responseJSON.message, "danger"));
+                    $('#card_member-error').text(error.responseJSON.message);
+                    $('#card_member-error').css('display', 'block');
                 }else{
                     $('.msg-result-js').html(msgResult("Lỗi liên kết thẻ thành viên.", "danger"));
                 }
