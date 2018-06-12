@@ -264,7 +264,7 @@ def verify_otp_for_user(request):
         data_payment = request.POST.dict()
 
         if not code_otp:
-            data_payment['error_otp'] = "OTP is required."
+            data_payment['error_otp'] = _("OTP is required.")
             return render(request, "websites/metiz_payment/payment_verify.html", data_payment)
 
         money_store_dict = {"amount_ticket": 0, "amount_fb": 0} 

@@ -1,6 +1,6 @@
 import pyotp, datetime
 from django.conf import settings
-
+from django.utils.translation import ugettext_lazy as _
 
 """
     Author : TienDang
@@ -40,7 +40,7 @@ def verify_otp_user(secret_key_otp, code_otp):
         verify_time_otp = totp.verify(code_otp, datetime.datetime.now())
         print "### Verify OTP Timeout"
         if not verify_time_otp:
-            result["message"] = "OTP wrong or expired."
+            result["message"] = _("OTP wrong or expired.")
         
         result["status"] = verify_time_otp
         return result

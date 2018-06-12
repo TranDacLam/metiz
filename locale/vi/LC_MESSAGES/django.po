@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-08 09:40+0700\n"
+"POT-Creation-Date: 2018-06-12 15:42+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,60 +34,72 @@ msgstr ""
 msgid "Forgotten your password or username?"
 msgstr ""
 
-#: templates/modal.html:9 templates/schedule.html:23
+#: templates/modal.html:9 templates/websites/movies/choice_city.html:4
 msgid "Select City"
 msgstr "Chọn thành phố"
 
-#: templates/modal.html:19 templates/schedule.html:33
+#: templates/modal.html:19 templates/websites/movies/choice_city.html:14
 msgid "Select Cinema"
 msgstr "Chọn rạp"
 
-#: templates/modal.html:33 templates/schedule.html:47
+#: templates/modal.html:33 templates/websites/movies/showtimes.html:11
 msgid "Select date play"
 msgstr "Chọn ngày chiếu"
 
 #: templates/modal.html:107 templates/modal.html:160
 #: templates/registration/profile.html:89 templates/registration/signup.html:51
-#: templates/registration/signup.html:135 websites/booking/models.py:23
+#: templates/registration/signup.html:135
+#: templates/websites/movies/form_user_info.html:19
+#: templates/websites/movies/tab_member.html:9 websites/booking/models.py:23
 msgid "Email"
 msgstr ""
 
 #: templates/modal.html:108 templates/modal.html:161
 #: templates/registration/signup.html:52 templates/registration/signup.html:137
+#: templates/websites/movies/form_user_info.html:20
+#: templates/websites/movies/tab_member.html:10
 msgid "Enter Email Here"
 msgstr "Nhập Email Ở Đây"
 
 #: templates/modal.html:112 templates/registration/signup.html:55
 #: templates/registration/signup.html:148
+#: templates/websites/movies/tab_member.html:14
 msgid "Password"
 msgstr "Mật Khẩu"
 
 #: templates/modal.html:113 templates/registration/signup.html:56
 #: templates/registration/signup.html:151
+#: templates/websites/movies/tab_member.html:15
 msgid "Enter Password Here"
 msgstr "Nhập Mật Khẩu Ở Đây"
 
 #: templates/modal.html:116 templates/registration/signup.html:3
 #: templates/registration/signup.html:62
+#: templates/websites/movies/tab_member.html:18
 msgid "Login"
 msgstr "Đăng Nhập"
 
 #: templates/modal.html:149 templates/registration/profile.html:42
-#: templates/registration/signup.html:82 websites/core/models.py:133
+#: templates/registration/signup.html:82
+#: templates/websites/movies/form_user_info.html:8 websites/core/models.py:133
 msgid "Full Name"
 msgstr "Họ Tên"
 
 #: templates/modal.html:150 templates/registration/signup.html:84
 #: templates/websites/metiz_payment/metiz_payment.html:53
+#: templates/websites/movies/form_user_info.html:9
 msgid "Enter Full Name Here"
 msgstr "Nhập Họ Tên Ở Đây"
 
 #: templates/modal.html:154 templates/registration/profile.html:74
-#: templates/registration/signup.html:125 websites/booking/models.py:22
+#: templates/registration/signup.html:125
+#: templates/websites/movies/form_user_info.html:13
+#: websites/booking/models.py:22
 msgid "Phone"
 msgstr "Số Điện Thoại"
 
 #: templates/modal.html:156 templates/registration/signup.html:128
+#: templates/websites/movies/form_user_info.html:15
 msgid "Enter Phone Here"
 msgstr "Nhập Số Điện Thoại Ở Đây"
 
@@ -277,11 +289,11 @@ msgstr "Nhập Lại Mật Khẩu"
 msgid "Enter Address Here"
 msgstr "Nhập Địa Chỉ Ở Đây"
 
-#: templates/websites/booking.html:83
+#: templates/websites/booking.html:85
 msgid "Member Card"
 msgstr "Thẻ Thành Viên"
 
-#: templates/websites/booking.html:84
+#: templates/websites/booking.html:86
 msgid "Enter Member Card Here"
 msgstr "Nhập Thẻ Thành Viên Ở Đây"
 
@@ -364,11 +376,11 @@ msgstr "Mã thẻ đã được liên kết."
 msgid "User have linked."
 msgstr "Tài khoản đã được liên kết."
 
-#: websites/api/views.py:145
+#: websites/api/views.py:144
 msgid "Card member not found."
 msgstr "Mã thẻ không tìm thấy."
 
-#: websites/api/views.py:149
+#: websites/api/views.py:148
 msgid "Invalid Value."
 msgstr ""
 
@@ -428,31 +440,31 @@ msgstr ""
 msgid "Date Showing"
 msgstr "Ngày Tham Gia"
 
-#: websites/booking/views.py:184 websites/booking/views.py:205
-#: websites/booking/views.py:321 websites/booking/views.py:340
-#: websites/core/views.py:547 websites/internal_payment/views.py:389
+#: websites/booking/views.py:190 websites/booking/views.py:211
+#: websites/booking/views.py:327 websites/booking/views.py:346
+#: websites/core/views.py:550 websites/internal_payment/views.py:399
 #: websites/registration/views.py:56
 msgid "Internal Server Error. Please contact administrator."
 msgstr "Máy chủ bị lỗi. Vui lòng liên hệ quản trị viên."
 
-#: websites/booking/views.py:199
+#: websites/booking/views.py:205
 msgid "Fields id_showtime and id_server is required."
 msgstr "Trường id_showtime và id_server là bắt buộc."
 
-#: websites/booking/views.py:219
+#: websites/booking/views.py:225
 msgid "Fields lst_seats and id_showtime, working_id is required."
 msgstr "trường lst_seats và id_showtime và working_id là bắt buộc."
 
-#: websites/booking/views.py:245
+#: websites/booking/views.py:251
 #, python-format
 msgid "These chairs have been selected : %s"
 msgstr "Những ghế này đã được chọn : %s"
 
-#: websites/booking/views.py:267
+#: websites/booking/views.py:273
 msgid "Cannot Booking Seats. Please Contact Administrator."
 msgstr "Không thể đặt ghế. Vui lòng liên hệ quản trị viên."
 
-#: websites/booking/views.py:329
+#: websites/booking/views.py:335
 msgid "Fields barcode is required."
 msgstr "Trường barcode là bắt buộc."
 
@@ -729,54 +741,62 @@ msgid "Home Ads"
 msgstr ""
 
 #: websites/core/views.py:56 websites/core/views.py:101
-#: websites/core/views.py:183 websites/core/views.py:403
+#: websites/core/views.py:186 websites/core/views.py:406
 msgid "Page Number Not Type Integer."
 msgstr "Số trang không phải là kiểu số."
 
 #: websites/core/views.py:60 websites/core/views.py:105
-#: websites/core/views.py:187 websites/core/views.py:407
+#: websites/core/views.py:190 websites/core/views.py:410
 msgid "Page Number Not Found."
 msgstr "Số trang không tìm thấy."
 
-#: websites/core/views.py:376
+#: websites/core/views.py:379
 msgid "Send Contact Successfully."
 msgstr "Gửi liên hệ thành công."
 
-#: websites/core/views.py:463
+#: websites/core/views.py:466
 msgid "voucher time out"
 msgstr "Hết thời gian lấy mã"
 
-#: websites/core/views.py:482
+#: websites/core/views.py:485
 msgid "Out of voucher code"
 msgstr "Mã khuyến mãi đã hết"
 
-#: websites/core/views.py:497
+#: websites/core/views.py:500
 msgid "Please login to received voucher"
 msgstr "Vui lòng đăng nhập để nhận mã khuyến mãi"
 
-#: websites/core/views.py:512
+#: websites/core/views.py:515
 msgid "[Metiz] Voucher Code !"
 msgstr "[Metiz] Mã Khuyến Mãi !"
 
-#: websites/internal_payment/views.py:189
-#: websites/internal_payment/views.py:214
-#: websites/internal_payment/views.py:229
+#: websites/internal_payment/metiz_otp.py:43
+msgid "OTP wrong or expired."
+msgstr "Mã xác thực không đúng hoặc đã hết hạn."
+
+#: websites/internal_payment/views.py:192
+#: websites/internal_payment/views.py:217
+#: websites/internal_payment/views.py:232
 msgid "System Error. Please Contact Administrator."
 msgstr "Máy chủ bị lỗi. Vui lòng liên hệ quản trị viên."
 
-#: websites/internal_payment/views.py:219
+#: websites/internal_payment/views.py:222
 msgid "Card Barcode is required and must be number."
 msgstr "Mã thẻ không được bỏ trống và phải là kiểu số."
 
-#: websites/internal_payment/views.py:372
+#: websites/internal_payment/views.py:267
+msgid "OTP is required."
+msgstr "Mã xác thực là bắt buộc."
+
+#: websites/internal_payment/views.py:382
 msgid "Transaction Timeout"
 msgstr "Giao dịch hết hạn."
 
-#: websites/internal_payment/views.py:376
+#: websites/internal_payment/views.py:386
 msgid "Cannot reSend OTP. Please contact administrator."
 msgstr "Không thể gởi lại mã OTP. Vui lòng liên hệ quản trị viên."
 
-#: websites/internal_payment/views.py:386
+#: websites/internal_payment/views.py:396
 msgid "reSend OTP Success."
 msgstr "Gửi lại OTP thành công."
 
