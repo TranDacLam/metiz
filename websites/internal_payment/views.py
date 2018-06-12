@@ -59,8 +59,6 @@ def metiz_payment_methods(request):
     data_json["id_server"] = id_server
     data_json["seat_count"] = seat_count
     
-
-    
     if request.method == "GET":
         return render(request, "websites/metiz_payment/payment_method.html",{"data_json":data_json})
 
@@ -251,6 +249,14 @@ def verify_otp_for_user(request):
 
     """
     try:
+        # Call funtion check working_id into session exists and amount equal total_payment_store
+        working_id = request.POST.get("working_id", None)
+        movies_session = request.session.get("movies", "")
+        
+        # Check booking session time out
+        if not movies_session or (working_id not in movies_session):
+            return redirect("time-out-booking")
+
         code_otp = request.POST.get("code_otp", None)
         # Append data for form using detect request hacking
         form_otp = MetizOTPForm(request.POST)
@@ -260,11 +266,6 @@ def verify_otp_for_user(request):
         if not code_otp:
             data_payment['error_otp'] = "OTP is required."
             return render(request, "websites/metiz_payment/payment_verify.html", data_payment)
-
-        # Call funtion check working_id into session exists and amount equal total_payment_store
-        working_id = request.POST.get("working_id", None)
-        movies_session = request.session.get("movies", "")
-        
 
         money_store_dict = {"amount_ticket": 0, "amount_fb": 0} 
         result_check = check_amount_and_timeout(movies_session, working_id, money_store_dict)
