@@ -1,6 +1,21 @@
 $(document).ready(function() {
     var id_server = $('#data-id-server').val();
-    
+
+    //Handle press esc
+    $("body").on("keyup", function(e) {
+        var key = e.which;
+        if (key == 27) {
+            e.preventDefault();
+            // Close modal first
+            if ($('.modal').hasClass('in')) {
+                $('.modal').modal('hide');
+            } else {
+                // Close schedule
+                $.magnificPopup.close();
+            }
+        }
+    });
+
     // Trigger event when user click showtime movie schedule (lich chieu)
     $('.open-movie-showtime').magnificPopup({
         type: 'inline',
@@ -26,7 +41,10 @@ $(document).ready(function() {
     
     function getDataPopupMovieSchedule(element) {
         var id_server = $('.list-cinema .active').attr('data-id-server');
-
+        // Change month when click date
+        $('#center-month').text($(element).children('.hide-month').text());
+        // Remove Active Date
+        $('.days-movie-showing li').removeClass('active-date');
 
         if ($(element).attr("movie-day-selected")) {
             var date_query = $(element).attr("movie-day-selected");
@@ -37,6 +55,8 @@ $(document).ready(function() {
             var date_query = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
             // Active First Day in List Schedules
             $('#modal-movie-showtimes .days-movie-showing li:first').addClass('active-date');
+            // Add month from first day in List Schedule
+            $('#center-month').text($('.days-movie-showing li:first').children('.hide-month').text());
         }
 
         // Call Ajax get movie show time with current date
@@ -56,7 +76,6 @@ $(document).ready(function() {
         })
         .done(function(response) {
             var html = '';
-            console.log("document.domain ",document.domain);
             $.each(response, function(key, value) {
                 if (value.lst_times.length > 0) {
                      // Ignore movie Test to server production
@@ -100,8 +119,6 @@ $(document).ready(function() {
             $('.modal-schedule input[name=id_movie_time]').val(id_movie_time);
             $('.modal-schedule input[name=id_movie_date_active]').val($("li.active-date").attr("movie-day-selected"));
 
-            //set content for modal #warnning or skip
-            var rated = element.parents('.lot-table').attr('data-rated');
             $('#confirm-user-information').on('show.bs.modal', function() {
                 $('#confirm-user-information').css("overflow-y","auto");
                 // remove tabindex of magnifix popup trigger for input confirm form
@@ -117,17 +134,19 @@ $(document).ready(function() {
                     $("#confirm-user-information").css("-webkit-overflow-scrolling", "touch !important");
                 }
             });
-
             // Set attr style when hide modal confirm
             $('#confirm-user-information').on('hide.bs.modal', function() {
                 $(".mfp-ready").attr("style","overflow-x: hidden; overflow-y: auto;");
             });
-            // Show popup warning or confirm
+            // Get content warning 
+            var rated = element.parents('.lot-table').attr('data-rated');
             if (rated == 'null' || rated == 'p'|| rated == 'P') {
+                // Skip modal warning
                 $('#confirm-user-information').modal('show');
             } else {
-                content = JSON.parse($('#rated').text());
-                $('#warning #content-warnning').text(content[rated]);
+                // Show modal warning
+                content_warning = JSON.parse($('#content_warning').text());
+                $('#warning #content-warnning').text(content_warning[rated]);
                 $('#warning').modal('show');
             }
         }
