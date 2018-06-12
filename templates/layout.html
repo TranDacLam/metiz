@@ -36,7 +36,7 @@
     <!-- header -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/header.css" />
     <!-- modal -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/modal.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/movies_showtime.css" media="all" />
     <!-- footer -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/footer.css" media="all" />
     <!-- all file -->
@@ -117,12 +117,13 @@
     <!-- Translate Message File -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/translate.js"></script>
 
-    <!-- modal -->
-    
+    <!-- Load js for movie showtimes -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/build_html_movie_showtime.js?time={% now 'd-m-Y-H:i' %}"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/validation_showtime.js?time={% now 'd-m-Y-H:i' %}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/showtimes_handle_show_popup.js?time={% now 'd-m-Y-H:i' %}"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/showtimes.js?time={% now 'd-m-Y-H:i' %}"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/validation_form_booking_infomation.js?time={% now 'd-m-Y-H:i' %}"></script>
+    <!-- End Load js for movie showtimes -->
     
     
 
