@@ -1,0 +1,28 @@
+{% load i18n %}
+<!-- guest_form  replace to form_confirm_user_info -->
+<form class='form-popup' id='guest_form' method="post" action="{% url 'booking' %}">
+    {% csrf_token %}
+    <div class="col-sm-12 ">
+        <div id="error"></div>
+        <div class="form-group">
+            <label>{% trans "Full Name" %}</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="{% trans 'Enter Full Name Here' %}" value="{% if user.is_authenticated %}{{user.full_name|default_if_none:""}}{% else %}{{request.session.full_name}}{% endif %}">
+            <label class="form-error" for="name" id='name-error'></label>
+        </div>
+        <div class="form-group form-phone">
+            <label>{% trans "Phone" %}</label>
+            <div class="country-code">+84</div>
+            <input type="text" name="phone" id="phone" placeholder="{% trans 'Enter Phone Here' %}" class="form-control textPhone" value="{% if user.is_authenticated %}{{user.phone|default_if_none:""}}{% else %}{{request.session.phone}}{% endif %}" pattern="\d*">
+            <label class="form-error" for="phone" id='phone-error'></label>
+        </div>
+        <div class="form-group">
+            <label>{% trans "Email" %}</label>
+            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{% if user.is_authenticated %}{{user.email|default_if_none:""}}{% else %}{{request.session.email}}{% endif %}">
+            <label class="form-error" for="email" id='email-error'></label>
+        </div>
+        
+        
+            <button type="submit" id="submit" class="btn btn-login submit" {% if not user.is_authenticated %} disabled {% endif %}>{% if not user.is_authenticated %} Đặt vé {% else %} Xác nhận {% endif %}</button>
+        
+    </div>
+</form>

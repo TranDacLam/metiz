@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <ul class="nav nav-tabs tab-header">
+        <li class="active"><a data-toggle="tab" href="#member">Đăng nhập</a></li>
+        <li class="btn-guest-wth117"><a data-toggle="tab" href="#guest">Khách</a></li>
+    </ul>
+</div>
+<div class="modal-body">
+    <div class="tab-content">
+        <!-- MEMBER -->
+        {% include "websites/movies/tab_member.html" %}
+        <!-- GUEST -->
+        {% include "websites/movies/tab_guest.html" %}
+
+    </div>
+</div>

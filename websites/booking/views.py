@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.db.models import Q
-from django.http import HttpResponse, JsonResponse, Http404
+from django.http import HttpResponse, JsonResponse, Http404, HttpResponseNotAllowed
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
@@ -30,6 +30,9 @@ def get_booking(request):
         """ Action render page booking for user selected chair,
             this action support for two action get and post
         """
+        if request.method not in ['POST', 'GET']:
+            return HttpResponseNotAllowed(['POST', 'GET'])
+
         if request.method == 'POST':
             form = BookingForm(request.POST)
             if form.is_valid():
@@ -116,7 +119,8 @@ def build_show_time_json(current_date, item, result, movies_info, obj_movie=None
         result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
             "MOVIE_ID"], "movie_name": obj_movie[0].name.split(':')[0] if obj_movie else item["MOVIE_NAME_VN"],
             "rated": obj_movie[0].rated.name if obj_movie and obj_movie[0].rated else None, "time_running": obj_movie[0].time_running if obj_movie else 0,
-            "allow_booking": obj_movie[0].allow_booking if obj_movie else True}
+            "allow_booking": obj_movie[0].allow_booking if obj_movie else True
+            }
 
     # Check time showing greater than currnet hour
     if item["DATE"] == current_date.strftime("%d/%m/%Y"):
@@ -126,10 +130,12 @@ def build_show_time_json(current_date, item, result, movies_info, obj_movie=None
         # compare hour and minute
         if time_show >= current_time:
             result[item["MOVIE_ID"]]["lst_times"].append(
-                {"id_showtime": item["ID"], "time": item["TIME"], "room_name": item["ROOM_NAME"]})
+                {"id_showtime": item["ID"], "date": datetime.strptime(item["DATE"], "%d/%m/%Y").strftime("%m/%d/%Y"), 
+                "time": item["TIME"], "room_name": item["ROOM_NAME"]})
     else:
         result[item["MOVIE_ID"]]["lst_times"].append(
-            {"id_showtime": item["ID"], "time": item["TIME"], "room_name": item["ROOM_NAME"]})
+            {"id_showtime": item["ID"], "date": datetime.strptime(item["DATE"], "%d/%m/%Y").strftime("%m/%d/%Y"), 
+            "time": item["TIME"], "room_name": item["ROOM_NAME"]})
 
 
 def get_movie_show_time(request):

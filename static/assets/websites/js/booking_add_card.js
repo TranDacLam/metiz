@@ -7,6 +7,8 @@ function bookingAddCard(sc, id_showtime, id_server, movie_api_id){
         // Translate string, toUpperCase first letter of string, substring if string > 20 character
         var id_movie_name = firstLeterCase(translateVI($('.name-movie-booking').text())).substring(0, 25);
 
+        var movie_poster = $('.movie-poster-class').val();
+
         // get id, name seat selected
         // function from booking_function_common.js
         var seatSelected = getSeatSelected(sc);
@@ -52,7 +54,8 @@ function bookingAddCard(sc, id_showtime, id_server, movie_api_id){
                     "seats_choice":seats_choice,
                     "id_server":id_server,
                     "id_showtime":id_showtime,
-                    "movie_api_id":movie_api_id
+                    "movie_api_id":movie_api_id,
+                    "movie_poster": movie_poster
                 }
 
              $.ajax({
