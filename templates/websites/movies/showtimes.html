@@ -1,0 +1,64 @@
+{% load modal_data_tags %} {% load i18n %}
+
+<div id="modal-movie-showtimes" class="white-popup mfp-hide ">
+    <div class="div-login">
+        <div class="top">
+            Lịch chiếu
+        </div>
+        <input type="hidden" name="data-id-server" id=data-id-server  value="1">
+        <div class="popup-booking">
+            <section class="section-lightpink">
+                <h3 class="title">{% trans 'Select date play' %}</h3>
+                <div class="calendar-popup">
+                    <div class="row">
+                        <ul class="days-movie-showing" id="play-date-slider">
+                            {% get_date_showing as list_date_present %} {% for item in list_date_present %}
+                            <li class="available day-showing-item" movie-day-selected="{{item|date:'Y-m-d'}}">
+                                <div class="hide-month">{{ item|date:'M'}}</div>
+                                <div class="dayofweek">{{ item|date:'D'}}</div>
+                                <span class="badge">{{ item|date:'d' }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <h3 class="title">Chọn lịch chiếu</h3>
+            <section class="section-white">
+                <div class="container content-schedule">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="list-movies-showtime-by-day">
+                                <!-- schedule film-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade modal-schedule" id="confirm-user-information" data-toggle="modal" role="dialog" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            {% if user.is_authenticated %}
+               <!--  User current login then load modal content confirm user information for booking -->
+               {% include "websites/movies/confirm_infomation_booking.html" %} 
+            {% else %}
+               {% include "websites/movies/confirm_guest_or_login_booking.html" %}
+
+           {% endif %}
+           <!-- Keeping Data Movie Information -->
+            <input type="hidden" name="id_server" id="id_server">
+            <input type="hidden" name="id_showtime" id="id_showtime">
+            <input type="hidden" name="movie_api_id" id="movie_api_id">
+            <input type="hidden" name="id_movie_name" id="id_movie_name">
+            <input type="hidden" name="id_movie_time" id="id_movie_time">
+            <input type="hidden" name="id_movie_date_active" id="id_movie_date_active">
+       </div>
+    </div>
+</div/>
+
+

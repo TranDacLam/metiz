@@ -101,8 +101,8 @@
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.magnific-popup.min.js"></script>
     <!-- vnpay -->
     <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.js"></script>
-    <!-- modal -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/modal.js?time={% now 'd-m-Y-H:i' %}"></script>
+
+    
     <!-- film detail -->
     <!-- list_film-->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/ajaxSetup.js"></script>
@@ -114,6 +114,17 @@
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/message_result.js"></script>
     <!-- all file -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/layout.js"></script>
+    <!-- Translate Message File -->
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/translate.js"></script>
+
+    <!-- modal -->
+    
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/build_html_movie_showtime.js?time={% now 'd-m-Y-H:i' %}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/validation_showtime.js?time={% now 'd-m-Y-H:i' %}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/showtimes.js?time={% now 'd-m-Y-H:i' %}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/validation_form_booking_infomation.js?time={% now 'd-m-Y-H:i' %}"></script>
+    
+    
 
     {% block extrascript %}{% endblock %}
 
@@ -141,15 +152,17 @@
 
         <div class="main-container page-detail {% block container_class %}{% endblock %}">
             {% block main_content %} {% endblock %}
-
+            <!-- Include Showtime html using for popup or page schedules -->
+            {% include "websites/movies/showtimes.html" %}
         </div>
 
         <!-- message reult -->
         {% include 'message_result.html' %}
 
         <!-- End Body -->
-        <!-- Start Modal -->
-        {% include 'modal.html' %}
+        
+        
+        
         <!-- End Modal -->
         <!-- Start Footer -->
         {% include 'footer.html' %}
