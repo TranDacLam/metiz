@@ -10,6 +10,12 @@
 .error{
     padding-top: 5px;
 }
+form, .notes p{
+    font-family: "Montserrat-Light", sans-serif;
+}
+form h3, form legend, form label{
+    font-family: "Montserrat-Medium", sans-serif;
+}
 
 /*  Metiz payment */
 form .metiz-payment-form{
@@ -29,6 +35,9 @@ form .metiz-payment-form input{
     margin-top: 20px;
     margin-bottom: 30px;
 }
+.notes p{
+    color: red;
+}
 .metiz_payment, .metiz_verify{
     margin-bottom: 50px;
 }
@@ -37,7 +46,6 @@ form button{
     border-radius: 5px;
     background-color: #7e8eaa;
     color: #fff;
-    width: 265px;
     text-transform: uppercase;
 }
 form button.btn:hover{
@@ -96,6 +104,9 @@ form#payment_method_form button{
 .payment_method{
     margin-bottom: 40px;
 }
+#metiz_payment_form button {
+    width: 84px;
+}
 
 /* Metiz verify */
 .metiz_verify .info_metiz_verify{
@@ -113,6 +124,9 @@ form#payment_method_form button{
 .metiz_verify .btn-metiz-verify{
     margin-top: 40px;
 }
+.metiz_verify form button{
+    width: 118px;
+}
 
 @media only screen and (min-width: 771px){
     .metiz_payment_panel, .metiz_payment_panel {
@@ -128,7 +142,7 @@ form#payment_method_form button{
         height: 45px;
         padding-left: 30px;
         background: rgba(255, 84, 0, 0.35);
-        font-size: 15px;
+        font-size: 17px;
         color: #0e1d2f;
         line-height: 45px;
     }
@@ -138,6 +152,7 @@ form#payment_method_form button{
         margin-top: 30px;
     }
     .note_metiz_payment p {
+        font-family: "Montserrat-Light", sans-serif;
         color: red;
         text-align: center;
         margin-top: 30px;

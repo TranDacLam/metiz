@@ -319,7 +319,7 @@ def transaction_history(request):
     try:
         if request.method == 'POST':
             # Get Parameter From GET request
-            page_items = request.POST.get('page_items', 5)
+            page_items = request.POST.get('page_items', 3)
             page_number = request.POST.get('page', 1)
             # Get user id from request
             user_id = request.user.id
