@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^payment/otp/$', views.generate_otp, name='payment-generate-otp'),
     url(r'^payment/otp/verify/$', views.verify_otp_for_user, name='payment-verify-otp'),
     url(r'^payment/otp/resend/$', views.resend_otp, name='payment-resend-otp'),
+    url(r'^metiz/payment/cancel/$', views.metiz_payment_cancel, name='metiz-payment-cancel'),
     
     # url(r'^payment_ipn$', views.payment_ipn, name='payment_ipn'),
     # url(r'^payment_return$', views.payment_return, name='payment_return'),
