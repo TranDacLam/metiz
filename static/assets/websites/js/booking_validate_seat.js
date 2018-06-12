@@ -1,4 +1,4 @@
-function bookingCheckSeat(sc){
+function bookingValidateSeat(sc){
     // click booking next button.
     $('#btnNextBooking').on('click',function(){
         var number_column_valid; // get number seat selected
@@ -7,6 +7,17 @@ function bookingCheckSeat(sc){
         var number_max_valid; // index max in a row
         var number_min_valid; // index min in a row
         var total_available_valid; // Total seats on 1 row, check condition > 3
+
+        // get length Seat selected
+        // function from booking_function_common.js
+        var totalSeat = getSeatSelected(sc).length;
+
+        // check user selected seat?
+        if(totalSeat < 1){
+            displayMsg();
+            $('.msg-result-js').html(msgResult("Bạn chưa chọn ghế!", "warning"));
+            return false;
+        }
 
         sc.find('selected').each(function(key){
             seats_row_valid = [];
@@ -41,22 +52,26 @@ function bookingCheckSeat(sc){
                 if(number_column_valid == (number_min_valid + 1) && 
                     sc.get(seats_row_valid[number_min_valid].id).settings.status == "available"){
                         status_valid = true;
+                        return false;
                 } // [v][v][x] -> fail
                 else if((number_column_valid == (number_max_valid - 1)) && 
                     sc.get(seats_row_valid[number_max_valid].id).settings.status == "available"){
                         status_valid = true;
+                        return false;
                 } // [][][v][][x] -> failm [][][v][][v] -> fail
                 else if(number_column_valid > (number_min_valid + 1) && 
                     (sc.get(seats_row_valid[number_column_valid-1].id).settings.status == "available") &&
                     ((sc.get(seats_row_valid[number_column_valid-2].id).settings.status == "unavailable") ||
                     (sc.get(seats_row_valid[number_column_valid-2].id).settings.status == "selected")) ){
                         status_valid = true;
+                        return false;
                 } // [x][][v][][] -> failm [v][][v][][] -> fail
                 else if((number_column_valid < (number_max_valid - 1)) && 
                     (sc.get(seats_row_valid[number_column_valid+1].id).settings.status == "available") &&
                     ((sc.get(seats_row_valid[number_column_valid+2].id).settings.status == "unavailable") ||
                     (sc.get(seats_row_valid[number_column_valid+2].id).settings.status == "selected"))){
                         status_valid = true;
+                        return false;
                 }
             }
 
@@ -67,25 +82,9 @@ function bookingCheckSeat(sc){
         if(status_valid){
             messages_valied_seat();
             return false;
-        }
-
-        // get length Seat selected
-        // function from booking_function_common.js
-        var totalSeat = getSeatSelected(sc).length;
-        // check user selected seat?
-        if(totalSeat < 1){
-            displayMsg();
-            $('.msg-result-js').html(msgResult("Bạn chưa chọn ghế!", "warning"));
-            return false;
-        } else {
+        }else {
             $('#member_card_modal').modal('show');
         }
         
     });
-}
-
-function messages_valied_seat(){
-    displayMsg();
-    $('.msg-result-js').html(msgResult("Việc chọn vị trí ghế của bạn không được để trống "
-        + "1 ghế ở bên trái, giữa hoặc bên phải trên cùng hàng ghế mà bạn vừa chọn.", "warning"));
 }

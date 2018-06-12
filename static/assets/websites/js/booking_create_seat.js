@@ -223,11 +223,11 @@ function bookingSeat(objBooking, id_showtime, id_server, movie_api_id){
 
     // click booking next button.
     // function from booking_check_seat.js
-    bookingCheckSeat(sc);
+    bookingValidateSeat(sc);
 
     // Click add Card button
     // function from booking_add_card.js
-    bookingAddCard(sc, id_showtime, id_server, movie_api_id);
+    bookingAddToCard(sc, id_showtime, id_server, movie_api_id);
 
     // Refresh seat selected
     $('.booking-refresh a').on('click', function(){
@@ -236,13 +236,4 @@ function bookingSeat(objBooking, id_showtime, id_server, movie_api_id){
         $total.text(0);
         $('#selected-seats').html('');
     });
-}
-
-//sum total money
-function recalculateTotal(sc) {
-    var total = 0;
-    sc.find('selected').each(function () {
-        total += this.data().price;
-    });
-    return total;
 }
