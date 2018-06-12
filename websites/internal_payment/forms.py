@@ -28,6 +28,8 @@ class MetizOTPForm(forms.Form):
     full_name = forms.CharField(max_length=500, required=False)
     payment_gate = forms.CharField(max_length=200, required=True)
     movie_poster = forms.CharField(max_length=500, required=False)
+    phone_hide = forms.CharField(max_length=200, required=False)
+    amount = forms.CharField(max_length=200, required=False)
 
     
 

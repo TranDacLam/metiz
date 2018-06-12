@@ -1,3 +1,12 @@
+.page-title {
+    text-align: center;
+}
+.page-title h1{
+    background: #7e8eaa;
+    padding: 10px;
+    color: #fff;
+    text-transform: uppercase;
+}
 .vnpayment,
 .vnpayment label, input, select, textarea,
 .payment-return .panel-body,
