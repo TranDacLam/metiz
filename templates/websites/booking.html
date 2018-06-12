@@ -10,7 +10,12 @@
 {% block extrascript %}
     <!-- booking -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jquery.seat-charts.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/booking.js?time={% now 'd-m-Y-H:i' %}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/booking_function_common.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/booking_create_seat.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/booking_seat.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/booking_check_seat.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/booking_add_card.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/booking.js"></script>
 {% endblock %}
 
 {% block container_class%}col1-layout{% endblock%}
