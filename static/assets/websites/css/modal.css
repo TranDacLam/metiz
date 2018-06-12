@@ -29,7 +29,7 @@ body.modal-open {
 #guest .guest-policy{
     border: 1px solid #c9c2b5;
 }
-#modal-movie-showtimes #rated{
+#content_warning{
     display: none;
 }
 #modal-movie-showtimes .col-xs-8 h3{
