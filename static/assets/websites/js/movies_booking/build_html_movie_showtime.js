@@ -25,7 +25,6 @@ function listShedule(shedule) {
         //set end time for film schedule
         // TODO : USING TimeDelta jquery
         var startTime = value.time.split(':').map(Number);
-        console.log("startTime ",value);
         var minute = (shedule.time_running + startTime[1]) % 60;
         var hour = startTime[0] + Math.floor((shedule.time_running + startTime[1]) / 60);
         if (minute < 10) {

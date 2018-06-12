@@ -22,7 +22,7 @@
         </div>
         
         
-            <button type="submit" id="submit" class="btn btn-login submit" {% if not user.is_authenticated %} disabled {% endif %}>{% if not user.is_authenticated %} Đặt vé {% else %} Xác nhận {% endif %}</button>
+            <button type="submit" id="submit_guest_form" class="btn btn-login submit" {% if not user.is_authenticated %} disabled {% endif %}>{% if not user.is_authenticated %} Đặt vé {% else %} Xác nhận {% endif %}</button>
         
     </div>
 </form>

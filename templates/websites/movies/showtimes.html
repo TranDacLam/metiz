@@ -10,6 +10,9 @@
             <section class="section-lightpink">
                 <h3 class="title">{% trans 'Select date play' %}</h3>
                 <div class="calendar-popup">
+                    <div class="month">
+                        <strong id="center-month"></strong>
+                    </div>
                     <div class="row">
                         <ul class="days-movie-showing" id="play-date-slider">
                             {% get_date_showing as list_date_present %} {% for item in list_date_present %}
@@ -38,7 +41,12 @@
         </div>
     </div>
 </div>
+<!-- Content for modal warning -->
+{% get_rated as rated %}
+<p id='content_warning'>{{ rated }}</p>
 
+{% include "websites/movies/warning.html" %}
+{% include "websites/movies/warning_not_allow_booking.html" %}
 
 <div class="modal fade modal-schedule" id="confirm-user-information" data-toggle="modal" role="dialog" data-keyboard="false">
     <div class="modal-dialog">
