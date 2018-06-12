@@ -55,4 +55,8 @@ $(document).ready(function() {
         })
     });
 
+    // format money
+    var money_total = $('#metiz_payment_verify_otp_form .payment_amount').text();
+    $('#metiz_payment_verify_otp_form .payment_amount').text(money_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
+
 })

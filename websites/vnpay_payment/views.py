@@ -30,6 +30,10 @@ def payment(request):
         seats_choice = request.POST.get("seats_choice", None)
         working_id = request.POST.get("working_id", None)
         id_server = request.POST.get("id_server", 1)
+        movie_poster = request.POST.get("movie_poster", "")
+
+
+        print "request.POST", request.POST
 
         # Verify Session Booking Timeout before redirect to vnpayment
         movies_session = request.session.get("movies", "")
@@ -102,7 +106,7 @@ def payment(request):
             # Store order infomation with status is pendding
             booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
                                               email=request.session.get("email", ""), seats=seats_choice, barcode=barcode,
-                                              id_server=id_server, order_status="pendding")
+                                              id_server=id_server, order_status="pendding", poster=movie_poster)
 
             if not request.user.is_anonymous():
                 booking_order.user = request.user

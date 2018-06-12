@@ -18,4 +18,8 @@ $(document).ready(function() {
             }
         }
     });
+
+    // format money
+    var money_total = $('#total').text();
+    $('#total').text(money_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
 });
