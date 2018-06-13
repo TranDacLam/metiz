@@ -16,10 +16,12 @@ function trigger_warning_rated(element)
 
 function show_popup_user_information(element){
     // get movie information when click showtime then append info to list fields hidden using store post to server process
+    var id_date_movie_showing = element.children('input[name=id_date_movie_showing]').val();
     var id_showtime = element.children('input[name=id_showtime]').val();
     var id_movie_name = element.children('input[name=id_movie_name]').val();
     var movie_api_id = element.children('input[name=movie_api_id]').val();
     var id_movie_time = element.children('span[class=time]').text();
+    var id_server = $('#data-id-server').val();
     
 
     $('.modal-schedule input[name=id_server]').val(id_server);
@@ -27,7 +29,7 @@ function show_popup_user_information(element){
     $('.modal-schedule input[name=movie_api_id]').val(movie_api_id);
     $('.modal-schedule input[name=id_movie_name]').val(id_movie_name);
     $('.modal-schedule input[name=id_movie_time]').val(id_movie_time);
-    $('.modal-schedule input[name=id_movie_date_active]').val($("li.active-date").attr("movie-day-selected"));
+    $('.modal-schedule input[name=id_movie_date_active]').val(id_date_movie_showing);
 
     $('#confirm-user-information').on('show.bs.modal', function() {
         $('#confirm-user-information').css("overflow-y","auto");

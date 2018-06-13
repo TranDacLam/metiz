@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import render, redirect
 from django.conf import settings
 from decimal import Decimal, ROUND_HALF_UP
-from django.http import Http404, JsonResponse, HttpResponseNotFound, HttpResponse
+from django.http import Http404, JsonResponse, HttpResponseNotFound, HttpResponse, HttpResponseNotAllowed
 import urllib2
 import json
 import metiz_otp
@@ -141,6 +141,9 @@ def generate_otp(request):
         
     """
     try:
+        if request.method != "POST":
+            return HttpResponseNotAllowed(["POST"])
+            
         working_id = request.POST.get("working_id", None)
         movies_session = request.session.get("movies", "")
         # set output variable for funtion check working_id
@@ -249,31 +252,31 @@ def verify_otp_for_user(request):
 
     """
     try:
+        if request.method != "POST":
+            return HttpResponseNotAllowed(["POST"])
         # Call funtion check working_id into session exists and amount equal total_payment_store
         working_id = request.POST.get("working_id", None)
         movies_session = request.session.get("movies", "")
         
-        # Check booking session time out
-        if not movies_session or (working_id not in movies_session):
-            return redirect("time-out-booking")
-
         code_otp = request.POST.get("code_otp", None)
-        # Append data for form using detect request hacking
-        form_otp = MetizOTPForm(request.POST)
-        # init data cache for page
-        data_payment = request.POST.dict()
-
         if not code_otp:
             data_payment['error_otp'] = _("OTP is required.")
             return render(request, "websites/metiz_payment/payment_verify.html", data_payment)
 
         money_store_dict = {"amount_ticket": 0, "amount_fb": 0} 
+
+        # Validation session store working id timeout or amount not matching
         result_check = check_amount_and_timeout(movies_session, working_id, money_store_dict)
         if not money_store_dict["amount_ticket"]:
             return result_check
 
         amount = money_store_dict["amount_ticket"]
-        
+
+        # Append data for form using detect request hacking
+        form_otp = MetizOTPForm(request.POST)
+        # init data cache for page
+        data_payment = request.POST.dict()
+
         if form_otp.is_valid():
             # Verify OTP
             secret_key_otp = movies_session[working_id]["secret_key_otp"]

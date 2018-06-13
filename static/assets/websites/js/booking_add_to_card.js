@@ -4,6 +4,21 @@ function bookingAddToCard(sc, id_showtime, id_server, movie_api_id){
         var totalPayment = recalculateTotal(sc);
         var id_movie_time = $('.time-movie-booking').text().replace('~', '-');
         var id_movie_date_active = $('.date-movie-booking').text();
+
+        // calculated current movie showtime is expired (less than to current datetime)
+        var movie_start_time = id_movie_time.split("-")[0].split(":");
+        var date_arr = id_movie_date_active.split("/");
+        var month = date_arr[1];
+        if (month > 1){
+            month = month - 1 ;
+        }
+        var date_time_movie_start = new Date(date_arr[2], month, date_arr[0], movie_start_time[0], movie_start_time[1]);
+
+        if(new Date() >= date_time_movie_start)
+        {
+            window.location.href = "/";
+        }
+        
         // Translate string, toUpperCase first letter of string, substring if string > 20 character
         var id_movie_name = firstLeterCase(translateVI($('.name-movie-booking').text())).substring(0, 25);
 

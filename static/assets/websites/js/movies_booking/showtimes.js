@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    var id_server = $('#data-id-server').val();
-
     //Handle press esc
     $("body").on("keyup", function(e) {
         var key = e.which;
@@ -45,14 +43,15 @@ $(document).ready(function() {
     // Call server get data movie showtime
     
     function getDataPopupMovieSchedule(element) {
-        var id_server = $('.list-cinema .active').attr('data-id-server');
-
+        var id_server = $('#data-id-server').val();
+        
         if ($(element).attr("movie-day-selected")) {
             var date_query = $(element).attr("movie-day-selected");
             // Active Date Selected on List Schedule
             $('#modal-movie-showtimes .days-movie-showing [movie-day-selected = ' + date_query + ']').addClass('active-date');
 
         } else {
+            // Handle When exception get data but date query is empty
             var date_query = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
             // Active First Day in List Schedules
             $('#modal-movie-showtimes .days-movie-showing li:first').addClass('active-date');
