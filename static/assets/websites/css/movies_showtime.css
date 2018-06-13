@@ -7,7 +7,7 @@ body.modal-open {
     position: fixed;
 }
 
-#confirm { 
+#confirm-user-information { 
     top:0;
   height: inherit; 
   min-height: 100%; 
@@ -17,23 +17,26 @@ body.modal-open {
   min-height: 100%; 
   -webkit-overflow-scrolling: auto;
 }
-#modal-popup #update_form,
-#modal-popup #update_form label,
-#modal-popup #member_form,
-#modal-popup #member_form label,
-#modal-popup #guest_form,
-#modal-popup #guest_form label,
+#modal-movie-showtimes #update_form,
+#modal-movie-showtimes #update_form label,
+#modal-movie-showtimes #member_form,
+#modal-movie-showtimes #member_form label,
+#modal-movie-showtimes #guest_form,
+#modal-movie-showtimes #guest_form label,
 #guest .guest-policy, #guest .agree_term{
     font-family: "Montserrat-Light", sans-serif;
 }
 #guest .guest-policy{
     border: 1px solid #c9c2b5;
 }
-#modal-popup .col-xs-8 h3{
+#content_warning{
+    display: none;
+}
+#modal-movie-showtimes .col-xs-8 h3{
     color: black;
     margin-left: 40px;
 }
-#modal-popup .list-item li {
+#modal-movie-showtimes .list-item li {
     display: inline-block;
     padding: 0px 1px;
 }
@@ -45,34 +48,34 @@ body.modal-open {
 .hide-area{
     display:none;
 }
-#modal-popup .modal-dialog{
+#modal-movie-showtimes .modal-dialog{
     width: 500px;
     margin: 0 auto;
 }
-#modal-popup .modal-content{
+#modal-movie-showtimes .modal-content{
     width:100%;
 }
-#modal-popup .mfp-close{
+#modal-movie-showtimes .mfp-close{
     opacity: 1;
     z-index:0;
 }
-#modal-popup .city{
+#modal-movie-showtimes .city{
     margin-top: 15px;
 }
-#modal-popup .list-item a{
+#modal-movie-showtimes .list-item a{
     padding: 10px 37px;
     color: #48494c;
 }
-#modal-popup .list-item{
+#modal-movie-showtimes .list-item{
     margin: 20px 0px;
 }
-#modal-popup .list-item a:hover{
+#modal-movie-showtimes .list-item a:hover{
     transition: color 0.5s linear;
     background-color: #282425;
     color: #ffffff;
     text-decoration: none;
 }
-#modal-popup .list-item li.active a{
+#modal-movie-showtimes .list-item li.active a{
     background: url('../images/bullet03.gif') no-repeat 20px;
     background-color: #ff5400;
     color: #ffffff;
@@ -80,16 +83,16 @@ body.modal-open {
     font-size: 19px;
     font-family: "SairaSemiCondensed-Medium";
 }
-#modal-popup .list-cinema{
+#modal-movie-showtimes .list-cinema{
     margin-bottom: 15px;
 }
-#modal-popup .list-cinema ul{
+#modal-movie-showtimes .list-cinema ul{
 }
-#modal-popup .list-cinema li{
+#modal-movie-showtimes .list-cinema li{
     padding:0px 3px;
 }
 
-#modal-popup .list-cinema a{
+#modal-movie-showtimes .list-cinema a{
     color: #48494c;
     padding: 10px 30px;
     background: #f3f2f5;
@@ -98,12 +101,12 @@ body.modal-open {
     font-family: "SairaSemiCondensed-Medium";
 }
 
-#modal-popup .list-cinema a:hover{
+#modal-movie-showtimes .list-cinema a:hover{
     text-decoration: none;
     background-color: #ffffff;
     border-color: #000000;
 }
-#modal-popup .list-cinema.active ul li a:focus{
+#modal-movie-showtimes .list-cinema.active ul li a:focus{
     background: url('../images/bg_ckth.png') no-repeat 10px;
     text-decoration: none;
     background-color: #ffffff;
@@ -111,7 +114,7 @@ body.modal-open {
     outline: none;
     box-shadow:none;
 }
-#modal-popup .list-cinema.active ul li a.active{
+#modal-movie-showtimes .list-cinema.active ul li a.active{
     background: url('../images/bg_ckth.png') no-repeat 10px;
     text-decoration: none;
     background-color: #ffffff;
@@ -120,35 +123,35 @@ body.modal-open {
     box-shadow:none;
 
 }
-#modal-popup .empty-schedule{
+#modal-movie-showtimes .empty-schedule{
     text-align: center;
     font-size: 23px;
     margin: 30px 0px 50px 0px;
     line-height: 1.5;
 }
-#modal-popup .form-control{
+#modal-movie-showtimes .form-control{
     box-shadow: none;
     text-shadow: none;
 }
 
-#modal-popup .modal.in .modal-dialog,
-#modal-popup .modal.fade .modal-dialog {
+#modal-movie-showtimes .modal.in .modal-dialog,
+#modal-movie-showtimes .modal.fade .modal-dialog {
     -webkit-transform: inherit ;
     -moz-transform: inherit ;
     -o-transform: inherit ;
     transform: inherit ;
 }
-#modal-popup input[type=number]::-webkit-inner-spin-button, 
-#modal-popup input[type=number]::-webkit-outer-spin-button { 
+#modal-movie-showtimes input[type=number]::-webkit-inner-spin-button, 
+#modal-movie-showtimes input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin: 0; 
 }
-#modal-popup input[type=number] {
+#modal-movie-showtimes input[type=number] {
     -moz-appearance: textfield;
 }
-#modal-popup #btn-skip{
+#modal-movie-showtimes #btn-skip{
     display:none;
 }
 .white-popup {
@@ -225,10 +228,10 @@ body.modal-open {
     background-color: #F9F6EC;
     padding: 40px 0px;
 }
-.days-popup{
+.days-movie-showing{
     float:none;
 }
-.calendar-popup .days-popup li {
+.calendar-popup .days-movie-showing li {
     margin: 0 10px;
     position: relative;
     padding-top: 16px;
@@ -237,27 +240,27 @@ body.modal-open {
     display: inline-block;
     float: none;
 }
-#modal-popup .month{
+#modal-movie-showtimes .month{
     text-align:center;
 }
-#modal-popup .hide-month{
+#modal-movie-showtimes .hide-month{
     display:none;
 }
-#modal-popup .month strong{
+#modal-movie-showtimes .month strong{
     font-weight: bold;
     font-size: 22px;
 }
-#modal-popup .dayofweek{
+#modal-movie-showtimes .dayofweek{
     margin-top: 12px;
     font-size: 18px;
 }
-.calendar-popup .days-popup li .month > strong {
+.calendar-popup .days-movie-showing li .month > strong {
     font-weight: bold;
     font-size: 30px;
     padding-bottom: 0px;
     font-family: 'SairaSemiCondensed-Medium';
 }
-.calendar-popup .days-popup li .badge {
+.calendar-popup .days-movie-showing li .badge {
     background-color: transparent;
     color: #C2BDBD;
     font-size: 14px;
@@ -266,7 +269,7 @@ body.modal-open {
 #play-date-slider{
     
 }
-.calendar-popup .days-popup {
+.calendar-popup .days-movie-showing {
     width: 100%;
     height: auto;
     text-align: center;
@@ -322,10 +325,10 @@ body.modal-open {
     font-size: 14px;
     font-family: 'SairaSemiCondensed-Regular';
 }
-.toggle-tabs li:hover .days-popup{
+.toggle-tabs li:hover .days-movie-showing{
     border: 2px solid #000000;
 }
-.current .days-popup{
+.current .days-movie-showing{
     border: 2px solid #000000;
 }
 /*.time .time-end{
@@ -365,14 +368,14 @@ body.modal-open {
 /* .list-inline li:hover .time{
     display: none;
 } */
-.days-popup li.available .badge {
+.days-movie-showing li.available .badge {
     color: #3e3e3e;
     cursor: pointer;
     font-size: 16px;
     height: 36px;
     width: 39px;
 }
-.days-popup li.active-date .badge {
+.days-movie-showing li.active-date .badge {
     background-color: #ff5400;
     color: #fff;
     cursor: pointer;
@@ -402,22 +405,22 @@ body.modal-open {
 .warning-footer .btn{
     text-transform: uppercase;
 }
-#confirm .modal-header{
+#confirm-user-information .modal-header{
     border-bottom:none;
 }
-#confirm .tab-header{
+#confirm-user-information .tab-header{
     width: 100%;
 }
-#confirm .tab-header li a{
+#confirm-user-information .tab-header li a{
     color: #ffffff;
     background: #7e8eaa;
     text-transform: uppercase;
     padding: 8px;
 }
-#confirm .tab-header li a:hover{
+#confirm-user-information .tab-header li a:hover{
     border-color: transparent;
 }
-#confirm .tab-header li.active a{
+#confirm-user-information .tab-header li.active a{
     background: #ff4900;
     color: #ffffff;
     padding: 8px;  
@@ -426,7 +429,7 @@ li.btn-guest-wth117 {
     width: 112px;
     text-align: center;
 }
-#confirm .tab-header li a:focus{
+#confirm-user-information .tab-header li a:focus{
     background: #ff4900;
     color: #ffffff;
 }
@@ -434,14 +437,14 @@ li.btn-guest-wth117 {
     color: red;
     margin-top: 7px;
 }
-#modal-popup button{
+#modal-movie-showtimes button{
     font-family: 'SairaSemiCondensed-Medium';
 }
 #warning .modal-body p{
     color: black;
     font-family: 'Montserrat-Medium';
 }
-#confirm .tab-header a{
+#confirm-user-information .tab-header a{
     font-family: 'Montserrat-Medium';
 }
 .warning-footer button{
@@ -453,7 +456,7 @@ li.btn-guest-wth117 {
     box-shadow: none;
     text-shadow: none;
 }
-#modal-popup .modal .form-control{
+#modal-movie-showtimes .modal .form-control{
     font-size: 15px;
 }
 .modal label{
@@ -481,7 +484,7 @@ li.btn-guest-wth117 {
     color: red;
     margin-bottom: 10px;
 }
-#confirm .country-code{
+#confirm-user-information .country-code{
     color: #555;
     position: absolute;
     top: 30px;
@@ -489,10 +492,10 @@ li.btn-guest-wth117 {
     padding-right: 4px;
     border-right: 1px solid #cccccc
 }
-#confirm #phone{
+#confirm-user-information #phone{
     padding-left: 40px;
 }
-#confirm .form-phone{
+#confirm-user-information .form-phone{
     position: relative;
 }
 .modal .modal-dialog button.close{
@@ -503,14 +506,14 @@ li.btn-guest-wth117 {
 .modal form button {
     text-transform: uppercase;
 }
-#warning .btn-login, #confirm .btn-login, 
+#warning .btn-login, #confirm-user-information .btn-login, 
 #alert_allow_booking .btn-login{
     background-color: #7e8eaa;
     color: #ffffff;
     font-weight: bold;
     font-family: 'SairaSemiCondensed-Medium';
 } 
-#confirm .btn-login:hover,
+#confirm-user-information .btn-login:hover,
 #alert_allow_booking .btn-login:hover{
     background-color: #ff4900;
     color: #ffffff;
@@ -519,10 +522,10 @@ li.btn-guest-wth117 {
     background-color: #ff4900;
     color: #ffffff;
 }
-#confirm .nav-tabs{
+#confirm-user-information .nav-tabs{
     border: none;
 }
-#confirm label, input{
+#confirm-user-information label, input{
     font-family: "Montserrat-Light", sans-serif;
 }
 
@@ -532,18 +535,18 @@ li.btn-guest-wth117 {
 }
 
 @media only screen and (max-width: 1024px){
-    .calendar-popup .days-popup li {
+    .calendar-popup .days-movie-showing li {
         width: 66px;
     }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px){
-    #modal-popup .modal-dialog{
+    #modal-movie-showtimes .modal-dialog{
         width: 500px;
     }
        
 }
 @media only screen and (max-width: 768px){
-     #modal-popup .modal-dialog{
+     #modal-movie-showtimes .modal-dialog{
         width: 500px;
     }
     #myTabContent .input-group {
@@ -555,20 +558,20 @@ li.btn-guest-wth117 {
     .slick-list.draggable{
         margin-left: 15px;
     }
-    .calendar-popup .days-popup li .badge {
+    .calendar-popup .days-movie-showing li .badge {
         padding: 8px;
         width: 50%;
     }
-    #modal-popup .content-schedule{
+    #modal-movie-showtimes .content-schedule{
         width: auto;
     }
 }
 @media only screen and (max-width: 767px){
-    #modal-popup .modal-dialog {
+    #modal-movie-showtimes .modal-dialog {
         width: 60%;
     }
 
-    #modal-popup .section-white{
+    #modal-movie-showtimes .section-white{
         overflow-y: scroll;
         height: 300px;
         
@@ -598,7 +601,7 @@ li.btn-guest-wth117 {
 
 }
 @media only screen and (max-width: 480px){
-    #modal-popup .modal-dialog{
+    #modal-movie-showtimes .modal-dialog{
         width: 70%;
     }
     .size {
@@ -611,31 +614,31 @@ li.btn-guest-wth117 {
         padding-left: 32px;
         padding-top: 18px;
     }
-    .calendar-popup .days-popup li .badge {
+    .calendar-popup .days-movie-showing li .badge {
         padding: 8px;
         width: 38%;
     }
-    #confirm .modal-header{
+    #confirm-user-information .modal-header{
         padding: 0px;
     }
-    #confirm .modal-header .tab-header li{
+    #confirm-user-information .modal-header .tab-header li{
         width: 110px;
         font-size: 13px;
     }
-    .calendar-popup .days-popup li{
+    .calendar-popup .days-movie-showing li{
         width: 87px;
     }
 }
 @media only screen and (max-width: 414px){
-    #modal-popup .modal-dialog {
+    #modal-movie-showtimes .modal-dialog {
         width: 90%;
     }
-    #confirm .modal-content{
+    #confirm-user-information .modal-content{
         width: 92%;
     }
 }
 @media only screen and (max-width: 320px){
-    .calendar-popup .days-popup li{
+    .calendar-popup .days-movie-showing li{
         width: 70px;
     }
 }

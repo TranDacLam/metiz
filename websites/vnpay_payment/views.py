@@ -127,34 +127,34 @@ def payment(request):
                           {"form": form,
                            "total_payment": request.POST["amount"] if 'amount' in request.POST["amount"] else None,
                            "order_desc": request.POST["order_desc"] if 'order_desc' in request.POST["order_desc"] else None})
-    else:
-        data_encrypt = request.GET.get('data', 0)
+    # else:
+    #     data_encrypt = request.GET.get('data', 0)
         
-        # Decrypt data payment form contain : total payment , seats choice ..etc
-        cipher = MetizAESCipher()    
-        decrypted = cipher.decrypt(data_encrypt)
-        data_json = json.loads(decrypted)
+    #     # Decrypt data payment form contain : total payment , seats choice ..etc
+    #     cipher = MetizAESCipher()    
+    #     decrypted = cipher.decrypt(data_encrypt)
+    #     data_json = json.loads(decrypted)
         
-        total_payment = data_json['totalPayment'] if 'totalPayment' in data_json else 0
-        seats = metiz_util.remove_uni(str(data_json['seats'])) if 'seats' in data_json else ""
-        working_id = data_json['working_id'] if 'working_id' in data_json else ""
-        barcode = data_json['barcode'] if 'barcode' in data_json else ""
-        # Handle list seats to string and remove unicode
-        seat_array = ','.join(data_json['seats_choice']) 
-        seats_choice = metiz_util.remove_uni(seat_array) if 'seats_choice' in data_json else ""
+    #     total_payment = data_json['totalPayment'] if 'totalPayment' in data_json else 0
+    #     seats = metiz_util.remove_uni(str(data_json['seats'])) if 'seats' in data_json else ""
+    #     working_id = data_json['working_id'] if 'working_id' in data_json else ""
+    #     barcode = data_json['barcode'] if 'barcode' in data_json else ""
+    #     # Handle list seats to string and remove unicode
+    #     seat_array = ','.join(data_json['seats_choice']) 
+    #     seats_choice = metiz_util.remove_uni(seat_array) if 'seats_choice' in data_json else ""
         
-        id_server = data_json['id_server'] if 'id_server' in data_json else 1
-        id_showtime = data_json['id_showtime'] if 'id_showtime' in data_json else ""
-        movie_api_id = data_json['movie_api_id'] if 'movie_api_id' in data_json else ""
-        id_movie_name = data_json['id_movie_name'] if 'id_movie_name' in data_json else ""
-        id_movie_time = data_json['id_movie_time'] if 'id_movie_time' in data_json else ""
-        id_movie_date_active = data_json['id_movie_date_active'] if 'id_movie_date_active' in data_json else ""
+    #     id_server = data_json['id_server'] if 'id_server' in data_json else 1
+    #     id_showtime = data_json['id_showtime'] if 'id_showtime' in data_json else ""
+    #     movie_api_id = data_json['movie_api_id'] if 'movie_api_id' in data_json else ""
+    #     id_movie_name = data_json['id_movie_name'] if 'id_movie_name' in data_json else ""
+    #     id_movie_time = data_json['id_movie_time'] if 'id_movie_time' in data_json else ""
+    #     id_movie_date_active = data_json['id_movie_date_active'] if 'id_movie_date_active' in data_json else ""
 
-        return render(request, "websites/vnpay_payment/payment.html",
-                      {"title": "Thanh toán", "total_payment": total_payment, "seats": seats,
-                       "working_id": working_id, "barcode": barcode, "seats_choice": seats_choice, "id_server": id_server, "id_showtime": id_showtime,
-                       "id_movie_name": id_movie_name, "id_movie_time": id_movie_time, "id_movie_date_active": id_movie_date_active,
-                       "movie_api_id": movie_api_id})
+    #     return render(request, "websites/vnpay_payment/payment.html",
+    #                   {"title": "Thanh toán", "total_payment": total_payment, "seats": seats,
+    #                    "working_id": working_id, "barcode": barcode, "seats_choice": seats_choice, "id_server": id_server, "id_showtime": id_showtime,
+    #                    "id_movie_name": id_movie_name, "id_movie_time": id_movie_time, "id_movie_date_active": id_movie_date_active,
+    #                    "movie_api_id": movie_api_id})
 
 
 def payment_ipn(request):

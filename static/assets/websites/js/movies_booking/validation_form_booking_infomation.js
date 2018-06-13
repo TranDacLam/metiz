@@ -34,9 +34,9 @@ $(document).ready(function() {
     //checkbox for form guest
     $('#agree_term').on('click', function() {
         if ($('#agree_term').prop("checked")) {
-            $('#confirm-user-information .form-popup #submit').prop('disabled', false);
+            $('#confirm-user-information .form-popup #submit_guest_form').prop('disabled', false);
         } else {
-            $('#confirm-user-information .form-popup #submit').prop('disabled', true);
+            $('#confirm-user-information .form-popup #submit_guest_form').prop('disabled', true);
         }
     });
 

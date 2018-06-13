@@ -59,8 +59,6 @@ def metiz_payment_methods(request):
     data_json["id_server"] = id_server
     data_json["seat_count"] = seat_count
     
-
-    
     if request.method == "GET":
         return render(request, "websites/metiz_payment/payment_method.html",{"data_json":data_json})
 
@@ -251,6 +249,14 @@ def verify_otp_for_user(request):
 
     """
     try:
+        # Call funtion check working_id into session exists and amount equal total_payment_store
+        working_id = request.POST.get("working_id", None)
+        movies_session = request.session.get("movies", "")
+        
+        # Check booking session time out
+        if not movies_session or (working_id not in movies_session):
+            return redirect("time-out-booking")
+
         code_otp = request.POST.get("code_otp", None)
         # Append data for form using detect request hacking
         form_otp = MetizOTPForm(request.POST)
@@ -258,13 +264,8 @@ def verify_otp_for_user(request):
         data_payment = request.POST.dict()
 
         if not code_otp:
-            data_payment['error_otp'] = "OTP is required."
+            data_payment['error_otp'] = _("OTP is required.")
             return render(request, "websites/metiz_payment/payment_verify.html", data_payment)
-
-        # Call funtion check working_id into session exists and amount equal total_payment_store
-        working_id = request.POST.get("working_id", None)
-        movies_session = request.session.get("movies", "")
-        
 
         money_store_dict = {"amount_ticket": 0, "amount_fb": 0} 
         result_check = check_amount_and_timeout(movies_session, working_id, money_store_dict)
@@ -396,3 +397,23 @@ def resend_otp(request):
     except Exception,e:
         print "Error resend_otp : %s" % e
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+
+
+
+"""
+    Author: DiemNguyen
+    Description: Cancel Metiz Payment
+"""
+def metiz_payment_cancel(request):
+    print "Metiz Payment Cancel"
+    try:
+        movies = request.session.get("movies", "")
+        if movies:
+            # delete session when empty
+            del request.session["movies"]
+        return redirect('home')
+    except Exception,e:
+        print "Error resend_otp : %s" % e
+        return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+
+

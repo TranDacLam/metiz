@@ -41,14 +41,14 @@ form .metiz-payment-form input{
 .metiz_payment, .metiz_verify{
     margin-bottom: 50px;
 }
-form button{
+form button, form .btn {
     font-family: "SairaSemiCondensed-Bold", sans-serif;
     border-radius: 5px;
     background-color: #7e8eaa;
     color: #fff;
     text-transform: uppercase;
 }
-form button.btn:hover{
+form .btn:hover {
     color: #fff;
     background: #ff5400;
 }
@@ -107,7 +107,8 @@ form#payment_method_form button{
 .payment_method{
     margin-bottom: 40px;
 }
-#metiz_payment_form button {
+#metiz_payment_form button, 
+#metiz_payment_form .btn {
     width: 84px;
 }
 
