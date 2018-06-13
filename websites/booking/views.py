@@ -384,3 +384,12 @@ def movies_synchronize(request):
     except Exception, e:
         print "Error Action movies_synchronize : ",e
         return JsonResponse({"message": "Cannot synchronize movies. Please contact administrator "}, status=500)
+
+def time_out_movie(request):
+    try:
+        """ Action render page notification timeout for user """
+        return render(request, 'websites/time_out_movie.html')
+    except Exception, e:
+        print "Error time out movie : ", e
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")
