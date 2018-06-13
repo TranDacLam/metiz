@@ -14,7 +14,7 @@ $(document).ready(function() {
         },
         messages:{
             card_barcode: {
-                required: 'Card barcode không được để trống.'
+                required: 'Mã thẻ không được để trống.'
             }
         }
     });

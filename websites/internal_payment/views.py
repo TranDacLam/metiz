@@ -397,3 +397,23 @@ def resend_otp(request):
     except Exception,e:
         print "Error resend_otp : %s" % e
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+
+
+
+"""
+    Author: DiemNguyen
+    Description: Cancel Metiz Payment
+"""
+def metiz_payment_cancel(request):
+    print "Metiz Payment Cancel"
+    try:
+        movies = request.session.get("movies", "")
+        if movies:
+            # delete session when empty
+            del request.session["movies"]
+        return redirect('home')
+    except Exception,e:
+        print "Error resend_otp : %s" % e
+        return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+
+

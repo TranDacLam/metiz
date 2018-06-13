@@ -194,7 +194,7 @@
 
 /* TRANSACTION HISTORY */
 
-.transaction-history {
+.transaction-history, .transaction-history .total_item_trans {
     font-family: "Montserrat-Light", sans-serif;
 }
 .transaction-history .info-th{
@@ -207,8 +207,9 @@
 .transaction-history .info-th-2 img{
     width: 100%;
 }
-.transaction-history .info-th-2 p>label{
-    font-family: "Montserrat-Regular", sans-serif;
+.transaction-history .info-th-2 p>label,
+.transaction-history .info-th-1 p{
+    font-family: "Montserrat-medium", sans-serif;
 }
 .transaction-history .info-th-2 div.th-1-des,
 .transaction-history .info-th-2 div.th-2-des,
@@ -231,6 +232,9 @@
 }
 .transaction-history .btn-load-more{
     display: none;
+}
+.transaction-history .info-th-1 hr{
+    border-top: 1px solid #ff5400;
 }
 
 /* END TRANSACTION HISTORY */
