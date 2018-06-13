@@ -30,17 +30,17 @@
     <!-- vnpay -->
     <link href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" rel="stylesheet"/>
     <!-- Home, header -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/styles.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-metiz.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-metiz.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/styles.css?version={{BUILD_VERSION}}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/g-erp-metiz.css?version={{BUILD_VERSION}}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/custom-metiz.css?version={{BUILD_VERSION}}" media="all" />
     <!-- header -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/header.css?version={{BUILD_VERSION}}" />
     <!-- modal -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/movies_showtime.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/movies_showtime.css?version={{BUILD_VERSION}}" media="all" />
     <!-- footer -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/footer.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/footer.css?version={{BUILD_VERSION}}" media="all" />
     <!-- all file -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/layout.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/layout.css?version={{BUILD_VERSION}}" media="all" />
    
     {% block extrastylesheet %}{% endblock %}
 
@@ -105,24 +105,24 @@
     
     <!-- film detail -->
     <!-- list_film-->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/ajaxSetup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/ajaxSetup.js?version={{BUILD_VERSION}}"></script>
      <!-- js for header -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/header.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/header.js?version={{BUILD_VERSION}}"></script>
     <!-- js for footer -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/footer.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/footer.js?version={{BUILD_VERSION}}"></script>
     <!-- message result -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/message_result.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/message_result.js?version={{BUILD_VERSION}}"></script>
     <!-- all file -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/layout.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/layout.js?version={{BUILD_VERSION}}"></script>
     <!-- Translate Message File -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/translate.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/translate.js?version={{BUILD_VERSION}}"></script>
 
     <!-- Load js for movie showtimes -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/build_html_movie_showtime.js?time={% now 'd-m-Y-H:i' %}"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/validation_showtime.js?time={% now 'd-m-Y-H:i' %}"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/showtimes_handle_show_popup.js?time={% now 'd-m-Y-H:i' %}"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/showtimes.js?time={% now 'd-m-Y-H:i' %}"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/validation_form_booking_infomation.js?time={% now 'd-m-Y-H:i' %}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/build_html_movie_showtime.js?version={{BUILD_VERSION}}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/validation_showtime.js?version={{BUILD_VERSION}}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/showtimes_handle_show_popup.js?version={{BUILD_VERSION}}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/showtimes.js?version={{BUILD_VERSION}}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/movies_booking/validation_form_booking_infomation.js?version={{BUILD_VERSION}}"></script>
     <!-- End Load js for movie showtimes -->
     
     

@@ -15,7 +15,7 @@
 <!-- film detail -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/star-rating.min.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/zoom/xzoom.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/film.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block extrascript %}
@@ -24,7 +24,7 @@
 	<!--Documents: https://github.com/payalord/xZoom/blob/master/doc/manual.md-->
 	<script type="text/javascript" src="{{ STATIC_URL }}assets/js/zoom/setup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/zoom/xzoom.min.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/film_detail.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/film_detail.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
 
 {% block body_class %}

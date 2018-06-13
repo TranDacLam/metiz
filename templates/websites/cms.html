@@ -4,11 +4,11 @@
 {% block title %}Metiz cinema{% endblock title %}
 
 {% block extrascript %}
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cms.js"></script> 
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/cms.js?version={{BUILD_VERSION}}"></script> 
 {% endblock %}
 
 {% block extrastylesheet %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/cms.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/cms.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block body_class %}

@@ -4,11 +4,11 @@
 
 {% block extrastylesheet %}
  <!-- Payment and payment_return -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/payment.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/payment.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block extrascript %}
-    <script src="{{ STATIC_URL }}assets/websites/js/payment_return.js"></script>
+    <script src="{{ STATIC_URL }}assets/websites/js/payment_return.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
 {% block main_content %}
 <div class="main">

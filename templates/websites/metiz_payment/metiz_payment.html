@@ -5,11 +5,11 @@
 
 {% block extrastylesheet %}
  <!-- Payment and payment_return -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/metiz_payment.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/metiz_payment.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block extrascript %}
-    <script src="{{ STATIC_URL }}assets/websites/js/metiz_payment.js"></script>
+    <script src="{{ STATIC_URL }}assets/websites/js/metiz_payment.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
 
 {% block main_content %}

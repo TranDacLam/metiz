@@ -35,3 +35,12 @@ def get_movie_id_test(request):
         pass
 
     return {'MOVIE_ID_TEST': MOVIE_ID_TEST}
+
+def get_build_version(request):
+    BUILD_VERSION = 0
+    try:
+        BUILD_VERSION = settings.BUILD_VERSION
+    except:
+        pass
+
+    return {'BUILD_VERSION': BUILD_VERSION}

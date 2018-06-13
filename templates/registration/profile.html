@@ -5,7 +5,7 @@
 {% block extrastylesheet %}
     <!-- datepiker for signup, profile -->
     <link href="{{ STATIC_URL }}assets/css/dateBox/jtsage-datebox.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/profile.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/profile.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block extrascript %}
@@ -14,7 +14,7 @@
     <script src="{{ STATIC_URL }}assets/js/dateBox/jtsage-datebox.min.js" type="text/javascript"></script>
     <script src="{{ STATIC_URL }}assets/js/dateBox/messages-datebox.js" type="text/javascript"></script>
     <!-- profile -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/profile.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/profile.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
 
 

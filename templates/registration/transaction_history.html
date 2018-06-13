@@ -3,11 +3,11 @@
 {% block title %}Lịch sử giao dịch online{% endblock title %}
 
 {% block extrascript %}
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/transaction_history.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/transaction_history.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
 
 {% block extrastylesheet %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/profile.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/profile.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block container_class%}col2-left-layout{% endblock%}

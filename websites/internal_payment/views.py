@@ -259,6 +259,8 @@ def verify_otp_for_user(request):
         movies_session = request.session.get("movies", "")
         
         code_otp = request.POST.get("code_otp", None)
+        # init data cache for page
+        data_payment = request.POST.dict()
         if not code_otp:
             data_payment['error_otp'] = _("OTP is required.")
             return render(request, "websites/metiz_payment/payment_verify.html", data_payment)
@@ -274,8 +276,6 @@ def verify_otp_for_user(request):
 
         # Append data for form using detect request hacking
         form_otp = MetizOTPForm(request.POST)
-        # init data cache for page
-        data_payment = request.POST.dict()
 
         if form_otp.is_valid():
             # Verify OTP

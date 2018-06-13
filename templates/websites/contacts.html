@@ -5,13 +5,13 @@
 {% block title %}Liên hệ{% endblock title %}
 
 {% block extrastylesheet %}
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/contacts.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/contacts.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block extrascript %}
 <!-- Captcha use contact, payment, signup -->
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/contacts.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/contacts.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
 
 {% block container_class %}col2-left-layout{% endblock %}
