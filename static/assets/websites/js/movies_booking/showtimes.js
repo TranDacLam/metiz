@@ -51,6 +51,7 @@ $(document).ready(function() {
             $('#modal-movie-showtimes .days-movie-showing [movie-day-selected = ' + date_query + ']').addClass('active-date');
 
         } else {
+            // Handle When exception get data but date query is empty
             var date_query = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
             // Active First Day in List Schedules
             $('#modal-movie-showtimes .days-movie-showing li:first').addClass('active-date');

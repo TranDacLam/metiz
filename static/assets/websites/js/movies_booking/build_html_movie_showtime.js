@@ -23,25 +23,37 @@ function listShedule(shedule) {
     $.each(shedule.lst_times, function(key, value) {
 
         //set end time for film schedule
-        // TODO : USING TimeDelta jquery
-        var startTime = value.time.split(':').map(Number);
-        var minute = (shedule.time_running + startTime[1]) % 60;
-        var hour = startTime[0] + Math.floor((shedule.time_running + startTime[1]) / 60);
-        if (minute < 10) {
-            minute = '0' + minute;
+        
+        if(shedule.time_running > 0){
+            // calculated End Time movie
+            
+            var startTime = value.time.split(':').map(Number);
+            // Convert date and startTime to Jquery DateTime
+            var date_arr = value.date.split("/");
+            var month = date_arr[1];
+            if (month > 1){
+                month = month - 1 ;
+            }
+            var date_time_movie_start = new Date(date_arr[2], month, date_arr[0], startTime[0], startTime[1]);
+
+            // Add time_running to date_time_movie_start using get hours and minutes endTime movie
+            date_time_movie_start.setMinutes(date_time_movie_start.getMinutes() + shedule.time_running);
+
+            var endTime = '-' + date_time_movie_start.getHours() + ':' + date_time_movie_start.getMinutes();
+            var time_html = '<span class="time">' + value.time + endTime +'</span>';
+        }else{
+            var time_html = '<span class="time">' + value.time +'</span>';
         }
-        if (hour > 23) {
-            hour -= 24;
-        }
-        var endTime = '-' + hour + ':' + minute;
+
         htmlShedule += '<li class="sold-out">' +
             '<a href="javascript:void(0);" >' +
+            '<input type="hidden" name="id_date_movie_showing" value="' + value.date + '">' +
             '<input type="hidden" name="id_showtime" value="' + value.id_showtime + '">' +
             '<input type="hidden" name="id_movie_id" value="' + shedule.movie_id + '">' +
             '<input type="hidden" name="id_movie_name" value="' + shedule.movie_name + '">' +
             '<input type="hidden" name="movie_api_id" value="' + shedule.movie_id + '">' +
             '<input type="hidden" name="allow_booking" value="' + shedule.allow_booking + '">' +
-            '<span class="time">' + value.time + endTime +'</span>' +
+            time_html +
             '<span class="ppnum">Phòng chiếu</span>' +
             '<span class="ppnum">' + value.room_name + '</span>' + // room chiếu phim
             '</a>' +

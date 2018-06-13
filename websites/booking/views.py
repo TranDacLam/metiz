@@ -130,11 +130,11 @@ def build_show_time_json(current_date, item, result, movies_info, obj_movie=None
         # compare hour and minute
         if time_show >= current_time:
             result[item["MOVIE_ID"]]["lst_times"].append(
-                {"id_showtime": item["ID"], "date": datetime.strptime(item["DATE"], "%d/%m/%Y").strftime("%m/%d/%Y"), 
+                {"id_showtime": item["ID"], "date": item["DATE"], 
                 "time": item["TIME"], "room_name": item["ROOM_NAME"]})
     else:
         result[item["MOVIE_ID"]]["lst_times"].append(
-            {"id_showtime": item["ID"], "date": datetime.strptime(item["DATE"], "%d/%m/%Y").strftime("%m/%d/%Y"), 
+            {"id_showtime": item["ID"], "date": item["DATE"], 
             "time": item["TIME"], "room_name": item["ROOM_NAME"]})
 
 
