@@ -6,5 +6,15 @@ $(document).ready(function() {
 
     $('#modal-movie-showtimes').removeClass("mfp-hide");
     // getDataPopupMovieSchedule();
-    $('#modal-movie-showtimes .days-popup li:first').click();
+    $('.white-popup .calendar-popup li:first').click();
+   	// disable show schedule film
+	$('.open-movie-showtime').magnificPopup({
+        disableOn: function() {
+			return false;
+		}
+    });
+    // prevent href a
+    $('.open-movie-showtime').click(function(event) {
+    	return false;
+    });
 });
