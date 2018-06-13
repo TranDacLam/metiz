@@ -293,11 +293,14 @@ def verify_otp_for_user(request):
             card_barcode = form_otp.cleaned_data["card_barcode"]
             id_server  = form_otp.cleaned_data["id_server"]
             movie_poster = form_otp.cleaned_data["movie_poster"]
+            payment_gate = form_otp.cleaned_data["payment_gate"]
+
+            print "payment_gate:::::", payment_gate
 
             # Store order infomation with status is pendding
             booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
                                               email=request.session.get("email", ""), seats=seats_choice, barcode=barcode, card_barcode=card_barcode,
-                                              id_server=id_server, order_status="pendding", poster=movie_poster)
+                                              id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment=payment_gate)
 
             if not request.user.is_anonymous():
                 booking_order.user = request.user
@@ -396,7 +399,7 @@ def resend_otp(request):
         sms_otp = msg_global.MSG_SMS_OTP%(request.session["movies"][working_id]['total_money'], str(code_otp_resend["code_otp"]))
         metiz_sms.send_sms(phone_number, sms_otp)
 
-        return JsonResponse({"code": 200, "message": _("reSend OTP Success.")}, status=500)
+        return JsonResponse({"code": 200, "message": _("reSend OTP Success.")}, status=200)
     except Exception,e:
         print "Error resend_otp : %s" % e
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)

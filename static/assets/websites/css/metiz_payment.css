@@ -128,7 +128,8 @@ form#payment_method_form button{
 .metiz_verify .btn-metiz-verify{
     margin-top: 40px;
 }
-.metiz_verify form button{
+.metiz_verify form button, 
+.metiz_verify form a.btn{
     width: 118px;
 }
 
