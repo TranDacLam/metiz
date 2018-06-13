@@ -73,6 +73,9 @@ form .btn:hover {
 .msg_error{
     color: red;
 }
+#metiz_payment_form label.error{
+    margin-right: 70px;
+}
 
 /* payment_method */
 .payment_method .groups-methods{
