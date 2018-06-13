@@ -7,12 +7,12 @@
 
 {% block extrastylesheet %} 
 	<!-- list_film -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/list_film.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/list_film.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block extrascript %}
 	<!-- list_film -->
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/list_film.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
 
 {% block body_class %}

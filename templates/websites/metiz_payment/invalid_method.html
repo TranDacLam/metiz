@@ -5,7 +5,7 @@
 {% block title %}Số Tiền Giao Dịch Không Hợp Lệ{% endblock title %} 
 
 {% block extrastylesheet %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/metiz_payment.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/metiz_payment.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block container_class %}col1-layout {% endblock %}
@@ -20,7 +20,7 @@
             <h2>Thông báo</h2>
             <div class='clearfix'></div>
             <div class="note_metiz_payment">
-                <p>Giao dịch không hợp lệ. Xin vui lòng đặt vé lại <a href="#modal-movie-showtimes" class="back-booking open-popup-link" data-all-movie="true"> tại đây </a>. Cảm ơn!</p>
+                <p>Giao dịch không hợp lệ. Xin vui lòng đặt vé lại <a href="#modal-movie-showtimes" class="back-booking open-movie-showtime" data-all-movie="true"> tại đây </a>. Cảm ơn!</p>
             </div>
         </div>
     </div>

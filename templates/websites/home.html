@@ -13,8 +13,8 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
     <!-- slide movie page home -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/owl.carousel.min.css" media="all" />
     <link rel="stylesheet" href="{{ STATIC_URL }}assets/css/carousel/home_banner.css" media="all" />
-    <link rel="stylesheet"  href="{{ STATIC_URL }}assets/websites/css/slide_carousel.css"/>
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/home.css" media="all" />
+    <link rel="stylesheet"  href="{{ STATIC_URL }}assets/websites/css/slide_carousel.css?version={{BUILD_VERSION}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/home.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block extrascript %}
@@ -23,8 +23,8 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
     <!-- Home -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" ></script>
     <script src="{{ STATIC_URL }}assets/js/carousel/banner_slide.js"></script>
-    <script src="{{ STATIC_URL }}assets/websites/js/slide_carousel.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js"></script> 
+    <script src="{{ STATIC_URL }}assets/websites/js/slide_carousel.js?version={{BUILD_VERSION}}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js?version={{BUILD_VERSION}}"></script> 
 
 {% endblock %}
 
@@ -94,7 +94,7 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         {% if item.allow_booking %}
-                                            <a href="#modal-movie-showtimes" data-date-select="" data-all-movie="true" class="button open-popup-link" data-movie-name="{{ item.name }}">Đặt vé</a>
+                                            <a href="#modal-movie-showtimes" data-date-select="" data-all-movie="true" class="button open-movie-showtime" data-movie-name="{{ item.name }}">Đặt vé</a>
                                         {% endif %}
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
@@ -122,7 +122,7 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         {% if item.allow_booking %}
-                                            <a href="#modal-movie-showtimes" data-date-select="" data-all-movie="true" class="button open-popup-link" data-movie-name="{{ item.name }}">Đặt vé</a>
+                                            <a href="#modal-movie-showtimes" data-date-select="" data-all-movie="true" class="button open-movie-showtime" data-movie-name="{{ item.name }}">Đặt vé</a>
                                         {% endif %}
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">

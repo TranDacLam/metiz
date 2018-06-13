@@ -5,7 +5,7 @@
 {% block extrastylesheet %} 
     <!-- Using css of password reset -->
     <!-- Because the same template information -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/password_reset.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/password_reset.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block main_content %}

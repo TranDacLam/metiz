@@ -36,7 +36,7 @@
 			<li>
 				{% verify_showtime_by_id 1 value.movie_api_id as is_book_able %}
 				{% if is_book_able %}
-					<button href="#modal-movie-showtimes" type="button" title="Đặt vé" class="button open-popup-list-movie popup-movie-schedule" data-movie-api-id="{{ value.movie_api_id }}">Đặt vé</button>
+					<button href="#modal-movie-showtimes" type="button" title="Đặt vé" class="button open-movie-showtime popup-movie-schedule" data-movie-api-id="{{ value.movie_api_id }}">Đặt vé</button>
 				{% endif %}
 			</li>
 		</ul>

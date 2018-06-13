@@ -1,21 +1,14 @@
 $(document).ready(function($) {
 	
-    // active popup
-    $('.open-popup-list-movie').magnificPopup({
-        type: 'inline',
-        midClick: true,
-        enableEscapeKey: false,
-        fixedContentPos: true,
-        //prevent background scroll
-        callbacks: {
-            open: function() {
-                $('body').css('overflow', 'hidden');
-            },
-            close: function() {
-                $('body').css('overflow', 'auto');
-            },
-        }
-    });
+	// Prevent scroll background when popup open on mobile
+	$.magnificPopup.instance.open= function (data) {
+    	$('body').css('overflow', 'hidden');
+    	$.magnificPopup.proto.open.call(this,data);
+    }
+ 	$.magnificPopup.instance.close= function () {
+    	$('body').css('overflow', 'auto');
+    	$.magnificPopup.proto.close.call(this);
+    }
     
 	//  load more
 	// check total page let remove button load more
@@ -55,7 +48,7 @@ $(document).ready(function($) {
 			$(this).prop('disabled', false);
 
 			// // ajax success load popup 
-			$('.open-popup-list-movie').magnificPopup({
+			$('.open-movie-showtime').magnificPopup({
 	          	type: 'inline',
 	          	midClick: true,
 		    });

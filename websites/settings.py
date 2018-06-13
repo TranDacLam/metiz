@@ -91,6 +91,7 @@ TEMPLATES = [
                 'main.context_processors.get_app_fb_id',
                 'main.context_processors.get_app_recaptcha_key',
                 'main.context_processors.get_movie_id_test',
+                'main.context_processors.get_build_version',
             ],
         },
     },
@@ -322,6 +323,8 @@ REST_USE_JWT = True
 
 # Time interval for OTP
 TIME_OTP = 60
+# Build version for projects
+BUILD_VERSION = 0
 
 try:
     if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:

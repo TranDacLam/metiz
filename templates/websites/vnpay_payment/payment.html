@@ -5,13 +5,13 @@
 
 {% block extrastylesheet %}
  <!-- Payment and payment_return -->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/payment.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/payment.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 
 {% block extrascript %}
     <!-- Captcha use contact, payment, signup -->
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
-    <script src="{{ STATIC_URL }}assets/websites/js/vnpayment.js?time={% now 'd-m-Y-H:i' %}"></script>
+    <script src="{{ STATIC_URL }}assets/websites/js/vnpayment.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
 
 {% block main_content %}

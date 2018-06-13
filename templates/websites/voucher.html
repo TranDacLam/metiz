@@ -11,11 +11,11 @@
 {% endblock %}
 
 {% block extrastylesheet %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/voucher.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/voucher.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 {% block extrascript %}
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.8.0/dist/barcodes/JsBarcode.code39.min.js"></script>
-    <script src="{{ STATIC_URL }}assets/websites/js/voucher.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ STATIC_URL }}assets/websites/js/voucher.js?version={{BUILD_VERSION}}" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
 {% block container_class%}col1-layout{% endblock%}
 

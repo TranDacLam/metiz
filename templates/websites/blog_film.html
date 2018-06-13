@@ -4,10 +4,10 @@
 {% block title %}Blog Phim{% endblock title %}
 
 {% block extrastylesheet %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/blog_film.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/blog_film.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 {% block extrascript %}
-    <script src="{{ STATIC_URL }}assets/websites/js/blog_film.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ STATIC_URL }}assets/websites/js/blog_film.js?version={{BUILD_VERSION}}" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
 {% block container_class%}col1-layout{% endblock%}
 

@@ -4,8 +4,8 @@
 
 {% block title %}Metiz Cinema Schedules{% endblock title %}
 {% block extrastylesheet %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/schedule.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/schedule.css?version={{BUILD_VERSION}}" media="all" />
 {% endblock %}
 {% block extrascript %}
-    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/schedule.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/schedule.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
