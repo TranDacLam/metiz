@@ -68,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'booking.middleware.DestroySeat',
+    'main.middleware.HttpResponseNotAllowedMiddleware',
 ]
 
 ROOT_URLCONF = 'main.urls'
