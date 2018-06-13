@@ -20,7 +20,7 @@ function show_popup_user_information(element){
     var id_movie_name = element.children('input[name=id_movie_name]').val();
     var movie_api_id = element.children('input[name=movie_api_id]').val();
     var id_movie_time = element.children('span[class=time]').text();
-    
+    var id_server = $('#data-id-server').val();
 
     $('.modal-schedule input[name=id_server]').val(id_server);
     $('.modal-schedule input[name=id_showtime]').val(id_showtime);

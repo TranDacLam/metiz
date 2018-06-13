@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    var id_server = $('#data-id-server').val();
-
     //Handle press esc
     $("body").on("keyup", function(e) {
         var key = e.which;
@@ -45,8 +43,8 @@ $(document).ready(function() {
     // Call server get data movie showtime
     
     function getDataPopupMovieSchedule(element) {
-        var id_server = $('.list-cinema .active').attr('data-id-server');
-
+        var id_server = $('#data-id-server').val();
+        
         if ($(element).attr("movie-day-selected")) {
             var date_query = $(element).attr("movie-day-selected");
             // Active Date Selected on List Schedule
