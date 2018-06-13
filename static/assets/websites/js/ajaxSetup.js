@@ -29,4 +29,12 @@ $(document).ready(function() {
         }
     }); 
     $.ajaxSetup({ cache: false });
+
+    // loading ajax
+    $(document).bind("ajaxStart", function() {
+        $(".ajax-loader").css("display", "block");
+    }).bind("ajaxStop", function() {
+        $(".ajax-loader").css("display", "none");
+    });
+
 });

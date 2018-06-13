@@ -31,18 +31,9 @@ $(document).ready(function() {
         });
     }
 
-    // show icon load when ajax start 
-    $(document).ajaxStart(function(){
-        $(".ajax-loader").css("display", "block");
-    });
-    // hidden icon load when ajax complete
-    $(document).ajaxComplete(function(){
-        $(".ajax-loader").css("display", "none");
-    });
 
     // variable setTimeout
     var timer;
-
     // Get list seats
     $.ajax({
         url: "/movie/seats",
