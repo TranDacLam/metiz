@@ -37,15 +37,10 @@ $(document).ready(function() {
 
 
     $("#modal-movie-showtimes").on('click', '.day-showing-item', function() {
-        // Change month when click date
-        $('#center-month').text($(this).children('.hide-month').text());
         // Remove Active Date Befor add new active 
         $('.days-movie-showing li').removeClass('active-date');
 
         getDataPopupMovieSchedule(this);
-    })
-
-
-    
+    })   
 
 });

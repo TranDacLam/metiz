@@ -9,7 +9,8 @@ function getDataPopupMovieSchedule(element) {
         var date_query = $(element).attr("movie-day-selected");
         // Active Date Selected on List Schedule
         $('#modal-movie-showtimes .days-movie-showing [movie-day-selected = ' + date_query + ']').addClass('active-date');
-
+        // Set month base on class active-date
+        $('#center-month').text($('.day-showing-item.active-date .hide-month').text());
     } else {
         // Handle When exception get data but date query is empty
         var date_query = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
