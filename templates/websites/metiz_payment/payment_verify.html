@@ -60,7 +60,7 @@
             {% endif %}
             <div class="btn-metiz-verify">
                 <button class="btn" id="btn-reSend-otp">GỞI LẠI MÃ OTP</button>
-                <button type="submit" class="btn" id="btn-payment-continute">XÁC THỰC</button>
+                <button type="submit" class="btn btn-show-loading" id="btn-payment-continute" data-loading-text="<i class='fa fa-spinner fa-spin '></i> XÁC THỰC">XÁC THỰC</button>
                 <a class="btn" id="btn-payment-cancel" href="{% url 'metiz-payment-cancel' %}">HUỶ</a>
             </div>
         </div>

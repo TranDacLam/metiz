@@ -19,6 +19,11 @@ $(document).ready(function() {
 
     checkOtpReSend();
 
+    // Add loading when click button
+    $('.btn-show-loading').on('click', function() {
+        $(this).button('loading');
+    });
+
     // Event click, + 1 number_verify
     $('#btn-payment-continute').click(function(e){
         var number_verify_event = parseInt(sessionStorage.getItem('number_verify'));
