@@ -176,7 +176,8 @@ def generate_otp(request):
                 "amount_fb": money_store_dict["amount_fb"],
                 "payment_value": "cash_balance",
                 "system_name": "metiz_online",
-                "is_verify": True
+                "is_verify": True,
+                "gate_payment": form_otp.cleaned_data["payment_gate"]
              }
             
             request_verify = urllib2.Request(url_verify_card, data=json.dumps(data), headers={
@@ -317,7 +318,8 @@ def verify_otp_for_user(request):
                 "amount_fb": money_store_dict["amount_fb"],
                 "payment_value": "cash_balance",
                 "system_name": "metiz_online",
-                "is_verify": False
+                "is_verify": False,
+                "gate_payment": payment_gate
              }
             
             request_payment_card = urllib2.Request(url_payment_card, data=json.dumps(data), headers={
