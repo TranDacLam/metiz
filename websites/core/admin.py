@@ -244,6 +244,9 @@ admin.site.register(FAQ_Category, FAQCategoryAdmin)
 
 
 class FAQAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget()},
+    }
     pass
 admin.site.register(FAQ, FAQAdmin)
 
