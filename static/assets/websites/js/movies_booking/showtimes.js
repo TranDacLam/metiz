@@ -22,7 +22,8 @@ $(document).ready(function() {
         fixedContentPos: true,
         callbacks: {
             beforeOpen: function() {
-                get_movie_api_id(this.st.el);
+                // set movie api id for input
+                $('#data_movie_api_id').val($(this.st.el).attr("data-movie-api-id"));
                 // Load data before popup open load first time
                 getDataPopupMovieSchedule(this.st.el);
             },
@@ -44,18 +45,13 @@ $(document).ready(function() {
         getDataPopupMovieSchedule(this);
     })
 
-    // set movie_api_id to input
-    function get_movie_api_id(element){
-        if($(element).attr("data-movie-api-id")){
-            $('#data_movie_api_id').val($(element).attr("data-movie-api-id"));
-        }
-    }
 
     // Call server get data movie showtime
     
     function getDataPopupMovieSchedule(element) {
         var id_server = $('#data-id-server').val();
         var movie_api_id = $('#data_movie_api_id').val();
+
 
         if ($(element).attr("movie-day-selected")) {
             var date_query = $(element).attr("movie-day-selected");
