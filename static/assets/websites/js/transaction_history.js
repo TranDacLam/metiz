@@ -6,16 +6,16 @@ $(document).ready(function() {
     // item transaction history
     function transactionHistory(item){
         return  '<div class="col-md-12 info-th-2">'
-                    + ' <div class="col-md-7 th-1-des">'
+                    + ' <div class="col-xs-7 col-sm-8 col-md-7 th-1-des">'
                         + '<p><label>Mã đặt vé: </label> '+ item.barcode +'</p>'
                         + '<p><label>Trạng thái: </label> Thành công</p>'
                         + '<p><label>Mô tả đặt vé: </label> '+ item.order_desc +'</p>'
                         + '<p><label>Chi phí: </label> '+ item.amount.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +' VNĐ</p>'
                     + '</div>'
-                    + '<div class="col-md-5 th-2-des">'
+                    + '<div class="col-xs-5 col-sm-4 col-md-5 th-2-des">'
                      +   '<img src="'+ (item.poster ? MEDIA_URL + item.poster : STATIC_URL + 'assets/images/default.jpg') +'" alt="'+ item.order_id +'"/>'
                     + '</div>'
-                   +  '<div class="col-md-12 th-3-des"><hr/></div>'
+                   +  '<div class="col-xs-12 col-md-12 th-3-des"><hr/></div>'
                 + '</div>';
     }
 
