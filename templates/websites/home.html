@@ -94,7 +94,7 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         {% if item.allow_booking %}
-                                            <a href="#modal-movie-showtimes" data-date-select="" data-all-movie="true" class="button open-movie-showtime" data-movie-name="{{ item.name }}">Đặt vé</a>
+                                            <a href="#modal-movie-showtimes" data-date-select="" data-all-movie="true" class="button open-movie-showtime" data-movie-name="{{ item.name }}" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</a>
                                         {% endif %}
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
@@ -122,7 +122,7 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                     <div class="detail-pay-film">
                                         <a title="Xem chi tiết" class="button" href="{% url 'film_detail' item.id %}">Chi tiết</a>
                                         {% if item.allow_booking %}
-                                            <a href="#modal-movie-showtimes" data-date-select="" data-all-movie="true" class="button open-movie-showtime" data-movie-name="{{ item.name }}">Đặt vé</a>
+                                            <a href="#modal-movie-showtimes" data-date-select="" data-all-movie="true" class="button open-movie-showtime" data-movie-name="{{ item.name }}" data-movie-api-id="{{ item.movie_api_id }}">Đặt vé</a>
                                         {% endif %}
                                     </div>
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
