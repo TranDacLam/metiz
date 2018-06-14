@@ -22,10 +22,14 @@ $(document).ready(function() {
         fixedContentPos: true,
         callbacks: {
             beforeOpen: function() {
+                get_movie_api_id(this.st.el);
                 // Load data before popup open load first time
                 getDataPopupMovieSchedule(this.st.el);
             },
             close: function() {
+                // clear movie_api_id
+                $('#data_movie_api_id').val('');
+                $('.days-movie-showing li').removeClass('active-date');
             }
         }
     });
@@ -40,11 +44,19 @@ $(document).ready(function() {
         getDataPopupMovieSchedule(this);
     })
 
+    // set movie_api_id to input
+    function get_movie_api_id(element){
+        if($(element).attr("data-movie-api-id")){
+            $('#data_movie_api_id').val($(element).attr("data-movie-api-id"));
+        }
+    }
+
     // Call server get data movie showtime
     
     function getDataPopupMovieSchedule(element) {
         var id_server = $('#data-id-server').val();
-        
+        var movie_api_id = $('#data_movie_api_id').val();
+
         if ($(element).attr("movie-day-selected")) {
             var date_query = $(element).attr("movie-day-selected");
             // Active Date Selected on List Schedule
@@ -63,7 +75,9 @@ $(document).ready(function() {
         // cinema_id is equal id_server
         data = {
             "date": date_query,
-            "cinema_id": id_server
+            "cinema_id": id_server,
+            "movie_api_id": movie_api_id
+
         }
 
         $.ajax({

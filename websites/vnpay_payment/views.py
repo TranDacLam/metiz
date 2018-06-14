@@ -106,7 +106,7 @@ def payment(request):
             # Store order infomation with status is pendding
             booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
                                               email=request.session.get("email", ""), seats=seats_choice, barcode=barcode,
-                                              id_server=id_server, order_status="pendding", poster=movie_poster)
+                                              id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment="VNPay")
 
             if not request.user.is_anonymous():
                 booking_order.user = request.user

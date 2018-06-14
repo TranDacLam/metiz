@@ -83,7 +83,7 @@
                         <div class="panel-collapse collapse" id="question{{faq.id}}">
                             <div class="panel-body">
                                 <h5><span class="label label-primary">Trả lời</span></h5>
-                                <p>{{ faq.answer }}</p>
+                                <p>{{ faq.answer | safe }}</p>
                             </div>
                         </div>
                     </div>
