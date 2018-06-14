@@ -9,7 +9,7 @@ $(document).ready(function($) {
     	$('body').css('overflow', 'auto');
     	$.magnificPopup.proto.close.call(this);
     }
-    
+
 	//  load more
 	// check total page let remove button load more
 	var total_page = parseInt($('.load-more').attr('data-total-page'));
@@ -47,12 +47,26 @@ $(document).ready(function($) {
 
 			$(this).prop('disabled', false);
 
-			// // ajax success load popup 
+			// ajax success load popup 
 			$('.open-movie-showtime').magnificPopup({
-	          	type: 'inline',
-	          	midClick: true,
+		        type: 'inline',
+		        midClick: true,
+		        enableEscapeKey: false,
+		        fixedContentPos: true,
+		        callbacks: {
+		            beforeOpen: function() {
+		                // set movie api id for input
+		                $('#data_movie_api_id').val($(this.st.el).attr("data-movie-api-id"));
+		                // Load data before popup open load first time
+		                getDataPopupMovieSchedule(this.st.el);
+		            },
+		            close: function() {
+		                // clear movie_api_id
+		                $('#data_movie_api_id').val('');
+		                $('.days-movie-showing li').removeClass('active-date');
+		            }
+		        }
 		    });
-
 			// ajax success load button facebook
 			FB.XFBML.parse(); 
 		})
