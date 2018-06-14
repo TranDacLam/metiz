@@ -28,13 +28,8 @@ function listShedule(shedule) {
             // calculated End Time movie
             
             var startTime = value.time.split(':').map(Number);
-            // Convert date and startTime to Jquery DateTime
-            var date_arr = value.date.split("/");
-            var month = date_arr[1];
-            if (month > 1){
-                month = month - 1 ;
-            }
-            var date_time_movie_start = new Date(date_arr[2], month, date_arr[0], startTime[0], startTime[1]);
+            // Convert date and startTime to Jquery DateTime, funtion convertStringToDate from layout.js
+            var date_time_movie_start = convertStringToDate(value.date, startTime);
 
             // Add time_running to date_time_movie_start using get hours and minutes endTime movie
             date_time_movie_start.setMinutes(date_time_movie_start.getMinutes() + shedule.time_running);

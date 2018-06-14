@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^timeout/booking/$', views.time_out_booking, name='time-out-booking'),
     url(r'^invalid/booking/$', views.invalid_booking, name='invalid-booking'),
     url(r'^movies/synchronize/$', views.movies_synchronize, name='movies-synchronize'),
+    url(r'^timeout/movie/$', views.time_out_movie, name='time-out-movie'),
 ]

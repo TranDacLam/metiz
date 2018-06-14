@@ -227,7 +227,7 @@ function bookingSeat(objBooking, id_showtime, id_server, movie_api_id){
 
     // Click add Card button
     // function from booking_add_card.js
-    bookingAddToCard(sc, id_showtime, id_server, movie_api_id);
+    addBookingToPayment(sc, id_showtime, id_server, movie_api_id);
 
     // Refresh seat selected
     $('.booking-refresh a').on('click', function(){
