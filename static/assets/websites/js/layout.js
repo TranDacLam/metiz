@@ -53,9 +53,20 @@ function validOnlyNumber(selector, prevVal){
 
 // Function validate phone number
 // Remove 0 number before phone number 
-    function removeBeforePhoneNumber(str) {
-        if(typeof str !== 'undefined'){
-            var trimmed = str.replace(/\b0+/g, "");
-            return trimmed;
-        }
-    } 
+function removeBeforePhoneNumber(str) {
+    if(typeof str !== 'undefined'){
+        var trimmed = str.replace(/\b0+/g, "");
+        return trimmed;
+    }
+} 
+
+// Convert date and startTime to Jquery DateTime
+function convertStringToDate(date, start_time){
+    var date_arr = date.split("/");
+    var month = date_arr[1];
+    if (month > 1){
+        month = month - 1 ;
+    }
+    var date_time_movie_start = new Date(date_arr[2], month, date_arr[0], start_time[0], start_time[1]);
+    return date_time_movie_start;
+}

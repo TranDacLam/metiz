@@ -1,4 +1,4 @@
-function bookingAddToCard(sc, id_showtime, id_server, movie_api_id){
+function addBookingToPayment(sc, id_showtime, id_server, movie_api_id){
     // Click add Card button
     $('#btn_add_card').on('click',function(){
         var totalPayment = recalculateTotal(sc);
@@ -7,12 +7,8 @@ function bookingAddToCard(sc, id_showtime, id_server, movie_api_id){
 
         // calculated current movie showtime is expired (less than to current datetime)
         var movie_start_time = id_movie_time.split("-")[0].split(":");
-        var date_arr = id_movie_date_active.split("/");
-        var month = date_arr[1];
-        if (month > 1){
-            month = month - 1 ;
-        }
-        var date_time_movie_start = new Date(date_arr[2], month, date_arr[0], movie_start_time[0], movie_start_time[1]);
+        // Convert date and startTime to Jquery DateTime, funtion convertStringToDate from layout.js
+        var date_time_movie_start = convertStringToDate(id_movie_date_active, movie_start_time);
 
         if(new Date() >= date_time_movie_start)
         {
