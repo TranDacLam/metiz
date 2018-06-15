@@ -1,14 +1,28 @@
 $(document).ready(function($) {
 	
-	// Prevent scroll background when popup open on mobile
-	$.magnificPopup.instance.open= function (data) {
-    	$('body').css('overflow', 'hidden');
-    	$.magnificPopup.proto.open.call(this,data);
-    }
- 	$.magnificPopup.instance.close= function () {
-    	$('body').css('overflow', 'auto');
-    	$.magnificPopup.proto.close.call(this);
-    }
+	// Change name class open popup to difference with popup on header
+    $('.open-showtime-film-detail').magnificPopup({
+        type: 'inline',
+        midClick: true,
+        enableEscapeKey: false,
+        fixedContentPos: true,
+        callbacks: {
+            beforeOpen: function() {
+            	// Prevent scroll background when popup open on mobile
+            	$('body').css('overflow', 'hidden');
+                // set movie api id for input
+                $('#data_movie_api_id').val($(this.st.el).attr("data-movie-api-id"));
+                // Load data before popup open load first time
+                getDataPopupMovieSchedule(this.st.el);
+            },
+            close: function() {
+            	$('body').css('overflow', 'auto');
+                // clear movie_api_id
+                $('#data_movie_api_id').val('');
+                $('.days-movie-showing li').removeClass('active-date');
+            }
+        }
+    });
 
 	//  load more
 	// check total page let remove button load more
@@ -48,19 +62,22 @@ $(document).ready(function($) {
 			$(this).prop('disabled', false);
 
 			// ajax success load popup 
-			$('.open-movie-showtime').magnificPopup({
+			$('.open-showtime-film-detail').magnificPopup({
 		        type: 'inline',
 		        midClick: true,
 		        enableEscapeKey: false,
 		        fixedContentPos: true,
 		        callbacks: {
 		            beforeOpen: function() {
+		            	// Prevent scroll background when popup open on mobile
+            			$('body').css('overflow', 'hidden');
 		                // set movie api id for input
 		                $('#data_movie_api_id').val($(this.st.el).attr("data-movie-api-id"));
 		                // Load data before popup open load first time
 		                getDataPopupMovieSchedule(this.st.el);
 		            },
 		            close: function() {
+		            	$('body').css('overflow', 'auto');
 		                // clear movie_api_id
 		                $('#data_movie_api_id').val('');
 		                $('.days-movie-showing li').removeClass('active-date');
