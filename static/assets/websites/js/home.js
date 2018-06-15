@@ -14,13 +14,13 @@ $(document).ready(function() {
 		  });
     });
 
-    // Show popup when load page
-    $(window).on('load',function(){
-        // check image exist?
-        if($(".image_home_ads").length > 0){
-            $('#popup_advertise').modal('show');
-        }
-    });
+    // check image exist?
+    if($(".image_home_ads").length > 0){
+        $('#popup_advertise').modal('show');
+        $("#popup_advertise .modal-dialog").velocity("transition.flipYIn", {
+            duration: 2000
+        });
+    }
 
     // Hide arrow next, pre when quantity image < 2 
     function hideArrowPopupSlide(){
