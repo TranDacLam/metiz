@@ -4,20 +4,23 @@ function getDataPopupMovieSchedule(element) {
     var id_server = $('#data-id-server').val();
     var movie_api_id = $('#data_movie_api_id').val();
 
+    // Set month base on element click
+    var month_active = $(element).find('.hide-month').text();
+    if(month_active){
+        $('#center-month').text(month_active);
+    }else{
+        $('#center-month').text($('.days-movie-showing li:first').children('.hide-month').text());
+    }
 
     if ($(element).attr("movie-day-selected")) {
         var date_query = $(element).attr("movie-day-selected");
         // Active Date Selected on List Schedule
         $('#modal-movie-showtimes .days-movie-showing [movie-day-selected = ' + date_query + ']').addClass('active-date');
-        // Set month base on class active-date
-        $('#center-month').text($('.day-showing-item.active-date .hide-month').text());
     } else {
         // Handle When exception get data but date query is empty
         var date_query = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
         // Active First Day in List Schedules
         $('#modal-movie-showtimes .days-movie-showing li:first').addClass('active-date');
-        // Add month from first day in List Schedule
-        $('#center-month').text($('.days-movie-showing li:first').children('.hide-month').text());
     }
 
     // Call Ajax get movie show time with current date
@@ -92,3 +95,4 @@ function trigger_click_showtime()
     });
     
 }
+
