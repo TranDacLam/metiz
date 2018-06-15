@@ -69,7 +69,7 @@ $(document).ready(function() {
         // put your own logic here, this is just a (crappy) example 
         return value.match(/^\d\d?\-\d\d?\-\d\d\d\d$/);
       },
-      message.validateDate
+      message_translate.validateDate
     );
 
     // Validate phone number
