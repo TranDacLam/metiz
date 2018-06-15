@@ -35,7 +35,8 @@
 
 			<li>
 				{% if value.allow_booking %}
-					<button href="#modal-movie-showtimes" type="button" title="Đặt vé" class="button open-movie-showtime popup-movie-schedule" data-movie-api-id="{{ value.movie_api_id }}">Đặt vé</button>
+					<!-- Change name class open popup to difference with popup on header -->
+					<button href="#modal-movie-showtimes" type="button" title="Đặt vé" class="button open-showtime-film-detail popup-movie-schedule" data-movie-api-id="{{ value.movie_api_id }}">Đặt vé</button>
 				{% endif %}
 			</li>
 		</ul>
