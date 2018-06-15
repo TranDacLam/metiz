@@ -7,6 +7,7 @@ from booking.models import MovieSync
 import json
 import datetime
 import time
+import re
 from core.metiz_cipher import MetizAESCipher
 register = template.Library()
 
@@ -40,6 +41,20 @@ def encrypt_money(total_money):
         print "EXcem  encrypt_money ",e
         return None
 
+
+@register.simple_tag
+def convert_youtube_url(url):
+    try:
+        youtube_regex = (r'(https?://)?(www\.)?'
+            '(youtube|youtu|youtube-nocookie|y2u)\.(com|be)/'
+            '(watch\?v=|embed/|v/|.+\?v=)?([^&=%\?]{11})')
+        youtube_regex_match = re.match(youtube_regex, url)
+        if youtube_regex_match:
+            return "https://www.youtube.com/watch?v=%s"%youtube_regex_match.group(6)
+        return youtube_regex_match.group()
+    except Exception, e:
+        print "EXcem  encrypt_money ",e
+        return None
 
 @register.simple_tag
 def verify_showtime_by_id(cinema_id, movie_api_id):

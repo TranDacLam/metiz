@@ -100,7 +100,8 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                         <span><span>Play</span></span>
                                         <div class="link-play">
-                                            <a class="popup-youtube" href="//{{item.trailer}}">Open YouTube video</a><br>
+                                            {% convert_youtube_url item.trailer as link_trailer %}
+                                            <a class="popup-youtube" href="{{link_trailer}}">Open YouTube video</a><br>
                                         </div>
                                     </div>
                                 </li>
@@ -128,7 +129,8 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                             <span><span>Play</span></span>
                                             <div class="link-play">
-                                                <a class="popup-youtube" href="//{{item.trailer}}">Open YouTube video</a><br>
+                                                {% convert_youtube_url item.trailer as link_trailer %}
+                                                <a class="popup-youtube" href="{{link_trailer}}">Open YouTube video</a><br>
                                             </div>
                                         </div>
                                 </li>

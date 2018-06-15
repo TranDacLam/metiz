@@ -1,0 +1,12 @@
+# Replace values of list by list index
+
+to_modify = [5,4,3,2,1,0] // list data
+
+indexes = [0,4] //list index need modifier value
+
+replace = 0
+
+
+import numpy
+new_list_modify = numpy.array(to_modify)
+new_list_modify[indexes] = replace

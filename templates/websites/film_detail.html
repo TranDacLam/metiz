@@ -143,7 +143,8 @@
 						{{ film_detail.description | safe}}
 					</div>
 					<div id="film-detail-tab-2" class="tab-pane fade ">
-						<div class="product_view_trailer text-center" id="trailer-film-detail" data-youtube="{{film_detail.trailer}}"> 
+						{% convert_youtube_url film_detail.trailer as link_trailer %}
+						<div class="product_view_trailer text-center" id="trailer-film-detail" data-youtube="{{link_trailer}}"> 
 						</div>
 					</div>
 					<div id="film-detail-tab-3" class="tab-pane fade ">

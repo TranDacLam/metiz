@@ -37,6 +37,7 @@ def verify_otp_user(secret_key_otp, code_otp):
         #     return result
         
         # verify OTP check time expired
+        print "#### Begin Verify OTP input ",code_otp
         verify_time_otp = totp.verify(code_otp, datetime.datetime.now())
         print "### Verify OTP Timeout"
         if not verify_time_otp:
