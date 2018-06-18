@@ -322,7 +322,7 @@ JWT_AUTH = {
 REST_USE_JWT = True
 
 # Time interval for OTP
-TIME_OTP = 60
+TIME_OTP = 120
 # Build version for projects
 BUILD_VERSION = 0
 

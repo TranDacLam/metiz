@@ -22,4 +22,10 @@ $(document).ready(function() {
     // format money
     var money_total = $('#total').text();
     $('#total').text(money_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
+
+    // Add loading when click button
+    $('.btn-show-loading').on('click', function() {
+        $(this).button('loading');
+    });
+
 });

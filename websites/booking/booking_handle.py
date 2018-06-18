@@ -158,7 +158,11 @@ def handler_confirm_booking_success(request, booking_order, amount):
         send_mail_booking(request.is_secure(), booking_order.email, request.session.get(
             "full_name", ""), booking_order.barcode, booking_order.order_desc)
 
-    if float(amount)/100 != booking_order.amount:
+    # Amount Divisoon for 100 because vnpay return amount * 100
+    if booking_order.gate_payment == "VNPay":
+        amount = float(amount)/100
+
+    if amount != booking_order.amount:
         content_warning = """
             Please check warning metiz payment below
             Barcode : %s

@@ -1,33 +1,5 @@
 $(document).ready(function() {
 
-	// *** Validate form and set data city, district ***
-	//message for validate
-	var lang = $('html').attr('lang');
-    if ( lang == 'vi') {
-    	message = {'required': 'Trường này bắt buộc',
-    	'phone': 'Số điện thoại không hợp lệ',
-    	'minlength_2' :'Nhập ít nhất 2 kí tự', 
-    	'minlength_9' :'Nhập ít nhất 9 kí tự',
-    	'minlength_8' :'Nhập ít nhất 8 kí tự',
-    	'email': 'Email không hợp lệ',
-        'rangelength_1_70': 'Họ và tên chứa ít nhất 1 kí tự và nhiều nhất 70 kí tự',
-    	'number': 'Vui lòng chỉ nhập các chữ số',
-    	'equalTo': 'Mật khẩu không khớp. Vui lòng nhập lại',
-    	'validatePassword': 'Mật khẩu chứa ít nhất 8 ký tự, bao gồm chữ, số và ký tự hoa hoặc ký tự đặc biệt.',
-    	'validateDate': 'Nhập ngày theo định dạng dd-mm-yyyy',}
-    } else {
-    	message = {'required': 'This field is required', 
-    	'phone': 'invalid telephone number',
-    	'minlength_2' :'Please enter at least 2 characters', 
-    	'minlength_9' :'Please enter at least 9 characters',
-    	'minlength_8' :'Please enter at least 8 characters',
-    	'email': 'Please enter a valid email address',
-        'rangelength_1_70': 'Please enter a value between 1 and 70 characters long',
-    	'number': 'Please enter a valid number',
-    	'equalTo': "Password don't same. Please enter again",
-    	'validatePassword': 'Passwords must contain characters, numbers and at least 1 special character',
-    	'validateDate': 'Please enter a date in the format dd-mm-yyyy'}
-    }
 
     // validate password
     $.validator.addMethod(
@@ -35,7 +7,7 @@ $(document).ready(function() {
          function(value, element) {
             return this.optional(element) || (value.match(/[a-z]/) && value.match(/[!@#$%^&*()_+A-Z]/) && value.match(/[0-9]/));
         },
-        message.validatePassword
+        message_translate.validatePassword
     );
 
     // validate phone, persional only number
@@ -103,34 +75,34 @@ $(document).ready(function() {
 		},
 		messages:{
 			full_name:{
-				required: message.required,
-                rangelength: message.rangelength_1_70,
+				required: message_translate.required,
+                rangelength: message_translate.rangelength_1_70,
 			},
 			birth_date:{
-				required: message.required,
-				validateDate: message.validateDate
+				required: message_translate.required,
+				validateDate: message_translate.validateDate
 			},
 			phone:{
-				required: message.required,
-				validatePhone: message.phone,
-                number: message.number,
-                minlength: message.phone,
+				required: message_translate.required,
+				validatePhone: message_translate.phone,
+                number: message_translate.number,
+                minlength: message_translate.phone,
 			},
 			email:{
-				required: message.required,
-				email: message.email
+				required: message_translate.required,
+				email: message_translate.email
 			},
 			password1:{
-				required: message.required,
-				minlength: message.validatePassword
+				required: message_translate.required,
+				minlength: message_translate.validatePassword
 			},
 			password2:{
-				required: message.required,
-				equalTo: message.equalTo
+				required: message_translate.required,
+				equalTo: message_translate.equalTo
 			},
             personal_id:{
-                minlength: message.minlength_9,
-                number: message.number
+                minlength: message_translate.minlength_9,
+                number: message_translate.number
            }
 		},
 		success: function(element) {
@@ -166,12 +138,12 @@ $(document).ready(function() {
 		},
 		messages:{
 			email:{
-				required: message.required,
-				email: message.email
+				required: message_translate.required,
+				email: message_translate.email
 			},
 			password:{
-				required: message.required,
-				minlength: message.validatePassword,
+				required: message_translate.required,
+				minlength: message_translate.validatePassword,
 			}
 		}
 	});
@@ -181,7 +153,7 @@ $(document).ready(function() {
         // put your own logic here, this is just a (crappy) example
         return value.match(/^\d\d?\-\d\d?\-\d\d\d\d$/);
       },
-      message.validateDate
+      message_translate.validateDate
     );
 
 
