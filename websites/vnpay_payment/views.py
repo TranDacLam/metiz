@@ -39,7 +39,7 @@ def payment(request):
         movies_session = request.session.get("movies", "")
         print "@@@@@ movies_session ",movies_session
         # if not movies_session or (movies_session and working_id not in movies_session):
-        #     return redirect("time-out-booking")
+        #     return redirect(reverse('time-out') + '?page=payment')
 
         total_payment_store = movies_session[working_id]["total_money"]
         if form.is_valid():
