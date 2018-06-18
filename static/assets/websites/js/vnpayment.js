@@ -95,7 +95,7 @@ $(document).ready(function() {
     // setTimeOut 5 minutes will redirect page timeout/booking
     setTimeout(function(){
         // endSession();
-        window.location.href = '/timeout/booking'
+        window.location.href = '/timeout/?page=payment';
     }, 600000);
 
     // format money
