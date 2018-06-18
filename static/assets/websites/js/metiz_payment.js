@@ -16,16 +16,15 @@ $(document).ready(function() {
             card_barcode: {
                 required: 'Mã thẻ không được để trống.'
             }
+        },
+        submitHandler: function(form) {
+            $('#btn-payment-continute').button('loading');
+            form.submit();
         }
     });
 
     // format money
     var money_total = $('#total').text();
     $('#total').text(money_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
-
-    // Add loading when click button
-    $('.btn-show-loading').on('click', function() {
-        $(this).button('loading');
-    });
 
 });
