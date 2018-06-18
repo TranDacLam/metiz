@@ -14,6 +14,11 @@ class BookingInfomation(DateTimeModel):
         ('done', 'Done')
         
     )
+    GATE_TYPE = (
+        ('VNPay', 'VNPay'),
+        ('Helio_Payment_Card', 'Helio Payment Card'),
+        ('Metiz_Payment_Card', 'Metiz Payment Card'),
+    )
     user = models.ForeignKey(
         "core.User", related_name='user_booking_rel', null=True, blank=True)
     # movie = models.ForeignKey("core.Movie", related_name='movie_booking_rel')
@@ -30,7 +35,7 @@ class BookingInfomation(DateTimeModel):
     desc_transaction = models.CharField(max_length=500, null=True, blank=True)
     retry_ipn = models.IntegerField(default=0)
     poster = models.CharField(max_length=500, null=True, blank=True)
-    gate_payment = models.CharField(_('Gate Payment'), max_length=500, null=True, blank=True)
+    gate_payment = models.CharField(_('Gate Payment'), choices=GATE_TYPE, max_length=500, null=True, blank=True)
     card_barcode = models.CharField(_('Card Barcode'), max_length=500, null=True, blank=True)
 
 class MovieSync(DateTimeModel):

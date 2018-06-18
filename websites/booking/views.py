@@ -157,7 +157,7 @@ def get_movie_show_time(request):
         show_times = api.get_show_times(date_request=date, id_movie=movie_api_id)
         if movie_api_id and not show_times["List"]:
             # call request get all data movie when data movie api not found
-            show_times = api.get_show_times(date_request=date, id_movie=0)
+            show_times = api.get_show_times(date_request=date, id_movie=None)
 
         """ Check query set and get first item """
         if show_times:
