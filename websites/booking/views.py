@@ -89,9 +89,9 @@ def get_booking(request):
 def time_out(request):
     try:
         # key_query is payment or movie
-        key_query = request.GET.get('key_query', "")
+        page = request.GET.get('page', "")
         """ Action render page notification timeout for user """
-        return render(request, 'websites/time_out_booking.html', {"key_query": key_query})
+        return render(request, 'websites/time_out_booking.html', {"page": page})
     except Exception, e:
         print "Error time out booking : ", e
         raise Exception(
