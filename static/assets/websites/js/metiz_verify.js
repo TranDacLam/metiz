@@ -49,7 +49,7 @@ $(document).ready(function() {
         })
         .fail(function(response) {
             if(response.responseJSON.code == 403){
-                window.location.href = '/timeout/booking/';
+                window.location.href = '/timeout/?key_query=payment';
             }
             $('#btn-reSend-otp').prop('disabled', false);
         })

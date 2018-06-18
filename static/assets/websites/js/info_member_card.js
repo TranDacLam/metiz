@@ -11,12 +11,12 @@ $(document).ready(function() {
             barWidth: '1',
             barHeight: '50'
         };
-        var type = 'code128';
+        const TYPE = 'code39';
         var barcode = $('input[name=barcode_member_card]').val();
 
         $('#barcode-member-card').barcode(
             barcode, // Value barcode (dependent on the type of barcode)
-            type, // type (string)
+            TYPE, // type (string)
             settings
         );
     }

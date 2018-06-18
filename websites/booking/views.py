@@ -85,10 +85,12 @@ def get_booking(request):
             "ERROR : Internal Server Error .Please contact administrator.")
 
 
-def time_out_booking(request):
+def time_out(request):
     try:
+        # key_query is payment or movie
+        key_query = request.GET.get('key_query', "")
         """ Action render page notification timeout for user """
-        return render(request, 'websites/time_out_booking.html')
+        return render(request, 'websites/time_out_booking.html', {"key_query": key_query})
     except Exception, e:
         print "Error time out booking : ", e
         raise Exception(
@@ -385,11 +387,3 @@ def movies_synchronize(request):
         print "Error Action movies_synchronize : ",e
         return JsonResponse({"message": "Cannot synchronize movies. Please contact administrator "}, status=500)
 
-def time_out_movie(request):
-    try:
-        """ Action render page notification timeout for user """
-        return render(request, 'websites/time_out_movie.html')
-    except Exception, e:
-        print "Error time out movie : ", e
-        raise Exception(
-            "ERROR : Internal Server Error .Please contact administrator.")
