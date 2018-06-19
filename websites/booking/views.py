@@ -5,6 +5,7 @@ from django.http import HttpResponse, JsonResponse, Http404, HttpResponseNotAllo
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from collections import OrderedDict
 from booking.models import BookingInfomation
 from booking.forms import BookingForm
 from booking import api
@@ -85,10 +86,12 @@ def get_booking(request):
             "ERROR : Internal Server Error .Please contact administrator.")
 
 
-def time_out_booking(request):
+def time_out(request):
     try:
+        # key_query is payment or movie
+        page = request.GET.get('page', "")
         """ Action render page notification timeout for user """
-        return render(request, 'websites/time_out_booking.html')
+        return render(request, 'websites/time_out_booking.html', {"page": page})
     except Exception, e:
         print "Error time out booking : ", e
         raise Exception(
@@ -148,12 +151,16 @@ def get_movie_show_time(request):
         date = request.GET.get('date', current_date.date())
         # cinema_id is equal id_server
         cinema_id = request.GET.get('cinema_id', 1)
-        movie_api_id = request.GET.get('movie_api_id', None)
+        movie_api_id = request.GET.get('movie_api_id', 0)
 
         result = {}
         
         # call api to server king_pos get movie by date
-        show_times = api.get_show_times(date)
+        show_times = api.get_show_times(date_request=date, id_movie=movie_api_id)
+        if movie_api_id and not show_times["List"]:
+            # call request get all data movie when data movie api not found
+            show_times = api.get_show_times(date_request=date, id_movie=None)
+
         """ Check query set and get first item """
         if show_times:
             # Validate convert data to json
@@ -174,16 +181,25 @@ def get_movie_show_time(request):
 
             for item in show_times["List"]:
                 # Get Showtime movie by id
-                if movie_api_id:
-                    # Get Movie Name by movie api id
-                    if item["MOVIE_ID"].strip() == movie_api_id.strip():
-                        build_show_time_json(
-                            current_date, item, result, movies_info, obj_movie)
-                else:
-                    build_show_time_json(
-                        current_date, item, result, movies_info)
+                build_show_time_json(
+                    current_date, item, result, movies_info)
+                # if movie_api_id:
+                #     # Get Movie Name by movie api id
+                #     if item["MOVIE_ID"].strip() == movie_api_id.strip():
+                #         build_show_time_json(
+                #             current_date, item, result, movies_info, obj_movie)
+                #         movie api id is wrong then get all movie by date
+                #         if not result:
+                #             build_show_time_json(
+                #             current_date, item, result, movies_info, obj_movie)
+                # else:
+                #     build_show_time_json(
+                #         current_date, item, result, movies_info)
 
-        return JsonResponse(result)
+        # Order by dictionnary nested 
+        result_ordered = OrderedDict(sorted(result.items(), key=lambda i: i[1]['movie_name']))
+
+        return JsonResponse(result_ordered)
 
     except Exception, e:
         print "Error get_movie_show_time : %s" % e
@@ -385,11 +401,3 @@ def movies_synchronize(request):
         print "Error Action movies_synchronize : ",e
         return JsonResponse({"message": "Cannot synchronize movies. Please contact administrator "}, status=500)
 
-def time_out_movie(request):
-    try:
-        """ Action render page notification timeout for user """
-        return render(request, 'websites/time_out_movie.html')
-    except Exception, e:
-        print "Error time out movie : ", e
-        raise Exception(
-            "ERROR : Internal Server Error .Please contact administrator.")

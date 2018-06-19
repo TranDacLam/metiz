@@ -4,10 +4,6 @@ import os
 
 ENV = 'development' # Choices ['uat','production','development']
 
-if 'DEVELOP' in os.environ and os.environ['DEVELOP']:
-    print "CURRENT environ ",os.environ['DEVELOP']
-    ENV = 'uat'
-
 
 #ENV = 'production'
 SERVERS = {

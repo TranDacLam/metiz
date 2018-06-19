@@ -12,7 +12,7 @@ function addBookingToPayment(sc, id_showtime, id_server, movie_api_id){
 
         if(new Date() >= date_time_movie_start)
         {
-            window.location.href = "/";
+            window.location.href = "/timeout/?page=movie";
         }
         
         // Translate string, toUpperCase first letter of string, substring if string > 20 character

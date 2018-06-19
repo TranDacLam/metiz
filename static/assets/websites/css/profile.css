@@ -1,3 +1,12 @@
+#profile-validate .form-control[readonly], 
+#profile-validate fieldset[readonly] .form-control {
+    cursor: not-allowed;
+}
+#profile-validate .form-control[readonly]:focus, 
+#profile-validate fieldset[readonly] .form-control:focus {
+    border: 1px solid #ccc;
+    box-shadow: none;
+}
 .profile-custom #profile-validate,
 .profile-custom #profile-validate label,
 .profile-custom #change-pass-validate,
@@ -211,7 +220,6 @@
 .transaction-history .info-th-1 p{
     font-family: "Montserrat-medium", sans-serif;
 }
-.transaction-history .info-th-2 div.th-1-des,
 .transaction-history .info-th-2 div.th-2-des,
 .transaction-history .info-th-2 div.th-3-des{
     padding-left: 0px;
@@ -235,6 +243,14 @@
 }
 .transaction-history .info-th-1 hr{
     border-top: 1px solid #ff5400;
+}
+.transaction-history .th-2-des img{
+    height: 281px;
+    width: 195px;
+}
+.transaction-history .th-1-des{
+    padding-left: 0px;
+    padding-right: 15px;
 }
 
 /* END TRANSACTION HISTORY */
@@ -271,6 +287,9 @@
     }
     .my-account .page-title{
         width: 85.5%;
+    }
+    .transaction-history .info-th {
+        width: 89.5%;
     }
 }
 @media only screen and (max-width: 767px){
@@ -337,6 +356,10 @@
     }
     #form-member-card .div-btn{
         margin-top: 15px;
+    }
+    .transaction-history .info-th .th-1-des, 
+    .transaction-history .info-th .th-2-des{
+        width: 100%;
     }
 }
 @media only screen and (max-width : 375px) {

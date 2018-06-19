@@ -103,7 +103,7 @@ def call_api_booking_confirm(barcode, id_server=1, status=1):
     return result
 
 
-def get_show_times(date_request, id_movie=0, id_movie_theater=0, id_area=0, id_server=1):
+def get_show_times(date_request, id_movie=None, id_movie_theater=0, id_area=0, id_server=1):
     try:
         """ 
             Get Movie Show Times
@@ -116,7 +116,7 @@ def get_show_times(date_request, id_movie=0, id_movie_theater=0, id_area=0, id_s
         
         url_show_time = settings.BASE_URL_CINESTAR + "/getShowTimes"
         values = {
-            "id_Movie": id_movie,
+            "id_Movie": id_movie if id_movie else 0,
             "id_MovieTheater": id_movie_theater,
             "id_Area": id_area,
             "id_Server": id_server,

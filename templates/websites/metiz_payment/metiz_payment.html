@@ -46,16 +46,15 @@
             
             <div class="form-group">
                 <input type="text" name="card_barcode" id="card_barcode" placeholder="{% trans 'Enter Card Barcode Here' %}" class="form-control">
-                <label class="form-error" for="card_barcode" id='car-barcode-error'></label>
+                {% if card_error %}
+                    <label class="error" for="card_barcode" id='card_barcode-error'>{{card_error}}</label>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 <input type="text" name="full_name" id="full_name" class="form-control" placeholder="{% trans 'Enter Full Name Here' %}">
                 <label class="form-error" for="full_name" id='name-error'></label>
             </div>
-            {% if card_error %}
-                <p class="msg_error">{{card_error}}</p>
-            {% endif %}
 
             <p><button class="btn btn-show-loading" id="btn-payment-continute" type="submit" data-loading-text="<i class='fa fa-spinner fa-spin '></i> XÁC THỰC">XÁC THỰC</button></p>
             <p class="or_center-button"><span>Hoặc</span></p>

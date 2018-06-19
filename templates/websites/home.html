@@ -22,6 +22,8 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/owl.carousel.min.js"></script>
     <!-- Home -->
     <script type="text/javascript" src="{{ STATIC_URL }}assets/js/jssor.slider-26.1.5.min.js" ></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/velocity/velocity.min.js" ></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}assets/js/velocity/velocity.ui.min.js" ></script>
     <script src="{{ STATIC_URL }}assets/js/carousel/banner_slide.js"></script>
     <script src="{{ STATIC_URL }}assets/websites/js/slide_carousel.js?version={{BUILD_VERSION}}"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}assets/websites/js/home.js?version={{BUILD_VERSION}}"></script> 
@@ -100,7 +102,8 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                         <span><span>Play</span></span>
                                         <div class="link-play">
-                                            <a class="popup-youtube" href="//{{item.trailer}}">Open YouTube video</a><br>
+                                            {% convert_youtube_url item.trailer as link_trailer %}
+                                            <a class="popup-youtube" href="{{link_trailer}}">Open YouTube video</a><br>
                                         </div>
                                     </div>
                                 </li>
@@ -128,7 +131,8 @@ Metiz Cinema, cụm rạp 5 phòng chiếu lần đầu tiên xuất hiện tạ
                                     <div class="{% if item.trailer %} play-button {% else %} play-trailer-empty {% endif %}">
                                             <span><span>Play</span></span>
                                             <div class="link-play">
-                                                <a class="popup-youtube" href="//{{item.trailer}}">Open YouTube video</a><br>
+                                                {% convert_youtube_url item.trailer as link_trailer %}
+                                                <a class="popup-youtube" href="{{link_trailer}}">Open YouTube video</a><br>
                                             </div>
                                         </div>
                                 </li>
