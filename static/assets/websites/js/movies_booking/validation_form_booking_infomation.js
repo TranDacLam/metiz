@@ -103,6 +103,7 @@ $(document).ready(function() {
                 minlength: message_translate.phone,
             }
         },
+        // append input has info film to form then submit
         submitHandler: function(form) {
             event.preventDefault();
             $('.modal-schedule input[name=id_server]').appendTo(form);

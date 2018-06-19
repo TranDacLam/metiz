@@ -1,4 +1,4 @@
-
+// trigger popup warning for each films
 function trigger_warning_rated(element)
 {
      // Get content warning 
@@ -14,6 +14,7 @@ function trigger_warning_rated(element)
     }
 }
 
+// Set infomation film to input in popup when click each showtimes
 function show_popup_user_information(element){
     // get movie information when click showtime then append info to list fields hidden using store post to server process
     var id_date_movie_showing = element.children('input[name=id_date_movie_showing]').val();
