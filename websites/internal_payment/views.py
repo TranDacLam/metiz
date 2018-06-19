@@ -13,6 +13,7 @@ from forms import MetizOTPForm
 from booking import api, booking_handle
 from booking.models import BookingInfomation
 import msg_global
+from django.core.urlresolvers import reverse
 
 """
     Author : TienDang

@@ -14,7 +14,7 @@ from core.decorator import *
 from core.metiz_cipher import MetizAESCipher
 from core import metiz_util
 import json
-
+from django.core.urlresolvers import reverse
 
 # def cancel_seats(seats_choice, id_server):
 #     for seat in seats_choice:
