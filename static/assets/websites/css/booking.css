@@ -380,6 +380,9 @@ and (orientation: landscape){
     ul.seatCharts-legendList li>.seatCharts-seat{
         margin-top: 9px;
     }
+    .booking-details .poster-film {
+        padding-right: 15px;
+    }
 }
 @media only screen and (max-width: 414px){
     div.seatCharts-space {
