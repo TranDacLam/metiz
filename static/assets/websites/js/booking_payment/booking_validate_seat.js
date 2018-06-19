@@ -8,6 +8,13 @@ function bookingValidateSeat(sc){
         var number_min_valid; // index min in a row
         var total_available_valid; // Total seats on 1 row, check condition > 3
 
+        // redirect to page timeout when time out movie
+        // file booking_validate_timeout_movie.js
+        if(bookingValidateTimeOutMovie()){
+            window.location.href = "/timeout/?page=movie";
+            return;
+        }
+
         // get length Seat selected
         // function from booking_function_common.js
         var totalSeat = getSeatSelected(sc).length;

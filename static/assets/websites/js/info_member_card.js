@@ -59,6 +59,12 @@ $(document).ready(function() {
         }
     })
 
+    // validate card member only number
+    var selectorCardBarcode = $("#form-member-card input[name=card_member]");
+    // Call back validOnlyNumber layout.js 
+    validOnlyNumber(selectorCardBarcode, selectorCardBarcode.val());
+
+    // validate form
     $('#form-member-card').validate({
         rules: {
             card_member: { 

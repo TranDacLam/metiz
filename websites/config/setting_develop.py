@@ -61,3 +61,5 @@ TIME_SEAT_DELAY = 5
 
 # Time interval for OTP
 TIME_OTP = 120
+
+BUILD_VERSION=1
