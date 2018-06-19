@@ -35,7 +35,7 @@ $(document).ready(function() {
         }
     });
 
-
+    // Handle when click each day
     $("#modal-movie-showtimes").on('click', '.day-showing-item', function() {
         // Remove Active Date Befor add new active 
         $('.days-movie-showing li').removeClass('active-date');

@@ -1,5 +1,4 @@
 // Call server get data movie showtime
-
 function getDataPopupMovieSchedule(element) {
     var id_server = $('#data-id-server').val();
     var movie_api_id = $('#data_movie_api_id').val();
@@ -12,6 +11,7 @@ function getDataPopupMovieSchedule(element) {
         $('#center-month').text($('.days-movie-showing li:first').children('.hide-month').text());
     }
 
+    // get day from clicked element to query in server
     if ($(element).attr("movie-day-selected")) {
         var date_query = $(element).attr("movie-day-selected");
         // Active Date Selected on List Schedule
@@ -67,9 +67,9 @@ function getDataPopupMovieSchedule(element) {
 
 }
 
+// Validate allow booking, time remain for each showtime
 function trigger_click_showtime() 
-{        
-    // TH2: Click đặt vé a movie
+{
     
     $('.sold-out a').on('click', function(event) {
         if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
@@ -85,7 +85,6 @@ function trigger_click_showtime()
             $('#alert_allow_booking').modal('show');
             return;
         }
-        
         
         // Call action from file validation_showtime.js . Using validation movie start time remain 15 minutes
         if(validate_time_remain($(this))){

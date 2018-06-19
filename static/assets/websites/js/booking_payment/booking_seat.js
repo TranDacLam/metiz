@@ -5,15 +5,6 @@ $(document).ready(function() {
     // variable setTimeout
     var timer;
 
-    // show icon load when ajax start 
-    $(document).ajaxStart(function(){
-        $(".ajax-loader").css("display", "block");
-    });
-    // hidden icon load when ajax complete
-    $(document).ajaxComplete(function(){
-        $(".ajax-loader").css("display", "none");
-    });
-
     // Get list seats
     $.ajax({
         url: "/movie/seats",
@@ -25,8 +16,14 @@ $(document).ready(function() {
         dataType: 'json',
         crossDomain:false,
         context: this,
+        beforeSend: function( ) {
+            // add image loader
+            $('.ajax-loader').addClass('ajax-loader-booking');
+        }
     })
     .done(function(response) {
+        // remove image loader
+        $('.ajax-loader').removeClass('ajax-loader-booking');
         // Check List seat 
         if(response.List && response.List.length > 0){
             // function from booking_create_seat.js
