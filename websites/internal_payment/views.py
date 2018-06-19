@@ -77,11 +77,11 @@ def metiz_payment_methods(request):
         try:
             # Verify Session Booking Timeout before process otp
             if not movies_session or (movies_session and working_id not in movies_session):
-                return redirect("time-out-booking")
+                return redirect(reverse('time-out') + '?page=payment')
 
             total_payment_store = movies_session[working_id]["total_money"]
         except (KeyError, TypeError), e:
-            return redirect("time-out-booking")
+            return redirect(reverse('time-out') + '?page=payment')
                 
         # Verify Money Booking
         if int(data_json["total_payment"]) != int(total_payment_store):
@@ -107,7 +107,7 @@ def check_amount_and_timeout(movies_session, working_id, result):
         # Verify Session Booking Timeout before process otp
         print "movies_session ",movies_session
         if not movies_session or (movies_session and working_id not in movies_session):
-            return redirect("time-out-booking")
+            return redirect(reverse('time-out') + '?page=payment')
 
         total_payment_store = movies_session[working_id]["total_money"]
         
@@ -123,7 +123,7 @@ def check_amount_and_timeout(movies_session, working_id, result):
 
         return True
     except (KeyError, TypeError), e:
-        return redirect("time-out-booking")
+        return redirect(reverse('time-out') + '?page=payment')
 
 
 """
