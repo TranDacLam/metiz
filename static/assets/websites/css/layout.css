@@ -124,7 +124,7 @@ ul.errorlist li, .error{
     color: #337ab7;
 }
 .ajax-loader{ 
-    position: absolute; 
+    position: fixed; 
     right: 0; 
     top: 0; 
     width: 100%; 
@@ -132,6 +132,7 @@ ul.errorlist li, .error{
     z-index: 99999; 
     opacity: 0.8; 
     display: none;
+    background-color: rgb(102, 102, 102, 0.28); 
 }
 .ajax-loader img{
     margin: 30% auto;

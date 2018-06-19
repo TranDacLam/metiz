@@ -48,8 +48,15 @@ $(document).ready(function($) {
 			},
 			crossDomain:false,
 			context: this,
+			beforeSend: function( ) {
+				// add image loader
+			    $('.ajax-loader').addClass('ajax-loader-film');
+			}
 		})
 		.done(function(response) {
+			// remove image loader
+		    $('.ajax-loader').removeClass('ajax-loader-film');
+
 			$('.metiz-movies>ul').append(response);
 			// Check total page let remove button load more
 			if(page >= total_page){
