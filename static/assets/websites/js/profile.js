@@ -163,9 +163,9 @@ $(document).ready(function() {
     // *** User for Page profile and signup ***
     // *begin*
     // data city 
-    var list_city = {'Đà Nẵng': ['Hải Châu', 'Thanh Khê', ' Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu', 'Hòa Vang', ' Cẩm Lệ', ' Hoàng Sa'], 
-    'Hà Nội': [' Hoàn Kiếm', 'Ba Đình', 'Hai Bà Trưng'], 
-    'Hồ Chí Minh': ['1','2','3', '4', '5', '6', 'Tân Bình'], 'Khác': ['Khác']};
+    var list_city = {'Đà Nẵng': ['Hải Châu', 'Thanh Khê', 'Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu', 'Hòa Vang', 'Cẩm Lệ', 'Hoàng Sa', 'Khác'], 
+    'Hà Nội': ['Hoàn Kiếm', 'Ba Đình', 'Hai Bà Trưng', 'Khác'], 
+    'Hồ Chí Minh': ['1','2','3', '4', '5', '6', 'Tân Bình', 'Khác'], 'Khác': ['Khác']};
     
     // load city and district but district hide
     var current_city = $("#id_city").val();
