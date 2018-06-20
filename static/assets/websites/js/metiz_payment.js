@@ -26,6 +26,12 @@ $(document).ready(function() {
         }
     });
 
+    // display error card_barcode when keyup, Bug: server rsp error, input value, 2 times click submit form.
+    $('#metiz_payment_form input').keyup(function(){
+        $(this).attr('aria-invalid', false);
+        $('#card_barcode-error').attr('style', 'display: none;');
+    });
+
     // format money
     var money_total = $('#total').text();
     $('#total').text(money_total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));

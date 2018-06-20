@@ -1,3 +1,12 @@
+.notification_timeout .note_timeout p {
+    font-family: "Montserrat-Light", sans-serif;
+    color: red;
+    text-align: center;
+    margin-top: 30px;
+}
+.notification_timeout  .note_timeout p a{
+    color: #337ab7;
+}
 @media only screen and (min-width: 771px){
     /* NOTIFICATION TIME OUT */
     .notification_timeout .timeout_panel {
@@ -21,15 +30,6 @@
         float: left;
         width: 100%;
         margin-top: 30px;
-    }
-    .notification_timeout  .note_timeout p {
-        font-family: "Montserrat-Light", sans-serif;
-        color: red;
-        text-align: center;
-        margin-top: 30px;
-    }
-    .notification_timeout  .note_timeout p a{
-        color: #337ab7;
     }
     /* END NOTIFICATION TIME OUT */
 }

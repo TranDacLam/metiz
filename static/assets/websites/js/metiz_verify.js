@@ -33,6 +33,11 @@ $(document).ready(function() {
         }
     });
 
+    // display error code_otp when keyup, Bug: server rsp error, input value, 2 times click submit form.
+    $('#metiz_payment_verify_otp_form input').keyup(function(){
+        $('#code_otp-error').attr('style', 'display: none;');
+    });
+
     $('#btn-reSend-otp').click(function(e){
         e.preventDefault();
 
