@@ -264,7 +264,7 @@ def check_seats(request):
                         seat_has_selected.append(chair[0])
 
                 if seat_has_selected:
-                    return JsonResponse({"code": 400, "message": _("These chairs have been selected : %s" % seat_has_selected)}, status=400)
+                    return JsonResponse({"code": 400, "message": _("These chairs have been selected ")+ str(seat_has_selected)}, status=400)
                 else:
                     print "********** Post Booking Get Barcode **********"
                     # init url api without member card

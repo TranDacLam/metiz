@@ -147,12 +147,12 @@ ul.errorlist li, .error{
     background-color: rgb(102, 102, 102, 0.28); 
 }
 .ajax-loader img{
-    margin: 30% auto;
+    margin: 0px auto;
+    margin-top: 20%;
 }
-
-@media only screen and (max-width: 767px){
-    .ajax-loader {
-        top: 15%;
+@media only screen and (max-width: 768px){
+    .ajax-loader img{
+        margin-top: 60%;
     }
 }
 @media only screen and (max-width: 736px){
@@ -167,6 +167,9 @@ and (orientation: landscape){
     .page-header{
         height: 192px;
     }
+    .ajax-loader img{
+        margin-top: 40%;
+    }
 }
 @media screen and (max-width: 414px) {
     .page-header{
@@ -175,5 +178,8 @@ and (orientation: landscape){
     .load-more{
         width: 150px;
         margin-left: 0;
+    }
+     .ajax-loader img{
+        margin-top: 80%;
     }
 }
