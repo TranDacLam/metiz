@@ -221,10 +221,6 @@ form#payment_method_form button{
     .payment_method .content-booking-details p label{
         width: 75px;
     }
-    .payment_method fieldset{
-        border: none;
-        padding-left: 0;
-    }
     .payment_method legend{
         text-align: center;
     }
