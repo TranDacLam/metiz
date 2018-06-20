@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+    // set defaut number_verify, disable re-sendOtp next page
+    sessionStorage.setItem('number_verify', 1);
+
     // validate phone, persional only number
     var selectorCardBarcode = $("#metiz_payment_form input[name=card_barcode]");
 
