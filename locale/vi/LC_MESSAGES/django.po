@@ -243,12 +243,12 @@ msgstr "Chọn Thành Phố"
 #: templates/registration/profile.html:124
 #: templates/registration/signup.html:182
 msgid "District"
-msgstr "Quận"
+msgstr "Quận/Huyện"
 
 #: templates/registration/profile.html:128
 #: templates/registration/signup.html:186
 msgid "Choose District"
-msgstr "Chọn Quận"
+msgstr "Chọn Quận/Huyện"
 
 #: templates/registration/profile.html:140
 #: templates/registration/signup.html:197
