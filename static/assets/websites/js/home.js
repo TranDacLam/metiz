@@ -14,23 +14,6 @@ $(document).ready(function() {
 		  });
     });
 
-    // check image exist?
-    if($(".image_home_ads").length > 0){
-        $('#popup_advertise').modal('show');
-        $("#popup_advertise .modal-dialog").velocity("transition.flipYIn", {
-            duration: 2000
-        });
-    }
-
-    // Hide arrow next, pre when quantity image < 2 
-    function hideArrowPopupSlide(){
-        var count_image = $('#popup_advertise #jssor_2 .jssor_1_slides a>img').length;
-        if(count_image < 2){
-            $('.jssora106').css('opacity', 0);
-        }
-    }
-    hideArrowPopupSlide();
-
     // handle tooogle with Owl carousel
     $.fn.extend({
         toggleOwl: function(selector, options, destroy){
@@ -125,12 +108,5 @@ $(document).ready(function() {
         $(this).trigger('play.owl.autoplay',[1000]);
     }).mouseover(function() {
         $(this).trigger('stop.owl.autoplay');
-    });
-
-    // turn off play slide film showin and comsoon when show poup adversite 
-    $('#popup_advertise').mouseleave(function() {
-        $('#movie-tab-1 .owl-carousel, .owl-carousel.style2').trigger('play.owl.autoplay',[1000]);
-    }).mouseover(function() {
-        $('#movie-tab-1 .owl-carousel, .owl-carousel.style2').trigger('stop.owl.autoplay');
     });
 });
