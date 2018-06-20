@@ -9,6 +9,7 @@
 
 {% block extrascript %}
     <script src="{{ STATIC_URL }}assets/websites/js/payment_return.js?version={{BUILD_VERSION}}"></script>
+    <script src="{{ STATIC_URL }}assets/websites/js/back_warning.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
 {% block main_content %}
 <div class="main">
@@ -71,6 +72,25 @@
                 {% endif %}
             </div>
             <p class="back-link"><a href="/"><small>&laquo; </small>Quay lại trang chủ</a></p>
+        </div>
+    </div>
+</div>
+<!-- Click Back  on browser show warning  -->
+<div class="modal" id="back_warning" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h2 class="modal-title">Thông báo</h2>
+            </div>
+            <div class="modal-body">
+                <p class="member-card-info">Giao dịch đã hoàn tất. Vui lòng thực hiện giao dịch khác.</p>
+            </div>
+            <div class="modal-footer warning-footer">
+                <button id="btn_add_card" type="button" class="btn btn-login metiz-btn-class" data-dismiss="modal" data-toggle='modal'>
+                    Đồng ý
+                </button>
+            </div>
         </div>
     </div>
 </div>

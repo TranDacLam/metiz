@@ -1,7 +1,8 @@
 .content-error{
     margin: 100px 0;
 }
-.color-error{
+.color-error, 
+.error-405 {
     color: #ff5400;
 }
 h1.color-error{
@@ -11,4 +12,9 @@ h3.color-error{
     font-size: 40px;
     margin-top: -20px;
     margin-bottom: 50px;
+}
+h3.error-405 {
+    font-size: 20px;
+    margin-top: -21px;
+    margin-bottom: 20px;
 }
