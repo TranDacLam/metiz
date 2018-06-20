@@ -226,10 +226,6 @@
     color: #fff;
     text-transform: uppercase;
 }
-.transaction-history .btn-load-more button:hover{
-    color: #fff;
-    background-color: #ff5400;
-}
 .transaction-history .btn-load-more{
     display: none;
 }
@@ -401,6 +397,10 @@
     }
     .metiz-edit-btn.buttons-set button.button{
         margin-right: 32px;
+    }
+    .transaction-history .btn-load-more button:hover{
+        color: #fff;
+        background-color: #ff5400;
     }
 }
 .profile-custom ul.post-detail-metiz{
