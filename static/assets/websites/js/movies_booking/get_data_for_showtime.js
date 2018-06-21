@@ -72,13 +72,6 @@ function trigger_click_showtime()
 {
     
     $('.sold-out a').on('click', function(event) {
-        if (navigator.userAgent.match(/iPhone|iPod|iPad|Android|Windows Phone|BlackBerry/i)) {
-            /* change background for schedule firm on mobile */
-            $(this).addClass('mobile-schedule');
-            $('.modal-schedule').on('hide.bs.modal', function() {
-                $('.sold-out a').removeClass('mobile-schedule');
-            });
-        }
         // *** Check Movie allow booking ***
         var allow_booking = $(this).children('input[name=allow_booking]').val();
         if (allow_booking == 'false') {

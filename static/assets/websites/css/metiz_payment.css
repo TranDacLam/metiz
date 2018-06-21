@@ -114,6 +114,9 @@ form#payment_method_form button{
 #metiz_payment_form .btn {
     width: 100px;
 }
+#back_warning .modal-header{
+    border-color: #ff5400;
+}
 
 /* Metiz verify */
 .metiz_verify .info_metiz_verify{
@@ -220,10 +223,6 @@ form#payment_method_form button{
     }
     .payment_method .content-booking-details p label{
         width: 75px;
-    }
-    .payment_method fieldset{
-        border: none;
-        padding-left: 0;
     }
     .payment_method legend{
         text-align: center;

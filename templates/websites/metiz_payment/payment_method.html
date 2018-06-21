@@ -9,6 +9,7 @@
 
 {% block extrascript %}
     <script src="{{ STATIC_URL }}assets/websites/js/metiz_payment.js?version={{BUILD_VERSION}}"></script>
+    <script src="{{ STATIC_URL }}assets/websites/js/back_warning.js?version={{BUILD_VERSION}}"></script>
 {% endblock %}
 
 {% block main_content %}
@@ -49,5 +50,23 @@
         </div>
     </form>
 </div>
-
+<!-- Click Back  on browser show warning  -->
+<div class="modal" id="back_warning" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h2 class="modal-title">Thông báo</h2>
+            </div>
+            <div class="modal-body">
+                <p class="member-card-info">Bạn chưa hoàn tất quá trình thanh toán. Vui lòng tiếp tục.</p>
+            </div>
+            <div class="modal-footer warning-footer">
+                <button id="btn_add_card" type="button" class="btn btn-login metiz-btn-class" data-dismiss="modal" data-toggle='modal'>
+                    Đồng ý
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

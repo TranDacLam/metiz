@@ -37,6 +37,9 @@ def payment(request):
 
         # Verify Session Booking Timeout before redirect to vnpayment
         movies_session = request.session.get("movies", "")
+        # When user click back from vnpay to payment page then show time out
+        if not movies_session:
+            return redirect(reverse('time-out') + '?page=payment_back')
         print "@@@@@ movies_session ",movies_session
         # if not movies_session or (movies_session and working_id not in movies_session):
         #     return redirect(reverse('time-out') + '?page=payment')

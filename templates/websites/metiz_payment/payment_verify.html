@@ -53,11 +53,10 @@
             
             <div class="form-group input_metiz_verify">
                 <input type="text" name="code_otp" id="code_otp" class="form-control">
-                <label class="form-code_otp" for="code_otp" id='code_otp_error'></label>
+                {% if error_otp %}
+                    <label class="error" for="code_otp" id='code_otp-error'>{{error_otp}}</label>
+                {% endif %}
             </div>
-            {% if error_otp %}
-                <p class="msg_error">{{error_otp}}</p>
-            {% endif %}
             <div class="btn-metiz-verify">
                 <button class="btn" id="btn-reSend-otp">GỞI LẠI MÃ OTP</button>
                 <button type="submit" class="btn btn-show-loading" id="btn-payment-continute" data-loading-text="<i class='fa fa-spinner fa-spin '></i> XÁC THỰC">XÁC THỰC</button>
