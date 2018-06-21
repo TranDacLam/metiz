@@ -32,13 +32,13 @@ def payment(request):
         id_server = request.POST.get("id_server", 1)
         movie_poster = request.POST.get("movie_poster", "")
 
-
         print "request.POST", request.POST
 
         # Verify Session Booking Timeout before redirect to vnpayment
         movies_session = request.session.get("movies", "")
+
         # When user click back from vnpay to payment page then show time out
-        if not movies_session:
+        if not movies_session and working_id in movies_session:
             return redirect(reverse('time-out') + '?page=payment_back')
         print "@@@@@ movies_session ",movies_session
         # if not movies_session or (movies_session and working_id not in movies_session):
@@ -100,16 +100,11 @@ def payment(request):
             vnpay_payment_url = vnp.get_payment_url(
                 settings.VNPAY_PAYMENT_URL, settings.VNPAY_HASH_SECRET_KEY)
 
-            # Remove session and store order in database and verify order id
-            # unsuccessfull, clear seats
-
-            if movies_session and working_id in movies_session:
-                del request.session['movies'][working_id]
 
             # Store order infomation with status is pendding
             booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
                                               email=request.session.get("email", ""), seats=seats_choice, barcode=barcode,
-                                              id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment="VNPay")
+                                              id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment="VNPay", working_id=working_)
 
             if not request.user.is_anonymous():
                 booking_order.user = request.user

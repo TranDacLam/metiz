@@ -37,6 +37,7 @@ class BookingInfomation(DateTimeModel):
     poster = models.CharField(max_length=500, null=True, blank=True)
     gate_payment = models.CharField(_('Gate Payment'), choices=GATE_TYPE, max_length=500, null=True, blank=True)
     card_barcode = models.CharField(_('Card Barcode'), max_length=500, null=True, blank=True)
+    working_id = models.CharField(_('Working Id'), max_length=500, null=True, blank=True)
 
 class MovieSync(DateTimeModel):
     TYPE = (

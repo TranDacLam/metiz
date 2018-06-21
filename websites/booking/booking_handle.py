@@ -208,8 +208,4 @@ def process_confirm_booking(request, booking_order, amount):
     # Handle Confirm Booking Success and send sms or email
     if not error_comfirm:
         handler_confirm_booking_success(request, booking_order, amount)
-
-    # If session movie is exist then delete session
-    movies = request.session.get("movies", "")
-    if movies:
-        del request.session["movies"]
+        

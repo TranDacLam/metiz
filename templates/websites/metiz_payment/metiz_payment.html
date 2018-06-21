@@ -58,7 +58,7 @@
 
             <p><button class="btn btn-show-loading" id="btn-payment-continute" type="submit" data-loading-text="<i class='fa fa-spinner fa-spin '></i> XÁC THỰC">XÁC THỰC</button></p>
             <p class="or_center-button"><span>Hoặc</span></p>
-            <p><a class="btn" id="btn-payment-cancel" href="{% url 'metiz-payment-cancel' %}">HUỶ</a></p>
+            <p><a class="btn" id="btn-payment-cancel" href="{% url 'metiz-payment-cancel'%}?working_id={{working_id}}">HUỶ</a></p>
         </div>
     </form>
 </div>

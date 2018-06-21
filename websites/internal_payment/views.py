@@ -33,6 +33,9 @@ def invalid_payment(request):
     Description: Function handle render page payment methods for action GET , and process redirect to payment gate for action POST
 """
 def metiz_payment_methods(request):
+
+    print "session moview ::::", request.session.get("movies", "")
+
     data_encrypt = request.GET.get('data', 0)
     if not data_encrypt:
         raise Http404()
@@ -302,7 +305,7 @@ def verify_otp_for_user(request):
             # Store order infomation with status is pendding
             booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
                                               email=request.session.get("email", ""), seats=seats_choice, barcode=barcode, card_barcode=card_barcode,
-                                              id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment=payment_gate)
+                                              id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment=payment_gate, working_id=working_id)
 
             if not request.user.is_anonymous():
                 booking_order.user = request.user
@@ -416,10 +419,12 @@ def resend_otp(request):
 def metiz_payment_cancel(request):
     print "Metiz Payment Cancel"
     try:
-        movies = request.session.get("movies", "")
-        if movies:
-            # delete session when empty
-            del request.session["movies"]
+        working_id = request.GET.get('working_id', '')
+        print 'working_id::', working_id
+        movies_session = request.session.get("movies", "")
+        if movies_session and working_id in movies_session:
+            del request.session['movies'][working_id]
+
         return redirect('home')
     except Exception,e:
         print "Error resend_otp : %s" % e
