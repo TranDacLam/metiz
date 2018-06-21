@@ -100,15 +100,28 @@ def payment(request):
             vnpay_payment_url = vnp.get_payment_url(
                 settings.VNPAY_PAYMENT_URL, settings.VNPAY_HASH_SECRET_KEY)
 
+            """
+                Case 1: When first show vnpay then create new information to booking info.
+                Case 2: When user click back on browser to change bank
+                        Get booking infomation by working Id
+                        Update order id
+            """
+            try:
+                booking_order = BookingInfomation.objects.get(
+                    working_id=working_id)
+            except BookingInfomation.DoesNotExist, e:
+                # Store order infomation with status is pendding
+                booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
+                                                  email=request.session.get("email", ""), seats=seats_choice, barcode=barcode,
+                                                  id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment="VNPay", working_id=working_id)
 
-            # Store order infomation with status is pendding
-            booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
-                                              email=request.session.get("email", ""), seats=seats_choice, barcode=barcode,
-                                              id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment="VNPay", working_id=working_)
-
+                
             if not request.user.is_anonymous():
                 booking_order.user = request.user
+            booking_order.order_id = order_id
             booking_order.save()
+
+            
 
             print(vnpay_payment_url)
             if request.is_ajax():
