@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
             <label>{% trans "Email" %}</label>
-            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{% if user.is_authenticated %}{{user.email|default_if_none:""}}{% else %}{{request.session.email}}{% endif %}">
+            <input type="text" name="email" id="email" placeholder="{% trans 'Enter Email Here' %}" class="form-control" value="{% if user.is_authenticated %}{{user.email|default_if_none:""}}{% else %}{{request.session.email|default_if_none:""}}{% endif %}">
             <label class="form-error" for="email" id='email-error'></label>
         </div>
         
