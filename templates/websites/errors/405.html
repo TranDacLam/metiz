@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %}500 - Lỗi máy chủ nội bộ{% endblock title %}
+{% block title %}Lỗi{% endblock title %}
 {% block extrastylesheet %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/error_404_500.css" media="all" />
 {% endblock %}
@@ -8,8 +8,7 @@
 {% block main_content %}
     <div class="container">
         <div align="center" class="content-error">
-            <h1 class="color-error">405</h1>
-            <h3 class="color-error">Lỗi method không hỗ trợ</h3>
+            <h3 class="error-405">Đã có lỗi trong quá trình giao dịch.</h3>
             <p class="detail">Vui lòng click vào đường dẫn bên dưới để quay lại trang chủ:</p>
             <a role="button" class="btn-custom-style home-page-link" href="/">Trang chủ</a>
         </div>

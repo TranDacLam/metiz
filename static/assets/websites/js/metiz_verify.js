@@ -1,30 +1,41 @@
 $(document).ready(function() {
 
     function checkOtpReSend(){
-        if(sessionStorage.getItem('number_verify')){
-            // get number_verify from sessionStorage
-            var number_verify = parseInt(sessionStorage.getItem('number_verify'));
-            // if number_verify > 3 then undisabled else disabled button reSend otp
-            if(number_verify > 3){
-                $('#btn-reSend-otp').prop('disabled', false);
-            }else{
-                $('#btn-reSend-otp').prop('disabled', true);
-            }
+        var number_verify = parseInt(sessionStorage.getItem('number_verify'));
+        // if number_verify > 3 then undisabled else disabled button reSend otp
+        if(number_verify > 3){
+            $('#btn-reSend-otp').prop('disabled', false);
         }else{
-            // set number_verify = 1, disable button reSend otp
-            sessionStorage.setItem('number_verify', 1);
             $('#btn-reSend-otp').prop('disabled', true);
         }
     }
 
     checkOtpReSend();
 
-    // Event click, + 1 number_verify
-    $('#btn-payment-continute').click(function(e){
-        $(this).button('loading');
-        var number_verify_event = parseInt(sessionStorage.getItem('number_verify'));
-        number_verify_event += 1;
-        sessionStorage.setItem('number_verify', number_verify_event);
+    $("#metiz_payment_verify_otp_form").validate({
+        rules: {
+            code_otp: { 
+                required: true
+            }
+        },
+        messages:{
+            code_otp: {
+                required: 'Mã otp không được để trống.'
+            }
+        },
+        submitHandler: function(form) {
+            $('#btn-payment-continute').button('loading');
+            // set sessionStorage number_verify +1
+            var number_verify_event = parseInt(sessionStorage.getItem('number_verify'));
+            number_verify_event += 1;
+            sessionStorage.setItem('number_verify', number_verify_event);
+            form.submit();
+        }
+    });
+
+    // display error code_otp when keyup, Bug: server rsp error, input value, 2 times click submit form.
+    $('#metiz_payment_verify_otp_form input').keyup(function(){
+        $('#code_otp-error').attr('style', 'display: none;');
     });
 
     $('#btn-reSend-otp').click(function(e){
