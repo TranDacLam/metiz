@@ -823,7 +823,7 @@ msgstr "Email không tồn tại. Vui lòng kiểm tra lại."
 
 #: websites/registration/messages.py:4
 msgid "Your password wrong. Please enter again."
-msgstr "Mật khẩu của bạn sai. Hãy nhập lại."
+msgstr "Email hoặc mật khẩu của bạn sai. Hãy nhập lại."
 
 #: websites/registration/messages.py:6
 msgid "User is active. Please login again."
