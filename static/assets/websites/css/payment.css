@@ -24,6 +24,9 @@ select#order_type.form-control {
     padding: 0 5px;
     text-indent: 1px;
 }
+#back_warning .modal-header{
+    border-color: #ff5400;
+}
 @media only screen and (min-width: 340px){
     .vnpayment{
         padding: 0 20px 50px 20px;
