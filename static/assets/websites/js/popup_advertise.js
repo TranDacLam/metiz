@@ -22,7 +22,7 @@ $(document).ready(function() {
     function hideArrowPopupSlide(){
         var count_image = $('#popup_advertise #jssor_2 .jssor_1_slides a>img').length;
         if(count_image < 2){
-            $('.jssora106').css('opacity', 0);
+            $('#popup_advertise .jssora106').css('opacity', 0);
         }
     }
     hideArrowPopupSlide();
