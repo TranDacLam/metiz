@@ -223,10 +223,16 @@ and (orientation: landscape){
     /*adds border top to first nav box */
     nav.sidebar .navbar-nav > li:first-child{
         border-top: 1px #e5e5e5 solid;
+        margin-top: 0px;
+        padding-top: 14px;
     }
     /*adds border to bottom nav boxes*/
     nav.sidebar .navbar-nav > li{
         border-bottom: 1px #e5e5e5 solid;
+    }
+    nav.sidebar .navbar-nav > li:last-child{
+        margin-bottom: 0px;
+        padding-bottom: 14px;
     }
     /* Colors/style dropdown box*/
     nav.sidebar .navbar-nav .open .dropdown-menu {
