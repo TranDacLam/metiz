@@ -32,7 +32,7 @@
                     <form action="" method="POST" class="form-inline" id="form-member-card">
                         <div class="form-group">
                             <div class="col-xs-8 col-sm-7 div-input">
-                                <label>Mã số Thẻ:</label>
+                                <label>Mã Số Thẻ:</label>
                                 <input type="text" class="form-control" name="card_member">
                                 <label class="error" for="card_member" id='card_member-error'></label>
                             </div>
@@ -46,19 +46,19 @@
             {% else %}
             <div class="row info-mc-2">
                 <div class="col-md-12 mc-2-des">
-                    <p><label>Mã thẻ: </label><div id="barcode-member-card"></div> 
+                    <p><label>Mã Thẻ: </label><div id="barcode-member-card"></div> 
                         <input type="hidden" name="barcode_member_card" value="{{card_info.card_member}}" />
                     </p>
-                    <p><label>Cấp độ thẻ: </label> {{card_info.level}}</p>
-                    <p><label>Điểm Thưởng: </label> {{card_info.point}}</p>
+                    <p><label>Cấp Độ Thẻ: </label> {{card_info.level}}</p>
+                    <p><label>Điểm Tích Lũy: </label> {{card_info.point}}</p>
                 </div>
                 <div class="col-md-12">
-                    <p><label>Danh mục đổi quà:</label> </p>
+                    <p><label>Danh Mục Đổi Quà:</label> </p>
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>Quà tặng</th>
-                                <th>Điểm đổi</th>
+                                <th>Quà Tặng</th>
+                                <th>Điểm Đổi</th>
                             </tr>
                         </thead>
                         <tbody>
