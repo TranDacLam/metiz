@@ -1,7 +1,7 @@
 function addBookingToPayment(sc, id_showtime, id_server, movie_api_id){
 
     // Click add Card button, click close member_card_warning
-    $("#btn_skip_card_member, #btn_member_card_warning").on('click',function(){
+    $("#btn_member_card_warning").on('click',function(){
         $("#member_card").val("");
         $('#btn_add_card').click();
     });
