@@ -242,7 +242,14 @@ div.seatCharts-seat.available.seat-ld {
     font-weight: bold;
     float: left;
 }
-#btn_add_card:hover {
+#btn_skip_card_member{
+    font-family: 'SairaSemiCondensed-Medium';
+    text-transform: uppercase;
+    background-color: #7e8eaa;
+    color: #ffffff;
+    font-weight: bold;
+}
+#btn_add_card:hover, #btn_skip_card_member:hover {
     background-color: #ff4900;
     color: #ffffff;
 }

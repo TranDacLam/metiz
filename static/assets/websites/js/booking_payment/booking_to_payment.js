@@ -1,15 +1,17 @@
 function addBookingToPayment(sc, id_showtime, id_server, movie_api_id){
-    // Click add Card button
-    $("#btn_skip_card_member").on('click',function(){
+
+    // Click add Card button, click close member_card_warning
+    $("#btn_skip_card_member, #btn_member_card_warning").on('click',function(){
         $("#member_card").val("");
         $('#btn_add_card').click();
     });
-    
 
     $('#btn_add_card').on('click',function(){
         var result_verify_card_member = false;
         var member_card = $("#member_card").val();
         if(member_card){
+            var member_card_warning = false;
+
             $.ajax({
                 url: "/api/verify/card/member/",
                 type: 'POST',
@@ -30,8 +32,17 @@ function addBookingToPayment(sc, id_showtime, id_server, movie_api_id){
                 }
             })
             .fail(function(error) {
-                alert("Hệ Thống Tích Điểm Đang Gặp Xự Cố. Vui Lòng Liên Hệ Quản Trị Viên", "danger");
+                // Show popup member_card_warning
+                $('#member_card_modal').modal('hide');
+                $('#member_card_warning').modal('show');
+                // set member_card_warning = true when error
+                member_card_warning = true;
             });
+
+            // meber_card_warning is false then stop
+            if(member_card_warning){
+                return false;
+            }
 
             if(result_verify_card_member){
                 $("#member_card-error").text("Thẻ Thành Viên Không Tồn Tại. Vui Lòng Kiểm Tra Lại.");
