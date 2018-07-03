@@ -183,7 +183,6 @@ def generate_otp(request):
                 "is_verify": True,
                 "gate_payment": form_otp.cleaned_data["payment_gate"]
              }
-            
             request_verify = urllib2.Request(url_verify_card, data=json.dumps(data), headers={
                                       'Content-Type': 'application/json', 'Authorization': 'Bearer %s' % settings.DMZ_API_TOKEN})
 
@@ -214,7 +213,7 @@ def generate_otp(request):
                 data_payment['amount'] = money_store_dict["amount_ticket"] + money_store_dict["amount_fb"]
                 return render(request, "websites/metiz_payment/payment_verify.html", data_payment)
             except urllib2.HTTPError, e:
-                
+                print "HTTPError generate_otp ",e
                 result_error = json.loads(e.read())
                 print "EXEPTION VERIFY CARD ", result_error
                 data_payment["card_error"] = result_error["message"]
@@ -302,10 +301,12 @@ def verify_otp_for_user(request):
 
             print "payment_gate:::::", payment_gate
 
+            card_member = movies_session[working_id]["card_member"]
             # Store order infomation with status is pendding
             booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
                                               email=request.session.get("email", ""), seats=seats_choice, barcode=barcode, card_barcode=card_barcode,
-                                              id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment=payment_gate, working_id=working_id)
+                                              id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment=payment_gate, working_id=working_id,
+                                              card_member=card_member)
 
             if not request.user.is_anonymous():
                 booking_order.user = request.user

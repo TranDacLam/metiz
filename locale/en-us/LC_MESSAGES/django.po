@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-12 15:42+0700\n"
+"POT-Creation-Date: 2018-06-29 15:20+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,75 +31,6 @@ msgstr ""
 
 #: templates/admin/login.html:62
 msgid "Forgotten your password or username?"
-msgstr ""
-
-#: templates/modal.html:9 templates/websites/movies/choice_city.html:4
-msgid "Select City"
-msgstr ""
-
-#: templates/modal.html:19 templates/websites/movies/choice_city.html:14
-msgid "Select Cinema"
-msgstr ""
-
-#: templates/modal.html:33 templates/websites/movies/showtimes.html:11
-msgid "Select date play"
-msgstr ""
-
-#: templates/modal.html:107 templates/modal.html:160
-#: templates/registration/profile.html:89 templates/registration/signup.html:51
-#: templates/registration/signup.html:135
-#: templates/websites/movies/form_user_info.html:19
-#: templates/websites/movies/tab_member.html:9 websites/booking/models.py:23
-msgid "Email"
-msgstr ""
-
-#: templates/modal.html:108 templates/modal.html:161
-#: templates/registration/signup.html:52 templates/registration/signup.html:137
-#: templates/websites/movies/form_user_info.html:20
-#: templates/websites/movies/tab_member.html:10
-msgid "Enter Email Here"
-msgstr ""
-
-#: templates/modal.html:112 templates/registration/signup.html:55
-#: templates/registration/signup.html:148
-#: templates/websites/movies/tab_member.html:14
-msgid "Password"
-msgstr ""
-
-#: templates/modal.html:113 templates/registration/signup.html:56
-#: templates/registration/signup.html:151
-#: templates/websites/movies/tab_member.html:15
-msgid "Enter Password Here"
-msgstr ""
-
-#: templates/modal.html:116 templates/registration/signup.html:3
-#: templates/registration/signup.html:62
-#: templates/websites/movies/tab_member.html:18
-msgid "Login"
-msgstr ""
-
-#: templates/modal.html:149 templates/registration/profile.html:42
-#: templates/registration/signup.html:82
-#: templates/websites/movies/form_user_info.html:8 websites/core/models.py:133
-msgid "Full Name"
-msgstr ""
-
-#: templates/modal.html:150 templates/registration/signup.html:84
-#: templates/websites/metiz_payment/metiz_payment.html:53
-#: templates/websites/movies/form_user_info.html:9
-msgid "Enter Full Name Here"
-msgstr ""
-
-#: templates/modal.html:154 templates/registration/profile.html:74
-#: templates/registration/signup.html:125
-#: templates/websites/movies/form_user_info.html:13
-#: websites/booking/models.py:22
-msgid "Phone"
-msgstr ""
-
-#: templates/modal.html:156 templates/registration/signup.html:128
-#: templates/websites/movies/form_user_info.html:15
-msgid "Enter Phone Here"
 msgstr ""
 
 #: templates/registration/email/metiz_account_created_confirm.html:115
@@ -145,6 +76,7 @@ msgstr ""
 
 #: templates/registration/email/metiz_account_created_confirm.html:137
 #: templates/registration/email/metiz_account_created_confirm.txt:7
+#: templates/websites/booking/email/add_point_error.html:134
 #: templates/websites/booking/email/booking_error.html:134
 #: templates/websites/booking/email/booking_notification.html:134
 #: templates/websites/booking/email/warning_amount_payment.html:134
@@ -154,6 +86,7 @@ msgstr ""
 
 #: templates/registration/email/metiz_account_created_confirm.html:139
 #: templates/registration/email/metiz_account_created_confirm.txt:8
+#: templates/websites/booking/email/add_point_error.html:136
 #: templates/websites/booking/email/booking_error.html:136
 #: templates/websites/booking/email/booking_notification.html:136
 #: templates/websites/booking/email/warning_amount_payment.html:136
@@ -189,6 +122,11 @@ msgstr ""
 msgid "Metiz Account Password Reset."
 msgstr ""
 
+#: templates/registration/profile.html:42 templates/registration/signup.html:82
+#: templates/websites/movies/form_user_info.html:8 websites/core/models.py:133
+msgid "Full Name"
+msgstr ""
+
 #: templates/registration/profile.html:51 templates/registration/signup.html:91
 msgid "Gender"
 msgstr ""
@@ -210,8 +148,22 @@ msgstr ""
 msgid "Choose Your Birthday.."
 msgstr ""
 
+#: templates/registration/profile.html:74
+#: templates/registration/signup.html:125
+#: templates/websites/movies/form_user_info.html:13
+#: websites/booking/models.py:27
+msgid "Phone"
+msgstr ""
+
 #: templates/registration/profile.html:77
 msgid "Enter Phone Here.."
+msgstr ""
+
+#: templates/registration/profile.html:89 templates/registration/signup.html:51
+#: templates/registration/signup.html:135
+#: templates/websites/movies/form_user_info.html:19
+#: templates/websites/movies/tab_member.html:9 websites/booking/models.py:28
+msgid "Email"
 msgstr ""
 
 #: templates/registration/profile.html:91
@@ -256,6 +208,11 @@ msgstr ""
 msgid "Enter Address Here.."
 msgstr ""
 
+#: templates/registration/signup.html:3 templates/registration/signup.html:62
+#: templates/websites/movies/tab_member.html:18
+msgid "Login"
+msgstr ""
+
 #: templates/registration/signup.html:3 templates/registration/signup.html:225
 msgid "Signup"
 msgstr ""
@@ -264,12 +221,39 @@ msgstr ""
 msgid "Your account not active. Please check email and active account."
 msgstr ""
 
+#: templates/registration/signup.html:52 templates/registration/signup.html:137
+#: templates/websites/movies/form_user_info.html:20
+#: templates/websites/movies/tab_member.html:10
+msgid "Enter Email Here"
+msgstr ""
+
+#: templates/registration/signup.html:55 templates/registration/signup.html:148
+#: templates/websites/movies/tab_member.html:14
+msgid "Password"
+msgstr ""
+
+#: templates/registration/signup.html:56 templates/registration/signup.html:151
+#: templates/websites/movies/tab_member.html:15
+msgid "Enter Password Here"
+msgstr ""
+
+#: templates/registration/signup.html:84
+#: templates/websites/metiz_payment/metiz_payment.html:55
+#: templates/websites/movies/form_user_info.html:9
+msgid "Enter Full Name Here"
+msgstr ""
+
 #: templates/registration/signup.html:105
 msgid "Choose Your Birthday"
 msgstr ""
 
 #: templates/registration/signup.html:115
 msgid "Enter Personal ID Here"
+msgstr ""
+
+#: templates/registration/signup.html:128
+#: templates/websites/movies/form_user_info.html:15
+msgid "Enter Phone Here"
 msgstr ""
 
 #: templates/registration/signup.html:158
@@ -284,29 +268,35 @@ msgstr ""
 msgid "Enter Address Here"
 msgstr ""
 
-#: templates/websites/booking.html:85
+#: templates/websites/booking.html:89
 msgid "Member Card"
 msgstr ""
 
-#: templates/websites/booking.html:86
+#: templates/websites/booking.html:90
 msgid "Enter Member Card Here"
 msgstr ""
 
-#: templates/websites/booking/email/booking_error.html:118
-#: templates/websites/booking/email/warning_amount_payment.html:118
-msgid "mail.booking.error.code"
+#: templates/websites/booking/email/add_point_error.html:118
+msgid "mail.booking.point.error.code"
 msgstr ""
 
+#: templates/websites/booking/email/add_point_error.html:130
 #: templates/websites/booking/email/booking_error.html:130
 #: templates/websites/booking/email/booking_notification.html:130
 #: templates/websites/booking/email/warning_amount_payment.html:130
 msgid "mail.booking.footer1"
 msgstr ""
 
+#: templates/websites/booking/email/add_point_error.html:130
 #: templates/websites/booking/email/booking_error.html:130
 #: templates/websites/booking/email/booking_notification.html:130
 #: templates/websites/booking/email/warning_amount_payment.html:130
 msgid "mail.booking.footer2"
+msgstr ""
+
+#: templates/websites/booking/email/booking_error.html:118
+#: templates/websites/booking/email/warning_amount_payment.html:118
+msgid "mail.booking.error.code"
 msgstr ""
 
 #: templates/websites/booking/email/booking_notification.html:115
@@ -345,19 +335,26 @@ msgstr ""
 msgid "Enter Card Barcode Here"
 msgstr ""
 
-#: websites/api/actions.py:103 websites/api/views.py:119
+#: templates/websites/movies/showtimes.html:12
+msgid "Select date play"
+msgstr ""
+
+#: websites/api/actions.py:103 websites/api/views.py:121
+#: websites/api/views.py:191
 msgid "Card member is required."
 msgstr ""
 
-#: websites/api/actions.py:124 websites/api/views.py:69
+#: websites/api/actions.py:124 websites/api/views.py:72
 msgid "Call API Unauthorized."
 msgstr ""
 
-#: websites/api/actions.py:131 websites/api/views.py:74
+#: websites/api/actions.py:131 websites/api/actions.py:190
+#: websites/api/views.py:77
 msgid "Call API error."
 msgstr ""
 
-#: websites/api/actions.py:150 websites/api/views.py:91
+#: websites/api/actions.py:150 websites/api/actions.py:202
+#: websites/api/views.py:94
 msgid "API connection timeout."
 msgstr ""
 
@@ -365,23 +362,23 @@ msgstr ""
 msgid "Invalid token."
 msgstr ""
 
-#: websites/api/views.py:125
+#: websites/api/views.py:127
 msgid "Card member have linked."
 msgstr ""
 
-#: websites/api/views.py:132
+#: websites/api/views.py:134
 msgid "User have linked."
 msgstr ""
 
-#: websites/api/views.py:144
+#: websites/api/views.py:146
 msgid "Card member not found."
 msgstr ""
 
-#: websites/api/views.py:148
+#: websites/api/views.py:150
 msgid "Invalid Value."
 msgstr ""
 
-#: websites/api/views.py:164
+#: websites/api/views.py:166
 msgid "Phone not match."
 msgstr ""
 
@@ -395,73 +392,85 @@ msgstr ""
 msgid "Internal Server Error. Cannot Post Booking."
 msgstr ""
 
-#: websites/booking/booking_handle.py:15
+#: websites/booking/booking_handle.py:16
 msgid "[Metiz] Booking Movie Tickets Successful !"
 msgstr ""
 
-#: websites/booking/booking_handle.py:39
+#: websites/booking/booking_handle.py:40
 msgid "[Metiz] Booking Movie Tickets Transaction Error !"
 msgstr ""
 
-#: websites/booking/booking_handle.py:62
+#: websites/booking/booking_handle.py:63
+msgid "[Metiz] Accumulation Point for Tickets Error !"
+msgstr ""
+
+#: websites/booking/booking_handle.py:86
 msgid "[Metiz] Warning Payment Amount not Match"
 msgstr ""
 
-#: websites/booking/models.py:20
+#: websites/booking/models.py:25
 msgid "Order ID"
 msgstr ""
 
-#: websites/booking/models.py:21
+#: websites/booking/models.py:26
 msgid "Amount"
 msgstr ""
 
-#: websites/booking/models.py:24
+#: websites/booking/models.py:29
 msgid "Seats"
 msgstr ""
 
-#: websites/booking/models.py:26 websites/core/models.py:51
+#: websites/booking/models.py:31 websites/core/models.py:51
 #: websites/core/models.py:108 websites/core/models.py:253
 #: websites/core/models.py:302
 msgid "Description"
 msgstr ""
 
-#: websites/booking/models.py:33
+#: websites/booking/models.py:38
 msgid "Gate Payment"
 msgstr ""
 
-#: websites/booking/models.py:34
-msgid "Card Barcode"
+#: websites/booking/models.py:39
+msgid "Card Barcode Payment"
 msgstr ""
 
-#: websites/booking/models.py:47
+#: websites/booking/models.py:40
+msgid "Working Id"
+msgstr ""
+
+#: websites/booking/models.py:41
+msgid "Card Member"
+msgstr ""
+
+#: websites/booking/models.py:56
 msgid "Date Showing"
 msgstr ""
 
-#: websites/booking/views.py:190 websites/booking/views.py:211
-#: websites/booking/views.py:327 websites/booking/views.py:346
-#: websites/core/views.py:550 websites/internal_payment/views.py:399
-#: websites/registration/views.py:56
+#: websites/booking/views.py:206 websites/booking/views.py:227
+#: websites/booking/views.py:338 websites/booking/views.py:341
+#: websites/booking/views.py:360 websites/core/views.py:550
+#: websites/internal_payment/views.py:412
+#: websites/internal_payment/views.py:432 websites/registration/views.py:56
 msgid "Internal Server Error. Please contact administrator."
 msgstr ""
 
-#: websites/booking/views.py:205
+#: websites/booking/views.py:221
 msgid "Fields id_showtime and id_server is required."
 msgstr ""
 
-#: websites/booking/views.py:225
+#: websites/booking/views.py:242
 msgid "Fields lst_seats and id_showtime, working_id is required."
 msgstr ""
 
-#: websites/booking/views.py:251
-#, python-format
-msgid "These chairs have been selected : %s"
+#: websites/booking/views.py:267
+msgid "These chairs have been selected "
 msgstr ""
 
-#: websites/booking/views.py:273
+#: websites/booking/views.py:284
 msgid "Cannot Booking Seats. Please Contact Administrator."
 msgstr ""
 
-#: websites/booking/views.py:335
+#: websites/booking/views.py:349
 msgid "Fields barcode is required."
 msgstr ""
 
@@ -767,33 +776,33 @@ msgstr ""
 msgid "[Metiz] Voucher Code !"
 msgstr ""
 
-#: websites/internal_payment/metiz_otp.py:43
+#: websites/internal_payment/metiz_otp.py:44
 msgid "OTP wrong or expired."
 msgstr ""
 
-#: websites/internal_payment/views.py:192
-#: websites/internal_payment/views.py:217
-#: websites/internal_payment/views.py:232
+#: websites/internal_payment/views.py:199
+#: websites/internal_payment/views.py:224
+#: websites/internal_payment/views.py:239
 msgid "System Error. Please Contact Administrator."
 msgstr ""
 
-#: websites/internal_payment/views.py:222
+#: websites/internal_payment/views.py:229
 msgid "Card Barcode is required and must be number."
 msgstr ""
 
-#: websites/internal_payment/views.py:267
+#: websites/internal_payment/views.py:269
 msgid "OTP is required."
 msgstr ""
 
-#: websites/internal_payment/views.py:382
+#: websites/internal_payment/views.py:395
 msgid "Transaction Timeout"
 msgstr ""
 
-#: websites/internal_payment/views.py:386
+#: websites/internal_payment/views.py:399
 msgid "Cannot reSend OTP. Please contact administrator."
 msgstr ""
 
-#: websites/internal_payment/views.py:396
+#: websites/internal_payment/views.py:409
 msgid "reSend OTP Success."
 msgstr ""
 
@@ -858,10 +867,10 @@ msgstr ""
 msgid "Send Mail Successfully. Please Check Your Email and Active Account."
 msgstr ""
 
-#: websites/settings.py:135
+#: websites/settings.py:138
 msgid "Vietnamese"
 msgstr ""
 
-#: websites/settings.py:136
+#: websites/settings.py:139
 msgid "English"
 msgstr ""

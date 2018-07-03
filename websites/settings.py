@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'rest_framework',
+    'rest_framework.authtoken',
     'main',
     'core',
     'registration',
@@ -54,8 +56,7 @@ INSTALLED_APPS = [
     # 'allauth.account',
     # 'allauth.socialaccount',
     'hitcount',
-    'rest_framework',
-    'rest_framework.authtoken',
+    
 ]
 
 MIDDLEWARE = [
@@ -300,11 +301,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'api.custom_jwt.CustomJSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        
+        'api.custom_jwt.CustomJSONWebTokenAuthentication',
     ),
     'UNICODE_JSON': True
 }

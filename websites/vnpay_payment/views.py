@@ -111,9 +111,11 @@ def payment(request):
                     working_id=working_id)
             except BookingInfomation.DoesNotExist, e:
                 # Store order infomation with status is pendding
+                card_member = movies_session[working_id]["card_member"]
                 booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
                                                   email=request.session.get("email", ""), seats=seats_choice, barcode=barcode,
-                                                  id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment="VNPay", working_id=working_id)
+                                                  id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment="VNPay", working_id=working_id,
+                                                  card_member=card_member)
 
                 
             if not request.user.is_anonymous():

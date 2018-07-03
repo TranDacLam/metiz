@@ -1,6 +1,43 @@
 function addBookingToPayment(sc, id_showtime, id_server, movie_api_id){
     // Click add Card button
+    $("#btn_skip_card_member").on('click',function(){
+        $("#member_card").val("");
+        $('#btn_add_card').click();
+    });
+    
+
     $('#btn_add_card').on('click',function(){
+        var result_verify_card_member = false;
+        var member_card = $("#member_card").val();
+        if(member_card){
+            $.ajax({
+                url: "/api/verify/card/member/",
+                type: 'POST',
+                data: JSON.stringify({
+                    "card_member": member_card
+                }),
+                headers: { 
+                    'Content-Type': 'application/json',
+                },
+                dataType: 'json',
+                crossDomain:false,
+                context: this,
+                async:false,
+            })
+            .done(function(response) {
+                if( !response.result_verify_card ){
+                    result_verify_card_member = true;
+                }
+            })
+            .fail(function(error) {
+                alert("Hệ Thống Tích Điểm Đang Gặp Xự Cố. Vui Lòng Liên Hệ Quản Trị Viên", "danger");
+            });
+
+            if(result_verify_card_member){
+                $("#member_card-error").text("Thẻ Thành Viên Không Tồn Tại. Vui Lòng Kiểm Tra Lại.");
+                return false;
+            }
+        }
         var totalPayment = recalculateTotal(sc);
         var id_movie_time = $('.time-movie-booking').text().replace('~', '-');
         var id_movie_date_active = $('.date-movie-booking').text();
@@ -20,7 +57,7 @@ function addBookingToPayment(sc, id_showtime, id_server, movie_api_id){
             "id_server": id_server,
             "lst_seats": "["+ seatSelected.toString() +"]",
             "working_id": working_id,
-            "member_card": $("#member_card").val()
+            "card_member": member_card
         }
         $.ajax({
             url: "/verify/seats",

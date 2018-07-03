@@ -36,8 +36,11 @@ class BookingInfomation(DateTimeModel):
     retry_ipn = models.IntegerField(default=0)
     poster = models.CharField(max_length=500, null=True, blank=True)
     gate_payment = models.CharField(_('Gate Payment'), choices=GATE_TYPE, max_length=500, null=True, blank=True)
-    card_barcode = models.CharField(_('Card Barcode'), max_length=500, null=True, blank=True)
+    card_barcode = models.CharField(_('Card Barcode Payment'), max_length=500, null=True, blank=True)
     working_id = models.CharField(_('Working Id'), max_length=500, null=True, blank=True)
+    card_member =  models.CharField(_('Card Member'), max_length=500, null=True, blank=True)
+    point_bonus = models.IntegerField(default=0)
+    point_level = models.IntegerField(default=0)
 
 class MovieSync(DateTimeModel):
     TYPE = (

@@ -9,5 +9,6 @@ urlpatterns = [
     
     url(r'^card_member/link/$', views.card_member_link, name='card-member-link'),
     url(r'^gift/claiming_points/$', views.get_gift_claiming_points, name="get-gift-claiming-points"),
+    url(r'^verify/card/member/$', views.verify_card_member, name="verify-card-member"),
 
 ]

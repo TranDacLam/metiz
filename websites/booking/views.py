@@ -237,6 +237,7 @@ def check_seats(request):
         if request.method == "POST":
             # Validate Request Parameter id_server and lst_seats
             id_server = request.POST.get('id_server', 1)
+            card_member = request.POST.get('card_member', None)
             if "lst_seats" not in request.POST or "id_showtime" not in request.POST or 'working_id' not in request.POST:
                 return JsonResponse({"code": 400, "message": _("Fields lst_seats and id_showtime, working_id is required.")}, status=400)
 
@@ -248,7 +249,6 @@ def check_seats(request):
             seats_choice = ast.literal_eval(request.POST["lst_seats"])
 
             total_money = 0
-
             if data_seats and data_seats["List"] and seats_choice:
                 seat_has_selected = []
                 # check chairs of a user have been selected before
@@ -275,20 +275,15 @@ def check_seats(request):
                     email = request.session.get("email", "")
                     # Get Information of user and building data for api update
                     # status of seats
-                    member_card = request.POST.get('member_card')
-                    # Change api url when card member is not null
-                    if member_card:
-                        url = "/postBookingMember"
-
-
+                    # NOTE: Dont using accumulation point of KingPOS 
                     result = api.call_api_post_booking(
-                        full_name, phone, email, seats_choice, id_server, member_card, url)
+                        full_name, phone, email, seats_choice, id_server, None, url)
                     
                     if not result["BARCODE"] or str(result["BARCODE"]) == '0' or total_money <= 0:
                         print "***** Get Barcode Fail : ", result
                         return JsonResponse({"code": 400, "message": _("Cannot Booking Seats. Please Contact Administrator.")}, status=400)
 
-                    print "***** Information User Booking , Full Name: %s, Member Card: %s, Phone: %s, Email: %s, Barcode: %s, Money: %s"%(full_name, member_card, phone, email, result["BARCODE"], total_money)
+                    print "***** Information User Booking , Full Name: %s, Member Card: %s, Phone: %s, Email: %s, Barcode: %s, Money: %s"%(full_name, card_member, phone, email, result["BARCODE"], total_money)
                     # Add Seats into session and set seats expire in five
                     # minute
                     result["total_payment"] = total_money
@@ -298,7 +293,8 @@ def check_seats(request):
                             "time_choice": timezone.localtime(timezone.now() + timedelta(minutes=settings.TIME_SEAT_DELAY)).strftime("%Y-%m-%d %H:%M:%S.%f"),
                             "seats_choice": seats_choice,
                             "barcode": result["BARCODE"],
-                            "total_money": total_money
+                            "total_money": total_money,
+                            "card_member": card_member
                         }
                     request.session['movies'] = current_store
                     
@@ -338,6 +334,8 @@ def check_seats(request):
                     # request.session['movies'] = current_store
 
                     return JsonResponse(result)
+            else:
+                return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
     except Exception, e:
         print "Error booking_seats : %s" % e
         return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
