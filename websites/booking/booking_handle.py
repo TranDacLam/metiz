@@ -7,7 +7,8 @@ from core.models import AdminInfo
 from registration import metiz_email
 from core import metiz_sms
 from booking import api
-
+import urllib2
+import json
 
 def send_mail_booking(is_secure, email, full_name, barcode, content):
     try:
@@ -56,6 +57,30 @@ def send_mail_booking_error(is_secure, email, email_cc, barcode, content):
     except Exception, e:
         print "Error send_mail_booking : ", e
 
+def send_mail_point_errors(is_secure, email, email_cc, barcode, content, fullname):
+    try:
+        message_html = "websites/booking/email/add_point_error.html"
+        subject = _("[Metiz] Accumulation Point for Tickets Error !")
+
+        protocol = 'http'
+        if is_secure:
+            protocol = 'https'
+        logo_url = '/static/assets/websites/images/logo_bottom.png'
+        data_binding = {
+            "protocol": protocol,
+            'URL_LOGO': logo_url,
+            'barcode': barcode,
+            'content': content,
+            'site': str(Site.objects.get_current()),
+            'HOT_LINE': settings.HOT_LINE,
+            'fullname': fullname
+        }
+        # Send email transaction booking moive order error
+        metiz_email.send_mail(subject, None, message_html, settings.DEFAULT_FROM_EMAIL, [
+                              email], data_binding, {} , (), None, email_cc)
+    except Exception, e:
+        print "Error send_mail_booking : ", e
+
 def send_mail_amount_not_match(is_secure, email, full_name, barcode, content):
     try:
         message_html = "websites/booking/email/warning_amount_payment.html"
@@ -87,6 +112,58 @@ def send_email_vooc_leader(is_secure, full_name, barcode, content):
         send_mail_amount_not_match(is_secure, leader_email, full_name, barcode, content)
     except Exception, e:
         leader_email = "tiendangdht@gmail.com, thangnguyen@vooc.vn"
+
+
+
+def handler_error_point_bonus(booking_order, amount, is_secure):
+    params = {
+        "card_member": booking_order.card_member,
+        "amount": amount,
+        "type_payment": "tickets",
+        "system_name": "metiz_web_online"
+    }
+    # Get link call api 
+    url_add_point_to_card = '{}member/card/point/'.format(
+        settings.BASE_URL_POS_API)
+    
+    # Call POS add point to card member
+    request_calculated_point = urllib2.Request(url_add_point_to_card, data=json.dumps(params), headers={
+                                  'Content-Type': 'application/json', 'Authorization': '%s' % settings.POS_API_AUTH_HEADER})
+
+    # Call api and response data
+    try:
+        resp = urllib2.urlopen(request_calculated_point)
+        result_point_card = json.loads(resp.read())
+        booking_order.point_bonus = result_point_card['point_bonus']
+        booking_order.point_level = result_point_card['point_level']
+        booking_order.save()
+
+        if not result_point_card['status_point_bonus']:
+            content_user = """
+                            Không tìm thấy mã thành viên để tích điểm thưởng. 
+                            Vui lòng liên hệ bộ phận vận hành để kiểm tra lại. 
+                            Thông tin giao dịch: Mã Đặt Vé: %s, Mã Thành Viên: %s.
+                        """%(booking_order.barcode, booking_order.card_member)
+            send_mail_point_errors(is_secure, booking_order.email, None, booking_order.barcode, content_user, "")
+
+        send_point_error = False
+        if not result_point_card['status_point_level']:
+            send_point_error = True
+
+    except urllib2.HTTPError, e:
+        print "EXEPTION add point to card member ", e.code
+        if e.code != 400:
+            send_point_error = True
+        pass
+    
+    if send_point_error:
+        content_admin = """
+                        Xãy ra lỗi trong quá trình tích điểm thưởng cho thành viên. 
+                        Vui lòng kiểm tra lại. 
+                        Thông tin giao dịch: Mã Đặt Vé: %s, Mã Thành Viên: %s.
+                    """%(booking_order.barcode, booking_order.card_member)
+        send_mail_point_errors(is_secure, settings.POS_ADMIN_EMAIL, None, booking_order.barcode, content_admin, "Admin Metiz Cinema")
+        
 
 
 def handler_confirm_booking_error(booking_order, error_comfirm, is_secure):
@@ -161,6 +238,10 @@ def handler_confirm_booking_success(request, booking_order, amount):
     # Amount Divisoon for 100 because vnpay return amount * 100
     if booking_order.gate_payment == "VNPay":
         amount = float(amount)/100
+
+    # Begin calculated point bonus for member
+    if booking_order.card_member:
+        handler_error_point_bonus(booking_order, amount, request.is_secure())
 
     if amount != booking_order.amount:
         content_warning = """

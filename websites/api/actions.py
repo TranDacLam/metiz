@@ -154,3 +154,55 @@ def get_card_member_infomation_data(card_member):
         print('get_card_member_infomation: %s', traceback.format_exc())
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
+
+
+def verify_card_member_pos(card_member):
+    data_response = {
+        "status": 200
+    }
+    try:
+        params = {
+            "card_member": card_member
+        }
+        # Add authorization to request header
+        headers = {
+            'Content-type': 'application/json',
+            'Authorization': settings.POS_API_AUTH_HEADER
+        }
+        # Get link call api 
+        url_verify_card = '{}verify/card/member/'.format(
+            settings.BASE_URL_POS_API)
+        
+        # Call POS get card member infomation
+        response = requests.post(url_verify_card, data=json.dumps(params), headers=headers)
+        result = response.json()
+        
+        # Handle errors
+        if response.status_code == 400:
+            data_response["status"] = 400
+            data_response["results"] = result
+            print "data_response ",data_response
+            return data_response
+        
+        if response.status_code != 200:
+            print "ERROR POS reponse status code", response.text, response.status_code
+            data_response["status"] = 500
+            data_response["results"] = {"code": 500, "message": _("Call API error."), "fields": ""}
+            return data_response
+
+        # Success
+        # Get data from pos api reponse
+        
+        data_response["results"] = result
+        return data_response
+
+    except requests.Timeout:
+        print "Request POS time out "
+        data_response["status"] = 500
+        data_response["results"] = {"code": 500, "message": _("API connection timeout."), "fields": ""}
+        return data_response
+
+    except Exception, e:
+        print('get_card_member_infomation: %s', traceback.format_exc())
+        raise Exception(
+            "ERROR : Internal Server Error .Please contact administrator.")

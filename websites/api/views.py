@@ -6,7 +6,8 @@ from django.http import JsonResponse, HttpResponse
 from rest_framework.response import Response
 import serializers
 import json
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from api import actions
 # Create your views here.
 import traceback
@@ -15,6 +16,8 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from core.models import *
 from dateutil.parser import parse
+
+
 
 @api_view(['GET'])
 def get_booking_info_report(request):
@@ -102,7 +105,6 @@ def get_gift_claiming_points(request):
     Get Card member information
 """
 
-
 @api_view(['POST'])
 def card_member_link(request):
     print "Card member link"
@@ -163,6 +165,42 @@ def card_member_link(request):
         
         error = {"code": 400, "message": _("Phone not match."), "fields": ""}
         return Response(error, status=400)
+
+    except Exception, e:
+        print('card_member_link: %s', traceback.format_exc())
+        error = {"code": 500, "message": "%s" % e, "fields": ""}
+        return Response(error, status=500)
+
+
+"""
+    Verify Card member
+"""
+
+
+@api_view(['POST'])
+@permission_classes((AllowAny,))
+def verify_card_member(request):
+    print "Verify Card member"
+    try:
+        """
+            1. Call api pos dmz verify card member using for point bonus
+        """
+        card_member = request.data.get('card_member', '')
+        if not card_member:
+            error = {"code": 400, "message": _(
+                "Card member is required."), "fields": "card_member"}
+            return Response(error, status=400)
+
+        
+        # Call action get data response
+        responses = actions.verify_card_member_pos(card_member)
+    
+        results = responses['results']
+        if responses["status"] != 200:
+            # Return data with json
+            return JsonResponse(results, status=responses["status"])
+        
+        return Response(results, status=200)
 
     except Exception, e:
         print('card_member_link: %s', traceback.format_exc())
