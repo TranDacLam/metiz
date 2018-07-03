@@ -22,8 +22,19 @@ from django.contrib.auth.decorators import permission_required
 import os
 from core.decorator import *
 from django.core.management import call_command
+from core.models import LinkCard
 
-
+"""
+    Case 1: Guest then return ""
+    Case 2: User is logged then get card member link to user
+"""
+def get_member_card_by_user(request):
+    card_member = ""
+    if request.user.is_authenticated():
+        # Get link card with current user
+        linkcard =  request.user.user_card_rel.all()
+        card_member = linkcard.first().card_member if linkcard else ""
+    return card_member
 
 @check_user_booking_exist
 def get_booking(request):
@@ -56,15 +67,21 @@ def get_booking(request):
                 poster = None
                 if movie.count() == 1:
                     poster = movie.get().poster
+
+                """
+                    Case 1: Guest then return ""
+                    Case 2: User is logged then get card member link to user
+                """
+                card_member = get_member_card_by_user(request)
                 return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_server": id_server,
                                                                  "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
                                                                  "id_movie_date_active": id_movie_date_active,
                                                                  "movie_api_id": movie_api_id,
-                                                                 "poster": poster})
+                                                                 "poster": poster, "card_member": card_member})
             else:
                 return render(request, 'websites/booking.html')
         else:
-            print('*******booking******')
+            print('*******booking****** GET')
             id_showtime = request.GET.get('id_showtime', "")
             id_server = request.GET.get('id_server', 1)
             movie_api_id = request.GET.get('movie_api_id', "")
@@ -75,11 +92,12 @@ def get_booking(request):
             poster = None
             if movie.count() == 1:
                 poster = movie.get().poster
+            card_member = get_member_card_by_user(request)
             return render(request, 'websites/booking.html', {"id_showtime": id_showtime, "id_server": id_server,
                                                              "id_movie_name": id_movie_name, "id_movie_time": id_movie_time,
                                                              "id_movie_date_active": id_movie_date_active,
                                                              "movie_api_id": movie_api_id,
-                                                             "poster": poster})
+                                                             "poster": poster, "card_member": card_member})
     except Exception, e:
         print "Error get_booking : ", e
         raise Exception(
