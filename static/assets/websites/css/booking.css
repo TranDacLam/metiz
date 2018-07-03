@@ -225,7 +225,7 @@ div.seatCharts-seat.available.seat-ld {
 }
 /*Modal member card info*/
 #member_card_modal .member-card-footer {
-    text-align: right;
+    text-align: center;
 }
 #member_card_modal .modal-body p.member-card-info {
     margin-bottom: 30px;
@@ -240,7 +240,6 @@ div.seatCharts-seat.available.seat-ld {
     background-color: #7e8eaa;
     color: #ffffff;
     font-weight: bold;
-    float: left;
 }
 #btn_skip_card_member{
     font-family: 'SairaSemiCondensed-Medium';
