@@ -105,7 +105,7 @@ $(document).ready(function() {
         },
         // append input has info film to form then submit
         submitHandler: function(form) {
-            event.preventDefault();
+            // event.preventDefault();
             $('.modal-schedule input[name=id_server]').appendTo(form);
             $('.modal-schedule input[name=id_showtime]').appendTo(form);
             $('.modal-schedule input[name=movie_api_id]').appendTo(form);
