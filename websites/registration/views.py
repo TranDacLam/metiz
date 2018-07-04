@@ -304,8 +304,10 @@ def info_member_card(request):
         if card_member:
             # Call action get data response
             responses = actions.get_card_member_infomation_data(card_member)
-            results = responses['results']
-            results['card_member'] = card_member
+
+            if responses["code"] == 200:
+                results = responses['data']
+                results['card_member'] = card_member
 
         return render(request, 'registration/info_member_card.html', {"card_info": results})
     except Exception, e:

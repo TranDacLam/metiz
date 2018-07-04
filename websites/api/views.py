@@ -16,8 +16,29 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from core.models import *
 from dateutil.parser import parse
+from rest_framework.views import exception_handler, APIView
 
+def custom_exception_handler(exc, context):
+    # to get the standard error response.
+    response = exception_handler(exc, context)
+    # Now add the HTTP status code to the response.
+    if response is not None:
+        try:
+            message = exc.detail.values()[0][0] if exc.detail else ""
+            field = exc.detail.keys()[0] if exc.detail else ""
+        except Exception, e:
+            print "custom_exception_handler ", e
+            message = "errors"
+            field = ""
 
+        response.data['code'] = response.status_code
+        response.data['message'] = response.data[
+            'detail'] if 'detail' in response.data else str(message)
+        response.data['fields'] = field
+        if 'detail' in response.data:
+            del response.data['detail']
+
+    return response
 
 @api_view(['GET'])
 def get_booking_info_report(request):
@@ -40,13 +61,12 @@ def get_booking_info_report(request):
         responses = actions.get_booking_info_data(None, page_items, page_number, order_status,
                                                   order_id, email, phone, barcode, date_from, date_to)
         # Return data with json
-        return JsonResponse(responses['results'], status=responses["status"], safe=responses["safe"])
+        return Response(responses['results'], status=responses["status"], safe=responses["safe"])
 
     except Exception, e:
         print "Error booking_info_report : %s ", traceback.format_exc()
-        raise Exception(
-            "ERROR : Internal Server Error .Please contact administrator.")
-
+        error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
+        return Response(error, status=500)
 
 """
     Get gift claiming points
@@ -57,46 +77,17 @@ def get_booking_info_report(request):
 def get_gift_claiming_points(request):
     print "Get gift claiming points"
     try:
-        headers = {
-            'Authorization': settings.POS_API_AUTH_HEADER
-        }
-        gift_claiming_points_api_url = '{}gift/claiming_points/'.format(
-            settings.BASE_URL_POS_API)
+        responses = actions.get_gift_claiming_points_data()
+        if responses['code'] != 200:
+            # Return data with json
+            return Response(responses, status=responses["code"])
 
-        # Call POS get card member infomation
-        response = requests.get(gift_claiming_points_api_url, headers=headers)
-
-        if response.status_code == 401:
-            print "POS reponse status code 401", response.text
-            error = {"code": 500, "message": _(
-                "Call API Unauthorized."), "fields": ""}
-            return Response(error, status=500)
-        if response.status_code != 200 and response.status_code != 400:
-            print "POS reponse status code not 200", response.text
-            error = {"code": 500, "message": _(
-                "Call API error."), "fields": ""}
-            return Response(error, status=500)
-
-        # Get data from pos api reponse
-        result = response.json()
-
-        # Translate error message when code is 400
-        if response.status_code == 400:
-            result["message"] = _(result["message"])
-            return Response(result, status=response.status_code)
-
-        # Call success
+        result = responses['data']
         return Response(result, status=200)
-
-    except requests.Timeout:
-        print "Request POS time out "
-        error = {"code": 500, "message": _(
-                "API connection timeout."), "fields": ""}
-        return Response(error, status=500)
 
     except Exception, e:
         print('get_gift_claiming_points: %s', traceback.format_exc())
-        error = {"code": 500, "message": "%s" % e, "fields": ""}
+        error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
         return Response(error, status=500)
 
 
@@ -137,11 +128,11 @@ def card_member_link(request):
         # Call action get data response
         responses = actions.get_card_member_infomation_data(card_member)
     
-        results = responses['results']
-        if responses["status"] != 200:
+        if responses["code"] != 200:
             # Return data with json
-            return JsonResponse(results, status=responses["status"])
+            return Response(responses, status=responses["code"])
 
+        results = responses['data']
         if not results:
             error = {"code": 400, "message": _("Card member not found."), "fields": ""}
             return Response(error, status=400)
@@ -149,7 +140,7 @@ def card_member_link(request):
         if not results['phone'] and not user.phone:
             error = {"code": 400, "message": _("Invalid Value."), "fields": ""}
             return Response(error, status=400)
-
+        print results['phone'][1:]
         if results['phone'][1:] ==  user.phone:
             linkcard = LinkCard()
             linkcard.user = user
@@ -168,7 +159,7 @@ def card_member_link(request):
 
     except Exception, e:
         print('card_member_link: %s', traceback.format_exc())
-        error = {"code": 500, "message": "%s" % e, "fields": ""}
+        error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
         return Response(error, status=500)
 
 
@@ -190,19 +181,18 @@ def verify_card_member(request):
             error = {"code": 400, "message": _(
                 "Card member is required."), "fields": "card_member"}
             return Response(error, status=400)
-
         
         # Call action get data response
         responses = actions.verify_card_member_pos(card_member)
-    
-        results = responses['results']
-        if responses["status"] != 200:
+
+        if responses["code"] != 200:
             # Return data with json
-            return JsonResponse(results, status=responses["status"])
-        
+            return Response(responses, status=responses["code"])
+
+        results = responses['data']
         return Response(results, status=200)
 
     except Exception, e:
         print('card_member_link: %s', traceback.format_exc())
-        error = {"code": 500, "message": "%s" % e, "fields": ""}
+        error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
         return Response(error, status=500)

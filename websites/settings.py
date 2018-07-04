@@ -301,12 +301,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        # 'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'api.custom_jwt.CustomJSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        
     ),
-    'UNICODE_JSON': True
+    'UNICODE_JSON': True,
+    'EXCEPTION_HANDLER': 'api.views.custom_exception_handler',
 }
 
 AUTH_PREFIX = "Bearer "

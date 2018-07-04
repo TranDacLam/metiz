@@ -9,7 +9,21 @@ import requests
 from django.conf import settings
 import traceback
 from django.utils.translation import ugettext_lazy as _
-# Create your views here.
+
+"""
+    DMZ responde with:
+    Case 1: 200 return data
+    Case 2: 400 return data with message translate
+    Else: Return erorr
+"""
+def code_mapping_error(status_code, json_data):
+    print "json_data:::::::::"
+    switcher = {
+        200: json_data,
+        401: {"code": 500, "message": _("Call API Unauthorized."), "fields": ""},
+        400: {"code": 400, "message": _(json_data["message"]) if status_code==400 else json_data, "fields": ""}
+    }
+    return switcher.get(status_code, {"code": 500, "message": _("Call API error."), "fields": ""})
 
 
 def get_booking_info_data(user_id=None, page_items=0, page_number=1, order_status=None, order_id=None,
@@ -117,38 +131,25 @@ def get_card_member_infomation_data(card_member):
         # Call POS get card member infomation
         response = requests.get(gift_claiming_points_api_url, params=params, headers=headers)
 
-        # Handle invalid authorization
-        if response.status_code == 401:
-            print "POS reponse status code 401", response.text
-            data_response["status"] = 500
-            data_response["results"] = {"code": 500, "message": _("Call API Unauthorized."), "fields": ""}
-            return data_response
 
-        # Handle pos server errors
-        if response.status_code != 200 and response.status_code != 400:
-            print "POS reponse status code not 200", response.text
-            data_response["status"] = 500
-            data_response["results"] = {"code": 500, "message": _("Call API error."), "fields": ""}
-            return data_response
+        try:
+            # convert response text to json
+            json_data = json.loads(response.text)
+        except ValueError as e:
+            print "Error convert json : %s" % e
+            return {"code": 500, "message": _("Handle data error.")}
 
-        # Success
-        # Get data from pos api reponse
-        result = response.json()
+        # Mapping status dmz reponse with reponse
+        result = code_mapping_error(response.status_code, json_data)
+        if response.status_code != 200 :
+            print "DMZ Response Text:::", response.text
+            return result
 
-        # Return error from pos api
-        if response.status_code == 400:
-            data_response["status"] = 400
-            data_response["results"] = result["message"]
-            return data_response
-
-        data_response["results"] = result
-        return data_response
+        return {"code": 200, "data": result}
 
     except requests.Timeout:
         print "Request POS time out "
-        data_response["status"] = 500
-        data_response["results"] = {"code": 500, "message": _("API connection timeout."), "fields": ""}
-        return data_response
+        return {"code": 500, "message": _("API connection timeout."), "fields": ""}
 
     except Exception, e:
         print('get_card_member_infomation: %s', traceback.format_exc())
@@ -175,34 +176,62 @@ def verify_card_member_pos(card_member):
         
         # Call POS get card member infomation
         response = requests.post(url_verify_card, data=json.dumps(params), headers=headers)
-        result = response.json()
-        
-        # Handle errors
-        if response.status_code == 400:
-            data_response["status"] = 400
-            data_response["results"] = result
-            print "data_response ",data_response
-            return data_response
-        
-        if response.status_code != 200:
-            print "ERROR POS reponse status code", response.text, response.status_code
-            data_response["status"] = 500
-            data_response["results"] = {"code": 500, "message": _("Call API error."), "fields": ""}
-            return data_response
+        try:
+            # convert response text to json
+            json_data = json.loads(response.text)
+        except ValueError as e:
+            print "Error convert json : %s" % e
+            return {"code": 500, "message": _("Handle data error.")}
 
-        # Success
-        # Get data from pos api reponse
-        
-        data_response["results"] = result
-        return data_response
+        # Mapping status dmz reponse with reponse
+        result = code_mapping_error(response.status_code, json_data)
+        if response.status_code != 200 :
+            print "DMZ Response Text:::", response.text
+            return result
+
+        return {"code": 200, "data": result}
 
     except requests.Timeout:
         print "Request POS time out "
-        data_response["status"] = 500
-        data_response["results"] = {"code": 500, "message": _("API connection timeout."), "fields": ""}
-        return data_response
-
+        return {"code": 500, "message": _("API connection timeout."), "fields": ""}
     except Exception, e:
         print('get_card_member_infomation: %s', traceback.format_exc())
         raise Exception(
             "ERROR : Internal Server Error .Please contact administrator.")
+
+def get_gift_claiming_points_data():
+    try:
+        headers = {
+            'Authorization': settings.POS_API_AUTH_HEADER
+        }
+        gift_claiming_points_api_url = '{}gift/claiming_points/'.format(
+            settings.BASE_URL_POS_API)
+
+        # Call POS get card member infomation
+        response = requests.get(gift_claiming_points_api_url,  headers=headers)
+
+        try:
+            # convert response text to json
+            json_data = json.loads(response.text)
+        except ValueError as e:
+            print "Error convert json : %s" % e
+            return {"code": 500, "message": _("Handle data error.")}
+
+        # Mapping status dmz reponse with reponse
+        result = code_mapping_error(response.status_code, json_data)
+
+        if response.status_code != 200 :
+            print "DMZ Response Text:::", response.text
+            return result
+
+        return {"code": 200, "data": result}
+
+    except requests.Timeout:
+        print "Request POS time out "
+        return {"code": 500, "message": _(
+                "API connection timeout."), "fields": ""}
+
+    except Exception, e:
+        print('get_gift_claiming_points: %s', traceback.format_exc())
+        return {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
+
