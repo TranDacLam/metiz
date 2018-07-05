@@ -175,6 +175,9 @@ def get_movie_show_time(request):
 
         result = {}
         # call api to server king_pos get movie by date
+        if not movie_api_id or movie_api_id == "00000000":
+            movie_api_id = None
+            
         show_times = api.get_show_times(date_request=date, id_movie=movie_api_id)
         
         """ Check query set and get first item """
