@@ -8,8 +8,8 @@ $(document).ready(function() {
             output: 'css',
             bgColor: '#FFFFFF',
             color: '#000000',
-            barWidth: '1',
-            barHeight: '50'
+            barWidth: '2',
+            barHeight: '100'
         };
         const TYPE = 'code39';
         var barcode = $('input[name=barcode_member_card]').val();

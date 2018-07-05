@@ -11,29 +11,32 @@
 {% endblock %}
 
 {% block main_content%}
-<div class="main-movie-api">
-    <div class="container movie-api-custom">
+<div class="main-container main-movie-api">
+    <div class="main">
         <div class="movie-api-title">
-            <h1>Movies API ID by Date</h1>
+            <h1>Danh sách movies API ID</h1>
         </div>
-        <div class='col-md-12'>
+        <div class="row">
+            <div class='col-md-12 form-get-movie-api-id'>
              <div class="form-group">
-                <label for="lbl-request-date">Request Date</label>
-                <input type="text" class="form-control" id="input-request-date" >
+                <label for="lbl-request-date">Ngày Chiếu Phim</label>
+                <input type="text" class="form-control" id="input-request-date" placeholder="yyyy-mm-dd">
+                <p class="error_date"></p>
               </div>
             <button class="btn btn-primary btn-get-movie-api-id">Get Movies API ID</button>
 
         </div>
+        </div>
         
-        <table class="table-display-movie-api">
+        <table class="table-display-movie-api table table-striped table-bordered">
           <thead>
             <tr>
-              <th scope="col">Movie Name</th>
+              <th scope="col">Tên Phim</th>
               <th scope="col">Movie API ID</th>
             </tr>
           </thead>
           <tbody id="body-display-movies">
-            
+              
           </tbody>
         </table>
 
