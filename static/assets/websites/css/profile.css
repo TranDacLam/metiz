@@ -358,8 +358,8 @@
     .transaction-history .info-th .th-2-des{
         width: 100%;
     }
-    #barcode-member-card > div:first-child{
-        width: 5px !important;
+    #barcode-member-card{
+        margin-left: -15px;
     }
 }
 @media only screen and (max-width : 375px) {
