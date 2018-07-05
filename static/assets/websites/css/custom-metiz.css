@@ -2579,7 +2579,8 @@ li.film-lists:hover .play-button, li.film-lists:hover .play-trailer-empty{
     display:block;
 }
 .feature_slide_show .poster-film:hover .play-button{
-    background: url(../images/icon_play.png) no-repeat 87px 142px rgba(255, 84, 0, 0.8);
+    /*background: url(../images/icon_play.png) no-repeat 87px 142px rgba(255, 84, 0, 0.8);*/
+    background: rgba(255, 84, 0, 0.8);
     height: 385px;
     left: 0;
     position: absolute;

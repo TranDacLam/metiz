@@ -1,9 +1,11 @@
 $(document).ready(function() {
 	// Play trailer for each movie page home
-    $('.play-button').on('click', function (event) {
+    $('.popup-youtube').on('click', function (event) {
+        event.preventDefault();
+        
     	$.magnificPopup.open({
 		    items: {
-		        src: $(this).find('a').attr("href"),
+		        src: $(this).attr("href"),
 		    },
 		    disableOn: 700,
 	        type: 'iframe',
