@@ -24,6 +24,7 @@ from core.decorator import *
 from django.core.management import call_command
 from core.models import LinkCard
 
+
 """
     Case 1: Guest then return ""
     Case 2: User is logged then get card member link to user
@@ -166,19 +167,16 @@ def get_movie_show_time(request):
         """
         current_date = timezone.localtime(timezone.now())
 
-        date = request.GET.get('date', current_date.date())
+        date = request.GET.get('date', current_date.date().strftime("%Y-%m-%d"))
+
         # cinema_id is equal id_server
         cinema_id = request.GET.get('cinema_id', 1)
-        movie_api_id = request.GET.get('movie_api_id', 0)
+        movie_api_id = request.GET.get('movie_api_id', None)
 
         result = {}
-        
         # call api to server king_pos get movie by date
         show_times = api.get_show_times(date_request=date, id_movie=movie_api_id)
-        if movie_api_id and not show_times["List"]:
-            # call request get all data movie when data movie api not found
-            show_times = api.get_show_times(date_request=date, id_movie=None)
-
+        
         """ Check query set and get first item """
         if show_times:
             # Validate convert data to json
@@ -190,30 +188,11 @@ def get_movie_show_time(request):
                 return JsonResponse({})
 
             # Generate dictionary result key is movie_id and values is time
-            # showing
-            # get movie object if movie_api_id not empty
-            obj_movie = None
-            if movie_api_id:
-                obj_movie = movies_info.filter(
-                    movie_api_id=movie_api_id.strip())
-
             for item in show_times["List"]:
                 # Get Showtime movie by id
                 build_show_time_json(
                     current_date, item, result, movies_info)
-                # if movie_api_id:
-                #     # Get Movie Name by movie api id
-                #     if item["MOVIE_ID"].strip() == movie_api_id.strip():
-                #         build_show_time_json(
-                #             current_date, item, result, movies_info, obj_movie)
-                #         movie api id is wrong then get all movie by date
-                #         if not result:
-                #             build_show_time_json(
-                #             current_date, item, result, movies_info, obj_movie)
-                # else:
-                #     build_show_time_json(
-                #         current_date, item, result, movies_info)
-
+                
         # Order by dictionnary nested 
         result_ordered = OrderedDict(sorted(result.items(), key=lambda i: i[1]['movie_name']))
 
@@ -416,4 +395,43 @@ def movies_synchronize(request):
     except Exception, e:
         print "Error Action movies_synchronize : ",e
         return JsonResponse({"message": "Cannot synchronize movies. Please contact administrator "}, status=500)
+
+
+def get_movie_api_ids(request):
+    try:
+        """
+            Get movie api ids show times by date
+        """
+        if request.method == 'POST':
+            current_date = timezone.localtime(timezone.now())
+
+            date = request.POST.get('request_date', current_date.date().strftime('%m-%d-%Y'))
+            if not date:
+                date = current_date.date().strftime('%m-%d-%Y')
+
+            # cinema_id is equal id_server
+            cinema_id = request.POST.get('cinema_id', 1)
+
+            result = {}
+
+            # call api to server king_pos get movie by date
+            show_times = api.get_show_times(date_request=date)
+            
+            """ Check query set and get first item """
+            if show_times["List"]:
+                for item in show_times["List"]:
+                    if item['MOVIE_ID'] not in result:
+                        result[item['MOVIE_ID']] = item['MOVIE_NAME_VN']
+            
+            # Order result by movie name
+            sorted_movie = OrderedDict(sorted(result.items(), key=lambda x: x[1]))
+            return JsonResponse({"lst_movie_api": sorted_movie})
+
+        return render(request, 'websites/booking/movie_api.html')
+
+    except Exception, e:
+        print "Error get_movie_show_time : %s" % e
+        return JsonResponse({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+
+
 

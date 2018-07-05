@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block title %}Blog Phim{% endblock title %}
+
+{% block extrastylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/websites/css/pos_movie_api_ids.css?version={{BUILD_VERSION}}" media="all" />
+{% endblock %}
+{% block extrascript %}
+    <script src="{{ STATIC_URL }}assets/websites/js/pos_movie_api_ids.js?version={{BUILD_VERSION}}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
+
+{% block main_content%}
+<div class="main-movie-api">
+    <div class="container movie-api-custom">
+        <div class="movie-api-title">
+            <h1>Movies API ID by Date</h1>
+        </div>
+        <div class='col-md-12'>
+             <div class="form-group">
+                <label for="lbl-request-date">Request Date</label>
+                <input type="text" class="form-control" id="input-request-date" >
+              </div>
+            <button class="btn btn-primary btn-get-movie-api-id">Get Movies API ID</button>
+
+        </div>
+        
+        <table class="table-display-movie-api">
+          <thead>
+            <tr>
+              <th scope="col">Movie Name</th>
+              <th scope="col">Movie API ID</th>
+            </tr>
+          </thead>
+          <tbody id="body-display-movies">
+            
+          </tbody>
+        </table>
+
+    </div>
+</div>
+{% endblock%}
