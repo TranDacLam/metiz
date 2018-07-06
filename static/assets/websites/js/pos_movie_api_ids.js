@@ -1,13 +1,6 @@
 $(document).ready(function(){
 
     $(".btn-get-movie-api-id").on('click', function(){
-        var input = $('#input-request-date').val();
-        if (input != '' && input.match(/^([0-9]{4}[-]?((0[13-9]|1[012])[-]?(0[1-9]|[12][0-9]|30)|(0[13578]|1[02])[-]?31|02[-]?(0[1-9]|1[0-9]|2[0-8]))|([0-9]{2}(([2468][048]|[02468][48])|[13579][26])|([13579][26]|[02468][048]|0[0-9]|1[0-6])00)[-]?02[-]?29)$/) == null) {
-            // show validate
-            $('.error_date').html('Vui lòng nhập định dạng ngày yyyy-mm-dd')
-            $("#body-display-movies").html('')
-            return;
-        }
 
         $.ajax({
             url: '/movie/api/ids/',
@@ -21,7 +14,6 @@ $(document).ready(function(){
         })
         .done(function(response) {
             //set error valdiate
-            $('.error_date').html('');
 
             html = '';
             $('.table-display-movie-api').css('opacity', 1)
@@ -38,6 +30,28 @@ $(document).ready(function(){
             alert("error");
         });
     
+    });
+
+    // get date yyyy-mm-dd
+    var date_now = new Date();
+    var date_day = ("0" + date_now.getDate()).slice(-2);
+    var date_month = ("0" + (date_now.getMonth() + 1)).slice(-2);
+    var date_today = date_now.getFullYear() + "-" + (date_month) + "-" + (date_day);
+
+    // datebox js
+    $('#input-request-date').datebox({
+        mode: "calbox",
+        overrideDateFormat: '%Y-%m-%d',
+        useFocus: true,
+        useButton: false,
+        useHeader: false,
+        calShowDays: false,
+        calUsePickers: true,
+        calHighToday:true,
+        themeDatePick: 'warning',
+        defaultValue: date_today,
+        calYearPickMax: 'NOW',
+        calYearPickMin: 100,
     });
     
 });
