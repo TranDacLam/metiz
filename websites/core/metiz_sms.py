@@ -4,7 +4,7 @@ from django.conf import settings
 from django.utils import timezone
 import requests
 import base64
-import random
+import time
 
 
 def data_encrypt_cbc(data):
@@ -28,6 +28,7 @@ def data_encrypt_cbc(data):
 
 def send_sms(phone, content):
     try:
+        # RequestID SMS is userId if user loggin system, is phone when user not loggin
         if str(phone).startswith("84"):
             phone_number = str(phone)
         elif str(phone).startswith("0"):
@@ -35,11 +36,10 @@ def send_sms(phone, content):
         else:
             phone_number = "84" + str(phone)
         content_sms = content
-        id_sms = random.randint(0, 999)
         time_send = timezone.localtime(timezone.now()).strftime("%Y%m%d%H%M%S")
         brand = settings.SMS_BRAND
         xml = "<content><ReceiverPhone>%s</ReceiverPhone><Message>%s</Message><RequestID>%s</RequestID><BrandName>%s</BrandName><Senttime>%s</Senttime></content>" % (
-            str(phone_number), str(content_sms), str(id_sms), brand, str(time_send))
+            str(phone_number), str(content_sms), str(int(time.time())), brand, str(time_send))
 
         xml_encode = data_encrypt_cbc(xml.replace("\r\n", ""))  # mã hóa
         user_ctnet = data_encrypt_cbc(settings.SMS_USER)
