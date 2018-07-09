@@ -1,6 +1,14 @@
 function bookingValidateSeat(sc){
     // click booking next button.
     $('#btnNextBooking').on('click',function(){
+        var movie_id = $("#movie_api_id").val();
+
+        // On LOCAL, DEV, UAT envs then only accept film test movie api setting on server
+        if (document.domain != "metiz.vn" && movieIdTest != movie_id ) {
+            alert("Phim này chỉ được xuất vé trên PRODUCTION. Vui chọn phim TEST khác.");
+            return;
+        }
+
         var number_column_valid; // get number seat selected
         var status_valid = false; // status show message error
         var seats_row_valid; // array object of a row

@@ -45,9 +45,6 @@ RECAPTCHA_PRIVATE_KEY = '6LdK2joUAAAAALA1kD-Bom5iUOrn31oNiZs4n7wu'
 
 BOOKING_ERROR_CC_EMAIL = "diemnguyen@vooc.vn, thaophan@vooc.vn"
 
-MOVIE_ID_TEST = '601869dd-7d30-4464-be7d-2806ca6c50ac'
-
-
 # POS API config
 AUTH_PREFIX = "Bearer "
 BASE_URL_POS_API = "http://172.16.12.19:9090/api/"
