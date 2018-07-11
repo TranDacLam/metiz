@@ -33,8 +33,7 @@ def get_booking_info_data(user_id=None, page_items=0, page_number=1, order_statu
 
     try:
         data_response = {
-            "status": 200,
-            "safe": True
+            "status": 200
         }
 
         booking_info_list = BookingInfomation.objects.all().order_by('-created')
@@ -96,7 +95,6 @@ def get_booking_info_data(user_id=None, page_items=0, page_number=1, order_statu
         data = serializers.BookingInfomationSerializer(
             booking_info_list, many=True).data
 
-        data_response["safe"] = False
         data_response["results"] = data
         return data_response
 

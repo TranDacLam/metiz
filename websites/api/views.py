@@ -60,8 +60,9 @@ def get_booking_info_report(request):
         # Call action get data response
         responses = actions.get_booking_info_data(None, page_items, page_number, order_status,
                                                   order_id, email, phone, barcode, date_from, date_to)
+
         # Return data with json
-        return Response(responses['results'], status=responses["status"], safe=responses["safe"])
+        return Response(responses['results'], status=responses["status"])
 
     except Exception, e:
         print "Error booking_info_report : %s ", traceback.format_exc()
