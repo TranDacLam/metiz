@@ -542,7 +542,7 @@ def encrypt_payment(request):
         try:
             data_form = request.POST.get("data_form", None)
             cipher = MetizAESCipher()
-            encrypted = cipher.encrypt(data_form)
+            encrypted = cipher.encrypt(str(data_form))
             result = JsonResponse(
                         {'code': '00', 'Message': 'Process data success', 'data_encode': encrypted})
         except Exception, e:
