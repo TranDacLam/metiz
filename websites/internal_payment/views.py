@@ -305,7 +305,8 @@ def verify_otp_for_user(request):
             # Store order infomation with status is pendding
             booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
                                               email=request.session.get("email", ""), seats=seats_choice, barcode=barcode, card_barcode=card_barcode,
-                                              id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment=payment_gate, working_id=working_id,
+                                              id_server=id_server, order_status="pendding", poster=movie_poster if movie_poster != "None" else "", 
+                                              gate_payment=payment_gate, working_id=working_id,
                                               card_member=card_member)
 
             if not request.user.is_anonymous():

@@ -32,7 +32,7 @@ def payment(request):
         id_server = request.POST.get("id_server", 1)
         movie_poster = request.POST.get("movie_poster", "")
 
-        print "request.POST", request.POST
+        print "request.POST ", request.POST
 
         # Verify Session Booking Timeout before redirect to vnpayment
         movies_session = request.session.get("movies", "")
@@ -114,7 +114,8 @@ def payment(request):
                 card_member = movies_session[working_id]["card_member"]
                 booking_order = BookingInfomation(order_id=order_id, order_desc=order_desc, amount=amount, phone=request.session.get("phone", ""),
                                                   email=request.session.get("email", ""), seats=seats_choice, barcode=barcode,
-                                                  id_server=id_server, order_status="pendding", poster=movie_poster, gate_payment="VNPay", working_id=working_id,
+                                                  id_server=id_server, order_status="pendding", poster=movie_poster if movie_poster != "None" else "", 
+                                                  gate_payment="VNPay", working_id=working_id,
                                                   card_member=card_member)
 
                 
