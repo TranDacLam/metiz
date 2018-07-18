@@ -5,6 +5,8 @@ from api_app import views
 
 router = DefaultRouter()
 router.register(r'register', views.RegisterViewSet)
+router.register(r'blogs', views.BlogViewSet)
+router.register(r'faqs', views.FaqViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls))
