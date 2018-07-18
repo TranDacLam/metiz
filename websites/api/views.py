@@ -44,8 +44,6 @@ def custom_exception_handler(exc, context):
 def get_booking_info_report(request):
     print "Get booking online Data"
     try:
-        booking_info_list = BookingInfomation.objects.all().order_by('-created')
-
         # Get Parameter From GET request
         order_id = request.GET.get("order_id", "")
         order_status = request.GET.getlist("order_status", "")
