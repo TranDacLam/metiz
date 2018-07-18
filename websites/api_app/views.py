@@ -3,11 +3,13 @@ from rest_framework.permissions import AllowAny
 from rest_framework.decorators import permission_classes
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins
+from rest_framework.views import APIView
 from core.models import *
 from core.custom_models import User
 from api_app import serializers
 from rest_framework.permissions import AllowAny
 from registration import forms
+from api import actions
 # Create your views here.
 
 
@@ -47,3 +49,18 @@ class FaqViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
 
     queryset = FAQ_Category.objects.all()
     serializer_class = serializers.FaqCategorySerializer
+
+
+class TransactionHistoryList(APIView):
+
+    def get(self, request, format=None):
+        try:
+            user_id = request.user.id
+            lst_item = actions.get_booking_info_data(user_id, None, None, {'done'})
+            return Response(lst_item['results'])
+
+        except Exception, e:
+            print 'TransactionHistoryList ', e
+            error = {"code": 500, "message": _(
+                "Internal Server Error"), "fields": ""}
+            return Response(error, status=500)

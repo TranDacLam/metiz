@@ -9,5 +9,6 @@ router.register(r'blogs', views.BlogViewSet)
 router.register(r'faqs', views.FaqViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls))
+    url(r'^', include(router.urls)),
+    url(r'^transaction_history/$', views.TransactionHistoryList.as_view(), name="transaction-history-list"),
 ]
