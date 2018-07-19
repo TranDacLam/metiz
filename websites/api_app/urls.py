@@ -11,4 +11,5 @@ router.register(r'faqs', views.FaqViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^transaction_history/$', views.TransactionHistoryList.as_view(), name="transaction-history-list"),
+    url(r'^profile/', views.ProfileDetail.as_view(), name="profile"),
 ]

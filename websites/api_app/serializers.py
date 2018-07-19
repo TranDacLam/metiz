@@ -35,3 +35,10 @@ class FaqCategorySerializer(serializers.ModelSerializer):
         query_set = FAQ.objects.filter(category__id=instance.id).order_by('question')
         serializer = FaqSerializer(query_set, many=True, read_only=True)
         return serializer.data
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = '__all__'
