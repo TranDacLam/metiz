@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import ugettext_lazy as _
 from rest_framework.permissions import AllowAny
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
@@ -25,9 +26,8 @@ def register(request):
     register_form = forms_registration.MetizSignupForm(request.data, request=request)
 
     if register_form.is_valid():
-        register_data = register_form.save()
-        serializer = serializers.RegisterSerializer(register_data)
-        return Response(serializer.data)
+        register_form.save()
+        return Response({"message": _('Register Account Successfully. Please Check Your Email and Active Account.')})
 
     return Response({'errors': register_form.errors}, status=400)
 
