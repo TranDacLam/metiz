@@ -7,9 +7,12 @@ router = DefaultRouter()
 router.register(r'blogs', views.BlogViewSet)
 router.register(r'faqs', views.FaqViewSet)
 
+
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^transaction_history/$', views.TransactionHistoryList.as_view(), name="transaction-history-list"),
     url(r'^register/', views.register, name="register"),
     url(r'^profile/', views.ProfileDetail.as_view(), name="profile"),
+    url(r'^movie/seats$', views.get_movie_seat, name="movie-seat"),
+    url(r'^check/seats/$', views.check_movie_seat, name="check-seat"),
 ]
