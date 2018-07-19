@@ -104,3 +104,12 @@ class ProfileDetail(RetrieveUpdateAPIView):
             error = {"code": 500, "message": _(
                 "Internal Server Error"), "fields": ""}
             return Response(error, status=500)
+
+
+# Author: Lam
+@permission_classes((AllowAny, ))
+class NewViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+
+    queryset = NewOffer.objects.order_by('-apply_date', '-created', 'name')
+    serializer_class = serializers.NewSerializer
+    

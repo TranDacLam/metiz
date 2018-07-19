@@ -35,3 +35,10 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+
+
+class NewSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = NewOffer
+        fields = '__all__'
