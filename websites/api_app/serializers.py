@@ -1,10 +1,44 @@
 from rest_framework import serializers
+from core.custom_models import User
+from core.models import *
 from booking.models import BookingInfomation
 import datetime
 import time
 import uuid
 from core.metiz_cipher import MetizAESCipher
 
+class BlogSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Blog
+        fields = '__all__'
+
+
+class FaqSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FAQ
+        fields = '__all__'
+
+
+class FaqCategorySerializer(serializers.ModelSerializer):
+    faq_category_rel = serializers.SerializerMethodField('get_faqs')
+
+    class Meta:
+        model = FAQ_Category
+        fields = ('id', 'name', 'faq_category_rel')
+
+    def get_faqs(self, instance):
+        query_set = FAQ.objects.filter(category__id=instance.id).order_by('question')
+        serializer = FaqSerializer(query_set, many=True, read_only=True)
+        return serializer.data
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = '__all__'
 
 class BookingInfomationSerializer(serializers.ModelSerializer):
 
@@ -14,7 +48,7 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
 
     # set value before validate
     def to_internal_value(self, data):
-    	if 'amount' in self.context and 'seats' in self.context and 'barcode' in self.context:
+        if 'amount' in self.context and 'seats' in self.context and 'barcode' in self.context:
             data['amount'] = self.context['amount']
             data['seats'] = self.context['seats']
             data['barcode'] = self.context['barcode']
@@ -28,5 +62,4 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
         cipher = MetizAESCipher()
         instance.working_id = cipher.encrypt(str(instance.working_id))
         return super(BookingInfomationSerializer, self).to_representation(instance)
-        
 
