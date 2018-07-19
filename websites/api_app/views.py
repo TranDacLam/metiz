@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.permissions import AllowAny
-from rest_framework.decorators import permission_classes
+from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins
 from rest_framework.views import APIView
@@ -15,25 +15,21 @@ from api import actions
 
 
 # Author: Lam
+@api_view(['POST'])
 @permission_classes((AllowAny, ))
-class RegisterViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+def register(request):
     """
-        - Only use create
         - Use forms_registration from registration form
         - Return serialzer data
     """
-    queryset = User.objects.all()
-    serializer_class = serializers.RegisterSerializer
+    register_form = forms_registration.MetizSignupForm(request.data, request=request)
 
-    def create(self, request):
-        register_form = forms_registration.MetizSignupForm(request.data, request=request)
+    if register_form.is_valid():
+        register_data = register_form.save()
+        serializer = serializers.RegisterSerializer(register_data)
+        return Response(serializer.data)
 
-        if register_form.is_valid():
-            register_data = register_form.save()
-            serializer = serializers.RegisterSerializer(register_data)
-            return Response(serializer.data)
-
-        return Response({'errors': register_form.errors}, status=400)
+    return Response({'errors': register_form.errors}, status=400)
 
 
 # Author: Lam
