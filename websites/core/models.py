@@ -346,7 +346,7 @@ class Home_Ads(DateTimeModel):
 
 @python_2_unicode_compatible
 class Favourite_Movie(DateTimeModel):
-    user = models.ForeignKey("User", related_name='user_favourite_rel', on_delete=models.CASCADE)
+    user = models.ForeignKey("User", related_name='user_favourite_movie_rel', on_delete=models.CASCADE)
     movie = models.ForeignKey("Movie", related_name='movie_favourite_rel', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -359,7 +359,7 @@ class Favourite_Movie(DateTimeModel):
 
 @python_2_unicode_compatible
 class Favourite_NewOffer(DateTimeModel):
-    user = models.ForeignKey("User", related_name='user_favourite_rel', on_delete=models.CASCADE)
+    user = models.ForeignKey("User", related_name='user_favourite_new_rel', on_delete=models.CASCADE)
     new = models.ForeignKey("NewOffer", related_name='new_favourite_rel', on_delete=models.CASCADE)
 
     def __str__(self):
