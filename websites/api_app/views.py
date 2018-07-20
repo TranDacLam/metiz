@@ -260,32 +260,6 @@ def verify_card_member(request):
         return Response({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 
 
-"""
-    Function get_card_member
-    Author: HoangNguyen
-    Decription: Get card member of user
-
-"""
-
-
-@api_view(['GET'])
-@permission_classes((AllowAny, ))
-def get_card_member(request):
-    try:
-        if not request.user.is_authenticated():
-            return Response(status=status.HTTP_204_NO_CONTENT)
-
-        user_has_card = LinkCard.objects.filter(user=request.user)
-        if user_has_card:
-            card_member = user_has_card.get().card_member
-            if card_member:
-                return Response({'card_member': card_member}, status=200)
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-    except Exception, e:
-        print "Error get_card_member : %s" % e
-        return Response({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
-
 
 """
  Decription: get showing movie
@@ -306,7 +280,9 @@ class ShowingList(ListAPIView):
 Decription: get comming movie
 Author: HoangNguyen
 """
-class CommingList(ShowingList):
+class CommingList(ListAPIView):
+    serializer_class = serializers.MovieSerializer
+    permission_classes = (AllowAny,)
 
     def get_queryset(self):
         movie_comming = Movie.objects.filter(
