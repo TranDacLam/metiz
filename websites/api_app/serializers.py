@@ -63,3 +63,27 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
         instance.working_id = cipher.encrypt(str(instance.working_id))
         return super(BookingInfomationSerializer, self).to_representation(instance)
 
+class MovieTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = MovieType
+        exclude = ('created', 'modified')
+
+class RatedSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Rated
+        exclude = ('created', 'modified')
+
+class MovieSerializer(serializers.ModelSerializer):
+    movie_type = MovieTypeSerializer(many = False)
+    rated = RatedSerializer(many = False)
+    
+    class Meta:
+        model = Movie
+        exclude = ('created', 'modified')
+
+
+
+
+

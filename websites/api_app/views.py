@@ -5,7 +5,7 @@ from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins
 from rest_framework.views import APIView
-from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView
+from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView, RetrieveAPIView
 from core.models import *
 from core.custom_models import User
 from api_app import serializers
@@ -17,6 +17,8 @@ from core.metiz_cipher import MetizAESCipher
 import json
 from booking.models import BookingInfomation
 from rest_framework import status
+from django.db.models import Q
+from datetime import *
 
 # Create your views here.
 
@@ -259,9 +261,8 @@ def verify_card_member(request):
 
 
 """
-    Function get_info_card_member
+    Function get_card_member
     Author: HoangNguyen
-    Duplication: info_member_card from registration
     Decription: Get card member of user
 
 """
@@ -282,5 +283,43 @@ def get_card_member(request):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     except Exception, e:
-        print "Error get_info_card_member : %s" % e
+        print "Error get_card_member : %s" % e
         return Response({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+
+
+"""
+ Decription: get showing movie
+ Author: HoangNguyen
+"""
+class ShowingList(ListAPIView):
+    serializer_class = serializers.MovieSerializer
+    permission_classes = (AllowAny,)
+
+    def get_queryset(self):
+        movie_showings = Movie.objects.filter(Q(end_date__isnull=True) | Q(end_date__gte=datetime.now()), release_date__lte=datetime.now(), is_draft=False).extra(
+            select={'priority_null': 'priority is null'})
+        list_data_showing = movie_showings.extra(
+            order_by=['priority_null', 'priority', '-release_date', 'name'])
+        return list_data_showing
+
+"""
+Decription: get comming movie
+Author: HoangNguyen
+"""
+class CommingList(ShowingList):
+
+    def get_queryset(self):
+        movie_comming = Movie.objects.filter(
+            release_date__gt=datetime.now(), is_draft=False).extra(select={'priority_null': 'priority is null'})
+        list_data_coming_soon = movie_comming.extra(
+            order_by=['priority_null', 'release_date', 'name'])
+        return list_data_coming_soon
+
+"""
+Decription: get detail movie
+Author: HoangNguyen
+"""
+class DetailMovie(RetrieveAPIView):
+    serializer_class = serializers.MovieSerializer
+    permission_classes = (AllowAny,)
+    queryset = Movie

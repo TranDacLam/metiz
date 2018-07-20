@@ -17,5 +17,9 @@ urlpatterns = [
     url(r'^check/seats/$', views.check_movie_seat, name="check-seat"),
     url(r'^verify/card_member/$', views.verify_card_member, name="verify-card-member"),
     url(r'^get/card_member/$', views.get_card_member, name="get-card-member"),
+    url(r'^movie/showing/$', views.ShowingList.as_view(), name="showing"),
+    url(r'^movie/comming/$', views.CommingList.as_view(), name="comming"),
+    url(r'^movie/(?P<pk>\d+)/$', views.DetailMovie.as_view(), name="detail-movie"),
+
 
 ]
