@@ -2,7 +2,7 @@ from fabric.api import *
 
 import os 
 
-ENV = 'development' # Choices ['uat','production','development', 'api_dev']
+ENV = 'api_dev' # Choices ['uat','production','development', 'api_dev']
 
 
 #ENV = 'production'

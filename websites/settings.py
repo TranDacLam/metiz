@@ -329,7 +329,9 @@ TIME_OTP = 120
 BUILD_VERSION = 0
 
 try:
-    if 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:
+    if 'DEVELOPMENT_API' in os.environ and os.environ['DEVELOPMENT_API']:
+        from config.setting_develop_api import *
+    elif 'DEVELOPMENT' in os.environ and os.environ['DEVELOPMENT']:
         from config.setting_develop import *
     elif 'UAT' in os.environ and os.environ['UAT']:
         from config.setting_uat import *
