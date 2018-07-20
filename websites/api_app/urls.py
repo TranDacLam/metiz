@@ -15,4 +15,7 @@ urlpatterns = [
     url(r'^profile/', views.ProfileDetail.as_view(), name="profile"),
     url(r'^movie/seats$', views.get_movie_seat, name="movie-seat"),
     url(r'^check/seats/$', views.check_movie_seat, name="check-seat"),
+    url(r'^verify/card_member/$', views.verify_card_member, name="verify-card-member"),
+    url(r'^get/card_member/$', views.get_card_member, name="get-card-member"),
+
 ]
