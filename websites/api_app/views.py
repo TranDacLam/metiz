@@ -212,3 +212,26 @@ def check_movie_seat(request):
         print "Error check_movie_seat : %s" % e
         return Response({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 
+
+# Author: Lam
+class FavouriteNewOfferViewSet(viewsets.ModelViewSet):
+
+    # queryset = Favourite_NewOffer.objects.all()
+    serializer_class = serializers.FavouriteNewOfferSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        user = self.request.user
+        queryset = Favourite_NewOffer.objects.filter(user=user).order_by('-created', '-id')
+        return queryset
+
+
+# Author: Lam
+class FavouriteMovieViewSet(viewsets.ModelViewSet):
+
+    # queryset = Favourite_Movie.objects.all()
+    serializer_class = serializers.FavouriteMovieSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        user = self.request.user
+        queryset = Favourite_Movie.objects.filter(user=user).order_by('-created', '-id')
+        return queryset

@@ -71,3 +71,18 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
         instance.working_id = cipher.encrypt(str(instance.working_id))
         return super(BookingInfomationSerializer, self).to_representation(instance)
 
+
+class FavouriteMovieSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Favourite_Movie
+        fields = '__all__'
+
+
+class FavouriteNewOfferSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Favourite_NewOffer
+        fields = '__all__'
