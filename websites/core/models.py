@@ -342,3 +342,29 @@ class Home_Ads(DateTimeModel):
     class Meta:
         verbose_name = _('Home Ads')
         verbose_name_plural = _('Home Ads')
+
+
+@python_2_unicode_compatible
+class Favourite_Movie(DateTimeModel):
+    user = models.ForeignKey("User", related_name='user_favourite_rel', on_delete=models.CASCADE)
+    movie = models.ForeignKey("Movie", related_name='movie_favourite_rel', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '%s' % (self.user)
+
+    class Meta:
+        verbose_name = _('Favourite Movie')
+        verbose_name_plural = _('Favourite Movies')
+
+
+@python_2_unicode_compatible
+class Favourite_NewOffer(DateTimeModel):
+    user = models.ForeignKey("User", related_name='user_favourite_rel', on_delete=models.CASCADE)
+    new = models.ForeignKey("NewOffer", related_name='new_favourite_rel', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '%s' % (self.user)
+
+    class Meta:
+        verbose_name = _('Favourite New')
+        verbose_name_plural = _('Favourites News')
