@@ -6,6 +6,9 @@ from api_app import views
 router = DefaultRouter()
 router.register(r'blogs', views.BlogViewSet)
 router.register(r'faqs', views.FaqViewSet)
+router.register(r'news', views.NewViewSet)
+router.register(r'favourite/news', views.FavouriteNewOfferViewSet, base_name='favourite_new')
+router.register(r'favourite/movies', views.FavouriteMovieViewSet, base_name='favourite_movie')
 
 
 urlpatterns = [

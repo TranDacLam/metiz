@@ -40,6 +40,14 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+
+class NewSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = NewOffer
+        fields = '__all__'
+
+
 class BookingInfomationSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -64,3 +72,18 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
         instance.working_id = cipher.encrypt(str(instance.working_id))
         return super(BookingInfomationSerializer, self).to_representation(instance)
 
+
+class FavouriteMovieSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Favourite_Movie
+        fields = '__all__'
+
+
+class FavouriteNewOfferSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Favourite_NewOffer
+        fields = '__all__'
