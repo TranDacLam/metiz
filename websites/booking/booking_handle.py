@@ -115,12 +115,12 @@ def send_email_vooc_leader(is_secure, full_name, barcode, content):
 
 
 
-def handler_error_point_bonus(booking_order, amount, is_secure):
+def handler_error_point_bonus(booking_order, amount, is_secure, system_name="metiz_online"):
     params = {
         "card_member": booking_order.card_member,
         "amount": amount,
         "type_payment": "tickets",
-        "system_name": "metiz_web_online"
+        "system_name": system_name
     }
     # Get link call api 
     url_add_point_to_card = '{}member/card/point/'.format(
@@ -241,7 +241,7 @@ def handler_confirm_booking_success(request, booking_order, amount):
 
     # Begin calculated point bonus for member
     if booking_order.card_member:
-        handler_error_point_bonus(booking_order, amount, request.is_secure())
+        handler_error_point_bonus(booking_order, amount, request.is_secure(), booking_order.system_name)
 
     if amount != booking_order.amount:
         content_warning = """
