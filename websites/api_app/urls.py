@@ -18,4 +18,10 @@ urlpatterns = [
     url(r'^profile/', views.ProfileDetail.as_view(), name="profile"),
     url(r'^movie/seats$', views.get_movie_seat, name="movie-seat"),
     url(r'^check/seats/$', views.check_movie_seat, name="check-seat"),
+    url(r'^payment/booking/$', views.payment_booking, name="app-payment-booking"),
+    url(r'^payment/methods/$', views.payment_method, name="app-payment-method"),
+    url(r'^verify/card/payment/$', views.verify_payment_card, name="app-verify-payment-card"),
+    url(r'^forgot/password/$', views.forgot_password, name="app-forgot-password"),
+    url(r'^verify/otp/$', views.verify_otp, name="app-verify-otp"),
+    url(r'^resend/otp/$', views.resend_otp, name="app-resend-otp"),
 ]

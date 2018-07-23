@@ -63,6 +63,7 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
             data['working_id'] = str(uuid.uuid1())
             data['order_status'] = "pendding"
             data['order_id'] = int(time.mktime(datetime.datetime.now().timetuple())*1e3 + datetime.datetime.now().microsecond/1e3)
+            data['system_name'] = "metiz_app"
         return super(BookingInfomationSerializer, self).to_internal_value(data)
     
     # encrypt working_id to return Response
