@@ -19,6 +19,13 @@ class BookingInfomation(DateTimeModel):
         ('Helio_Payment_Card', 'Helio Payment Card'),
         ('Metiz_Payment_Card', 'Metiz Payment Card'),
     )
+
+    SYSTEM_TYPE = (
+        ("metiz_online", "Metiz Web Online"),
+        ("metiz_app", "Metiz App"),
+    )
+
+
     user = models.ForeignKey(
         "core.User", related_name='user_booking_rel', null=True, blank=True)
     # movie = models.ForeignKey("core.Movie", related_name='movie_booking_rel')
@@ -41,6 +48,7 @@ class BookingInfomation(DateTimeModel):
     card_member =  models.CharField(_('Card Member'), max_length=500, null=True, blank=True)
     point_bonus = models.IntegerField(default=0)
     point_level = models.IntegerField(default=0)
+    system_name = models.CharField(_('System Name'), choices=SYSTEM_TYPE, default="metiz_online", max_length=500, null=True, blank=True)
 
 class MovieSync(DateTimeModel):
     TYPE = (
