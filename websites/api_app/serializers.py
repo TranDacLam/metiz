@@ -42,7 +42,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class NewSerializer(serializers.ModelSerializer):
-    movie_favourite_rel = serializers.SerializerMethodField('get_favourite')
+    new_favourite_rel = serializers.SerializerMethodField('get_favourite')
 
     class Meta:
         model = NewOffer
@@ -90,7 +90,13 @@ class FavouriteMovieSerializer(serializers.ModelSerializer):
 
 class FavouriteNewOfferSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    new = NewSerializer(many=False, read_only=True)
 
     class Meta:
         model = Favourite_NewOffer
         fields = '__all__'
+
+    def to_internal_value(self, data):
+        self.fields['new'] = serializers.PrimaryKeyRelatedField(queryset=NewOffer.objects.all())
+        return super(FavouriteNewOfferSerializer, self).to_internal_value(data)
+
