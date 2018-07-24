@@ -42,10 +42,17 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class NewSerializer(serializers.ModelSerializer):
+    movie_favourite_rel = serializers.SerializerMethodField('get_favourite')
 
     class Meta:
         model = NewOffer
         fields = '__all__'
+
+    def get_favourite(self, instance):
+        user_id = self.context['request'].user.id
+        query_set = Favourite_NewOffer.objects.filter(new__id=instance.id, user__id=user_id)
+        favourite_id = query_set.first().id if query_set else ''
+        return favourite_id
 
 
 class BookingInfomationSerializer(serializers.ModelSerializer):
