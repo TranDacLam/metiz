@@ -353,6 +353,7 @@ class Favourite_Movie(DateTimeModel):
         return '%s' % (self.user)
 
     class Meta:
+        unique_together = ('user', 'movie')
         verbose_name = _('Favourite Movie')
         verbose_name_plural = _('Favourite Movies')
 
@@ -366,5 +367,6 @@ class Favourite_NewOffer(DateTimeModel):
         return '%s' % (self.user)
 
     class Meta:
+        unique_together = ('user', 'new')
         verbose_name = _('Favourite New')
         verbose_name_plural = _('Favourites News')
