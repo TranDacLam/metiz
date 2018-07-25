@@ -79,7 +79,6 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
         instance.working_id = cipher.encrypt(str(instance.working_id))
         return super(BookingInfomationSerializer, self).to_representation(instance)
 
-
 class FavouriteMovieSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
@@ -94,3 +93,23 @@ class FavouriteNewOfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favourite_NewOffer
         fields = '__all__'
+
+class MovieTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = MovieType
+        exclude = ('created', 'modified')
+
+class RatedSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Rated
+        exclude = ('created', 'modified')
+
+class MovieSerializer(serializers.ModelSerializer):
+    movie_type = MovieTypeSerializer(many = False)
+    rated = RatedSerializer(many = False)
+    
+    class Meta:
+        model = Movie
+        exclude = ('created', 'modified')
