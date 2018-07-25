@@ -219,7 +219,8 @@ def check_movie_seat(request):
 
 
 # Author: Lam
-class FavouriteNewOfferViewSet(viewsets.ModelViewSet):
+class FavouriteNewOfferViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, 
+                                mixins.DestroyModelMixin, viewsets.GenericViewSet):
 
     # queryset = Favourite_NewOffer.objects.all()
     serializer_class = serializers.FavouriteNewOfferSerializer
@@ -231,7 +232,8 @@ class FavouriteNewOfferViewSet(viewsets.ModelViewSet):
 
 
 # Author: Lam
-class FavouriteMovieViewSet(viewsets.ModelViewSet):
+class FavouriteMovieViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, 
+                                mixins.DestroyModelMixin, viewsets.GenericViewSet):
 
     # queryset = Favourite_Movie.objects.all()
     serializer_class = serializers.FavouriteMovieSerializer
