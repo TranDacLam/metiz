@@ -2,47 +2,54 @@ from fabric.api import *
 
 import os 
 
-ENV = 'development' # Choices ['uat','production','development']
+ENV = 'api_dev' # Choices ['uat','production','development', 'api_dev']
 
 
 #ENV = 'production'
 SERVERS = {
     'development': '172.16.12.10',
+    'api_dev': '172.16.12.10',
     'uat': '103.95.197.103',
     'production' : '103.95.197.103'
 }
 BRANCH = {
     'development': 'develop',
+    'api_dev': 'api',
     'uat': 'uat',
     'production': 'production'
 }
 
 USERS = {
     'development': 'adminvn',
+    'api_dev': 'adminvn',
     'production': 'ubuntu',
     'uat': 'ubuntu'
 }
 
 PASSWORDS = {
     'development': 'Abc@123',
+    'api_dev': 'Abc@123',
     'uat': 'ThangNguyen@@123',
     'production': 'ThangNguyen@@123'
 }
 
 VIRTUAL_ENVS = {
     'development': 'source /home/adminvn/envs_root/metiz_env/bin/activate',
+    'api_dev': 'source /home/adminvn/envs_root/metiz_api_env/bin/activate',
     'uat': 'source /home/ubuntu/envs_root/metiz_uat_env/bin/activate',
     'production': 'source /home/ubuntu/envs_root/metiz_env//bin/activate'
 }
 
 PATHS = {
     'development': '/home/adminvn/sites/metiz',
+    'api_dev': '/home/adminvn/sites/metiz_api/metiz',
     'uat': '/home/ubuntu/projects/metiz',
     'production': '/home/ubuntu/projects/production/metiz'
 }
 
 PROCESS_ID = {
     'development': '/tmp/metiz_web.pid',
+    'api_dev': '/tmp/metiz_api.pid',
     'uat': '/tmp/metiz_uat_web.pid',
     'production': '/tmp/metiz_web.pid'
 }

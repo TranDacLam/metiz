@@ -40,6 +40,21 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+
+class NewSerializer(serializers.ModelSerializer):
+    movie_favourite_rel = serializers.SerializerMethodField('get_favourite')
+
+    class Meta:
+        model = NewOffer
+        fields = '__all__'
+
+    def get_favourite(self, instance):
+        user_id = self.context['request'].user.id
+        query_set = Favourite_NewOffer.objects.filter(new__id=instance.id, user__id=user_id)
+        favourite_id = query_set.first().id if query_set else ''
+        return favourite_id
+
+
 class BookingInfomationSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -55,6 +70,7 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
             data['working_id'] = str(uuid.uuid1())
             data['order_status'] = "pendding"
             data['order_id'] = int(time.mktime(datetime.datetime.now().timetuple())*1e3 + datetime.datetime.now().microsecond/1e3)
+            data['system_name'] = "metiz_app"
         return super(BookingInfomationSerializer, self).to_internal_value(data)
     
     # encrypt working_id to return Response
@@ -62,6 +78,21 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
         cipher = MetizAESCipher()
         instance.working_id = cipher.encrypt(str(instance.working_id))
         return super(BookingInfomationSerializer, self).to_representation(instance)
+
+class FavouriteMovieSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Favourite_Movie
+        fields = '__all__'
+
+
+class FavouriteNewOfferSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Favourite_NewOffer
+        fields = '__all__'
 
 class MovieTypeSerializer(serializers.ModelSerializer):
 
@@ -82,8 +113,3 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         exclude = ('created', 'modified')
-
-
-
-
-
