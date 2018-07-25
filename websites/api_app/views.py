@@ -5,7 +5,7 @@ from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins
 from rest_framework.views import APIView
-from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView
+from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView, RetrieveAPIView
 from core.models import *
 from core.custom_models import User
 from core.metiz_cipher import MetizAESCipher
@@ -15,6 +15,10 @@ from registration import forms as forms_registration
 from api import actions
 from booking import api
 import json
+from booking.models import BookingInfomation
+from rest_framework import status
+from django.db.models import Q
+from datetime import *
 
 # Create your views here.
 
@@ -27,7 +31,8 @@ def register(request):
         - Use forms_registration from registration form
         - Return serialzer data
     """
-    register_form = forms_registration.MetizSignupForm(request.data, request=request)
+    register_form = forms_registration.MetizSignupForm(
+        request.data, request=request)
 
     if register_form.is_valid():
         register_form.save()
@@ -78,7 +83,6 @@ class ProfileDetail(RetrieveUpdateAPIView):
         card_member = linkcard.first().card_member if linkcard else ''
         return card_member
 
-
     def get(self, request, format=None):
         try:
             user = request.user
@@ -92,14 +96,15 @@ class ProfileDetail(RetrieveUpdateAPIView):
                 "Internal Server Error"), "fields": ""}
             return Response(error, status=500)
 
-
     def put(self, request, format=None):
         try:
             user = request.user
-            profile_form = forms_registration.UpdateUserForm(request.data, user=user)
+            profile_form = forms_registration.UpdateUserForm(
+                request.data, user=user)
             if profile_form.is_valid():
                 profile_data = profile_form.save()
-                serializer = serializers.ProfileSerializer(profile_data, many=False)
+                serializer = serializers.ProfileSerializer(
+                    profile_data, many=False)
                 return Response(serializer.data)
             return Response({"code": 400, "message": profile_form.errors, "fields": ""}, status=400)
 
@@ -116,7 +121,6 @@ class NewViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Gene
 
     queryset = NewOffer.objects.order_by('-apply_date', '-created', 'name')
     serializer_class = serializers.NewSerializer
-
 
 """
     Function get_movie_seat
@@ -211,6 +215,7 @@ def check_movie_seat(request):
     except Exception, e:
         print "Error check_movie_seat : %s" % e
         return Response({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+
 
 
 # Author: Lam
@@ -629,3 +634,93 @@ def verify_otp(request):
         error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
         return Response(error, status=500)
 
+"""
+    Function verify_card_member
+    Author: HoangNguyen
+    Duplication: verify_card_member from api/views.py
+    Decription: verify card_member and decrpyt working_id
+
+"""
+
+
+@api_view(['POST'])
+@permission_classes((AllowAny, ))
+def verify_card_member(request):
+    try:
+        card_member = request.data.get('card_member', None)
+        working_id = request.data.get('working_id', None)
+
+        if not card_member or not working_id:
+            return Response({"code": 400, "message": _(
+                "Card member and Working_id are required."), "fields": "card_member, working_id"}, status=400)
+        # Step 1: check card_member
+        responses = actions.verify_card_member_pos(card_member)
+
+        if responses["code"] != 200:
+            return Response(responses, status=responses["code"])
+
+        if not responses['data']['result_verify_card']:
+            return Response({"code": 400, "message": _("Card member not found."), "fields": ""}, status=400)
+
+        # Step 2: decrypt working_id
+        cipher = MetizAESCipher()
+
+        try:
+            working_decrypt = cipher.decrypt(working_id)
+        except Exception, e:
+            print "Exception working_decrypt", e
+            return Response({"code": 400, "message": _("Working_id is incorrect"), "fields": "Working_id"}, status=400)
+
+        # Step 3: add card_member to booking
+        booking = BookingInfomation.objects.get(working_id=working_decrypt)
+        booking.card_member = card_member
+        booking.save()
+        return Response({"code": 200, "message": _("Success.")}, status=200)
+
+    except BookingInfomation.DoesNotExist, e:
+        print "Error verify_card_member : %s" % e
+        return Response({"code": 400, "message": _("Not found BookingInfomation.")}, status=400)
+    except Exception, e:
+        print "Error verify_card_member : %s" % e
+        return Response({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
+
+
+
+"""
+    Decription: get showing movie
+    Author: HoangNguyen
+"""
+class ShowingList(ListAPIView):
+    serializer_class = serializers.MovieSerializer
+    permission_classes = (AllowAny,)
+
+    def get_queryset(self):
+        movie_showings = Movie.objects.filter(Q(end_date__isnull=True) | Q(end_date__gte=datetime.now()), release_date__lte=datetime.now(), is_draft=False).extra(
+            select={'priority_null': 'priority is null'})
+        list_data_showing = movie_showings.extra(
+            order_by=['priority_null', 'priority', '-release_date', 'name'])
+        return list_data_showing
+
+"""
+    Decription: get comming movie
+    Author: HoangNguyen
+"""
+class CommingList(ListAPIView):
+    serializer_class = serializers.MovieSerializer
+    permission_classes = (AllowAny,)
+
+    def get_queryset(self):
+        movie_comming = Movie.objects.filter(
+            release_date__gt=datetime.now(), is_draft=False).extra(select={'priority_null': 'priority is null'})
+        list_data_coming_soon = movie_comming.extra(
+            order_by=['priority_null', 'release_date', 'name'])
+        return list_data_coming_soon
+
+"""
+    Decription: get detail movie
+    Author: HoangNguyen
+"""
+class DetailMovie(RetrieveAPIView):
+    serializer_class = serializers.MovieSerializer
+    permission_classes = (AllowAny,)
+    queryset = Movie
