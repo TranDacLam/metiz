@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^movie/showing/$', views.ShowingList.as_view(), name="showing"),
     url(r'^movie/comming/$', views.CommingList.as_view(), name="comming"),
     url(r'^movie/(?P<pk>\d+)/$', views.DetailMovie.as_view(), name="detail-movie"),
+    url(r'^info/card_member/$', views.get_info_card_member, name="info-card-member"),
 ]

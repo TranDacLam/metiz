@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins
@@ -217,7 +217,6 @@ def check_movie_seat(request):
         return Response({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 
 
-
 # Author: Lam
 class FavouriteNewOfferViewSet(viewsets.ModelViewSet):
 
@@ -226,7 +225,8 @@ class FavouriteNewOfferViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self, *args, **kwargs):
         user = self.request.user
-        queryset = Favourite_NewOffer.objects.filter(user=user).order_by('-created', '-id')
+        queryset = Favourite_NewOffer.objects.filter(
+            user=user).order_by('-created', '-id')
         return queryset
 
 
@@ -238,13 +238,16 @@ class FavouriteMovieViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self, *args, **kwargs):
         user = self.request.user
-        queryset = Favourite_Movie.objects.filter(user=user).order_by('-created', '-id')
+        queryset = Favourite_Movie.objects.filter(
+            user=user).order_by('-created', '-id')
         return queryset
 
 
 """
     Author: TienDang
 """
+
+
 @api_view(['POST'])
 @permission_classes((AllowAny,))
 def payment_booking(request):
@@ -254,7 +257,8 @@ def payment_booking(request):
             Step 1: Verify Otp
             Step 2: Otp is valid then call api embeb dmz payment card
         """
-        # Parameter Required : card_barcode, working_id (encrypt), data_key (serect key otp), otp
+        # Parameter Required : card_barcode, working_id (encrypt), data_key
+        # (serect key otp), otp
         working_id_encrypt = request.data.get('working_id', '')
         card_barcode = request.data.get('card_barcode', '')
         if not working_id_encrypt or not card_barcode:
@@ -266,7 +270,8 @@ def payment_booking(request):
         cipher = MetizAESCipher()
         working_id = cipher.decrypt(str("working_id_encrypt"))
         try:
-            booking_order = BookingInfomation.objects.get(working_id=working_id)
+            booking_order = BookingInfomation.objects.get(
+                working_id=working_id)
             if booking_order.order_status == 'cancel':
                 error = {
                     "code": 400, "message": _("Transaction Timeout"), "fields": ""}
@@ -275,7 +280,6 @@ def payment_booking(request):
             error = {
                 "code": 400, "message": _("Transaction Invalid"), "fields": ""}
             return Response(error, status=400)
-
 
         # Call action verify otp
         resp_verify_otp = verify_otp(request)
@@ -300,17 +304,17 @@ def payment_booking(request):
             "system_name": "metiz_app",
             "is_verify": False,
             "gate_payment": booking_order.payment_gate
-         }
-        
+        }
+
         data_result = {
-                        "order_id": booking_order.order_id,
-                        "amount": booking_order.amount,
-                        "order_desc": booking_order.order_desc,
-                        "barcode": booking_order.barcode
-                      }
+            "order_id": booking_order.order_id,
+            "amount": booking_order.amount,
+            "order_desc": booking_order.order_desc,
+            "barcode": booking_order.barcode
+        }
 
         request_payment_card = urllib2.Request(url_payment_card, data=json.dumps(data), headers={
-                                  'Content-Type': 'application/json', 'Authorization': 'Bearer %s' % settings.DMZ_API_TOKEN})
+            'Content-Type': 'application/json', 'Authorization': 'Bearer %s' % settings.DMZ_API_TOKEN})
 
         # Call api and response data
         try:
@@ -319,7 +323,8 @@ def payment_booking(request):
             # Begin excute payment transaction and store to booking information
             # send sms and email
             if result_payment_card["status"] == "00":
-                booking_handle.process_confirm_booking(request, booking_order, amount)
+                booking_handle.process_confirm_booking(
+                    request, booking_order, amount)
                 return Response(data_result)
 
         except urllib2.HTTPError, e:
@@ -327,19 +332,22 @@ def payment_booking(request):
             print "EXEPTION PAYMENT CARD ", result_error
             data_result["card_error"] = result_error["message"]
             return Response(data_result, status=400)
-            
+
         except ValueError as e:
             print "Errors Parse Json Payment Card : ", e
             return Response(data_result, status=400)
     except:
         print('Error Rest API payment_booking: %s', traceback.format_exc())
-        error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
+        error = {
+            "code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
         return Response(error, status=500)
 
 
 """
     Author: TienDang
 """
+
+
 @api_view(['POST'])
 @permission_classes((AllowAny,))
 def payment_method(request):
@@ -359,7 +367,8 @@ def payment_method(request):
         cipher = MetizAESCipher()
         working_id = cipher.decrypt(str("working_id_encrypt"))
         try:
-            booking_order = BookingInfomation.objects.get(working_id=working_id)
+            booking_order = BookingInfomation.objects.get(
+                working_id=working_id)
             if booking_order.order_status == 'cancel':
                 error = {
                     "code": 400, "message": _("Transaction Timeout"), "fields": ""}
@@ -373,7 +382,7 @@ def payment_method(request):
                 "code": 400, "message": _("Transaction Invalid"), "fields": ""}
             return Response(error, status=400)
 
-        result = {'code': 200, "url":""}
+        result = {'code': 200, "url": ""}
         if gate_payment == "VNPay":
              # Build URL Payment
             vnp = vnpay()
@@ -386,7 +395,7 @@ def payment_method(request):
             vnp.requestData['vnp_OrderInfo'] = booking_order.order_desc
             vnp.requestData['vnp_OrderType'] = "190001"
             vnp.requestData['vnp_Locale'] = 'vn'
-        
+
             vnp.requestData['vnp_CreateDate'] = datetime.now(
             ).strftime('%Y%m%d%H%M%S')  # 20150410063022
             vnp.requestData['vnp_IpAddr'] = get_client_ip(request)
@@ -399,13 +408,16 @@ def payment_method(request):
         return Response(result)
     except Exception, e:
         print('Error Rest API payment_method: %s', traceback.format_exc())
-        error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
+        error = {
+            "code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
         return Response(error, status=500)
 
 
 """
     Author: TienDang
 """
+
+
 @api_view(['POST'])
 @permission_classes((AllowAny,))
 def verify_payment_card(request):
@@ -424,20 +436,21 @@ def verify_payment_card(request):
                 "code": 400, "message": _("The card_barcode, working_id field is required."), "fields": "card_barcode, working_id"}
             return Response(error, status=400)
 
-        # Decrypt working_id and verify transaction timeout when status is cancel
+        # Decrypt working_id and verify transaction timeout when status is
+        # cancel
         cipher = MetizAESCipher()
         working_id = cipher.decrypt(str("working_id_encrypt"))
         try:
-            booking_order = BookingInfomation.objects.get(working_id=working_id)
+            booking_order = BookingInfomation.objects.get(
+                working_id=working_id)
             if booking_order.order_status == 'cancel':
                 error = {
                     "code": 400, "message": _("Transaction Timeout"), "fields": ""}
-                return Response(error, status=400)    
+                return Response(error, status=400)
         except BookingInfomation.DoesNotExist, e:
             error = {
                 "code": 400, "message": _("Transaction Invalid"), "fields": ""}
             return Response(error, status=400)
-
 
         # Call embeb dmz verify card barcode
         url_verify_card = settings.HELIO_API_DMZ_URL + "/api/helio/card/payment/"
@@ -454,9 +467,9 @@ def verify_payment_card(request):
             "system_name": "metiz_app",
             "is_verify": True,
             "gate_payment": booking_order.gate_payment
-         }
+        }
         request_verify = urllib2.Request(url_verify_card, data=json.dumps(data), headers={
-                                  'Content-Type': 'application/json', 'Authorization': 'Bearer %s' % settings.DMZ_API_TOKEN})
+            'Content-Type': 'application/json', 'Authorization': 'Bearer %s' % settings.DMZ_API_TOKEN})
 
         # Call api and response data
         try:
@@ -466,19 +479,21 @@ def verify_payment_card(request):
 
             # Begin generate otp
             code_otp = metiz_otp.opt_user()
-            print "### OTP generate ",code_otp
+            print "### OTP generate ", code_otp
             if code_otp["code_otp"] == "000000":
-                error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
+                error = {
+                    "code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
                 return Response(error, status=500)
 
             # Begin send SMS OTP for User
-            sms_otp = sys_msg.MSG_SMS_OTP%(amount_ticket, str(code_otp["code_otp"]))
+            sms_otp = sys_msg.MSG_SMS_OTP % (
+                amount_ticket, str(code_otp["code_otp"]))
             metiz_sms.send_sms(phone_number, sms_otp)
 
             # hidden phone suggest for user
             result['data_key'] = cipher.encrypt(code_otp["secret_key_otp"])
             result['phone'] = cipher.encrypt(str(phone_number))
-            
+
             phone_hide = phone_number[:3] + 'xxxx' + phone_number[-3:]
             result['phone_hide'] = phone_hide
             result['amount'] = amount_ticket + amount_fb
@@ -496,13 +511,16 @@ def verify_payment_card(request):
 
     except Exception, e:
         print('Error verify_payment_card: %s', traceback.format_exc())
-        error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
+        error = {
+            "code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
         return Response(error, status=500)
 
 
 """
     Author: TienDang
 """
+
+
 @api_view(['POST'])
 @permission_classes((AllowAny,))
 def forgot_password(request):
@@ -525,7 +543,7 @@ def forgot_password(request):
             phone_number = user_obj.phone
         except User.DoesNotExist, e:
             return Response(
-                    {'code': 200, 'Message': 'Process data success', 'data': ""})
+                {'code': 200, 'Message': 'Process data success', 'data': ""})
 
         # Call action generate opt and return serect key opt encrypt for client
         code_otp = metiz_otp.opt_user()
@@ -533,9 +551,9 @@ def forgot_password(request):
             error = {
                 "code": 400, "message": _("System Error. Please Contact Administrator."), "fields": "code"}
             return Response(error, status=400)
-        
+
         # send otp code via sms for user
-        sms_otp = sys_msg.FORGOT_PASS_MSG_SMS_OTP%(str(code_otp["code_otp"]))
+        sms_otp = sys_msg.FORGOT_PASS_MSG_SMS_OTP % (str(code_otp["code_otp"]))
         metiz_sms.send_sms(phone_number, sms_otp)
 
         # Ecrypt serect key otp
@@ -543,17 +561,19 @@ def forgot_password(request):
         key_encrypted = cipher.encrypt(str(code_otp["secret_key_otp"]))
         phone_encrypt = cipher.encrypt(str(phone_number))
         return Response(
-                    {'code': 200, 'data_key': key_encrypted, 'phone':phone_encrypt})
+            {'code': 200, 'data_key': key_encrypted, 'phone': phone_encrypt})
     except Exception, e:
         print('Error forgot_password: %s', traceback.format_exc())
-        error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
+        error = {
+            "code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
         return Response(error, status=500)
-
 
 
 """
     Author: TienDang
 """
+
+
 @api_view(['POST'])
 @permission_classes((AllowAny,))
 def resend_otp(request):
@@ -574,17 +594,18 @@ def resend_otp(request):
 
         cipher = MetizAESCipher()
         phone_number = cipher.decrypt(str(phone))
-        
+
         code_otp = metiz_otp.opt_user()
         if code_otp["code_otp"] == "000000":
             error = {
                 "code": 400, "message": _("System Error. Please Contact Administrator."), "fields": "code"}
             return Response(error, status=400)
-        
+
         if is_payment:
-            sms_otp = sys_msg.MSG_SMS_OTP%(amount, str(code_otp["code_otp"]))
+            sms_otp = sys_msg.MSG_SMS_OTP % (amount, str(code_otp["code_otp"]))
         else:
-            sms_otp = sys_msg.FORGOT_PASS_MSG_SMS_OTP%(str(code_otp["code_otp"]))
+            sms_otp = sys_msg.FORGOT_PASS_MSG_SMS_OTP % (
+                str(code_otp["code_otp"]))
 
         metiz_sms.send_sms(phone_number, sms_otp)
 
@@ -593,14 +614,16 @@ def resend_otp(request):
 
     except Exception, e:
         print('Error verify_otp: %s', traceback.format_exc())
-        error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
-        return Response(error, status=500)        
-
+        error = {
+            "code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
+        return Response(error, status=500)
 
 
 """
     Author: TienDang
 """
+
+
 @api_view(['POST'])
 @permission_classes((AllowAny,))
 def verify_otp(request):
@@ -620,18 +643,21 @@ def verify_otp(request):
 
         cipher = MetizAESCipher()
         secret_key_otp = cipher.decrypt(str(code_otp["secret_key_encrypt"]))
-        
-        result_verify_otp =  metiz_otp.verify_otp_user(secret_key_otp, str(code_otp))
-        
+
+        result_verify_otp = metiz_otp.verify_otp_user(
+            secret_key_otp, str(code_otp))
+
         if not result_verify_otp['status']:
-            error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
-            return Response(error, status=500)        
-        
+            error = {
+                "code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
+            return Response(error, status=500)
+
         return Response(result_verify_otp)
 
     except Exception, e:
         print('Error verify_otp: %s', traceback.format_exc())
-        error = {"code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
+        error = {
+            "code": 500, "message": "ERROR : Internal Server Error .Please contact administrator.", "fields": ""}
         return Response(error, status=500)
 
 """
@@ -685,11 +711,12 @@ def verify_card_member(request):
         return Response({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
 
 
+"""
+     Decription: get showing movie
+     Author: HoangNguyen
+"""
 
-"""
-    Decription: get showing movie
-    Author: HoangNguyen
-"""
+
 class ShowingList(ListAPIView):
     serializer_class = serializers.MovieSerializer
     permission_classes = (AllowAny,)
@@ -705,6 +732,8 @@ class ShowingList(ListAPIView):
     Decription: get comming movie
     Author: HoangNguyen
 """
+
+
 class CommingList(ListAPIView):
     serializer_class = serializers.MovieSerializer
     permission_classes = (AllowAny,)
@@ -720,7 +749,40 @@ class CommingList(ListAPIView):
     Decription: get detail movie
     Author: HoangNguyen
 """
+
+
 class DetailMovie(RetrieveAPIView):
     serializer_class = serializers.MovieSerializer
     permission_classes = (AllowAny,)
     queryset = Movie
+
+
+"""
+    Decription: get_info_card_member
+    Author: HoangNguyen
+    Duplication: info_member_card from registration/views.py
+
+"""
+@api_view(['GET'])
+@permission_classes((IsAuthenticated, ))
+def get_info_card_member(request):
+    try:
+        # card_member from profile user return
+        card_member = request.query_params.get('card_member', None)
+        if not card_member:
+            return Response({"code": 400, "message": _("Card member is required."), "fields": ""}, status=400)
+
+        # Call action get data response
+        responses = actions.get_card_member_infomation_data(card_member)
+        if responses["code"] != 200:
+            return Response(responses, status=responses["code"])
+
+        if not responses['data']:
+            return Response({"code": 400, "message": _("Card member not found"), "fields": ""}, status=400)
+
+        responses['data']['card_member'] = card_member
+        return Response(responses['data'])
+
+    except Exception, e:
+        print "Error get_info_card_member", e
+        return Response({"code": 500, "message": _("Internal Server Error. Please contact administrator.")}, status=500)
