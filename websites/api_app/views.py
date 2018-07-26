@@ -230,6 +230,13 @@ class FavouriteNewOfferViewSet(mixins.ListModelMixin, mixins.CreateModelMixin,
         queryset = Favourite_NewOffer.objects.filter(user=user).order_by('-created', '-id')
         return queryset
 
+    def list(self, request):
+        user = self.request.user
+        news = NewOffer.objects.filter(new_favourite_rel__user=user).order_by('-new_favourite_rel__created', 
+                                                                                '-new_favourite_rel__id')
+        serializer = serializers.NewSerializer(news, context={'request': request}, many=True)
+        return Response(serializer.data)
+
 
 # Author: Lam
 class FavouriteMovieViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, 
@@ -242,6 +249,13 @@ class FavouriteMovieViewSet(mixins.ListModelMixin, mixins.CreateModelMixin,
         user = self.request.user
         queryset = Favourite_Movie.objects.filter(user=user).order_by('-created', '-id')
         return queryset
+
+    def list(self, request):
+        user = self.request.user
+        movies = Movie.objects.filter(movie_favourite_rel__user=user).order_by('-movie_favourite_rel__created', 
+                                                                                '-movie_favourite_rel__id')
+        serializer = serializers.MovieSerializer(movies, context={'request': request}, many=True)
+        return Response(serializer.data)
 
 
 """
