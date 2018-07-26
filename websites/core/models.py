@@ -370,3 +370,30 @@ class Favourite_NewOffer(DateTimeModel):
         unique_together = ('user', 'new')
         verbose_name = _('Favourite New')
         verbose_name_plural = _('Favourites News')
+
+
+@python_2_unicode_compatible
+class UserIntermediate(models.Model):
+    user = models.ForeignKey(User, related_name='user')
+    is_read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return '%s' % (self.user.email)
+
+@python_2_unicode_compatible
+class Notification(models.Model):
+    subject = models.CharField(_('Subject'), max_length=255, unique=True)
+    message = models.TextField(_('Message'))
+    image = models.ImageField(_('Image'), max_length=1000, null=True, blank=True)
+    sub_url = models.CharField(_('Sub url'),max_length=255, null=True, blank=True)
+    users = models.ManyToManyField('UserIntermediate', related_name='notification_users')
+    is_public = models.BooleanField(default=False)
+    sent_date = models.DateField(_('Sent Date'), null=True, blank=True)
+    
+    def __str__(self):
+        return '%s' % (self.subject)
+
+    class Meta:
+        verbose_name = _('Notification')
+        verbose_name_plural = _('Notification')
+
