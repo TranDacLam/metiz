@@ -12,6 +12,10 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from core import widgets
 from hitcount.models import HitCount, HitCountMixin
 from hitcount.admin import *
+from django.conf.urls import url
+from django.utils.html import format_html
+from django.core.urlresolvers import reverse
+
 
 """ Start hide hitcount group on admin site """
 admin.site.unregister(Hit)
@@ -254,3 +258,53 @@ admin.site.register(FAQ, FAQAdmin)
 class HomeAdsAdmin(admin.ModelAdmin):
      pass
 admin.site.register(Home_Ads, HomeAdsAdmin)
+
+class UserIntermediateAdmin(admin.ModelAdmin):
+     pass
+admin.site.register(UserIntermediate, UserIntermediateAdmin)
+
+class NotificationAdmin(admin.ModelAdmin):
+    filter_horizontal = ('users',)
+    list_display = (
+        'subject',
+        'notification_actions', 
+    )
+
+    def get_urls(self):
+        urls = super(NotificationAdmin, self).get_urls()
+        custom_urls = [
+            url(
+                r'^(?P<notification_id>.+)/push/$',
+                self.admin_site.admin_view(self.process_push_notification),
+                name='notification-push-to-users',
+            ),
+            url(
+                r'^(?P<notification_id>.+)/clear/$',
+                self.admin_site.admin_view(self.process_clear_notification),
+                name='notification-clear',
+            ),
+        ]
+        return custom_urls + urls
+
+    def notification_actions(self, obj):
+        return format_html(
+            '<a class="grp-button" href="{}">Push</a>&nbsp;'
+            '<a class="grp-button" href="{}">Clear</a>',
+            reverse('admin:notification-push-to-users', args=[obj.pk]),
+            reverse('admin:notification-clear', args=[obj.pk]),
+        )
+    notification_actions.short_description = 'Notification Actions'
+    notification_actions.allow_tags = True
+
+    def process_push_notification(self, request, notification_id, *args, **kwargs):
+        self.message_user(request, "Push notification successfully.")
+        return super(NotificationAdmin,self).changelist_view(request)
+
+    def process_clear_notification(self, request, notification_id, *args, **kwargs):
+        self.message_user(request, "Clear notification successfully.")
+        return super(NotificationAdmin,self).changelist_view(request)
+
+    class Media:
+        js = ('/static/assets/js/jquery-3.2.1.min.js', '/static/assets/admin/js/notification_hide_attribute.js',)
+
+admin.site.register(Notification, NotificationAdmin)
