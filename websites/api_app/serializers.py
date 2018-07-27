@@ -100,10 +100,19 @@ class RatedSerializer(serializers.ModelSerializer):
         model = Rated
         exclude = ('created', 'modified')
 
+class GenreSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Genre
+        exclude = ('created', 'modified')
+
 class MovieSerializer(serializers.ModelSerializer):
     movie_type = MovieTypeSerializer(many = False)
     rated = RatedSerializer(many = False)
+    genre = GenreSerializer(many = True)
     movie_favourite_rel = serializers.SerializerMethodField('get_favourite')
+    release_date = serializers.DateField( format="%d/%m/%Y" )
+    end_date = serializers.DateField( format="%d/%m/%Y" )
     
     class Meta:
         model = Movie
