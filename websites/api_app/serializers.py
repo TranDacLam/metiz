@@ -82,26 +82,10 @@ class BookingInfomationSerializer(serializers.ModelSerializer):
 
 class FavouriteNewOfferSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    new = NewSerializer(many=False, read_only=True)
 
     class Meta:
         model = Favourite_NewOffer
         fields = '__all__'
-
-    def to_internal_value(self, data):
-        self.fields['new'] = serializers.PrimaryKeyRelatedField(queryset=NewOffer.objects.all())
-        return super(FavouriteNewOfferSerializer, self).to_internal_value(data)
-
-    def to_representation(self, instance):
-        representation = super(FavouriteNewOfferSerializer, self).to_representation(instance)
-        if self.context['request'].method == "GET":
-            """New fields from Favourite NewOffer to New representation."""
-            favourite_representation = representation.pop('new')
-            for key in favourite_representation:
-                representation[key] = favourite_representation[key]
-            return representation
-
-        return representation
 
 
 class MovieTypeSerializer(serializers.ModelSerializer):
@@ -134,23 +118,7 @@ class MovieSerializer(serializers.ModelSerializer):
 
 class FavouriteMovieSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    movie = MovieSerializer(many=False, read_only=True)
 
     class Meta:
         model = Favourite_Movie
         fields = '__all__'
-
-    def to_internal_value(self, data):
-        self.fields['movie'] = serializers.PrimaryKeyRelatedField(queryset=Movie.objects.all())
-        return super(FavouriteMovieSerializer, self).to_internal_value(data)
-
-    def to_representation(self, instance):
-        representation = super(FavouriteMovieSerializer, self).to_representation(instance)
-        if self.context['request'].method == "GET":
-            """Movie fields from Favourite Movie to Movie representation."""
-            favourite_representation = representation.pop('movie')
-            for key in favourite_representation:
-                representation[key] = favourite_representation[key]
-            return representation
-
-        return representation
