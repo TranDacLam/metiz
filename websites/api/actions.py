@@ -132,7 +132,7 @@ def get_card_member_infomation_data(card_member):
 
         try:
             # convert response text to json
-            json_data = json.loads(response.text)
+            json_data = response.json()
         except ValueError as e:
             print "Error convert json : %s" % e
             return {"code": 500, "message": _("Handle data error.")}
