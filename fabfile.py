@@ -89,7 +89,7 @@ def deploy():
                 run('python manage.py collectstatic --noinput')
                 run('python manage.py migrate')
 
-                if ENV == "development":
+                if ENV == "development" or ENV == "api_dev":
                     sudo('su -s /bin/bash www-data -c "%s;%s" '%(env.activate,"uwsgi --reload %s"%PROCESS_ID[ENV]))
                 elif ENV == 'uat':
                     sudo('systemctl restart uwsgi_metiz_uat')

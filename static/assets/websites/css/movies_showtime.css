@@ -541,6 +541,9 @@ li.btn-guest-wth117 {
 .no_padding {
     padding: 0px;
 }
+.poster_content img {
+    max-width: 100%;
+}
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-movie-showing li {
         width: 66px;
