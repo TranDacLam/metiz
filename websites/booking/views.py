@@ -141,7 +141,7 @@ def build_show_time_json(current_date, item, result, movies_info, obj_movie=None
         result[item["MOVIE_ID"]] = {"lst_times": [], "movie_id": item[
             "MOVIE_ID"], "movie_name": obj_movie[0].name.split(':')[0] if obj_movie else item["MOVIE_NAME_VN"],
             "rated": obj_movie[0].rated.name if obj_movie and obj_movie[0].rated else None, "time_running": obj_movie[0].time_running if obj_movie else 0,
-            "allow_booking": obj_movie[0].allow_booking if obj_movie else True
+            "allow_booking": obj_movie[0].allow_booking if obj_movie else True, "poster": str(obj_movie[0].poster) if obj_movie and obj_movie[0].poster else None
             }
 
     # Check time showing greater than currnet hour

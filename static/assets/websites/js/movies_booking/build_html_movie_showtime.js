@@ -61,6 +61,22 @@ function listShedule(shedule) {
 // list movie 
 function render_schedule_html(film) {
 
+    if (film.poster) {
+        return '<div class="movie-time-line-box clearfix" data-control="movie-code">' +
+                    '<h3 class="movie-name">' + film.movie_name + '</h3>' +
+                    '<div class="lot-table clearfix" data-rated="' + film.rated + '" >' +
+                        '<div class="col-md-2 poster_content" >' +
+                            '<img src="'+ MEDIA_URL + film.poster +'" alt="'+ film.movie_name +'" height="100%">'+
+                        ' </div>' +
+                        '<div class="col-md-10 no_padding" >' +
+                            '<ul class="list-inline list-unstyled theater_time">' +
+                                listShedule(film) +
+                            '</ul>' +
+                        ' </div>' +
+                    ' </div>' +
+                ' </div>';
+    }
+
     return '<div class="movie-time-line-box clearfix" data-control="movie-code">' +
         '<h3 class="movie-name">' + film.movie_name + '</h3>' +
         '<div class="lot-table clearfix" data-rated="' + film.rated + '" >' +

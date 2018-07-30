@@ -534,6 +534,13 @@ li.btn-guest-wth117 {
     border-bottom: 1px solid #ff5400;
 }
 
+.poster_content {
+    padding: 10px 0px 0px 0px;
+    height: 176px;
+}
+.no_padding {
+    padding: 0px;
+}
 @media only screen and (max-width: 1024px){
     .calendar-popup .days-movie-showing li {
         width: 66px;
